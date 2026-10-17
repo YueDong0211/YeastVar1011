@@ -11,6 +11,7 @@
 [![Website and platform checks](https://github.com/YueDong0211/YeastVar1011/actions/workflows/pages.yml/badge.svg)](https://github.com/YueDong0211/YeastVar1011/actions/workflows/pages.yml)
 [![Raw FASTQ QC integration](https://github.com/YueDong0211/YeastVar1011/actions/workflows/analysis-integration.yml/badge.svg)](https://github.com/YueDong0211/YeastVar1011/actions/workflows/analysis-integration.yml)
 [![Conda package candidate](https://github.com/YueDong0211/YeastVar1011/actions/workflows/bioconda-package.yml/badge.svg)](https://github.com/YueDong0211/YeastVar1011/actions/workflows/bioconda-package.yml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23429612.svg)](https://doi.org/10.5281/zenodo.23429612)
 
 </div>
 

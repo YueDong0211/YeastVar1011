@@ -668,8 +668,8 @@
     },
     {
       "path": "dist/project-links-v20.js",
-      "bytes": 4341,
-      "sha256": "1ad774279faa4eedf9405ec043cd99616835f4964c3b64f3a503b0cd0056b439"
+      "bytes": 4547,
+      "sha256": "acc8d5372cf151af32e73271dfcfa85bc8841a54dda9cafa1bdc5724e4153688"
     },
     {
       "path": "dist/refinements.css",
@@ -1243,8 +1243,8 @@
     },
     {
       "path": "scripts/prepare-public.cjs",
-      "bytes": 3724,
-      "sha256": "5f0494acdeb09aa31cae6834943b5b556aa67f2c94512e29d30dd89eb2311c12"
+      "bytes": 3754,
+      "sha256": "a0a9752738c1ced53145b43c7b6433d77f86c624b2ea3d08c613a34aeb8a1dd1"
     },
     {
       "path": "scripts/qa-doctor.cjs",
@@ -1308,8 +1308,8 @@
     },
     {
       "path": "docs/PUBLISHING.md",
-      "bytes": 11117,
-      "sha256": "c8c7d9593f8dd57701a1e4d5f0e740d00b397c2d43ad483593e521793a7279d0"
+      "bytes": 11174,
+      "sha256": "4a2faad46a1528995ddb3fc7d4de385e7273b72fca09437a7ffeb4e806f8f89a"
     },
     {
       "path": "docs/WORKSTATION.md",
@@ -1323,8 +1323,8 @@
     },
     {
       "path": "docs/software-methods.md",
-      "bytes": 20962,
-      "sha256": "7bc6729746e2a5c6225ba65f8d093090e79fb9b54c1b89854c9666723ceb19f3"
+      "bytes": 21055,
+      "sha256": "47b1c475691168c796eaea948bcc650392857190f5b57f263acc646ec8a86afd"
     },
     {
       "path": "analysis/.gitignore",
@@ -1433,8 +1433,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 7403,
-      "sha256": "f78fb6fa7a8e6fd91c8f59ad5d323573497d7a26b7df1e2beadc6363cb48af81"
+      "bytes": 7511,
+      "sha256": "62e156ba744f25fadb3ce3bf531c1cb675139318789504c2692cddcdd41cf311"
     },
     {
       "path": "LICENSE",
@@ -1458,8 +1458,8 @@
     },
     {
       "path": "CITATION.cff",
-      "bytes": 711,
-      "sha256": "3ee1be74dbaf151b6eb651a815cb3e85169ff02e6ce3b53a9db323c0821a2a38"
+      "bytes": 740,
+      "sha256": "8c79897926706a21770efa3feb0b7b16215d09d1c1d4c80e885e0b66dd658a2d"
     },
     {
       "path": "START.cmd",
@@ -1495,6 +1495,11 @@
       "path": "research/qa-dev-server.cjs",
       "bytes": 15681,
       "sha256": "0aed4097d3ae06e27d3f0b84802d4f1fc131f91e47f96db1d5fc0815ecac79fc"
+    },
+    {
+      "path": "research/qa-cluster-v21.cjs",
+      "bytes": 12981,
+      "sha256": "e7bb65f880627565ad5fadba58b6ac363cecc4c48589d21df5fc5875363dddda"
     },
     {
       "path": "research/package-portable.ps1",

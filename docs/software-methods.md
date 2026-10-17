@@ -87,7 +87,7 @@ Direct workflow versions are recorded in the analysis environment definitions: P
 
 ## Code, data and licensing
 
-Source code and release records are available at [YueDong0211/YeastVar1011](https://github.com/YueDong0211/YeastVar1011), with the public workbench at [GitHub Pages](https://yuedong0211.github.io/YeastVar1011/). The public source excludes unpublished sequencing data, local credentials and downloaded full-paper or original supplementary archives. Attributed catalogue facts retain source links. Original code uses MIT; third-party software, fonts, citation styles and source materials retain the component-specific terms described in [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md). Archive and registry identifiers will be added only after the respective services return real records.
+Source code and release records are available at [YueDong0211/YeastVar1011](https://github.com/YueDong0211/YeastVar1011), with the public workbench at [GitHub Pages](https://yuedong0211.github.io/YeastVar1011/). The public source excludes unpublished sequencing data, local credentials and downloaded full-paper or original supplementary archives. Attributed catalogue facts retain source links. Original code uses MIT; third-party software, fonts, citation styles and source materials retain the component-specific terms described in [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md). Version 21.0.0 is archived at [doi:10.5281/zenodo.23429612](https://doi.org/10.5281/zenodo.23429612); the current registry and package-review records are listed in [PUBLISHING.md](PUBLISHING.md).
 
 ## References
 

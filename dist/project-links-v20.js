@@ -2,7 +2,7 @@
 'use strict';
 (() => {
  const ROOT='https://github.com/YueDong0211/YeastVar1011';
- const LINKS=Object.freeze({github:ROOT,issues:ROOT+'/issues/new/choose',contribute:ROOT+'/blob/main/CONTRIBUTING.md',licenses:ROOT+'/blob/main/THIRD_PARTY_NOTICES.md',sources:ROOT+'/blob/main/DATA_SOURCES.md'});
+ const LINKS=Object.freeze({github:ROOT,issues:ROOT+'/issues/new/choose',contribute:ROOT+'/blob/main/CONTRIBUTING.md',licenses:ROOT+'/blob/main/THIRD_PARTY_NOTICES.md',sources:ROOT+'/blob/main/DATA_SOURCES.md',archive:'https://doi.org/10.5281/zenodo.23429612'});
  const TEXT={
   title:['共同完善这个工作站','Build the workstation together','Améliorons cet atelier ensemble','Mejoremos esta estación juntos','Hobetu lan-estazio hau elkarrekin'],
   body:['代码、界面与研究证据均可提出改进。补充 marker 或方法时，请附上原始来源和适用条件。','Contribute code, interface improvements or research evidence. Include the primary source and context for a marker or method.','Proposez du code, des améliorations de l’interface ou des preuves scientifiques. Joignez la source primaire et le contexte du marqueur ou de la méthode.','Aporte código, mejoras de interfaz o evidencias. Incluya la fuente primaria y el contexto del marcador o método.','Ekarri kodea, interfazearen hobekuntzak edo ikerketa-ebidentziak. Gehitu markatzailearen edo metodoaren jatorrizko iturria eta testuingurua.'],
@@ -11,6 +11,7 @@
   contribute:['贡献指南','Contributing guide','Guide de contribution','Guía de contribución','Ekarpenen gida'],
   licenses:['开源许可与致谢','Licenses & credits','Licences et crédits','Licencias y créditos','Lizentziak eta kredituak'],
   sources:['数据来源','Data sources','Sources des données','Fuentes de datos','Datuen iturriak'],
+  archive:['引用软件 · DOI','Cite software · DOI','Citer le logiciel · DOI','Citar el software · DOI','Aipatu softwarea · DOI'],
   project:['开源项目','Open-source project','Projet open source','Proyecto de código abierto','Kode irekiko proiektua']
  };
  const langs=['zh','en','fr','es','eu'];
@@ -25,7 +26,7 @@
  function afterRender(){
   const footer=document.querySelector('.footer');let nav=footer?.querySelector('.p20-footer-links');
   if(footer&&!nav){nav=document.createElement('nav');nav.className='p20-footer-links';footer.append(nav);}
-  if(nav){nav.setAttribute('aria-label',text('project'));nav.innerHTML=`<a href="${ROOT}" target="_blank" rel="noopener noreferrer" data-project-link="github">GitHub ↗</a>${link('licenses')}`;}
+  if(nav){nav.setAttribute('aria-label',text('project'));nav.innerHTML=`<a href="${ROOT}" target="_blank" rel="noopener noreferrer" data-project-link="github">GitHub ↗</a>${link('archive')}${link('licenses')}`;}
   if(window.YV_APP?.route?.()==='contribute'){const host=document.querySelector('.contribute-hero');if(host&&!host.querySelector('.p20-project')){const el=document.createElement('section');el.className='p20-project';el.innerHTML=card();host.append(el);}}
   const panel=document.getElementById('yv-companion-panel');if(panel&&!observer){observer=new MutationObserver(companion);observer.observe(panel,{childList:true,subtree:true});}companion();
  }
