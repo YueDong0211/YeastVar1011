@@ -5,16 +5,84 @@ const CACHE = 'yeastvar-local-qwen25-05b-q8-v22';
 const FILE_BYTES = { 'config.json':678, 'generation_config.json':242, 'tokenizer_config.json':7849, 'tokenizer.json':7031673, 'model_quantized.onnx':512096557 };
 const TOTAL = Object.values(FILE_BYTES).reduce((a,b)=>a+b,0);
 let generator, runtime, busy=false, cached=false, downloadFiles=new Map(), lastProgress=0;
+const cachedFiles=new Set();
+const nativeFetch=self.fetch?.bind(self);
+let offlineFetchBlocked=false;
 const emit = (type, detail={}) => self.postMessage({type,...detail});
 const state = detail => emit('state', {detail});
 function cacheURL(key) {
   return new URL('/__yv_local_model_cache__/'+encodeURIComponent(String(key)), self.location.origin).href;
 }
-async function configure() {
+function modelURL(file) {
+  return `https://huggingface.co/${MODEL}/resolve/${REVISION}/${file==='model_quantized.onnx'?'onnx/':''}${file}`;
+}
+function configureFetch(offline) {
+  offlineFetchBlocked=false;
+  if(!offline){if(nativeFetch)self.fetch=nativeFetch;return;}
+  if(!nativeFetch)throw Error('BROWSER_UNSUPPORTED');
+  const vendor=new URL('./vendor/transformers-3.8.1/',import.meta.url);
+  self.fetch=(input,init)=>{
+    const url=new URL(typeof input==='string'||input instanceof URL?input:input.url,self.location.href||self.location.origin);
+    const method=String(init?.method||input?.method||'GET').toUpperCase();
+    if(url.origin===vendor.origin&&url.pathname.startsWith(vendor.pathname)&&/\.(?:wasm|m?js)$/.test(url.pathname)&&['GET','HEAD'].includes(method))return nativeFetch(input,init);
+    offlineFetchBlocked=true;
+    return Promise.reject(Error('MODEL_OFFLINE_FILES_MISSING'));
+  };
+}
+async function requireOfflineCache(cache) {
+  if(!cache)throw Error('MODEL_OFFLINE_FILES_MISSING');
+  for(const [file,expected] of Object.entries(FILE_BYTES)){
+    let response;
+    try {response=await cache.match(cacheURL(modelURL(file)));}catch{}
+    const length=response?.headers.get('content-length'),encoding=response?.headers.get('content-encoding');
+    const valid=response?.status===200&&response.body&&(encoding||length===null||Number(length)===expected);
+    response?.body?.cancel().catch(()=>{});
+    if(!valid)throw Error('MODEL_OFFLINE_FILES_MISSING');
+  }
+}
+function cacheFile(key) {
+  const file=String(key).split('?')[0].split('/').pop();
+  return Object.hasOwn(FILE_BYTES,file)?file:null;
+}
+function markCached(file) {
+  cachedFiles.add(file);
+  const complete=Object.keys(FILE_BYTES).every(name=>cachedFiles.has(name));
+  if(cached!==complete){cached=complete;state({cached});}
+}
+function checkResponse(response,file,onValid,onInvalid) {
+  // Count the existing stream rather than allocating another 512 MB buffer.
+  const expected=FILE_BYTES[file],length=response.headers.get('content-length');
+  const encoding=response.headers.get('content-encoding');
+  if(response.status!==200 || (!encoding && length!==null && Number(length)!==expected))return null;
+  const reader=response.body?.getReader();
+  if(!reader)return null;
+  let loaded=0;
+  const headers=new Headers(response.headers);
+  // Fetch already decodes HTTP content encodings before exposing response.body.
+  headers.delete('content-encoding');headers.set('content-length',String(expected));
+  return new Response(new ReadableStream({
+    async pull(controller) {
+      try {
+        const {done,value}=await reader.read();
+        if(done){if(loaded!==expected)throw Error('MODEL_FILE_INCOMPLETE');onValid();controller.close();return;}
+        loaded+=value.byteLength;
+        if(loaded>expected)throw Error('MODEL_FILE_INCOMPLETE');
+        controller.enqueue(value);
+      } catch(error) {
+        reader.cancel(error).catch(()=>{});
+        await onInvalid();controller.error(error);
+      }
+    },
+    cancel(reason){return reader.cancel(reason);}
+  }),{status:200,headers});
+}
+async function configure(offline) {
   runtime ||= await import('./vendor/transformers-3.8.1/transformers.min.js');
   const {env} = runtime;
-  env.allowLocalModels=false;
-  env.allowRemoteModels=true;
+  // 3.8.1 requires local models enabled to pass its pre-cache configuration guard.
+  // The dedicated-worker fetch guard above blocks even its local-path fallback.
+  env.allowLocalModels=offline;
+  env.allowRemoteModels=!offline;
   env.useBrowserCache=false;
   env.useFSCache=false;
   env.useCustomCache=true;
@@ -28,18 +96,28 @@ async function configure() {
       if(!cache)return undefined;
       try {
         const response=await cache.match(cacheURL(key));
-        if(response && String(key).includes('model_quantized.onnx')) {cached=true; state({cached:true});}
-        return response;
+        if(!response)return undefined;
+        const file=cacheFile(key);
+        if(!file)return response;
+        const invalid=async()=>{cachedFiles.delete(file);cached=false;try{await cache.delete(cacheURL(key));}catch{}state({cached:false,warning:'cache-invalid'});};
+        const checked=checkResponse(response,file,()=>markCached(file),invalid);
+        if(!checked){response.body?.cancel().catch(()=>{});await invalid();return undefined;}
+        return checked;
       } catch { return undefined; }
     },
     async put(key,response) {
       if(!cache)return;
       try {
-        await cache.put(cacheURL(key),response);
-        if(String(key).includes('model_quantized.onnx')){cached=true;state({cached:true});}
-      } catch {state({warning:'cache-unavailable'});}
+        const file=cacheFile(key);
+        const invalid=async()=>{cachedFiles.delete(file);cached=false;try{await cache.delete(cacheURL(key));}catch{}state({cached:false,warning:'cache-invalid'});};
+        const checked=file?checkResponse(response,file,()=>{},invalid):response;
+        if(!checked){response.body?.cancel().catch(()=>{});await invalid();return;}
+        await cache.put(cacheURL(key),checked);
+        if(file)markCached(file);
+      } catch(error) {state({warning:error?.message==='MODEL_FILE_INCOMPLETE'?'cache-invalid':'cache-unavailable'});}
     }
   };
+  return cache;
 }
 function progress(p) {
   const file=String(p.file||'').split('/').pop();
@@ -50,31 +128,35 @@ function progress(p) {
   lastProgress=performance.now();
   state({status:'loading',file,phase:p.status,downloaded,total:TOTAL,progress:Math.min(1,downloaded/TOTAL),cached});
 }
-async function load(device) {
+async function load(device,offline=false) {
   if(generator)return;
-  await configure();
-  cached=false; downloadFiles.clear();
+  configureFetch(offline);
+  const cache=await configure(offline);
+  if(offline)await requireOfflineCache(cache);
+  cached=false;cachedFiles.clear();downloadFiles.clear();lastProgress=0;
   let selected=device==='wasm'?'wasm':'webgpu';
   if(selected==='webgpu') {
     try {if(!navigator.gpu || !await navigator.gpu.requestAdapter())selected='wasm';}
     catch {selected='wasm';}
   }
-  const options={revision:REVISION,dtype:'q8',device:selected,trust_remote_code:false,progress_callback:progress};
-  state({status:'loading',device:selected});
+  const options={revision:REVISION,dtype:'q8',device:selected,trust_remote_code:false,local_files_only:offline,progress_callback:progress};
+  state({status:'loading',device:selected,offline});
   try {
     generator=await runtime.pipeline('text-generation',MODEL,options);
     // A GPU may create a session yet reject an operator on its first execution.
     if(selected==='webgpu')await generator('Hi',{max_new_tokens:1,do_sample:false});
   }
   catch(error) {
+    if(offline&&offlineFetchBlocked)throw Error('MODEL_OFFLINE_FILES_MISSING');
     if(selected!=='webgpu')throw error;
     state({warning:'gpu-fallback',device:'wasm'});
     try {await generator?.dispose();} catch {}
     generator=null;
     selected='wasm';
-    generator=await runtime.pipeline('text-generation',MODEL,{...options,device:'wasm'});
+    try {generator=await runtime.pipeline('text-generation',MODEL,{...options,device:'wasm'});}
+    catch(error){if(offline&&offlineFetchBlocked)throw Error('MODEL_OFFLINE_FILES_MISSING');throw error;}
   }
-  state({status:'ready',device:selected,progress:1,downloaded:TOTAL,total:TOTAL,cached});
+  state({status:'ready',device:selected,progress:1,downloaded:TOTAL,total:TOTAL,cached,offline});
 }
 async function generate(messages, options, id) {
   if(!generator)throw Error('MODEL_NOT_LOADED');
@@ -104,11 +186,11 @@ async function generate(messages, options, id) {
   return text.trim();
 }
 self.onmessage=async event=>{
-  const {type,id,device,messages,options={}}=event.data||{};
+  const {type,id,device,messages,offline,options={}}=event.data||{};
   if(busy){emit('error',{id,error:'MODEL_BUSY'});return;}
   busy=true;
   try {
-    if(type==='load'){await load(device||'auto');emit('done',{id});}
+    if(type==='load'){await load(device||'auto',offline===true);emit('done',{id});}
     else if(type==='generate'){const text=await generate(messages||[],options,id);emit('done',{id,text});}
     else throw Error('UNKNOWN_REQUEST');
   } catch(error) {state({status:generator?'ready':'error',error:String(error?.message||error)});emit('error',{id,error:String(error?.message||error)});}

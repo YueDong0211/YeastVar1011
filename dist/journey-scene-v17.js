@@ -28,17 +28,44 @@
   const cloneShot = shot => ({...shot, focus:[...shot.focus], offset:[...(shot.offset||[0,0])]});
 
   const media = matchMedia('(prefers-reduced-motion: reduce)');
-  let engine = null, pending = null, host = null, resizeObserver = null, observer = null;
+  let engine = null, pending = null, host = null, resizeObserver = null, observer = null, modalObserver = null;
   let stage = 'scope', quality = 'balanced', wallOpacity = .42, motion = true, onStatus = null, onHotspot = null;
   let frame = 0, timer = 0, frames = 0, lastPaint = 0, lastPulse = 0, pulseUntil = 0, generation = 0;
   let error = null, drag = null, transition = null, selection = {}, mounted = false, inViewport = true;
   let reaction = null, reactionSequence = 0, specimenAction = null;
+  let companionOpen = false, modalBlocked = false, modalPausedAt = 0;
   const smooth = n => n * n * n * (n * (n * 6 - 15) + 10);
   const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
   const canvasLabel = () => ({ zh: '出芽酵母形态模型。拖动或使用方向键旋转；Home 键重置视角。', en: 'Budding yeast morphology. Drag or use arrow keys to rotate. Home resets the view.', fr: 'Morphologie d’une levure bourgeonnante. Glissez ou utilisez les flèches pour tourner. Origine réinitialise la vue.', es: 'Morfología de una levadura en gemación. Arrastra o usa las flechas para girar. Inicio restablece la vista.', eu: 'Legamia gematzen, morfologia. Arrastatu edo erabili geziak biratzeko. Home teklak ikuspegia berrezartzen du.' }[window.YV_APP?.prefs?.()?.language || 'en']);
   const reduced = () => media.matches || !!window.YV_APP?.prefs?.()?.reducedMotion || document.documentElement.classList.contains('reduce-motion');
   const canMove = () => motion && !reduced();
-  const visible = () => mounted && host?.isConnected && !document.hidden && inViewport;
+  const visible = () => mounted && host?.isConnected && !document.hidden && inViewport && !modalBlocked;
+  // Cache modal visibility when dialogs change; never scan the DOM in the render loop.
+  // The nonmodal specimen studio deliberately keeps its live model preview running.
+  function syncModalVisibility() {
+    let nativeModal;
+    try { nativeModal = document.querySelector('dialog[open]:modal'); }
+    catch { nativeModal = document.querySelector('dialog[open]:not([aria-modal="false"])'); }
+    const next = companionOpen || !!nativeModal;
+    if (next === modalBlocked) return;
+    modalBlocked = next;
+    if (next) { modalPausedAt = performance.now(); cancel(); }
+    else {
+      if (transition && modalPausedAt) transition.start += performance.now() - Math.max(modalPausedAt, transition.start);
+      modalPausedAt = 0; request();
+    }
+  }
+  function observeModals() {
+    modalObserver?.disconnect();
+    if (document.body) {
+      modalObserver = new MutationObserver(records => {
+        const hasDialog = node => node.nodeType === 1 && (node.localName === 'dialog' || !!node.querySelector?.('dialog'));
+        if (records.some(record => record.type === 'attributes' ? record.target.localName === 'dialog' : [...record.addedNodes, ...record.removedNodes].some(hasDialog))) syncModalVisibility();
+      });
+      modalObserver.observe(document.body, {subtree:true, childList:true, attributes:true, attributeFilter:['open']});
+    }
+    syncModalVisibility();
+  }
   function report(status, detail) { try { onStatus?.({ status, ready: !!engine, stage, error, ...(detail || {}) }); } catch {} }
   function seeded(seed) { return () => { seed = (1664525 * seed + 1013904223) >>> 0; return seed / 4294967296; }; }
 
@@ -464,7 +491,7 @@ normal=normalize(abs(specimenDet)*normal-sign(specimenDet)*(dFdx(specimenH)*spec
   async function mount(target, options = {}) {
     if (!target || !(target instanceof HTMLElement)) return false;
     if(options.appearance)setAppearance(options.appearance);
-    mounted = true; host = target; inViewport = true; const previousQuality = quality; quality = options.quality === 'high' ? 'high' : options.quality === 'balanced' ? 'balanced' : quality; if(Number.isFinite(Number(options.wallOpacity))) wallOpacity=clamp(Number(options.wallOpacity),.16,.72); motion = options.motion ?? motion; onStatus = options.onStatus || onStatus; onHotspot = options.onHotspot || onHotspot;
+    mounted = true; host = target; inViewport = true; observeModals(); const previousQuality = quality; quality = options.quality === 'high' ? 'high' : options.quality === 'balanced' ? 'balanced' : quality; if(Number.isFinite(Number(options.wallOpacity))) wallOpacity=clamp(Number(options.wallOpacity),.16,.72); motion = options.motion ?? motion; onStatus = options.onStatus || onStatus; onHotspot = options.onHotspot || onHotspot;
     if (options.stage && STAGES[options.stage] && !engine) stage = options.stage;
     resizeObserver?.disconnect(); observer?.disconnect(); resizeObserver = new ResizeObserver(() => { size(); request(); }); resizeObserver.observe(host);
     observer = new IntersectionObserver(entries => { inViewport = !!entries[0]?.isIntersecting; if (inViewport) request(); else cancel(); }, { threshold: .01 }); observer.observe(host);
@@ -520,10 +547,11 @@ normal=normalize(abs(specimenDet)*normal-sign(specimenDet)*(dFdx(specimenH)*spec
   function setQuality(value) { quality = value === 'high' ? 'high' : 'balanced'; if (engine) { engine.densitySamples.value=quality==='high'?22:16;engine.width = 0; size(); request(); } return quality; }
   function setMotion(value) { motion = !!value; cancel(); if(canMove()&&specimenAction?.static)specimenAction=null;if (engine) { if (!canMove() && transition) { engine.orbit = transition.to; transition = null; setCamera(); } if(reaction&&!canMove()){reaction.progress=1;reaction.elapsed=reaction.duration;}request(); } return motion; }
   function resetView() { specimenAction=null;if (!engine) return; engine.zoom=1; engine.baseRotation = { x: .09, y: .11, z: -.12 }; engine.cell.rotation.set(.09, .11, -.12);engine.cell.position.y=0;engine.cell.scale.setScalar(1);engine.actionEnergy=0; engine.orbit = cloneShot(STAGES[stage]); transition = null; reaction=null;setCamera(); request(); }
-  function dispose() { generation++; mounted = false; pending = null; cancel(); resizeObserver?.disconnect(); observer?.disconnect(); resizeObserver = observer = null; drag = transition = null; reaction=null;specimenAction=null;drop(); host = null; }
+  function dispose() { generation++; mounted = false; pending = null; cancel(); resizeObserver?.disconnect(); observer?.disconnect(); modalObserver?.disconnect(); resizeObserver = observer = modalObserver = null; modalBlocked=false;modalPausedAt=0;drag = transition = null; reaction=null;specimenAction=null;drop(); host = null; }
   function state() { let shot=null;if(engine){engine.camera.updateMatrixWorld();const centre=new engine.T.Vector3(0,.15,0).applyMatrix4(engine.cell.matrixWorld).project(engine.camera),focus=new engine.T.Vector3(...engine.orbit.focus),radius=engine.camera.position.distanceTo(focus);const bounds={left:Infinity,right:-Infinity,bottom:Infinity,top:-Infinity};engine.tissue.updateWorldMatrix(true,false);const point=new engine.T.Vector3();for(const p of engine.surfaceSamples){point.copy(p).applyMatrix4(engine.tissue.matrixWorld).project(engine.camera);bounds.left=Math.min(bounds.left,point.x);bounds.right=Math.max(bounds.right,point.x);bounds.bottom=Math.min(bounds.bottom,point.y);bounds.top=Math.max(bounds.top,point.y);}shot={projectedBounds:bounds,radius,fov:engine.camera.fov,focus:[...engine.orbit.focus],offset:[...engine.orbit.offset],elevation:engine.orbit.phi,effectiveScale:1/(2*radius*Math.tan(engine.camera.fov*Math.PI/360)),projectedCenter:{x:centre.x,y:centre.y},viewOffset:engine.camera.view?{x:engine.camera.view.offsetX,y:engine.camera.view.offsetY}:null};} return {reaction:describeReaction(),transition:transition?{type:transition.type,duration:transition.duration}:null,shot,environment:engine?{type:'liquid',time:engine.environment.time,volumeSamples:engine.densitySamples.value,particles:engine.environment.particles,caustics:true,playing:canMove()&&visible(),backdropResolution:[384,256]}:null,visible:!!visible(),inViewport, ready: !!engine, loading: !!pending, stage, quality, wallOpacity, zoom:engine?.zoom||1, motion, reducedMotion: reduced(), playing: !!(frame || timer), mounted, frames, lastPaint, lastPulse, error, selection: { ...selection }, width: engine?.width || 0, height: engine?.height || 0, pixelRatio: engine?.renderer.getPixelRatio() || 0, camera: engine ? { x: engine.camera.position.x, y: engine.camera.position.y, z: engine.camera.position.z } : null, rotation: engine ? { x: engine.cell.rotation.x, y: engine.cell.rotation.y, z: engine.cell.rotation.z } : null, transitioning: !!transition, buildMs: engine?.buildMs || 0, drawCalls: engine?.renderer.info.render.calls || 0, triangles: engine?.renderer.info.render.triangles || 0 }; }
   document.addEventListener('visibilitychange', () => { if (document.hidden) cancel(); else request(); });
+  window.addEventListener('yv:companionchange', event => { if (typeof event.detail?.isOpen === 'boolean') companionOpen = event.detail.isOpen; syncModalVisibility(); });
   media.addEventListener('change', () => { setMotion(motion); });
-  const inspectState=()=>({...state(),appearance:describeAppearance(),specimenAction:specimenAction?{...specimenAction}:null,layerVisibility:engine?Object.fromEntries(Object.entries(engine.layerObjects).map(([key,objects])=>[key,{visible:objects.filter(object=>object.visible).length,total:objects.length}])):null});
+  const inspectState=()=>({...state(),occluded:modalBlocked,appearance:describeAppearance(),specimenAction:specimenAction?{...specimenAction}:null,layerVisibility:engine?Object.fromEntries(Object.entries(engine.layerObjects).map(([key,objects])=>[key,{visible:objects.filter(object=>object.visible).length,total:objects.length}])):null});
   window.YV_JOURNEY_SCENE = { mount, setStage, react, setAppearance, animateSpecimen, setQuality, setWallOpacity, setMotion, resetView, dispose, state:inspectState };
 })();

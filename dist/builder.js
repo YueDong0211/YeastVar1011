@@ -79,6 +79,27 @@ function setMarkers(markerIds,checked,rerender=false){
  if(!ids.length)return false;
  mutate(()=>{if(checked){for(const id of ids)if(!plan.markers.some(m=>m.id===id))plan.markers.push(normalizeMarker({id,groups:['unassigned'],purposes:[ui.purpose]}));}else plan.markers=plan.markers.filter(m=>!ids.includes(m.id));},rerender);return true;
 }
+function importMarkerAssignments(assignments,{merge=true,rerender=false}={}){
+ if(!Array.isArray(assignments))return false;
+ const seen=new Set(),allowed=['groups','purpose','purposes','role','userTags','rationale','evidenceSources'];
+ const rows=assignments.filter(row=>{if(!row||typeof row!=='object'||!api?.maps().marker.has(row.id)||seen.has(row.id))return false;seen.add(row.id);return true;});
+ if(!rows.length&&merge)return false;
+ // A panel import is one user operation, like importPlan: one snapshot, one
+ // persistence pass, and one undo. Omitted assignments retain existing choices.
+ return mutate(()=>{
+  const previous=new Map(plan.markers.map(marker=>[marker.id,marker]));
+  const next=merge?[...plan.markers]:[],positions=new Map(next.map((marker,i)=>[marker.id,i]));
+  for(const row of rows){
+   const base=previous.get(row.id)||{id:row.id,groups:['unassigned'],purposes:[ui.purpose]};
+   const patch=Object.fromEntries(allowed.filter(key=>Object.hasOwn(row,key)).map(key=>[key,row[key]]));
+   if(Object.hasOwn(patch,'purpose')&&!Object.hasOwn(patch,'purposes'))patch.purposes=undefined;
+   const marker=normalizeMarker({...base,...patch,id:row.id});
+   if(positions.has(row.id))next[positions.get(row.id)]=marker;
+   else{positions.set(row.id,next.length);next.push(marker);}
+  }
+  plan.markers=next;
+ },rerender);
+}
 function setMarker(markerId,checked,group){
  if(!api)return;const exists=plan.markers.some(x=>x.id===markerId);
  if(checked&&!exists&&api.maps().marker.has(markerId)){mutate(()=>plan.markers.push(normalizeMarker({id:markerId,groups:group&&GROUPS.includes(group)?[group]:['unassigned'],purposes:[ui.purpose]})),false);}
@@ -108,7 +129,7 @@ function missingStages(){return [...new Set(plan.stages.flatMap(s=>(window.YV_IN
 function prerequisiteClosure(){const result=new Set(plan.stages);let changed=true;while(changed){changed=false;for(const s of [...result])for(const dep of window.YV_INPUTS.stageDependencies?.(plan,api.data(),s)||DEPENDENCIES[s]||[])if(!result.has(dep)){result.add(dep);changed=true;}}return [...result].sort((a,b)=>api.maps().step.get(a).number-api.maps().step.get(b).number);}
 function inputReview(){return window.YV_INPUTS(plan,api.data());}
 function neededInputs(){return inputReview().inputs.filter(x=>!['declared','planned-output','conditional-output'].includes(x.status)).map(x=>x.id);}
-function inputReviewHTML(){const result=inputReview();return `<p class="muted small">${b('inputReviewHelp')}</p><div class="input-review-list">${result.inputs.map(x=>`<div class="input-review-row"><div><strong>${e(inputLabel(x.id))}</strong><span class="badge ${x.status==='declared'?'badge-green':'badge-amber'}">${b(x.status)}</span></div>${x.producerTools.length?`<small>${b('plannedProducer')}: ${x.producerTools.map(id=>e(api.maps().tool.get(id)?.name||id)).join(' · ')}</small>`:''}${x.dependencies.length?`<small>${tt('inputs')}: ${x.dependencies.map(k=>e(inputLabel(k))).join(' · ')}</small>`:''}${x.unresolved.length?`<small>${b('upstreamPending')}: ${x.unresolved.map(k=>e(inputLabel(k))).join(' · ')}</small>`:''}</div>`).join('')}</div>${result.rules.length?`<h3>${b('compatibility')}</h3>${api.list(result.rules.map(r=>r.text))}`:''}`;}
+function inputReviewHTML(){const result=inputReview();return `<p class="muted small">${b('inputReviewHelp')}</p><div class="input-review-list">${result.inputs.map(x=>`<div class="input-review-row"><div><strong>${e(inputLabel(x.id))}</strong><span class="badge ${x.status==='declared'?'badge-green':'badge-amber'}">${b(x.status)}</span></div>${x.producerTools.length?`<small>${b('plannedProducer')}: ${x.producerTools.map(id=>e(api.maps().tool.get(id)?.name||id)).join(' '+e(window.YV_PLAN?.text?.('methodOr')||'/')+' ')}</small>`:''}${x.dependencies.length?`<small>${tt('inputs')}: ${x.dependencies.map(k=>e(inputLabel(k))).join(' · ')}</small>`:''}${x.unresolved.length?`<small>${b('upstreamPending')}: ${x.unresolved.map(k=>e(inputLabel(k))).join(' · ')}</small>`:''}${window.YV_PLAN?.inputRoutesHTML?.(x)||''}</div>`).join('')}</div>${result.rules.length?`<h3>${b('compatibility')}</h3>${api.list(result.rules.map(r=>r.text))}`:''}`;}
 const btn=(action,text,attrs='',cls='btn btn-small')=>`<button class="${cls}" data-build="${action}" ${attrs}>${text}</button>`;
 const stepTitle = id=>api.field('steps',api.maps().step.get(id),'title');
 const metricTitle = id=>api.field('metrics',api.maps().metric.get(id),'name');
@@ -155,5 +176,5 @@ document.addEventListener('dragend',()=>document.querySelectorAll('.dragging,.dr
 document.addEventListener('dragover',ev=>{const group=ev.target.closest('[data-drop-group]'),stage=ev.target.closest('[data-drop-stage]');if(group||stage){ev.preventDefault();(group||stage).classList.add('drag-over');}});
 document.addEventListener('dragleave',ev=>{const el=ev.target.closest('[data-drop-group],[data-drop-stage]');if(el&&!el.contains(ev.relatedTarget))el.classList.remove('drag-over');});
 document.addEventListener('drop',ev=>{const group=ev.target.closest('[data-drop-group]'),stage=ev.target.closest('[data-drop-stage]');if(!group&&!stage)return;ev.preventDefault();const mid=ev.dataTransfer.getData('application/x-yv-marker'),sid=ev.dataTransfer.getData('application/x-yv-stage'),tid=ev.dataTransfer.getData('application/x-yv-tool');if(group&&mid)assignMarker(mid,group.dataset.dropGroup);else if(stage&&sid&&sid!==stage.dataset.dropStage)mutate(()=>{const from=plan.stages.indexOf(sid),to=plan.stages.indexOf(stage.dataset.dropStage);if(from>=0&&to>=0){plan.stages.splice(from,1);plan.stages.splice(to,0,sid);}});else if(stage&&tid){const tool=api.maps().tool.get(tid);if(tool?.steps.includes(stage.dataset.dropStage)){toggleTool(tid,true);ui.stage=stage.dataset.dropStage;api.render();}else api.toast(b('adapt'));}document.querySelectorAll('.drag-over').forEach(x=>x.classList.remove('drag-over'));});
-window.YV_BUILDER={recoveryState,undo,redo,retrySave:()=>save(false),backup,importPlan,init,page,home,afterRender,beforeRender,routeParams,toolButton,toolPanel,markerBar,setResultSpecification,setMarker,setMarkers,updateMarker,updateMarkers,assignMarker,toggleStage,toggleTool,toggleMetric,setMetrics,setInputRoute,addProject,setProjects,svgExport,markdown,mermaid,getPhase:()=>activePhase,inputReview,getPlan:()=>JSON.parse(JSON.stringify(plan||blank())),b,updateSceneTheme:syncScene,updateSceneMotion:syncScene,exported};
+window.YV_BUILDER={recoveryState,undo,redo,retrySave:()=>save(false),backup,importPlan,importMarkerAssignments,init,page,home,afterRender,beforeRender,routeParams,toolButton,toolPanel,markerBar,setResultSpecification,setMarker,setMarkers,updateMarker,updateMarkers,assignMarker,toggleStage,toggleTool,toggleMetric,setMetrics,setInputRoute,addProject,setProjects,svgExport,markdown,mermaid,getPhase:()=>activePhase,inputReview,getPlan:()=>JSON.parse(JSON.stringify(plan||blank())),b,updateSceneTheme:syncScene,updateSceneMotion:syncScene,exported};
 })();

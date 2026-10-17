@@ -285,7 +285,10 @@
         "igv",
         "propr",
         "ctmm",
-        "harissa"
+        "harissa",
+        "monod",
+        "scanpy",
+        "stager"
       ],
       "metricIds": [
         "noise_variance",
@@ -326,7 +329,13 @@
         "rna_logratio_variance",
         "rna_proportionality_sensitivity",
         "state_between_strain_variance",
-        "state_variance_calibration"
+        "state_variance_calibration",
+        "monod_joint_fit",
+        "monod_parameter_support",
+        "sequencing_model_sensitivity",
+        "unspliced_length_sensitivity",
+        "noise_testing_family_registry",
+        "noise_stagewise_error_calibration"
       ],
       "methodTags": [
         "benchmark",
@@ -823,7 +832,8 @@
         "cell2fate",
         "cardamomot",
         "harissa",
-        "systema"
+        "systema",
+        "monod"
       ],
       "metricIds": [
         "independent_replicates",
@@ -875,7 +885,9 @@
         "velocity_module_support",
         "velocity_module_uncertainty",
         "temporal_mechanistic_regeneration",
-        "kinetic_prior_sensitivity"
+        "kinetic_prior_sensitivity",
+        "unspliced_length_sensitivity",
+        "sequencing_model_sensitivity"
       ],
       "methodTags": [
         "cell-cycle",
@@ -1225,7 +1237,9 @@
         "countsplit",
         "memento",
         "harissa",
-        "inferelator"
+        "inferelator",
+        "seurat",
+        "scanpy"
       ],
       "metricIds": [
         "cross_library_molecules",
@@ -1243,7 +1257,9 @@
         "sample_noise_precision",
         "noise_depth_thinning",
         "mechanistic_noise_recovery",
-        "mechanistic_grn_recovery"
+        "mechanistic_grn_recovery",
+        "implementation_representation_concordance",
+        "implementation_inference_stability"
       ],
       "methodTags": [
         "benchmark",
@@ -2321,6 +2337,34 @@
       ],
       "text": "结合、扰动响应和表达共变分别标记；调控符号属于TF—靶基因边及实验情境。",
       "textEn": "Separate binding, perturbation-response and coexpression evidence; attach regulatory signs to edges and contexts."
+    },
+    {
+      "id": "joint_rna_mechanistic_gate",
+      "type": "interpretation-boundary",
+      "toolIds": [
+        "monod"
+      ],
+      "requiredData": [
+        "splicing_layers",
+        "reference",
+        "sample_metadata",
+        "cell_states"
+      ],
+      "text": "这是基于一般单细胞RNA数据的机制方法；酵母内含子少，须先通过S/U信息量、测量模型和参数可辨识性检查。 无独立时间校准时，速率以模型参照单位解释；拟合参数不自动构成绝对转录速率或纯内在噪音。",
+      "textEn": "This mechanistic method uses general single-cell RNA data; sparse yeast introns require prior checks of S/U information, measurement models and parameter identifiability. Without independent time calibration, interpret rates in model reference units; fitted parameters do not automatically establish absolute transcription rates or purely intrinsic noise."
+    },
+    {
+      "id": "stagewise_pvalue_gate",
+      "type": "interpretation-boundary",
+      "toolIds": [
+        "stager"
+      ],
+      "requiredData": [
+        "gene_statistics",
+        "sample_metadata"
+      ],
+      "text": "stageR是检验结果后处理，不估计表达噪音；迁移到噪音对比须先校准上游p值及筛选—确认的逻辑关系。",
+      "textEn": "stageR post-processes test results and does not estimate expression noise; applying it to noise contrasts requires calibrated upstream p-values and justified screening/confirmation logic."
     }
   ],
   "applicabilityLevels": [

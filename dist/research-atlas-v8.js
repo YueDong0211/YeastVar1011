@@ -67,7 +67,7 @@ const T=k=>words[k]?.[['zh','en','fr','es','eu'].indexOf(A()?.prefs().language||
 const families=['noise','measurement','state','program','dynamics','validation','genetics'];
 const family=p=>p.displayFamily||({raw_qc:'measurement',noise:'noise',differential:'noise',state_annotation:'state',composition:'state',programs_grn:'program',dynamics:'dynamics',transcripts:'dynamics',simulation:'validation',perturbation:'validation',foundation:'validation',genetics:'genetics',evolution:'genetics'}[p.categoryId]||'noise');
 let query='',group='',onlyNew=false,onlySelected=false,sourceQuery='',sourceNew=false,timer,coverageRef,coverageCache;
-const isNew=p=>p.addedIn==='v12'||p.updatedIn==='v12'||p.addedIn==='v13'||p.updatedIn==='v13';
+const isNew=p=>['v12','v13','v22','v24'].includes(p.addedIn)||['v12','v13','v22','v24'].includes(p.updatedIn);
 const title=(p,key)=>X(p[key]||p[key+'En']||'');
 const glyph=k=>A().icon(({noise:'chart',measurement:'filter',state:'markers',program:'workflow',dynamics:'clock',validation:'formulas',genetics:'ideas'})[k]||'chart');
 function filtered(){const q=query.trim().toLowerCase(),chosen=new Set(B().getPlan().projects);return D().projects.projects.filter(p=>(!group||family(p)===group)&&(!onlyNew||isNew(p))&&(!onlySelected||chosen.has(p.id))&&(!q||[p.title,p.titleEn,title(p,'title'),title(p,'question'),title(p,'method'),...(p.tags||[]).map(X),...p.toolIds.flatMap(id=>{const t=A().maps().tool.get(id);return t?[t.name,t.task,t.taskEn,...(t.methodTags||[])]:[id]}),p.questionEn,...(p.searchTerms||[]),...(p.paperIds||[]).map(id=>A().maps().paper.get(id)?.title||'')].join(' ').toLowerCase().includes(q)));}

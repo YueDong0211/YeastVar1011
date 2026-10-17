@@ -37,9 +37,11 @@ YeastVar1011 is an open-source research-plan workstation for yeast single-cell a
 
 Both planning modes edit the same plan. The 3D cell is an authored biological illustration. Scene responses are interface cues, not experimental observations. Source-specific reference statistics remain distinct from measurements imported from your own project.
 
-Open the draggable companion and choose **Ask assistant → Load small model** to use the local model. The first load downloads about 519 MB of fixed Qwen model files; subsequent loads reuse the browser cache. Questions and selected plan context stay on the device. Stop, unload and model-cache deletion are available in the same panel. Catalogue search also works without loading the model. See [local model setup and verification](docs/LOCAL_ASSISTANT.md).
+Open the draggable companion to search evidence, review missing plan inputs or get help with the current workspace. These functions work before loading the model. Choose **Load small model** for local Qwen explanations of matched records; unmatched questions return a search prompt instead of unsupported generated text. The first load downloads about 519 MB of fixed model files. Model controls also support importing the five pinned files and loading only from the browser cache. Questions and selected plan context stay on the device. Stop, unload, conversation clearing and model-cache deletion have separate controls. See [local model setup and verification](docs/LOCAL_ASSISTANT.md).
 
 The v22 catalogue adds Ty/repeat-expression analysis, between-strain variance across cell states, cross-state programmes, modular RNA dynamics, evidence-stratified regulatory networks and mechanistic simulation. New marker evidence includes the complete author-selected Su 2023 amino-acid/glucose-starvation tables and named Brettner 2024 state associations. The [v22 evidence update](docs/RESEARCH_UPDATE_v22.md) describes inputs, sources and remaining coverage needs.
+
+The [v24 research update](docs/RESEARCH_UPDATE_V24.md) adds joint spliced–unspliced mechanistic models, RNA measurement-length sensitivity, implementation robustness and study-wide multiple-testing design. Marker evidence can also be filtered by original study condition, reported direction, dataset accession and explicit use as a single-cell marker. The marker workspace includes a [data-resource directory](docs/DATABASE_RESOURCES.md) that distinguishes imported SGD/GO records from external regulation, interaction, expression and population resources.
 
 ## Run locally
 

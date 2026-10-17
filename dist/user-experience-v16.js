@@ -92,7 +92,7 @@
   const d=document.createElement('dialog');d.className='pw-direction-dialog ux16-direction-dialog';d.setAttribute('aria-labelledby','ux16-directions-title');
   d.innerHTML=`<header><div><h2 id="ux16-directions-title">${E(window.YV_PLAN.text('directions'))}</h2><p>${E(T('draft'))}</p></div><button type="button" class="icon-btn" data-ux16="cancel" aria-label="${E(T('cancel'))}">${A().icon('close')}</button></header><div class="ux16-direction-controls"><label class="ux16-search">${A().icon('search')}<input type="search" data-ux16-query placeholder="${E(T('find'))}" aria-label="${E(T('find'))}" aria-controls="ux16-direction-results"></label><div><label><input type="checkbox" data-ux16-chosen>${E(T('chosen'))}</label><span data-ux16-results role="status"></span></div></div><div class="pw-direction-options" id="ux16-direction-results"></div><footer><span data-pw-draft-count role="status"></span><div><button type="button" class="btn" data-ux16="cancel">${E(T('cancel'))}</button><button type="button" class="btn btn-primary" data-ux16="save">${E(T('save'))}${A().icon('arrow')}</button></div></footer>`;
   const input=d.querySelector('[data-ux16-query]'),chosen=d.querySelector('[data-ux16-chosen]'),results=d.querySelector('#ux16-direction-results');
-  const index=projects.map(p=>({p,search:fold(JSON.stringify(p))}));
+  const index=projects.map(p=>({p,search:fold([JSON.stringify(p),A().tx(p.title),A().tx(p.question)].join(' '))}));
   const count=()=>{d.querySelector('[data-pw-draft-count]').textContent=T('selected')+' · '+draft.size;};
   function render(){
    const tokens=fold(input.value).trim().split(/\s+/).filter(Boolean),rows=index.filter(({p,search})=>(!chosen.checked||draft.has(p.id))&&tokens.every(q=>search.includes(q))).map(x=>x.p);

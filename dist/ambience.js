@@ -8,6 +8,7 @@
   const interval = 1000 / (modest ? 20 : 30);
   let w = 1, h = 1, raf = 0, resizeRaf = 0, frames = 0, last = 0;
   let enabled = true, userReduced = false, scrollUntil = 0, dots = [], colors;
+  let companionOpen = false, occluded = false;
   const pointer = { x: .5, y: .5, targetX: .5, targetY: .5 };
   function palette() {
     const style = getComputedStyle(document.documentElement);
@@ -21,7 +22,7 @@
     };
   }
   function paint(time = 0) {
-    if (!enabled || document.hidden) return;
+    if (!enabled || document.hidden || occluded) return;
     ctx.clearRect(0, 0, w, h);
     pointer.x += (pointer.targetX - pointer.x) * .045;
     pointer.y += (pointer.targetY - pointer.y) * .045;
@@ -63,7 +64,7 @@
   }
   function animate(time) {
     raf = 0;
-    if (!enabled || document.hidden || reduced.matches || userReduced) return;
+    if (!enabled || document.hidden || occluded || reduced.matches || userReduced) return;
     const inputPending = navigator.scheduling?.isInputPending?.() || false;
     if (!inputPending && time >= scrollUntil && time - last >= interval - .5) { last = time; paint(time); }
     raf = requestAnimationFrame(animate);
@@ -72,7 +73,7 @@
     if (raf) cancelAnimationFrame(raf);
     raf = 0; last = 0;
     if (!enabled) { ctx.clearRect(0, 0, w, h); return; }
-    if (document.hidden) return;
+    if (document.hidden || occluded) return;
     paint(performance.now());
     if (!reduced.matches && !userReduced) raf = requestAnimationFrame(animate);
   }
@@ -89,6 +90,15 @@
     }));
     schedule();
   }
+  function syncOcclusion() {
+    let modal;
+    try { modal = document.querySelector('dialog[open]:modal'); }
+    catch { modal = document.querySelector('dialog[open]:not([aria-modal="false"])'); }
+    const next = companionOpen || !!modal;
+    if (next === occluded) return;
+    occluded = next; schedule();
+    window.dispatchEvent(new CustomEvent('yv:ambientocclusion', {detail:{occluded}}));
+  }
   window.YV_AMBIENT = {
     configure: ({ enabled: next = enabled, reducedMotion = userReduced } = {}) => {
       const changed = enabled !== next || userReduced !== reducedMotion;
@@ -96,13 +106,20 @@
       if (changed) schedule();
     },
     refresh: () => { palette(); schedule(); },
-    getState: () => ({ enabled, running: !!raf, frames, maxFps: modest ? 20 : 30, pixelWidth: canvas.width, pixelHeight: canvas.height, reduced: userReduced || reduced.matches })
+    getState: () => ({ enabled, running: !!raf, frames, maxFps: modest ? 20 : 30, pixelWidth: canvas.width, pixelHeight: canvas.height, reduced: userReduced || reduced.matches, occluded })
   };
   window.addEventListener('resize', () => { if (!resizeRaf) resizeRaf = requestAnimationFrame(resize); }, { passive: true });
   window.addEventListener('pointermove', event => { pointer.targetX = event.clientX / w; pointer.targetY = event.clientY / h; }, { passive: true });
   window.addEventListener('scroll', () => { scrollUntil = performance.now() + 100; }, { passive: true, capture: true });
   document.addEventListener('visibilitychange', schedule);
   reduced.addEventListener('change', schedule);
+  window.addEventListener('yv:companionchange', event => { if (typeof event.detail?.isOpen === 'boolean') companionOpen = event.detail.isOpen; syncOcclusion(); });
+  // Only dialog lifecycle changes can hide this background. Streaming assistant
+  // text and animation frames never trigger a full-document visibility query.
+  if (document.body) new MutationObserver(records => {
+    const hasDialog = node => node.nodeType === 1 && (node.localName === 'dialog' || !!node.querySelector?.('dialog'));
+    if (records.some(record => record.type === 'attributes' ? record.target.localName === 'dialog' : [...record.addedNodes, ...record.removedNodes].some(hasDialog))) syncOcclusion();
+  }).observe(document.body, {subtree:true, childList:true, attributes:true, attributeFilter:['open']});
   new MutationObserver(() => { palette(); schedule(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-  palette(); resize();
+  syncOcclusion(); palette(); resize();
 })();

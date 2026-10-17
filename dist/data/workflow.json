@@ -635,7 +635,8 @@
         "state_preservation",
         "neighbor_retention",
         "embedding_reliability",
-        "sample_local_distances"
+        "sample_local_distances",
+        "implementation_representation_concordance"
       ],
       "toolIds": [
         "seurat",
@@ -885,7 +886,11 @@
         "apa_noise_association",
         "metabolic_noise_sensitivity",
         "te_noise_assignment_sensitivity",
-        "state_between_strain_variance"
+        "state_between_strain_variance",
+        "monod_joint_fit",
+        "monod_parameter_support",
+        "sequencing_model_sensitivity",
+        "noise_testing_family_registry"
       ],
       "toolIds": [
         "memento",
@@ -910,7 +915,9 @@
         "mrvi",
         "yeastgem",
         "ctmm",
-        "harissa"
+        "harissa",
+        "monod",
+        "stager"
       ],
       "formulaIds": [
         "poisson_measurement",
@@ -1063,7 +1070,8 @@
         "cycle_speed_relative",
         "velocity_module_support",
         "velocity_module_uncertainty",
-        "temporal_mechanistic_regeneration"
+        "temporal_mechanistic_regeneration",
+        "unspliced_length_sensitivity"
       ],
       "toolIds": [
         "scanpy",
@@ -1082,7 +1090,8 @@
         "mellon",
         "schot",
         "cell2fate",
-        "cardamomot"
+        "cardamomot",
+        "monod"
       ],
       "formulaIds": [
         "kinetic_velocity"
@@ -1194,7 +1203,10 @@
         "grn_prior_ablation",
         "mechanistic_noise_recovery",
         "mechanistic_grn_recovery",
-        "kinetic_prior_sensitivity"
+        "kinetic_prior_sensitivity",
+        "implementation_inference_stability",
+        "noise_stagewise_error_calibration",
+        "noise_testing_family_registry"
       ],
       "toolIds": [
         "dropletutils",
@@ -1226,7 +1238,9 @@
         "cell2fate",
         "jaxqtl",
         "harissa",
-        "cardamomot"
+        "cardamomot",
+        "monod",
+        "stager"
       ],
       "formulaIds": [
         "null_error_rate",
@@ -13888,6 +13902,588 @@
           "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1014838"
         ]
       }
+    },
+    {
+      "id": "monod_joint_fit",
+      "stepId": "noise",
+      "name": "成熟与未剪接RNA的联合分布拟合",
+      "nameEn": "Joint mature/unspliced RNA fit",
+      "definition": "保存联合及边缘计数拟合、似然、有效细胞数、模型版本与失败基因；用相同基因和细胞集合比较生物及采样假设。",
+      "definitionEn": "Retain joint and marginal count fits, likelihoods, effective cell counts, model versions and failed genes; compare biological and sampling assumptions on matched genes and cells.",
+      "unit": "按字段分别报告",
+      "denominator": "同一预先声明分析集合中的可评估对象",
+      "level": "菌株×培养×状态×模型",
+      "purpose": "保存联合及边缘计数拟合、似然、有效细胞数、模型版本与失败基因；用相同基因和细胞集合比较生物及采样假设。",
+      "tools": [
+        "monod"
+      ],
+      "inputIds": [
+        "splicing_layers",
+        "reference",
+        "sample_metadata",
+        "cell_states"
+      ],
+      "sourceUrls": [
+        "https://www.nature.com/articles/s41592-025-02832-x",
+        "https://monod-examples.readthedocs.io/en/latest/usage.html"
+      ],
+      "cautions": [
+        "项目审计定义；所列函数提供原始结果，导出字段由项目汇总，不是工具原生同名指标。"
+      ],
+      "metricOrigin": "project-audit",
+      "addedIn": "v24",
+      "collection": {
+        "entrypoint": "Monod: sr.plot_gene_distributions(sd, marg=\"joint\"); sr.plot_gene_distributions(sd, marg=\"nascent\"); sr.plot_gene_distributions(sd, marg=\"mature\"); retain the native fit and goodness-of-fit results.",
+        "fields": [
+          {
+            "name": "gene_id",
+            "meaning": "稳定基因标识符"
+          },
+          {
+            "name": "biological_model",
+            "meaning": "固定版本的模型名称"
+          },
+          {
+            "name": "sequencing_model",
+            "meaning": "固定版本的采样模型"
+          },
+          {
+            "name": "log_likelihood",
+            "meaning": "原生拟合似然及其定义约定"
+          },
+          {
+            "name": "joint_fit_diagnostic",
+            "meaning": "观测与拟合的S/U分布"
+          },
+          {
+            "name": "fit_status",
+            "meaning": "成功、边界解、失败或未评估"
+          }
+        ],
+        "groupBy": [
+          "strain_id",
+          "culture_id",
+          "state_id",
+          "model_id"
+        ],
+        "outputFile": "results/monod_joint_fit.tsv",
+        "outputFileRole": "proposed project export; retain original native outputs separately",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://www.nature.com/articles/s41592-025-02832-x",
+          "https://monod-examples.readthedocs.io/en/latest/usage.html"
+        ]
+      }
+    },
+    {
+      "id": "monod_parameter_support",
+      "stepId": "noise",
+      "name": "机制参数的不确定性与边界支持",
+      "nameEn": "Mechanistic parameter uncertainty and boundary support",
+      "definition": "记录参数标准误、搜索边界、采样最优点和重抽样稳定性；比较组使用同一模型与基因集合，分别报告均值变化和参数变化。",
+      "definitionEn": "Record standard errors, search bounds, sampling optima and resampling stability; use common models and genes across groups and report mean changes separately from parameter changes.",
+      "unit": "按字段分别报告",
+      "denominator": "同一预先声明分析集合中的可评估对象",
+      "level": "菌株×培养×状态×模型",
+      "purpose": "记录参数标准误、搜索边界、采样最优点和重抽样稳定性；比较组使用同一模型与基因集合，分别报告均值变化和参数变化。",
+      "tools": [
+        "monod"
+      ],
+      "inputIds": [
+        "splicing_layers",
+        "reference",
+        "sample_metadata",
+        "cell_states"
+      ],
+      "sourceUrls": [
+        "https://www.nature.com/articles/s41592-025-02832-x",
+        "https://monod-examples.readthedocs.io/en/latest/usage.html"
+      ],
+      "cautions": [
+        "项目审计定义；所列函数提供原始结果，导出字段由项目汇总，不是工具原生同名指标。"
+      ],
+      "metricOrigin": "project-audit",
+      "addedIn": "v24",
+      "collection": {
+        "entrypoint": "Monod: sr.find_sampling_optimum(); sr.compute_sigma(sd, num_cores); sr.plot_landscape(ax); sr.resample_opt_viz(); compute_diffreg(sr1, sr2) only on matched genes and models; project summaries retain replicate units.",
+        "fields": [
+          {
+            "name": "parameter_name",
+            "meaning": "物理或采样参数"
+          },
+          {
+            "name": "estimate",
+            "meaning": "声明参照单位下的拟合值"
+          },
+          {
+            "name": "standard_error",
+            "meaning": "方法支持时的原生不确定性估计"
+          },
+          {
+            "name": "search_bounds",
+            "meaning": "记录的推断搜索边界"
+          },
+          {
+            "name": "boundary_flag",
+            "meaning": "项目定义的参数触及搜索边界标记"
+          },
+          {
+            "name": "resampling_summary",
+            "meaning": "按培养分层或明示方案的重抽样稳定性"
+          }
+        ],
+        "groupBy": [
+          "strain_id",
+          "culture_id",
+          "state_id",
+          "model_id"
+        ],
+        "outputFile": "results/monod_parameter_support.tsv",
+        "outputFileRole": "proposed project export; retain original native outputs separately",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://www.nature.com/articles/s41592-025-02832-x",
+          "https://monod-examples.readthedocs.io/en/latest/usage.html"
+        ]
+      }
+    },
+    {
+      "id": "unspliced_length_sensitivity",
+      "stepId": "dynamics",
+      "name": "未剪接层长度依赖与参数敏感性",
+      "nameEn": "Unspliced length dependence and parameter sensitivity",
+      "definition": "比较S/U层均值和参数估计对基因长度的关系，记录长度定义、可测基因范围及use_lengths开关后的效应和排序变化。",
+      "definitionEn": "Compare S/U means and parameter estimates against gene length; retain the length definition, measurable gene range and effect/rank changes under use_lengths.",
+      "unit": "按字段分别报告",
+      "denominator": "同一预先声明分析集合中的可评估对象",
+      "level": "菌株×培养×状态×模型",
+      "purpose": "比较S/U层均值和参数估计对基因长度的关系，记录长度定义、可测基因范围及use_lengths开关后的效应和排序变化。",
+      "tools": [
+        "monod",
+        "scanpy"
+      ],
+      "inputIds": [
+        "splicing_layers",
+        "reference",
+        "sample_metadata"
+      ],
+      "sourceUrls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9843228/",
+        "https://monod-examples.readthedocs.io/en/latest/usage.html"
+      ],
+      "cautions": [
+        "项目审计定义；所列函数提供原始结果，导出字段由项目汇总，不是工具原生同名指标。"
+      ],
+      "metricOrigin": "project-audit",
+      "addedIn": "v24",
+      "collection": {
+        "entrypoint": "Monod: compare InferenceParameters(..., use_lengths=True/False) using one frozen gene/cell set; sr.plot_param_L_dep(plot_errorbars=True, plot_fit=True). Summarize raw S/U moments and length associations as a project audit.",
+        "fields": [
+          {
+            "name": "gene_length",
+            "meaning": "匹配参考的长度、定义及单位"
+          },
+          {
+            "name": "s_mean",
+            "meaning": "声明群组中的原始spliced均值"
+          },
+          {
+            "name": "u_mean",
+            "meaning": "声明群组中的原始unspliced均值"
+          },
+          {
+            "name": "length_association",
+            "meaning": "预先声明的项目关联统计量"
+          },
+          {
+            "name": "use_lengths",
+            "meaning": "Monod原生设置项"
+          },
+          {
+            "name": "parameter_or_rank_delta",
+            "meaning": "匹配拟合之间的项目比较"
+          }
+        ],
+        "groupBy": [
+          "strain_id",
+          "culture_id",
+          "state_id",
+          "model_id"
+        ],
+        "outputFile": "results/unspliced_length_sensitivity.tsv",
+        "outputFileRole": "proposed project export; retain original native outputs separately",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC9843228/",
+          "https://monod-examples.readthedocs.io/en/latest/usage.html"
+        ]
+      }
+    },
+    {
+      "id": "sequencing_model_sensitivity",
+      "stepId": "noise",
+      "name": "RNA测量模型的假设敏感性",
+      "nameEn": "Sensitivity to RNA measurement models",
+      "definition": "在同一计数和基因集合上比较支持的采样模型及搜索范围，保存拟合诊断、参数区间和噪音候选稳定性，不只比较最优似然。",
+      "definitionEn": "Compare supported sampling models and search bounds on identical counts and genes; retain fit diagnostics, parameter intervals and noise-candidate stability, beyond optimum likelihood alone.",
+      "unit": "按字段分别报告",
+      "denominator": "同一预先声明分析集合中的可评估对象",
+      "level": "菌株×培养×状态×模型",
+      "purpose": "在同一计数和基因集合上比较支持的采样模型及搜索范围，保存拟合诊断、参数区间和噪音候选稳定性，不只比较最优似然。",
+      "tools": [
+        "monod"
+      ],
+      "inputIds": [
+        "splicing_layers",
+        "reference",
+        "sample_metadata",
+        "cell_states"
+      ],
+      "sourceUrls": [
+        "https://www.nature.com/articles/s41592-025-02832-x",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9843228/",
+        "https://monod-examples.readthedocs.io/en/latest/usage.html"
+      ],
+      "cautions": [
+        "项目审计定义；所列函数提供原始结果，导出字段由项目汇总，不是工具原生同名指标。"
+      ],
+      "metricOrigin": "project-audit",
+      "addedIn": "v24",
+      "collection": {
+        "entrypoint": "Monod: CMEModel(biological_model, sequencing_model); rerun matched fits under supported None/Bernoulli/Poisson settings and declared bounds; compare raw joint distributions, uncertainty and project noise rankings.",
+        "fields": [
+          {
+            "name": "sampling_model",
+            "meaning": "版本支持的None/Bernoulli/Poisson原生选项"
+          },
+          {
+            "name": "parameter_bounds",
+            "meaning": "记录的物理及采样搜索范围"
+          },
+          {
+            "name": "model_fit_status",
+            "meaning": "原生拟合诊断与项目接受标记"
+          },
+          {
+            "name": "uncertainty_summary",
+            "meaning": "方法支持的不确定性估计与重抽样"
+          },
+          {
+            "name": "candidate_stability",
+            "meaning": "支持模型之间的项目效应与排序一致性"
+          }
+        ],
+        "groupBy": [
+          "strain_id",
+          "culture_id",
+          "state_id",
+          "model_id"
+        ],
+        "outputFile": "results/sequencing_model_sensitivity.tsv",
+        "outputFileRole": "proposed project export; retain original native outputs separately",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://www.nature.com/articles/s41592-025-02832-x",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC9843228/",
+          "https://monod-examples.readthedocs.io/en/latest/usage.html"
+        ]
+      }
+    },
+    {
+      "id": "implementation_representation_concordance",
+      "stepId": "integration",
+      "name": "跨软件实现的表征一致性",
+      "nameEn": "Representation agreement across implementations",
+      "definition": "固定原始矩阵、细胞与feature顺序，记录Seurat/Scanpy版本及HVG、PCA、近邻和聚类参数，分别比较HVG交集、邻域重叠与聚类一致性。",
+      "definitionEn": "Freeze raw counts and cell/feature order, record Seurat/Scanpy versions and HVG/PCA/neighbor/clustering settings, then compare HVG overlap, neighborhoods and clustering agreement.",
+      "unit": "按字段分别报告",
+      "denominator": "同一预先声明分析集合中的可评估对象",
+      "level": "菌株×培养×状态×模型",
+      "purpose": "固定原始矩阵、细胞与feature顺序，记录Seurat/Scanpy版本及HVG、PCA、近邻和聚类参数，分别比较HVG交集、邻域重叠与聚类一致性。",
+      "tools": [
+        "seurat",
+        "scanpy"
+      ],
+      "inputIds": [
+        "count_matrix",
+        "sample_metadata"
+      ],
+      "sourceUrls": [
+        "https://pubmed.ncbi.nlm.nih.gov/41903535/",
+        "https://scanpy.readthedocs.io/en/stable/",
+        "https://satijalab.org/seurat/articles/pbmc3k_tutorial"
+      ],
+      "cautions": [
+        "项目审计定义；所列函数提供原始结果，导出字段由项目汇总，不是工具原生同名指标。"
+      ],
+      "metricOrigin": "project-audit",
+      "addedIn": "v24",
+      "collection": {
+        "entrypoint": "Seurat: FindVariableFeatures(), RunPCA(), FindNeighbors(), FindClusters(); Scanpy: pp.highly_variable_genes(), pp.pca(), pp.neighbors(), tl.leiden(). Match declared algorithm choices where possible; compare outputs in project code.",
+        "fields": [
+          {
+            "name": "input_axis_hash",
+            "meaning": "相同计数及细胞/feature身份和顺序哈希"
+          },
+          {
+            "name": "software_versions",
+            "meaning": "精确软件包及依赖版本"
+          },
+          {
+            "name": "hvg_overlap",
+            "meaning": "项目声明的基因集重叠统计量"
+          },
+          {
+            "name": "neighbor_overlap",
+            "meaning": "项目声明的逐细胞共享近邻统计量"
+          },
+          {
+            "name": "cluster_ari",
+            "meaning": "匹配细胞的调整兰德指数"
+          },
+          {
+            "name": "settings",
+            "meaning": "算法类型、距离、随机种子及图设置"
+          }
+        ],
+        "groupBy": [
+          "strain_id",
+          "culture_id",
+          "state_id",
+          "model_id"
+        ],
+        "outputFile": "results/implementation_representation_concordance.tsv",
+        "outputFileRole": "proposed project export; retain original native outputs separately",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://pubmed.ncbi.nlm.nih.gov/41903535/",
+          "https://scanpy.readthedocs.io/en/stable/",
+          "https://satijalab.org/seurat/articles/pbmc3k_tutorial"
+        ]
+      }
+    },
+    {
+      "id": "implementation_inference_stability",
+      "stepId": "validation",
+      "name": "跨实现的marker与噪音候选稳健性",
+      "nameEn": "Marker and noise-candidate stability across implementations",
+      "definition": "在固定比较单位和原始计数噪音模型下，区分软件导致的分群/注释差异与检验实现差异，比较marker方向、排序、标签覆盖及噪音效应稳定性。",
+      "definitionEn": "With fixed comparison units and an original-count noise model, distinguish grouping/annotation changes from test-implementation changes; compare marker signs/ranks, label coverage and noise-effect stability.",
+      "unit": "按字段分别报告",
+      "denominator": "同一预先声明分析集合中的可评估对象",
+      "level": "菌株×培养×状态×模型",
+      "purpose": "在固定比较单位和原始计数噪音模型下，区分软件导致的分群/注释差异与检验实现差异，比较marker方向、排序、标签覆盖及噪音效应稳定性。",
+      "tools": [
+        "seurat",
+        "scanpy",
+        "memento"
+      ],
+      "inputIds": [
+        "count_matrix",
+        "sample_metadata",
+        "cell_states"
+      ],
+      "sourceUrls": [
+        "https://pubmed.ncbi.nlm.nih.gov/41903535/"
+      ],
+      "cautions": [
+        "项目审计定义；所列函数提供原始结果，导出字段由项目汇总，不是工具原生同名指标。"
+      ],
+      "metricOrigin": "project-audit",
+      "addedIn": "v24",
+      "collection": {
+        "entrypoint": "Freeze one marker comparison and one original-count noise estimator. Contrast fixed labels with independently recomputed Seurat/Scanpy labels; summarize effect signs, rankings and uncertainty using culture-aware resampling.",
+        "fields": [
+          {
+            "name": "comparison_unit",
+            "meaning": "菌株、培养、条件及状态定义"
+          },
+          {
+            "name": "fixed_labels_branch",
+            "meaning": "固定标签下的推断比较"
+          },
+          {
+            "name": "recomputed_labels_branch",
+            "meaning": "使用各实现独立标签的敏感性分支"
+          },
+          {
+            "name": "marker_sign_rank_agreement",
+            "meaning": "项目声明的效应方向与排序一致性"
+          },
+          {
+            "name": "annotation_coverage",
+            "meaning": "接受、冲突及未知标签数量"
+          },
+          {
+            "name": "noise_effect_stability",
+            "meaning": "不同分支中原始计数的噪音效应及不确定性"
+          }
+        ],
+        "groupBy": [
+          "strain_id",
+          "culture_id",
+          "state_id",
+          "model_id"
+        ],
+        "outputFile": "results/implementation_inference_stability.tsv",
+        "outputFileRole": "proposed project export; retain original native outputs separately",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://pubmed.ncbi.nlm.nih.gov/41903535/"
+        ]
+      }
+    },
+    {
+      "id": "noise_testing_family_registry",
+      "stepId": "validation",
+      "name": "噪音检验家族与未评估状态台账",
+      "nameEn": "Noise-testing families and unassessed-status ledger",
+      "definition": "逐条登记基因、状态、对比、估计对象、纳入规则、原始p值及失败状态；明确每次校正覆盖的完整家族和报告层级。",
+      "definitionEn": "Register genes, states, contrasts, estimands, eligibility rules, raw p-values and failure states; identify the complete family and reporting level for each adjustment.",
+      "unit": "按字段分别报告",
+      "denominator": "同一预先声明分析集合中的可评估对象",
+      "level": "菌株×培养×状态×模型",
+      "purpose": "逐条登记基因、状态、对比、估计对象、纳入规则、原始p值及失败状态；明确每次校正覆盖的完整家族和报告层级。",
+      "tools": [
+        "stager",
+        "memento",
+        "glmmtmb"
+      ],
+      "inputIds": [
+        "gene_statistics",
+        "sample_metadata"
+      ],
+      "sourceUrls": [
+        "https://link.springer.com/article/10.1186/s13059-017-1277-0",
+        "https://bioconductor.org/packages/release/bioc/vignettes/stageR/inst/doc/stageRVignette.html"
+      ],
+      "cautions": [
+        "项目审计定义；所列函数提供原始结果，导出字段由项目汇总，不是工具原生同名指标。"
+      ],
+      "metricOrigin": "project-audit",
+      "addedIn": "v24",
+      "collection": {
+        "entrypoint": "Project registry: freeze hypothesis IDs and estimands before inspecting significance; join valid upstream statistics and explicit failure/eligibility states; retain the entire tested family rather than only selected genes.",
+        "fields": [
+          {
+            "name": "family_id",
+            "meaning": "预设检验家族标识"
+          },
+          {
+            "name": "hypothesis_id",
+            "meaning": "基因、状态、对比与原假设标识"
+          },
+          {
+            "name": "estimand",
+            "meaning": "均值、变异、相关性或其他估计对象"
+          },
+          {
+            "name": "test_status",
+            "meaning": "已评估、未评估、失败与筛选未通过"
+          },
+          {
+            "name": "raw_p_value",
+            "meaning": "有效的上游原始p值与校准来源"
+          },
+          {
+            "name": "family_size",
+            "meaning": "预定家族及实际可评估家族大小"
+          }
+        ],
+        "groupBy": [
+          "strain_id",
+          "culture_id",
+          "state_id",
+          "model_id"
+        ],
+        "outputFile": "results/noise_testing_family_registry.tsv",
+        "outputFileRole": "proposed project export; retain original native outputs separately",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://link.springer.com/article/10.1186/s13059-017-1277-0",
+          "https://bioconductor.org/packages/release/bioc/vignettes/stageR/inst/doc/stageRVignette.html"
+        ]
+      }
+    },
+    {
+      "id": "noise_stagewise_error_calibration",
+      "stepId": "validation",
+      "name": "分阶段噪音检验的错误率校准",
+      "nameEn": "Error-rate calibration of stage-wise noise testing",
+      "definition": "记录基因筛选和对比确认结果、目标OFDR、假设关系及NA原因；用设计匹配的真值模拟分别评估基因层与单项检验的错误和功效。",
+      "definitionEn": "Retain gene screening and contrast confirmation, target OFDR, hypothesis relationships and NA reasons; use design-matched truth simulations to assess gene-level and individual-test errors and power separately.",
+      "unit": "按字段分别报告",
+      "denominator": "同一预先声明分析集合中的可评估对象",
+      "level": "菌株×培养×状态×模型",
+      "purpose": "记录基因筛选和对比确认结果、目标OFDR、假设关系及NA原因；用设计匹配的真值模拟分别评估基因层与单项检验的错误和功效。",
+      "tools": [
+        "stager",
+        "scdesign3"
+      ],
+      "inputIds": [
+        "gene_statistics",
+        "sample_metadata",
+        "truth_or_simulation"
+      ],
+      "sourceUrls": [
+        "https://link.springer.com/article/10.1186/s13059-017-1277-0",
+        "https://bioconductor.org/packages/release/bioc/vignettes/stageR/inst/doc/stageRVignette.html"
+      ],
+      "cautions": [
+        "项目审计定义；所列函数提供原始结果，导出字段由项目汇总，不是工具原生同名指标。"
+      ],
+      "metricOrigin": "project-audit",
+      "addedIn": "v24",
+      "collection": {
+        "entrypoint": "stageR: stageR(pScreen, pConfirmation, pScreenAdjusted=...); stageWiseAdjustment(...); getAdjustedPValues(..., onlySignificantGenes=FALSE). Project code joins NA reasons and computes error/power from design-matched simulations.",
+        "fields": [
+          {
+            "name": "screen_p_value",
+            "meaning": "具名基因筛选p值及是否已校正"
+          },
+          {
+            "name": "confirmation_p_values",
+            "meaning": "同基因顺序的对比确认p值矩阵"
+          },
+          {
+            "name": "target_ofdr",
+            "meaning": "当前分阶段校正的目标OFDR"
+          },
+          {
+            "name": "adjustment_method",
+            "meaning": "FWER方法及所依据的假设逻辑"
+          },
+          {
+            "name": "na_reason",
+            "meaning": "未筛中、未评估或拟合失败的NA原因"
+          },
+          {
+            "name": "empirical_error_power",
+            "meaning": "按真值分别计算的基因层和检验层错误与功效"
+          }
+        ],
+        "groupBy": [
+          "strain_id",
+          "culture_id",
+          "state_id",
+          "model_id"
+        ],
+        "outputFile": "results/noise_stagewise_error_calibration.tsv",
+        "outputFileRole": "proposed project export; retain original native outputs separately",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://link.springer.com/article/10.1186/s13059-017-1277-0",
+          "https://bioconductor.org/packages/release/bioc/vignettes/stageR/inst/doc/stageRVignette.html"
+        ]
+      }
     }
   ],
   "tools": [
@@ -26278,6 +26874,216 @@
       ],
       "addedIn": "v22",
       "reviewedOn": "2026-10-17"
+    },
+    {
+      "id": "monod",
+      "name": "Monod",
+      "task": "联合拟合转录随机过程与RNA采样模型",
+      "taskEn": "Jointly fit stochastic transcription and RNA sampling models",
+      "steps": [
+        "noise",
+        "dynamics",
+        "validation"
+      ],
+      "url": "https://monod-examples.readthedocs.io/en/latest/usage.html",
+      "paperUrl": "https://www.nature.com/articles/s41592-025-02832-x",
+      "input": [
+        "匹配细胞和基因轴的原始整数S/U层",
+        "版本化基因长度及其计算规则",
+        "菌株、独立培养及状态分层"
+      ],
+      "output": [
+        "转录及采样参数、似然和拟合分布",
+        "参数标准误、采样景观及重抽样诊断"
+      ],
+      "entrypoint": "from monod.cme_toolbox import CMEModel; from monod import inference; from monod.analysis import load_search_results; fitmodel = CMEModel(<BIOLOGICAL_MODEL>, <SEQUENCING_MODEL>); params = inference.InferenceParameters(<PHYS_LB>, <PHYS_UB>, <SAMP_LB>, <SAMP_UB>, <GRIDSIZE>, <DATASET_STRING>, fitmodel, <USE_LENGTHS>); result = params.fit_all_grid_points(<N_CORES>, <SEARCH_DATA>); sr = load_search_results(result); sr.find_sampling_optimum(); sr.compute_sigma(<SEARCH_DATA>, <N_CORES>)",
+      "parameters": [
+        {
+          "name": "CMEModel(biological_model, sequencing_model)",
+          "meaning": "生物过程与测量过程分别选择",
+          "selection": "依固定软件版本比较Bursty、Constitutive等生物模型与None、Bernoulli、Poisson采样模型；只使用该版本实际支持的组合。",
+          "required": true
+        },
+        {
+          "name": "use_lengths / transcriptome_filepath",
+          "meaning": "未剪接捕获是否依赖基因长度",
+          "selection": "从相同参考生成长度表；记录长度定义，并比较启用与关闭use_lengths的结果。",
+          "required": true
+        },
+        {
+          "name": "phys_lb / phys_ub / samp_lb / samp_ub / gridsize",
+          "meaning": "物理及采样参数搜索范围",
+          "selection": "按可辨识性与酵母计数范围设定phys_lb/phys_ub、samp_lb/samp_ub及gridsize；保存边界解并扩大合理范围复核。",
+          "required": true
+        },
+        {
+          "name": "gene_set / dataset strata / n_genes",
+          "meaning": "共同可分析基因与分层方式",
+          "selection": "比较组使用同一基因集合；报告被剔除基因及内含子基因的功能偏倚，培养重复分别拟合或分层重抽样。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "这是基于一般单细胞RNA数据的机制方法；酵母内含子少，须先通过S/U信息量、测量模型和参数可辨识性检查。",
+        "未剪接层必须具有可评估的独立分子支持；不以GeneFull−Gene代替。",
+        "无独立时间校准时，速率以模型参照单位解释；拟合参数不自动构成绝对转录速率或纯内在噪音。"
+      ],
+      "yeastStatus": "条件性",
+      "role": "扩展分析",
+      "categoryIds": [
+        "noise",
+        "dynamics",
+        "simulation"
+      ],
+      "methodTags": [
+        "variance",
+        "calibration",
+        "dynamics"
+      ],
+      "sourceUrls": [
+        "https://www.nature.com/articles/s41592-025-02832-x",
+        "https://monod-examples.readthedocs.io/en/latest/usage.html",
+        "https://github.com/pachterlab/monod",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9843228/"
+      ],
+      "paperIds": [
+        "v24_monod_2025",
+        "v24_premrna_length_2023"
+      ],
+      "applicability": {
+        "level": "conditional",
+        "reason": "这是基于一般单细胞RNA数据的机制方法；酵母内含子少，须先通过S/U信息量、测量模型和参数可辨识性检查。",
+        "reasonEn": "This mechanistic method uses general single-cell RNA data; sparse yeast introns require prior checks of S/U information, measurement models and parameter identifiability.",
+        "requiredData": [
+          "splicing_layers",
+          "reference",
+          "sample_metadata",
+          "cell_states"
+        ],
+        "optionalData": [
+          "culture_replicates",
+          "truth_or_simulation",
+          "kinetic_rate_prior"
+        ]
+      },
+      "documentationStatus": "official-entrypoint-verified",
+      "paperStatus": "verified",
+      "sourceLinks": [
+        {
+          "url": "https://monod-examples.readthedocs.io/en/latest/usage.html",
+          "kind": "documentation",
+          "label": "官方调用与诊断"
+        },
+        {
+          "url": "https://github.com/pachterlab/monod",
+          "kind": "software_repository",
+          "label": "官方软件"
+        },
+        {
+          "url": "https://www.nature.com/articles/s41592-025-02832-x",
+          "kind": "research_article",
+          "label": "原始方法论文"
+        }
+      ],
+      "sourceKind": "software_repository",
+      "addedIn": "v24",
+      "documentationVersion": "Official Monod 0.2 documentation; pin an installed version and verify its API before execution."
+    },
+    {
+      "id": "stager",
+      "name": "stageR",
+      "task": "对有效上游检验进行基因级筛选与分阶段多重校正",
+      "taskEn": "Gene-level screening and stage-wise adjustment of valid upstream tests",
+      "steps": [
+        "validation"
+      ],
+      "url": "https://bioconductor.org/packages/release/bioc/vignettes/stageR/inst/doc/stageRVignette.html",
+      "paperUrl": "https://link.springer.com/article/10.1186/s13059-017-1277-0",
+      "input": [
+        "具名pScreen向量与同基因顺序的pConfirmation矩阵；列为预设对比，附原假设、统计单位和检验状态。",
+        "菌株、独立培养及状态分层"
+      ],
+      "output": [
+        "基因筛选与对比确认的调整p值及状态"
+      ],
+      "entrypoint": "library(stageR); obj <- stageR(pScreen=<NAMED_RAW_OMNIBUS_P_VALUES>, pConfirmation=<GENE_BY_CONTRAST_RAW_P_VALUES>, pScreenAdjusted=FALSE); obj <- stageWiseAdjustment(object=obj, method=<JUSTIFIED_FWER_METHOD>, alpha=<TARGET_OFDR>); getAdjustedPValues(obj, onlySignificantGenes=FALSE, order=FALSE)",
+      "parameters": [
+        {
+          "name": "pScreen / pConfirmation",
+          "meaning": "筛选和确认检验的输入及轴顺序",
+          "selection": "具名pScreen向量与同基因顺序的pConfirmation矩阵；列为预设对比，附原假设、统计单位和检验状态。",
+          "required": true
+        },
+        {
+          "name": "pScreenAdjusted",
+          "meaning": "筛选p值是否已经校正",
+          "selection": "按输入事实声明，避免重复校正；模板FALSE只适用于原始筛选p值。",
+          "required": true
+        },
+        {
+          "name": "method",
+          "meaning": "确认阶段的FWER校正与假设逻辑",
+          "selection": "依据实际假设关系选择通用或自定义校正；不把DTU专用规则或method=\"none\"移植到任意噪音对比。",
+          "required": true
+        },
+        {
+          "name": "alpha",
+          "meaning": "预先选择的目标OFDR",
+          "selection": "按研究方案声明目标；改变目标后重新运行完整分阶段校正，不复用其他alpha的确认结果。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "stageR是检验结果后处理，不估计表达噪音；迁移到噪音对比须先校准上游p值及筛选—确认的逻辑关系。",
+        "预先定义基因、状态、对比和估计对象组成的检验家族；探索性QC方案不按最小p值合并进入主家族。",
+        "未评估、拟合失败、筛选未通过和真实不显著分别编码；不把缺失p值填成0或将所有缺失混作不显著。"
+      ],
+      "yeastStatus": "需适配",
+      "role": "统计后处理",
+      "categoryIds": [
+        "noise",
+        "simulation"
+      ],
+      "methodTags": [
+        "calibration",
+        "replicate-aware"
+      ],
+      "sourceUrls": [
+        "https://link.springer.com/article/10.1186/s13059-017-1277-0",
+        "https://bioconductor.org/packages/release/bioc/vignettes/stageR/inst/doc/stageRVignette.html"
+      ],
+      "paperIds": [
+        "v24_stager_2017"
+      ],
+      "applicability": {
+        "level": "adapt",
+        "reason": "stageR是检验结果后处理，不估计表达噪音；迁移到噪音对比须先校准上游p值及筛选—确认的逻辑关系。",
+        "reasonEn": "stageR post-processes test results and does not estimate expression noise; applying it to noise contrasts requires calibrated upstream p-values and justified screening/confirmation logic.",
+        "requiredData": [
+          "gene_statistics",
+          "sample_metadata"
+        ],
+        "optionalData": [
+          "truth_or_simulation",
+          "culture_replicates"
+        ]
+      },
+      "documentationStatus": "official-entrypoint-verified",
+      "paperStatus": "verified",
+      "sourceKind": "documentation",
+      "addedIn": "v24",
+      "sourceLinks": [
+        {
+          "url": "https://bioconductor.org/packages/release/bioc/vignettes/stageR/inst/doc/stageRVignette.html",
+          "kind": "documentation",
+          "label": "官方调用与诊断"
+        },
+        {
+          "url": "https://link.springer.com/article/10.1186/s13059-017-1277-0",
+          "kind": "research_article",
+          "label": "原始方法论文"
+        }
+      ]
     }
   ],
   "formulas": [

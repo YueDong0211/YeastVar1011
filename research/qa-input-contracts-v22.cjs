@@ -84,4 +84,112 @@ check('Repeat annotations and kinetic priors have actionable missing-input statu
   }
 });
 
+const simplePlan = overrides => ({
+  projects: [], stages: [], tools: [], metrics: [], resultSpecificationIds: [],
+  availableData: [], inputRoute: 'raw_fastq', edges: [], ...overrides
+});
+const plain = value => JSON.parse(JSON.stringify(value));
+
+check('Matrix-only ambient auditing retains DecontX and removes tools requiring empty droplets', () => {
+  const plan = simplePlan({inputRoute: 'count_matrix', availableData: ['count_matrix', 'sample_metadata'],
+    stages: ['ambient', 'cellcalling', 'cellqc'], tools: ['decontx', 'soupx', 'cellbender', 'scanpy']});
+  review.applyRoute(plan, 'count_matrix', catalog);
+  assert.ok(plan.stages.includes('ambient'), 'Matrix-only ambient auditing disappeared');
+  assert.ok(plan.tools.includes('decontx'), 'DecontX optional background was treated as mandatory');
+  assert.ok(!plan.tools.includes('soupx'), 'SoupX retained without required raw droplets');
+  assert.ok(!plan.tools.includes('cellbender'), 'CellBender retained without required raw droplets');
+  assert.ok(!plan.stages.includes('cellcalling'), 'Cell calling retained without raw droplets');
+  assert.deepEqual(plain(review.stageDependencies(plan, catalog, 'ambient')), []);
+  assert.ok(!review(plan, catalog).inputs.some(row => row.id === 'raw_droplet_matrix'));
+});
+
+check('Matrix routes with raw droplets retain background methods and cell calling', () => {
+  const plan = simplePlan({inputRoute: 'count_matrix', availableData: ['count_matrix', 'raw_droplet_matrix'],
+    stages: ['ambient', 'cellcalling'], tools: ['decontx', 'soupx', 'cellbender']});
+  review.applyRoute(plan, 'count_matrix', catalog);
+  for (const id of ['decontx', 'soupx', 'cellbender']) assert.ok(plan.tools.includes(id), `${id} removed`);
+  assert.ok(plan.stages.includes('cellcalling'));
+});
+
+check('Alternative matrix producers preserve STARsolo when alevin-fry RAD input is missing', () => {
+  const plan = simplePlan({availableData: ['raw_fastq', 'library_structure', 'reference', 'sample_metadata'],
+    stages: ['bam', 'matrix', 'cellqc'], tools: ['starsolo', 'alevinfry', 'scanpy']});
+  const row = review(plan, catalog).inputs.find(row => row.id === 'count_matrix');
+  assert.deepEqual(plain(row.producerTools), ['starsolo']);
+  assert.deepEqual(plain(row.dependencies), ['raw_fastq', 'library_structure', 'reference']);
+  assert.deepEqual(plain(row.blockedBy), []);
+  assert.equal(row.producerAlternatives.length, 2);
+  const alternate = row.producerAlternatives.find(branch => branch.producerTools.includes('alevinfry'));
+  assert.deepEqual(plain(alternate.blockedBy), ['mapping_rad']);
+  assert.equal(alternate.readiness, 'awaiting-inputs');
+  assert.ok(!row.dependencies.includes('mapping_rad'), 'Alternative dependencies were incorrectly ANDed');
+});
+
+check('Alternative producers choose declared RAD input over unavailable FASTQ inputs', () => {
+  const plan = simplePlan({availableData: ['mapping_rad', 'reference', 'sample_metadata'],
+    stages: ['bam', 'matrix', 'cellqc'], tools: ['starsolo', 'alevinfry', 'scanpy']});
+  const row = review(plan, catalog).inputs.find(row => row.id === 'count_matrix');
+  assert.deepEqual(plain(row.producerTools), ['alevinfry']);
+  assert.deepEqual(plain(row.dependencies), ['mapping_rad', 'reference']);
+  assert.deepEqual(plain(row.blockedBy), []);
+  assert.equal(row.producerAlternatives.length, 2);
+  const alternate = row.producerAlternatives.find(branch => branch.producerTools.includes('starsolo'));
+  assert.ok(alternate.blockedBy.includes('raw_fastq'));
+  assert.ok(alternate.blockedBy.includes('library_structure'));
+});
+
+check('Conditional splicing alternatives prefer a usable BAM without merging FASTQ requirements', () => {
+  const plan = simplePlan({availableData: ['tagged_bam', 'reference', 'sample_metadata'],
+    stages: ['bam', 'matrix', 'dynamics'], tools: ['starsolo', 'velocyto', 'scvelo']});
+  const row = review(plan, catalog).inputs.find(row => row.id === 'splicing_layers');
+  assert.deepEqual(plain(row.producerTools), ['velocyto']);
+  assert.deepEqual(plain(row.dependencies), ['tagged_bam', 'reference']);
+  assert.deepEqual(plain(row.blockedBy), []);
+  assert.equal(row.status, 'conditional-output');
+  assert.equal(row.readiness, 'conditional');
+  assert.equal(row.producerAlternatives.length, 2);
+});
+
+check('Transitive readiness follows a feasible upstream producer rather than registration order', () => {
+  const plan = simplePlan({availableData: ['raw_fastq', 'library_structure', 'reference', 'sample_metadata'],
+    stages: ['bam', 'matrix', 'annotation'], tools: ['starsolo', 'alevinfry', 'singler']});
+  const fixture = structuredClone(catalog);
+  fixture.workflow.tools.push({id: 'requires_state', steps: ['annotation'],
+    applicability: {requiredData: ['cell_states']}});
+  plan.tools.push('requires_state');
+  const state = review(plan, fixture).inputs.find(row => row.id === 'cell_states');
+  assert.deepEqual(plain(state.blockedBy), []);
+  assert.equal(state.readiness, 'conditional');
+  assert.ok(!state.blockedBy.includes('mapping_rad'));
+});
+
+check('Stage-wise post-processing consumes p-value statistics without requesting new molecular assays', () => {
+  const project = getProject('noise_multiplicity_control');
+  const plan = planFor(project, {availableData: ['gene_statistics', 'sample_metadata'], inputRoute: 'count_matrix'});
+  const result = review(plan, catalog);
+  assert.equal(result.inputs.find(row => row.id === 'gene_statistics')?.status, 'declared');
+  for (const id of ['raw_fastq', 'tagged_bam', 'count_matrix', 'genotypes', 'kinship']) {
+    assert.ok(!result.inputs.some(row => row.id === id), `Statistics post-processing added an unrelated assay: ${id}`);
+  }
+  assert.equal(result.inputs.find(row => row.id === 'truth_or_simulation')?.status, 'prepare-resource', 'Selected calibration metric lost its truth input');
+  plan.metrics = ['noise_testing_family_registry'];
+  assert.ok(!review(plan, catalog).inputs.some(row => row.id === 'truth_or_simulation'), 'Optional calibration became mandatory for bookkeeping alone');
+});
+
+check('Monod route inputs cover the default matrix tools and state-conditioned metrics', () => {
+  for (const id of ['mechanistic_joint_rna_noise', 'rna_measurement_length_audit']) {
+    const project = getProject(id);
+    for (const input of ['count_matrix', 'splicing_layers', 'reference', 'sample_metadata', 'cell_states']) {
+      assert.ok(project.inputs.includes(input), `${id}: default methods need ${input}`);
+      assert.ok(!project.optionalInputs.includes(input), `${id}: required ${input} also marked optional`);
+      assert.ok(project.requiredInputContracts.some(row => row.id === input), `${id}: missing ${input} contract`);
+    }
+    const result = review(planFor(project, {availableData: [...project.inputs], inputRoute: 'count_matrix'}), catalog);
+    assert.ok(result.inputs.every(row => row.status === 'declared'), `${id}: declaring every required input still leaves a hidden method requirement`);
+    const contract = project.requiredInputContracts.find(row => row.id === 'count_matrix').contract;
+    assert.match(contract, /mature\/spliced S layer/);
+    assert.match(contract, /Do not mechanically add S and U/);
+  }
+});
+
 console.log(JSON.stringify({status: 'passed', checks, productionFilesModified: false}));

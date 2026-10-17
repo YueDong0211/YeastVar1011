@@ -5556,6 +5556,534 @@
         ],
         "note": "Software-method source verified; proposed yeast analysis requires design-specific evaluation."
       }
+    },
+    {
+      "id": "mechanistic_joint_rna_noise",
+      "title": "成熟与未剪接RNA的机制噪音比较",
+      "titleEn": "Mechanistic noise comparison from mature/unspliced RNA",
+      "question": "平均表达相近时，转录机制参数是否仍存在可辨识差异？",
+      "questionEn": "Can transcriptional parameters differ identifiably when mean expression is similar?",
+      "goal": "平均表达相近时，转录机制参数是否仍存在可辨识差异？",
+      "goalEn": "Can transcriptional parameters differ identifiably when mean expression is similar?",
+      "method": "在S/U证据充分的酵母基因中，用Monod联合拟合生物过程与采样模型，比较均值、机制参数及其不确定性。",
+      "methodEn": "For yeast genes with sufficient S/U evidence, jointly fit biological and sampling models with Monod and compare means, mechanistic parameters and their uncertainty.",
+      "shortText": {
+        "zh": "在S/U证据充分的酵母基因中，用Monod联合拟合生物过程与采样模型，比较均值、机制参数及其不确定性。",
+        "en": "For yeast genes with sufficient S/U evidence, jointly fit biological and sampling models with Monod and compare means, mechanistic parameters and their uncertainty.",
+        "fr": "Pour les gènes de levure soutenus en S/U, ajuster conjointement processus biologique et échantillonnage avec Monod puis comparer moyennes, paramètres et incertitude.",
+        "es": "En genes de levadura con evidencia S/U suficiente, ajustar procesos biológicos y muestreo con Monod y comparar medias, parámetros e incertidumbre.",
+        "eu": "S/U euskarri nahikoa duten legamia-geneetan, doitu batera Monoden eredu biologikoak eta laginketakoak; alderatu batezbestekoak, parametroak eta ziurgabetasuna."
+      },
+      "categoryId": "noise",
+      "level": "conditional",
+      "planningApplicability": "conditional",
+      "toolIds": [
+        "monod",
+        "memento"
+      ],
+      "metricIds": [
+        "monod_joint_fit",
+        "monod_parameter_support",
+        "sequencing_model_sensitivity"
+      ],
+      "stepIds": [
+        "noise",
+        "dynamics",
+        "validation"
+      ],
+      "inputs": [
+        "count_matrix",
+        "splicing_layers",
+        "reference",
+        "sample_metadata",
+        "cell_states"
+      ],
+      "optionalInputs": [
+        "culture_replicates",
+        "truth_or_simulation",
+        "kinetic_rate_prior"
+      ],
+      "paperIds": [
+        "v24_monod_2025",
+        "v24_premrna_length_2023"
+      ],
+      "sourceUrls": [
+        "https://www.nature.com/articles/s41592-025-02832-x",
+        "https://monod-examples.readthedocs.io/en/latest/usage.html",
+        "https://github.com/pachterlab/monod",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9843228/"
+      ],
+      "outputs": [
+        "转录及采样参数、似然和拟合分布",
+        "参数标准误、采样景观及重抽样诊断"
+      ],
+      "failureChecks": [
+        "未剪接层必须具有可评估的独立分子支持；不以GeneFull−Gene代替。",
+        "默认矩阵工具与噪音指标需要明确的计数入口；可使用与S/U层基因和细胞身份、顺序一致的原始整数成熟S层，保留计数定义，不将S与U机械相加。",
+        "比较组使用同一基因集合；报告被剔除基因及内含子基因的功能偏倚，培养重复分别拟合或分层重抽样。",
+        "按可辨识性与酵母计数范围设定phys_lb/phys_ub、samp_lb/samp_ub及gridsize；保存边界解并扩大合理范围复核。"
+      ],
+      "parameterDecisions": [
+        "未剪接层必须具有可评估的独立分子支持；不以GeneFull−Gene代替。",
+        "默认矩阵工具与噪音指标需要明确的计数入口；可使用与S/U层基因和细胞身份、顺序一致的原始整数成熟S层，保留计数定义，不将S与U机械相加。",
+        "比较组使用同一基因集合；报告被剔除基因及内含子基因的功能偏倚，培养重复分别拟合或分层重抽样。",
+        "按可辨识性与酵母计数范围设定phys_lb/phys_ub、samp_lb/samp_ub及gridsize；保存边界解并扩大合理范围复核。"
+      ],
+      "workflow": [
+        {
+          "stepId": "noise",
+          "action": "在S/U证据充分的酵母基因中，用Monod联合拟合生物过程与采样模型，比较均值、机制参数及其不确定性。",
+          "deliverable": "转录及采样参数、似然和拟合分布"
+        },
+        {
+          "stepId": "dynamics",
+          "action": "未剪接层必须具有可评估的独立分子支持；不以GeneFull−Gene代替。",
+          "deliverable": "参数标准误、采样景观及重抽样诊断"
+        },
+        {
+          "stepId": "validation",
+          "action": "默认矩阵工具与噪音指标需要明确的计数入口；可使用与S/U层基因和细胞身份、顺序一致的原始整数成熟S层，保留计数定义，不将S与U机械相加。",
+          "deliverable": "参数标准误、采样景观及重抽样诊断"
+        }
+      ],
+      "hypotheses": [],
+      "analysisPrinciples": [
+        "项目审计定义；所列函数提供原始结果，导出字段由项目汇总，不是工具原生同名指标。"
+      ],
+      "tags": [
+        "noise",
+        "v24-expansion"
+      ],
+      "addedIn": "v24",
+      "executionStatus": "not-run",
+      "statisticalUnit": "细胞估计群内分布；菌株和独立培养决定比较及验证单位。",
+      "interpretationBoundary": "无独立时间校准时，速率以模型参照单位解释；拟合参数不自动构成绝对转录速率或纯内在噪音。",
+      "requiredInputContracts": [
+        {
+          "id": "count_matrix",
+          "contract": "Explicit raw integer counts for the default matrix tools and noise metrics. The mature/spliced S layer can be used as this separate mature-RNA count input after matching gene/cell identities and order to the S/U layers and retaining the counting definition. Do not mechanically add S and U or mix count definitions between comparisons."
+        },
+        {
+          "id": "splicing_layers",
+          "contract": "Raw integer spliced and unspliced counts on identical cell/gene axes; preserve ambiguous molecules separately and document counting rules."
+        },
+        {
+          "id": "reference",
+          "contract": "Versioned yeast reference and stable-ID gene length table with a declared length definition; this is derived reference information, not a new assay."
+        },
+        {
+          "id": "cell_states",
+          "contract": "Comparable state strata; preserve label uncertainty and the unconditioned comparison branch."
+        },
+        {
+          "id": "sample_metadata",
+          "contract": "Strain/culture/library mapping; without independent cultures report descriptive model comparisons rather than replicate-supported population effects."
+        }
+      ],
+      "claimSourceMappings": [
+        {
+          "claim": "在S/U证据充分的酵母基因中，用Monod联合拟合生物过程与采样模型，比较均值、机制参数及其不确定性。",
+          "paperIds": [
+            "v24_monod_2025",
+            "v24_premrna_length_2023"
+          ],
+          "type": "proposed-project-adaptation"
+        }
+      ],
+      "speciesValidation": {
+        "target": "Saccharomyces cerevisiae strain collection",
+        "validationIn1011": false,
+        "publishedSystems": [
+          "Source-study single-cell RNA datasets"
+        ],
+        "note": "Source method checked; this project adaptation has not been run."
+      }
+    },
+    {
+      "id": "rna_measurement_length_audit",
+      "title": "RNA长度偏倚与测量模型审计",
+      "titleEn": "RNA length-bias and measurement-model audit",
+      "question": "未剪接RNA的长度相关捕获是否改变动力学和噪音候选？",
+      "questionEn": "Does length-dependent unspliced capture alter kinetic and noise candidates?",
+      "goal": "未剪接RNA的长度相关捕获是否改变动力学和噪音候选？",
+      "goalEn": "Does length-dependent unspliced capture alter kinetic and noise candidates?",
+      "method": "固定S/U层、细胞与基因集合，比较长度相关性、use_lengths及支持的采样模型，保留拟合失败和参数不确定性。",
+      "methodEn": "Freeze S/U layers, cells and genes, compare length dependence, use_lengths and supported sampling models, retaining failed fits and parameter uncertainty.",
+      "shortText": {
+        "zh": "固定S/U层、细胞与基因集合，比较长度相关性、use_lengths及支持的采样模型，保留拟合失败和参数不确定性。",
+        "en": "Freeze S/U layers, cells and genes, compare length dependence, use_lengths and supported sampling models, retaining failed fits and parameter uncertainty.",
+        "fr": "Figer couches S/U, cellules et gènes, comparer dépendance à la longueur, use_lengths et modèles d’échantillonnage, en conservant échecs et incertitude.",
+        "es": "Fijar capas S/U, células y genes; comparar dependencia de longitud, use_lengths y modelos de muestreo, conservando fallos e incertidumbre.",
+        "eu": "Finkatu S/U geruzak, zelulak eta geneak; alderatu luzerarekiko mendekotasuna, use_lengths eta laginketa-ereduak, hutsak eta ziurgabetasuna gordeta."
+      },
+      "categoryId": "dynamics",
+      "level": "conditional",
+      "planningApplicability": "conditional",
+      "toolIds": [
+        "monod",
+        "scanpy"
+      ],
+      "metricIds": [
+        "unspliced_length_sensitivity",
+        "sequencing_model_sensitivity"
+      ],
+      "stepIds": [
+        "dynamics",
+        "noise",
+        "validation"
+      ],
+      "inputs": [
+        "count_matrix",
+        "splicing_layers",
+        "reference",
+        "sample_metadata",
+        "cell_states"
+      ],
+      "optionalInputs": [
+        "culture_replicates",
+        "truth_or_simulation"
+      ],
+      "paperIds": [
+        "v24_premrna_length_2023",
+        "v24_monod_2025"
+      ],
+      "sourceUrls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9843228/",
+        "https://monod-examples.readthedocs.io/en/latest/usage.html",
+        "https://www.nature.com/articles/s41592-025-02832-x"
+      ],
+      "outputs": [
+        "分层长度关联与计数模型对照",
+        "参数标准误、采样景观及重抽样诊断"
+      ],
+      "failureChecks": [
+        "从相同参考生成长度表；记录长度定义，并比较启用与关闭use_lengths的结果。",
+        "未剪接层必须具有可评估的独立分子支持；不以GeneFull−Gene代替。",
+        "默认矩阵工具与噪音指标需要明确的计数入口；可使用与S/U层基因和细胞身份、顺序一致的原始整数成熟S层，保留计数定义，不将S与U机械相加。",
+        "比较组使用同一基因集合；报告被剔除基因及内含子基因的功能偏倚，培养重复分别拟合或分层重抽样。"
+      ],
+      "parameterDecisions": [
+        "从相同参考生成长度表；记录长度定义，并比较启用与关闭use_lengths的结果。",
+        "未剪接层必须具有可评估的独立分子支持；不以GeneFull−Gene代替。",
+        "默认矩阵工具与噪音指标需要明确的计数入口；可使用与S/U层基因和细胞身份、顺序一致的原始整数成熟S层，保留计数定义，不将S与U机械相加。",
+        "比较组使用同一基因集合；报告被剔除基因及内含子基因的功能偏倚，培养重复分别拟合或分层重抽样。"
+      ],
+      "workflow": [
+        {
+          "stepId": "dynamics",
+          "action": "固定S/U层、细胞与基因集合，比较长度相关性、use_lengths及支持的采样模型，保留拟合失败和参数不确定性。",
+          "deliverable": "分层长度关联与计数模型对照"
+        },
+        {
+          "stepId": "noise",
+          "action": "从相同参考生成长度表；记录长度定义，并比较启用与关闭use_lengths的结果。",
+          "deliverable": "参数标准误、采样景观及重抽样诊断"
+        },
+        {
+          "stepId": "validation",
+          "action": "未剪接层必须具有可评估的独立分子支持；不以GeneFull−Gene代替。",
+          "deliverable": "参数标准误、采样景观及重抽样诊断"
+        }
+      ],
+      "hypotheses": [],
+      "analysisPrinciples": [
+        "项目审计定义；所列函数提供原始结果，导出字段由项目汇总，不是工具原生同名指标。"
+      ],
+      "tags": [
+        "dynamics",
+        "v24-expansion"
+      ],
+      "addedIn": "v24",
+      "executionStatus": "not-run",
+      "statisticalUnit": "细胞估计群内分布；菌株和独立培养决定比较及验证单位。",
+      "interpretationBoundary": "长度关联是技术与生物机制的审计信号，不能仅凭相关性直接删除基因或宣称已消除偏差。",
+      "requiredInputContracts": [
+        {
+          "id": "count_matrix",
+          "contract": "Explicit raw integer counts for the default matrix tools and noise metrics. The mature/spliced S layer can be used as this separate mature-RNA count input after matching gene/cell identities and order to the S/U layers and retaining the counting definition. Do not mechanically add S and U or mix count definitions between comparisons."
+        },
+        {
+          "id": "splicing_layers",
+          "contract": "Raw integer spliced and unspliced counts on identical cell/gene axes; preserve ambiguous molecules separately and document counting rules."
+        },
+        {
+          "id": "reference",
+          "contract": "Versioned yeast reference and stable-ID gene length table with a declared length definition; this is derived reference information, not a new assay."
+        },
+        {
+          "id": "cell_states",
+          "contract": "Comparable state strata; preserve label uncertainty and the unconditioned comparison branch."
+        },
+        {
+          "id": "sample_metadata",
+          "contract": "Strain/culture/library mapping; without independent cultures report descriptive model comparisons rather than replicate-supported population effects."
+        }
+      ],
+      "claimSourceMappings": [
+        {
+          "claim": "固定S/U层、细胞与基因集合，比较长度相关性、use_lengths及支持的采样模型，保留拟合失败和参数不确定性。",
+          "paperIds": [
+            "v24_premrna_length_2023",
+            "v24_monod_2025"
+          ],
+          "type": "proposed-project-adaptation"
+        }
+      ],
+      "speciesValidation": {
+        "target": "Saccharomyces cerevisiae strain collection",
+        "validationIn1011": false,
+        "publishedSystems": [
+          "Source-study single-cell RNA datasets"
+        ],
+        "note": "Source method checked; this project adaptation has not been run."
+      }
+    },
+    {
+      "id": "cross_implementation_robustness",
+      "title": "Seurat与Scanpy的跨实现稳健性",
+      "titleEn": "Cross-implementation robustness of Seurat and Scanpy",
+      "question": "在相同数据与比较单位下，软件实现和版本是否改变注释、marker及噪音结论？",
+      "questionEn": "Do software implementations and versions change annotation, marker or noise conclusions on matched data and comparison units?",
+      "goal": "在相同数据与比较单位下，软件实现和版本是否改变注释、marker及噪音结论？",
+      "goalEn": "Do software implementations and versions change annotation, marker or noise conclusions on matched data and comparison units?",
+      "method": "从冻结矩阵分别运行Seurat与Scanpy，比较特征、邻域和聚类，再在固定标签及重新注释分支中复核marker与噪音效应。",
+      "methodEn": "Run Seurat and Scanpy from a frozen matrix, compare features, neighbors and clusters, then reassess markers and noise under fixed labels and reannotation.",
+      "shortText": {
+        "zh": "从冻结矩阵分别运行Seurat与Scanpy，比较特征、邻域和聚类，再在固定标签及重新注释分支中复核marker与噪音效应。",
+        "en": "Run Seurat and Scanpy from a frozen matrix, compare features, neighbors and clusters, then reassess markers and noise under fixed labels and reannotation.",
+        "fr": "Exécuter Seurat et Scanpy depuis une matrice figée, comparer caractéristiques, voisinages et groupes, puis réévaluer marqueurs et bruit avec étiquettes fixes ou réannotées.",
+        "es": "Ejecutar Seurat y Scanpy desde una matriz fijada, comparar características, vecinos y grupos, y reevaluar marcadores y ruido con etiquetas fijas y reanotadas.",
+        "eu": "Exekutatu Seurat eta Scanpy matrize finko batetik; alderatu ezaugarriak, auzokideak eta klusterrak, eta berrikusi markatzaileak eta zarata etiketa finkoekin eta berranotazioarekin."
+      },
+      "categoryId": "simulation",
+      "level": "adapt",
+      "planningApplicability": "adapt",
+      "toolIds": [
+        "seurat",
+        "scanpy",
+        "memento"
+      ],
+      "metricIds": [
+        "implementation_representation_concordance",
+        "implementation_inference_stability"
+      ],
+      "stepIds": [
+        "integration",
+        "annotation",
+        "markers",
+        "noise",
+        "validation"
+      ],
+      "inputs": [
+        "count_matrix",
+        "sample_metadata"
+      ],
+      "optionalInputs": [
+        "cell_states",
+        "culture_replicates",
+        "truth_or_simulation"
+      ],
+      "paperIds": [
+        "v24_package_versioning_2026"
+      ],
+      "sourceUrls": [
+        "https://pubmed.ncbi.nlm.nih.gov/41903535/",
+        "https://scanpy.readthedocs.io/en/stable/",
+        "https://satijalab.org/seurat/articles/pbmc3k_tutorial"
+      ],
+      "outputs": [
+        "特征、邻域与聚类的一致性报告",
+        "注释、marker与噪音的分支敏感性"
+      ],
+      "failureChecks": [
+        "固定原始矩阵、细胞/feature顺序和比较单位；分别记录算法差异与版本差异。",
+        "比较固定标签与重新注释两条分支；噪音推断使用同一原始计数模型，不用整合表达替换计数。",
+        "匹配实际算法、参数含义和随机数设置；不可把不同默认配置当作同一算法的重复。"
+      ],
+      "parameterDecisions": [
+        "固定原始矩阵、细胞/feature顺序和比较单位；分别记录算法差异与版本差异。",
+        "比较固定标签与重新注释两条分支；噪音推断使用同一原始计数模型，不用整合表达替换计数。",
+        "匹配实际算法、参数含义和随机数设置；不可把不同默认配置当作同一算法的重复。"
+      ],
+      "workflow": [
+        {
+          "stepId": "integration",
+          "action": "从冻结矩阵分别运行Seurat与Scanpy，比较特征、邻域和聚类，再在固定标签及重新注释分支中复核marker与噪音效应。",
+          "deliverable": "特征、邻域与聚类的一致性报告"
+        },
+        {
+          "stepId": "annotation",
+          "action": "固定原始矩阵、细胞/feature顺序和比较单位；分别记录算法差异与版本差异。",
+          "deliverable": "注释、marker与噪音的分支敏感性"
+        },
+        {
+          "stepId": "markers",
+          "action": "比较固定标签与重新注释两条分支；噪音推断使用同一原始计数模型，不用整合表达替换计数。",
+          "deliverable": "注释、marker与噪音的分支敏感性"
+        },
+        {
+          "stepId": "noise",
+          "action": "匹配实际算法、参数含义和随机数设置；不可把不同默认配置当作同一算法的重复。",
+          "deliverable": "注释、marker与噪音的分支敏感性"
+        },
+        {
+          "stepId": "validation",
+          "action": "匹配实际算法、参数含义和随机数设置；不可把不同默认配置当作同一算法的重复。",
+          "deliverable": "注释、marker与噪音的分支敏感性"
+        }
+      ],
+      "hypotheses": [],
+      "analysisPrinciples": [
+        "项目审计定义；所列函数提供原始结果，导出字段由项目汇总，不是工具原生同名指标。"
+      ],
+      "tags": [
+        "simulation",
+        "v24-expansion"
+      ],
+      "addedIn": "v24",
+      "executionStatus": "not-run",
+      "statisticalUnit": "细胞估计群内分布；菌株和独立培养决定比较及验证单位。",
+      "interpretationBoundary": "一致性不是正确性的证明；保留差异及其对结论的影响，不强制不同方法生成相同聚类。",
+      "requiredInputContracts": [
+        {
+          "id": "count_matrix",
+          "contract": "One frozen original integer count matrix, with stable cell/feature IDs and identical row/column order in R and Python; retain count and axis hashes."
+        },
+        {
+          "id": "sample_metadata",
+          "contract": "Same strain/culture/condition mapping in both implementations; record package, dependency, algorithm and random-setting differences."
+        }
+      ],
+      "claimSourceMappings": [
+        {
+          "claim": "从冻结矩阵分别运行Seurat与Scanpy，比较特征、邻域和聚类，再在固定标签及重新注释分支中复核marker与噪音效应。",
+          "paperIds": [
+            "v24_package_versioning_2026"
+          ],
+          "type": "proposed-project-adaptation"
+        }
+      ],
+      "speciesValidation": {
+        "target": "Saccharomyces cerevisiae strain collection",
+        "validationIn1011": false,
+        "publishedSystems": [
+          "Source-study single-cell RNA datasets"
+        ],
+        "note": "Source method checked; this project adaptation has not been run."
+      }
+    },
+    {
+      "id": "noise_multiplicity_control",
+      "title": "噪音假设家族与分阶段检验",
+      "titleEn": "Noise-hypothesis families and stage-wise testing",
+      "question": "同时比较多个状态与对比时，报告的噪音基因及具体结论控制了哪一层错误？",
+      "questionEn": "When testing multiple states and contrasts, which error level is controlled for reported noise genes and specific claims?",
+      "goal": "同时比较多个状态与对比时，报告的噪音基因及具体结论控制了哪一层错误？",
+      "goalEn": "When testing multiple states and contrasts, which error level is controlled for reported noise genes and specific claims?",
+      "method": "冻结检验家族与估计对象，将已校准的基因级筛选和对比级p值交给stageR，并用设计匹配模拟复核分阶段错误率。",
+      "methodEn": "Freeze testing families and estimands, pass calibrated gene-screening and contrast p-values to stageR, and assess stage-wise error rates with design-matched simulations.",
+      "shortText": {
+        "zh": "冻结检验家族与估计对象，将已校准的基因级筛选和对比级p值交给stageR，并用设计匹配模拟复核分阶段错误率。",
+        "en": "Freeze testing families and estimands, pass calibrated gene-screening and contrast p-values to stageR, and assess stage-wise error rates with design-matched simulations.",
+        "fr": "Figer familles et objets estimés, fournir à stageR des valeurs p calibrées de criblage et de contrastes, puis vérifier les erreurs dans des simulations adaptées.",
+        "es": "Fijar familias y estimandos, pasar a stageR valores p calibrados de cribado génico y contrastes y revisar errores con simulaciones acordes al diseño.",
+        "eu": "Finkatu test-familiak eta estimandoak, eman stageRri gene-baheketako eta kontrasteetako p-balio kalibratuak, eta egiaztatu erroreak diseinuaren araberako simulazioetan."
+      },
+      "categoryId": "noise",
+      "level": "adapt",
+      "planningApplicability": "adapt",
+      "toolIds": [
+        "stager"
+      ],
+      "metricIds": [
+        "noise_testing_family_registry",
+        "noise_stagewise_error_calibration"
+      ],
+      "stepIds": [
+        "validation"
+      ],
+      "inputs": [
+        "gene_statistics",
+        "sample_metadata"
+      ],
+      "optionalInputs": [
+        "truth_or_simulation",
+        "culture_replicates"
+      ],
+      "paperIds": [
+        "v24_stager_2017"
+      ],
+      "sourceUrls": [
+        "https://link.springer.com/article/10.1186/s13059-017-1277-0",
+        "https://bioconductor.org/packages/release/bioc/vignettes/stageR/inst/doc/stageRVignette.html"
+      ],
+      "outputs": [
+        "完整检验家族、估计对象与失败状态表",
+        "基因级与对比级的校正和模拟校准报告"
+      ],
+      "failureChecks": [
+        "预先定义基因、状态、对比和估计对象组成的检验家族；探索性QC方案不按最小p值合并进入主家族。",
+        "具名pScreen向量与同基因顺序的pConfirmation矩阵；列为预设对比，附原假设、统计单位和检验状态。",
+        "未评估、拟合失败、筛选未通过和真实不显著分别编码；不把缺失p值填成0或将所有缺失混作不显著。",
+        "stageR是检验结果后处理，不估计表达噪音；迁移到噪音对比须先校准上游p值及筛选—确认的逻辑关系。"
+      ],
+      "parameterDecisions": [
+        "预先定义基因、状态、对比和估计对象组成的检验家族；探索性QC方案不按最小p值合并进入主家族。",
+        "具名pScreen向量与同基因顺序的pConfirmation矩阵；列为预设对比，附原假设、统计单位和检验状态。",
+        "未评估、拟合失败、筛选未通过和真实不显著分别编码；不把缺失p值填成0或将所有缺失混作不显著。",
+        "stageR是检验结果后处理，不估计表达噪音；迁移到噪音对比须先校准上游p值及筛选—确认的逻辑关系。"
+      ],
+      "workflow": [
+        {
+          "stepId": "validation",
+          "action": "冻结检验家族与估计对象，将已校准的基因级筛选和对比级p值交给stageR，并用设计匹配模拟复核分阶段错误率。",
+          "deliverable": "完整检验家族、估计对象与失败状态表"
+        }
+      ],
+      "hypotheses": [],
+      "analysisPrinciples": [
+        "项目审计定义；所列函数提供原始结果，导出字段由项目汇总，不是工具原生同名指标。"
+      ],
+      "tags": [
+        "noise",
+        "v24-expansion"
+      ],
+      "addedIn": "v24",
+      "executionStatus": "not-run",
+      "statisticalUnit": "细胞估计群内分布；菌株和独立培养决定比较及验证单位。",
+      "interpretationBoundary": "stageR是检验结果后处理，不估计表达噪音；迁移到噪音对比须先校准上游p值及筛选—确认的逻辑关系。",
+      "requiredInputContracts": [
+        {
+          "id": "gene_statistics",
+          "contract": "Valid upstream raw omnibus screening p-values and a gene-by-contrast raw confirmation p-value matrix, with identical named gene order. Include estimands, eligible test families, test failures and adjustment status. No additional DNA, bulk or phenotype assay is required."
+        },
+        {
+          "id": "sample_metadata",
+          "contract": "Retain independent inference units, contrast definitions, condition/state strata and design confounding. Multiplicity adjustment does not repair invalid upstream pseudoreplication or p-values."
+        },
+        {
+          "id": "truth_or_simulation",
+          "contract": "Required for the calibration metric: design-matched simulations or independent truth must identify null genes and individual null hypotheses, including dependence, state support and the upstream selection process."
+        }
+      ],
+      "claimSourceMappings": [
+        {
+          "claim": "冻结检验家族与估计对象，将已校准的基因级筛选和对比级p值交给stageR，并用设计匹配模拟复核分阶段错误率。",
+          "paperIds": [
+            "v24_stager_2017"
+          ],
+          "type": "proposed-project-adaptation"
+        }
+      ],
+      "speciesValidation": {
+        "target": "Saccharomyces cerevisiae strain collection",
+        "validationIn1011": false,
+        "publishedSystems": [
+          "Rattus norvegicus",
+          "Homo sapiens"
+        ],
+        "note": "Published for complex-design RNA-seq differential expression and transcript usage, rather than yeast noise estimation. Transfer requires valid upstream tests and project calibration; no new bulk assay is required."
+      }
     }
   ],
   "datasets": [

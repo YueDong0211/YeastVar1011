@@ -491,6 +491,17 @@
       "failures": [
         "Academic-search MCP unavailable; used web discovery plus Crossref/PMC and official sources. One Crossref 429 succeeded on retry; several publisher web opens failed and were checked through PMC or publisher search records."
       ]
+    },
+    {
+      "id": "v24_targeted_method_verification",
+      "date": "2026-10-17",
+      "source": "Crossref + PubMed/PMC + official software documentation",
+      "query": "Exact DOI checks: 10.1038/s41592-025-02832-x; 10.1016/j.bpr.2022.100097; 10.1016/j.cels.2026.101560; 10.1186/s13059-017-1277-0",
+      "url": "https://api.crossref.org/works/",
+      "totalRetrieved": 4,
+      "screened": 4,
+      "included": 4,
+      "notes": "Targeted method additions, not an exhaustive search. Crossref HTTP JSON checked; online/issue year discrepancy retained for the pre-mRNA length paper; stageR is a classical method outside the recent window."
     }
   ],
   "papers": [
@@ -14196,6 +14207,319 @@
         "https://api.crossref.org/works/10.1002/yea.3927"
       ],
       "apa7": "Brettner, L., Eder, R., Schmidlin, K., & Geiler-Samerotte, K. (2024). An ultra high-throughput, massively multiplexable, single-cell RNA-seq platform in yeasts. Yeast, 41(4), 242–255. https://doi.org/10.1002/yea.3927"
+    },
+    {
+      "id": "v24_monod_2025",
+      "title": "Monod: model-based discovery and integration through fitting stochastic transcriptional dynamics to single-cell sequencing data",
+      "authors": [
+        "Gennady Gorin",
+        "Tara Chari",
+        "Maria Carilli",
+        "John J. Vastola",
+        "Lior Pachter"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Gennady",
+          "family": "Gorin"
+        },
+        {
+          "given": "Tara",
+          "family": "Chari"
+        },
+        {
+          "given": "Maria",
+          "family": "Carilli"
+        },
+        {
+          "given": "John J.",
+          "family": "Vastola"
+        },
+        {
+          "given": "Lior",
+          "family": "Pachter"
+        }
+      ],
+      "year": 2025,
+      "date": "2025-11-07",
+      "journal": "Nature Methods",
+      "volume": "22",
+      "issue": "11",
+      "pages": "2286–2300",
+      "doi": "10.1038/s41592-025-02832-x",
+      "url": "https://www.nature.com/articles/s41592-025-02832-x",
+      "publicationType": "peer-reviewed",
+      "metadataVerified": true,
+      "verificationDate": "2026-10-17",
+      "onlineYear": 2025,
+      "issueYear": 2025,
+      "inWindow": true,
+      "selection": "curated",
+      "status": "verified",
+      "studyType": "方法",
+      "evidence": "可迁移方法",
+      "species": [
+        "Source-study RNA datasets; not validated in the 1011 collection"
+      ],
+      "markerUse": "方法文献，不直接导入基因为状态marker。",
+      "limitations": [
+        "这是基于一般单细胞RNA数据的机制方法；酵母内含子少，须先通过S/U信息量、测量模型和参数可辨识性检查。"
+      ],
+      "sourceUrls": [
+        "https://www.nature.com/articles/s41592-025-02832-x",
+        "https://monod-examples.readthedocs.io/en/latest/usage.html",
+        "https://github.com/pachterlab/monod",
+        "https://api.crossref.org/works/10.1038/s41592-025-02832-x",
+        "https://pubmed.ncbi.nlm.nih.gov/41203866/"
+      ],
+      "addedIn": "v24",
+      "toolIds": [
+        "monod"
+      ],
+      "topics": [
+        "联合拟合转录随机过程与RNA采样模型"
+      ],
+      "summary": "联合拟合转录随机过程与RNA采样模型",
+      "contribution": "转录及采样参数、似然和拟合分布",
+      "verificationNotes": "Crossref metadata verified against PubMed PMID 41203866 and the official package documentation on 2026-10-17.",
+      "apa7": "Gorin, G., Chari, T., Carilli, M., Vastola, J. J., & Pachter, L. (2025). Monod: Model-based discovery and integration through fitting stochastic transcriptional dynamics to single-cell sequencing data. Nature Methods, 22(11), 2286–2300. https://doi.org/10.1038/s41592-025-02832-x"
+    },
+    {
+      "id": "v24_premrna_length_2023",
+      "title": "Length biases in single-cell RNA sequencing of pre-mRNA",
+      "authors": [
+        "Gennady Gorin",
+        "Lior Pachter"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Gennady",
+          "family": "Gorin"
+        },
+        {
+          "given": "Lior",
+          "family": "Pachter"
+        }
+      ],
+      "year": 2023,
+      "date": "2022-12-27",
+      "journal": "Biophysical Reports",
+      "volume": "3",
+      "issue": "1",
+      "pages": "100097",
+      "doi": "10.1016/j.bpr.2022.100097",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9843228/",
+      "publicationType": "peer-reviewed",
+      "metadataVerified": true,
+      "verificationDate": "2026-10-17",
+      "onlineYear": 2022,
+      "issueYear": 2023,
+      "inWindow": true,
+      "selection": "curated",
+      "status": "verified",
+      "studyType": "方法",
+      "evidence": "可迁移方法",
+      "species": [
+        "Source-study RNA datasets; not validated in the 1011 collection"
+      ],
+      "markerUse": "方法文献，不直接导入基因为状态marker。",
+      "limitations": [
+        "这是基于一般单细胞RNA数据的机制方法；酵母内含子少，须先通过S/U信息量、测量模型和参数可辨识性检查。"
+      ],
+      "sourceUrls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9843228/",
+        "https://doi.org/10.1016/j.bpr.2022.100097",
+        "https://api.crossref.org/works/10.1016/j.bpr.2022.100097"
+      ],
+      "addedIn": "v24",
+      "articleNumber": "100097",
+      "toolIds": [
+        "monod"
+      ],
+      "topics": [
+        "未剪接层长度依赖与参数敏感性"
+      ],
+      "summary": "比较S/U层均值和参数估计对基因长度的关系，记录长度定义、可测基因范围及use_lengths开关后的效应和排序变化。",
+      "contribution": "固定S/U层、细胞与基因集合，比较长度相关性、use_lengths及支持的采样模型，保留拟合失败和参数不确定性。",
+      "verificationNotes": "Crossref identifies volume 3(1), 2023; PMC PMID 36660179 records online publication on 2022-12-27. The DOI year is not used as the issue year.",
+      "apa7": "Gorin, G., & Pachter, L. (2023). Length biases in single-cell RNA sequencing of pre-mRNA. Biophysical Reports, 3(1), Article 100097. https://doi.org/10.1016/j.bpr.2022.100097"
+    },
+    {
+      "id": "v24_package_versioning_2026",
+      "title": "The impact of package selection and versioning on single-cell RNA-seq analysis",
+      "authors": [
+        "Joseph M. Rich",
+        "Lambda Moses",
+        "Pétur Helgi Einarsson",
+        "Kayla Jackson",
+        "Laura Luebbert",
+        "A. Sina Booeshaghi",
+        "Sindri Antonsson",
+        "Delaney K. Sullivan",
+        "Nicolas Bray",
+        "Páll Melsted",
+        "Lior Pachter"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Joseph M.",
+          "family": "Rich"
+        },
+        {
+          "given": "Lambda",
+          "family": "Moses"
+        },
+        {
+          "given": "Pétur Helgi",
+          "family": "Einarsson"
+        },
+        {
+          "given": "Kayla",
+          "family": "Jackson"
+        },
+        {
+          "given": "Laura",
+          "family": "Luebbert"
+        },
+        {
+          "given": "A. Sina",
+          "family": "Booeshaghi"
+        },
+        {
+          "given": "Sindri",
+          "family": "Antonsson"
+        },
+        {
+          "given": "Delaney K.",
+          "family": "Sullivan"
+        },
+        {
+          "given": "Nicolas",
+          "family": "Bray"
+        },
+        {
+          "given": "Páll",
+          "family": "Melsted"
+        },
+        {
+          "given": "Lior",
+          "family": "Pachter"
+        }
+      ],
+      "year": 2026,
+      "date": "2026-03-27",
+      "journal": "Cell Systems",
+      "volume": "17",
+      "issue": "4",
+      "pages": "101560",
+      "doi": "10.1016/j.cels.2026.101560",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41903535/",
+      "publicationType": "peer-reviewed",
+      "metadataVerified": true,
+      "verificationDate": "2026-10-17",
+      "onlineYear": 2026,
+      "issueYear": 2026,
+      "inWindow": true,
+      "selection": "curated",
+      "status": "verified",
+      "studyType": "方法",
+      "evidence": "可迁移方法",
+      "species": [
+        "Source-study RNA datasets; not validated in the 1011 collection"
+      ],
+      "markerUse": "方法文献，不直接导入基因为状态marker。",
+      "limitations": [
+        "一致性不是正确性的证明；保留差异及其对结论的影响，不强制不同方法生成相同聚类。"
+      ],
+      "sourceUrls": [
+        "https://pubmed.ncbi.nlm.nih.gov/41903535/",
+        "https://doi.org/10.1016/j.cels.2026.101560",
+        "https://api.crossref.org/works/10.1016/j.cels.2026.101560"
+      ],
+      "addedIn": "v24",
+      "articleNumber": "101560",
+      "toolIds": [
+        "seurat",
+        "scanpy"
+      ],
+      "topics": [
+        "Seurat与Scanpy的跨实现稳健性"
+      ],
+      "summary": "在相同数据与比较单位下，软件实现和版本是否改变注释、marker及噪音结论？",
+      "contribution": "从冻结矩阵分别运行Seurat与Scanpy，比较特征、邻域和聚类，再在固定标签及重新注释分支中复核marker与噪音效应。",
+      "verificationNotes": "Crossref author order and volume/issue/article number checked; PubMed PMID 41903535 identifies online date 2026-03-27 and issue date 2026-04-15.",
+      "apa7": "Rich, J. M., Moses, L., Einarsson, P. H., Jackson, K., Luebbert, L., Booeshaghi, A. S., Antonsson, S., Sullivan, D. K., Bray, N., Melsted, P., & Pachter, L. (2026). The impact of package selection and versioning on single-cell RNA-seq analysis. Cell Systems, 17(4), Article 101560. https://doi.org/10.1016/j.cels.2026.101560"
+    },
+    {
+      "id": "v24_stager_2017",
+      "title": "stageR: a general stage-wise method for controlling the gene-level false discovery rate in differential expression and differential transcript usage",
+      "authors": [
+        "Koen Van den Berge",
+        "Charlotte Soneson",
+        "Mark D. Robinson",
+        "Lieven Clement"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Koen",
+          "family": "Van den Berge"
+        },
+        {
+          "given": "Charlotte",
+          "family": "Soneson"
+        },
+        {
+          "given": "Mark D.",
+          "family": "Robinson"
+        },
+        {
+          "given": "Lieven",
+          "family": "Clement"
+        }
+      ],
+      "year": 2017,
+      "date": "2017-08-07",
+      "journal": "Genome Biology",
+      "volume": "18",
+      "issue": "1",
+      "pages": "151",
+      "doi": "10.1186/s13059-017-1277-0",
+      "url": "https://link.springer.com/article/10.1186/s13059-017-1277-0",
+      "publicationType": "peer-reviewed",
+      "metadataVerified": true,
+      "verificationDate": "2026-10-17",
+      "onlineYear": 2017,
+      "issueYear": 2017,
+      "inWindow": false,
+      "selection": "curated",
+      "status": "verified",
+      "studyType": "方法",
+      "evidence": "可迁移方法",
+      "species": [
+        "Source-study RNA datasets; not validated in the 1011 collection"
+      ],
+      "markerUse": "方法文献，不直接导入基因为状态marker。",
+      "limitations": [
+        "stageR是检验结果后处理，不估计表达噪音；迁移到噪音对比须先校准上游p值及筛选—确认的逻辑关系。"
+      ],
+      "sourceUrls": [
+        "https://link.springer.com/article/10.1186/s13059-017-1277-0",
+        "https://bioconductor.org/packages/release/bioc/vignettes/stageR/inst/doc/stageRVignette.html",
+        "https://pubmed.ncbi.nlm.nih.gov/28784146/",
+        "https://api.crossref.org/works/10.1186/s13059-017-1277-0"
+      ],
+      "addedIn": "v24",
+      "articleNumber": "151",
+      "toolIds": [
+        "stager"
+      ],
+      "topics": [
+        "噪音假设家族与分阶段检验"
+      ],
+      "summary": "对有效上游检验进行基因级筛选与分阶段多重校正",
+      "contribution": "冻结检验家族与估计对象，将已校准的基因级筛选和对比级p值交给stageR，并用设计匹配模拟复核分阶段错误率。",
+      "verificationNotes": "Crossref authors, publication date and volume/article number checked against PubMed PMID 28784146 and the original publisher page; official stageR vignette used for current input/adjustment semantics. Classical method, outside the recent-five-year window.",
+      "apa7": "Van den Berge, K., Soneson, C., Robinson, M. D., & Clement, L. (2017). stageR: A general stage-wise method for controlling the gene-level false discovery rate in differential expression and differential transcript usage. Genome Biology, 18, Article 151. https://doi.org/10.1186/s13059-017-1277-0"
     }
   ],
   "excludedRecords": [
@@ -14307,30 +14631,44 @@
     ]
   },
   "counts": {
-    "records": 167,
-    "curated": 145,
+    "records": 213,
+    "curated": 191,
     "discovered": 22,
-    "inWindow": 111,
-    "preprints": 14,
+    "inWindow": 156,
+    "preprints": 17,
     "byEvidence": {
-      "可迁移方法": 97,
+      "可迁移方法": 119,
       "外部参考": 45,
-      "直接酵母": 25
+      "直接酵母": 23,
+      "预印本单细胞证据": 1,
+      "直接酵母单细胞证据": 2,
+      "primary research": 7,
+      "方法依据": 5,
+      "细胞相似图上的多尺度扩散分数与跨样本模块比较。": 1,
+      "原始方法论文及官方软件入口已核对。": 10
     },
     "byStudyType": {
-      "方法": 100,
+      "方法": 127,
       "时间序列": 9,
       "功能": 22,
-      "scRNA": 22,
+      "scRNA": 19,
+      "scRNA perturbation atlas": 1,
       "基因组": 5,
+      "单细胞原始研究预印本": 1,
       "蛋白": 7,
       "综述": 1,
-      "评论": 1
+      "单细胞原始研究": 1,
+      "评论": 1,
+      "method": 16,
+      "yeast research": 1,
+      "mechanistic-study": 1,
+      "方法与单细胞原始研究": 1
     },
     "linkedVersionRecords": 16,
     "v2AddedOrReviewed": 33,
     "v3AddedOrReviewed": 5,
     "v4AddedOrReviewed": 2,
-    "v5AddedOrReviewed": 4
+    "v5AddedOrReviewed": 4,
+    "v24AddedOrReviewed": 4
   }
 }

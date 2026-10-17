@@ -3,13 +3,13 @@
   "files": [
     {
       "path": "dist/ambience.js",
-      "bytes": 5758,
-      "sha256": "38efb1b50af636bfc702b2744c4deaff7a0b2d5a6e13fc1f045fc62dbb418e69"
+      "bytes": 7054,
+      "sha256": "c59069c5c8d64496874bc3827de801a66b0ac1f0c9f8cb43c97af8e72f009b41"
     },
     {
       "path": "dist/app.js",
-      "bytes": 59655,
-      "sha256": "a3d1663e0bb7ff4eb5e2986ec8d61b2b920ec28ccce53fd035196f2ada188cae"
+      "bytes": 59659,
+      "sha256": "0c6a6ccf5e5bbef69fe2dc88810b5943af08c0e7fe95e188390a68a6fe4332a6"
     },
     {
       "path": "dist/assets/downloads/YeastVar1011-analysis-v21.zip",
@@ -73,13 +73,13 @@
     },
     {
       "path": "dist/builder.js",
-      "bytes": 63537,
-      "sha256": "98b21d701c0788493eb7301bebe4560c1a3a1bc652e54b032a00b9acd2382099"
+      "bytes": 65005,
+      "sha256": "0b1003e5fe49d3ffb408b53d561fd4f89dbeaee53962d609e8580f0a46681a7f"
     },
     {
       "path": "dist/catalogue-bundle.js",
-      "bytes": 2324293,
-      "sha256": "c2e179ba463c9292dac136c59ec9b144930823befc56db0fb4ae64fe29aba9b1"
+      "bytes": 2387137,
+      "sha256": "f4a0321b928d44063af8b12141f433a1fe94455a155425a36d5df9ca04df1c4e"
     },
     {
       "path": "dist/catalogue-parts/markers-001.js",
@@ -198,8 +198,8 @@
     },
     {
       "path": "dist/citation-data.js",
-      "bytes": 542933,
-      "sha256": "2167a2516ea624ff2004502b62e83b1162fe23b258a0235e84ee014ff8b3de2e"
+      "bytes": 550893,
+      "sha256": "54f33182b63e6d6e1a907a3aff93c44f13fb270682ca74a5e0883742e928b4b7"
     },
     {
       "path": "dist/citations.js",
@@ -253,8 +253,8 @@
     },
     {
       "path": "dist/data/literature.json",
-      "bytes": 555377,
-      "sha256": "be71ad120b5b8e31eb29207c364ee1df45e1f0ecac9c4306429030432240716b"
+      "bytes": 553950,
+      "sha256": "f431a82faa0a4504e18fad2d736276334274fd1afa3b2f0a16473fd86be5d9d0"
     },
     {
       "path": "dist/data/markers/part-001.json",
@@ -353,18 +353,18 @@
     },
     {
       "path": "dist/data/projects.json",
-      "bytes": 305317,
-      "sha256": "b20edea203ea7b5acc85f369fa122e9491aa2c59bffaa5f09f6ec8dde922a7ff"
+      "bytes": 326614,
+      "sha256": "05ac6ab76f489bc8247b3bcdf76e8f549e9518f0b6b3f05f9000e1759b037e5f"
     },
     {
       "path": "dist/data/research-categories.json",
-      "bytes": 70738,
-      "sha256": "5c859eb370d9a45d24bbe3986a216902ca2c80e4c9884a1eb50d1b108e28832a"
+      "bytes": 70400,
+      "sha256": "32e687f4f62c869eac5e0fcd9a990e214b155c0c567cf5a8cefd095706a041f2"
     },
     {
       "path": "dist/data/workflow.json",
-      "bytes": 1020094,
-      "sha256": "de8758057597de3cf2b08654b030d44ed2ed63513b2428a9389c71a80ff6e840"
+      "bytes": 1027932,
+      "sha256": "3fc805b8518a8950983097ae0bf0a51fe6a8d346d7f308ac0e006fb888eee4bd"
     },
     {
       "path": "dist/data-loader.js",
@@ -388,8 +388,8 @@
     },
     {
       "path": "dist/export-experience-v15.js",
-      "bytes": 17475,
-      "sha256": "24b8b064f6af04e55100c0d387e7cfa63c52ea15d1b12c41794732f90b4997fb"
+      "bytes": 17804,
+      "sha256": "3a66ea053db61087547d2d985f3117d96a8f4306a509300bd03653d56a0218a4"
     },
     {
       "path": "dist/export-layout-v10.js",
@@ -428,8 +428,8 @@
     },
     {
       "path": "dist/index.html",
-      "bytes": 12482,
-      "sha256": "ebfc9cf9e2f66ad614d44453a42ecd3d892a3cc971303b84ff74e1a02d83103f"
+      "bytes": 12763,
+      "sha256": "eba595c70f20225d5be101ee4639d8ea1d5cd80980c965494139bf069a218820"
     },
     {
       "path": "dist/interface-v15.css",
@@ -443,8 +443,8 @@
     },
     {
       "path": "dist/journey-scene-v17.js",
-      "bytes": 70629,
-      "sha256": "9c5014cd4fb07a863cc7b5a63df3df5f0fd5ab480a126b7f3795ecdfc87a1fbf"
+      "bytes": 72431,
+      "sha256": "7b692c86fd0ea9b5c5b75a9bf9d654a6f421c528b587e00a8dda9e0e2805ee6e"
     },
     {
       "path": "dist/journey-v17.css",
@@ -478,13 +478,13 @@
     },
     {
       "path": "dist/local-model-v22.js",
-      "bytes": 4316,
-      "sha256": "381c7801c4732d496061b2ee63bc9730b01e06152033086cd4baab0db534f523"
+      "bytes": 8466,
+      "sha256": "3a41af2d521bc5cc942c0f3ed3a1b1112b3b122abd8d39404f14b9a7e056e387"
     },
     {
       "path": "dist/local-model-worker-v22.js",
-      "bytes": 5744,
-      "sha256": "45dc7f8e772ae6076c629aebe792f205ce4e397b4ec99c9244e8539845ddfa35"
+      "bytes": 10223,
+      "sha256": "88eb012d947cf42db67ce94fa1b79f877b08e18f9f9d4f2d43a8b7c3708a7e4f"
     },
     {
       "path": "dist/locales.js",
@@ -513,13 +513,13 @@
     },
     {
       "path": "dist/marker-workspace.css",
-      "bytes": 39510,
-      "sha256": "51ddcca95ffec4594ac271653ae3e9b9745d85d805f9ed499e76dde37d5fdd38"
+      "bytes": 43720,
+      "sha256": "d19de988e010bed78a709ad7b2e154b277dec65bd452ac59f0c230cbc1bac3ee"
     },
     {
       "path": "dist/marker-workspace.js",
-      "bytes": 67856,
-      "sha256": "4fea30de0835eff55ec9dc126f7cb2b342da62f0c2d34537bbbf245ffe516151"
+      "bytes": 82435,
+      "sha256": "249aca4d854d3edf24947700839f6ebb9e0ea4b2197e4ae1216ebf5acabeec35"
     },
     {
       "path": "dist/mascot.css",
@@ -593,8 +593,8 @@
     },
     {
       "path": "dist/plan-inputs.js",
-      "bytes": 10309,
-      "sha256": "1be55905285827a00f7556fceb308bff6f041ea683b504c4e0cb27947227350b"
+      "bytes": 12724,
+      "sha256": "5c4eac05e24a462a783460520fa1103ed30352a68194694e6f0cb57feef05f9f"
     },
     {
       "path": "dist/plan-layout-v11.css",
@@ -648,13 +648,13 @@
     },
     {
       "path": "dist/plan-workbench.css",
-      "bytes": 16858,
-      "sha256": "12ab157e32896dc611a9c0786110075f4273751e047a58238349c93446686cc0"
+      "bytes": 19827,
+      "sha256": "63ea3afebe5c1394a28f5ef0492a64491b18f370d32012c0e1106d883bbf409a"
     },
     {
       "path": "dist/plan-workbench.js",
-      "bytes": 40459,
-      "sha256": "8e8d2478e37bb6c73763bf8a174754a8e527b97802167b0aa55999d872592786"
+      "bytes": 43872,
+      "sha256": "7fe7bee266c709b0e033286e06ac13add2caccce5a2cd2f8e8d76353b0650f8e"
     },
     {
       "path": "dist/polish-v19.css",
@@ -688,13 +688,13 @@
     },
     {
       "path": "dist/research-assistant-v22.css",
-      "bytes": 4713,
-      "sha256": "cff4fd0795596641dbbe7ed993c4849cfd728ab64da039e4b28a13cc1613c56e"
+      "bytes": 12281,
+      "sha256": "c915cd07836f5407be48290561429237338307afa484163544af698a11f11d3b"
     },
     {
       "path": "dist/research-assistant-v22.js",
-      "bytes": 23214,
-      "sha256": "ec349101494ccce4022d740b3bb9efeeba4a3f4d3228e2a9b7fe4fbb5f24abbb"
+      "bytes": 41260,
+      "sha256": "fe16409f0e72627f7db78a2e81b1e0260204bf82353ad9f2a3daaf743fe325ce"
     },
     {
       "path": "dist/research-atlas-v8.css",
@@ -703,8 +703,8 @@
     },
     {
       "path": "dist/research-atlas-v8.js",
-      "bytes": 23791,
-      "sha256": "249e90baf85e31613e8bb66c04bc11fcdd7f086a02fb25026b5d53f2e9d14fa9"
+      "bytes": 23807,
+      "sha256": "d2fd7bc903870e7a169a04b91203ae71434c8c165e695fed3c4b9c41d4a1f4a7"
     },
     {
       "path": "dist/research-coverage-v12.css",
@@ -748,8 +748,8 @@
     },
     {
       "path": "dist/user-experience-v16.js",
-      "bytes": 11726,
-      "sha256": "28633d86b65e25b4b6e11b5e81796c98b9e160256c130c1ee39a6a1e7165f187"
+      "bytes": 11773,
+      "sha256": "821b8f480ff1b69f1d457ca40085638591b1b000762a8de4b56289cbd0ebae46"
     },
     {
       "path": "dist/v10-research-locales.js",
@@ -1243,8 +1243,8 @@
     },
     {
       "path": "dist/workstation.js",
-      "bytes": 16665,
-      "sha256": "be946f5d443bf1f54664f0a761044274cf0216e11ab1baeadf3fb9200be52f89"
+      "bytes": 17268,
+      "sha256": "2837af6f93b32be858193080ce54395899e78c3d12a8b85fc9e16a30db1a03b0"
     },
     {
       "path": "dist/yeast3d.css",
@@ -1313,8 +1313,8 @@
     },
     {
       "path": "scripts/prepare-public.cjs",
-      "bytes": 3905,
-      "sha256": "2fbca8438584ae5ed310b688bcfcf3a61a0f3e4889ee75446f9c7297cda2b1c5"
+      "bytes": 4170,
+      "sha256": "cde50fdbb8ea27e101da5a8d7476726a14f385572ba2e6390f0f43b6e9ebd095"
     },
     {
       "path": "scripts/qa-doctor.cjs",
@@ -1363,8 +1363,8 @@
     },
     {
       "path": ".github/workflows/pages.yml",
-      "bytes": 2015,
-      "sha256": "54ae25b217f772b4022b6ea4c4e78c9bd6525f0025d29300ec05be9a3b9be6a4"
+      "bytes": 2285,
+      "sha256": "0136fa754c8218d12a88083f4d609912c0e459fe2f5b66a1de35d8427930c557"
     },
     {
       "path": ".gitattributes",
@@ -1378,8 +1378,8 @@
     },
     {
       "path": "docs/LOCAL_ASSISTANT.md",
-      "bytes": 7351,
-      "sha256": "58565a6c3c191ed5a1db0e79c48abadc3ac74fb554c189eea896e2885f20ae36"
+      "bytes": 15206,
+      "sha256": "57758cc924030909d0596679bea54417d3655b5a6fb92a1a3bf29ee59ca84f1d"
     },
     {
       "path": "docs/PUBLISHING.md",
@@ -1513,8 +1513,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 8743,
-      "sha256": "3d48d7d0535a46d698f7e7811649e8ad99809adbad23eeab40503b62dfaf9698"
+      "bytes": 9536,
+      "sha256": "438ffd4c9f75b785e5319a60fb0d25cb985ac4959f3b164eea85ee1ab0600012"
     },
     {
       "path": "LICENSE",
@@ -1588,13 +1588,13 @@
     },
     {
       "path": "research/qa-assistant-ui-v22.cjs",
-      "bytes": 8815,
-      "sha256": "1eb07b0ca97292da764144a0fa0700c87f8c60502091bed8dee446cff55cf6f0"
+      "bytes": 13783,
+      "sha256": "896455c420f41794e9612442c5024586105d344967e3cef3c77abfa206b23e63"
     },
     {
       "path": "research/qa-local-model-lifecycle-v22.cjs",
-      "bytes": 3166,
-      "sha256": "3210d9870a2877ff39ea270b44cf4d9b8864699947dc71621d59c86842a03006"
+      "bytes": 20541,
+      "sha256": "a4de3bbae2afaf790249564e8d72abb348dd5eaaac417c42ebc8a73b5d045894"
     },
     {
       "path": "research/qa-local-model-v22.cjs",
@@ -1603,8 +1603,8 @@
     },
     {
       "path": "research/qa-input-contracts-v22.cjs",
-      "bytes": 4140,
-      "sha256": "f6675665595f176c1eba63e344918d2b10a798ed90b637ce0378d0ffc3616e24"
+      "bytes": 11320,
+      "sha256": "012f72a390d51f22743f754209809fd14eedd48e131360c3fd7e5c1486388cfe"
     },
     {
       "path": ".gitignore",
@@ -1625,6 +1625,71 @@
       "path": "docs/SPECIMEN_STUDIO.md",
       "bytes": 1798,
       "sha256": "2e2e1033e284c391db057ceee7d2130092f7641dfb744eadbf6675f3d0fa675b"
+    },
+    {
+      "path": "dist/assistant-context-v24.js",
+      "bytes": 20368,
+      "sha256": "7c83c0b0d985e6fac8d94a131fa271ef34042b4a7b846f9fa2a0790b4ad770b1"
+    },
+    {
+      "path": "dist/database-hub-v24.css",
+      "bytes": 5595,
+      "sha256": "b442d00e45ba1e518e4860c44dac710f5e17448ce20890085dc51b7aab811ecb"
+    },
+    {
+      "path": "dist/database-hub-v24.js",
+      "bytes": 32807,
+      "sha256": "9e6fc2ae114e2ac1e88f0c63ea33ec80f3a6c774f99bab3e4a63d65cae4fd501"
+    },
+    {
+      "path": "dist/v24-research-locales.js",
+      "bytes": 92441,
+      "sha256": "506f94b4e5dff524a496df7384132cdde9ff66f7e51f63380036eed3d447e92a"
+    },
+    {
+      "path": "docs/DATABASE_RESOURCES.md",
+      "bytes": 12218,
+      "sha256": "8fb06eccde553d37eaea27095b523debffa9cbc005243c8e14fe2c603ec6b3b9"
+    },
+    {
+      "path": "docs/RESEARCH_UPDATE_V24.md",
+      "bytes": 9640,
+      "sha256": "763b4ac050800c6a372fd4164a30499848978b425c47c547b98bd571cc51c016"
+    },
+    {
+      "path": "research/qa-assistant-context-v24.cjs",
+      "bytes": 16730,
+      "sha256": "c724e974b7caecc464c6afbd783c6e19f566b1bc234dd9cba86cd07a4eb5f994"
+    },
+    {
+      "path": "research/qa-csl-publication-types-v24.cjs",
+      "bytes": 4773,
+      "sha256": "253abaf0ba94d6e414f2a99c8682a623ad8621b8e9f99808d4b667e29e9ee8d3"
+    },
+    {
+      "path": "research/qa-database-hub-v24.cjs",
+      "bytes": 6257,
+      "sha256": "4b17ee7aa551c7f4ab7ba34c80881afc0534aace69e5d3e0f431ca0ff9667a50"
+    },
+    {
+      "path": "research/qa-marker-metadata.cjs",
+      "bytes": 9264,
+      "sha256": "199ce3e81f02a66962f5074464d6104c8dec20ac71d2323c3eea3bc3a0a8b988"
+    },
+    {
+      "path": "research/qa-modal-marker-logic.cjs",
+      "bytes": 22168,
+      "sha256": "a5007522d64332ef8802fa608d44cb76f00f82ab7b31ecb682fe5cca333f3775"
+    },
+    {
+      "path": "research/v24_research_additions.cjs",
+      "bytes": 86732,
+      "sha256": "cb7e504fbd06608740ca13c6c05a607867b5932a08e2673199e44948aaa9460b"
+    },
+    {
+      "path": "research/write_catalogue_assets.py",
+      "bytes": 3800,
+      "sha256": "139bf60a17bbdcd9e2071dda3a996505393048f409d0162dbb25627166cb20f4"
     }
   ]
 }

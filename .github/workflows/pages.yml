@@ -29,6 +29,11 @@ jobs:
       - run: npm run test:public
       - run: node research/qa-local-model-lifecycle-v22.cjs
       - run: node research/qa-input-contracts-v22.cjs
+      - run: node research/qa-assistant-context-v24.cjs
+      - run: node research/qa-modal-marker-logic.cjs
+      - run: node research/qa-csl-publication-types-v24.cjs
+      - run: node research/qa-marker-metadata.cjs
+      - run: node research/qa-database-hub-v24.cjs
       - name: Assistant interface and catalogue integration
         run: |
           PORT=4173 node scripts/dev-server.cjs &
