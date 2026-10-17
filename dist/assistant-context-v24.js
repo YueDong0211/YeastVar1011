@@ -85,7 +85,7 @@
     const audit=planAudit();if(!audit)return'';
     return clean(`${text('routeLabel')}: ${text(audit.route)}. ${text('declared')}: ${audit.groups.declared.map(r=>inputName(r.id)).join('; ')}. ${text('missing')}: ${audit.groups.missing.slice(0,5).map(r=>inputName(r.id)).join('; ')}. ${text('planned')}: ${audit.groups.planned.slice(0,4).map(r=>inputName(r.id)).join('; ')}.`).slice(0,650);
   }
-  function pageContext(){return {route:A()?.route?.()||'overview',title:clean(document.querySelector('#db24-title,#j17-panel-title,#main h1')?.textContent)};}
+  function pageContext(){return {route:A()?.route?.()||'overview',title:clean((document.querySelector('#db24-title')||document.querySelector('#j17-panel-title')||document.querySelector('#main h1'))?.textContent)};}
   function pageHelp({includePlan=true}={}){
     const page=pageContext();
     if(page.route==='markers'&&location.hash.includes('view=databases'))return{kind:'guide',answer:text('databasesHelp'),hits:[],actions:[{route:'#markers?view=databases',label:text('openDatabases')}]};

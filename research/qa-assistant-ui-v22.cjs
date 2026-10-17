@@ -9,6 +9,7 @@ async function check(name,fn){try{const detail=await fn();checks.push({name,pass
 (async()=>{
  const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_PATH||(process.platform==='win32'?'C:/Program Files/Google/Chrome/Application/chrome.exe':undefined)});
  const page=await browser.newPage({viewport:{width:1440,height:1000},reducedMotion:'reduce'});
+ async function waitDatabase(stage){try{await page.locator('.db24').waitFor({state:'visible',timeout:5000});}catch(error){const diagnostic=await page.evaluate(()=>{const node=document.querySelector('.db24'),ancestors=[];for(let el=node;el&&ancestors.length<7;el=el.parentElement){const style=getComputedStyle(el),box=el.getBoundingClientRect();ancestors.push({tag:el.tagName,id:el.id,className:el.className,hidden:el.hidden,display:style.display,visibility:style.visibility,opacity:style.opacity,width:box.width,height:box.height});}return{hash:location.hash,route:window.YV_APP?.route?.(),tab:window.YV_MARKERS?.getState?.().tab,module:typeof window.YV_DATABASE_HUB,modulePage:typeof window.YV_DATABASE_HUB?.page,scripts:[...document.scripts].filter(s=>/database-hub|marker-workspace\.js/.test(s.src)).map(s=>s.src),activeTab:document.querySelector('.mw-tabs [aria-current=page]')?.dataset.value,dbNodes:document.querySelectorAll('.db24').length,ancestors,mainExcerpt:document.querySelector('#main')?.innerHTML.slice(0,2200)};});console.error('DATABASE_DIAGNOSTIC',stage,JSON.stringify(diagnostic));throw Error(stage+': '+error.message);}}
  page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(/huggingface|hf\.co/.test(r.url()))external.push(r.url());});
   await page.addInitScript(()=>{if(window===window.top)sessionStorage.setItem('yv.intro.v3','seen');});
  try{
@@ -89,16 +90,18 @@ async function check(name,fn){try{const detail=await fn();checks.push({name,pass
    await page.waitForFunction(()=>/^235\b/.test(document.querySelector('.mw-result-summary > strong')?.textContent.trim()||''));
    assert.equal(await page.evaluate(()=>YV_MARKERS.filterResults().length),235);
    const filtered=await page.evaluate(()=>JSON.stringify(YV_MARKERS.exportData().candidateQuery.filters));
-   await page.locator('.mw-tabs [data-mw=tab][data-value=databases]').click();await page.waitForURL('**/#markers?view=databases');await page.locator('.db24').waitFor();
+   await page.locator('.mw-tabs [data-mw=tab][data-value=databases]').click();await page.waitForURL('**/#markers?view=databases');await waitDatabase('metadata: first tab click');
    await page.locator('.mw-tabs [data-mw=tab][data-value=coverage]').click();await page.waitForURL('**/#markers?view=coverage');
-   await page.goBack();await page.waitForURL('**/#markers?view=databases');await page.locator('.db24').waitFor();
+   await page.goBack();await page.waitForURL('**/#markers?view=databases');await waitDatabase('metadata: Back from coverage');
    await page.goBack();await page.waitForURL('**/#markers?view=catalogue');await page.locator('#mw-condition-query').waitFor({state:'attached'});
    assert.equal(await page.locator('#mw-condition-query').inputValue(),'NaCl');assert.equal(await page.locator('select[data-mw-value=direction]').inputValue(),'higher');
    assert.match(await page.locator('.mw-result-summary > strong').innerText(),/^235\b/);assert.equal(await page.evaluate(()=>JSON.stringify(YV_MARKERS.exportData().candidateQuery.filters)),filtered);
    assert.equal(await page.evaluate(()=>JSON.stringify(YV_BUILDER.getPlan())),before);
   });
   await check('Twelve database cards and expanded import fields fit five languages at 320, 390 and 1440 pixels',async()=>{
-   await page.evaluate(()=>{YV_COMPANION.close();location.hash='#markers?view=databases';});await page.locator('.db24').waitFor();
+   // Isolate this check from a previous navigation failure at the same hash.
+   await page.evaluate(()=>{YV_COMPANION.close();location.hash='#markers?view=catalogue';});await page.locator('.mw-catalogue').waitFor({state:'visible',timeout:5000});
+   await page.evaluate(()=>{location.hash='#markers?view=databases';});await waitDatabase('database layouts: fresh deep link');
    for(const width of [320,390,1440])for(const language of ['zh','en','fr','es','eu']){
     await page.setViewportSize({width,height:width<500?844:1000});await page.evaluate(language=>YV_APP.setPreference('language',language),language);
     assert.equal(await page.locator('.db24-card').count(),12,`${language}/${width}: resource count`);
