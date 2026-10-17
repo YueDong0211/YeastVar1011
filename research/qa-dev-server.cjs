@@ -120,6 +120,15 @@ async function childReady(child) {
     fs.symlinkSync(outside, path.join(fixture, 'escape'), process.platform === 'win32' ? 'junction' : 'dir');
     const res = await request(origin, '/escape/private.txt'); assert.equal(res.status, 403); assert(!res.text.includes('OUTSIDE_ROOT_SENTINEL'));
   });
+  await check('A root directory alias resolves consistently while external links stay blocked', async () => {
+    const alias = path.join(temporary, 'site-alias');
+    fs.symlinkSync(fixture, alias, process.platform === 'win32' ? 'junction' : 'dir');
+    const aliasedOrigin = await listen(alias);
+    const inside = await request(aliasedOrigin, '/');
+    assert.equal(inside.status, 200); assert.match(inside.text, /Fixture/);
+    const outsideRequest = await request(aliasedOrigin, '/escape/private.txt');
+    assert.equal(outsideRequest.status, 403); assert(!outsideRequest.text.includes('OUTSIDE_ROOT_SENTINEL'));
+  });
   await check('Loopback binding and Host validation reject a foreign hostname', async () => {
     assert.equal(servers[0].address().address, '127.0.0.1');
     assert.equal((await request(origin, '/', { headers: { Host: 'attacker.example' } })).status, 400);

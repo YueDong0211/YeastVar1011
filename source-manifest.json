@@ -218,13 +218,13 @@
     },
     {
       "path": "dist/cluster-workspace-v21.css",
-      "bytes": 19040,
-      "sha256": "829f26087f1bd96fc3d2ccb7c4bcd836a46e261885e3d83c02004feba91ab7b3"
+      "bytes": 19104,
+      "sha256": "b2e112426465f35e3472830a475d5ffa73976b7e920dc87a502af983f695b1f2"
     },
     {
       "path": "dist/cluster-workspace-v21.js",
-      "bytes": 47999,
-      "sha256": "35d3210fd72c56a0fa0a166cf5ea784dac6d93090c472fde9e48655ef4c98c83"
+      "bytes": 48428,
+      "sha256": "a5d22a19005f3d6e5f4fefcca3d51d670e47bcb6d87e3d3cfac198c893e2baef"
     },
     {
       "path": "dist/companion-hub.css",
@@ -518,8 +518,8 @@
     },
     {
       "path": "dist/mascot.js",
-      "bytes": 29350,
-      "sha256": "19b792d78ec3ca1692fadd579ab803e49567790af65b3409fbcd8811b011e9ea"
+      "bytes": 29406,
+      "sha256": "1e451c2b08319b7cfae24d6adcb9bb5ced2494944a7519221027c15663013f55"
     },
     {
       "path": "dist/method-atlas-v7.css",
@@ -1228,8 +1228,8 @@
     },
     {
       "path": "scripts/dev-server.cjs",
-      "bytes": 8723,
-      "sha256": "5d5a4dcd8b94a8e728d80b60368fcc0f02ed746d6098a5a1b7e8d6aa22111624"
+      "bytes": 8891,
+      "sha256": "7cabc0257f45776d1f3f5fa050060ae0856b2dd17dc15c1ed3dedb6443910088"
     },
     {
       "path": "scripts/doctor.cjs",
@@ -1289,7 +1289,7 @@
     {
       "path": ".github/workflows/bioconda-package.yml",
       "bytes": 2059,
-      "sha256": "a8612f3b06969d09a69f2427079feeddad2bb41e944b72f5700ca766045a4c89"
+      "sha256": "ca6ae2272139c9af085fcb8a44ce15733ccc2b646681a65d3733dd0a7d185cc8"
     },
     {
       "path": ".github/workflows/pages.yml",
@@ -1379,7 +1379,7 @@
     {
       "path": "packaging/bioconda/README.md",
       "bytes": 5580,
-      "sha256": "a41ee93538a8b190f7c85399b4a544cf137103d197f7e7b3f78325f0357f24fe"
+      "sha256": "a1800108c3bb42d6ce6bfedd07e1d3435b3e6915b287bdc0f5c87a6715ac5ac6"
     },
     {
       "path": "packaging/bioconda/build.sh",
@@ -1478,8 +1478,8 @@
     },
     {
       "path": "research/qa-dev-server.cjs",
-      "bytes": 15057,
-      "sha256": "6fe6cd3aff265ea4d0f8d4312b39b575200e8d197c25d2a07f035bea7a31416c"
+      "bytes": 15681,
+      "sha256": "0aed4097d3ae06e27d3f0b84802d4f1fc131f91e47f96db1d5fc0815ecac79fc"
     },
     {
       "path": "research/package-portable.ps1",

@@ -80,7 +80,9 @@ function byteRange(value, length) {
 }
 
 function createDevServer(options = {}) {
-  const root = fs.realpathSync(options.root || DEFAULT_ROOT);
+  // Use the native resolver for both root and requested files. Windows runners
+  // can expose TEMP as an 8.3 alias; mixing resolvers misclassifies that alias.
+  const root = fs.realpathSync.native(options.root || DEFAULT_ROOT);
   if (!fs.statSync(root).isDirectory()) throw new Error('The static root must be a directory.');
   const prefix = basePath(options.basePath || '/');
   const server = http.createServer(async (req, res) => {

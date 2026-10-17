@@ -50,9 +50,9 @@ jobs:
           version=$(node -p 'require("./package.json").version')
           node scripts/render-bioconda.cjs --version "$version" --local-source . --output releases/recipe/ci
           bash -n releases/recipe/ci/build.sh releases/recipe/ci/run_test.sh
-          conda render --override-channels -c conda-forge -c bioconda releases/recipe/ci
+          conda-render --override-channels -c conda-forge -c bioconda releases/recipe/ci
       - name: Build and test installed package
-        run: conda build --override-channels -c conda-forge -c bioconda --output-folder "$RUNNER_TEMP/yeastvar-conda-build" releases/recipe/ci
+        run: conda-build --override-channels -c conda-forge -c bioconda --output-folder "$RUNNER_TEMP/yeastvar-conda-build" releases/recipe/ci
       - uses: actions/upload-artifact@v4
         with:
           name: yeastvar1011-conda-candidate

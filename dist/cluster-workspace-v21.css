@@ -43,7 +43,7 @@
 .c21-step h3{font-size:18px;line-height:1.45;margin:3px 0 11px;font-weight:550}
 .c21-step p{font-size:12px;margin:0 0 15px;max-width:95ch}
 .c21-command{position:relative;display:flex;align-items:flex-start;gap:14px;padding:15px 15px 15px 18px;margin:13px 0 6px;border:1px solid var(--c21-edge);border-radius:11px;background:color-mix(in srgb,var(--side) 88%,var(--panel));max-width:100%;min-width:0;box-shadow:inset 0 1px 0 #02081718}
-.c21-command pre{flex:1;min-width:0;overflow:auto;margin:0;padding:0;font:12px/1.85 ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--text);white-space:pre;scrollbar-width:thin}
+.c21-command pre{flex:1;min-width:0;overflow:auto;margin:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;font:12px/1.85 ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--text);white-space:pre;scrollbar-width:thin}
 .c21-command code{font:inherit;background:transparent;padding:0;color:inherit}
 .c21-copy{display:flex;align-items:center;justify-content:center;gap:6px;flex:none;min-width:33px;min-height:33px;padding:7px;border-radius:7px;border:1px solid var(--c21-edge);background:var(--panel);color:var(--muted);font:inherit;font-size:10px;cursor:pointer}
 .c21-copy>svg{width:15px;height:15px}.c21-copy[data-copied=true]{color:var(--green);border-color:var(--green)}

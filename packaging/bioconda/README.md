@@ -33,7 +33,7 @@ Use a dedicated build environment:
 ```sh
 conda create -n yeastvar-build --override-channels -c conda-forge conda-build nodejs=24
 conda activate yeastvar-build
-conda build --override-channels -c conda-forge -c bioconda releases/recipe/yeastvar1011-21.0.0
+conda-build --override-channels -c conda-forge -c bioconda releases/recipe/yeastvar1011-21.0.0
 ```
 
 The independent `bioconda-package.yml` workflow performs a native Linux build against the checked-out source before a new tag exists. It renders a **local-source CI recipe**, builds the package, and runs its installed-command tests. A local-source recipe is never the submission recipe. Render the final tag URL and real archive SHA256 after the release is available, and build that release recipe before submitting it to Bioconda.
