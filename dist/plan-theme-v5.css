@@ -1,0 +1,86 @@
+/* A quiet astronomical shell; scientific surfaces stay readable and all decoration ignores input. */
+html:root[data-theme=dark]{--bg:#080d1c;--panel:#111a2d;--side:#0d1528;--ink:#e8edf8;--text:#e8edf8;--surface:#111a2d;--muted:#a5b3cb;--soft:#8293b0;--line:#2a3852;--green:#91c9f6;--green-soft:#1a304b;--lime:#b9d7f3;--purple:#c6b4ed;--purple-soft:#302743;--blue:#91c9f6;--blue-soft:#1a304b;--amber:#ebc58d;--amber-soft:#362d24;--red:#eea7ae;--shadow:0 20px 60px #02040b55;--ambient-rgb:120,165,235;--ambient-blue-rgb:121,104,215;--ambient-gold-rgb:192,176,234;--cosmos-card:rgba(17,26,45,.94);--cosmos-edge:rgba(145,180,225,.18);--cosmos-veil:rgba(9,16,33,.76)}
+html:root[data-theme=light]{--bg:#eff2f9;--panel:#fcfdff;--side:#e8edf7;--ink:#253553;--text:#253553;--surface:#fcfdff;--muted:#596b89;--soft:#6a7a95;--line:#ccd6e7;--green:#275c99;--green-soft:#e2edfb;--lime:#c4d7ef;--purple:#705693;--purple-soft:#eee8f7;--blue:#275c99;--blue-soft:#e2edfb;--amber:#886126;--amber-soft:#f8f0de;--red:#a34455;--shadow:0 16px 48px #21335112;--cosmos-card:rgba(252,253,255,.96);--cosmos-edge:rgba(65,93,140,.2);--cosmos-veil:rgba(236,241,250,.88)}
+html[data-theme] body{background:var(--bg);color:var(--ink)}
+html.cosmos-theme .app-shell{position:relative;z-index:1;background:transparent}
+#cosmos-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none!important;user-select:none;contain:strict;opacity:var(--station-ambient,.85)}
+html.cosmos-theme #ambient-canvas,html.cosmos-theme .ambient-glow{display:none!important}
+html.cosmos-theme body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 82% 8%,#38437530,transparent 48%),radial-gradient(ellipse at 8% 62%,#32457627,transparent 43%),radial-gradient(ellipse at 63% 90%,#4433651a,transparent 45%)}
+html[data-theme=light].cosmos-theme body:before{background:radial-gradient(ellipse at 82% 8%,#a2b8e020,transparent 48%),radial-gradient(ellipse at 8% 62%,#b8a5d91a,transparent 43%)}
+.cosmos-off #cosmos-canvas,.wallpaper-off #cosmos-canvas{display:none!important}
+html.cosmos-off body:before,html.wallpaper-off body:before{display:none}
+html[data-theme] .sidebar{background:var(--cosmos-veil);border-right-color:var(--cosmos-edge);box-shadow:12px 0 44px #02061112;backdrop-filter:blur(2px)}
+html[data-theme] .sidebar:before{background:linear-gradient(160deg,#50609716,transparent 48%,#63517909);opacity:1;pointer-events:none}
+html[data-theme] .topbar{background:var(--cosmos-veil);border-bottom-color:var(--cosmos-edge);backdrop-filter:blur(5px);box-shadow:0 1px 0 #b3ccff04}
+html[data-theme] .nav-link{color:var(--muted);border-radius:10px}
+html[data-theme] .nav-link:hover{background:color-mix(in srgb,var(--green-soft) 66%,transparent);color:var(--ink)}
+html[data-theme] .nav-link.active{background:linear-gradient(100deg,var(--green-soft),color-mix(in srgb,var(--green-soft) 58%,transparent));box-shadow:inset 2px 0 var(--green);color:var(--green)}
+html[data-theme] .nav-link.active:after{box-shadow:none}
+html[data-theme] .population-label{background:color-mix(in srgb,var(--panel) 78%,transparent);border-color:var(--line)}
+html[data-theme] .brand-emblem{box-shadow:0 0 22px #9daaff14;border-radius:12px}
+.sidebar-bottom{border-top-color:var(--cosmos-edge)}
+.sidebar-label,[data-nav-group]>h3,[data-nav-group]>.nav-group-label{letter-spacing:.1em;color:var(--soft)}
+.status-dot{background:var(--blue);box-shadow:0 0 0 3px color-mix(in srgb,var(--blue) 12%,transparent)}
+html[data-theme] .avatar{background:var(--green-soft);border-color:var(--line);color:var(--green)}
+.search-trigger{background:color-mix(in srgb,var(--panel) 84%,transparent);border-color:var(--line);border-radius:10px;box-shadow:inset 0 1px 0 #c4daff04}
+html[data-theme] .panel,html[data-theme] .metric-card,html[data-theme] .tool-card,html[data-theme] .paper-card,html[data-theme] .formula-card,.filter-panel,.mw-card,.mw-source-card,.mw-panel-card,.project-card,.qc-stage,.station-question,.station-path,.station-stat-bar,.table-wrap{background:var(--cosmos-card);border-color:var(--line);box-shadow:0 1px 0 #c6dbff03}
+html[data-theme] .tool-card:hover,html[data-theme] .metric-card:hover,html[data-theme] .paper-card:hover{border-color:color-mix(in srgb,var(--green) 55%,var(--line));box-shadow:0 9px 27px #02061713;transform:translateY(-1px)}
+html[data-theme] .btn{border-color:var(--line);background:var(--panel);color:var(--ink);box-shadow:0 1px 0 #a5c8ff05;border-radius:10px}
+html[data-theme] .btn:hover{background:color-mix(in srgb,var(--green-soft) 45%,var(--panel));border-color:color-mix(in srgb,var(--green) 45%,var(--line));box-shadow:0 5px 18px #00000010;filter:none}
+html[data-theme] .btn-primary{color:#11243a;background:linear-gradient(135deg,#a6d7fb,#8fbcf0);border-color:#a6d7fb;font-weight:650;box-shadow:0 3px 14px #86b5f017}
+html[data-theme] .btn-primary:hover{background:linear-gradient(135deg,#b5e0ff,#a4caf7);border-color:#b5e0ff;color:#10243a;box-shadow:0 4px 22px #91c6fc20}
+html[data-theme=light] .btn-primary{background:linear-gradient(135deg,#2d68a5,#466aa8);border-color:#2d68a5;color:#fff}
+html[data-theme=light] .btn-primary:hover{background:#21598f;color:#fff}
+html[data-theme] .btn-quiet,html[data-theme] .btn-ghost{background:transparent;box-shadow:none}
+html[data-theme] .chip{background:color-mix(in srgb,var(--panel) 80%,var(--bg));border-color:var(--line);color:var(--muted);border-radius:7px}
+html[data-theme] .chip:hover,html[data-theme] .chip.active{background:var(--green-soft);border-color:color-mix(in srgb,var(--green) 50%,var(--line));color:var(--green)}
+html[data-theme] .phase-buttons button.active,html[data-theme] .phase-tab.active{background:var(--green-soft);border-color:var(--green);color:var(--green)}
+html[data-theme] .grade-A{border-color:color-mix(in srgb,var(--green) 40%,var(--line))}
+html[data-theme] .grade-B{border-color:color-mix(in srgb,var(--blue) 40%,var(--line))}
+html[data-theme] .grade-C{border-color:color-mix(in srgb,var(--purple) 40%,var(--line))}
+html[data-theme] .grade-D{border-color:color-mix(in srgb,var(--amber) 40%,var(--line))}
+html[data-theme] .notice-green{background:var(--green-soft);border-color:var(--line);color:var(--ink)}
+html[data-theme] .notice-amber{background:var(--amber-soft);border-color:color-mix(in srgb,var(--amber) 30%,var(--line));color:var(--ink)}
+html[data-theme] .command-block{background:var(--side);border-color:var(--line)}
+html[data-theme] .command-block pre{color:var(--green)}
+html[data-theme] tbody tr:hover{background:color-mix(in srgb,var(--green-soft) 50%,var(--panel))}
+html[data-theme] .evidence-card{background:var(--green-soft);border-color:var(--line)}
+html[data-theme] .evidence-card h3{color:var(--ink)}
+html[data-theme] .evidence-card p{color:var(--muted)}
+html[data-theme] .evidence-bar .bar-track{background:var(--line)}
+html[data-theme] .hero{background:linear-gradient(115deg,var(--panel),var(--green-soft));border-color:var(--line)}
+html[data-theme] .tool-monogram{background:var(--green-soft)!important;border-color:var(--line)!important;color:var(--green);border-radius:10px}
+html[data-theme] .tool-card .tool-call{background:var(--side);color:var(--muted)}
+.method-parameter-group,.method-advanced,.method-select{background:color-mix(in srgb,var(--panel) 92%,transparent);border-color:var(--line)}
+.method-parameter-group>summary:hover,.method-advanced>summary:hover{background:var(--green-soft)}
+html[data-theme] .detail-drawer,html[data-theme] .drawer-top,.mw-evidence-dialog{background:var(--bg);border-color:var(--line)}
+.detail-drawer{box-shadow:-14px 0 60px #00000030}
+.rich-options,.command-palette{background:var(--panel);border:1px solid var(--line);box-shadow:0 22px 65px #02061455}
+.rich-option-items>button:hover{background:var(--green-soft)}
+.station-cover{border-color:#3b506b}
+.station-cover-top>span:first-child>span,.station-guide-link{color:#aad5f5}
+.station-secondary{border-color:#5c7299!important;color:#dce8fb!important;background:#122038c4!important}
+.station-cover-shade{background:linear-gradient(90deg,#080e1eea 0%,#0b1425b8 38%,#0c162525 78%),linear-gradient(0deg,#080e1ebd,transparent 30%,transparent 85%,#080e1e50)}
+html[data-theme] .intro{background:#080d1c!important;color:var(--ink)}
+.intro:before,.intro:after{border-color:#94b8ed20;box-shadow:0 0 90px #7c92dc0d}
+.intro-wordmark span,.intro-skip{color:#a9ceef}.intro-orbit i{border-color:#aacbff36}.intro-line{background:#233756}.intro-line b{background:#a9ceef}
+.footer{border-top-color:var(--cosmos-edge);background:transparent}
+.toast{box-shadow:0 12px 42px #0004;border:1px solid var(--line)}
+::selection{background:#6d9fd955;color:var(--ink)}
+button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline-color:var(--green)}
+/* The six-step plan is the focal surface; catalogue pages share its palette. */
+#plan-workbench .pw-hero{position:relative;background:radial-gradient(ellipse at 96% 15%,color-mix(in srgb,var(--purple) 10%,transparent),transparent 53%),linear-gradient(120deg,color-mix(in srgb,var(--panel) 86%,transparent),color-mix(in srgb,var(--green-soft) 55%,transparent));border:1px solid var(--line);border-radius:20px;box-shadow:inset 0 1px 0 #bfd8ff05}
+#plan-workbench .pw-hero h1{color:var(--ink);font-weight:550;letter-spacing:-.035em}
+#plan-workbench .pw-stepper{background:color-mix(in srgb,var(--panel) 85%,transparent);border:1px solid var(--line);border-radius:14px}
+#plan-workbench .pw-stepper button{border-radius:10px;color:var(--muted);transition:background .18s,color .18s,border-color .18s}
+#plan-workbench .pw-stepper button:hover{background:color-mix(in srgb,var(--green-soft) 65%,transparent);color:var(--ink)}
+#plan-workbench .pw-stepper button.active,#plan-workbench .pw-stepper button[aria-current=step]{color:var(--green);background:var(--green-soft);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--green) 28%,transparent)}
+#plan-workbench .pw-content,#plan-workbench .pw-summary,#plan-workbench .pw-section{background:var(--cosmos-card);border-color:var(--line)}
+#plan-workbench .pw-summary{box-shadow:0 6px 26px #03061312}
+#plan-workbench .pw-method,#plan-workbench .pw-metric{background:color-mix(in srgb,var(--panel) 92%,var(--bg));border-color:var(--line);transition:border-color .18s,background .18s}
+#plan-workbench .pw-method:hover,#plan-workbench .pw-metric:hover{border-color:color-mix(in srgb,var(--green) 38%,var(--line));background:color-mix(in srgb,var(--green-soft) 27%,var(--panel))}
+#plan-workbench .pw-method:has(input:checked),#plan-workbench .pw-metric:has(input:checked){border-color:color-mix(in srgb,var(--green) 55%,var(--line));background:color-mix(in srgb,var(--green-soft) 50%,var(--panel))}
+#plan-workbench .pw-handoff{background:linear-gradient(120deg,var(--green-soft),var(--panel));border-color:var(--line)}
+#plan-workbench .pw-step-tabs button.active,#plan-workbench .pw-step-tabs button[aria-selected=true]{color:var(--green);border-color:var(--green)}
+@media(max-width:760px){html[data-theme] .sidebar{background:color-mix(in srgb,var(--side) 96%,transparent)}html[data-theme] .topbar{backdrop-filter:blur(4px);background:color-mix(in srgb,var(--side) 88%,transparent)}#plan-workbench .pw-hero{border-radius:15px}#plan-workbench .pw-stepper{border-radius:12px}.tool-card:hover,.metric-card:hover{transform:none!important}}
+@media(prefers-reduced-motion:reduce){#cosmos-canvas{will-change:auto}.tool-card,.metric-card,#plan-workbench .pw-method,#plan-workbench .pw-metric{transition:none!important}}

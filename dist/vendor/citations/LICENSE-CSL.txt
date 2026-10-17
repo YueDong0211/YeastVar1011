@@ -1,0 +1,5 @@
+Citation Style Language APA style and locales. Copyright their respective contributors. Licensed under Creative Commons Attribution-ShareAlike 3.0 Unported.
+https://creativecommons.org/licenses/by-sa/3.0/
+https://github.com/citation-style-language/styles
+https://github.com/citation-style-language/locales
+No style modifications made.

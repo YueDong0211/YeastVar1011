@@ -1,0 +1,50 @@
+.yv3d-stage {
+  --yv3d-phase: #76b8a8;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  overflow: hidden;
+  border-radius: inherit;
+  touch-action: none;
+  cursor: grab;
+  background: radial-gradient(ellipse at 49% 45%, color-mix(in srgb, var(--yv3d-phase) 8%, transparent), transparent 68%);
+  -webkit-tap-highlight-color: transparent;
+}
+.yv3d-stage[data-theme="dark"] {
+  background: radial-gradient(ellipse at 49% 45%, color-mix(in srgb, var(--yv3d-phase) 12%, transparent), transparent 70%);
+}
+.yv3d-stage.is-dragging { cursor: grabbing; }
+.yv3d-stage:focus-visible { outline: 2px solid var(--yv3d-phase); outline-offset: -4px; }
+.yv3d-stage > canvas, .yv3d-fallback-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+}
+.yv3d-stage[data-mode="fallback"] { cursor: default; touch-action: pan-y; }
+.yv3d-fallback-svg { position: absolute; inset: 0; }
+.yv3d-schematic, .yv3d-fallback-badge {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: .045em;
+  color: #607579;
+}
+.yv3d-schematic { inset-inline: 16px; bottom: 12px; text-align: center; opacity: .8; }
+.yv3d-fallback-badge {
+  top: 12px;
+  inset-inline-end: 12px;
+  padding: 4px 8px;
+  border: 1px solid #b9c9c9;
+  border-radius: 5px;
+  background: #f3f7f4;
+}
+.yv3d-stage[data-theme="dark"] .yv3d-schematic { color: #b0c5ca; }
+.yv3d-stage[data-theme="dark"] .yv3d-fallback-badge { color: #c8d8dc; background: #1c3036; border-color: #456169; }
+@media (prefers-reduced-motion: reduce) { .yv3d-stage * { animation: none !important; transition: none !important; } }

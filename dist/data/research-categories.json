@@ -1,0 +1,2258 @@
+{
+  "updated": "2026-10-16",
+  "version": "2.0",
+  "title": "1011酵母单细胞研究方案构建器",
+  "titleEn": "1011 Yeast Single-cell Research Builder",
+  "scope": "从已有短读scRNA FASTQ出发，按研究问题选择分析、指标、工具与依赖；网站不执行测序分析，也不承诺所有分支当前可运行。",
+  "scopeEn": "Select analyses, metrics, tools and dependencies from existing short-read scRNA FASTQ; the site does not execute sequencing analyses or guarantee branch eligibility.",
+  "categories": [
+    {
+      "id": "raw_qc",
+      "title": "原始数据与质量控制",
+      "titleEn": "Raw data and QC",
+      "description": "从原始FASTQ到可追溯单细胞分子计数。",
+      "descriptionEn": "From raw FASTQ to traceable molecule counts.",
+      "stepIds": [
+        "design",
+        "fastq",
+        "tags",
+        "bam",
+        "matrix",
+        "cellcalling",
+        "ambient",
+        "doublets",
+        "cellqc",
+        "sampleqc",
+        "noise",
+        "validation"
+      ],
+      "toolIds": [
+        "seqkit",
+        "fastqc",
+        "fastp",
+        "cutadapt",
+        "multiqc",
+        "fastqscreen",
+        "starsolo",
+        "umitools",
+        "cellranger",
+        "kb",
+        "alevinfry",
+        "dropest",
+        "scpipe",
+        "samtools",
+        "picard",
+        "rseqc",
+        "rnaseqc",
+        "bedtools",
+        "igv",
+        "wasp",
+        "dropletutils",
+        "dropkick",
+        "emptynn",
+        "diem",
+        "sccb2",
+        "cellbender",
+        "soupx",
+        "decontx",
+        "sccdc",
+        "fastcar",
+        "scar",
+        "cellclear",
+        "scdblfinder",
+        "scrublet",
+        "doubletfinder",
+        "solo",
+        "scds",
+        "doubletdetection",
+        "doubletdecon",
+        "demuxlet",
+        "cellsnp",
+        "vireo",
+        "souporcell",
+        "seurat",
+        "scanpy",
+        "scuttle",
+        "scater",
+        "sampleqc",
+        "miqc",
+        "dropletqc",
+        "ddqc",
+        "scvi",
+        "edger",
+        "velocyto",
+        "pysam",
+        "memento"
+      ],
+      "metricIds": [
+        "metadata_complete",
+        "cell_id_collision",
+        "independent_replicates",
+        "fq_reads",
+        "fq_lengths",
+        "fq_base_quality",
+        "fq_n_fraction",
+        "fq_gc",
+        "fq_adapter",
+        "fq_polya",
+        "fq_complexity",
+        "fq_pair_match",
+        "cb_exact",
+        "cb_corrected",
+        "cb_unresolved",
+        "umi_invalid",
+        "umi_correction",
+        "umi_reads",
+        "cross_library_molecules",
+        "multi_gene_umi",
+        "mapped_unique",
+        "mapped_multi",
+        "mapped_unmapped",
+        "mismatch_bases",
+        "softclip_bases",
+        "strand_agreement",
+        "chrom_reads",
+        "mt_reads",
+        "exon_reads",
+        "intron_reads",
+        "intergenic_reads",
+        "rrna_reads",
+        "gene_body_coverage",
+        "allele_remap_bias",
+        "gene_assignment",
+        "full_gene_count",
+        "spliced_count",
+        "unspliced_count",
+        "ambiguous_fraction",
+        "multigene_allocated",
+        "layer_delta",
+        "feature_missing",
+        "barcode_rank",
+        "emptydrop_fdr",
+        "cell_probability",
+        "reads_in_cells",
+        "calling_disagreement",
+        "ambient_fraction",
+        "ambient_gene",
+        "removed_counts",
+        "increased_counts",
+        "zero_to_nonzero",
+        "correction_variance_shift",
+        "doublet_score",
+        "doublet_disagreement",
+        "identity_posterior",
+        "identity_gap",
+        "allele_support",
+        "identity_unassigned",
+        "total_umi",
+        "detected_genes",
+        "mt_umi",
+        "rp_umi",
+        "rrna_umi",
+        "top_gene_fraction",
+        "top_n_fraction",
+        "complexity_residual",
+        "sampling_saturation",
+        "qc_joint_outlier",
+        "gene_detect_rate",
+        "gene_zero_fraction",
+        "gene_unique_support",
+        "cells_per_strain",
+        "retention_fraction",
+        "replicate_concordance",
+        "depth_imbalance",
+        "size_factor",
+        "pc_depth_association",
+        "batch_asw",
+        "ilisi",
+        "state_preservation",
+        "neighbor_retention",
+        "marker_coverage",
+        "annotation_score",
+        "annotation_margin",
+        "annotation_conflict",
+        "annotation_transfer",
+        "marker_mean",
+        "marker_logfc",
+        "marker_auc",
+        "marker_specificity",
+        "marker_stability",
+        "velocity_genes",
+        "trajectory_stability",
+        "junction_support",
+        "internal_priming",
+        "fq_file_integrity",
+        "fq_lane_balance",
+        "fq_tile_quality",
+        "cb_base_quality",
+        "umi_base_quality",
+        "cb_base_composition",
+        "umi_base_composition",
+        "cb_edit_distance",
+        "umi_collision_risk",
+        "umi_singleton_fraction",
+        "umi_dedup_strategy_delta",
+        "bam_tag_completeness",
+        "bam_reference_consistency",
+        "bam_readgroup_completeness",
+        "bam_index_integrity",
+        "bam_secondary_fraction",
+        "bam_supplementary_fraction",
+        "bam_mapq_distribution",
+        "bam_insertions_deletions",
+        "bam_unmapped_reasons",
+        "bam_duplicate_flag",
+        "bam_rrna_multimap",
+        "bam_contig_unexpected",
+        "bam_overlap_ambiguity",
+        "bam_junction_motif",
+        "bam_junction_overhang",
+        "bam_ends_bias",
+        "matrix_barcode_alignment",
+        "matrix_integer_counts",
+        "matrix_read_umi_conversion",
+        "matrix_layer_reconciliation",
+        "matrix_annotation_sensitivity",
+        "cell_calling_lowrna_bias",
+        "ambient_emptydrop_stability",
+        "cell_mt_nuclear_covariation",
+        "cell_gene_complexity_curve",
+        "sample_qc_selection_bias",
+        "sample_confounded_design",
+        "sample_noise_precision",
+        "cb_umi_layout_concordance",
+        "bam_sequence_cigar_consistency",
+        "bam_input_read_reconciliation",
+        "noise_sensitivity",
+        "noise_normalization_estimand",
+        "noise_annotation_uncertainty"
+      ],
+      "methodTags": [
+        "genetics",
+        "qc",
+        "quantification",
+        "simulation",
+        "trajectory"
+      ],
+      "requiredData": [
+        "raw_fastq",
+        "library_structure",
+        "reference",
+        "sample_metadata"
+      ],
+      "optionalData": [
+        "count_matrix"
+      ],
+      "defaultSelected": true,
+      "selectionMode": "research-question",
+      "isAppendix": false
+    },
+    {
+      "id": "noise",
+      "title": "表达噪音主线",
+      "titleEn": "Expression variability core",
+      "description": "在菌株、培养与状态内分离测量贡献、均值效应和分布变化。",
+      "descriptionEn": "Separate measurement, mean and distribution effects within strains, cultures and states.",
+      "stepIds": [
+        "noise",
+        "validation",
+        "cellqc",
+        "sampleqc",
+        "annotation",
+        "markers",
+        "networks"
+      ],
+      "toolIds": [
+        "memento",
+        "basics",
+        "glmmtmb",
+        "distinct",
+        "splinedv",
+        "scvar",
+        "ktest",
+        "dreamlet",
+        "schot",
+        "telegraph",
+        "clusterde",
+        "countsplit",
+        "nisce",
+        "scdesign3",
+        "sccomp",
+        "descend",
+        "baredsc",
+        "fgsea",
+        "igv",
+        "propr"
+      ],
+      "metricIds": [
+        "noise_variance",
+        "noise_cv2",
+        "noise_fano",
+        "noise_dispersion",
+        "noise_tail",
+        "noise_interval",
+        "noise_sensitivity",
+        "network_covariance",
+        "noise_metric_concordance",
+        "distribution_shift",
+        "noise_metric_sensitivity",
+        "pseudobulk_variance_components",
+        "perturbation_distribution_distance",
+        "noise_mean_matching",
+        "noise_state_component",
+        "noise_depth_thinning",
+        "noise_model_residual",
+        "noise_tail_support",
+        "noise_parameter_identifiability",
+        "noise_crossfit_sensitivity",
+        "noise_annotation_uncertainty",
+        "noise_normalization_estimand",
+        "nisce_fit_identifiability",
+        "nisce_mean_dependency",
+        "nisce_count_predictive_fit",
+        "noise_mean_equivalence",
+        "composition_effect",
+        "composition_variability",
+        "latent_nonzero_fraction",
+        "latent_distribution_inequality",
+        "latent_density_model_support",
+        "latent_pair_correlation",
+        "paralog_sum_variance",
+        "paralog_covariance_contribution",
+        "network_module_preservation",
+        "rna_logratio_variance",
+        "rna_proportionality_sensitivity"
+      ],
+      "methodTags": [
+        "benchmark",
+        "distribution",
+        "feature-selection",
+        "multivariate",
+        "network",
+        "pseudobulk",
+        "replicate-aware",
+        "sensitivity",
+        "variance",
+        "variance-components"
+      ],
+      "requiredData": [
+        "count_matrix",
+        "sample_metadata"
+      ],
+      "optionalData": [
+        "culture_replicates",
+        "cell_states"
+      ],
+      "defaultSelected": true,
+      "selectionMode": "research-question",
+      "isAppendix": false
+    },
+    {
+      "id": "state_annotation",
+      "title": "状态图谱与多标签注释",
+      "titleEn": "Cell states and multilabel annotation",
+      "description": "把周期、代谢、应激等状态作为可核查的连续分数与标签。",
+      "descriptionEn": "Build auditable scores and labels for cycle, metabolism and stress.",
+      "stepIds": [
+        "integration",
+        "annotation",
+        "markers",
+        "validation",
+        "noise",
+        "networks"
+      ],
+      "toolIds": [
+        "seurat",
+        "scanpy",
+        "harmony",
+        "fastmnn",
+        "scvi",
+        "bbknn",
+        "scanorama",
+        "scib",
+        "singler",
+        "celltypist",
+        "ucell",
+        "aucell",
+        "lemur",
+        "decoupler",
+        "cnmf",
+        "velocycle",
+        "tricycle",
+        "scdeed",
+        "seacells",
+        "genebasis",
+        "scyeast",
+        "clusterde",
+        "countsplit",
+        "clusterprofiler",
+        "fgsea",
+        "memento",
+        "glmmtmb",
+        "samtools",
+        "igv",
+        "presto",
+        "scdesign3",
+        "lmd"
+      ],
+      "metricIds": [
+        "independent_replicates",
+        "total_umi",
+        "detected_genes",
+        "mt_umi",
+        "rp_umi",
+        "rrna_umi",
+        "top_gene_fraction",
+        "top_n_fraction",
+        "complexity_residual",
+        "sampling_saturation",
+        "gene_detect_rate",
+        "gene_zero_fraction",
+        "gene_unique_support",
+        "cells_per_strain",
+        "retention_fraction",
+        "replicate_concordance",
+        "depth_imbalance",
+        "size_factor",
+        "pc_depth_association",
+        "batch_asw",
+        "ilisi",
+        "state_preservation",
+        "neighbor_retention",
+        "marker_coverage",
+        "annotation_score",
+        "annotation_margin",
+        "annotation_conflict",
+        "annotation_transfer",
+        "marker_mean",
+        "marker_logfc",
+        "marker_auc",
+        "marker_specificity",
+        "marker_stability",
+        "trajectory_stability",
+        "conditional_de_neighborhoods",
+        "program_usage",
+        "regulon_activity",
+        "cycle_phase_transfer",
+        "cycle_speed_relative",
+        "embedding_reliability",
+        "metacell_quality",
+        "panel_reconstruction",
+        "perturbation_generalization",
+        "foundation_transfer_audit",
+        "annotation_holdout_accuracy",
+        "marker_evidence_contract",
+        "marker_panel_ablation",
+        "marker_postcluster_null",
+        "annotation_rejection_curve",
+        "marker_score_technical_dependence",
+        "enrichment_mapping_audit",
+        "aging_program_partial_coupling",
+        "aging_signature_transfer",
+        "rdna_rna_assignability",
+        "noise_annotation_uncertainty",
+        "noise_crossfit_sensitivity"
+      ],
+      "methodTags": [
+        "activity",
+        "aggregation",
+        "benchmark",
+        "cell-cycle",
+        "condition-effects",
+        "continuous-state",
+        "embedding",
+        "enrichment",
+        "factorization",
+        "feature-selection",
+        "foundation-model",
+        "integration",
+        "marker-panel",
+        "metacell",
+        "programs",
+        "qc",
+        "reference-transfer",
+        "regulon",
+        "stability",
+        "trajectory",
+        "transfer",
+        "uncertainty",
+        "validation",
+        "velocity"
+      ],
+      "requiredData": [
+        "count_matrix",
+        "sample_metadata"
+      ],
+      "optionalData": [
+        "yeast_cycle_reference",
+        "yeast_regulatory_prior"
+      ],
+      "defaultSelected": false,
+      "selectionMode": "research-question",
+      "isAppendix": false
+    },
+    {
+      "id": "differential",
+      "title": "差异表达与完整分布",
+      "titleEn": "Expression and distribution differences",
+      "description": "区分状态内均值、完整分布及连续邻域中的条件效应。",
+      "descriptionEn": "Compare state-specific means, distributions and continuous neighborhoods.",
+      "stepIds": [
+        "markers",
+        "noise",
+        "sampleqc",
+        "validation",
+        "annotation"
+      ],
+      "toolIds": [
+        "seurat",
+        "scanpy",
+        "presto",
+        "edger",
+        "fgsea",
+        "clusterprofiler",
+        "distinct",
+        "splinedv",
+        "ktest",
+        "dreamlet",
+        "lemur",
+        "muscat",
+        "tradeseq",
+        "genebasis",
+        "pertpy",
+        "scdist",
+        "augur",
+        "memento",
+        "igv",
+        "descend",
+        "baredsc"
+      ],
+      "metricIds": [
+        "independent_replicates",
+        "total_umi",
+        "detected_genes",
+        "mt_umi",
+        "rp_umi",
+        "rrna_umi",
+        "top_gene_fraction",
+        "top_n_fraction",
+        "complexity_residual",
+        "sampling_saturation",
+        "gene_detect_rate",
+        "gene_zero_fraction",
+        "gene_unique_support",
+        "cells_per_strain",
+        "retention_fraction",
+        "replicate_concordance",
+        "depth_imbalance",
+        "size_factor",
+        "pc_depth_association",
+        "batch_asw",
+        "ilisi",
+        "state_preservation",
+        "neighbor_retention",
+        "marker_coverage",
+        "annotation_score",
+        "annotation_margin",
+        "annotation_conflict",
+        "annotation_transfer",
+        "marker_mean",
+        "marker_logfc",
+        "marker_auc",
+        "marker_specificity",
+        "marker_stability",
+        "trajectory_stability",
+        "noise_metric_concordance",
+        "distribution_shift",
+        "noise_metric_sensitivity",
+        "pseudobulk_variance_components",
+        "conditional_de_neighborhoods",
+        "trajectory_condition_differences",
+        "panel_reconstruction",
+        "perturbation_distribution_distance",
+        "noise_mean_matching",
+        "noise_state_component",
+        "noise_depth_thinning",
+        "noise_model_residual",
+        "noise_tail_support",
+        "noise_parameter_identifiability",
+        "noise_crossfit_sensitivity",
+        "marker_postcluster_null",
+        "state_multivariate_mean_distance",
+        "state_condition_auc",
+        "state_response_holdout",
+        "noise_tail",
+        "latent_nonzero_fraction",
+        "latent_density_model_support"
+      ],
+      "methodTags": [
+        "benchmark",
+        "condition-effects",
+        "continuous-state",
+        "distribution",
+        "feature-selection",
+        "framework",
+        "integration",
+        "marker-panel",
+        "multivariate",
+        "pseudobulk",
+        "qc",
+        "replicate-aware",
+        "sensitivity",
+        "smooth-trend",
+        "trajectory",
+        "validation",
+        "variance",
+        "variance-components"
+      ],
+      "requiredData": [
+        "count_matrix",
+        "sample_metadata",
+        "culture_replicates"
+      ],
+      "optionalData": [
+        "cell_states"
+      ],
+      "defaultSelected": false,
+      "selectionMode": "research-question",
+      "isAppendix": false
+    },
+    {
+      "id": "composition",
+      "title": "状态组成与稀有亚群",
+      "titleEn": "State composition and rare populations",
+      "description": "比较样本间状态占据及组成稳定性，不混同基因表达噪音。",
+      "descriptionEn": "Compare state occupancy and composition stability separately from gene-expression noise.",
+      "stepIds": [
+        "annotation",
+        "sampleqc",
+        "markers",
+        "noise",
+        "validation",
+        "integration"
+      ],
+      "toolIds": [
+        "sccoda",
+        "sccomp",
+        "milo",
+        "mellon",
+        "scanpy",
+        "memento",
+        "mrvi"
+      ],
+      "metricIds": [
+        "composition_effect",
+        "composition_variability",
+        "neighborhood_abundance",
+        "sample_qc_selection_bias",
+        "sample_confounded_design",
+        "annotation_holdout_accuracy",
+        "sample_noise_precision",
+        "mellon_log_state_density",
+        "mellon_density_sensitivity",
+        "density_conditioned_noise",
+        "sample_local_distances",
+        "sample_state_admissibility",
+        "noise_state_component"
+      ],
+      "methodTags": [
+        "Bayesian",
+        "composition",
+        "neighborhood",
+        "replicate-aware",
+        "variance-components"
+      ],
+      "requiredData": [
+        "sample_metadata",
+        "culture_replicates"
+      ],
+      "optionalData": [
+        "cell_states"
+      ],
+      "defaultSelected": false,
+      "selectionMode": "research-question",
+      "isAppendix": false
+    },
+    {
+      "id": "programs_grn",
+      "title": "表达程序与调控网络",
+      "titleEn": "Expression programs and regulatory networks",
+      "description": "从共享变化到靶集合支持的调控假说，逐层保留证据。",
+      "descriptionEn": "Move from shared expression to target-supported regulatory hypotheses.",
+      "stepIds": [
+        "networks",
+        "annotation",
+        "markers",
+        "noise",
+        "validation",
+        "cellqc"
+      ],
+      "toolIds": [
+        "memento",
+        "genie3",
+        "inferelator",
+        "decoupler",
+        "cnmf",
+        "scenic",
+        "seacells",
+        "celloracle",
+        "sctenifoldknk",
+        "schot",
+        "wgcna",
+        "hdwgcna",
+        "clusterprofiler",
+        "fgsea",
+        "hotspot",
+        "mcrigor",
+        "lsmetacell",
+        "scdesign3",
+        "irgsea",
+        "ucell",
+        "aucell",
+        "glmmtmb",
+        "scanpy",
+        "yeastgem"
+      ],
+      "metricIds": [
+        "noise_variance",
+        "noise_cv2",
+        "noise_fano",
+        "noise_dispersion",
+        "noise_tail",
+        "noise_interval",
+        "noise_sensitivity",
+        "network_edge_stability",
+        "network_covariance",
+        "program_usage",
+        "regulon_activity",
+        "metacell_quality",
+        "virtual_ko_stability",
+        "network_local_covariance",
+        "annotation_holdout_accuracy",
+        "network_aggregation_contract",
+        "network_topology_sensitivity",
+        "network_module_membership",
+        "network_module_preservation",
+        "enrichment_mapping_audit",
+        "hotspot_autocorrelation",
+        "hotspot_local_pair_association",
+        "hotspot_module_holdout",
+        "metacell_dubious_fraction",
+        "metacell_library_dispersion",
+        "metacell_null_correlation",
+        "pathway_scoring_agreement",
+        "pathway_within_state_dispersion",
+        "pathway_detectable_coverage",
+        "cell_mt_nuclear_covariation",
+        "mt_umi",
+        "mt_reads",
+        "metabolic_gene_reaction_coverage",
+        "metabolic_feasible_ranges",
+        "metabolic_noise_sensitivity"
+      ],
+      "methodTags": [
+        "activity",
+        "aggregation",
+        "enrichment",
+        "factorization",
+        "hypothesis",
+        "metacell",
+        "motif",
+        "network",
+        "programs",
+        "regulon",
+        "stability",
+        "variance",
+        "virtual-perturbation"
+      ],
+      "requiredData": [
+        "count_matrix",
+        "sample_metadata"
+      ],
+      "optionalData": [
+        "yeast_regulatory_prior",
+        "yeast_motif_database"
+      ],
+      "defaultSelected": false,
+      "selectionMode": "research-question",
+      "isAppendix": false
+    },
+    {
+      "id": "dynamics",
+      "title": "周期轨迹与RNA动力学",
+      "titleEn": "Cycle trajectories and RNA dynamics",
+      "description": "分开记录连续状态顺序、剪接velocity与有时间标定的动力学。",
+      "descriptionEn": "Separate state ordering, splicing velocity and time-calibrated dynamics.",
+      "stepIds": [
+        "dynamics",
+        "matrix",
+        "transcripts",
+        "annotation",
+        "noise",
+        "networks",
+        "validation"
+      ],
+      "toolIds": [
+        "scanpy",
+        "scvelo",
+        "velocyto",
+        "slingshot",
+        "monocle3",
+        "condiments",
+        "tradeseq",
+        "cellrank",
+        "dynamo",
+        "velovi",
+        "velocycle",
+        "tricycle",
+        "schot",
+        "memento"
+      ],
+      "metricIds": [
+        "independent_replicates",
+        "total_umi",
+        "detected_genes",
+        "mt_umi",
+        "rp_umi",
+        "rrna_umi",
+        "top_gene_fraction",
+        "top_n_fraction",
+        "complexity_residual",
+        "sampling_saturation",
+        "gene_detect_rate",
+        "gene_zero_fraction",
+        "gene_unique_support",
+        "cells_per_strain",
+        "retention_fraction",
+        "replicate_concordance",
+        "depth_imbalance",
+        "size_factor",
+        "pc_depth_association",
+        "batch_asw",
+        "ilisi",
+        "state_preservation",
+        "neighbor_retention",
+        "marker_mean",
+        "marker_logfc",
+        "marker_auc",
+        "marker_specificity",
+        "marker_stability",
+        "velocity_genes",
+        "velocity_fit",
+        "trajectory_stability",
+        "trajectory_condition_differences",
+        "fate_probabilities",
+        "velocity_uncertainty",
+        "cycle_phase_transfer",
+        "cycle_speed_relative",
+        "matrix_barcode_alignment",
+        "matrix_integer_counts",
+        "matrix_read_umi_conversion",
+        "matrix_layer_reconciliation",
+        "matrix_annotation_sensitivity",
+        "network_local_covariance",
+        "noise_state_component",
+        "marker_panel_ablation",
+        "noise_annotation_uncertainty",
+        "embedding_reliability"
+      ],
+      "methodTags": [
+        "cell-cycle",
+        "condition-effects",
+        "differential-topology",
+        "fate",
+        "kinetics",
+        "qc",
+        "quantification",
+        "reference-transfer",
+        "smooth-trend",
+        "trajectory",
+        "transition",
+        "uncertainty",
+        "vector-field",
+        "velocity"
+      ],
+      "requiredData": [
+        "count_matrix"
+      ],
+      "optionalData": [
+        "splicing_layers",
+        "yeast_cycle_reference",
+        "timepoints",
+        "metabolic_labeling"
+      ],
+      "defaultSelected": false,
+      "selectionMode": "research-question",
+      "isAppendix": false
+    },
+    {
+      "id": "perturbation",
+      "title": "模拟扰动与处理效应",
+      "titleEn": "Perturbation predictions and treatment effects",
+      "description": "区分无需干预训练的网络假说与需要真实扰动数据的预测/因果模型。",
+      "descriptionEn": "Separate network hypotheses from models requiring real interventions.",
+      "stepIds": [
+        "causal",
+        "networks",
+        "validation"
+      ],
+      "toolIds": [
+        "dynamo",
+        "celloracle",
+        "sctenifoldknk",
+        "cpa",
+        "gears",
+        "cellot",
+        "cinemaot",
+        "pertpy",
+        "scyeast",
+        "systema"
+      ],
+      "metricIds": [
+        "velocity_uncertainty",
+        "perturbation_distribution_distance",
+        "perturbation_generalization",
+        "counterfactual_support",
+        "virtual_ko_stability",
+        "foundation_transfer_audit",
+        "network_local_covariance",
+        "network_edge_stability",
+        "perturbation_centroid_accuracy"
+      ],
+      "methodTags": [
+        "benchmark",
+        "causal-assumptions",
+        "counterfactual",
+        "distribution",
+        "dose-response",
+        "foundation-model",
+        "framework",
+        "generalization",
+        "hypothesis",
+        "kinetics",
+        "network",
+        "optimal-transport",
+        "trained-perturbation",
+        "transfer",
+        "vector-field",
+        "virtual-perturbation"
+      ],
+      "requiredData": [
+        "count_matrix"
+      ],
+      "optionalData": [
+        "perturbation_data",
+        "yeast_regulatory_prior"
+      ],
+      "defaultSelected": false,
+      "selectionMode": "research-question",
+      "isAppendix": false
+    },
+    {
+      "id": "genetics",
+      "title": "遗传效应与噪音QTL",
+      "titleEn": "Genetic effects and variability QTL",
+      "description": "接入匹配基因型后研究均值、噪音与状态依赖的遗传效应。",
+      "descriptionEn": "Link matched genotypes to mean, variability and context-dependent effects.",
+      "stepIds": [
+        "genetics",
+        "causal",
+        "noise",
+        "validation",
+        "annotation",
+        "bam",
+        "matrix"
+      ],
+      "toolIds": [
+        "cellsnp",
+        "gemma",
+        "limix",
+        "qtltools",
+        "susie",
+        "coloc",
+        "twosamplemr",
+        "cellregmap",
+        "mashr",
+        "pysam",
+        "wasp",
+        "scdali",
+        "memento",
+        "glmmtmb",
+        "saigeqtl",
+        "gmmat"
+      ],
+      "metricIds": [
+        "identity_posterior",
+        "identity_gap",
+        "allele_support",
+        "identity_unassigned",
+        "noise_heritability",
+        "qtl_calibration",
+        "qtl_effect_uncertainty",
+        "causal_assumption_audit",
+        "genotype_context_effect",
+        "noise_genetic_partition",
+        "genetic_covariance_qtl",
+        "noise_reaction_norm",
+        "genetic_effect_sharing",
+        "allelic_molecule_support",
+        "allelic_state_effect",
+        "allelic_noise_contrast",
+        "variant_set_support",
+        "epistatic_noise_effect"
+      ],
+      "methodTags": [
+        "external-data",
+        "genetics",
+        "genotype-context",
+        "mixed-model",
+        "qc"
+      ],
+      "requiredData": [
+        "count_matrix",
+        "sample_metadata",
+        "genotypes",
+        "kinship"
+      ],
+      "optionalData": [
+        "culture_replicates"
+      ],
+      "defaultSelected": false,
+      "selectionMode": "research-question",
+      "isAppendix": false
+    },
+    {
+      "id": "transcripts",
+      "title": "剪接与转录本证据",
+      "titleEn": "Splicing and transcript evidence",
+      "description": "保留短读可支持的链、位点、剪接与转录本歧义信息。",
+      "descriptionEn": "Retain strand, junction and transcript ambiguity evidence supported by short reads.",
+      "stepIds": [
+        "bam",
+        "matrix",
+        "transcripts",
+        "validation",
+        "noise"
+      ],
+      "toolIds": [
+        "starsolo",
+        "samtools",
+        "rseqc",
+        "bedtools",
+        "igv",
+        "brie2",
+        "pysam",
+        "sierra",
+        "scape",
+        "glmmtmb"
+      ],
+      "metricIds": [
+        "cb_exact",
+        "cb_corrected",
+        "cb_unresolved",
+        "umi_invalid",
+        "umi_correction",
+        "umi_reads",
+        "mapped_unique",
+        "mapped_multi",
+        "mapped_unmapped",
+        "mismatch_bases",
+        "softclip_bases",
+        "strand_agreement",
+        "chrom_reads",
+        "mt_reads",
+        "exon_reads",
+        "intron_reads",
+        "intergenic_reads",
+        "rrna_reads",
+        "gene_body_coverage",
+        "gene_assignment",
+        "full_gene_count",
+        "spliced_count",
+        "unspliced_count",
+        "ambiguous_fraction",
+        "multigene_allocated",
+        "layer_delta",
+        "feature_missing",
+        "reads_in_cells",
+        "gene_detect_rate",
+        "gene_zero_fraction",
+        "gene_unique_support",
+        "cells_per_strain",
+        "retention_fraction",
+        "replicate_concordance",
+        "depth_imbalance",
+        "junction_support",
+        "internal_priming",
+        "bam_tag_completeness",
+        "bam_reference_consistency",
+        "bam_readgroup_completeness",
+        "bam_index_integrity",
+        "bam_secondary_fraction",
+        "bam_supplementary_fraction",
+        "bam_mapq_distribution",
+        "bam_insertions_deletions",
+        "bam_unmapped_reasons",
+        "bam_duplicate_flag",
+        "bam_rrna_multimap",
+        "bam_contig_unexpected",
+        "bam_overlap_ambiguity",
+        "bam_junction_motif",
+        "bam_junction_overhang",
+        "bam_ends_bias",
+        "matrix_barcode_alignment",
+        "matrix_integer_counts",
+        "matrix_read_umi_conversion",
+        "matrix_layer_reconciliation",
+        "matrix_annotation_sensitivity",
+        "bam_sequence_cigar_consistency",
+        "bam_input_read_reconciliation",
+        "brie_event_evidence",
+        "brie_psi_uncertainty",
+        "brie_state_association",
+        "apa_site_molecular_support",
+        "apa_within_gene_usage",
+        "apa_noise_association"
+      ],
+      "methodTags": [
+        "qc",
+        "quantification"
+      ],
+      "requiredData": [
+        "raw_fastq",
+        "reference",
+        "library_structure"
+      ],
+      "optionalData": [
+        "splicing_layers"
+      ],
+      "defaultSelected": false,
+      "selectionMode": "research-question",
+      "isAppendix": false
+    },
+    {
+      "id": "foundation",
+      "title": "基础模型适用性与比较",
+      "titleEn": "Foundation-model applicability and benchmarks",
+      "description": "优先核对酵母模型、词表、预处理与独立迁移；人类默认权重单独标限制。",
+      "descriptionEn": "Audit yeast compatibility and held-out transfer; distinguish unsupported human defaults.",
+      "stepIds": [
+        "annotation",
+        "validation",
+        "causal",
+        "integration"
+      ],
+      "toolIds": [
+        "scyeast",
+        "scgpt",
+        "geneformer",
+        "scanpy",
+        "scdeed"
+      ],
+      "metricIds": [
+        "perturbation_generalization",
+        "foundation_transfer_audit",
+        "annotation_holdout_accuracy",
+        "embedding_reliability"
+      ],
+      "methodTags": [
+        "benchmark",
+        "foundation-model",
+        "transfer",
+        "unsupported-default"
+      ],
+      "requiredData": [
+        "count_matrix",
+        "compatible_model"
+      ],
+      "optionalData": [
+        "perturbation_data"
+      ],
+      "defaultSelected": false,
+      "selectionMode": "research-question",
+      "isAppendix": false
+    },
+    {
+      "id": "simulation",
+      "title": "模拟、负对照与独立验证",
+      "titleEn": "Simulation, negative controls and validation",
+      "description": "用已知真值和留出样本检验误差、稳健性及方法增加的价值。",
+      "descriptionEn": "Test errors, robustness and added value with truth and held-out samples.",
+      "stepIds": [
+        "validation",
+        "sampleqc",
+        "noise"
+      ],
+      "toolIds": [
+        "dropletutils",
+        "scdesign3",
+        "screadsim",
+        "scvar",
+        "pertpy",
+        "telegraph",
+        "clusterde",
+        "countsplit",
+        "memento"
+      ],
+      "metricIds": [
+        "cross_library_molecules",
+        "multi_gene_umi",
+        "barcode_rank",
+        "emptydrop_fdr",
+        "null_false_positive",
+        "interval_coverage",
+        "noise_metric_concordance",
+        "noise_metric_sensitivity",
+        "perturbation_distribution_distance",
+        "marker_postcluster_null",
+        "marker_panel_ablation",
+        "noise_annotation_uncertainty",
+        "sample_noise_precision",
+        "noise_depth_thinning"
+      ],
+      "methodTags": [
+        "benchmark",
+        "distribution",
+        "framework",
+        "qc",
+        "quantification",
+        "sensitivity",
+        "simulation",
+        "variance"
+      ],
+      "requiredData": [
+        "count_matrix",
+        "sample_metadata",
+        "truth_or_simulation"
+      ],
+      "optionalData": [
+        "perturbation_data"
+      ],
+      "defaultSelected": false,
+      "selectionMode": "research-question",
+      "isAppendix": false
+    },
+    {
+      "id": "spatial_reference",
+      "title": "附录：空间参考扩展",
+      "titleEn": "Appendix: spatial reference extension",
+      "description": "仅在获得额外空间数据后进行映射；游离scRNA不恢复空间坐标。",
+      "descriptionEn": "Enable mapping only when additional spatial data exist.",
+      "stepIds": [
+        "annotation",
+        "validation"
+      ],
+      "toolIds": [
+        "cell2location"
+      ],
+      "metricIds": [
+        "spatial_reference_uncertainty",
+        "annotation_holdout_accuracy"
+      ],
+      "methodTags": [
+        "external-data",
+        "spatial"
+      ],
+      "requiredData": [
+        "count_matrix",
+        "spatial_data",
+        "cell_states"
+      ],
+      "optionalData": [
+        "sample_metadata"
+      ],
+      "defaultSelected": false,
+      "selectionMode": "research-question",
+      "isAppendix": true
+    },
+    {
+      "id": "evolution",
+      "title": "附录：群体历史与进化解释",
+      "titleEn": "Appendix: population history and evolution",
+      "description": "把表达稳定性与群体历史关联，不能把拟时序解释为进化树。",
+      "descriptionEn": "Relate expression stability to population history without confusing pseudotime with evolution.",
+      "stepIds": [
+        "genetics",
+        "causal",
+        "noise",
+        "validation"
+      ],
+      "toolIds": [
+        "gemma",
+        "limix",
+        "qtltools",
+        "susie",
+        "coloc",
+        "twosamplemr",
+        "cellregmap",
+        "glmmtmb"
+      ],
+      "metricIds": [
+        "noise_heritability",
+        "qtl_calibration",
+        "qtl_effect_uncertainty",
+        "causal_assumption_audit",
+        "genotype_context_effect",
+        "noise_mean_matching",
+        "noise_state_component",
+        "noise_depth_thinning",
+        "noise_model_residual",
+        "noise_tail_support",
+        "noise_parameter_identifiability",
+        "noise_crossfit_sensitivity",
+        "sample_confounded_design",
+        "noise_reaction_norm",
+        "noise_genetic_partition"
+      ],
+      "methodTags": [
+        "external-data",
+        "genetics",
+        "genotype-context",
+        "mixed-model"
+      ],
+      "requiredData": [
+        "count_matrix",
+        "sample_metadata",
+        "phylogeny"
+      ],
+      "optionalData": [
+        "genotypes",
+        "kinship",
+        "culture_replicates"
+      ],
+      "defaultSelected": false,
+      "selectionMode": "research-question",
+      "isAppendix": true
+    }
+  ],
+  "methodTags": [
+    {
+      "id": "Bayesian",
+      "title": "贝叶斯",
+      "titleEn": "Bayesian"
+    },
+    {
+      "id": "activity",
+      "title": "活性推断",
+      "titleEn": "Activity inference"
+    },
+    {
+      "id": "aggregation",
+      "title": "聚合",
+      "titleEn": "Aggregation"
+    },
+    {
+      "id": "benchmark",
+      "title": "方法评估",
+      "titleEn": "Benchmarking"
+    },
+    {
+      "id": "causal-assumptions",
+      "title": "因果假设",
+      "titleEn": "Causal assumptions"
+    },
+    {
+      "id": "cell-cycle",
+      "title": "细胞周期",
+      "titleEn": "Cell cycle"
+    },
+    {
+      "id": "composition",
+      "title": "状态组成",
+      "titleEn": "State composition"
+    },
+    {
+      "id": "condition-effects",
+      "title": "条件效应",
+      "titleEn": "Condition effects"
+    },
+    {
+      "id": "continuous-state",
+      "title": "连续状态",
+      "titleEn": "Continuous state"
+    },
+    {
+      "id": "counterfactual",
+      "title": "反事实",
+      "titleEn": "Counterfactual"
+    },
+    {
+      "id": "differential-topology",
+      "title": "拓扑差异",
+      "titleEn": "Topology differences"
+    },
+    {
+      "id": "distribution",
+      "title": "分布比较",
+      "titleEn": "Distribution comparison"
+    },
+    {
+      "id": "dose-response",
+      "title": "剂量响应",
+      "titleEn": "Dose response"
+    },
+    {
+      "id": "embedding",
+      "title": "低维表示",
+      "titleEn": "Embeddings"
+    },
+    {
+      "id": "enrichment",
+      "title": "富集",
+      "titleEn": "Enrichment"
+    },
+    {
+      "id": "external-data",
+      "title": "额外数据",
+      "titleEn": "Additional data"
+    },
+    {
+      "id": "factorization",
+      "title": "矩阵分解",
+      "titleEn": "Factorization"
+    },
+    {
+      "id": "fate",
+      "title": "命运概率",
+      "titleEn": "Fate probabilities"
+    },
+    {
+      "id": "feature-selection",
+      "title": "特征筛选",
+      "titleEn": "Feature selection"
+    },
+    {
+      "id": "foundation-model",
+      "title": "基础模型",
+      "titleEn": "Foundation model"
+    },
+    {
+      "id": "framework",
+      "title": "分析框架",
+      "titleEn": "Framework"
+    },
+    {
+      "id": "generalization",
+      "title": "外推",
+      "titleEn": "Generalization"
+    },
+    {
+      "id": "genetics",
+      "title": "群体遗传",
+      "titleEn": "Population genetics"
+    },
+    {
+      "id": "genotype-context",
+      "title": "基因型×状态",
+      "titleEn": "Genotype by context"
+    },
+    {
+      "id": "hypothesis",
+      "title": "假说生成",
+      "titleEn": "Hypothesis generation"
+    },
+    {
+      "id": "integration",
+      "title": "整合",
+      "titleEn": "Integration"
+    },
+    {
+      "id": "kinetics",
+      "title": "动力学",
+      "titleEn": "Kinetics"
+    },
+    {
+      "id": "marker-panel",
+      "title": "标记面板",
+      "titleEn": "Marker panels"
+    },
+    {
+      "id": "metacell",
+      "title": "Metacell",
+      "titleEn": "Metacell"
+    },
+    {
+      "id": "mixed-model",
+      "title": "混合模型",
+      "titleEn": "Mixed model"
+    },
+    {
+      "id": "motif",
+      "title": "motif支持",
+      "titleEn": "Motif support"
+    },
+    {
+      "id": "multivariate",
+      "title": "多变量分析",
+      "titleEn": "Multivariate analysis"
+    },
+    {
+      "id": "neighborhood",
+      "title": "邻域",
+      "titleEn": "Neighborhoods"
+    },
+    {
+      "id": "network",
+      "title": "网络",
+      "titleEn": "Networks"
+    },
+    {
+      "id": "optimal-transport",
+      "title": "最优运输",
+      "titleEn": "Optimal transport"
+    },
+    {
+      "id": "programs",
+      "title": "表达程序",
+      "titleEn": "Expression programs"
+    },
+    {
+      "id": "pseudobulk",
+      "title": "伪bulk",
+      "titleEn": "Pseudobulk"
+    },
+    {
+      "id": "qc",
+      "title": "质量控制",
+      "titleEn": "Quality control"
+    },
+    {
+      "id": "quantification",
+      "title": "分子定量",
+      "titleEn": "Molecule quantification"
+    },
+    {
+      "id": "reference-transfer",
+      "title": "参考迁移",
+      "titleEn": "Reference transfer"
+    },
+    {
+      "id": "regulon",
+      "title": "调控靶集合",
+      "titleEn": "Regulons"
+    },
+    {
+      "id": "replicate-aware",
+      "title": "重复结构",
+      "titleEn": "Replicate-aware inference"
+    },
+    {
+      "id": "sensitivity",
+      "title": "敏感性分析",
+      "titleEn": "Sensitivity analysis"
+    },
+    {
+      "id": "simulation",
+      "title": "模拟校准",
+      "titleEn": "Simulation calibration"
+    },
+    {
+      "id": "smooth-trend",
+      "title": "平滑趋势",
+      "titleEn": "Smooth trends"
+    },
+    {
+      "id": "spatial",
+      "title": "空间",
+      "titleEn": "Spatial"
+    },
+    {
+      "id": "stability",
+      "title": "稳定性",
+      "titleEn": "Stability"
+    },
+    {
+      "id": "trained-perturbation",
+      "title": "扰动训练模型",
+      "titleEn": "Perturbation-trained models"
+    },
+    {
+      "id": "trajectory",
+      "title": "轨迹",
+      "titleEn": "Trajectory"
+    },
+    {
+      "id": "transfer",
+      "title": "迁移",
+      "titleEn": "Transfer"
+    },
+    {
+      "id": "transition",
+      "title": "状态转移",
+      "titleEn": "State transitions"
+    },
+    {
+      "id": "uncertainty",
+      "title": "不确定性",
+      "titleEn": "Uncertainty"
+    },
+    {
+      "id": "unsupported-default",
+      "title": "默认资源不适用",
+      "titleEn": "Unsupported defaults"
+    },
+    {
+      "id": "validation",
+      "title": "验证",
+      "titleEn": "Validation"
+    },
+    {
+      "id": "variance",
+      "title": "表达变异",
+      "titleEn": "Expression variability"
+    },
+    {
+      "id": "variance-components",
+      "title": "方差组分",
+      "titleEn": "Variance components"
+    },
+    {
+      "id": "vector-field",
+      "title": "向量场",
+      "titleEn": "Vector fields"
+    },
+    {
+      "id": "velocity",
+      "title": "RNA velocity",
+      "titleEn": "RNA velocity"
+    },
+    {
+      "id": "virtual-perturbation",
+      "title": "虚拟扰动",
+      "titleEn": "Virtual perturbation"
+    },
+    {
+      "id": "marker-validation",
+      "title": "Marker验证",
+      "titleEn": "Marker validation"
+    },
+    {
+      "id": "double-dipping",
+      "title": "循环推断审计",
+      "titleEn": "Circular-inference audit"
+    },
+    {
+      "id": "synthetic-null",
+      "title": "合成零数据",
+      "titleEn": "Synthetic null data"
+    },
+    {
+      "id": "count-splitting",
+      "title": "计数拆分",
+      "titleEn": "Count splitting"
+    },
+    {
+      "id": "calibration",
+      "title": "模型校准",
+      "titleEn": "Model calibration"
+    }
+  ],
+  "dataRequirements": [
+    {
+      "id": "raw_fastq",
+      "title": "原始FASTQ",
+      "titleEn": "Raw FASTQ",
+      "availability": "provided",
+      "description": "当前已知具备；尚未实际读取项目FASTQ。"
+    },
+    {
+      "id": "library_structure",
+      "title": "建库与barcode/UMI结构",
+      "titleEn": "Library and barcode/UMI structure",
+      "availability": "unknown",
+      "description": "需从既有协议、样本表和read结构核对。"
+    },
+    {
+      "id": "reference",
+      "title": "版本明确的酵母参考及注释",
+      "titleEn": "Versioned yeast reference and annotation",
+      "availability": "prepare",
+      "description": "从已知菌株背景和公共资源准备。"
+    },
+    {
+      "id": "count_matrix",
+      "title": "经审计的原始计数矩阵",
+      "titleEn": "Audited original count matrix",
+      "availability": "derived",
+      "description": "由FASTQ按确定的barcode、UMI和计数规则生成。"
+    },
+    {
+      "id": "tagged_bam",
+      "title": "保留barcode/UMI信息的基因组BAM",
+      "titleEn": "Genome BAM retaining barcode and UMI information",
+      "availability": "derived",
+      "description": "由确定的read结构和参考比对获得；与FASTA、注释和索引一致。"
+    },
+    {
+      "id": "raw_droplet_matrix",
+      "title": "包含未调用barcode的原始矩阵",
+      "titleEn": "Unfiltered matrix retaining uncalled barcodes",
+      "availability": "derived",
+      "description": "液滴建库保留空滴候选；板式数据不能假装包含空滴。"
+    },
+    {
+      "id": "mapping_rad",
+      "title": "兼容的上游RAD映射数据",
+      "titleEn": "Compatible upstream RAD mapping data",
+      "availability": "derived",
+      "description": "alevin-fry等流程所需上游映射产物与permit list。"
+    },
+    {
+      "id": "variant_counts",
+      "title": "逐细胞等位计数",
+      "titleEn": "Per-cell allelic counts",
+      "availability": "derived",
+      "description": "从可靠位点及带细胞标签的比对产生；覆盖不足时归属不确定。"
+    },
+    {
+      "id": "qc_reports",
+      "title": "已有QC报告和工具日志",
+      "titleEn": "Existing QC reports and tool logs",
+      "availability": "derived",
+      "description": "聚合工具读取实际产生的报告；不是直接读取FASTQ代替各项检查。"
+    },
+    {
+      "id": "cell_qc_metrics",
+      "title": "每细胞QC指标表",
+      "titleEn": "Per-cell QC metrics",
+      "availability": "derived",
+      "description": "与细胞身份、文库和样本对应的reads、UMI、基因及区域比例等。"
+    },
+    {
+      "id": "yeast_annotation_reference",
+      "title": "经核对的酵母表达参考与标签",
+      "titleEn": "Validated yeast expression reference and labels",
+      "availability": "prepare",
+      "description": "自动分类器需物种、条件和预处理适配的训练参考；保留未知标签。"
+    },
+    {
+      "id": "gene_sets",
+      "title": "来源明确的酵母基因集",
+      "titleEn": "Source-traceable yeast gene sets",
+      "availability": "prepare",
+      "description": "核对基因ID、功能与条件；用于打分、富集或marker筛选，不能混用物种。"
+    },
+    {
+      "id": "gene_statistics",
+      "title": "定义明确的基因列表、排序与背景",
+      "titleEn": "Defined gene lists, rankings and background",
+      "availability": "derived",
+      "description": "保留检验统计量、比较方向和实际可检测基因背景；按富集模式准备。"
+    },
+    {
+      "id": "qtl_traits",
+      "title": "样本层表达或噪音性状及协变量",
+      "titleEn": "Sample-level expression or variability traits and covariates",
+      "availability": "derived",
+      "description": "明确定义性状、估计误差、状态和培养单位；不把所有细胞独立当菌株。"
+    },
+    {
+      "id": "association_results",
+      "title": "经协调的关联统计量",
+      "titleEn": "Harmonized association statistics",
+      "availability": "external-or-derived",
+      "description": "记录性状定义、样本、等位方向、标准误及与变异一致的LD。"
+    },
+    {
+      "id": "sample_metadata",
+      "title": "样本、菌株、培养与批次映射",
+      "titleEn": "Sample, strain, culture and batch metadata",
+      "availability": "unknown",
+      "description": "统计单位和混杂审计必需；不能用细胞数代替。"
+    },
+    {
+      "id": "culture_replicates",
+      "title": "独立培养或设计中的独立样本",
+      "titleEn": "Independent cultures or design units",
+      "availability": "unknown",
+      "description": "以真实采样设计确认；无法从随机拆细胞创造。"
+    },
+    {
+      "id": "cell_states",
+      "title": "经评估的状态标签或分数",
+      "titleEn": "Evaluated cell-state labels or scores",
+      "availability": "derived",
+      "description": "周期、应激、代谢、交配等多标签；保留unknown。"
+    },
+    {
+      "id": "pseudotime",
+      "title": "经验证的拟时序及分支权重",
+      "titleEn": "Validated pseudotime and lineage weights",
+      "availability": "derived",
+      "description": "先检查状态连续性和拓扑；不等同真实时间。"
+    },
+    {
+      "id": "directional_evidence",
+      "title": "可靠方向信息之一",
+      "titleEn": "At least one credible directional input",
+      "availability": "conditional",
+      "description": "例如经验证velocity、拟时序或真实时间；按kernel模式选择。"
+    },
+    {
+      "id": "splicing_layers",
+      "title": "一致计数的spliced/unspliced层",
+      "titleEn": "Consistently quantified splicing layers",
+      "availability": "derived-conditional",
+      "description": "能否用于动力学取决于实际剪接信息量；不可简单GeneFull相减。"
+    },
+    {
+      "id": "yeast_cycle_reference",
+      "title": "独立酵母RNA周期参考",
+      "titleEn": "Independent yeast RNA cycle reference",
+      "availability": "prepare",
+      "description": "已有RNA周期数据和本项目验证；禁止直接使用小鼠默认。"
+    },
+    {
+      "id": "yeast_regulatory_prior",
+      "title": "酵母调控先验",
+      "titleEn": "Yeast regulatory prior",
+      "availability": "prepare",
+      "description": "SGD/YEASTRACT等靶关系，保留来源、方向和条件。"
+    },
+    {
+      "id": "yeast_motif_database",
+      "title": "适用的酵母motif排名数据库",
+      "titleEn": "Compatible yeast motif-ranking database",
+      "availability": "conditional",
+      "description": "TF清单、启动子区间、motif注释与参考版本一致。"
+    },
+    {
+      "id": "yeast_gene_graph",
+      "title": "匹配酵母基因集合的关系图",
+      "titleEn": "Gene graph matched to yeast identifiers",
+      "availability": "prepare",
+      "description": "例如功能/互作图，需审计上下文和缺失基因。"
+    },
+    {
+      "id": "perturbation_data",
+      "title": "真实扰动及对照单细胞数据",
+      "titleEn": "Real perturbation and control data",
+      "availability": "external",
+      "description": "可使用适用的公开数据；观察性菌株标签不等同基因KO。"
+    },
+    {
+      "id": "compatible_model",
+      "title": "物种与输入兼容的模型权重",
+      "titleEn": "Species- and input-compatible model",
+      "availability": "conditional",
+      "description": "核对基因词表、训练集、预处理、数据重复及迁移验证。"
+    },
+    {
+      "id": "genotypes",
+      "title": "与实际scRNA菌株匹配的基因型",
+      "titleEn": "Genotypes matched to sequenced strains",
+      "availability": "external",
+      "description": "使用已完成DNA组学时另行接入；不能假定所有1011样本均有匹配。"
+    },
+    {
+      "id": "kinship",
+      "title": "同一分析样本集合的亲缘矩阵",
+      "titleEn": "Kinship matrix for the analyzed sample set",
+      "availability": "external-derived",
+      "description": "样本×样本矩阵；与样本顺序、倍性和基因型编码匹配，不能替代变异×变异LD。"
+    },
+    {
+      "id": "ld_matrix",
+      "title": "匹配变异集合的LD相关矩阵",
+      "titleEn": "LD correlation matrix for matched variants",
+      "availability": "external-derived",
+      "description": "变异×变异矩阵；与关联统计量的群体、位点顺序和等位方向匹配，不能用样本亲缘矩阵替代。"
+    },
+    {
+      "id": "phylogeny",
+      "title": "与样本匹配的群体历史或系统树",
+      "titleEn": "Matched population history or phylogeny",
+      "availability": "external",
+      "description": "用于进化解释；RNA表达图/velocity不能取代。"
+    },
+    {
+      "id": "timepoints",
+      "title": "真实取样时间",
+      "titleEn": "Observed sampling times",
+      "availability": "external-or-metadata",
+      "description": "必须来自原采样记录；拟时序不是替代品。"
+    },
+    {
+      "id": "metabolic_labeling",
+      "title": "代谢标记设计及新旧RNA计数",
+      "titleEn": "Metabolic labeling and new/old RNA data",
+      "availability": "external",
+      "description": "原实验未标记时，普通FASTQ不能补造。"
+    },
+    {
+      "id": "spatial_data",
+      "title": "额外空间转录组与坐标",
+      "titleEn": "Additional spatial transcriptomes and coordinates",
+      "availability": "external",
+      "description": "当前游离scRNA不包含真实空间位置。"
+    },
+    {
+      "id": "truth_or_simulation",
+      "title": "独立参照或明确模拟真值",
+      "titleEn": "Independent reference or explicit simulation truth",
+      "availability": "prepare",
+      "description": "用于误差、覆盖率、外推和稳健性评估。"
+    },
+    {
+      "id": "yeast_metabolic_model",
+      "title": "版本化酵母代谢模型",
+      "titleEn": "Versioned yeast metabolic model",
+      "availability": "prepare",
+      "description": "Yeast9发布版本、SBML/COBRA模型、基因—反应映射及目标函数。"
+    },
+    {
+      "id": "metabolic_medium_constraints",
+      "title": "培养基与代谢交换约束",
+      "titleEn": "Medium and metabolic exchange constraints",
+      "availability": "external-or-metadata",
+      "description": "培养记录中的碳氮源、供氧及交换边界；未测边界以独立情景保存。"
+    }
+  ],
+  "toolGroups": [
+    {
+      "id": "primary_quantification",
+      "title": "主定量流程",
+      "titleEn": "Primary quantification",
+      "toolIds": [
+        "starsolo",
+        "cellranger",
+        "kb",
+        "alevinfry"
+      ],
+      "selectionRule": "choose-one-primary",
+      "description": "可留其他工具作敏感性对照，不串联重复计数。"
+    },
+    {
+      "id": "ambient_models",
+      "title": "背景校正候选",
+      "titleEn": "Ambient correction candidates",
+      "toolIds": [
+        "cellbender",
+        "soupx",
+        "decontx",
+        "scar",
+        "sccdc",
+        "fastcar",
+        "cellclear"
+      ],
+      "selectionRule": "compare-do-not-chain",
+      "description": "各方法从同一原始数据独立比较，不连续多次去背景。"
+    },
+    {
+      "id": "noise_estimators",
+      "title": "表达变异主模型与敏感性",
+      "titleEn": "Variability models and sensitivity",
+      "toolIds": [
+        "memento",
+        "basics",
+        "glmmtmb",
+        "scvar",
+        "splinedv",
+        "distinct",
+        "ktest"
+      ],
+      "selectionRule": "complementary-estimands",
+      "description": "先选明确估计对象的主模型，再用不同假设方法对照。"
+    },
+    {
+      "id": "mean_effects",
+      "title": "均值效应与重复结构",
+      "titleEn": "Mean effects and replication",
+      "toolIds": [
+        "edger",
+        "dreamlet",
+        "muscat",
+        "lemur"
+      ],
+      "selectionRule": "alternative-or-complementary",
+      "description": "与噪音分支联合解释，但不混同估计对象。"
+    },
+    {
+      "id": "composition_models",
+      "title": "组成与邻域丰度",
+      "titleEn": "Composition and neighborhood abundance",
+      "toolIds": [
+        "sccoda",
+        "sccomp",
+        "milo"
+      ],
+      "selectionRule": "alternative-or-complementary",
+      "description": "依离散标签/连续邻域选择；多标签先定义互斥计数。"
+    },
+    {
+      "id": "regulatory_models",
+      "title": "表达程序与调控假说",
+      "titleEn": "Programs and regulatory hypotheses",
+      "toolIds": [
+        "cnmf",
+        "decoupler",
+        "genie3",
+        "inferelator",
+        "scenic"
+      ],
+      "selectionRule": "complementary-estimands",
+      "description": "程序、靶活性、共表达和有方向网络证据分开。"
+    },
+    {
+      "id": "velocity_models",
+      "title": "RNA velocity模型",
+      "titleEn": "RNA velocity models",
+      "toolIds": [
+        "scvelo",
+        "velovi",
+        "dynamo",
+        "velocycle"
+      ],
+      "selectionRule": "conditional-comparison",
+      "description": "先确认剪接或标记信息，再比较模型假设与负对照。"
+    },
+    {
+      "id": "perturbation_predictions",
+      "title": "扰动预测方法",
+      "titleEn": "Perturbation predictions",
+      "toolIds": [
+        "celloracle",
+        "sctenifoldknk",
+        "cpa",
+        "gears",
+        "cellot",
+        "cinemaot"
+      ],
+      "selectionRule": "input-dependent",
+      "description": "区分网络假说、扰动训练预测与有假设的处理效应。"
+    },
+    {
+      "id": "foundation_models",
+      "title": "基础模型比较",
+      "titleEn": "Foundation-model comparison",
+      "toolIds": [
+        "scyeast",
+        "scgpt",
+        "geneformer"
+      ],
+      "selectionRule": "eligibility-gated",
+      "description": "人类默认模型标为不直接支持酵母；不因安装成功放开门槛。"
+    },
+    {
+      "id": "marker_calibration",
+      "title": "从marker证据到噪音推断的验证链",
+      "titleEn": "Marker evidence to noise-inference validation",
+      "toolIds": [
+        "genebasis",
+        "clusterde",
+        "countsplit"
+      ],
+      "selectionRule": "complementary-estimands",
+      "description": "这条验证链评估证据独立性与敏感性，不自动产生真值标签，也不把统计稳定性等同于机制证明。"
+    },
+    {
+      "id": "coexpression_modules",
+      "title": "共表达模块：聚合策略与保守性",
+      "titleEn": "Co-expression modules: aggregation and preservation",
+      "toolIds": [
+        "wgcna",
+        "hdwgcna",
+        "cnmf"
+      ],
+      "selectionRule": "alternative-estimands",
+      "description": "WGCNA与hdWGCNA为共表达路线；cNMF分解程序使用率。先选择问题与分析单位，再选择路线。"
+    },
+    {
+      "id": "postannotation_function",
+      "title": "注释后功能解释：富集与活性",
+      "titleEn": "Post-annotation function: enrichment and activity",
+      "toolIds": [
+        "clusterprofiler",
+        "fgsea",
+        "ucell",
+        "aucell",
+        "decoupler"
+      ],
+      "selectionRule": "complementary-estimands",
+      "description": "ORA解释入选基因集合，GSEA解释有方向排序，细胞集合评分与TF活性估计回答不同问题。"
+    }
+  ],
+  "compatibilityRules": [
+    {
+      "id": "retain_original_counts",
+      "type": "input-layer-restriction",
+      "categoryIds": [
+        "noise"
+      ],
+      "incompatibleInputs": [
+        "imputed-counts",
+        "metacell-only",
+        "integrated-expression-only"
+      ],
+      "text": "主噪音分析保留原始分子计数；插补、聚合和整合输出可作辅助但不能替代。",
+      "textEn": "Keep original molecule counts for the main variability analysis; imputation, aggregation and integration are auxiliary."
+    },
+    {
+      "id": "no_fake_introns",
+      "type": "invalid-input-derivation",
+      "toolIds": [
+        "scvelo",
+        "velovi",
+        "velocycle",
+        "dynamo"
+      ],
+      "incompatibleInputs": [
+        "GeneFull-minus-Gene-as-unspliced"
+      ],
+      "text": "不能以GeneFull−Gene生成严格unspliced层。",
+      "textEn": "GeneFull minus Gene is not a valid unspliced count layer."
+    },
+    {
+      "id": "replication_unit",
+      "type": "design-requirement",
+      "toolIds": [
+        "distinct",
+        "dreamlet",
+        "muscat",
+        "lemur",
+        "sccoda",
+        "sccomp",
+        "milo"
+      ],
+      "requiredData": [
+        "culture_replicates"
+      ],
+      "text": "按真实独立样本推断；随机拆分细胞不能产生培养重复。",
+      "textEn": "Use genuine independent samples; random cell splits do not create biological replication."
+    },
+    {
+      "id": "unsupported_human_defaults",
+      "type": "blocked-default",
+      "toolIds": [
+        "scgpt",
+        "geneformer"
+      ],
+      "text": "原始人类词表和权重不纳入酵母默认执行计划。",
+      "textEn": "Original human vocabularies and checkpoints are excluded from the default yeast execution plan."
+    },
+    {
+      "id": "no_spatial_from_embedding",
+      "type": "external-data-required",
+      "toolIds": [
+        "cell2location"
+      ],
+      "requiredData": [
+        "spatial_data"
+      ],
+      "text": "缺空间数据时仅保留附录，不以UMAP等坐标替代真实空间。",
+      "textEn": "Keep as an appendix without spatial data; embeddings are not spatial coordinates."
+    },
+    {
+      "id": "evolution_not_pseudotime",
+      "type": "interpretation-boundary",
+      "categoryIds": [
+        "evolution",
+        "dynamics"
+      ],
+      "requiredData": [
+        "phylogeny"
+      ],
+      "text": "状态轨迹和RNA velocity不能当作菌株进化轨迹。",
+      "textEn": "State trajectories and RNA velocity are not strain-evolution histories."
+    },
+    {
+      "id": "perturbations_not_strain_labels",
+      "type": "design-requirement",
+      "toolIds": [
+        "cpa",
+        "gears",
+        "cellot",
+        "cinemaot"
+      ],
+      "requiredData": [
+        "perturbation_data"
+      ],
+      "text": "自然菌株身份不能直接替代真实处理或基因KO标签。",
+      "textEn": "Natural strain identities do not substitute for intervention or knockout labels."
+    },
+    {
+      "id": "hold_out_strains",
+      "type": "validation-requirement",
+      "categoryIds": [
+        "foundation",
+        "perturbation",
+        "state_annotation"
+      ],
+      "text": "按菌株/培养/扰动留出；训练集与测试集的细胞随机拆分不足以检验迁移。",
+      "textEn": "Hold out strains, cultures or interventions; random cell splitting alone does not establish transfer."
+    },
+    {
+      "id": "multilabel_composition",
+      "type": "input-definition",
+      "categoryIds": [
+        "composition"
+      ],
+      "text": "周期/应激等标签可以共存；组成模型需先定义互斥状态或明确单独分析每一标签。",
+      "textEn": "Labels can overlap; composition models need mutually exclusive states or separately defined label analyses."
+    },
+    {
+      "id": "model_aware_count_splitting",
+      "type": "interpretation-boundary",
+      "toolIds": [
+        "countsplit"
+      ],
+      "text": "Poisson拆分的独立性依赖Poisson模型；负二项拆分需正确离散参数。估计参数、跨细胞依赖和批次结构仍需单独校准。",
+      "textEn": "Poisson splitting is independent under its Poisson model; negative-binomial splitting requires correct dispersion. Estimated parameters, between-cell dependence and batch structure need separate calibration."
+    },
+    {
+      "id": "annotation_not_ground_truth",
+      "type": "interpretation-boundary",
+      "categoryIds": [
+        "state_annotation",
+        "noise"
+      ],
+      "text": "没有独立参考时只能报告方法一致性；分类分数不是自动校准的概率，拒绝标签可能偏向低RNA状态。",
+      "textEn": "Without independent labels, report agreement only; scores are not automatically calibrated probabilities, and rejection may disproportionately affect low-RNA states."
+    }
+  ],
+  "applicabilityLevels": [
+    {
+      "id": "ready",
+      "title": "可直接纳入方法计划",
+      "titleEn": "Ready for method planning",
+      "description": "输入齐全且按协议配置后可运行；不代表本项目数据已处理。"
+    },
+    {
+      "id": "adapt",
+      "title": "需酵母或设计适配",
+      "titleEn": "Adaptation required",
+      "description": "需更换物种资源、设计结构或验证输入假设。"
+    },
+    {
+      "id": "conditional",
+      "title": "依赖额外输入或证据",
+      "titleEn": "Conditional on additional evidence",
+      "description": "依赖基因型、扰动、剪接信息、时间或其他额外输入。"
+    },
+    {
+      "id": "not-supported",
+      "title": "当前默认方式不支持",
+      "titleEn": "Unsupported as currently proposed",
+      "description": "不能直接套用到当前酵母数据；仅保留方法参照。"
+    }
+  ],
+  "planOutputFields": [
+    "researchQuestion",
+    "selectedCategoryIds",
+    "selectedToolIds",
+    "metricIds",
+    "requiredData",
+    "missingData",
+    "applicability",
+    "comparisonUnit",
+    "inputLayer",
+    "validationPlan",
+    "claimBoundaries",
+    "sourceUrls"
+  ],
+  "limitations": [
+    "类别是规划导航，不表示每项方法互相等价。",
+    "补充检索有明确范围和日期，不声称穷尽近五年全部方法。",
+    "不使用无来源数值阈值；参数值在真实数据与版本确定后制定。"
+  ]
+}

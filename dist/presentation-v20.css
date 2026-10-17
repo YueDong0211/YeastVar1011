@@ -1,0 +1,81 @@
+/* The front page introduces the product; catalogue surfaces support reading and selection. */
+html[data-workspace-route=overview] .station-cover{grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);border-color:#9cced039;box-shadow:0 22px 68px #02071238,inset 0 1px 0 #d9f3ff16}
+.station-cover .station-intro{padding-top:26px;padding-bottom:28px;max-width:680px}
+.station-cover .station-intro>.eyebrow{margin-bottom:18px;letter-spacing:.045em}
+.station-cover .station-intro h1{line-height:1.18;letter-spacing:-.035em;margin-bottom:24px;text-wrap:balance}
+.station-cover .station-intro>p:not(.p20-mode-note){max-width:490px;font-size:14px;line-height:1.85;margin-bottom:24px;color:#c4d1dc;text-wrap:pretty}
+.station-cover .station-actions{gap:12px;align-items:stretch}
+.station-cover .station-actions>.btn-primary{min-height:48px;padding-inline:20px;flex:none}
+.station-cover .station-actions>.j17-entry{min-height:48px;padding:11px 15px;border-color:#a8d8de45;background:linear-gradient(125deg,#1b3b475c,#13273880);color:#c8e3e4;box-shadow:inset 0 1px 0 #effaff0a;border-radius:12px;gap:10px}
+.station-cover .station-actions>.j17-entry strong{font-size:12px;font-weight:500}
+.station-cover .station-intro>.p20-mode-note{margin:12px 0 0;font-size:11px;line-height:1.65;color:#93a9ba;max-width:none}
+.p20-explore{display:flex;flex-wrap:wrap;align-items:center;gap:6px 25px;margin-top:18px;padding-top:15px;border-top:1px solid #c3e6ef15;max-width:490px}
+.p20-explore-link,.station-cover .p20-explore .station-guide-link{display:inline-flex;align-items:center;justify-content:flex-start;gap:8px;min-height:36px;font-size:12px;color:#b1c7d6;padding:3px 0;flex-basis:auto;border:0;background:transparent}
+.p20-explore svg{width:15px;height:15px;flex:none}
+.p20-explore-link>svg:last-child{width:13px;opacity:.65;margin-left:3px}
+.station-cover .a9-observation{margin-left:6px}
+.station-cover .a9-orbit-node{backdrop-filter:blur(9px);box-shadow:0 10px 28px #0002,inset 0 1px 0 #d7e6e813}
+html[data-theme] .station-stat-bar{background:linear-gradient(110deg,color-mix(in srgb,var(--a9-elevated) 75%,transparent),color-mix(in srgb,var(--panel) 88%,transparent));box-shadow:none}
+.station-introduction>p,.station-question p,.station-path p{text-wrap:pretty}
+.station-question-grid .station-question:focus-visible,.station-path-grid .station-path:focus-visible{outline-offset:3px;outline-color:var(--green)}
+/* Every catalogue card retains its complete text, evidence links and real action controls. */
+.pt-workspace .pt-card,.mw-workspace .mw-marker-card{border:1px solid color-mix(in srgb,var(--line) 72%,transparent);border-radius:15px;background:linear-gradient(145deg,color-mix(in srgb,var(--al-paper) 95%,var(--green)),var(--al-paper) 66%);box-shadow:0 8px 24px #02081712,inset 0 1px 0 #effaff05;transition:border-color .18s,box-shadow .18s}
+.pt-workspace .pt-card{padding:23px}
+.pt-card .pt-card-head{gap:13px}
+.pt-card .pt-card-head>div{min-width:0}
+.pt-card h3{font-size:19px;font-weight:600;line-height:1.4;overflow-wrap:anywhere}
+.pt-card .pt-task{margin:17px 0 16px;line-height:1.85}
+.pt-card .pt-io{gap:9px;padding-block:14px}
+.pt-card .pt-card-context{margin:14px 0 12px}
+.pt-card .pt-add,.pt-card .pt-detail{min-height:44px}
+.mw-workspace .mw-marker-card{padding:21px}
+.mw-marker-card .mw-card-heading{gap:12px;padding-bottom:12px;margin-bottom:12px}
+.mw-marker-card .mw-gene-name{font-size:20px;line-height:1.35}
+.mw-marker-card .mw-phase-row{margin-bottom:13px}
+.mw-marker-card .mw-evidence-tags{gap:7px;margin-bottom:11px}
+.mw-marker-card .mw-evidence-tag{padding:6px 8px;line-height:1.6;border-radius:7px}
+.mw-marker-card .mw-card-foot{border-top:1px solid var(--al-edge);padding-top:12px;margin-top:auto;min-height:46px}
+.mw-marker-card .mw-card-foot button{min-height:36px;font-size:11px}
+.pt-workspace .pt-card:focus-within,.mw-workspace .mw-marker-card:focus-within{border-color:color-mix(in srgb,var(--green) 70%,var(--line));box-shadow:0 0 0 1px color-mix(in srgb,var(--green) 13%,transparent)}
+.paper-list .paper-card{padding-top:26px;padding-bottom:26px}
+.paper-list .paper-title{line-height:1.6;font-weight:550;text-wrap:pretty}
+.paper-list .paper-card p{max-width:95ch;line-height:1.9}
+.paper-list .paper-card:focus-within{background:linear-gradient(90deg,color-mix(in srgb,var(--green) 6%,transparent),transparent)}
+@media(hover:hover){
+ .p20-explore-link:hover,.station-cover .p20-explore .station-guide-link:hover{color:#e6f4f4}
+ .station-cover .station-actions>.j17-entry:hover{border-color:#b7dce17a;background:#20414f90}
+ .pt-workspace .pt-card:hover,.mw-workspace .mw-marker-card:hover{border-color:color-mix(in srgb,var(--green) 45%,var(--line));transform:none;box-shadow:0 12px 28px #02081724,inset 0 1px 0 #effaff0b}
+}
+@media(min-width:761px) and (max-width:1150px){
+ .station-cover .station-intro{padding-left:28px}
+ .station-cover .station-intro h1{font-size:clamp(33px,3.5vw,43px)}
+ .station-cover .station-intro>p:not(.p20-mode-note){font-size:13px}
+ .station-cover .station-actions{gap:9px}
+ .station-cover .station-actions>.btn-primary,.station-cover .station-actions>.j17-entry{padding-inline:13px}
+}
+@media(max-width:760px){
+ .station-cover .station-cover-top{padding:22px 23px 8px}
+ .station-cover .station-intro{padding:19px 23px 10px}
+ .station-cover .station-intro>.eyebrow{font-size:10px;margin-bottom:16px}
+ .station-cover .station-intro h1{font-size:clamp(31px,9.4vw,44px);line-height:1.17;margin-bottom:19px}
+ .station-cover .station-intro>p:not(.p20-mode-note){font-size:12px;line-height:1.85;margin-bottom:21px}
+ .station-cover .station-actions{display:grid;grid-template-columns:1fr;gap:10px}
+ .station-cover .station-actions>.btn-primary,.station-cover .station-actions>.j17-entry{width:100%;min-height:46px;justify-content:center;padding:11px 15px;font-size:12px;margin:0}
+ .station-cover .station-actions>.j17-entry strong{font-size:12px}
+ .station-cover .station-intro>.p20-mode-note{font-size:10px;margin-top:10px;line-height:1.7}
+ .p20-explore{gap:3px 18px;margin-top:12px;padding-top:10px}
+ .p20-explore-link,.station-cover .p20-explore .station-guide-link{font-size:11px;min-height:38px}
+ .station-cover .a9-observation{height:235px;margin:12px 25px 32px}
+ .station-cover .a9-observation .a9-instrument{inset:12px 22px 5px}
+ .station-cover .a9-observation .a9-specimen{inset:24%}
+ .station-cover .a9-observation .a9-node-0{top:18%}
+ .station-cover .a9-observation .a9-node-2{bottom:0}
+ .station-cover .a9-scene-caption{bottom:-22px}
+ .pt-workspace .pt-card,.mw-workspace .mw-marker-card{padding:19px;border-radius:13px}
+ .pt-card h3{font-size:19px}
+ .mw-marker-card .mw-gene-name{font-size:19px}
+ .paper-list .paper-card{padding:21px 2px}
+}
+@media(prefers-reduced-motion:reduce){
+ .pt-workspace .pt-card,.mw-workspace .mw-marker-card,.station-cover .station-actions>.j17-entry{transition:none}
+}

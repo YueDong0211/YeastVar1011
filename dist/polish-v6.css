@@ -1,0 +1,61 @@
+/* Decorative surfaces never intercept research controls. All borders remain inside their layout box. */
+html.cosmos-theme body:before{background:radial-gradient(ellipse at 89% 4%,#6974bb30 0,transparent 48%),radial-gradient(ellipse at 3% 52%,#347b9a25 0,transparent 44%),radial-gradient(ellipse at 75% 93%,#74538425 0,transparent 48%),linear-gradient(137deg,#15213b21,transparent 52%,#26395b18)}
+html.cosmos-theme body:after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1000' viewBox='0 0 1600 1000'%3E%3Cg fill='none' stroke='%23a6bce5' stroke-width='.7' opacity='.16'%3E%3Cellipse cx='1450' cy='510' rx='340' ry='530' transform='rotate(-29 1450 510)'/%3E%3Cellipse cx='1450' cy='510' rx='366' ry='570' transform='rotate(-29 1450 510)' stroke-dasharray='2 14'/%3E%3Cpath d='M110 800L184 686 278 714 357 603 433 632M110 800L278 714M1040 95L1138 149 1231 81 1293 180'/%3E%3C/g%3E%3Cg fill='%23c1d5ed' opacity='.38'%3E%3Ccircle cx='184' cy='686' r='2'/%3E%3Ccircle cx='278' cy='714' r='2.5'/%3E%3Ccircle cx='357' cy='603' r='2'/%3E%3Ccircle cx='1138' cy='149' r='2.5'/%3E%3Ccircle cx='1231' cy='81' r='2'/%3E%3C/g%3E%3C/svg%3E") center/cover no-repeat;opacity:.85}
+html[data-theme=light].cosmos-theme body:before{background:radial-gradient(ellipse at 90% 9%,#c2cdec72,transparent 47%),radial-gradient(ellipse at 5% 72%,#b9d9de5b,transparent 46%),radial-gradient(ellipse at 75% 94%,#d9cbea45,transparent 44%)}
+html[data-theme=light].cosmos-theme body:after{opacity:.45;filter:brightness(.65)}
+html.cosmos-off body:after,html.wallpaper-off body:after{display:none}
+html[data-theme] :is(.panel,.tool-card,.metric-card,.paper-card,.formula-card,.mw-card,.project-card,.pw-section,.pw-summary,.qc-stage,.pt5-group){border-style:solid;border-width:1px;border-color:color-mix(in srgb,var(--green) 15%,var(--line));box-shadow:inset 0 1px 0 #d7e8ff08,0 8px 24px #0309180c}
+html[data-theme] :is(.tool-card,.metric-card,.paper-card,.pw-direction,.pw-input-choice,.pw-marker,.pw-section,.pw-summary,.pw-method,.pw-metric){min-width:0;box-sizing:border-box;background-clip:padding-box}
+#plan-workbench .pw-hero{isolation:isolate;overflow:hidden;min-height:196px;padding:28px 30px;background:linear-gradient(115deg,color-mix(in srgb,var(--panel) 96%,transparent),color-mix(in srgb,var(--green-soft) 76%,transparent));border-color:color-mix(in srgb,var(--green) 25%,var(--line));box-shadow:inset 0 1px 0 #dbecff0d,0 15px 48px #02071716}
+#plan-workbench .pw-hero:after{content:"";position:absolute;z-index:-1;inset:0 0 0 36%;background:linear-gradient(90deg,var(--panel),transparent 42%),url('assets/yeast-microenvironment-v3.webp') 55% 40%/cover no-repeat;opacity:.25;pointer-events:none}
+#plan-workbench .pw-hero:before{content:"";position:absolute;z-index:-1;right:11%;top:50%;width:470px;height:230px;border:1px solid #b6cdeb38;border-radius:50%;box-shadow:0 0 0 17px #c4d8f405,0 0 0 39px #c4d8f408;transform:translateY(-50%) rotate(-32deg);pointer-events:none}
+#plan-workbench .pw-hero h1{text-shadow:0 2px 20px #02081720;max-width:750px}
+#plan-workbench .pw-hero-actions{position:relative;z-index:1}
+#plan-workbench .pw-hero-actions .btn{background:color-mix(in srgb,var(--panel) 94%,transparent)}
+#plan-workbench .pw-section{position:relative;background:linear-gradient(138deg,color-mix(in srgb,var(--green-soft) 9%,var(--panel)),var(--panel) 46%);border-radius:15px}
+#plan-workbench .pw-section-head{padding-bottom:12px;border-bottom:1px solid color-mix(in srgb,var(--line) 70%,transparent)}
+#plan-workbench .pw-summary{background:linear-gradient(155deg,color-mix(in srgb,var(--green-soft) 38%,var(--panel)),var(--panel) 70%);border-radius:15px}
+#plan-workbench .pw-stage-intro>span{display:grid;place-items:center;width:45px;min-width:45px;height:45px;border:1px solid var(--line);border-radius:12px;background:color-mix(in srgb,var(--panel) 80%,transparent);font-size:21px;color:var(--green)}
+#plan-workbench .pw-stepper{padding:5px;gap:5px;overflow:visible;border-radius:15px;background:color-mix(in srgb,var(--panel) 86%,transparent)}
+#plan-workbench .pw-stepper a{border:1px solid transparent!important;border-radius:9px;padding:13px 11px;min-width:0;overflow-wrap:anywhere;font-size:11px}
+#plan-workbench .pw-stepper a.active{border-color:color-mix(in srgb,var(--green) 32%,var(--line))!important;box-shadow:inset 0 1px 0 #c7e2ff08;background:linear-gradient(135deg,var(--green-soft),color-mix(in srgb,var(--green-soft) 55%,var(--panel)))}
+#plan-workbench .pw-metrics{gap:9px}
+#plan-workbench .pw-metric{border:1px solid var(--line);border-radius:10px;padding:10px 9px 10px 12px;min-height:59px}
+#plan-workbench .pw-metric>label{flex:1;min-width:0;align-items:flex-start;overflow-wrap:anywhere}
+#plan-workbench .pw-metric>label>input{flex-shrink:0;margin-top:3px}
+#plan-workbench .pw-method{border:1px solid var(--line);border-radius:10px;padding:14px;margin:9px 0;overflow-wrap:anywhere}
+#plan-workbench .pw-method .plan-tool-check{max-width:38%;white-space:normal;line-height:1.6}
+#plan-workbench .pw-stage-check{white-space:normal;line-height:1.7}
+#plan-workbench .pw-step-tabs{padding:2px 2px 13px;scroll-padding-inline:3px}
+#plan-workbench .pw-substep{flex-shrink:0;box-shadow:inset 0 1px 0 #d6e9ff05}
+#plan-workbench .pw-marker-list{padding:2px 5px 4px 1px;scroll-padding:3px}
+#plan-workbench :is(.pw-review-inputs>a,.pw-review-inputs>button){gap:14px;flex-wrap:wrap;overflow-wrap:anywhere}
+html[data-theme] :is(.pw-input-choice,.pw-direction-options label,.pw-direction,.pw-marker){transition:border-color .18s,background .18s,box-shadow .18s}
+html[data-theme] :is(.pw-input-choice,.pw-direction-options label,.pw-direction,.pw-marker):hover{border-color:color-mix(in srgb,var(--green) 50%,var(--line));box-shadow:inset 0 1px 0 #d3e8ff08}
+.table-wrap,.mw-table-wrap,.parameter-table-wrap{border:1px solid var(--line);background-clip:padding-box;scroll-padding:4px}
+.station-cover{border-radius:22px;border:1px solid #7092b766;box-shadow:inset 0 0 0 1px #d1e5ff0b,0 24px 70px #03081728}
+.station-cover-top:after{content:"";height:1px;flex:1;max-width:220px;margin-left:18px;background:linear-gradient(90deg,#b7d2ec77,transparent)}
+.station-cover-foot{border-top:1px solid #c0d9f524;padding-top:16px}
+.station-stat-bar{border-radius:15px;overflow:hidden}
+.c4-marker-docked .c4-companion-dock{grid-template-columns:1fr;min-height:105px;background:linear-gradient(120deg,var(--green-soft),var(--panel));overflow:visible}
+.c4-dock-mascot:empty{display:none}
+body:not(.c4-marker-docked) .guide-launcher{right:70px;bottom:16px;min-height:40px}
+.c4-assistance-shortcuts button{border-radius:9px;background:color-mix(in srgb,var(--panel) 88%,transparent)}
+/* Cover transition keeps the already-tested opaque boot layer and timer intact. */
+html[data-theme] .intro{background:#080e20!important;isolation:isolate}
+html[data-theme] .intro:before{inset:-4%;width:auto;height:auto;left:-4%;top:-4%;border:0;border-radius:0;transform:none;background:linear-gradient(90deg,#070e23ee,#0b1428a1 48%,#0b1023bd),url('assets/yeast-microenvironment-v3.webp') center/cover no-repeat;opacity:.9;box-shadow:none;animation:yv-cover-drift 16s ease-in-out infinite alternate}
+html[data-theme] .intro:after{width:min(85vw,1060px);height:min(85vw,1060px);border-color:#afcce33a;border-style:solid;transform:translate(-50%,-50%) rotateX(62deg) rotateZ(-28deg);box-shadow:0 0 0 28px #99bcdc04,0 0 0 90px #99bcdc08}
+.intro-inner{padding:35px;max-width:calc(100vw - 20px)}
+.intro-orbit img{filter:drop-shadow(0 0 34px #a3cdd74a)}
+.intro-wordmark{letter-spacing:-.04em;font-size:clamp(34px,4vw,52px)}
+.intro #intro-caption{color:#c0cfe0;letter-spacing:.08em;line-height:1.9}
+.intro-line{height:2px;border-radius:2px;overflow:hidden}
+.intro-skip{border:1px solid #b3cfdf45;border-radius:24px;padding:9px 19px;background:#0b142977;backdrop-filter:blur(4px)}
+.intro.leaving{visibility:visible!important}
+@keyframes yv-cover-drift{from{transform:scale(1.015) translateX(0)}to{transform:scale(1.055) translateX(-.7%)}}
+@media(max-width:1200px){#plan-workbench .pw-stepper a{border:1px solid transparent!important}#plan-workbench .pw-stepper a.active{border-color:color-mix(in srgb,var(--green) 32%,var(--line))!important}}
+@media(max-width:760px){#plan-workbench .pw-hero{min-height:185px;padding:23px 21px}#plan-workbench .pw-hero:after{inset:0;opacity:.17}#plan-workbench .pw-hero:before{right:-75%;opacity:.7}.station-cover{border-radius:16px}.station-cover-top:after{display:none}html.cosmos-theme body:after{opacity:.5}.pw-context{line-height:1.7}.intro-inner{padding:20px}.intro-orbit{width:180px;height:180px}}
+@media(max-width:420px){#plan-workbench .pw-stepper a{padding:10px 8px;gap:7px}#plan-workbench .pw-hero h1{font-size:27px}#plan-workbench .pw-method{flex-wrap:wrap}#plan-workbench .pw-method>button{flex-basis:100%}#plan-workbench .pw-method .plan-tool-check{max-width:none}#plan-workbench .pw-handoff>div{flex-wrap:wrap;justify-content:flex-end}.pw-next{max-width:190px}.pw-context>a{overflow-wrap:anywhere}}
+@media(prefers-reduced-motion:reduce){html[data-theme] .intro:before{animation:none!important}}
+.reduce-motion .intro:before{animation:none!important}
+@media print{body:after{display:none!important}}

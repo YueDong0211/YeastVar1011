@@ -1,0 +1,22 @@
+'use strict';
+(() => {
+  const A=()=>window.YV_APP,E=x=>A().esc(x),X=x=>A().tx(x);
+  let coverage=false;
+  const words={
+    framework:['分析设计','Analysis design','Plan d’analyse','Diseño del análisis','Analisi-diseinua'],
+    routes:['研究路线','Research routes','Parcours de recherche','Rutas de investigación','Ikerketa-bideak'],
+    coverage:['研究覆盖图','Research coverage','Couverture scientifique','Cobertura científica','Ikerketa-estaldura'],
+    title:['从研究问题组织分析','Organize analyses around questions','Organiser les analyses par question','Organizar análisis por preguntas','Antolatu analisiak galderen arabera'],
+    lead:['从分子计数、细胞状态和表达分布，连接调控、动力学与群体遗传。点击路线查看输入、方法、指标和原始文献。','Connect molecule counting, cell states and expression distributions to regulation, dynamics and population genetics. Open a route for its inputs, methods, metrics and primary sources.','Reliez comptage moléculaire, états cellulaires et distributions d’expression à la régulation, la dynamique et la génétique des populations. Ouvrez un parcours pour ses entrées, méthodes, indicateurs et sources.','Conecta recuento molecular, estados celulares y distribuciones de expresión con regulación, dinámica y genética de poblaciones. Abre una ruta para ver datos, métodos, métricas y fuentes.','Lotu molekulen zenbaketa, zelula-egoerak eta adierazpen-banaketa erregulazioarekin, dinamikarekin eta populazio-genetikarekin. Ireki bidea sarrerak, metodoak, metrikak eta iturriak ikusteko.'],
+    input:['数据入口','Data inputs','Entrées','Datos necesarios','Datu-sarrerak'],
+    sources:['方法与原始研究','Methods & primary studies','Méthodes et études originales','Métodos y estudios originales','Metodoak eta jatorrizko ikerketak'],
+    open:['查看论文','Open paper','Voir l’article','Abrir artículo','Ireki artikulua'],
+    docs:['官方方法资料','Official documentation','Documentation officielle','Documentación oficial','Dokumentazio ofiziala'],
+  };
+  const T=k=>words[k]?.[['zh','en','fr','es','eu'].indexOf(A().prefs().language)]||k;
+  function navigation(){return `<nav class="rc12-tabs" aria-label="${E(T('title'))}">${[['routes',false],['coverage',true]].map(([k,on])=>`<button type="button" data-rc12="${k}" aria-pressed="${coverage===on}">${A().icon(on?'workflow':'chart')}${E(T(k))}</button>`).join('')}</nav>`;}
+  function panel(){const d=A().data(),map=new Map(d.projects.projects.map(p=>[p.id,p]));return `<section class="rc12-panel"><header><span class="eyebrow">RESEARCH / EVIDENCE</span><h2>${E(T('title'))}</h2><p>${E(T('lead'))}</p><details class="rc12-framework"><summary>${E(T('framework'))}</summary><ul>${(d.projects.analysisFramework||[]).map(s=>`<li>${E(X(s))}</li>`).join('')}</ul></details></header><div class="rc12-grid">${(d.projects.researchCoverage||[]).map(row=>`<article class="rc12-topic" data-coverage="${E(row.id)}"><div class="rc12-heading"><span>${A().icon(row.icon||'chart')}</span><h3>${E(X(row.title))}</h3></div><p>${E(X(row.question))}</p><div class="rc12-input"><small>${E(T('input'))}</small><span>${E(X(row.inputSummary))}</span></div><div class="rc12-routes">${row.projectIds.map(id=>map.get(id)).filter(Boolean).map(p=>`<button type="button" data-action="open" data-kind="project" data-id="${E(p.id)}"><span>${E(X(p.title))}</span>${A().icon('arrow')}</button>`).join('')}</div></article>`).join('')}</div></section>`;}
+  function sources(p){const d=A().data(),ids=new Set(p.paperIds||[]),papers=d.literature.papers.filter(r=>ids.has(r.id)),paperURLs=new Set(papers.flatMap(r=>[r.url,...(r.sourceUrls||[]),'https://doi.org/'+r.doi]));const docs=[...new Set(p.sourceUrls||[])].filter(u=>!paperURLs.has(u));return `<section class="project-section rc12-sources"><h3>${E(T('sources'))}</h3>${papers.map(r=>`<button data-action="open" data-kind="paper" data-id="${E(r.id)}"><strong>${E(r.title)}</strong><span>${E(r.journal)} · ${E(r.year)} ${A().icon('arrow')}</span></button>`).join('')}${docs.length?`<details ${papers.length?'':'open'}><summary>${E(T('docs'))}</summary>${docs.map(u=>A().link(u,new URL(u).hostname.replace(/^www\./,''))).join('<br>')}</details>`:''}</section>`;}
+  document.addEventListener('click',e=>{const el=e.target.closest('[data-rc12]');if(!el)return;coverage=el.dataset.rc12==='coverage';A().render();document.querySelector('.rc12-tabs button[aria-pressed="true"]')?.focus({preventScroll:true});});
+  window.YV_RESEARCH_COVERAGE={navigation,panel,sources,active:()=>coverage};
+})();

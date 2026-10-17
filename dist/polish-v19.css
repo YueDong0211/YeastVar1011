@@ -1,0 +1,84 @@
+/* Alignment is scoped to named controls; text actions keep their natural layout. */
+
+/* The 1254px PNG has a slight rightward visual mass. Fit it inside the frame,
+   then compensate by one CSS pixel instead of changing every logo or SVG. */
+html[data-theme] #sidebar .brand-emblem{
+  display:grid;place-items:center;flex:0 0 46px;width:46px;height:46px;
+  padding:2px;line-height:0;isolation:isolate;
+}
+html[data-theme] #sidebar .brand-emblem>img{
+  display:block;width:42px;height:42px;max-width:100%;max-height:100%;
+  object-fit:contain;object-position:center;transform:translateX(-1px);
+}
+
+/* Dedicated icon frames share an even, non-shrinking centre. */
+.topbar .icon-btn,.a9-window-controls .icon-btn,.pw-metric>.icon-btn,
+.row-actions>.icon-btn,.paper-card-actions>.icon-btn,.companion-hub-close,
+.c18-search-clear,.c4-control,.c4-order-arrow{
+  display:inline-grid;place-items:center;align-content:center;justify-content:center;
+  padding:0;line-height:1;flex-shrink:0;
+}
+.topbar .icon-btn>svg,.a9-window-controls .icon-btn>svg,
+.pw-metric>.icon-btn>svg,.row-actions>.icon-btn>svg,
+.paper-card-actions>.icon-btn>svg,.companion-hub-close>svg,
+.c18-search-clear>svg,.c4-control>svg,.c4-order-arrow>svg{
+  display:block;flex-shrink:0;margin:0;overflow:visible;
+}
+.topbar .icon-btn{border-radius:10px}
+.pw-metric>.icon-btn,.row-actions>.icon-btn,.paper-card-actions>.icon-btn{
+  width:36px;height:36px;min-width:36px;min-height:36px;border-radius:9px;
+}
+.pw-metric>.icon-btn:hover,.row-actions>.icon-btn:hover,.paper-card-actions>.icon-btn:hover{
+  border-color:color-mix(in srgb,var(--green) 34%,var(--line));
+}
+.row-actions,.paper-card-actions{align-items:center;gap:5px}
+.companion-hub-close{width:38px;height:38px;flex-basis:38px}
+
+/* Card emblems and format glyphs have their own frame, independent of labels. */
+.pt-card-icon,.pt-task-nav .pt-task-icon,.ex15-file-icon,.p11-contribute-icon,
+.companion-hub-emblem,.result-icon{
+  align-items:center;justify-items:center;line-height:1;flex-shrink:0;
+}
+.pt-card-icon>svg,.ex15-file-icon>svg,.p11-contribute-icon>svg,
+.companion-hub-emblem>svg,.result-icon>svg{display:block;margin:0;flex-shrink:0}
+.ex15-file-icon{width:30px;height:30px;border-radius:8px;background:color-mix(in srgb,var(--green) 5%,transparent)}
+.ex15-file-icon>svg{width:20px;height:20px}
+.ex15-selection>a{min-height:32px;padding-block:5px;align-items:center;line-height:1.5}
+.ex15-selection>a>svg{align-self:center;flex-shrink:0}
+
+/* Keep a source icon beside its source label, including multiline citations. */
+a.source-link{display:inline-flex;align-items:center;gap:7px;max-width:100%;line-height:1.65;vertical-align:middle;overflow-wrap:anywhere}
+a.source-link>svg{width:14px;height:14px;flex:0 0 14px;margin:0;display:block}
+.rich-select-button>.select-chevron{flex:0 0 16px;display:grid;place-items:center;line-height:1}
+.rich-select-button>.select-chevron>svg{display:block;margin:0}
+
+/* A compact rail remains centred when its labels are hidden. */
+@media(min-width:761px){
+  .c5-sidebar-auto.sidebar-collapsed:not(.c5-sidebar-peek) #primary-nav .c4-nav-row>.nav-link{
+    justify-content:center;gap:0;padding-inline:10px;
+  }
+  .c5-sidebar-auto.sidebar-collapsed:not(.c5-sidebar-peek) #primary-nav .c4-nav-row>.nav-link>svg{
+    display:block;margin:0;flex:0 0 19px;
+  }
+}
+
+@media(max-width:760px){
+  .topbar .icon-btn{width:36px;height:36px;min-width:36px;min-height:36px}
+  .pr16-history .pr16-button{line-height:1;align-items:center;justify-content:center}
+  .pr16-history .pr16-button>svg{display:block;flex:0 0 16px;margin:0}
+  html[data-workspace-route=settings] .setting-row:has(>.rich-select),
+  html[data-workspace-route=settings] .setting-row:has(>select){
+    display:grid;grid-template-columns:minmax(0,1fr);align-items:start;gap:12px;
+  }
+  html[data-workspace-route=settings] .setting-row>.rich-select,
+  html[data-workspace-route=settings] .setting-row>select{width:100%;max-width:none;min-width:0}
+  html[data-workspace-route=settings] .setting-row>.rich-select>.rich-select-button{width:100%}
+  html[data-workspace-route=settings] .setting-row:has(>.toggle){align-items:center}
+  .companion-hub-tabs button{gap:6px}
+  .companion-hub-tabs button>svg{flex:0 0 17px;width:17px;height:17px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .topbar .icon-btn,.pw-metric>.icon-btn,.row-actions>.icon-btn,
+  .paper-card-actions>.icon-btn{transition:none}
+}

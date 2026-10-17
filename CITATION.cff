@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "Please cite this software when using the workstation, and cite the original methods and datasets selected in your research plan."
+type: software
+title: "YeastVar1011: a yeast single-cell research-plan workstation"
+authors:
+  - family-names: Dong
+    given-names: Yue
+version: 20.0.0
+date-released: 2026-10-17
+license: MIT
+repository-code: "https://github.com/YueDong0211/YeastVar1011"
+url: "https://yuedong0211.github.io/YeastVar1011/"
+abstract: "A browser-based workstation for designing yeast single-cell studies, connecting quality control, marker evidence, expression variability, RNA dynamics, regulation and population genetics to methods, input requirements and references."

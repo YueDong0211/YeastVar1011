@@ -1,0 +1,34 @@
+/* Shared work surfaces: a clear hierarchy, concise navigation and visible focus. */
+#breadcrumb-page{display:inline-flex;align-items:center;gap:9px;min-height:36px;padding:5px 9px;margin-left:-9px;border:1px solid transparent;border-radius:8px;color:var(--ink);background:transparent;text-align:left;font-size:12px;font-weight:600}
+#breadcrumb-page:after{content:'';width:5px;height:5px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg);opacity:.6;margin-top:-3px}
+#breadcrumb-page:hover{border-color:var(--line);background:var(--panel)}
+.sidebar-workflow[hidden]{display:none!important}
+html[data-theme] .page-heading h1,html[data-theme] .v7-library-title h1{letter-spacing:-.025em}
+html[data-theme] .pw-section,html[data-theme] .panel{border-color:color-mix(in srgb,var(--line) 78%,transparent)}
+html[data-theme] .pt-stage-list{gap:5px 8px}
+html[data-theme] .pt-stage-list button{min-height:34px;padding:7px 10px;font-size:11px}
+html[data-theme] .pt-stage-list button>span{padding-right:7px}
+html[data-theme] .command-palette{width:min(760px,calc(100vw - 32px));max-height:min(780px,calc(100dvh - 60px));display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--line);border-radius:20px;background:var(--panel);box-shadow:0 32px 110px #0007}
+html[data-theme] .command-input{min-height:72px;padding:17px 22px;border-bottom:1px solid var(--line);flex-shrink:0}
+html[data-theme] .command-input input{font-size:15px;min-width:0}
+html[data-theme] .command-help{padding:0;border-bottom:1px solid var(--line);flex-shrink:0}
+.i15-search-filters{display:flex;gap:5px;overflow-x:auto;padding:12px 18px;scrollbar-width:thin}
+.i15-search-filters button{flex-shrink:0;padding:7px 11px;border-radius:8px;border:1px solid transparent;font-size:11px;line-height:1.5;color:var(--muted);white-space:nowrap}
+.i15-search-filters button[aria-pressed=true]{background:var(--green-soft);border-color:color-mix(in srgb,var(--green) 45%,var(--line));color:var(--green)}
+html[data-theme] #command-results{overflow-y:auto;min-height:120px;max-height:none;padding:10px 13px 16px;overscroll-behavior:contain}
+.i15-search-group+.i15-search-group{margin-top:14px}
+.i15-search-group h3{display:flex;justify-content:space-between;gap:12px;margin:7px 10px;font-size:10px;font-weight:500;color:var(--muted)}
+.i15-search-group h3>span{font-variant-numeric:tabular-nums;opacity:.8}
+html[data-theme] .command-result{display:flex;width:100%;align-items:center;gap:13px;padding:12px 10px;border:1px solid transparent;border-radius:11px;text-align:left;min-height:65px}
+html[data-theme] .command-result>span:nth-child(2){min-width:0;flex:1}
+html[data-theme] .command-result strong{font-size:13px;line-height:1.6;font-weight:550;overflow-wrap:anywhere;display:block}
+html[data-theme] .command-result small{font-size:11px;color:var(--muted);margin-top:3px;display:block}
+html[data-theme] .command-result>.result-icon{width:35px;height:35px;flex-shrink:0;border-radius:10px;background:var(--green-soft);display:grid;place-items:center;color:var(--green)}
+html[data-theme] .command-result>svg{width:15px;height:15px;color:var(--soft);flex-shrink:0}
+html[data-theme] .command-result:hover,html[data-theme] .command-result:focus-visible{background:var(--surface);border-color:var(--line);outline:none;box-shadow:inset 2px 0 var(--green)}
+.i15-search-footer{padding:12px 22px;border-top:1px solid var(--line);font-size:10px;color:var(--muted);flex-shrink:0}
+.i15-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+#i15-transition-settings{padding-bottom:22px;margin-bottom:22px;border-bottom:1px solid var(--line);scroll-margin-top:100px}
+.i15-transition-shortcut{display:block;margin-top:16px;padding-top:15px;border-top:1px solid var(--line);font-size:11px;line-height:1.6;color:var(--green)}
+.a9-appearance-popover{max-height:calc(100dvh - 24px);overflow-y:auto}
+@media(max-width:760px){#breadcrumb-page{font-size:12px;max-width:155px}.i15-search-filters{padding-inline:10px}.command-palette{max-height:calc(100dvh - 24px)!important}.command-input{padding:13px!important}.command-input input{font-size:16px!important}.i15-search-footer{font-size:9px;padding:10px 14px}html[data-theme] .pt-stage-list button{min-height:38px}}

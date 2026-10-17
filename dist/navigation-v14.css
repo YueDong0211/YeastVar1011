@@ -1,0 +1,43 @@
+/* One navigation rail, one content transition; reading retains native scrolling. */
+html[data-workspace-route="workbench"] .sidebar-workflow{display:none}
+#plan-workbench .pw-stepper{display:flex;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:var(--line) transparent;gap:4px;padding:5px;border-radius:13px;scroll-padding:6px;overscroll-behavior-x:contain}
+#plan-workbench .pw-stepper a{flex:1 0 auto;min-width:145px;padding:14px 17px;border:0;border-radius:9px;scroll-snap-align:start;white-space:nowrap;font-size:12px;box-shadow:none}
+#plan-workbench .pw-stepper a.active{background:linear-gradient(125deg,var(--green-soft),color-mix(in srgb,var(--green-soft) 45%,var(--panel)));box-shadow:inset 0 -2px var(--green)}
+#plan-workbench .pw-stepper a>span{font-size:10px}
+#plan-workbench .pw-stage-intro{padding:16px 0 20px;border-bottom:1px solid var(--line);touch-action:pan-y;position:relative;gap:16px;outline-offset:5px;min-width:0}
+#plan-workbench .pw-stage-intro>div:first-of-type{flex:1;min-width:0}
+#plan-workbench .pw-stage-intro>span{font-size:36px;opacity:.48;font-variant-numeric:tabular-nums}
+.n14-navigation{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:11px;max-width:36%;min-width:125px}
+.n14-current-step{font-size:11px;color:var(--green);line-height:1.65;text-align:right;max-width:180px}
+.n14-navigation-controls{display:flex;gap:6px;flex-shrink:0}
+.n14-navigation-controls button{display:grid;place-items:center;width:42px;height:42px;background:var(--panel);border:1px solid var(--line);border-radius:50%;color:var(--ink);transition:background .16s,border-color .16s}
+.n14-navigation-controls button:not(:disabled):hover{background:var(--green-soft);border-color:var(--green)}
+.n14-navigation-controls button:disabled{opacity:.3;cursor:default}
+.n14-previous svg{transform:rotate(180deg)}
+.n14-swipe-hint{display:none;font-size:10px;color:var(--muted);line-height:1.6}
+#plan-workbench .pw-step-tabs{display:flex;grid-template-columns:none;gap:6px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:var(--line) transparent;scroll-padding:4px;overscroll-behavior-x:contain;padding:2px 2px 10px;margin-bottom:12px}
+#plan-workbench .pw-step-tabs .pw-substep{flex:0 0 auto;max-width:270px;min-width:130px;min-height:46px;padding:10px 13px;white-space:nowrap;scroll-snap-align:start;border-radius:9px;box-shadow:none;transform:none}
+#plan-workbench .pw-step-tabs .pw-substep.active{box-shadow:inset 0 -2px var(--green)}
+#plan-workbench .pw-selection-links{display:grid;gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:7px 0;margin:17px 0}
+#plan-workbench .pw-selection-links a{display:flex;align-items:center;gap:8px;padding:8px 0;font-size:11px;color:var(--muted)}
+#plan-workbench .pw-selection-links a>span{flex:1}
+#plan-workbench .pw-selection-links strong{font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums}
+#plan-workbench .pw-selection-links svg{width:13px;height:13px}
+#plan-workbench .pw-selection-links a:hover{color:var(--green)}
+#plan-workbench .pw-content{min-width:0}
+#plan-workbench .pw-hero .eyebrow{font-size:9px;opacity:.72}
+#plan-workbench .pw-hero{box-shadow:none}
+.a9-window-controls button[hidden]{display:none!important}
+@media(max-width:760px){
+  #plan-workbench .pw-stepper a{min-width:152px;padding:13px 12px;font-size:11px}
+  #plan-workbench .pw-stage-intro{padding:12px 0 16px;flex-wrap:wrap;gap:10px}
+  #plan-workbench .pw-stage-intro>span{font-size:28px}
+  #plan-workbench .pw-stage-intro>div:first-of-type{flex-basis:calc(100% - 54px)}
+  .n14-navigation{max-width:none;width:100%;justify-content:space-between;padding-left:0;gap:8px}
+  .n14-current-step{flex:1;text-align:left;max-width:none}
+  .n14-navigation-controls button{width:44px;height:44px}
+  #plan-workbench .pw-step-tabs .pw-substep{font-size:11px;max-width:260px;min-width:145px}
+}
+@media(pointer:coarse){.n14-swipe-hint{display:block;width:100%;text-align:right}}
+@media(prefers-reduced-motion:reduce){.n14-navigation-controls button{transition:none}#plan-workbench .pw-stepper,#plan-workbench .pw-step-tabs{scroll-behavior:auto}}
+html.reduce-motion .n14-navigation-controls button{transition:none}
