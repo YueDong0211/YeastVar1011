@@ -1,0 +1,50 @@
+name: Raw FASTQ QC integration
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['analysis/**', '.github/workflows/analysis-integration.yml']
+  pull_request:
+    paths: ['analysis/**', '.github/workflows/analysis-integration.yml']
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-linux:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    defaults:
+      run:
+        shell: bash -el {0}
+        working-directory: analysis
+    steps:
+      - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v4
+        with:
+          miniforge-version: latest
+          activate-environment: yv-qc
+          environment-file: analysis/environment.yaml
+          channels: conda-forge,bioconda
+          channel-priority: strict
+          auto-activate-base: false
+      - name: Validate configuration and workflow tests
+        run: bash run.sh test
+      - name: Generate independent synthetic input
+        run: python tests/make_fixture.py --output "$RUNNER_TEMP/yv-qc-synthetic"
+      - name: Execute complete QC workflow
+        run: YV_CONFIG="$RUNNER_TEMP/yv-qc-synthetic/config.yaml" bash run.sh local --cores 2
+      - name: Verify BAM tags, count layers and QC reports
+        run: python tests/assert_e2e.py --results results-synthetic-test
+      - name: Preserve diagnostic reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: raw-fastq-qc-synthetic-reports
+          path: |
+            analysis/results-synthetic-test/qc
+            analysis/results-synthetic-test/logs
+            analysis/results-synthetic-test/multiqc*
+            analysis/.snakemake/log
+          if-no-files-found: ignore

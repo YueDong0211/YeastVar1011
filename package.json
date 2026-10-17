@@ -1,10 +1,13 @@
 {
   "name": "yeastvar1011",
-  "version": "20.0.0",
+  "version": "21.0.0",
   "description": "Yeast single-cell research-plan builder and evidence catalogue",
   "scripts": {
     "start": "node scripts/dev-server.cjs",
     "check": "node research/check_site.cjs",
+    "doctor": "node scripts/doctor.cjs",
+    "setup": "node scripts/doctor.cjs",
+    "test:doctor": "node scripts/qa-doctor.cjs",
     "test:server": "node research/qa-dev-server.cjs",
     "test:public": "node scripts/smoke-public.cjs",
     "release:source": "node scripts/prepare-public.cjs"
@@ -29,6 +32,6 @@
     "url": "https://github.com/YueDong0211/YeastVar1011/issues"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   }
 }

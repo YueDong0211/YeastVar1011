@@ -32,7 +32,7 @@
   };
   const T=k=>words[k]?.[['zh','en','fr','es','eu'].indexOf(A()?.prefs().language||'zh')]||k;
   const E=v=>A().esc(v), I=k=>A().icon(k);
-  const groups=[['design','workflow',['workbench','workflow','quality']],['evidence','literature',['markers','tools','literature','formulas']],['explore','galaxy',['projects','galaxy','lab','ideas']],['personal','saved',['saved','settings','contribute']]];
+  const groups=[['design','workflow',['workbench','workflow','quality','cluster']],['evidence','literature',['markers','tools','literature','formulas']],['explore','galaxy',['projects','galaxy','lab','ideas']],['personal','saved',['saved','settings','contribute']]];
   let openGroups={};try{openGroups=JSON.parse(localStorage.getItem('yv.navigation.v11')||'{}')}catch{}
   let settingsTab='display',savedKind='all';
   function navLink(k,href='#'+k){return `<a class="nav-link ${A().route()===k?'active':''}" href="${href}" ${A().route()===k?'aria-current="page"':''} title="${E(A().t(k))}">${I(k)}<span>${E(A().t(k))}</span></a>`}

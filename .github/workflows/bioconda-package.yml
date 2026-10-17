@@ -1,0 +1,62 @@
+name: Bioconda package candidate
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'packaging/bioconda/**'
+      - 'scripts/**'
+      - 'dist/**'
+      - 'analysis/**'
+      - 'package.json'
+      - 'LICENSE'
+      - 'THIRD_PARTY_NOTICES.md'
+      - 'DATA_SOURCES.md'
+      - '.github/workflows/bioconda-package.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'packaging/bioconda/**'
+      - 'scripts/**'
+      - 'dist/**'
+      - 'analysis/**'
+      - 'package.json'
+      - '.github/workflows/bioconda-package.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  linux-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash -el {0}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v4
+        with:
+          miniforge-version: latest
+          activate-environment: recipe-build
+          python-version: '3.12'
+          channels: conda-forge,bioconda
+          channel-priority: strict
+          auto-activate-base: false
+      - name: Install package build tools
+        run: conda install --yes --override-channels -c conda-forge conda-build 'nodejs>=22,<25'
+      - name: Render and check recipe against this checkout
+        run: |
+          version=$(node -p 'require("./package.json").version')
+          node scripts/render-bioconda.cjs --version "$version" --local-source . --output releases/recipe/ci
+          bash -n releases/recipe/ci/build.sh releases/recipe/ci/run_test.sh
+          conda render --override-channels -c conda-forge -c bioconda releases/recipe/ci
+      - name: Build and test installed package
+        run: conda build --override-channels -c conda-forge -c bioconda --output-folder "$RUNNER_TEMP/yeastvar-conda-build" releases/recipe/ci
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yeastvar1011-conda-candidate
+          path: |
+            ${{ runner.temp }}/yeastvar-conda-build/noarch/*.conda
+            ${{ runner.temp }}/yeastvar-conda-build/noarch/*.tar.bz2
+          if-no-files-found: error

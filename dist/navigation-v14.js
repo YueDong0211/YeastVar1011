@@ -9,7 +9,7 @@
   };
   const T=k=>words[k]?.[Math.max(0,['zh','en','fr','es','eu'].indexOf(A()?.prefs().language||'zh'))]||k;
   const reduced=()=>!!A()?.prefs().reducedMotion||matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const routeOrder=['overview','workbench','workflow','quality','markers','tools','literature','formulas','projects','galaxy','lab','ideas','saved','settings','contribute','builder'];
+  const routeOrder=['overview','cluster','workbench','workflow','quality','markers','tools','literature','formulas','projects','galaxy','lab','ideas','saved','settings','contribute','builder'];
   let snapshot=null,animation=null,pendingFocus=null,gesture=null;
   function position(){const route=A()?.route(),state=route==='workbench'?P().navigationState():null;return {route,hash:location.hash,phase:state?.phase,step:state?.step,scrollY};}
   function current(){return snapshot?{...snapshot,scrollY}:null;}

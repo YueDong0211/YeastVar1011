@@ -1,0 +1,132 @@
+"""One library per STARsolo job; lanes of that library are combined before UMI collapsing."""
+import sys
+from pathlib import Path
+import shlex
+
+sys.path.insert(0, str(Path(workflow.basedir) / 'scripts'))
+from qc import validate_config
+
+CFG = validate_config(config)
+CONFIG_FILE = str(Path(workflow.configfiles[-1]).resolve())
+SCRIPT = str(Path(workflow.basedir) / 'scripts' / 'qc.py')
+OUT = CFG['output_dir']
+ROWS = CFG['_rows']
+LIBRARIES = sorted({row['library_id'] for row in ROWS})
+LANES = {(row['library_id'], row['lane_id']): row for row in ROWS}
+RES = CFG['resources']
+
+def command(task, **kwargs):
+    args = ['python', SCRIPT, task, '--config', CONFIG_FILE]
+    for key, value in kwargs.items():
+        args += ['--' + key.replace('_', '-'), str(value)]
+    return shlex.join(args)
+
+FASTQC = [f'{OUT}/fastqc/{row["library_id"]}/{row["lane_id"]}/{role}' for row in ROWS for role in ['cdna', 'barcode']]
+PREFLIGHT = [f'{OUT}/preflight/{row["library_id"]}/{row["lane_id"]}.json' for row in ROWS]
+
+rule all:
+    input:
+        f'{OUT}/multiqc/multiqc_report.html',
+        f'{OUT}/run_manifest.json',
+        expand(OUT + '/cells/{library}.qc.tsv.gz', library=LIBRARIES),
+        expand(OUT + '/bam_qc/{library}', library=LIBRARIES),
+        PREFLIGHT
+
+rule reference:
+    input:
+        config=CONFIG_FILE, script=SCRIPT, fasta=CFG['reference']['fasta'],
+        gtf=CFG['reference']['gtf'], whitelist=CFG['protocol']['whitelist'],
+        groups=list(CFG['gene_groups'].values())
+    output: OUT + '/reference/validation.json'
+    conda: 'envs/qc.yaml'
+    resources: mem_mb=RES['qc_mem_mb'], runtime=RES['qc_runtime_min']
+    params: cmd=lambda wc, output: command('reference', output=output[0])
+    shell: '{params.cmd}'
+
+rule fastq_integrity:
+    input:
+        config=CONFIG_FILE, script=SCRIPT, reference=OUT + '/reference/validation.json',
+        cdna=lambda wc: LANES[(wc.library, wc.lane)]['cdna_fastq'],
+        barcode=lambda wc: LANES[(wc.library, wc.lane)]['barcode_fastq']
+    output: OUT + '/preflight/{library}/{lane}.json'
+    conda: 'envs/qc.yaml'
+    resources: mem_mb=RES['qc_mem_mb'], runtime=RES['qc_runtime_min']
+    params: cmd=lambda wc, output: command('fastq', library=wc.library, lane=wc.lane, output=output[0])
+    shell: '{params.cmd}'
+
+rule fastqc:
+    input:
+        config=CONFIG_FILE, script=SCRIPT,
+        reads=lambda wc: LANES[(wc.library, wc.lane)][wc.role + '_fastq']
+    output: directory(OUT + '/fastqc/{library}/{lane}/{role}')
+    wildcard_constraints: role='cdna|barcode'
+    threads: RES['fastqc_threads']
+    conda: 'envs/qc.yaml'
+    resources: mem_mb=RES['qc_mem_mb'], runtime=RES['qc_runtime_min']
+    params: cmd=lambda wc, output, threads: command('fastqc', library=wc.library, lane=wc.lane, role=wc.role, output=output[0], threads=threads)
+    shell: '{params.cmd}'
+
+rule star_index:
+    input:
+        config=CONFIG_FILE, script=SCRIPT, validation=OUT + '/reference/validation.json',
+        fasta=CFG['reference']['fasta'], gtf=CFG['reference']['gtf']
+    output: directory(OUT + '/reference/star_index')
+    threads: RES['index_threads']
+    conda: 'envs/qc.yaml'
+    resources: mem_mb=RES['index_mem_mb'], runtime=RES['index_runtime_min']
+    params: cmd=lambda wc, input, output, threads: command('index', output=output[0], reference=input.validation, threads=threads)
+    shell: '{params.cmd}'
+
+rule starsolo:
+    input:
+        config=CONFIG_FILE, script=SCRIPT, genome=OUT + '/reference/star_index',
+        checked=lambda wc: [f'{OUT}/preflight/{row["library_id"]}/{row["lane_id"]}.json' for row in ROWS if row['library_id'] == wc.library],
+        cdna=lambda wc: [row['cdna_fastq'] for row in ROWS if row['library_id'] == wc.library],
+        barcode=lambda wc: [row['barcode_fastq'] for row in ROWS if row['library_id'] == wc.library]
+    output: directory(OUT + '/star/{library}')
+    threads: RES['star_threads']
+    conda: 'envs/qc.yaml'
+    resources: mem_mb=RES['star_mem_mb'], runtime=RES['star_runtime_min']
+    params: cmd=lambda wc, input, output, threads: command('star', library=wc.library, index=input.genome, output=output[0], threads=threads)
+    benchmark: OUT + '/benchmarks/{library}.star.tsv'
+    shell: '{params.cmd}'
+
+rule bam_qc:
+    input: config=CONFIG_FILE, script=SCRIPT, star=OUT + '/star/{library}'
+    output: directory(OUT + '/bam_qc/{library}')
+    threads: 2
+    conda: 'envs/qc.yaml'
+    resources: mem_mb=RES['qc_mem_mb'], runtime=RES['qc_runtime_min']
+    params: cmd=lambda wc, input, output, threads: command('bam', library=wc.library, star_dir=input.star, output=output[0], threads=threads)
+    shell: '{params.cmd}'
+
+rule cell_qc:
+    input: config=CONFIG_FILE, script=SCRIPT, star=OUT + '/star/{library}', reference=OUT + '/reference/validation.json'
+    output:
+        table=OUT + '/cells/{library}.qc.tsv.gz',
+        metadata=OUT + '/cells/{library}.qc.tsv.gz.meta.json'
+    conda: 'envs/qc.yaml'
+    resources: mem_mb=RES['qc_mem_mb'], runtime=RES['qc_runtime_min']
+    params: cmd=lambda wc, input, output: command('matrix', library=wc.library, star_dir=input.star, reference=input.reference, output=output.table)
+    shell: '{params.cmd}'
+
+rule manifest:
+    input: config=CONFIG_FILE, script=SCRIPT, reference=OUT + '/reference/validation.json', checked=PREFLIGHT
+    output: OUT + '/run_manifest.json'
+    conda: 'envs/qc.yaml'
+    resources: mem_mb=RES['qc_mem_mb'], runtime=RES['qc_runtime_min']
+    params: cmd=lambda wc, output: command('manifest', output=output[0])
+    shell: '{params.cmd}'
+
+rule multiqc:
+    input:
+        fastqc=FASTQC, star=expand(OUT + '/star/{library}', library=LIBRARIES),
+        bam=expand(OUT + '/bam_qc/{library}', library=LIBRARIES),
+        cells=expand(OUT + '/cells/{library}.qc.tsv.gz', library=LIBRARIES)
+    output: OUT + '/multiqc/multiqc_report.html'
+    conda: 'envs/qc.yaml'
+    resources: mem_mb=RES['qc_mem_mb'], runtime=RES['qc_runtime_min']
+    log: OUT + '/multiqc/run.log'
+    params: root=OUT, out=OUT + '/multiqc'
+    shell:
+        'mkdir -p {params.out:q}; multiqc {params.root:q} --outdir {params.out:q} --filename multiqc_report.html --force --dirs > {log:q} 2>&1'

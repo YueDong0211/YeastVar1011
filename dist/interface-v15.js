@@ -2,6 +2,7 @@
 (() => {
   const A=()=>window.YV_APP, $=s=>document.querySelector(s), languages=['zh','en','fr','es','eu'];
   const labels={
+    cluster:['安装与集群','Install & cluster','Installation et cluster','Instalación y clúster','Instalazioa eta klusterra'],
     journey:['沉浸式制定方案','Immersive plan studio','Studio immersif','Estudio inmersivo','Plangune murgiltzailea'],
     overview:['首页','Home','Accueil','Inicio','Hasiera'],
     workbench:['研究方案','Study plan','Plan d’étude','Plan de estudio','Ikerketa-plana'],
@@ -50,8 +51,8 @@
   function label(k,language){return L(labels,k,language)}
   function beginSearch(){filter='all'}
   function pages(){
-    const main=['journey','workbench','markers','quality','tools','literature','formulas','projects','lab','galaxy','workflow','builder','saved','settings','contribute','overview','ideas'];
-    const aliases={journey:'沉浸式 3D 制定方案 游戏 immersive guided study planning',workbench:'方案 设计 plan study design',quality:'质控 QC quality FASTQ BAM UMI',markers:'marker 基因 周期 stress annotation',lab:'DIY 绘图 plot figure formula 公式',settings:'3D 动画 外观 转场 animation cinematic theme preferences',saved:'收藏 笔记 notes',contribute:'加入 贡献 联系 contact email'};
+    const main=['cluster','journey','workbench','markers','quality','tools','literature','formulas','projects','lab','galaxy','workflow','builder','saved','settings','contribute','overview','ideas'];
+    const aliases={cluster:'Linux HPC SLURM Snakemake pipeline 安装 集群 下载 上传 环境',journey:'沉浸式 3D 制定方案 游戏 immersive guided study planning',workbench:'方案 设计 plan study design',quality:'质控 QC quality FASTQ BAM UMI',markers:'marker 基因 周期 stress annotation',lab:'DIY 绘图 plot figure formula 公式',settings:'3D 动画 外观 转场 animation cinematic theme preferences',saved:'收藏 笔记 notes',contribute:'加入 贡献 联系 contact email'};
     return main.map(k=>({title:label(k),hint:T('pages'),route:k==='workbench'?window.YV_PLAN.href(window.YV_PLAN.getState().phase):k==='builder'?'#builder?tab=assemble':'#'+k,icon:k,search:fold([...(labels[k]||[]),aliases[k]||'',k].join(' '))}))
       .concat([{title:T('review'),hint:label('workbench'),route:'#workbench?stage=review',icon:'download',search:fold([...words.review,'export 导出 下载 Excel PDF 文档 预览 preview APA'].join(' '))}])
       .concat([{title:L(labels,'settings')+' · 3D',hint:label('settings'),route:'#settings?section=transitions',icon:'galaxy',search:fold('3D 酵母 转场 动画 cinematic yeast animation transitions')}])

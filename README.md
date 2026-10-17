@@ -35,13 +35,15 @@ Both planning modes edit the same plan. The 3D cell is an authored biological il
 
 **Windows, no development tools:** download the portable ZIP from [Releases](https://github.com/YueDong0211/YeastVar1011/releases), extract the whole folder and open `START.cmd`. `STOP.cmd` stops the local server; `CREATE-SHORTCUT.cmd` creates a shortcut.
 
-**Windows, macOS or Linux, with Node.js 20+:**
+**Windows, macOS or Linux, with Node.js 22+:**
 
 ```sh
 git clone https://github.com/YueDong0211/YeastVar1011.git
 cd YeastVar1011
 npm start
 ```
+
+Node.js 24 LTS is recommended; Node.js 22 is supported. On Linux and macOS, `sh scripts/setup.sh --start` checks the environment and starts the workstation. On Windows, `scripts/setup.ps1 -Start` provides the same sequence.
 
 Open the address printed in the terminal. Starting the app needs no dependency installation or build. The server listens on your own computer. Set the `PORT` environment variable to choose another port.
 
@@ -62,6 +64,12 @@ npm run test:public
 Plans, selections and preferences are stored in your browser. The application does not upload raw sequencing data or run a remote sequencing pipeline. Imported observations remain in the page unless you export them. The catalogue guide searches bundled records; it is not a hosted language-model service. Opening an external reference or GitHub link leaves the workstation. The optional companion uses remotely referenced media unless you select a local image.
 
 Settings provides scoped cleanup and a full local reset. Export a plan backup before clearing it. Local and hosted copies, different browsers and different website addresses have separate browser storage; use an exported backup to transfer a plan.
+
+## Linux and cluster QC workflow
+
+The separate [analysis workflow](analysis/README.md) uses pinned Snakemake, STARsolo, samtools, FastQC and MultiQC environments. Configure the barcode/UMI layout, read roles, reference annotation, sample sheet and resource limits before running it. It retains tagged BAM files, Gene/GeneFull/SJ/Velocyto outputs, chromosome summaries and per-barcode QC. The SLURM profile specifies the cluster account, partition and resources. The **Install & cluster** page connects installation, configuration, downloads and plan import/export.
+
+See [deployment and environment setup](docs/DEPLOYMENT.md), [analysis documentation](analysis/README.md) and [open-science publication](docs/PUBLISHING.md).
 
 ## Evidence, citations and licensing
 

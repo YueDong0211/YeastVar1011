@@ -1,0 +1,46 @@
+# Copy with: bash run.sh init. Null values are required decisions, not defaults.
+schema_version: 1
+samples: samples.tsv
+output_dir: results
+protocol:
+  name: null                      # Actual kit/protocol and chemistry version.
+  layout: null                    # Set to dedicated_barcode_read after checking the protocol.
+  barcode_orientation: null       # forward; reverse-complement layouts require preprocessing.
+  quality_encoding: null          # phred33; confirm from sequencing metadata.
+  cb_start: null                   # 1-based position in the BARCODE read.
+  cb_length: null
+  umi_start: null                  # 1-based position in the same BARCODE read.
+  umi_length: null
+  barcode_read_length: null        # Exact sequenced length; no implicit 10x assumption.
+  strand: null                    # Forward, Reverse or Unstranded, from the protocol.
+  whitelist: null                 # Plain text, one A/C/G/T barcode per line; no -1 suffix.
+  cb_match: null                  # Exact, 1MM, 1MM_multi, 1MM_multi_pseudocounts,
+                                 # or 1MM_multi_Nbase_pseudocounts.
+  umi_dedup: null                 # Exact, 1MM_All, 1MM_Directional_UMItools,
+                                 # 1MM_Directional or 1MM_CR.
+  umi_filter: null                # '-', MultiGeneUMI, MultiGeneUMI_All or MultiGeneUMI_CR.
+reference:
+  fasta: null                    # Uncompressed FASTA, matched to the chosen strain reference.
+  gtf: null                      # Uncompressed GTF with exon/gene_id/transcript_id.
+  source: null                   # Release/accession and provenance, not a guessed label.
+  sjdb_overhang: null             # Maximum cDNA read length minus 1 (STAR manual).
+  mitochondrial_contigs: null     # Exact FASTA contig IDs; [] explicitly means not assessed.
+alignment:
+  intron_min: null                # Explicit biological/reference choice; no mammalian preset.
+  intron_max: null
+  multimappers_max: null          # Maximum genomic alignment multiplicity retained by STAR.
+  cell_filter: [None]             # Retain raw barcodes; no automatic cell-calling threshold.
+                                 # Allowed alternative: [TopCells, explicit_number].
+  transcriptome_bam: false        # Optional projected BAM; see README for single-end settings.
+gene_groups: {}                   # Optional {rRNA: path/to/gene_ids.txt, ribosomal_protein: ...}.
+# Scheduling examples, not biological QC thresholds. Adjust to data and cluster quotas.
+resources:
+  star_threads: 8
+  star_mem_mb: 16000
+  star_runtime_min: 240
+  index_threads: 4
+  index_mem_mb: 8000
+  index_runtime_min: 120
+  qc_mem_mb: 4000
+  qc_runtime_min: 120
+  fastqc_threads: 2

@@ -1,5 +1,5 @@
 {
-  "version": "20.0.0",
+  "version": "21.0.0",
   "files": [
     {
       "path": "dist/ambience.js",
@@ -8,8 +8,18 @@
     },
     {
       "path": "dist/app.js",
-      "bytes": 59386,
-      "sha256": "2445ba9ed445aee522b7e49b9b9b1dbaf7e5e6b0e76ddefd803a281b6329719f"
+      "bytes": 59481,
+      "sha256": "bf255862f074b7df263be6177248fa6d2b0a470927e6da8cfef19a821d85fae6"
+    },
+    {
+      "path": "dist/assets/downloads/YeastVar1011-analysis-v21.zip",
+      "bytes": 30498,
+      "sha256": "664645ff01d2ebcc73617ecf71035a4b2980c5fba7ce86f73fc7c69a3229a647"
+    },
+    {
+      "path": "dist/assets/downloads/YeastVar1011-analysis-v21.zip.sha256.txt",
+      "bytes": 97,
+      "sha256": "9ebff85c4275b4441b5f95f9f09317b4eee3a17c281af46e6b1031572c040f32"
     },
     {
       "path": "dist/assets/yeast-cell-v5.png",
@@ -205,6 +215,16 @@
       "path": "dist/classic-experience-v18.js",
       "bytes": 11889,
       "sha256": "d7ca4fcf86d39231f7f161bc89ba91bb8ef34440a8d1d67e7a3a9daef0436ba9"
+    },
+    {
+      "path": "dist/cluster-workspace-v21.css",
+      "bytes": 19040,
+      "sha256": "829f26087f1bd96fc3d2ccb7c4bcd836a46e261885e3d83c02004feba91ab7b3"
+    },
+    {
+      "path": "dist/cluster-workspace-v21.js",
+      "bytes": 47999,
+      "sha256": "35d3210fd72c56a0fa0a166cf5ea784dac6d93090c472fde9e48655ef4c98c83"
     },
     {
       "path": "dist/companion-hub.css",
@@ -408,8 +428,8 @@
     },
     {
       "path": "dist/index.html",
-      "bytes": 11908,
-      "sha256": "8565ee5e16718445f2e8a2ced049b60bd3e1cf7d60e633699549db62f0951bdb"
+      "bytes": 12034,
+      "sha256": "926e92c241c5a7dbd71d390633f4ed7a2261029a6c608de222bddc1ae8d93304"
     },
     {
       "path": "dist/interface-v15.css",
@@ -418,8 +438,8 @@
     },
     {
       "path": "dist/interface-v15.js",
-      "bytes": 12819,
-      "sha256": "1db838a679cddb80a12a25e9dd35fab331d17e95091aa5d39973dbab937a5ade"
+      "bytes": 13042,
+      "sha256": "346cc70cde04209b9cadd851a0d84164ab7a3b845ac96f3e723c0e4e788af97a"
     },
     {
       "path": "dist/journey-scene-v17.js",
@@ -528,8 +548,8 @@
     },
     {
       "path": "dist/navigation-v14.js",
-      "bytes": 7018,
-      "sha256": "b3b1e9a753084d7cee468b2504128011c20198d3028b3996ac37fd1d49e71bd6"
+      "bytes": 7028,
+      "sha256": "15f2a3033f1abf6e5886930d6f2da112f70293dcf8f7af8a4cdb4c8dc0622954"
     },
     {
       "path": "dist/observatory-v7.css",
@@ -548,8 +568,8 @@
     },
     {
       "path": "dist/page-layout-v11.js",
-      "bytes": 12459,
-      "sha256": "c192c998202041aee34b7b4d0551d49cc2391f5356480c9a98a564188ae517bc"
+      "bytes": 12469,
+      "sha256": "bc531310a5d2b3995e66a1f708a0415640a9244df518ab5ec5957d57eecde06e"
     },
     {
       "path": "dist/paper-extra-locales.js",
@@ -1209,17 +1229,47 @@
     {
       "path": "scripts/dev-server.cjs",
       "bytes": 8723,
-      "sha256": "91bdc9cc15a072a1e565b921d703c365de442e0175dd78348853b24a93bb4978"
+      "sha256": "5d5a4dcd8b94a8e728d80b60368fcc0f02ed746d6098a5a1b7e8d6aa22111624"
+    },
+    {
+      "path": "scripts/doctor.cjs",
+      "bytes": 6209,
+      "sha256": "1ea6532a8c7c195ea852d11599bfd85cb4d9aad51a0d2cfa3ef098a9da474ca1"
+    },
+    {
+      "path": "scripts/package-analysis.py",
+      "bytes": 1591,
+      "sha256": "bf82227bd0cb0dccfd241dee22446168e03d9378a43e7f22489beb67fb714ed7"
     },
     {
       "path": "scripts/prepare-public.cjs",
-      "bytes": 3240,
-      "sha256": "1b73571e5c256f5eb65032b356532657383d411d23a67fc672b4720442eafc54"
+      "bytes": 3707,
+      "sha256": "cdfdb557916e14375bf282680a4365ae275b9a3e590e5ef6cd6f917c500a546a"
+    },
+    {
+      "path": "scripts/qa-doctor.cjs",
+      "bytes": 4046,
+      "sha256": "29ba0e5ca7ef2417c62d3de5f8a556f478e80d4b59b234833ae744ad941db6c3"
+    },
+    {
+      "path": "scripts/render-bioconda.cjs",
+      "bytes": 6466,
+      "sha256": "22ebe565c2bbcd84b54625a5c160451ca97ea612aa901244a82e38b26d7a4d21"
+    },
+    {
+      "path": "scripts/setup.ps1",
+      "bytes": 1849,
+      "sha256": "aef44880e7c898e27032432212fb94f711940b2ded4ee1334cee399031e89d61"
+    },
+    {
+      "path": "scripts/setup.sh",
+      "bytes": 1415,
+      "sha256": "b4d555753234a423d8429f25b06133e5943733b63725fdeba677e5fc6ba43812"
     },
     {
       "path": "scripts/smoke-public.cjs",
-      "bytes": 3819,
-      "sha256": "0812cef439c3eaa4a270a868d414a904f10bade8928e4d0da9e33bce2f2ad746"
+      "bytes": 3839,
+      "sha256": "7093a46ba5fedebc06230daefd8b70729c2cb790a27568b515667a161b5f3d7e"
     },
     {
       "path": ".github/ISSUE_TEMPLATE/bug_report.md",
@@ -1232,9 +1282,24 @@
       "sha256": "df84fc573544f596cb0504c92561e6112db3281ec46a5c12aac0066d48460e31"
     },
     {
+      "path": ".github/workflows/analysis-integration.yml",
+      "bytes": 1685,
+      "sha256": "c49e2473f90e7166ed7178c36a5381b225d1d0eb23199e1d29ddcad979c92130"
+    },
+    {
+      "path": ".github/workflows/bioconda-package.yml",
+      "bytes": 2059,
+      "sha256": "a8612f3b06969d09a69f2427079feeddad2bb41e944b72f5700ca766045a4c89"
+    },
+    {
       "path": ".github/workflows/pages.yml",
-      "bytes": 1096,
-      "sha256": "b70abceb7218c7e64e5df7da1c16bf4332e5eb95a1311fd3fa4b14fba6409bee"
+      "bytes": 1693,
+      "sha256": "018ed5c5502a896ea0edb4e74d859f0bca565887925f14d2fc72f9f2a4268643"
+    },
+    {
+      "path": "docs/DEPLOYMENT.md",
+      "bytes": 7737,
+      "sha256": "9c840a6e9a5e45d6e5a9215e343efd52b879dab800cd5b44a2781b04426567fb"
     },
     {
       "path": "docs/WORKSTATION.md",
@@ -1247,9 +1312,114 @@
       "sha256": "32bfe4ae7c3cc140a7daa8ec1ba05e3ab08e634c99b5794cf870484f53260d1f"
     },
     {
+      "path": "analysis/.gitignore",
+      "bytes": 89,
+      "sha256": "d026d53efa2f70fe9e0502f7fa3208bd10943f218320c4c80e1ced6f475dbeda"
+    },
+    {
+      "path": "analysis/README.md",
+      "bytes": 17628,
+      "sha256": "83789826167cb639100e1f340ca71dc09c965088daa98213f0ecedcc8f2a22a7"
+    },
+    {
+      "path": "analysis/config.example.yaml",
+      "bytes": 2679,
+      "sha256": "9945eba87e8f32aa107f7ffc4457c2bc3a7c2bdee04f1c3486c219296af2d067"
+    },
+    {
+      "path": "analysis/environment.yaml",
+      "bytes": 184,
+      "sha256": "3b1610a4014c62ca2b4513fca9df7f4504ad809698b33c30046728db93f6c4f1"
+    },
+    {
+      "path": "analysis/profiles/slurm/config.yaml",
+      "bytes": 487,
+      "sha256": "bedffc5497081d77861ac47fcaed089ec8c017ec433370ebfb52af2a2cc142dc"
+    },
+    {
+      "path": "analysis/run.sh",
+      "bytes": 1452,
+      "sha256": "08be88d1932fdae2b2c70f548b21d4354e7b80cfb6cbb31d1fafc09a4039b770"
+    },
+    {
+      "path": "analysis/samples.example.tsv",
+      "bytes": 206,
+      "sha256": "fe5182b400dec649f65c1d1b08efacc31b0e8f73ffb2d7fc370f7240f06114c1"
+    },
+    {
+      "path": "analysis/tests/assert_e2e.py",
+      "bytes": 2415,
+      "sha256": "5bea7f8130a4f624c25653ae44a817d82d05dac510af47acee856ba17d919e6b"
+    },
+    {
+      "path": "analysis/tests/make_fixture.py",
+      "bytes": 4710,
+      "sha256": "89ffabc3cf6a8e59fd094ed67daa821641742962823c4dca4c667c85ab4eaa5d"
+    },
+    {
+      "path": "analysis/tests/test_pipeline.py",
+      "bytes": 7441,
+      "sha256": "8c12397d6932455ba38c77b9c6c823566e57721bc24a776b73674c52c69fcd0d"
+    },
+    {
+      "path": "analysis/workflow/Snakefile",
+      "bytes": 6142,
+      "sha256": "039bf55f1d6cd97496d00f0d949cc4ac2a50cb006f27ce04fec98108e630b477"
+    },
+    {
+      "path": "analysis/workflow/envs/qc.yaml",
+      "bytes": 200,
+      "sha256": "e3b16814a607e5c397ff85010ed0dd3ff8c2474b8b28aef4327c32710eeff58f"
+    },
+    {
+      "path": "analysis/workflow/scripts/qc.py",
+      "bytes": 33069,
+      "sha256": "c2357eee4973b13e3d1700da1dd3dbfaeb8587bfd61430cc9800f94a5bf0c82c"
+    },
+    {
+      "path": "packaging/bioconda/README.md",
+      "bytes": 5580,
+      "sha256": "a41ee93538a8b190f7c85399b4a544cf137103d197f7e7b3f78325f0357f24fe"
+    },
+    {
+      "path": "packaging/bioconda/build.sh",
+      "bytes": 1620,
+      "sha256": "4e4ebb46af63b06058c379b1fcf9e037b2a2807fd154a7535907e125ba3dc48b"
+    },
+    {
+      "path": "packaging/bioconda/meta.yaml.in",
+      "bytes": 2340,
+      "sha256": "47dec6551e4e1746cb5d6a5fff0ff0c7362bdaf389a84b569a57db271f592c79"
+    },
+    {
+      "path": "packaging/bioconda/run_test.sh",
+      "bytes": 2789,
+      "sha256": "944a48df3c268177ba4552085b7c80015cc4c0820a843fff871e44e16bcee011"
+    },
+    {
+      "path": "packaging/bioconda/yeastvar1011-doctor.cjs",
+      "bytes": 970,
+      "sha256": "4f9c5a1ae77789cebc781e43fffe15bfe1194e6a4ca0b4070739178742babff0"
+    },
+    {
+      "path": "packaging/bioconda/yeastvar1011.cjs",
+      "bytes": 1230,
+      "sha256": "7faefedf87fd0536caa468d697ac5a7356e402b6a4fb1b44eff8636f1adf5e4d"
+    },
+    {
+      "path": ".zenodo.json",
+      "bytes": 1737,
+      "sha256": "329f64b5dd55b2f158682fc14401b264545a3304338a2d4a079f768468bdd0de"
+    },
+    {
+      "path": "biotools.json",
+      "bytes": 2118,
+      "sha256": "d52cc2fe8ad3112d35427b2248441aee27a1da5fe00471a8f1e40cd6d6b57619"
+    },
+    {
       "path": "README.md",
-      "bytes": 5841,
-      "sha256": "188624f0bf570b2437b6de1324edddbd661c70d94beb0163047e5fbc5af49e79"
+      "bytes": 6790,
+      "sha256": "e9f189b0653542b9252b6c6e7eaffcb9c162a6d30fda0997396e65e7f6a62163"
     },
     {
       "path": "LICENSE",
@@ -1259,7 +1429,7 @@
     {
       "path": "CONTRIBUTING.md",
       "bytes": 2417,
-      "sha256": "4a68394a46f43e4782ef55126d892b0fe567dbfc51dc5f73f7090fa94adbe7ae"
+      "sha256": "085c533e84bf3ee6a6b6bde0443b1e8845e3df7cef34af83579c4c715a21eb92"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
@@ -1274,7 +1444,7 @@
     {
       "path": "CITATION.cff",
       "bytes": 711,
-      "sha256": "745bba091d6cfae5d19979a1338dc3aace71a7e51bebe59edf90b692807083d2"
+      "sha256": "3ee1be74dbaf151b6eb651a815cb3e85169ff02e6ce3b53a9db323c0821a2a38"
     },
     {
       "path": "START.cmd",
@@ -1293,13 +1463,13 @@
     },
     {
       "path": "package.json",
-      "bytes": 903,
-      "sha256": "a0f35147ddef94fb19b765110bb496bf00fdc44f320943627bc701fb172b2526"
+      "bytes": 1033,
+      "sha256": "ec025a3352694caa4f217a0ef83635616478f79f80da25ccb37ea55e10a9bb51"
     },
     {
       "path": "package-lock.json",
       "bytes": 2104,
-      "sha256": "9b0683c0d7df18bde7db2be5a7de05c76bd6f2589c294e1ca4a3651fa0109efe"
+      "sha256": "04d205e9fc9d965c22dda6ef601315fca00729f566caceb0438541edfb5f0d53"
     },
     {
       "path": "research/check_site.cjs",

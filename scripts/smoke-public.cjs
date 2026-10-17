@@ -15,14 +15,14 @@ let browser;
  await page.goto(base,{waitUntil:'domcontentloaded'});
  await page.waitForFunction(()=>window.YV_APP?.data?.()?.tools?.length||window.YV_APP?.data?.()?.workflow?.tools?.length||document.querySelector('.workstation-home'));
  await page.waitForFunction(()=>document.documentElement.dataset.boot!=='loading');
- const routes=['overview','workbench?stage=scope','quality','markers','tools','literature','settings','contribute','journey'];
+ const routes=['cluster','overview','workbench?stage=scope','quality','markers','tools','literature','settings','contribute','journey'];
  for(const route of routes){await page.evaluate(hash=>{location.hash=hash},route);await page.waitForFunction(hash=>window.YV_APP?.route?.()===hash.split('?')[0],route);assert((await page.locator('#main').innerText()).trim().length>30,'Empty '+route);}
  await page.evaluate(()=>{location.hash='contribute'});await page.locator('.contribute-hero .p20-project').waitFor();
  assert.equal(await page.locator('.contribute-hero [data-project-link=github]').getAttribute('href'),'https://github.com/YueDong0211/YeastVar1011');
  await page.evaluate(()=>YV_COMPANION.open({tab:'community'}));await page.locator('#yv-companion-panel .p20-project').waitFor();assert.equal(await page.locator('#yv-companion-panel [data-project-link=issues]').count(),1);await page.evaluate(()=>YV_COMPANION.close());
  for(const lang of ['zh','en','fr','es','eu']){await page.evaluate(lang=>{YV_APP.setPreference('language',lang);location.hash='overview'},lang);await page.waitForFunction(()=>YV_APP.route()==='overview');assert((await page.locator('.p20-footer-links').innerText()).includes('GitHub'));}
  await page.setViewportSize({width:390,height:844});
- for(const route of ['overview','workbench?stage=scope','contribute','settings']){await page.evaluate(hash=>location.hash=hash,route);await page.waitForFunction(hash=>YV_APP.route()===hash.split('?')[0],route);await page.waitForTimeout(100);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Horizontal overflow: '+route);}
+ for(const route of ['overview','cluster','workbench?stage=scope','contribute','settings']){await page.evaluate(hash=>location.hash=hash,route);await page.waitForFunction(hash=>YV_APP.route()===hash.split('?')[0],route);await page.waitForTimeout(100);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Horizontal overflow: '+route);}
  assert.deepEqual(errors,[]);assert.deepEqual(failedLocal,[]);
  console.log(JSON.stringify({passed:true,routes:routes.length,languages:5,mobile:true,projectLinks:true,runtimeErrors:errors,failedLocal},null,2));
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(async()=>{await browser?.close();server.kill();});

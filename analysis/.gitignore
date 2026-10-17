@@ -1,0 +1,7 @@
+config.yaml
+samples.tsv
+results/
+.snakemake/
+__pycache__/
+*.pyc
+profiles/slurm/site.yaml

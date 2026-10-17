@@ -146,7 +146,7 @@ function createDevServer(options = {}) {
 }
 
 function start() {
-  if (Number(process.versions.node.split('.')[0]) < 20) throw new Error('Node.js 20 or newer is required.');
+  if (Number(process.versions.node.split('.')[0]) < 22) throw new Error('Node.js 22 or newer is required.');
   const port = parsePort(process.env.PORT ?? DEFAULT_PORT);
   const prefix = basePath(process.env.BASE_PATH || '/');
   const server = createDevServer({ basePath: prefix });

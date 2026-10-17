@@ -1,0 +1,10 @@
+name: yv-qc
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+dependencies:
+  - python=3.12
+  - snakemake-minimal=9.27.0
+  - snakemake-executor-plugin-slurm=2.8.0
+  - pyyaml=6.0.3

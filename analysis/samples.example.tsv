@@ -1,0 +1,2 @@
+library_id	lane_id	cdna_fastq	barcode_fastq	strain_background	condition	culture_replicate	batch
+LIBRARY_REPLACE	LANE_REPLACE	/path/to/cDNA.fastq.gz	/path/to/barcode.fastq.gz	UNKNOWN	UNKNOWN	UNKNOWN	UNKNOWN
