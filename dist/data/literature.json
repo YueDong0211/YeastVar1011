@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-16",
+  "updated": "2026-10-17",
   "window": {
     "from": "2021-10-15",
     "to": "2026-10-15"
@@ -476,6 +476,21 @@
       "screened": 4,
       "included": 4,
       "notes": "Crossref returned HTTP429; bibliographic metadata verified via Europe PMC and publisher/PMC. Adds two methods and enriches existing enrichment tools. Not an exhaustive literature review."
+    },
+    {
+      "date": "2026-10-17",
+      "query": "Targeted 2021–2026 update: repeat-RNA UMI quantification; state-specific sample variance; multicellular/cross-state programs; RNA-velocity modules; yeast TF binding versus functional regulation; count eQTL; bursting-based mechanistic GRN simulation and temporal inference.",
+      "sources": [
+        "Publisher pages",
+        "Crossref REST",
+        "PubMed/PMC",
+        "Official software repositories and documentation"
+      ],
+      "scope": "Gap-driven update against 198 existing paper records, not an exhaustive systematic review.",
+      "result": "Added verified primary records and explicitly labelled method adaptations.",
+      "failures": [
+        "Academic-search MCP unavailable; used web discovery plus Crossref/PMC and official sources. One Crossref 429 succeeded on retry; several publisher web opens failed and were checked through PMC or publisher search records."
+      ]
     }
   ],
   "papers": [
@@ -1952,12 +1967,12 @@
         "Eder R",
         "Brettner L",
         "Schmidlin K",
-        "Donyavi M",
+        "Donyavi MH",
         "Geiler-Samerotte K"
       ],
-      "year": 2025,
-      "date": "2025-03-14",
-      "onlineYear": 2025,
+      "year": 2026,
+      "date": "2026-08-19",
+      "onlineYear": 2026,
       "issueYear": null,
       "journal": "bioRxiv",
       "doi": "10.1101/2025.03.12.642837",
@@ -1968,31 +1983,50 @@
         "酵母单细胞",
         "应激",
         "转座子",
-        "预印本"
+        "预印本",
+        "表达噪音",
+        "环境应激",
+        "跨条件预测",
+        "转座元件",
+        "组成性"
       ],
-      "species": "S.cerevisiae",
-      "studyType": "scRNA",
-      "evidence": "直接酵母",
-      "status": "摘要筛选",
+      "species": "S. cerevisiae",
+      "studyType": "单细胞原始研究预印本",
+      "evidence": "预印本单细胞证据",
+      "status": "v3元数据与摘要核验；v2全文及补图已读",
       "selection": "curated",
-      "summary": "预印本比较群体应激程序和单细胞预测能力，提示群体相关关系可能与单细胞关系不同。",
-      "contribution": "预印本比较群体应激程序和单细胞预测能力，提示群体相关关系可能与单细胞关系不同。",
+      "summary": "比较群体平均变化和单细胞一致性定义的应激程序，考察跨应激条件的预测能力，以及应激RNA程序与转座元件RNA关联的层级差异。",
+      "contribution": "将诱导/抑制应激程序、跨条件留出验证和群体/细胞层级相关性分别评估，作为注释可迁移性与表达噪音研究的扩展。",
       "limitations": [
-        "预印本，未经正式同行评议；后续应与正式发表版本建立关联。"
+        "官方bioRxiv接口确认2026-08-19 v3仍是预印本；v2的样本规模和作者表不能替代v3。",
+        "v3原文接口返回429，OSF表格库返回维护页；未将完整iMSR/iGSR/iSSR/rMSR/rGSR/rSSR列表填入marker库。",
+        "转录组比例共享分母；检验组成性、库大小和检测截断敏感性后再解释程序间负相关。",
+        "GSE251966与Brettner2024部分复用，应记录重复数据来源。"
       ],
-      "markerUse": "候选外部证据；预印本结果与具体基因标签均需后续复核。",
+      "markerUse": "暂仅研究与验证设计来源，尚未导入完整基因面板。",
       "sourceUrls": [
         "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1101%2F2025.03.12.642837&format=json&resultType=core&pageSize=10",
-        "https://api.crossref.org/works/10.1101%2F2025.03.12.642837"
+        "https://api.crossref.org/works/10.1101%2F2025.03.12.642837",
+        "https://api.biorxiv.org/details/biorxiv/10.1101/2025.03.12.642837",
+        "https://www.biorxiv.org/content/10.1101/2025.03.12.642837v3",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12803069/",
+        "https://osf.io/pcngh/files/osfstorage"
       ],
       "metadataVerified": true,
       "inWindow": true,
       "publicationType": "预印本",
       "dateEvidence": {
-        "europePmcFirstPublication": "2025-03-14",
-        "crossrefOnline": null,
-        "crossrefPrint": null
-      }
+        "bioRxivVersion": "3",
+        "bioRxivVersionDate": "2026-08-19",
+        "pmcReadVersion": "2",
+        "pmcReadVersionDate": "2026-01-11",
+        "firstVersionDate": "2025-03-14"
+      },
+      "addedIn": "v22",
+      "toolIds": [],
+      "version": "3",
+      "versionUrl": "https://www.biorxiv.org/content/10.1101/2025.03.12.642837v3",
+      "apa7": "Eder, R., Brettner, L., Schmidlin, K., Donyavi, M. H., & Geiler-Samerotte, K. (2026). Unstressed cells are alike, but stressed cells differ: Environmental and single-cell heterogeneity in yeast stress responses (Version 3) [Preprint]. bioRxiv. https://doi.org/10.1101/2025.03.12.642837"
     },
     {
       "id": "lit-a800c625ae67",
@@ -3677,7 +3711,7 @@
       "date": "2023-02-24",
       "onlineYear": 2023,
       "issueYear": 2023,
-      "journal": "BMC genomics",
+      "journal": "BMC Genomics",
       "doi": "10.1186/s12864-023-09184-w",
       "pmid": "36829151",
       "pmcid": "PMC9960639",
@@ -3685,22 +3719,31 @@
       "topics": [
         "酵母单细胞",
         "应激",
-        "批次效应"
+        "批次效应",
+        "细胞注释",
+        "环境应激",
+        "营养限制",
+        "质量控制"
       ],
-      "species": "S.cerevisiae",
-      "studyType": "scRNA",
-      "evidence": "直接酵母",
-      "status": "摘要筛选",
+      "species": "S. cerevisiae",
+      "studyType": "单细胞原始研究",
+      "evidence": "直接酵母单细胞证据",
+      "status": "正文及S4/S5原表核验",
       "selection": "curated",
-      "summary": "全长单细胞转录组比较多种营养和渗透条件，并强调技术噪音与批次效应对状态判断的影响。",
-      "contribution": "全长单细胞转录组比较多种营养和渗透条件，并强调技术噪音与批次效应对状态判断的影响。",
-      "limitations": [],
-      "markerUse": "仅条件化外部证据；具体基因和阶段需回到原文与补充表核对。",
+      "summary": "全长单细胞RNA测序比较氨基酸饥饿、葡萄糖饥饿及低渗环境，提供来源条件差异基因及技术偏差评估。",
+      "contribution": "S4/S5提供489条有原始方向和统计量的基因–条件关联，分为氨基酸和葡萄糖饥饿各自的升高/降低面板。",
+      "limitations": [
+        "该研究使用处理后的S288C原生质体，保留处理时长、批次及等渗对照背景。",
+        "Results与Methods的效应量阈值表述不一致；导入作者选定表的所有行，不据此设定本项目阈值。",
+        "没有为未检出差异的低渗对比构造marker列表。"
+      ],
+      "markerUse": "源自作者选定差异表的候选集；含对比方向与原始统计，不直接赋予1011细胞标签。",
       "sourceUrls": [
         "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1186%2Fs12864-023-09184-w&format=json&resultType=core&pageSize=10",
         "https://api.crossref.org/works/10.1186%2Fs12864-023-09184-w",
         "https://pubmed.ncbi.nlm.nih.gov/36829151/",
-        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9960639/"
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9960639/",
+        "https://api.crossref.org/works/10.1186/s12864-023-09184-w"
       ],
       "metadataVerified": true,
       "inWindow": true,
@@ -3709,7 +3752,13 @@
         "europePmcFirstPublication": "2023-02-24",
         "crossrefOnline": "2023-02-24",
         "crossrefPrint": null
-      }
+      },
+      "addedIn": "v22",
+      "toolIds": [],
+      "volume": "24",
+      "issue": "1",
+      "articleNumber": "88",
+      "apa7": "Su, Y., Xu, C., Shea, J., DeStephanis, D., & Su, Z. (2023). Transcriptomic changes in single yeast cells under various stress conditions. BMC Genomics, 24, Article 88. https://doi.org/10.1186/s12864-023-09184-w"
     },
     {
       "id": "lit-95a375465aa8",
@@ -13387,6 +13436,766 @@
           "family": "Kluger"
         }
       ]
+    },
+    {
+      "id": "v22_irescue_2024",
+      "title": "IRescue: uncertainty-aware quantification of transposable elements expression at single cell level",
+      "authors": [
+        "Benedetto Polimeni",
+        "Federica Marasca",
+        "Valeria Ranzani",
+        "Beatrice Bodega"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Benedetto",
+          "family": "Polimeni"
+        },
+        {
+          "given": "Federica",
+          "family": "Marasca"
+        },
+        {
+          "given": "Valeria",
+          "family": "Ranzani"
+        },
+        {
+          "given": "Beatrice",
+          "family": "Bodega"
+        }
+      ],
+      "year": 2024,
+      "date": "2024-09-13",
+      "journal": "Nucleic Acids Research",
+      "doi": "10.1093/nar/gkae793",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11514465/",
+      "volume": "52",
+      "issue": "19",
+      "pages": "e93",
+      "articleNumber": "",
+      "publicationType": "peer-reviewed",
+      "metadataVerified": true,
+      "verificationDate": "2026-10-17",
+      "sourceUrls": [
+        "https://doi.org/10.1093/nar/gkae793",
+        "https://github.com/bodegalab/irescue",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11514465/",
+        "https://api.crossref.org/works/10.1093/nar/gkae793"
+      ],
+      "verificationNotes": "Crossref bibliographic metadata checked against publisher or author-hosted primary source. jaxQTL remains labelled as a preprint; Harissa is a conference paper. Method applicability to the 1011 population is proposed, not validated.",
+      "onlineYear": 2024,
+      "issueYear": 2024,
+      "inWindow": true,
+      "selection": "curated",
+      "status": "verified",
+      "studyType": "method",
+      "species": [
+        "Homo sapiens",
+        "Mus musculus"
+      ],
+      "toolIds": [
+        "irescue"
+      ],
+      "topics": [
+        "重复元件RNA的多重比对与UMI计数"
+      ],
+      "summary": "重复元件RNA的多重比对与UMI计数",
+      "contribution": "在基因矩阵旁建立Ty家族RNA层，并保留歧义来源。",
+      "evidence": "原始方法论文及官方软件入口已核对。",
+      "markerUse": "方法文献，不直接导入基因为细胞状态marker。",
+      "limitations": [
+        "需按酵母参考、实际设计和留出样本检验适用性。"
+      ],
+      "addedIn": "v22",
+      "apa7": "Polimeni, B., Marasca, F., Ranzani, V., & Bodega, B. (2024). IRescue: uncertainty-aware quantification of transposable elements expression at single cell level. Nucleic Acids Research, 52(19), Article e93. https://doi.org/10.1093/nar/gkae793"
+    },
+    {
+      "id": "v22_ctmm_2024",
+      "title": "A robust model for cell type-specific interindividual variation in single-cell RNA sequencing data",
+      "authors": [
+        "Minhui Chen",
+        "Andy Dahl"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Minhui",
+          "family": "Chen"
+        },
+        {
+          "given": "Andy",
+          "family": "Dahl"
+        }
+      ],
+      "year": 2024,
+      "date": "2024-06-19",
+      "journal": "Nature Communications",
+      "doi": "10.1038/s41467-024-49242-9",
+      "url": "https://www.nature.com/articles/s41467-024-49242-9",
+      "volume": "15",
+      "issue": "1",
+      "pages": "5229",
+      "articleNumber": "5229",
+      "publicationType": "peer-reviewed",
+      "metadataVerified": true,
+      "verificationDate": "2026-10-17",
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41467-024-49242-9",
+        "https://github.com/Minhui-Chen/CTMM",
+        "https://www.nature.com/articles/s41467-024-49242-9",
+        "https://api.crossref.org/works/10.1038/s41467-024-49242-9"
+      ],
+      "verificationNotes": "Crossref bibliographic metadata checked against publisher or author-hosted primary source. jaxQTL remains labelled as a preprint; Harissa is a conference paper. Method applicability to the 1011 population is proposed, not validated.",
+      "onlineYear": 2024,
+      "issueYear": 2024,
+      "inWindow": true,
+      "selection": "curated",
+      "status": "verified",
+      "studyType": "method",
+      "species": [
+        "Homo sapiens"
+      ],
+      "toolIds": [
+        "ctmm"
+      ],
+      "topics": [
+        "细胞状态特异的菌株间表达方差"
+      ],
+      "summary": "细胞状态特异的菌株间表达方差",
+      "contribution": "分开跨状态共享的样本差异与状态特异样本差异。",
+      "evidence": "原始方法论文及官方软件入口已核对。",
+      "markerUse": "方法文献，不直接导入基因为细胞状态marker。",
+      "limitations": [
+        "需按酵母参考、实际设计和留出样本检验适用性。"
+      ],
+      "addedIn": "v22",
+      "apa7": "Chen, M., & Dahl, A. (2024). A robust model for cell type-specific interindividual variation in single-cell RNA sequencing data. Nature Communications, 15(1), Article 5229. https://doi.org/10.1038/s41467-024-49242-9"
+    },
+    {
+      "id": "v22_dialogue_2022",
+      "title": "DIALOGUE maps multicellular programs in tissue from single-cell or spatial transcriptomics data",
+      "authors": [
+        "Livnat Jerby-Arnon",
+        "Aviv Regev"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Livnat",
+          "family": "Jerby-Arnon"
+        },
+        {
+          "given": "Aviv",
+          "family": "Regev"
+        }
+      ],
+      "year": 2022,
+      "date": "2022-05-05",
+      "journal": "Nature Biotechnology",
+      "doi": "10.1038/s41587-022-01288-0",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35513526/",
+      "volume": "40",
+      "issue": "10",
+      "pages": "1467-1477",
+      "articleNumber": "",
+      "publicationType": "peer-reviewed",
+      "metadataVerified": true,
+      "verificationDate": "2026-10-17",
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41587-022-01288-0",
+        "https://github.com/livnatje/DIALOGUE/wiki/Tutorial",
+        "https://pubmed.ncbi.nlm.nih.gov/35513526/",
+        "https://api.crossref.org/works/10.1038/s41587-022-01288-0"
+      ],
+      "verificationNotes": "Crossref bibliographic metadata checked against publisher or author-hosted primary source. jaxQTL remains labelled as a preprint; Harissa is a conference paper. Method applicability to the 1011 population is proposed, not validated.",
+      "onlineYear": 2022,
+      "issueYear": 2022,
+      "inWindow": true,
+      "selection": "curated",
+      "status": "verified",
+      "studyType": "method",
+      "species": [
+        "Homo sapiens",
+        "Mus musculus"
+      ],
+      "toolIds": [
+        "dialogue"
+      ],
+      "topics": [
+        "跨状态协调表达程序"
+      ],
+      "summary": "跨状态协调表达程序",
+      "contribution": "将同一独立培养内不同状态的表达程序联系起来。",
+      "evidence": "原始方法论文及官方软件入口已核对。",
+      "markerUse": "方法文献，不直接导入基因为细胞状态marker。",
+      "limitations": [
+        "需按酵母参考、实际设计和留出样本检验适用性。"
+      ],
+      "addedIn": "v22",
+      "apa7": "Jerby-Arnon, L., & Regev, A. (2022). DIALOGUE maps multicellular programs in tissue from single-cell or spatial transcriptomics data. Nature Biotechnology, 40(10), 1467–1477. https://doi.org/10.1038/s41587-022-01288-0"
+    },
+    {
+      "id": "v22_cell2fate_2025",
+      "title": "Cell2fate infers RNA velocity modules to improve cell fate prediction",
+      "authors": [
+        "Alexander Aivazidis",
+        "Fani Memi",
+        "Vitalii Kleshchevnikov",
+        "Sezgin Er",
+        "Brian Clarke",
+        "Oliver Stegle",
+        "Omer Ali Bayraktar"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Alexander",
+          "family": "Aivazidis"
+        },
+        {
+          "given": "Fani",
+          "family": "Memi"
+        },
+        {
+          "given": "Vitalii",
+          "family": "Kleshchevnikov"
+        },
+        {
+          "given": "Sezgin",
+          "family": "Er"
+        },
+        {
+          "given": "Brian",
+          "family": "Clarke"
+        },
+        {
+          "given": "Oliver",
+          "family": "Stegle"
+        },
+        {
+          "given": "Omer Ali",
+          "family": "Bayraktar"
+        }
+      ],
+      "year": 2025,
+      "date": "2025-03-03",
+      "journal": "Nature Methods",
+      "doi": "10.1038/s41592-025-02608-3",
+      "url": "https://www.nature.com/articles/s41592-025-02608-3",
+      "volume": "22",
+      "issue": "4",
+      "pages": "698-707",
+      "articleNumber": "",
+      "publicationType": "peer-reviewed",
+      "metadataVerified": true,
+      "verificationDate": "2026-10-17",
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41592-025-02608-3",
+        "https://cell2fate.readthedocs.io/en/latest/cell2fate.html",
+        "https://www.nature.com/articles/s41592-025-02608-3",
+        "https://api.crossref.org/works/10.1038/s41592-025-02608-3"
+      ],
+      "verificationNotes": "Crossref bibliographic metadata checked against publisher or author-hosted primary source. jaxQTL remains labelled as a preprint; Harissa is a conference paper. Method applicability to the 1011 population is proposed, not validated.",
+      "onlineYear": 2025,
+      "issueYear": 2025,
+      "inWindow": true,
+      "selection": "curated",
+      "status": "verified",
+      "studyType": "method",
+      "species": [
+        "Homo sapiens",
+        "Mus musculus"
+      ],
+      "toolIds": [
+        "cell2fate"
+      ],
+      "topics": [
+        "RNA velocity的动力学模块"
+      ],
+      "summary": "RNA velocity的动力学模块",
+      "contribution": "以模块总结RNA动态，比较后验不确定性和方向稳定性。",
+      "evidence": "原始方法论文及官方软件入口已核对。",
+      "markerUse": "方法文献，不直接导入基因为细胞状态marker。",
+      "limitations": [
+        "需按酵母参考、实际设计和留出样本检验适用性。"
+      ],
+      "addedIn": "v22",
+      "apa7": "Aivazidis, A., Memi, F., Kleshchevnikov, V., Er, S., Clarke, B., Stegle, O., & Bayraktar, O. A. (2025). Cell2fate infers RNA velocity modules to improve cell fate prediction. Nature Methods, 22(4), 698–707. https://doi.org/10.1038/s41592-025-02608-3"
+    },
+    {
+      "id": "v22_tf_evidence_2025",
+      "title": "Low overlap of transcription factor DNA binding and regulatory targets",
+      "authors": [
+        "Lakshmi Mahendrawada",
+        "Linda Warfield",
+        "Rafal Donczew",
+        "Steven Hahn"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Lakshmi",
+          "family": "Mahendrawada"
+        },
+        {
+          "given": "Linda",
+          "family": "Warfield"
+        },
+        {
+          "given": "Rafal",
+          "family": "Donczew"
+        },
+        {
+          "given": "Steven",
+          "family": "Hahn"
+        }
+      ],
+      "year": 2025,
+      "date": "2025-04-16",
+      "journal": "Nature",
+      "doi": "10.1038/s41586-025-08916-0",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12882699/",
+      "volume": "642",
+      "issue": "8068",
+      "pages": "796-804",
+      "articleNumber": "",
+      "publicationType": "peer-reviewed",
+      "metadataVerified": true,
+      "verificationDate": "2026-10-17",
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41586-025-08916-0",
+        "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE236948",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12882699/",
+        "https://api.crossref.org/works/10.1038/s41586-025-08916-0"
+      ],
+      "verificationNotes": "Crossref bibliographic metadata checked against publisher or author-hosted primary source. jaxQTL remains labelled as a preprint; Harissa is a conference paper. Method applicability to the 1011 population is proposed, not validated.",
+      "onlineYear": 2025,
+      "issueYear": 2025,
+      "inWindow": true,
+      "selection": "curated",
+      "status": "verified",
+      "studyType": "mechanistic-study",
+      "species": [
+        "Saccharomyces cerevisiae"
+      ],
+      "toolIds": [
+        "inferelator",
+        "decoupler"
+      ],
+      "topics": [
+        "酵母TF结合与表达调控的证据分层"
+      ],
+      "summary": "酵母TF结合与表达调控的证据分层",
+      "contribution": "将结合、扰动响应及调控方向分开记录在TF—靶基因边上。",
+      "evidence": "原始方法论文及官方软件入口已核对。",
+      "markerUse": "用于调控证据分层；不将蛋白结合直接标为RNA状态marker。",
+      "limitations": [],
+      "addedIn": "v22",
+      "apa7": "Mahendrawada, L., Warfield, L., Donczew, R., & Hahn, S. (2025). Low overlap of transcription factor DNA binding and regulatory targets. Nature, 642(8068), 796–804. https://doi.org/10.1038/s41586-025-08916-0"
+    },
+    {
+      "id": "v22_jaxqtl_2025",
+      "title": "Efficient count-based models improve power and robustness for large-scale single-cell eQTL mapping",
+      "authors": [
+        "Zixuan Eleanor Zhang",
+        "Artem Kim",
+        "Noah Suboc",
+        "Nicholas Mancuso",
+        "Steven Gazal"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Zixuan Eleanor",
+          "family": "Zhang"
+        },
+        {
+          "given": "Artem",
+          "family": "Kim"
+        },
+        {
+          "given": "Noah",
+          "family": "Suboc"
+        },
+        {
+          "given": "Nicholas",
+          "family": "Mancuso"
+        },
+        {
+          "given": "Steven",
+          "family": "Gazal"
+        }
+      ],
+      "year": 2025,
+      "date": "2025-03-05",
+      "journal": "medRxiv",
+      "doi": "10.1101/2025.01.18.25320755",
+      "url": "https://www.medrxiv.org/content/10.1101/2025.01.18.25320755v2",
+      "volume": "",
+      "issue": "",
+      "pages": "",
+      "articleNumber": "",
+      "publicationType": "preprint",
+      "metadataVerified": true,
+      "verificationDate": "2026-10-17",
+      "sourceUrls": [
+        "https://doi.org/10.1101/2025.01.18.25320755",
+        "https://mancusolab.github.io/jaxqtl/reference/mapping/",
+        "https://www.medrxiv.org/content/10.1101/2025.01.18.25320755v2",
+        "https://api.crossref.org/works/10.1101/2025.01.18.25320755"
+      ],
+      "verificationNotes": "Crossref bibliographic metadata checked against publisher or author-hosted primary source. jaxQTL remains labelled as a preprint; Harissa is a conference paper. Method applicability to the 1011 population is proposed, not validated.",
+      "onlineYear": 2025,
+      "issueYear": 2025,
+      "inWindow": true,
+      "selection": "curated",
+      "status": "verified",
+      "studyType": "method",
+      "species": [
+        "Homo sapiens"
+      ],
+      "toolIds": [
+        "jaxqtl"
+      ],
+      "topics": [
+        "计数模型的均值eQTL参照"
+      ],
+      "summary": "计数模型的均值eQTL参照",
+      "contribution": "以状态分层伪bulk计数估计均值遗传效应，作为噪音QTL的对照。",
+      "evidence": "原始方法论文及官方软件入口已核对。",
+      "markerUse": "方法文献，不直接导入基因为细胞状态marker。",
+      "limitations": [
+        "需按酵母参考、实际设计和留出样本检验适用性。"
+      ],
+      "addedIn": "v22",
+      "apa7": "Zhang, Z. E., Kim, A., Suboc, N., Mancuso, N., & Gazal, S. (2025). Efficient count-based models improve power and robustness for large-scale single-cell eQTL mapping [Preprint]. medRxiv. https://doi.org/10.1101/2025.01.18.25320755",
+      "firstPosted": "2025-01-19",
+      "version": 2,
+      "versionDate": "2025-03-05"
+    },
+    {
+      "id": "v22_harissa_2023",
+      "title": "Harissa: Stochastic Simulation and Inference of Gene Regulatory Networks Based on Transcriptional Bursting",
+      "authors": [
+        "Ulysse Herbach"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Ulysse",
+          "family": "Herbach"
+        }
+      ],
+      "year": 2023,
+      "date": "2023-09-09",
+      "journal": "Computational Methods in Systems Biology",
+      "doi": "10.1007/978-3-031-42697-1_7",
+      "url": "https://link.springer.com/chapter/10.1007/978-3-031-42697-1_7",
+      "volume": "",
+      "issue": "",
+      "pages": "97-105",
+      "articleNumber": "",
+      "publicationType": "conference-paper",
+      "metadataVerified": true,
+      "verificationDate": "2026-10-17",
+      "sourceUrls": [
+        "https://doi.org/10.1007/978-3-031-42697-1_7",
+        "https://github.com/ulysseherbach/harissa",
+        "https://link.springer.com/chapter/10.1007/978-3-031-42697-1_7",
+        "https://api.crossref.org/works/10.1007/978-3-031-42697-1_7"
+      ],
+      "verificationNotes": "Crossref bibliographic metadata checked against publisher or author-hosted primary source. jaxQTL remains labelled as a preprint; Harissa is a conference paper. Method applicability to the 1011 population is proposed, not validated.",
+      "onlineYear": 2023,
+      "issueYear": 2023,
+      "inWindow": true,
+      "selection": "curated",
+      "status": "verified",
+      "studyType": "method",
+      "species": [
+        "in silico"
+      ],
+      "toolIds": [
+        "harissa"
+      ],
+      "topics": [
+        "转录爆发驱动的机制模拟"
+      ],
+      "summary": "转录爆发驱动的机制模拟",
+      "contribution": "构造已知GRN和爆发参数的模拟真值，校准噪音与网络恢复。",
+      "evidence": "原始方法论文及官方软件入口已核对。",
+      "markerUse": "方法文献，不直接导入基因为细胞状态marker。",
+      "limitations": [],
+      "addedIn": "v22",
+      "apa7": "Herbach, U. (2023). Harissa: Stochastic Simulation and Inference of Gene Regulatory Networks Based on Transcriptional Bursting. In J. Pang & J. Niehren (Eds.), Computational methods in systems biology (Lecture Notes in Computer Science, Vol. 14137, pp. 97–105). Springer. https://doi.org/10.1007/978-3-031-42697-1_7"
+    },
+    {
+      "id": "v22_cardamomot_2026",
+      "title": "CardamomOT: A mechanistic optimal transport-based framework for gene regulatory network inference, trajectory reconstruction and generative modeling",
+      "authors": [
+        "Yann Maugé",
+        "Elias Ventre"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Yann",
+          "family": "Maugé"
+        },
+        {
+          "given": "Elias",
+          "family": "Ventre"
+        }
+      ],
+      "year": 2026,
+      "date": "2026-10-06",
+      "journal": "PLOS Computational Biology",
+      "doi": "10.1371/journal.pcbi.1014838",
+      "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1014838",
+      "volume": "22",
+      "issue": "10",
+      "pages": "e1014838",
+      "articleNumber": "",
+      "publicationType": "peer-reviewed",
+      "metadataVerified": true,
+      "verificationDate": "2026-10-17",
+      "sourceUrls": [
+        "https://doi.org/10.1371/journal.pcbi.1014838",
+        "https://cardamomot.readthedocs.io/en/latest/quickstart.html",
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1014838",
+        "https://api.crossref.org/works/10.1371/journal.pcbi.1014838"
+      ],
+      "verificationNotes": "Crossref bibliographic metadata checked against publisher or author-hosted primary source. jaxQTL remains labelled as a preprint; Harissa is a conference paper. Method applicability to the 1011 population is proposed, not validated.",
+      "onlineYear": 2026,
+      "issueYear": 2026,
+      "inWindow": true,
+      "selection": "curated",
+      "status": "verified",
+      "studyType": "method",
+      "species": [
+        "Homo sapiens",
+        "Mus musculus",
+        "in silico"
+      ],
+      "toolIds": [
+        "cardamomot"
+      ],
+      "topics": [
+        "时间标记快照的网络与轨迹联合推断"
+      ],
+      "summary": "时间标记快照的网络与轨迹联合推断",
+      "contribution": "在时间序列及动力学先验齐全时，拟合可再生成数据的机制模型。",
+      "evidence": "原始方法论文及官方软件入口已核对。",
+      "markerUse": "方法文献，不直接导入基因为细胞状态marker。",
+      "limitations": [
+        "需按酵母参考、实际设计和留出样本检验适用性。"
+      ],
+      "addedIn": "v22",
+      "apa7": "Maugé, Y., & Ventre, E. (2026). CardamomOT: A mechanistic optimal transport-based framework for gene regulatory network inference, trajectory reconstruction and generative modeling. PLOS Computational Biology, 22(10), Article e1014838. https://doi.org/10.1371/journal.pcbi.1014838"
+    },
+    {
+      "id": "v22_mechanistic_grn_2023",
+      "title": "One model fits all: Combining inference and simulation of gene regulatory networks",
+      "authors": [
+        "Elias Ventre",
+        "Ulysse Herbach",
+        "Thibault Espinasse",
+        "Gérard Benoit",
+        "Olivier Gandrillon"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Elias",
+          "family": "Ventre"
+        },
+        {
+          "given": "Ulysse",
+          "family": "Herbach"
+        },
+        {
+          "given": "Thibault",
+          "family": "Espinasse"
+        },
+        {
+          "given": "Gérard",
+          "family": "Benoit"
+        },
+        {
+          "given": "Olivier",
+          "family": "Gandrillon"
+        }
+      ],
+      "year": 2023,
+      "date": "2023-03-27",
+      "journal": "PLOS Computational Biology",
+      "doi": "10.1371/journal.pcbi.1010962",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10079230/",
+      "volume": "19",
+      "issue": "3",
+      "pages": "e1010962",
+      "articleNumber": "",
+      "publicationType": "peer-reviewed",
+      "metadataVerified": true,
+      "verificationDate": "2026-10-17",
+      "sourceUrls": [
+        "https://doi.org/10.1371/journal.pcbi.1010962",
+        "https://github.com/eliasventre/cardamom",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10079230/",
+        "https://api.crossref.org/works/10.1371/journal.pcbi.1010962"
+      ],
+      "verificationNotes": "Crossref bibliographic metadata checked against publisher or author-hosted primary source. jaxQTL remains labelled as a preprint; Harissa is a conference paper. Method applicability to the 1011 population is proposed, not validated.",
+      "onlineYear": 2023,
+      "issueYear": 2023,
+      "inWindow": true,
+      "selection": "curated",
+      "status": "verified",
+      "studyType": "method",
+      "species": [
+        "Mus musculus",
+        "in silico"
+      ],
+      "toolIds": [
+        "harissa",
+        "cardamomot"
+      ],
+      "topics": [
+        "统一机制模型的推断与模拟"
+      ],
+      "summary": "统一机制模型的推断与模拟",
+      "contribution": "为网络恢复及数据再生成提供机制模型参照。",
+      "evidence": "原始方法论文及官方软件入口已核对。",
+      "markerUse": "方法文献，不直接导入基因为细胞状态marker。",
+      "limitations": [
+        "需按酵母参考、实际设计和留出样本检验适用性。"
+      ],
+      "addedIn": "v22",
+      "apa7": "Ventre, E., Herbach, U., Espinasse, T., Benoit, G., & Gandrillon, O. (2023). One model fits all: Combining inference and simulation of gene regulatory networks. PLOS Computational Biology, 19(3), Article e1010962. https://doi.org/10.1371/journal.pcbi.1010962"
+    },
+    {
+      "id": "v22_bursty_transport_2026",
+      "title": "Cell trajectory inference based on schrödinger problem and a mechanistic model of stochastic gene expression",
+      "authors": [
+        "Clémence Fournié",
+        "Elias Ventre",
+        "Ulysse Herbach",
+        "Aymeric Baradat",
+        "Olivier Gandrillon",
+        "Fabien Crauste"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Clémence",
+          "family": "Fournié"
+        },
+        {
+          "given": "Elias",
+          "family": "Ventre"
+        },
+        {
+          "given": "Ulysse",
+          "family": "Herbach"
+        },
+        {
+          "given": "Aymeric",
+          "family": "Baradat"
+        },
+        {
+          "given": "Olivier",
+          "family": "Gandrillon"
+        },
+        {
+          "given": "Fabien",
+          "family": "Crauste"
+        }
+      ],
+      "year": 2026,
+      "date": "2026-05-21",
+      "journal": "npj Systems Biology and Applications",
+      "doi": "10.1038/s41540-026-00743-x",
+      "url": "https://www.nature.com/articles/s41540-026-00743-x",
+      "volume": "12",
+      "issue": "1",
+      "pages": "120",
+      "articleNumber": "120",
+      "publicationType": "peer-reviewed",
+      "metadataVerified": true,
+      "verificationDate": "2026-10-17",
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41540-026-00743-x",
+        "https://github.com/fourniecl/inference_trajectories_PDMP",
+        "https://www.nature.com/articles/s41540-026-00743-x",
+        "https://api.crossref.org/works/10.1038/s41540-026-00743-x"
+      ],
+      "verificationNotes": "Crossref bibliographic metadata checked against publisher or author-hosted primary source. jaxQTL remains labelled as a preprint; Harissa is a conference paper. Method applicability to the 1011 population is proposed, not validated.",
+      "onlineYear": 2026,
+      "issueYear": 2026,
+      "inWindow": true,
+      "selection": "curated",
+      "status": "verified",
+      "studyType": "method",
+      "species": [
+        "in silico"
+      ],
+      "toolIds": [
+        "harissa",
+        "cardamomot"
+      ],
+      "topics": [
+        "爆发过程与扩散过程的轨迹敏感性"
+      ],
+      "summary": "爆发过程与扩散过程的轨迹敏感性",
+      "contribution": "比较不同随机过程假设对状态转移推断的影响。",
+      "evidence": "原始方法论文及官方软件入口已核对。",
+      "markerUse": "方法文献，不直接导入基因为细胞状态marker。",
+      "limitations": [
+        "需按酵母参考、实际设计和留出样本检验适用性。"
+      ],
+      "addedIn": "v22",
+      "apa7": "Fournié, C., Ventre, E., Herbach, U., Baradat, A., Gandrillon, O., & Crauste, F. (2026). Cell trajectory inference based on schrödinger problem and a mechanistic model of stochastic gene expression. npj Systems Biology and Applications, 12(1), Article 120. https://doi.org/10.1038/s41540-026-00743-x"
+    },
+    {
+      "id": "lit-6162994042e0",
+      "doi": "10.1002/yea.3927",
+      "url": "https://doi.org/10.1002/yea.3927",
+      "metadataVerified": true,
+      "inWindow": true,
+      "addedIn": "v22",
+      "toolIds": [],
+      "title": "An ultra high-throughput, massively multiplexable, single-cell RNA-seq platform in yeasts",
+      "authors": [
+        "Brettner L",
+        "Eder R",
+        "Schmidlin K",
+        "Geiler-Samerotte K"
+      ],
+      "year": 2024,
+      "date": "2024-01-28",
+      "onlineYear": 2024,
+      "issueYear": 2024,
+      "journal": "Yeast",
+      "volume": "41",
+      "issue": "4",
+      "pages": "242–255",
+      "pmid": "38282330",
+      "pmcid": "PMC11146634",
+      "topics": [
+        "条形码设计",
+        "细胞注释",
+        "细胞周期",
+        "转座元件"
+      ],
+      "species": "S. cerevisiae；来源研究另含C. albicans",
+      "studyType": "方法与单细胞原始研究",
+      "evidence": "直接酵母单细胞证据",
+      "publicationType": "期刊/正式资源",
+      "status": "原文点名基因核验；完整补表未导入",
+      "selection": "curated",
+      "summary": "酵母优化SPLiT-seq使用组合条形码，在物种、倍性及培养条件之间保留细胞来源，并观察细胞周期、女儿细胞及转座元件相关状态。",
+      "contribution": "补充作者明确点名的女儿细胞及晚G1/早S阶段解释候选，并保留源cluster编号。",
+      "limitations": [
+        "完整Supplementary Table 1尚未取得可解析版本；仅导入原文点名的八条S. cerevisiae关系。",
+        "与Eder后续应激预印本部分共享GSE251966，不能按两次独立实验重复计证。",
+        "物种或倍性可区分的来源实验结果不是通用RNA诊断标记。"
+      ],
+      "markerUse": "DSE1/DSE2/DSE4及CLN2/HSL1/GIN4/POL1/RNR1的来源状态关联。",
+      "sourceUrls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11146634/",
+        "https://pubmed.ncbi.nlm.nih.gov/38282330/",
+        "https://api.crossref.org/works/10.1002/yea.3927"
+      ],
+      "apa7": "Brettner, L., Eder, R., Schmidlin, K., & Geiler-Samerotte, K. (2024). An ultra high-throughput, massively multiplexable, single-cell RNA-seq platform in yeasts. Yeast, 41(4), 242–255. https://doi.org/10.1002/yea.3927"
     }
   ],
   "excludedRecords": [

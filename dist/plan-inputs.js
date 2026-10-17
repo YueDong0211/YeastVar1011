@@ -80,6 +80,11 @@ const review = (plan, catalog) => {
     return row;
   };
   selected.forEach(t => ((route(plan)!=='raw_fastq'&&['dropest','scpipe'].includes(t.id))?['tagged_bam','reference']:(t.applicability?.requiredData || [])).forEach(key => resolve(key, t.id)));
+  // A retained research question keeps its input requirements even if a method is deselected.
+  for(const project of catalog.projects?.projects||[]){
+    if((plan.projects||[]).includes(project.id))
+      (project.inputs||[]).forEach(key=>resolve(key,project.id));
+  }
   // Metrics also carry input requirements: an exported matrix metric cannot be ready without its source.
   for(const m of catalog.workflow.metrics.filter(m=>(plan.metrics||[]).includes(m.id))){
     const needs=['fastq','tags'].includes(m.stepId)?['raw_fastq']:m.stepId==='bam'?['tagged_bam']:m.stepId==='matrix'?['count_matrix',...(['spliced_count','unspliced_count','ambiguous_fraction','matrix_layer_reconciliation'].includes(m.id)?['splicing_layers']:[])]:['cellqc','sampleqc','integration','annotation','markers','noise','networks'].includes(m.stepId)?['count_matrix']:[];

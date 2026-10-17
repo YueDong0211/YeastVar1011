@@ -1,14 +1,30 @@
 {
   "title": "YeastVar1011: a yeast single-cell research-plan workstation",
-  "version": "21.0.0",
+  "version": "22.0.0",
   "upload_type": "software",
   "description": "YeastVar1011 is a browser-based workstation for planning yeast single-cell studies. It combines source-attributed marker evidence, quality-control metrics, methods, input requirements, citations, and configurable research-plan exports. The catalogue covers cell states, expression variability, RNA dynamics, regulation, and population genetics. A separate Linux x86_64 Snakemake workflow provides FastQC, STARsolo tagged BAM and Gene/GeneFull/SJ/Velocyto matrices, samtools and per-barcode QC, and MultiQC for a known fixed single-segment CB/UMI layout with separate barcode and cDNA reads. SLURM execution uses a separately configured cluster profile. Starting the web interface does not launch scientific analyses. The source release includes the local static application, cross-platform runtime checks, deployment documentation, and analysis workflow definitions.",
-  "creators": [{"name": "Dong, Yue"}],
+  "creators": [
+    {
+      "name": "Dong, Yue"
+    }
+  ],
   "access_right": "open",
   "license": "mit",
-  "keywords": ["Saccharomyces cerevisiae", "single-cell RNA sequencing", "expression variability", "quality control", "marker annotation", "research planning", "population genetics"],
+  "keywords": [
+    "Saccharomyces cerevisiae",
+    "single-cell RNA sequencing",
+    "expression variability",
+    "quality control",
+    "marker annotation",
+    "research planning",
+    "population genetics"
+  ],
   "related_identifiers": [
-    {"identifier": "https://github.com/YueDong0211/YeastVar1011", "relation": "isSupplementTo", "scheme": "url"}
+    {
+      "identifier": "https://github.com/YueDong0211/YeastVar1011",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
   ],
   "notes": "The MIT license applies to original application and workflow code. Bundled third-party software, fonts, and source-derived scientific material retain their respective terms in THIRD_PARTY_NOTICES.md and DATA_SOURCES.md. No unpublished biological datasets or user browser storage are included."
 }

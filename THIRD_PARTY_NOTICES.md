@@ -6,6 +6,10 @@ The MIT license in this repository covers the original YeastVar1011 application 
 
 | Component and use | License and attribution | Bundled notice / source | Upstream |
 | --- | --- | --- | --- |
+| Transformers.js 3.8.1, browser model runtime | Apache 2.0; Hugging Face contributors | [LICENSE](dist/vendor/transformers-3.8.1/LICENSE); [file and package integrity manifest](dist/vendor/transformers-3.8.1/manifest.json) | [Transformers.js](https://github.com/huggingface/transformers.js) |
+| ONNX Runtime Web, model execution | MIT; Microsoft Corporation | [ONNXRUNTIME-LICENSE.txt](dist/vendor/transformers-3.8.1/ONNXRUNTIME-LICENSE.txt) | [ONNX Runtime](https://github.com/microsoft/onnxruntime) |
+| Hugging Face Jinja, bundled chat-template support | MIT; Hugging Face contributors | [JINJA-LICENSE.txt](dist/vendor/transformers-3.8.1/JINJA-LICENSE.txt) | [Jinja](https://github.com/huggingface/jinja.js) |
+| Qwen2.5-0.5B-Instruct, downloaded on user request | Apache 2.0; Qwen authors; ONNX conversion by onnx-community | [QWEN-LICENSE.txt](dist/vendor/transformers-3.8.1/QWEN-LICENSE.txt); model weights are downloaded separately | [Qwen model card](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct); [fixed model and cache details](docs/LOCAL_ASSISTANT.md) |
 | three.js, interactive cell scene | MIT; copyright 2010–2026 three.js authors | [THREE-LICENSE.txt](dist/vendor/THREE-LICENSE.txt); readable `three.core.js` and `three.module.js` in the same directory | [three.js](https://github.com/mrdoob/three.js) |
 | ExcelJS, spreadsheet export | MIT; copyright 2014–2019 Guyon Roche | [EXCELJS-LICENSE.txt](dist/vendor/EXCELJS-LICENSE.txt); `exceljs.min.js` | [ExcelJS](https://github.com/exceljs/exceljs) |
 | KaTeX JavaScript and CSS, formula rendering | MIT; copyright 2013–2020 Khan Academy and other contributors | [LICENSE](dist/vendor/katex/LICENSE); `katex.min.js` and `katex.min.css` | [KaTeX](https://github.com/KaTeX/KaTeX) |

@@ -9,117 +9,122 @@
   <style>html{background:#07101b}html[data-boot="loading"] .app-shell{visibility:hidden}.intro{position:fixed;inset:0;z-index:10000;background:#07101b;color:#e8f3ef;display:grid;place-items:center}.intro[hidden],html[data-workspace-route="journey"] .intro{display:none!important}.intro.leaving{opacity:0;pointer-events:none;transition:opacity .45s ease}.intro-inner{text-align:center}.intro-orbit{position:relative;width:220px;height:220px;margin:auto;display:grid;place-items:center}.intro-orbit img{width:120px;height:120px}.intro-wordmark{font:36px Georgia,serif}.intro-skip{color:inherit;margin-top:24px}</style>
   <link rel="icon" href="assets/yeastvar-emblem.png" type="image/png">
   <script>if(/^#journey(?:[?]|$)/.test(location.hash))document.documentElement.dataset.workspaceRoute="journey";try{var p=JSON.parse(localStorage.getItem('yv.preferences')||'{}');document.documentElement.dataset.theme=(!p.theme||p.theme==='dark')||p.theme==='system'&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.density=p.density||'comfortable';if(p.reducedMotion)document.documentElement.classList.add('reduce-motion')}catch(e){}</script>
-  <link rel="stylesheet" href="style.css?v=21.0">
-  <link rel="stylesheet" href="refinements.css?v=21.0">
-  <link rel="stylesheet" href="yeast3d.css?v=21.0">
-  <link rel="stylesheet" href="studio.css?v=21.0">
-  <link rel="stylesheet" href="v3.css?v=21.0">
-  <link rel="stylesheet" href="mascot.css?v=21.0">
-  <link rel="stylesheet" href="galaxy.css?v=21.0">
-  <link rel="stylesheet" href="workstation.css?v=21.0">
-  <link rel="stylesheet" href="methods.css?v=21.0">
-  <link rel="stylesheet" href="guide.css?v=21.0">
-  <link rel="stylesheet" href="lab.css?v=21.0">
-  <link rel="stylesheet" href="marker-workspace.css?v=21.0">
-  <link rel="stylesheet" href="controls-v4.css?v=21.0">
-  <link rel="stylesheet" href="plan-tools-v5.css?v=21.0">
-<link rel="stylesheet" href="plan-workbench.css?v=21.0">
-<link rel="stylesheet" href="cell-visual-v5.css?v=21.0">
-<link rel="stylesheet" href="plan-theme-v5.css?v=21.0">
-<link rel="stylesheet" href="export-studio.css?v=21.0">
-<link rel="stylesheet" href="polish-v6.css?v=21.0">
-<link rel="stylesheet" href="observatory-v7.css?v=21.0">
-<link rel="stylesheet" href="method-atlas-v7.css?v=21.0">
-<link rel="stylesheet" href="companion-hub.css?v=21.0">
-<link rel="stylesheet" href="research-atlas-v8.css?v=21.0">
-  <link rel="stylesheet" href="atelier-v9.css?v=21.0">
-  <link rel="stylesheet" href="atelier-library-v9.css?v=21.0">
-  <link rel="stylesheet" href="page-layout-v11.css?v=21.0">
-  <link rel="stylesheet" href="atelier-library-v11.css?v=21.0">
-  <link rel="stylesheet" href="plan-layout-v11.css?v=21.0">
-  <link rel="stylesheet" href="research-coverage-v12.css?v=21.0">
-<link rel="stylesheet" href="marker-preview-v13.css?v=21.0">
-<link rel="stylesheet" href="plan-preview-v13.css?v=21.0">
-  <script src="locales.js?v=21.0" defer></script>
-  <script src="content-locales.js?v=21.0" defer></script>
-  <script src="detail-locales.js?v=21.0" defer></script>
-  <script src="tool-detail-locales.js?v=21.0" defer></script>
-  <script src="category-locales.js?v=21.0" defer></script>
-  <script src="paper-locales.js?v=21.0" defer></script>
-  <script src="paper-extra-locales.js?v=21.0" defer></script>
-  <script src="builder-locales.js?v=21.0" defer></script>
-  <script src="v3-ui-locales.js?v=21.0" defer></script>
-  <script src="v3-research-locales.js?v=21.0" defer></script>
-  <script src="data-loader.js?v=21.0" defer></script>
-  <script src="plan-inputs.js?v=21.0" defer></script>
-  <script src="vendor/citations/citeproc.js?v=21.0" defer></script>
-<script src="citation-data.js?v=21.0" defer></script>
-<script src="citations.js?v=21.0" defer></script>
-<script src="builder.js?v=21.0" defer></script>
-  <script src="ambience.js?v=21.0" defer></script>
-  <script>if(location.protocol!=='file:'){const script=document.createElement('script');script.type='module';script.src='yeast3d.js?v=21.0';document.head.append(script);}</script>
-  <script src="mascot.js?v=21.0" defer></script>
-  <script src="experience.js?v=21.0" defer></script>
-  <script src="galaxy.js?v=21.0" defer></script>
-  <script src="workstation.js?v=21.0" defer></script>
-  <script src="methods.js?v=21.0" defer></script>
-  <script src="guide.js?v=21.0" defer></script>
-  <script src="companion-hub.js?v=21.0" defer></script>
-  <script src="lab-locales.js?v=21.0" defer></script>
-  <script src="lab.js?v=21.0" defer></script>
-  <script src="v4-research-locales.js?v=21.0" defer></script>
-  <script src="v4-marker-locales.js?v=21.0" defer></script>
-  <script src="marker-workspace-locales.js?v=21.0" defer></script>
-  <script src="marker-workspace.js?v=21.0" defer></script>
-  <script src="controls-v4.js?v=21.0" defer></script>
-  <script src="v5-research-locales.js?v=21.0" defer></script>
-<script src="v6-research-locales.js?v=21.0" defer></script>
-<script src="observatory-v7.js?v=21.0" defer></script>
-<script src="plan-tools-v5.js?v=21.0" defer></script>
-<script src="plan-workbench.js?v=21.0" defer></script>
-<script src="cell-visual-v5.js?v=21.0" defer></script>
-<script src="plan-theme-v5.js?v=21.0" defer></script>
-<script src="export-layout-v10.js?v=21.0" defer></script>
-<script src="export-studio.js?v=21.0" defer></script>
-<script src="v8-research-locales.js?v=21.0" defer></script>
-<script src="v10-research-locales.js?v=21.0" defer></script>
-<script src="v12-research-locales.js?v=21.0" defer></script>
-<script src="research-coverage-v12.js?v=21.0" defer></script>
-<script src="research-atlas-v8.js?v=21.0" defer></script>
-<script src="atelier-v9.js?v=21.0" defer></script>
-<script src="page-layout-v11.js?v=21.0" defer></script>
-<script src="library-layout-v11.js?v=21.0" defer></script>
-<script src="plan-layout-v11.js?v=21.0" defer></script>
-<script src="v13-research-locales.js?v=21.0" defer></script>
-<script src="marker-preview-v13.js?v=21.0" defer></script>
-<script src="plan-preview-v13.js?v=21.0" defer></script>
-<script src="cinematic-v15.js?v=21.0" defer></script>
-<script src="interface-v15.js?v=21.0" defer></script>
-<script src="export-experience-v15.js?v=21.0" defer></script>
-<script src="navigation-v14.js?v=21.0" defer></script>
-<script src="plan-recovery-v16.js?v=21.0" defer></script>
-<script src="user-experience-v16.js?v=21.0" defer></script>
-<script src="mode-transitions-v17.js?v=21.0" defer></script>
-<script src="journey-scene-v17.js?v=21.0" defer></script>
-<script src="journey-v17.js?v=21.0" defer></script>
-<script src="classic-experience-v18.js?v=21.0" defer></script>
-<script src="storage-controls-v19.js?v=21.0" defer></script>
-<script src="project-links-v20.js?v=21.0" defer></script>
-<script src="cluster-workspace-v21.js?v=21.0" defer></script>
-<script src="app.js?v=21.0" defer></script>
-  <link rel="stylesheet" href="navigation-v14.css?v=21.0">
-<link rel="stylesheet" href="interface-v15.css?v=21.0">
-<link rel="stylesheet" href="cinematic-v15.css?v=21.0">
-<link rel="stylesheet" href="export-experience-v15.css?v=21.0">
-<link rel="stylesheet" href="plan-recovery-v16.css?v=21.0">
-<link rel="stylesheet" href="user-experience-v16.css?v=21.0">
-<link rel="stylesheet" href="journey-v17.css?v=21.0">
-<link rel="stylesheet" href="classic-experience-v18.css?v=21.0">
-<link rel="stylesheet" href="storage-controls-v19.css?v=21.0">
-<link rel="stylesheet" href="polish-v19.css?v=21.0">
-<link rel="stylesheet" href="presentation-v20.css?v=21.0">
-<link rel="stylesheet" href="project-links-v20.css?v=21.0">
-<link rel="stylesheet" href="cluster-workspace-v21.css?v=21.0">
+  <link rel="stylesheet" href="style.css?v=22.0">
+  <link rel="stylesheet" href="refinements.css?v=22.0">
+  <link rel="stylesheet" href="yeast3d.css?v=22.0">
+  <link rel="stylesheet" href="studio.css?v=22.0">
+  <link rel="stylesheet" href="v3.css?v=22.0">
+  <link rel="stylesheet" href="mascot.css?v=22.0">
+  <link rel="stylesheet" href="galaxy.css?v=22.0">
+  <link rel="stylesheet" href="workstation.css?v=22.0">
+  <link rel="stylesheet" href="methods.css?v=22.0">
+  <link rel="stylesheet" href="guide.css?v=22.0">
+  <link rel="stylesheet" href="lab.css?v=22.0">
+  <link rel="stylesheet" href="marker-workspace.css?v=22.0">
+  <link rel="stylesheet" href="controls-v4.css?v=22.0">
+  <link rel="stylesheet" href="plan-tools-v5.css?v=22.0">
+<link rel="stylesheet" href="plan-workbench.css?v=22.0">
+<link rel="stylesheet" href="cell-visual-v5.css?v=22.0">
+<link rel="stylesheet" href="plan-theme-v5.css?v=22.0">
+<link rel="stylesheet" href="export-studio.css?v=22.0">
+<link rel="stylesheet" href="polish-v6.css?v=22.0">
+<link rel="stylesheet" href="observatory-v7.css?v=22.0">
+<link rel="stylesheet" href="method-atlas-v7.css?v=22.0">
+<link rel="stylesheet" href="companion-hub.css?v=22.0">
+<link rel="stylesheet" href="research-atlas-v8.css?v=22.0">
+  <link rel="stylesheet" href="atelier-v9.css?v=22.0">
+  <link rel="stylesheet" href="atelier-library-v9.css?v=22.0">
+  <link rel="stylesheet" href="page-layout-v11.css?v=22.0">
+  <link rel="stylesheet" href="atelier-library-v11.css?v=22.0">
+  <link rel="stylesheet" href="plan-layout-v11.css?v=22.0">
+  <link rel="stylesheet" href="research-coverage-v12.css?v=22.0">
+<link rel="stylesheet" href="marker-preview-v13.css?v=22.0">
+<link rel="stylesheet" href="plan-preview-v13.css?v=22.0">
+  <script src="locales.js?v=22.0" defer></script>
+  <script src="content-locales.js?v=22.0" defer></script>
+  <script src="detail-locales.js?v=22.0" defer></script>
+  <script src="tool-detail-locales.js?v=22.0" defer></script>
+  <script src="category-locales.js?v=22.0" defer></script>
+  <script src="paper-locales.js?v=22.0" defer></script>
+  <script src="paper-extra-locales.js?v=22.0" defer></script>
+  <script src="builder-locales.js?v=22.0" defer></script>
+  <script src="v3-ui-locales.js?v=22.0" defer></script>
+  <script src="v3-research-locales.js?v=22.0" defer></script>
+  <script src="data-loader.js?v=22.0" defer></script>
+  <script src="plan-inputs.js?v=22.0" defer></script>
+  <script src="vendor/citations/citeproc.js?v=22.0" defer></script>
+<script src="citation-data.js?v=22.0" defer></script>
+<script src="citations.js?v=22.0" defer></script>
+<script src="builder.js?v=22.0" defer></script>
+  <script src="ambience.js?v=22.0" defer></script>
+  <script>if(location.protocol!=='file:'){const script=document.createElement('script');script.type='module';script.src='yeast3d.js?v=22.0';document.head.append(script);}</script>
+  <script src="mascot.js?v=22.0" defer></script>
+  <script src="experience.js?v=22.0" defer></script>
+  <script src="galaxy.js?v=22.0" defer></script>
+  <script src="workstation.js?v=22.0" defer></script>
+  <script src="methods.js?v=22.0" defer></script>
+  <script src="guide.js?v=22.0" defer></script>
+  <script src="local-model-v22.js?v=22.0" defer></script>
+  <script src="research-assistant-v22.js?v=22.0" defer></script>
+  <script src="companion-hub.js?v=22.0" defer></script>
+  <script src="lab-locales.js?v=22.0" defer></script>
+  <script src="lab.js?v=22.0" defer></script>
+  <script src="v4-research-locales.js?v=22.0" defer></script>
+  <script src="v4-marker-locales.js?v=22.0" defer></script>
+  <script src="marker-workspace-locales.js?v=22.0" defer></script>
+  <script src="marker-workspace.js?v=22.0" defer></script>
+  <script src="controls-v4.js?v=22.0" defer></script>
+  <script src="v5-research-locales.js?v=22.0" defer></script>
+<script src="v6-research-locales.js?v=22.0" defer></script>
+<script src="observatory-v7.js?v=22.0" defer></script>
+<script src="plan-tools-v5.js?v=22.0" defer></script>
+<script src="plan-workbench.js?v=22.0" defer></script>
+<script src="cell-visual-v5.js?v=22.0" defer></script>
+<script src="plan-theme-v5.js?v=22.0" defer></script>
+<script src="export-layout-v10.js?v=22.0" defer></script>
+<script src="export-studio.js?v=22.0" defer></script>
+<script src="v8-research-locales.js?v=22.0" defer></script>
+<script src="v10-research-locales.js?v=22.0" defer></script>
+<script src="v12-research-locales.js?v=22.0" defer></script>
+<script src="research-coverage-v12.js?v=22.0" defer></script>
+<script src="research-atlas-v8.js?v=22.0" defer></script>
+<script src="atelier-v9.js?v=22.0" defer></script>
+<script src="page-layout-v11.js?v=22.0" defer></script>
+<script src="library-layout-v11.js?v=22.0" defer></script>
+<script src="plan-layout-v11.js?v=22.0" defer></script>
+<script src="v13-research-locales.js?v=22.0" defer></script>
+<script src="marker-preview-v13.js?v=22.0" defer></script>
+<script src="plan-preview-v13.js?v=22.0" defer></script>
+<script src="cinematic-v15.js?v=22.0" defer></script>
+<script src="interface-v15.js?v=22.0" defer></script>
+<script src="export-experience-v15.js?v=22.0" defer></script>
+<script src="navigation-v14.js?v=22.0" defer></script>
+<script src="plan-recovery-v16.js?v=22.0" defer></script>
+<script src="user-experience-v16.js?v=22.0" defer></script>
+<script src="mode-transitions-v17.js?v=22.0" defer></script>
+<script src="journey-scene-v17.js?v=22.0" defer></script>
+<script src="journey-v17.js?v=22.0" defer></script>
+<script src="classic-experience-v18.js?v=22.0" defer></script>
+<script src="storage-controls-v19.js?v=22.0" defer></script>
+<script src="project-links-v20.js?v=22.0" defer></script>
+<script src="cluster-workspace-v21.js?v=22.0" defer></script>
+<script src="v22-marker-locales.js?v=22.0" defer></script>
+<script src="v22-research-locales.js?v=22.0" defer></script>
+<script src="app.js?v=22.0" defer></script>
+  <link rel="stylesheet" href="navigation-v14.css?v=22.0">
+<link rel="stylesheet" href="interface-v15.css?v=22.0">
+<link rel="stylesheet" href="cinematic-v15.css?v=22.0">
+<link rel="stylesheet" href="export-experience-v15.css?v=22.0">
+<link rel="stylesheet" href="plan-recovery-v16.css?v=22.0">
+<link rel="stylesheet" href="user-experience-v16.css?v=22.0">
+<link rel="stylesheet" href="journey-v17.css?v=22.0">
+<link rel="stylesheet" href="classic-experience-v18.css?v=22.0">
+<link rel="stylesheet" href="storage-controls-v19.css?v=22.0">
+<link rel="stylesheet" href="polish-v19.css?v=22.0">
+<link rel="stylesheet" href="presentation-v20.css?v=22.0">
+<link rel="stylesheet" href="project-links-v20.css?v=22.0">
+<link rel="stylesheet" href="cluster-workspace-v21.css?v=22.0">
+<link rel="stylesheet" href="research-assistant-v22.css?v=22.0">
 </head>
 <body>
   <canvas id="ambient-canvas" aria-hidden="true"></canvas>

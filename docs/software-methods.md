@@ -1,6 +1,6 @@
 # YeastVar1011: an evidence-linked workbench for yeast single-cell study design and raw-read quality control
 
-Software resource description for version 21.0.0, prepared on 17 October 2026. Implementation, verification and publication records are linked throughout; submission status is recorded in [PUBLISHING.md](PUBLISHING.md).
+Software resource description for version 22.0.0, prepared on 17 October 2026. Implementation, verification and publication records are linked throughout; submission status is recorded in [PUBLISHING.md](PUBLISHING.md).
 
 ## Abstract
 
@@ -16,7 +16,7 @@ The standard workbench exposes six stages: study scope, preparation, annotation,
 
 ## Browser implementation and exchange formats
 
-The application uses HTML, CSS and JavaScript with structured JSON catalogues. Large marker records are delivered in shards referenced by a manifest; alternate JavaScript bundles support the local distribution. A Node.js server using built-in modules serves the application on the loopback interface. The ordinary workbench requires no database or scientific runtime. Node.js 22 is the minimum supported server version, with Node.js 24 LTS recommended; detailed setup commands are provided in [DEPLOYMENT.md](DEPLOYMENT.md).
+The application uses HTML, CSS and JavaScript with structured JSON catalogues. Large marker records are delivered in shards referenced by a manifest; alternate JavaScript bundles support the local distribution. A Node.js server using built-in modules serves the application on the loopback interface. The ordinary workbench requires no database or scientific runtime. An optional Qwen2.5-0.5B-Instruct model runs in a dedicated browser worker using locally bundled Transformers.js and ONNX Runtime. The first explicit load downloads fixed model files; questions and selected plan context remain on the device. Catalogue retrieval supplies short evidence excerpts, while the interface constructs source links directly from stored records. Model text does not execute analysis or alter a plan. Model versions, licenses, cache controls and validation procedures are documented in [LOCAL_ASSISTANT.md](LOCAL_ASSISTANT.md). Node.js 22 is the minimum supported server version, with Node.js 24 LTS recommended; detailed setup commands are provided in [DEPLOYMENT.md](DEPLOYMENT.md).
 
 Plans are stored in browser storage for the current origin and can be backed up as JSON. Export facilities include a formatted HTML study plan, spreadsheets, SVG workflow/mind-map views, reference text and CSL citation records. citeproc-js formats bibliographic entries using the bundled APA citation style; KaTeX renders supported mathematical notation; ExcelJS constructs spreadsheet exports. These components are redistributed with their licenses and notices. Bibliographic output depends on the supplied source metadata, and unresolved records remain distinguishable from formatted references.
 

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-16",
+  "updated": "2026-10-17",
   "steps": [
     {
       "id": "design",
@@ -222,7 +222,8 @@
         "bam_rna_base_allocation",
         "bam_feature_tag_allocation",
         "bam_downstream_contract",
-        "allelic_molecule_support"
+        "allelic_molecule_support",
+        "te_bam_recoverability"
       ],
       "toolIds": [
         "multiqc",
@@ -239,7 +240,8 @@
         "wasp",
         "pysam",
         "sierra",
-        "scape"
+        "scape",
+        "irescue"
       ],
       "formulaIds": [
         "metric_fraction"
@@ -248,7 +250,10 @@
         "https://github.com/alexdobin/STAR/blob/master/docs/STARsolo.md",
         "https://github.com/alexdobin/STAR/blob/master/source/parametersDefault",
         "https://www.htslib.org/doc/samtools.html",
-        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4626402/"
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4626402/",
+        "https://doi.org/10.1093/nar/gkae793",
+        "https://github.com/bodegalab/irescue",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11514465/"
       ]
     },
     {
@@ -292,7 +297,8 @@
         "matrix_read_umi_conversion",
         "matrix_layer_reconciliation",
         "matrix_annotation_sensitivity",
-        "matrix_quantifier_agreement"
+        "matrix_quantifier_agreement",
+        "te_family_allocation"
       ],
       "toolIds": [
         "starsolo",
@@ -304,13 +310,17 @@
         "velocyto",
         "scanpy",
         "pysam",
-        "sierra"
+        "sierra",
+        "irescue"
       ],
       "formulaIds": [],
       "sourceUrls": [
         "https://github.com/alexdobin/STAR/blob/master/docs/STARsolo.md",
         "https://github.com/alexdobin/STAR/blob/master/source/ParametersSolo.cpp",
-        "https://alevin-fry.readthedocs.io/en/latest/quant.html"
+        "https://alevin-fry.readthedocs.io/en/latest/quant.html",
+        "https://doi.org/10.1093/nar/gkae793",
+        "https://github.com/bodegalab/irescue",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11514465/"
       ]
     },
     {
@@ -873,7 +883,9 @@
         "rna_proportionality_sensitivity",
         "noise_mean_equivalence",
         "apa_noise_association",
-        "metabolic_noise_sensitivity"
+        "metabolic_noise_sensitivity",
+        "te_noise_assignment_sensitivity",
+        "state_between_strain_variance"
       ],
       "toolIds": [
         "memento",
@@ -896,7 +908,9 @@
         "baredsc",
         "propr",
         "mrvi",
-        "yeastgem"
+        "yeastgem",
+        "ctmm",
+        "harissa"
       ],
       "formulaIds": [
         "poisson_measurement",
@@ -911,12 +925,19 @@
         "poisson_count_split",
         "latent_mixture_observation",
         "summed_transcript_variance",
-        "rna_proportionality_ratio"
+        "rna_proportionality_ratio",
+        "ctmm_state_covariance"
       ],
       "sourceUrls": [
         "https://doi.org/10.1038/s41588-021-00873-4",
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC11556465/",
-        "https://doi.org/10.1371/journal.pgen.1008045"
+        "https://doi.org/10.1371/journal.pgen.1008045",
+        "https://doi.org/10.1093/nar/gkae793",
+        "https://github.com/bodegalab/irescue",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11514465/",
+        "https://doi.org/10.1038/s41467-024-49242-9",
+        "https://github.com/Minhui-Chen/CTMM",
+        "https://www.nature.com/articles/s41467-024-49242-9"
       ]
     },
     {
@@ -959,7 +980,9 @@
         "metacell_library_dispersion",
         "aging_program_partial_coupling",
         "metabolic_gene_reaction_coverage",
-        "metabolic_feasible_ranges"
+        "metabolic_feasible_ranges",
+        "cross_state_program_coupling",
+        "grn_edge_evidence_strata"
       ],
       "toolIds": [
         "memento",
@@ -981,7 +1004,10 @@
         "lsmetacell",
         "irgsea",
         "propr",
-        "yeastgem"
+        "yeastgem",
+        "dialogue",
+        "harissa",
+        "cardamomot"
       ],
       "formulaIds": [
         "v2_cnmf",
@@ -993,7 +1019,13 @@
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC11556465/",
         "https://doi.org/10.1186/1471-2105-9-559",
         "https://doi.org/10.1016/j.crmeth.2023.100498",
-        "https://doi.org/10.1371/journal.pcbi.1001057"
+        "https://doi.org/10.1371/journal.pcbi.1001057",
+        "https://doi.org/10.1038/s41587-022-01288-0",
+        "https://github.com/livnatje/DIALOGUE/wiki/Tutorial",
+        "https://pubmed.ncbi.nlm.nih.gov/35513526/",
+        "https://doi.org/10.1038/s41586-025-08916-0",
+        "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE236948",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12882699/"
       ]
     },
     {
@@ -1028,7 +1060,10 @@
         "trajectory_condition_differences",
         "fate_probabilities",
         "velocity_uncertainty",
-        "cycle_speed_relative"
+        "cycle_speed_relative",
+        "velocity_module_support",
+        "velocity_module_uncertainty",
+        "temporal_mechanistic_regeneration"
       ],
       "toolIds": [
         "scanpy",
@@ -1045,14 +1080,22 @@
         "tricycle",
         "brie2",
         "mellon",
-        "schot"
+        "schot",
+        "cell2fate",
+        "cardamomot"
       ],
       "formulaIds": [
         "kinetic_velocity"
       ],
       "sourceUrls": [
         "https://scvelo.readthedocs.io/en/stable/",
-        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9499228/"
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9499228/",
+        "https://doi.org/10.1038/s41592-025-02608-3",
+        "https://cell2fate.readthedocs.io/en/latest/cell2fate.html",
+        "https://www.nature.com/articles/s41592-025-02608-3",
+        "https://doi.org/10.1371/journal.pcbi.1014838",
+        "https://cardamomot.readthedocs.io/en/latest/quickstart.html",
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1014838"
       ]
     },
     {
@@ -1097,7 +1140,8 @@
         "igv",
         "brie2",
         "sierra",
-        "scape"
+        "scape",
+        "irescue"
       ],
       "formulaIds": [],
       "sourceUrls": [
@@ -1144,7 +1188,13 @@
         "metacell_dubious_fraction",
         "metacell_null_correlation",
         "mellon_density_sensitivity",
-        "perturbation_centroid_accuracy"
+        "perturbation_centroid_accuracy",
+        "state_variance_calibration",
+        "cross_state_program_holdout",
+        "grn_prior_ablation",
+        "mechanistic_noise_recovery",
+        "mechanistic_grn_recovery",
+        "kinetic_prior_sensitivity"
       ],
       "toolIds": [
         "dropletutils",
@@ -1170,7 +1220,13 @@
         "baredsc",
         "propr",
         "systema",
-        "lmd"
+        "lmd",
+        "ctmm",
+        "dialogue",
+        "cell2fate",
+        "jaxqtl",
+        "harissa",
+        "cardamomot"
       ],
       "formulaIds": [
         "null_error_rate",
@@ -1179,7 +1235,26 @@
       "sourceUrls": [
         "https://www.nature.com/articles/s41587-023-01772-1",
         "https://www.nature.com/articles/s41467-023-43162-w",
-        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11556465/"
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11556465/",
+        "https://doi.org/10.1038/s41467-024-49242-9",
+        "https://github.com/Minhui-Chen/CTMM",
+        "https://www.nature.com/articles/s41467-024-49242-9",
+        "https://doi.org/10.1038/s41587-022-01288-0",
+        "https://github.com/livnatje/DIALOGUE/wiki/Tutorial",
+        "https://pubmed.ncbi.nlm.nih.gov/35513526/",
+        "https://doi.org/10.1038/s41586-025-08916-0",
+        "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE236948",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12882699/",
+        "https://inferelator.readthedocs.io/en/latest/",
+        "https://doi.org/10.1007/978-3-031-42697-1_7",
+        "https://github.com/ulysseherbach/harissa",
+        "https://link.springer.com/chapter/10.1007/978-3-031-42697-1_7",
+        "https://doi.org/10.1371/journal.pcbi.1010962",
+        "https://github.com/eliasventre/cardamom",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10079230/",
+        "https://doi.org/10.1371/journal.pcbi.1014838",
+        "https://cardamomot.readthedocs.io/en/latest/quickstart.html",
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1014838"
       ]
     },
     {
@@ -1221,7 +1296,9 @@
         "variant_set_support",
         "epistatic_noise_effect",
         "noise_genetic_partition",
-        "noise_reaction_norm"
+        "noise_reaction_norm",
+        "count_eqtl_offset_contract",
+        "count_eqtl_calibration"
       ],
       "toolIds": [
         "cellsnp",
@@ -1232,7 +1309,8 @@
         "mashr",
         "scdali",
         "saigeqtl",
-        "gmmat"
+        "gmmat",
+        "jaxqtl"
       ],
       "formulaIds": [
         "lmm_heritability"
@@ -1241,7 +1319,10 @@
         "https://doi.org/10.1371/journal.pgen.1008045",
         "https://www.nature.com/articles/s41586-018-0030-5",
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC11176082/",
-        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12711572/"
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12711572/",
+        "https://doi.org/10.1101/2025.01.18.25320755",
+        "https://mancusolab.github.io/jaxqtl/reference/mapping/",
+        "https://www.medrxiv.org/content/10.1101/2025.01.18.25320755v2"
       ]
     },
     {
@@ -1295,7 +1376,8 @@
         "scdali",
         "saigeqtl",
         "gmmat",
-        "systema"
+        "systema",
+        "cardamomot"
       ],
       "formulaIds": [
         "mr_wald",
@@ -12677,6 +12759,1133 @@
         "requiresImplementation": true,
         "sourceUrls": [
           "https://github.com/MarioniLab/geneBasisR"
+        ]
+      }
+    },
+    {
+      "id": "te_bam_recoverability",
+      "stepId": "bam",
+      "name": "重复元件比对候选保留率",
+      "nameEn": "Recoverability of repeat-alignment candidates",
+      "definition": "核对Ty候选read的NH、次要比对、CB及原始UMI标签，比较多重比对截断和参考版本导致的损失。",
+      "definitionEn": "Audit NH, secondary alignments, CB and raw UMI tags for Ty candidates; compare losses from alignment caps and reference versions.",
+      "unit": "项目定义的分层指标",
+      "denominator": "有重复元件重叠证据的read与分子候选",
+      "level": "文库×参考×比对策略",
+      "purpose": "核对Ty候选read的NH、次要比对、CB及原始UMI标签，比较多重比对截断和参考版本导致的损失。",
+      "tools": [
+        "irescue",
+        "samtools",
+        "pysam"
+      ],
+      "inputIds": [
+        "tagged_bam",
+        "repeat_annotation"
+      ],
+      "cautions": [],
+      "sourceUrls": [
+        "https://doi.org/10.1093/nar/gkae793",
+        "https://github.com/bodegalab/irescue",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11514465/"
+      ],
+      "metricOrigin": "project-derived-contract",
+      "addedIn": "v22",
+      "collection": {
+        "entrypoint": "IRescue input audit + pysam record/tag summary",
+        "fields": [
+          {
+            "name": "n_candidate_reads",
+            "meaning": "候选read数"
+          },
+          {
+            "name": "n_secondary_records",
+            "meaning": "次要比对记录数"
+          },
+          {
+            "name": "n_missing_tags",
+            "meaning": "缺失标签数"
+          },
+          {
+            "name": "alignment_cap",
+            "meaning": "本次比对上限"
+          }
+        ],
+        "groupBy": [
+          "library_id",
+          "reference_id",
+          "feature_resolution"
+        ],
+        "outputFile": "results/te_bam_recoverability.tsv",
+        "outputFileRole": "suggested-project-export",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://doi.org/10.1093/nar/gkae793",
+          "https://github.com/bodegalab/irescue",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11514465/"
+        ]
+      }
+    },
+    {
+      "id": "te_family_allocation",
+      "stepId": "matrix",
+      "name": "Ty家族分子归属与歧义",
+      "nameEn": "Ty-family assignment and ambiguity",
+      "definition": "分开保存家族层表达、跨家族等价类、EM分配量和唯一证据；核对条码轴与基因矩阵。",
+      "definitionEn": "Store family expression, cross-family equivalence classes, EM assignments and unique evidence separately; reconcile barcodes with the gene matrix.",
+      "unit": "项目定义的分层指标",
+      "denominator": "通过相同细胞白名单的重复元件候选分子",
+      "level": "家族×细胞×文库",
+      "purpose": "分开保存家族层表达、跨家族等价类、EM分配量和唯一证据；核对条码轴与基因矩阵。",
+      "tools": [
+        "irescue"
+      ],
+      "inputIds": [
+        "tagged_bam",
+        "repeat_annotation"
+      ],
+      "cautions": [
+        "记录原生输出为整数还是分数；不将期望分配量冒充原始整数UMI。"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1093/nar/gkae793",
+        "https://github.com/bodegalab/irescue",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11514465/"
+      ],
+      "metricOrigin": "project-derived-contract",
+      "addedIn": "v22",
+      "collection": {
+        "entrypoint": "Read IRescue counts/ and optional ec_dump.tsv.gz; export a separate TE assay",
+        "fields": [
+          {
+            "name": "feature_id",
+            "meaning": "家族或位点ID"
+          },
+          {
+            "name": "feature_resolution",
+            "meaning": "家族/位点"
+          },
+          {
+            "name": "assigned_abundance",
+            "meaning": "分配丰度"
+          },
+          {
+            "name": "ambiguous_equivalence_classes",
+            "meaning": "歧义等价类摘要"
+          },
+          {
+            "name": "barcode_reconciled",
+            "meaning": "与主矩阵条码一致性"
+          }
+        ],
+        "groupBy": [
+          "library_id",
+          "reference_id",
+          "feature_resolution"
+        ],
+        "outputFile": "results/te_family_allocation.tsv",
+        "outputFileRole": "suggested-project-export",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://doi.org/10.1093/nar/gkae793",
+          "https://github.com/bodegalab/irescue",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11514465/"
+        ]
+      }
+    },
+    {
+      "id": "te_noise_assignment_sensitivity",
+      "stepId": "noise",
+      "name": "Ty变异与分配策略敏感性",
+      "nameEn": "Ty variability sensitivity to assignment strategy",
+      "definition": "在可比较状态和培养内评估Ty家族RNA分布，并检查唯一证据、EM分配、参考和背景处理对候选排序的影响。",
+      "definitionEn": "Compare Ty-family RNA distributions within matched states and cultures; examine effects of unique evidence, EM, reference and background handling on candidate rankings.",
+      "unit": "项目定义的分层指标",
+      "denominator": "同一参考可定义且各比较组有证据支持的家族",
+      "level": "家族×状态×培养",
+      "purpose": "在可比较状态和培养内评估Ty家族RNA分布，并检查唯一证据、EM分配、参考和背景处理对候选排序的影响。",
+      "tools": [
+        "irescue",
+        "memento",
+        "glmmtmb"
+      ],
+      "inputIds": [
+        "tagged_bam",
+        "repeat_annotation",
+        "cell_states",
+        "culture_replicates"
+      ],
+      "cautions": [
+        "与整数计数模型比较时采用可解释的整数证据层或明确的误差模型。"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1093/nar/gkae793",
+        "https://github.com/bodegalab/irescue",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11514465/"
+      ],
+      "metricOrigin": "project-derived-contract",
+      "addedIn": "v22",
+      "collection": {
+        "entrypoint": "Project family-level comparisons with assignment-aware resampling",
+        "fields": [
+          {
+            "name": "assignment_method",
+            "meaning": "分配策略"
+          },
+          {
+            "name": "distribution_effect",
+            "meaning": "分布效应"
+          },
+          {
+            "name": "resampling_interval",
+            "meaning": "重抽样区间"
+          },
+          {
+            "name": "rank_stability",
+            "meaning": "候选排序稳定性"
+          }
+        ],
+        "groupBy": [
+          "strain_id",
+          "culture_id",
+          "state_id"
+        ],
+        "outputFile": "results/te_noise_assignment_sensitivity.tsv",
+        "outputFileRole": "suggested-project-export",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://doi.org/10.1093/nar/gkae793",
+          "https://github.com/bodegalab/irescue",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11514465/"
+        ]
+      }
+    },
+    {
+      "id": "state_between_strain_variance",
+      "stepId": "noise",
+      "name": "状态特异的菌株间方差",
+      "nameEn": "State-specific between-strain variance",
+      "definition": "报告CTMM跨状态共享方差和状态特异方差，保留均值及伪bulk抽样方差。",
+      "definitionEn": "Report CTMM shared and state-specific variance; retain means and pseudobulk sampling variances.",
+      "unit": "项目定义的分层指标",
+      "denominator": "可在相同状态集合比较的菌株/独立培养",
+      "level": "基因×状态×样本集合",
+      "purpose": "报告CTMM跨状态共享方差和状态特异方差，保留均值及伪bulk抽样方差。",
+      "tools": [
+        "ctmm"
+      ],
+      "inputIds": [
+        "count_matrix",
+        "cell_states",
+        "sample_metadata"
+      ],
+      "cautions": [
+        "该方差属于样本/菌株间，不是同菌株内单细胞噪音或遗传力。"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41467-024-49242-9",
+        "https://github.com/Minhui-Chen/CTMM",
+        "https://www.nature.com/articles/s41467-024-49242-9"
+      ],
+      "metricOrigin": "project-derived-contract",
+      "addedIn": "v22",
+      "collection": {
+        "entrypoint": "ctmm.ctp.free_REML(..., jack_knife=True)",
+        "fields": [
+          {
+            "name": "hom2",
+            "meaning": "跨状态共享样本间方差"
+          },
+          {
+            "name": "V",
+            "meaning": "状态特异协方差矩阵"
+          },
+          {
+            "name": "ct_beta",
+            "meaning": "状态平均表达"
+          },
+          {
+            "name": "ctnu",
+            "meaning": "状态均值的抽样方差"
+          }
+        ],
+        "groupBy": [
+          "strain_id",
+          "culture_id",
+          "state_id"
+        ],
+        "outputFile": "results/state_between_strain_variance.tsv",
+        "outputFileRole": "suggested-project-export",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://doi.org/10.1038/s41467-024-49242-9",
+          "https://github.com/Minhui-Chen/CTMM",
+          "https://www.nature.com/articles/s41467-024-49242-9"
+        ]
+      }
+    },
+    {
+      "id": "state_variance_calibration",
+      "stepId": "validation",
+      "name": "跨状态方差模型校准",
+      "nameEn": "Calibration of cross-state variance models",
+      "definition": "比较Hom/Free/Full、Jackknife、缺失状态处理与亲缘分层后的结论，使用设计匹配模拟检查误报。",
+      "definitionEn": "Compare Hom/Free/Full, jackknife, missing-state handling and kinship strata; evaluate false positives with design-matched simulations.",
+      "unit": "项目定义的分层指标",
+      "denominator": "每个模型实际纳入的独立样本",
+      "level": "基因×模型×设计情景",
+      "purpose": "比较Hom/Free/Full、Jackknife、缺失状态处理与亲缘分层后的结论，使用设计匹配模拟检查误报。",
+      "tools": [
+        "ctmm",
+        "scdesign3"
+      ],
+      "inputIds": [
+        "count_matrix",
+        "cell_states",
+        "sample_metadata"
+      ],
+      "cautions": [],
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41467-024-49242-9",
+        "https://github.com/Minhui-Chen/CTMM",
+        "https://www.nature.com/articles/s41467-024-49242-9"
+      ],
+      "metricOrigin": "project-derived-contract",
+      "addedIn": "v22",
+      "collection": {
+        "entrypoint": "CTMM model comparisons and project grouped resampling",
+        "fields": [
+          {
+            "name": "model",
+            "meaning": "模型"
+          },
+          {
+            "name": "sampling_variance_uncertainty",
+            "meaning": "抽样方差不确定性"
+          },
+          {
+            "name": "calibration",
+            "meaning": "模拟误报与区间覆盖"
+          },
+          {
+            "name": "relatedness_sensitivity",
+            "meaning": "亲缘敏感性"
+          }
+        ],
+        "groupBy": [
+          "strain_id",
+          "culture_id",
+          "state_id"
+        ],
+        "outputFile": "results/state_variance_calibration.tsv",
+        "outputFileRole": "suggested-project-export",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://doi.org/10.1038/s41467-024-49242-9",
+          "https://github.com/Minhui-Chen/CTMM",
+          "https://www.nature.com/articles/s41467-024-49242-9"
+        ]
+      }
+    },
+    {
+      "id": "cross_state_program_coupling",
+      "stepId": "networks",
+      "name": "同培养跨状态程序耦合",
+      "nameEn": "Cross-state program coupling within cultures",
+      "definition": "在共享培养ID内估计不同状态的程序关联，保存程序成员、单细胞分数与状态间相关。",
+      "definitionEn": "Estimate cross-state associations within shared culture IDs; retain members, cell scores and between-state correlations.",
+      "unit": "项目定义的分层指标",
+      "denominator": "同时覆盖相应状态的独立培养",
+      "level": "程序×状态对×培养集合",
+      "purpose": "在共享培养ID内估计不同状态的程序关联，保存程序成员、单细胞分数与状态间相关。",
+      "tools": [
+        "dialogue"
+      ],
+      "inputIds": [
+        "count_matrix",
+        "cell_states",
+        "sample_metadata",
+        "culture_replicates"
+      ],
+      "cautions": [],
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41587-022-01288-0",
+        "https://github.com/livnatje/DIALOGUE/wiki/Tutorial",
+        "https://pubmed.ncbi.nlm.nih.gov/35513526/"
+      ],
+      "metricOrigin": "project-derived-contract",
+      "addedIn": "v22",
+      "collection": {
+        "entrypoint": "DIALOGUE.run(...); export MCPs, scores and pref",
+        "fields": [
+          {
+            "name": "MCPs",
+            "meaning": "程序基因"
+          },
+          {
+            "name": "scores",
+            "meaning": "单细胞程序分数"
+          },
+          {
+            "name": "pref",
+            "meaning": "状态对相关与混合模型结果"
+          },
+          {
+            "name": "n_shared_cultures",
+            "meaning": "共享培养数"
+          }
+        ],
+        "groupBy": [
+          "strain_id",
+          "culture_id",
+          "state_id"
+        ],
+        "outputFile": "results/cross_state_program_coupling.tsv",
+        "outputFileRole": "suggested-project-export",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://doi.org/10.1038/s41587-022-01288-0",
+          "https://github.com/livnatje/DIALOGUE/wiki/Tutorial",
+          "https://pubmed.ncbi.nlm.nih.gov/35513526/"
+        ]
+      }
+    },
+    {
+      "id": "cross_state_program_holdout",
+      "stepId": "validation",
+      "name": "跨状态程序留出稳定性",
+      "nameEn": "Held-out stability of cross-state programs",
+      "definition": "按菌株与培养留出，比较程序基因、方向和分数预测；同一培养内细胞不跨训练与检验集合。",
+      "definitionEn": "Hold out strains and cultures; compare genes, directions and score predictions without splitting a culture across training and testing.",
+      "unit": "项目定义的分层指标",
+      "denominator": "未用于建模的菌株或培养",
+      "level": "程序×留出分区",
+      "purpose": "按菌株与培养留出，比较程序基因、方向和分数预测；同一培养内细胞不跨训练与检验集合。",
+      "tools": [
+        "dialogue"
+      ],
+      "inputIds": [
+        "count_matrix",
+        "cell_states",
+        "sample_metadata",
+        "culture_replicates"
+      ],
+      "cautions": [
+        "相关表达程序不等同于细胞间通讯。"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41587-022-01288-0",
+        "https://github.com/livnatje/DIALOGUE/wiki/Tutorial",
+        "https://pubmed.ncbi.nlm.nih.gov/35513526/"
+      ],
+      "metricOrigin": "project-derived-contract",
+      "addedIn": "v22",
+      "collection": {
+        "entrypoint": "Freeze training signatures and evaluate them in held-out cultures",
+        "fields": [
+          {
+            "name": "fold_id",
+            "meaning": "分组留出"
+          },
+          {
+            "name": "gene_overlap",
+            "meaning": "程序成员保留"
+          },
+          {
+            "name": "score_concordance",
+            "meaning": "留出分数一致性"
+          },
+          {
+            "name": "n_shared_states",
+            "meaning": "共同可比状态"
+          }
+        ],
+        "groupBy": [
+          "strain_id",
+          "culture_id",
+          "state_id"
+        ],
+        "outputFile": "results/cross_state_program_holdout.tsv",
+        "outputFileRole": "suggested-project-export",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://doi.org/10.1038/s41587-022-01288-0",
+          "https://github.com/livnatje/DIALOGUE/wiki/Tutorial",
+          "https://pubmed.ncbi.nlm.nih.gov/35513526/"
+        ]
+      }
+    },
+    {
+      "id": "velocity_module_support",
+      "stepId": "dynamics",
+      "name": "速度模块的基因与状态支持",
+      "nameEn": "Gene and state support for velocity modules",
+      "definition": "记录模块成员的剪接支持、状态覆盖、模块大小以及不同模块数/先验下的稳定性。",
+      "definitionEn": "Record splice support, state coverage, module sizes and stability across module counts and priors.",
+      "unit": "项目定义的分层指标",
+      "denominator": "实际通过剪接证据审计的基因与细胞",
+      "level": "模块×状态×拟合版本",
+      "purpose": "记录模块成员的剪接支持、状态覆盖、模块大小以及不同模块数/先验下的稳定性。",
+      "tools": [
+        "cell2fate"
+      ],
+      "inputIds": [
+        "splicing_layers",
+        "cell_states",
+        "sample_metadata"
+      ],
+      "cautions": [],
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41592-025-02608-3",
+        "https://cell2fate.readthedocs.io/en/latest/cell2fate.html",
+        "https://www.nature.com/articles/s41592-025-02608-3"
+      ],
+      "metricOrigin": "project-derived-contract",
+      "addedIn": "v22",
+      "collection": {
+        "entrypoint": "Cell2fate_DynamicalModel; inspect posterior module parameters",
+        "fields": [
+          {
+            "name": "module_id",
+            "meaning": "模块ID"
+          },
+          {
+            "name": "supported_genes",
+            "meaning": "有剪接证据的基因"
+          },
+          {
+            "name": "state_coverage",
+            "meaning": "状态覆盖"
+          },
+          {
+            "name": "module_stability",
+            "meaning": "参数情景一致性"
+          }
+        ],
+        "groupBy": [
+          "strain_id",
+          "culture_id",
+          "state_id"
+        ],
+        "outputFile": "results/velocity_module_support.tsv",
+        "outputFileRole": "suggested-project-export",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://doi.org/10.1038/s41592-025-02608-3",
+          "https://cell2fate.readthedocs.io/en/latest/cell2fate.html",
+          "https://www.nature.com/articles/s41592-025-02608-3"
+        ]
+      }
+    },
+    {
+      "id": "velocity_module_uncertainty",
+      "stepId": "dynamics",
+      "name": "模块化速度的后验不确定性",
+      "nameEn": "Posterior uncertainty of modular velocities",
+      "definition": "保存速度均值、标准差、可用后验样本和方向一致性，比较周期先验及留出培养。",
+      "definitionEn": "Retain velocity means, standard deviations, available posterior samples and direction agreement; compare cycle priors and held-out cultures.",
+      "unit": "项目定义的分层指标",
+      "denominator": "进入动力学模型的细胞与基因",
+      "level": "细胞×基因×模型",
+      "purpose": "保存速度均值、标准差、可用后验样本和方向一致性，比较周期先验及留出培养。",
+      "tools": [
+        "cell2fate",
+        "velocycle"
+      ],
+      "inputIds": [
+        "splicing_layers",
+        "cell_states",
+        "sample_metadata"
+      ],
+      "cautions": [],
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41592-025-02608-3",
+        "https://cell2fate.readthedocs.io/en/latest/cell2fate.html",
+        "https://www.nature.com/articles/s41592-025-02608-3"
+      ],
+      "metricOrigin": "project-derived-contract",
+      "addedIn": "v22",
+      "collection": {
+        "entrypoint": "model.export_posterior(..., full_velocity_posterior=True, sample_kwargs={return_samples: True})",
+        "fields": [
+          {
+            "name": "velocity",
+            "meaning": "速度期望"
+          },
+          {
+            "name": "velocity_sd",
+            "meaning": "速度标准差"
+          },
+          {
+            "name": "velocity_posterior",
+            "meaning": "可选完整后验"
+          },
+          {
+            "name": "direction_concordance",
+            "meaning": "参照方向一致性"
+          }
+        ],
+        "groupBy": [
+          "strain_id",
+          "culture_id",
+          "state_id"
+        ],
+        "outputFile": "results/velocity_module_uncertainty.tsv",
+        "outputFileRole": "suggested-project-export",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://doi.org/10.1038/s41592-025-02608-3",
+          "https://cell2fate.readthedocs.io/en/latest/cell2fate.html",
+          "https://www.nature.com/articles/s41592-025-02608-3"
+        ]
+      }
+    },
+    {
+      "id": "grn_edge_evidence_strata",
+      "stepId": "networks",
+      "name": "调控边的结合与功能证据分层",
+      "nameEn": "Binding and functional evidence strata for regulatory edges",
+      "definition": "为每条TF—靶基因边分别保存结合证据、快速耗竭响应、符号、实验条件及来源；未知与未检测单独编码。",
+      "definitionEn": "For each TF–target edge, store binding, rapid-depletion response, sign, condition and source separately; distinguish unknown from unassayed.",
+      "unit": "项目定义的分层指标",
+      "denominator": "完成ID映射且在该实验可检验的TF—基因对",
+      "level": "TF×靶基因×证据×条件",
+      "purpose": "为每条TF—靶基因边分别保存结合证据、快速耗竭响应、符号、实验条件及来源；未知与未检测单独编码。",
+      "tools": [
+        "inferelator",
+        "decoupler"
+      ],
+      "inputIds": [
+        "count_matrix",
+        "yeast_regulatory_prior"
+      ],
+      "cautions": [],
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41586-025-08916-0",
+        "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE236948",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12882699/"
+      ],
+      "metricOrigin": "project-derived-contract",
+      "addedIn": "v22",
+      "collection": {
+        "entrypoint": "Curate primary supplementary tables; build separate signed prior edge tables",
+        "fields": [
+          {
+            "name": "binding_support",
+            "meaning": "结合证据"
+          },
+          {
+            "name": "depletion_response",
+            "meaning": "耗竭响应"
+          },
+          {
+            "name": "effect_direction",
+            "meaning": "条件内方向"
+          },
+          {
+            "name": "assayed_background",
+            "meaning": "实验背景"
+          },
+          {
+            "name": "evidence_source",
+            "meaning": "来源"
+          }
+        ],
+        "groupBy": [
+          "tf_id",
+          "target_gene_id",
+          "evidence_layer",
+          "condition_id"
+        ],
+        "outputFile": "results/grn_edge_evidence_strata.tsv",
+        "outputFileRole": "suggested-project-export",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://doi.org/10.1038/s41586-025-08916-0",
+          "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE236948",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC12882699/"
+        ]
+      }
+    },
+    {
+      "id": "grn_prior_ablation",
+      "stepId": "validation",
+      "name": "调控先验证据消融",
+      "nameEn": "Ablation of regulatory-prior evidence",
+      "definition": "分别用结合、扰动响应、二者交集和无先验建模，在独立留出边或培养上比较网络及噪音候选。",
+      "definitionEn": "Fit with binding, response, intersection and no-prior networks; compare networks and variability candidates on independent edges or cultures.",
+      "unit": "项目定义的分层指标",
+      "denominator": "各方案共同可评价的边、基因及独立样本",
+      "level": "模型×先验层×留出集",
+      "purpose": "分别用结合、扰动响应、二者交集和无先验建模，在独立留出边或培养上比较网络及噪音候选。",
+      "tools": [
+        "inferelator",
+        "decoupler"
+      ],
+      "inputIds": [
+        "count_matrix",
+        "yeast_regulatory_prior",
+        "culture_replicates"
+      ],
+      "cautions": [
+        "不将参与训练的同一先验再当独立验证真值。"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41586-025-08916-0",
+        "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE236948",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12882699/",
+        "https://inferelator.readthedocs.io/en/latest/"
+      ],
+      "metricOrigin": "project-derived-contract",
+      "addedIn": "v22",
+      "collection": {
+        "entrypoint": "Inferelator cross-validation with frozen evidence-layer priors",
+        "fields": [
+          {
+            "name": "prior_layer",
+            "meaning": "先验证据层"
+          },
+          {
+            "name": "heldout_edges",
+            "meaning": "未参与训练的验证边"
+          },
+          {
+            "name": "edge_recovery",
+            "meaning": "边恢复指标"
+          },
+          {
+            "name": "noise_candidate_stability",
+            "meaning": "噪音候选稳健性"
+          }
+        ],
+        "groupBy": [
+          "tf_id",
+          "target_gene_id",
+          "evidence_layer",
+          "condition_id"
+        ],
+        "outputFile": "results/grn_prior_ablation.tsv",
+        "outputFileRole": "suggested-project-export",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://doi.org/10.1038/s41586-025-08916-0",
+          "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE236948",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC12882699/",
+          "https://inferelator.readthedocs.io/en/latest/"
+        ]
+      }
+    },
+    {
+      "id": "count_eqtl_offset_contract",
+      "stepId": "genetics",
+      "name": "计数eQTL的样本及offset一致性",
+      "nameEn": "Sample and offset contract for count eQTLs",
+      "definition": "核对基因型、状态求和矩阵和协变量中的样本ID、倍性编码、计数整数性及筛基因前的offset。",
+      "definitionEn": "Reconcile sample IDs, ploidy coding, integer counts and prefilter offsets across genotypes, state pseudobulks and covariates.",
+      "unit": "项目定义的分层指标",
+      "denominator": "参与同一状态扫描的菌株/独立样本",
+      "level": "状态×输入版本",
+      "purpose": "核对基因型、状态求和矩阵和协变量中的样本ID、倍性编码、计数整数性及筛基因前的offset。",
+      "tools": [
+        "jaxqtl",
+        "saigeqtl"
+      ],
+      "inputIds": [
+        "count_matrix",
+        "sample_metadata",
+        "cell_states",
+        "genotypes"
+      ],
+      "cautions": [],
+      "sourceUrls": [
+        "https://doi.org/10.1101/2025.01.18.25320755",
+        "https://mancusolab.github.io/jaxqtl/reference/mapping/",
+        "https://www.medrxiv.org/content/10.1101/2025.01.18.25320755v2"
+      ],
+      "metricOrigin": "project-derived-contract",
+      "addedIn": "v22",
+      "collection": {
+        "entrypoint": "jaxqtl cis --offset <LOG_LIBRARY_SIZE_OFFSET> ...",
+        "fields": [
+          {
+            "name": "sample_overlap",
+            "meaning": "ID重叠"
+          },
+          {
+            "name": "ploidy_encoding",
+            "meaning": "倍性编码"
+          },
+          {
+            "name": "offset_source",
+            "meaning": "offset来源"
+          },
+          {
+            "name": "count_integrity",
+            "meaning": "计数完整性"
+          }
+        ],
+        "groupBy": [
+          "strain_id",
+          "culture_id",
+          "state_id"
+        ],
+        "outputFile": "results/count_eqtl_offset_contract.tsv",
+        "outputFileRole": "suggested-project-export",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://doi.org/10.1101/2025.01.18.25320755",
+          "https://mancusolab.github.io/jaxqtl/reference/mapping/",
+          "https://www.medrxiv.org/content/10.1101/2025.01.18.25320755v2"
+        ]
+      }
+    },
+    {
+      "id": "count_eqtl_calibration",
+      "stepId": "genetics",
+      "name": "计数均值eQTL校准与亲缘敏感性",
+      "nameEn": "Calibration and kinship sensitivity of count mean eQTLs",
+      "definition": "保存效应、标准误、基因级p值、跨基因FDR、拟合失败与亲缘混合模型对照。",
+      "definitionEn": "Retain effects, standard errors, gene-level p-values, across-gene FDR, failed fits and kinship-model comparisons.",
+      "unit": "项目定义的分层指标",
+      "denominator": "可成功拟合且有变异支持的基因—状态",
+      "level": "基因×状态×模型",
+      "purpose": "保存效应、标准误、基因级p值、跨基因FDR、拟合失败与亲缘混合模型对照。",
+      "tools": [
+        "jaxqtl",
+        "saigeqtl",
+        "gemma"
+      ],
+      "inputIds": [
+        "count_matrix",
+        "genotypes",
+        "sample_metadata",
+        "kinship"
+      ],
+      "cautions": [],
+      "sourceUrls": [
+        "https://doi.org/10.1101/2025.01.18.25320755",
+        "https://mancusolab.github.io/jaxqtl/reference/mapping/",
+        "https://www.medrxiv.org/content/10.1101/2025.01.18.25320755v2"
+      ],
+      "metricOrigin": "project-derived-contract",
+      "addedIn": "v22",
+      "collection": {
+        "entrypoint": "jaxQTL cis/nominal outputs; compare on matched sample and variant sets",
+        "fields": [
+          {
+            "name": "effect",
+            "meaning": "均值效应"
+          },
+          {
+            "name": "standard_error",
+            "meaning": "效应误差"
+          },
+          {
+            "name": "gene_level_p",
+            "meaning": "基因级p值"
+          },
+          {
+            "name": "across_gene_fdr",
+            "meaning": "跨基因FDR"
+          },
+          {
+            "name": "fit_failure",
+            "meaning": "失败原因"
+          },
+          {
+            "name": "kinship_sensitivity",
+            "meaning": "亲缘模型对照"
+          }
+        ],
+        "groupBy": [
+          "strain_id",
+          "culture_id",
+          "state_id"
+        ],
+        "outputFile": "results/count_eqtl_calibration.tsv",
+        "outputFileRole": "suggested-project-export",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://doi.org/10.1101/2025.01.18.25320755",
+          "https://mancusolab.github.io/jaxqtl/reference/mapping/",
+          "https://www.medrxiv.org/content/10.1101/2025.01.18.25320755v2"
+        ]
+      }
+    },
+    {
+      "id": "mechanistic_noise_recovery",
+      "stepId": "validation",
+      "name": "机制真值下的噪音恢复",
+      "nameEn": "Noise recovery against mechanistic ground truth",
+      "definition": "在已知爆发、网络和降解参数的模拟中逐项改变捕获、背景、深度与状态组成，记录噪音效应偏差及区间覆盖。",
+      "definitionEn": "With known burst, network and degradation parameters, vary capture, background, depth and state mixture separately; record effect bias and interval coverage.",
+      "unit": "项目定义的分层指标",
+      "denominator": "预先定义且保存真值的模拟情景",
+      "level": "基因×参数情景×测量情景",
+      "purpose": "在已知爆发、网络和降解参数的模拟中逐项改变捕获、背景、深度与状态组成，记录噪音效应偏差及区间覆盖。",
+      "tools": [
+        "harissa",
+        "scdesign3"
+      ],
+      "inputIds": [
+        "truth_or_simulation"
+      ],
+      "cautions": [],
+      "sourceUrls": [
+        "https://doi.org/10.1007/978-3-031-42697-1_7",
+        "https://github.com/ulysseherbach/harissa",
+        "https://link.springer.com/chapter/10.1007/978-3-031-42697-1_7"
+      ],
+      "metricOrigin": "project-derived-contract",
+      "addedIn": "v22",
+      "collection": {
+        "entrypoint": "Harissa simulation notebook + explicit measurement layer + existing noise estimators",
+        "fields": [
+          {
+            "name": "true_parameters",
+            "meaning": "机制真值"
+          },
+          {
+            "name": "measurement_parameters",
+            "meaning": "测量情景"
+          },
+          {
+            "name": "estimation_bias",
+            "meaning": "估计偏差"
+          },
+          {
+            "name": "interval_coverage",
+            "meaning": "区间覆盖"
+          }
+        ],
+        "groupBy": [
+          "simulation_scenario",
+          "network_id",
+          "seed"
+        ],
+        "outputFile": "results/mechanistic_noise_recovery.tsv",
+        "outputFileRole": "suggested-project-export",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://doi.org/10.1007/978-3-031-42697-1_7",
+          "https://github.com/ulysseherbach/harissa",
+          "https://link.springer.com/chapter/10.1007/978-3-031-42697-1_7"
+        ]
+      }
+    },
+    {
+      "id": "mechanistic_grn_recovery",
+      "stepId": "validation",
+      "name": "机制模拟的网络恢复与伪边",
+      "nameEn": "Network recovery and false edges under mechanistic simulation",
+      "definition": "以已知正负网络边评价推断，按稀疏度、状态混合、捕获和细胞数分层。",
+      "definitionEn": "Evaluate inferred positive/negative edges against truth, stratified by sparsity, state mixture, capture and cell number.",
+      "unit": "项目定义的分层指标",
+      "denominator": "模拟真值网络中可评价的有向基因对",
+      "level": "网络×模拟情景",
+      "purpose": "以已知正负网络边评价推断，按稀疏度、状态混合、捕获和细胞数分层。",
+      "tools": [
+        "harissa",
+        "inferelator",
+        "genie3"
+      ],
+      "inputIds": [
+        "truth_or_simulation"
+      ],
+      "cautions": [],
+      "sourceUrls": [
+        "https://doi.org/10.1007/978-3-031-42697-1_7",
+        "https://github.com/ulysseherbach/harissa",
+        "https://link.springer.com/chapter/10.1007/978-3-031-42697-1_7",
+        "https://doi.org/10.1371/journal.pcbi.1010962",
+        "https://github.com/eliasventre/cardamom",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10079230/"
+      ],
+      "metricOrigin": "project-derived-contract",
+      "addedIn": "v22",
+      "collection": {
+        "entrypoint": "Simulate fixed networks; infer with held-out simulations; compare directed edge sets",
+        "fields": [
+          {
+            "name": "edge_precision_recall",
+            "meaning": "边精确率/召回率"
+          },
+          {
+            "name": "sign_recovery",
+            "meaning": "符号恢复"
+          },
+          {
+            "name": "false_edges",
+            "meaning": "伪边"
+          },
+          {
+            "name": "network_seed",
+            "meaning": "真值网络标识"
+          }
+        ],
+        "groupBy": [
+          "simulation_scenario",
+          "network_id",
+          "seed"
+        ],
+        "outputFile": "results/mechanistic_grn_recovery.tsv",
+        "outputFileRole": "suggested-project-export",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://doi.org/10.1007/978-3-031-42697-1_7",
+          "https://github.com/ulysseherbach/harissa",
+          "https://link.springer.com/chapter/10.1007/978-3-031-42697-1_7",
+          "https://doi.org/10.1371/journal.pcbi.1010962",
+          "https://github.com/eliasventre/cardamom",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC10079230/"
+        ]
+      }
+    },
+    {
+      "id": "temporal_mechanistic_regeneration",
+      "stepId": "dynamics",
+      "name": "时间网络的留出分布再生成",
+      "nameEn": "Held-out distribution regeneration by temporal networks",
+      "definition": "按独立培养或时间点留出后，比较生成与观测RNA的均值、方差、尾部和多变量分布。",
+      "definitionEn": "Hold out independent cultures or times; compare generated and observed RNA means, variances, tails and multivariate distributions.",
+      "unit": "项目定义的分层指标",
+      "denominator": "未参与训练且有真实时间记录的培养与时间点",
+      "level": "时间点×培养×模型",
+      "purpose": "按独立培养或时间点留出后，比较生成与观测RNA的均值、方差、尾部和多变量分布。",
+      "tools": [
+        "cardamomot",
+        "harissa",
+        "ktest"
+      ],
+      "inputIds": [
+        "count_matrix",
+        "sample_metadata",
+        "timepoints",
+        "kinetic_rate_prior"
+      ],
+      "cautions": [],
+      "sourceUrls": [
+        "https://doi.org/10.1371/journal.pcbi.1014838",
+        "https://cardamomot.readthedocs.io/en/latest/quickstart.html",
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1014838"
+      ],
+      "metricOrigin": "project-derived-contract",
+      "addedIn": "v22",
+      "collection": {
+        "entrypoint": "CardamomOT check_sim_to_data / infer_test; project replicate-aware distribution audit",
+        "fields": [
+          {
+            "name": "heldout_time",
+            "meaning": "留出时间"
+          },
+          {
+            "name": "distribution_distance",
+            "meaning": "分布差异"
+          },
+          {
+            "name": "noise_recovery",
+            "meaning": "噪音恢复"
+          },
+          {
+            "name": "fit_convergence",
+            "meaning": "拟合收敛"
+          }
+        ],
+        "groupBy": [
+          "strain_id",
+          "culture_id",
+          "state_id"
+        ],
+        "outputFile": "results/temporal_mechanistic_regeneration.tsv",
+        "outputFileRole": "suggested-project-export",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://doi.org/10.1371/journal.pcbi.1014838",
+          "https://cardamomot.readthedocs.io/en/latest/quickstart.html",
+          "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1014838"
+        ]
+      }
+    },
+    {
+      "id": "kinetic_prior_sensitivity",
+      "stepId": "validation",
+      "name": "酵母动力学先验敏感性",
+      "nameEn": "Sensitivity to yeast kinetic priors",
+      "definition": "逐基因保存RNA/蛋白降解先验的物种、来源、单位和范围，改变可支持的先验后重估网络与模拟干预。",
+      "definitionEn": "Record species, source, units and ranges for RNA/protein degradation priors; refit networks and interventions across supported priors.",
+      "unit": "项目定义的分层指标",
+      "denominator": "有来源匹配的动力学参数与可辨识基因",
+      "level": "基因×先验情景×模型",
+      "purpose": "逐基因保存RNA/蛋白降解先验的物种、来源、单位和范围，改变可支持的先验后重估网络与模拟干预。",
+      "tools": [
+        "cardamomot",
+        "harissa"
+      ],
+      "inputIds": [
+        "kinetic_rate_prior",
+        "timepoints",
+        "count_matrix"
+      ],
+      "cautions": [],
+      "sourceUrls": [
+        "https://doi.org/10.1371/journal.pcbi.1014838",
+        "https://cardamomot.readthedocs.io/en/latest/quickstart.html",
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1014838"
+      ],
+      "metricOrigin": "project-derived-contract",
+      "addedIn": "v22",
+      "collection": {
+        "entrypoint": "Replace species priors; rerun frozen time-series model under recorded sensitivity scenarios",
+        "fields": [
+          {
+            "name": "prior_source",
+            "meaning": "先验文献"
+          },
+          {
+            "name": "species",
+            "meaning": "物种"
+          },
+          {
+            "name": "units",
+            "meaning": "时间及速率单位"
+          },
+          {
+            "name": "parameter_range",
+            "meaning": "支持范围"
+          },
+          {
+            "name": "prediction_stability",
+            "meaning": "预测稳定性"
+          }
+        ],
+        "groupBy": [
+          "strain_id",
+          "culture_id",
+          "state_id"
+        ],
+        "outputFile": "results/kinetic_prior_sensitivity.tsv",
+        "outputFileRole": "suggested-project-export",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "sourceUrls": [
+          "https://doi.org/10.1371/journal.pcbi.1014838",
+          "https://cardamomot.readthedocs.io/en/latest/quickstart.html",
+          "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1014838"
         ]
       }
     }
@@ -24418,6 +25627,657 @@
         "v13_lmd_2025"
       ],
       "addedIn": "v13"
+    },
+    {
+      "id": "irescue",
+      "name": "IRescue",
+      "task": "Ty/重复元件的UMI定量与多重比对审计",
+      "taskEn": "Ty/repeat UMI quantification and multimapping audit",
+      "steps": [
+        "bam",
+        "matrix",
+        "transcripts"
+      ],
+      "url": "https://github.com/bodegalab/irescue",
+      "paperUrl": "https://doi.org/10.1093/nar/gkae793",
+      "input": [
+        "tagged_bam",
+        "repeat_annotation"
+      ],
+      "output": [
+        "TE家族/位点矩阵",
+        "分子等价类与纠错日志"
+      ],
+      "entrypoint": "irescue -b <COORDINATE_BAM> -r <YEAST_REPEAT_BED> -w <CELL_BARCODES> --cb-tag CB --umi-tag UR -o <OUT_DIR>",
+      "parameters": [
+        {
+          "name": "-r / reference",
+          "meaning": "酵母重复元件注释",
+          "selection": "BED第四列声明Ty家族或位点；与BAM contig和菌株参考一致。",
+          "required": true
+        },
+        {
+          "name": "--cb-tag / --umi-tag",
+          "meaning": "细胞与分子标签",
+          "selection": "按建库语义明确CB和UR；保留原始UMI供IRescue纠错，审计与UB的差异。",
+          "required": true
+        },
+        {
+          "name": "STAR multimapping options",
+          "meaning": "保留重复序列的候选比对",
+          "selection": "记录outFilterMultimapNmax、winAnchorMultimapNmax及次要比对输出；按参考重复数与敏感性设定。",
+          "required": true
+        },
+        {
+          "name": "feature granularity",
+          "meaning": "家族或位点",
+          "selection": "先比较可辨识的家族层；位点层单独报告歧义支持与版本。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "需要匹配酵母的重复注释及保留多重比对的BAM；已有只含唯一比对的BAM可能需要从FASTQ重建。",
+        "EM分配量作为独立计数层保存；不能直接当整数UMI投入噪音计数模型。",
+        "Ty RNA丰度不是转座插入事件或DNA拷贝数。"
+      ],
+      "yeastStatus": "需适配",
+      "role": "扩展分析",
+      "sourceUrls": [
+        "https://doi.org/10.1093/nar/gkae793",
+        "https://github.com/bodegalab/irescue",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11514465/"
+      ],
+      "categoryIds": [
+        "raw_qc",
+        "transcripts"
+      ],
+      "methodTags": [
+        "quantification",
+        "qc",
+        "uncertainty"
+      ],
+      "applicability": {
+        "level": "adapt",
+        "reason": "需要匹配酵母的重复注释及保留多重比对的BAM；已有只含唯一比对的BAM可能需要从FASTQ重建。",
+        "reasonEn": "Use the stated input contracts and validate the proposed yeast adaptation.",
+        "requiredData": [
+          "tagged_bam",
+          "repeat_annotation"
+        ],
+        "optionalData": []
+      },
+      "documentationStatus": "official-entrypoint-verified",
+      "paperStatus": "paper-linked",
+      "sourceLinks": [
+        {
+          "url": "https://github.com/bodegalab/irescue",
+          "kind": "documentation",
+          "label": "官方工具与调用入口"
+        },
+        {
+          "url": "https://doi.org/10.1093/nar/gkae793",
+          "kind": "research_article",
+          "label": "原始方法论文"
+        }
+      ],
+      "paperIds": [
+        "v22_irescue_2024"
+      ],
+      "addedIn": "v22",
+      "reviewedOn": "2026-10-17"
+    },
+    {
+      "id": "ctmm",
+      "name": "CTMM",
+      "task": "跨状态共享与特异的菌株间表达方差",
+      "taskEn": "Shared and state-specific between-strain expression variance",
+      "steps": [
+        "noise",
+        "validation"
+      ],
+      "url": "https://github.com/Minhui-Chen/CTMM",
+      "paperUrl": "https://doi.org/10.1038/s41467-024-49242-9",
+      "input": [
+        "count_matrix",
+        "sample_metadata",
+        "cell_states"
+      ],
+      "output": [
+        "跨状态共享方差hom2",
+        "状态特异协方差V",
+        "Jackknife检验与模型拟合诊断"
+      ],
+      "entrypoint": "from ctmm import ctp\nfit, pvalues = ctp.free_REML(y_f=<STATE_PSEUDOBULK>, P_f=<STATE_PROPORTIONS>, ctnu_f=<MEAN_SAMPLING_VARIANCE>, fixed_covars_d=<COVARIATES>, random_covars_d=<BATCH_EFFECTS>, jack_knife=True)",
+      "parameters": [
+        {
+          "name": "y_f / ctnu_f",
+          "meaning": "伪bulk均值和其抽样方差",
+          "selection": "同一标度下计算状态内均值、细胞方差和细胞数，保留缺失状态。",
+          "required": true
+        },
+        {
+          "name": "fixed_covars_d / random_covars_d",
+          "meaning": "批次及设计协变量",
+          "selection": "菌株、独立培养与批次按实验单位编码；不把技术lane当独立菌株。",
+          "required": true
+        },
+        {
+          "name": "Hom / Free / Full",
+          "meaning": "方差结构",
+          "selection": "比较共享、状态特异及跨状态协方差模型，并用留出与模拟评价。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "估计的是菌株/样本间均值变异，需与同菌株细胞间表达噪音分别展示。",
+        "现有独立样本假设不自动处理1011群体亲缘；亲缘分层、独立子集或模型扩展须单独验证。"
+      ],
+      "yeastStatus": "需适配",
+      "role": "扩展分析",
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41467-024-49242-9",
+        "https://github.com/Minhui-Chen/CTMM",
+        "https://www.nature.com/articles/s41467-024-49242-9"
+      ],
+      "categoryIds": [
+        "noise",
+        "differential"
+      ],
+      "methodTags": [
+        "variance-components",
+        "pseudobulk",
+        "mixed-model"
+      ],
+      "applicability": {
+        "level": "adapt",
+        "reason": "估计的是菌株/样本间均值变异，需与同菌株细胞间表达噪音分别展示。",
+        "reasonEn": "Use the stated input contracts and validate the proposed yeast adaptation.",
+        "requiredData": [
+          "count_matrix",
+          "sample_metadata",
+          "cell_states"
+        ],
+        "optionalData": []
+      },
+      "documentationStatus": "official-entrypoint-verified",
+      "paperStatus": "paper-linked",
+      "sourceLinks": [
+        {
+          "url": "https://github.com/Minhui-Chen/CTMM",
+          "kind": "documentation",
+          "label": "官方工具与调用入口"
+        },
+        {
+          "url": "https://doi.org/10.1038/s41467-024-49242-9",
+          "kind": "research_article",
+          "label": "原始方法论文"
+        }
+      ],
+      "paperIds": [
+        "v22_ctmm_2024"
+      ],
+      "addedIn": "v22",
+      "reviewedOn": "2026-10-17"
+    },
+    {
+      "id": "dialogue",
+      "name": "DIALOGUE",
+      "task": "同一培养内跨状态协调表达程序",
+      "taskEn": "Coordinated expression programs across states within cultures",
+      "steps": [
+        "networks",
+        "validation"
+      ],
+      "url": "https://github.com/livnatje/DIALOGUE/wiki/Tutorial",
+      "paperUrl": "https://doi.org/10.1038/s41587-022-01288-0",
+      "input": [
+        "count_matrix",
+        "sample_metadata",
+        "cell_states",
+        "culture_replicates"
+      ],
+      "output": [
+        "状态特异程序基因",
+        "单细胞程序分数",
+        "跨状态程序相关与混合模型结果"
+      ],
+      "entrypoint": "param <- DIALOGUE::DLG.get.param(k=<N_PROGRAMS>, results.dir=<OUT_DIR>, conf=<CONFOUNDERS>)\nresult <- DIALOGUE::DIALOGUE.run(rA=<STATE_OBJECT_LIST>, main=<RUN_ID>, param=param)",
+      "parameters": [
+        {
+          "name": "rA / samples",
+          "meaning": "状态与共享培养索引",
+          "selection": "每个状态对象使用相同的独立培养ID体系；只有同一培养中共同采样的状态才可配对。",
+          "required": true
+        },
+        {
+          "name": "k / conf / abn.c",
+          "meaning": "程序数、协变量和状态覆盖",
+          "selection": "通过按菌株/培养留出比较程序稳定性，记录可用样本与被排除状态。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "原方法用于多细胞类型；酵母应用将类别改为可比较状态并验证样本共同覆盖。",
+        "跨状态共变支持协调程序，不单独证明细胞间通讯或配体—受体作用。"
+      ],
+      "yeastStatus": "需适配",
+      "role": "扩展分析",
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41587-022-01288-0",
+        "https://github.com/livnatje/DIALOGUE/wiki/Tutorial",
+        "https://pubmed.ncbi.nlm.nih.gov/35513526/"
+      ],
+      "categoryIds": [
+        "programs_grn"
+      ],
+      "methodTags": [
+        "programs",
+        "factorization",
+        "replicate-aware"
+      ],
+      "applicability": {
+        "level": "adapt",
+        "reason": "原方法用于多细胞类型；酵母应用将类别改为可比较状态并验证样本共同覆盖。",
+        "reasonEn": "Use the stated input contracts and validate the proposed yeast adaptation.",
+        "requiredData": [
+          "count_matrix",
+          "sample_metadata",
+          "cell_states",
+          "culture_replicates"
+        ],
+        "optionalData": []
+      },
+      "documentationStatus": "official-entrypoint-verified",
+      "paperStatus": "paper-linked",
+      "sourceLinks": [
+        {
+          "url": "https://github.com/livnatje/DIALOGUE/wiki/Tutorial",
+          "kind": "documentation",
+          "label": "官方工具与调用入口"
+        },
+        {
+          "url": "https://doi.org/10.1038/s41587-022-01288-0",
+          "kind": "research_article",
+          "label": "原始方法论文"
+        }
+      ],
+      "paperIds": [
+        "v22_dialogue_2022"
+      ],
+      "addedIn": "v22",
+      "reviewedOn": "2026-10-17"
+    },
+    {
+      "id": "cell2fate",
+      "name": "cell2fate",
+      "task": "模块化RNA动力学与后验速度",
+      "taskEn": "Modular RNA dynamics and posterior velocities",
+      "steps": [
+        "dynamics",
+        "validation"
+      ],
+      "url": "https://cell2fate.readthedocs.io/en/latest/cell2fate.html",
+      "paperUrl": "https://doi.org/10.1038/s41592-025-02608-3",
+      "input": [
+        "splicing_layers",
+        "sample_metadata",
+        "cell_states"
+      ],
+      "output": [
+        "RNA速度模块",
+        "速度均值及不确定性",
+        "基因动力学参数及模块激活时间"
+      ],
+      "entrypoint": "import cell2fate as c2f\nc2f.Cell2fate_DynamicalModel.setup_anndata(adata, spliced_label='spliced', unspliced_label='unspliced', batch_key=<BATCH_KEY>)\nmodel = c2f.Cell2fate_DynamicalModel(adata, n_modules=<N_MODULES>)\nmodel.train(max_epochs=<EPOCHS>, batch_size=<BATCH_SIZE>)\nadata = model.export_posterior(adata, full_velocity_posterior=True, sample_kwargs={'return_samples': True})",
+      "parameters": [
+        {
+          "name": "spliced / unspliced",
+          "meaning": "可辨识剪接分子层",
+          "selection": "仅纳入剪接证据足够的酵母基因，记录被保留基因的功能偏倚。",
+          "required": true
+        },
+        {
+          "name": "n_modules / priors",
+          "meaning": "动力学模块与先验",
+          "selection": "比较模块数和先验对方向、模块成员与拟合的影响。",
+          "required": true
+        },
+        {
+          "name": "batch_key / state",
+          "meaning": "技术批次与生物状态",
+          "selection": "技术批次与菌株效应分开，不默认回归掉目标菌株差异。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "酵母含内含子基因较少；是否启用取决于实测剪接支持与模型拟合。",
+        "模型中模块的启闭并非默认周期振荡模型；循环系统须与VeloCycle及已知周期顺序对照。",
+        "潜在时间和速度不等于菌株进化时间。"
+      ],
+      "yeastStatus": "条件性",
+      "role": "扩展分析",
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41592-025-02608-3",
+        "https://cell2fate.readthedocs.io/en/latest/cell2fate.html",
+        "https://www.nature.com/articles/s41592-025-02608-3"
+      ],
+      "categoryIds": [
+        "dynamics"
+      ],
+      "methodTags": [
+        "velocity",
+        "kinetics",
+        "uncertainty"
+      ],
+      "applicability": {
+        "level": "conditional",
+        "reason": "酵母含内含子基因较少；是否启用取决于实测剪接支持与模型拟合。",
+        "reasonEn": "Use the stated input contracts and validate the proposed yeast adaptation.",
+        "requiredData": [
+          "splicing_layers",
+          "sample_metadata",
+          "cell_states"
+        ],
+        "optionalData": []
+      },
+      "documentationStatus": "official-entrypoint-verified",
+      "paperStatus": "paper-linked",
+      "sourceLinks": [
+        {
+          "url": "https://cell2fate.readthedocs.io/en/latest/cell2fate.html",
+          "kind": "documentation",
+          "label": "官方工具与调用入口"
+        },
+        {
+          "url": "https://doi.org/10.1038/s41592-025-02608-3",
+          "kind": "research_article",
+          "label": "原始方法论文"
+        }
+      ],
+      "paperIds": [
+        "v22_cell2fate_2025"
+      ],
+      "addedIn": "v22",
+      "reviewedOn": "2026-10-17"
+    },
+    {
+      "id": "jaxqtl",
+      "name": "jaxQTL",
+      "task": "计数型均值eQTL与模型校准",
+      "taskEn": "Count-based mean eQTLs and model calibration",
+      "steps": [
+        "genetics",
+        "validation"
+      ],
+      "url": "https://mancusolab.github.io/jaxqtl/reference/mapping/",
+      "paperUrl": "https://doi.org/10.1101/2025.01.18.25320755",
+      "input": [
+        "count_matrix",
+        "sample_metadata",
+        "cell_states",
+        "genotypes"
+      ],
+      "output": [
+        "均值eQTL效应与标准误",
+        "基因级校准p值",
+        "拟合有效性与失败原因"
+      ],
+      "entrypoint": "jaxqtl cis --bfile <GENOTYPE_PREFIX> --pheno <SUM_PSEUDOBULK_COUNTS> --covar <COVARIATES> --offset <LOG_LIBRARY_SIZE_OFFSET> --model nb --window <YEAST_CIS_WINDOW> --nperm <N_PERMUTATIONS> --out <OUT_PREFIX>",
+      "parameters": [
+        {
+          "name": "--pheno / --offset",
+          "meaning": "状态分层的求和计数与offset",
+          "selection": "使用样本ID对齐；offset来自筛基因前的总量，禁止用已筛候选基因之和重算。",
+          "required": true
+        },
+        {
+          "name": "--window / --tss-centered",
+          "meaning": "酵母cis区间",
+          "selection": "按酵母基因组与LD定义窗口，不直接使用人类默认窗口。",
+          "required": true
+        },
+        {
+          "name": "--model / --nperm",
+          "meaning": "分布与校准",
+          "selection": "比较NB、Poisson及已存在的亲缘混合模型；保留失败记录和跨基因FDR。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "需要匹配基因型；该GLM不自动替代亲缘混合模型，1011群体须检验群体结构残留。",
+        "模型的NB离散参数不构成噪音QTL检验：本条目估计均值遗传效应。",
+        "原论文当前核对为预印本。"
+      ],
+      "yeastStatus": "条件性",
+      "role": "扩展分析",
+      "sourceUrls": [
+        "https://doi.org/10.1101/2025.01.18.25320755",
+        "https://mancusolab.github.io/jaxqtl/reference/mapping/",
+        "https://www.medrxiv.org/content/10.1101/2025.01.18.25320755v2"
+      ],
+      "categoryIds": [
+        "genetics"
+      ],
+      "methodTags": [
+        "genetics",
+        "pseudobulk",
+        "calibration"
+      ],
+      "applicability": {
+        "level": "conditional",
+        "reason": "需要匹配基因型；该GLM不自动替代亲缘混合模型，1011群体须检验群体结构残留。",
+        "reasonEn": "Use the stated input contracts and validate the proposed yeast adaptation.",
+        "requiredData": [
+          "count_matrix",
+          "sample_metadata",
+          "cell_states",
+          "genotypes"
+        ],
+        "optionalData": []
+      },
+      "documentationStatus": "official-entrypoint-verified",
+      "paperStatus": "preprint-linked",
+      "sourceLinks": [
+        {
+          "url": "https://mancusolab.github.io/jaxqtl/reference/mapping/",
+          "kind": "documentation",
+          "label": "官方工具与调用入口"
+        },
+        {
+          "url": "https://doi.org/10.1101/2025.01.18.25320755",
+          "kind": "research_article",
+          "label": "原始方法论文"
+        }
+      ],
+      "paperIds": [
+        "v22_jaxqtl_2025"
+      ],
+      "addedIn": "v22",
+      "reviewedOn": "2026-10-17"
+    },
+    {
+      "id": "harissa",
+      "name": "Harissa",
+      "task": "具有真实网络与爆发参数的机制模拟",
+      "taskEn": "Mechanistic simulation with known networks and burst parameters",
+      "steps": [
+        "validation",
+        "noise",
+        "networks"
+      ],
+      "url": "https://github.com/ulysseherbach/harissa",
+      "paperUrl": "https://doi.org/10.1007/978-3-031-42697-1_7",
+      "input": [
+        "truth_or_simulation"
+      ],
+      "output": [
+        "已知GRN与参数的模拟RNA",
+        "时间序列与模拟干预",
+        "模型恢复和噪音偏差评价"
+      ],
+      "entrypoint": "from harissa import NetworkModel\nmodel = NetworkModel()\n# Set the chosen network, rates and initial conditions using the official simulation notebook.\nsimulation = model.simulate(<TIME_VECTOR>)\n# Optional inference requires experimental times: model.fit(<TIME_AND_COUNTS_ARRAY>)",
+      "parameters": [
+        {
+          "name": "network / rates / initial conditions",
+          "meaning": "机制真值",
+          "selection": "独立改变网络边、爆发和降解参数；每个情景保存生成真值和随机种子。",
+          "required": true
+        },
+        {
+          "name": "observation model",
+          "meaning": "测量层",
+          "selection": "在生物过程模拟外，显式添加捕获、深度、背景及barcode损失情景。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "已知网络模拟可独立开展；真实数据反推网络另需时间标记及可辨识性检查。",
+        "模拟得到的蛋白变量是潜在模型状态，不是单细胞RNA测得的蛋白量。"
+      ],
+      "yeastStatus": "模拟适用",
+      "role": "扩展分析",
+      "sourceUrls": [
+        "https://doi.org/10.1007/978-3-031-42697-1_7",
+        "https://github.com/ulysseherbach/harissa",
+        "https://link.springer.com/chapter/10.1007/978-3-031-42697-1_7"
+      ],
+      "categoryIds": [
+        "simulation",
+        "noise"
+      ],
+      "methodTags": [
+        "simulation",
+        "network",
+        "kinetics",
+        "validation"
+      ],
+      "applicability": {
+        "level": "ready",
+        "reason": "已知网络模拟可独立开展；真实数据反推网络另需时间标记及可辨识性检查。",
+        "reasonEn": "Use the stated input contracts and validate the proposed yeast adaptation.",
+        "requiredData": [
+          "truth_or_simulation"
+        ],
+        "optionalData": []
+      },
+      "documentationStatus": "official-entrypoint-verified",
+      "paperStatus": "paper-linked",
+      "sourceLinks": [
+        {
+          "url": "https://github.com/ulysseherbach/harissa",
+          "kind": "documentation",
+          "label": "官方工具与调用入口"
+        },
+        {
+          "url": "https://doi.org/10.1007/978-3-031-42697-1_7",
+          "kind": "research_article",
+          "label": "原始方法论文"
+        }
+      ],
+      "paperIds": [
+        "v22_harissa_2023"
+      ],
+      "addedIn": "v22",
+      "reviewedOn": "2026-10-17"
+    },
+    {
+      "id": "cardamomot",
+      "name": "CardamomOT",
+      "task": "时间标记快照的GRN与轨迹联合推断",
+      "taskEn": "Joint GRN and trajectory inference from time-stamped snapshots",
+      "steps": [
+        "dynamics",
+        "networks",
+        "causal",
+        "validation"
+      ],
+      "url": "https://cardamomot.readthedocs.io/en/latest/quickstart.html",
+      "paperUrl": "https://doi.org/10.1371/journal.pcbi.1014838",
+      "input": [
+        "count_matrix",
+        "sample_metadata",
+        "timepoints",
+        "kinetic_rate_prior"
+      ],
+      "output": [
+        "机制GRN",
+        "重建轨迹与模拟RNA分布",
+        "留出时间/干预预测"
+      ],
+      "entrypoint": "python -m CardamomOT.cli pipeline -i <PROJECT_DIRECTORY>",
+      "parameters": [
+        {
+          "name": "Data/data.h5ad / obs[time]",
+          "meaning": "计数与真实采样时间",
+          "selection": "保存AnnData细胞×基因矩阵及obs时间；按独立培养建立留出，不用随机细胞划分替代。",
+          "required": true
+        },
+        {
+          "name": "kinetic rates / species resources",
+          "meaning": "动力学速率及物种先验",
+          "selection": "准备酵母来源的降解/动力学先验及其不确定性；禁用默认人鼠先验。",
+          "required": true
+        },
+        {
+          "name": "version / parameter workbook",
+          "meaning": "代码版本及模型设置",
+          "selection": "论文复现固定plos-cb-2026标签；新版运行另记录commit与CardamomOT_inputs.xlsx。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "需要时间序列和动力学先验；单时间点群体横断面不进入时间网络推断。",
+        "默认物种资源偏向人鼠；酵母先验和基因ID必须适配。",
+        "模拟干预用于候选排序；以已有真实扰动数据评估外推。"
+      ],
+      "yeastStatus": "条件性",
+      "role": "扩展分析",
+      "sourceUrls": [
+        "https://doi.org/10.1371/journal.pcbi.1014838",
+        "https://cardamomot.readthedocs.io/en/latest/quickstart.html",
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1014838"
+      ],
+      "categoryIds": [
+        "dynamics",
+        "programs_grn",
+        "perturbation"
+      ],
+      "methodTags": [
+        "optimal-transport",
+        "kinetics",
+        "virtual-perturbation"
+      ],
+      "applicability": {
+        "level": "conditional",
+        "reason": "需要时间序列和动力学先验；单时间点群体横断面不进入时间网络推断。",
+        "reasonEn": "Use the stated input contracts and validate the proposed yeast adaptation.",
+        "requiredData": [
+          "count_matrix",
+          "sample_metadata",
+          "timepoints",
+          "kinetic_rate_prior"
+        ],
+        "optionalData": []
+      },
+      "documentationStatus": "official-entrypoint-verified",
+      "paperStatus": "paper-linked",
+      "sourceLinks": [
+        {
+          "url": "https://cardamomot.readthedocs.io/en/latest/quickstart.html",
+          "kind": "documentation",
+          "label": "官方工具与调用入口"
+        },
+        {
+          "url": "https://doi.org/10.1371/journal.pcbi.1014838",
+          "kind": "research_article",
+          "label": "原始方法论文"
+        }
+      ],
+      "paperIds": [
+        "v22_cardamomot_2026"
+      ],
+      "addedIn": "v22",
+      "reviewedOn": "2026-10-17"
     }
   ],
   "formulas": [
@@ -25048,6 +26908,42 @@
       "purpose": "RNA相对分配与比例稳定性",
       "sourceUrl": "https://doi.org/10.1038/s41598-017-16520-0",
       "addedIn": "v12"
+    },
+    {
+      "id": "ctmm_state_covariance",
+      "name": "跨状态样本间变异分解",
+      "nameEn": "Cross-state between-sample variation",
+      "expression": "y_ic = beta_c + alpha_i + Gamma_ic + delta_ic; Var(alpha_i)=sigma_shared^2; Cov(Gamma_i)=V; Var(delta_ic)=sigma_ic^2/n_ic",
+      "variables": [
+        {
+          "symbol": "i",
+          "meaning": "独立样本；菌株/培养层级需按设计明确"
+        },
+        {
+          "symbol": "c",
+          "meaning": "细胞状态"
+        },
+        {
+          "symbol": "y_ic",
+          "meaning": "状态内表达均值"
+        },
+        {
+          "symbol": "V",
+          "meaning": "状态特异样本间协方差"
+        },
+        {
+          "symbol": "sigma_ic^2/n_ic",
+          "meaning": "有限细胞采样导致的均值误差"
+        }
+      ],
+      "assumptions": [
+        "使用同一表达标度。",
+        "状态均值的抽样方差有足够细胞支持。",
+        "样本相关性需由设计或模型处理。"
+      ],
+      "purpose": "与同菌株内表达噪音分别量化跨菌株差异。",
+      "sourceUrl": "https://doi.org/10.1038/s41467-024-49242-9",
+      "addedIn": "v22"
     }
   ],
   "principles": [

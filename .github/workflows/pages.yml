@@ -27,6 +27,12 @@ jobs:
       - run: npm run test:server
       - run: npx playwright install --with-deps chromium
       - run: npm run test:public
+      - run: node research/qa-local-model-lifecycle-v22.cjs
+      - run: node research/qa-input-contracts-v22.cjs
+      - name: Assistant interface and catalogue integration
+        run: |
+          PORT=4173 node scripts/dev-server.cjs &
+          YV_TEST_URL=http://127.0.0.1:4173/ node research/qa-assistant-ui-v22.cjs
 
   compatibility:
     strategy:

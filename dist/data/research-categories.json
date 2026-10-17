@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-16",
+  "updated": "2026-10-17",
   "version": "2.0",
   "title": "1011酵母单细胞研究方案构建器",
   "titleEn": "1011 Yeast Single-cell Research Builder",
@@ -82,7 +82,8 @@
         "edger",
         "velocyto",
         "pysam",
-        "memento"
+        "memento",
+        "irescue"
       ],
       "metricIds": [
         "metadata_complete",
@@ -282,7 +283,9 @@
         "baredsc",
         "fgsea",
         "igv",
-        "propr"
+        "propr",
+        "ctmm",
+        "harissa"
       ],
       "metricIds": [
         "noise_variance",
@@ -321,7 +324,9 @@
         "paralog_covariance_contribution",
         "network_module_preservation",
         "rna_logratio_variance",
-        "rna_proportionality_sensitivity"
+        "rna_proportionality_sensitivity",
+        "state_between_strain_variance",
+        "state_variance_calibration"
       ],
       "methodTags": [
         "benchmark",
@@ -525,7 +530,8 @@
         "memento",
         "igv",
         "descend",
-        "baredsc"
+        "baredsc",
+        "ctmm"
       ],
       "metricIds": [
         "independent_replicates",
@@ -711,7 +717,9 @@
         "aucell",
         "glmmtmb",
         "scanpy",
-        "yeastgem"
+        "yeastgem",
+        "dialogue",
+        "cardamomot"
       ],
       "metricIds": [
         "noise_variance",
@@ -748,7 +756,11 @@
         "mt_reads",
         "metabolic_gene_reaction_coverage",
         "metabolic_feasible_ranges",
-        "metabolic_noise_sensitivity"
+        "metabolic_noise_sensitivity",
+        "cross_state_program_coupling",
+        "cross_state_program_holdout",
+        "grn_edge_evidence_strata",
+        "grn_prior_ablation"
       ],
       "methodTags": [
         "activity",
@@ -790,7 +802,8 @@
         "annotation",
         "noise",
         "networks",
-        "validation"
+        "validation",
+        "causal"
       ],
       "toolIds": [
         "scanpy",
@@ -806,7 +819,11 @@
         "velocycle",
         "tricycle",
         "schot",
-        "memento"
+        "memento",
+        "cell2fate",
+        "cardamomot",
+        "harissa",
+        "systema"
       ],
       "metricIds": [
         "independent_replicates",
@@ -854,7 +871,11 @@
         "noise_state_component",
         "marker_panel_ablation",
         "noise_annotation_uncertainty",
-        "embedding_reliability"
+        "embedding_reliability",
+        "velocity_module_support",
+        "velocity_module_uncertainty",
+        "temporal_mechanistic_regeneration",
+        "kinetic_prior_sensitivity"
       ],
       "methodTags": [
         "cell-cycle",
@@ -906,7 +927,8 @@
         "cinemaot",
         "pertpy",
         "scyeast",
-        "systema"
+        "systema",
+        "cardamomot"
       ],
       "metricIds": [
         "velocity_uncertainty",
@@ -979,7 +1001,8 @@
         "memento",
         "glmmtmb",
         "saigeqtl",
-        "gmmat"
+        "gmmat",
+        "jaxqtl"
       ],
       "metricIds": [
         "identity_posterior",
@@ -999,7 +1022,9 @@
         "allelic_state_effect",
         "allelic_noise_contrast",
         "variant_set_support",
-        "epistatic_noise_effect"
+        "epistatic_noise_effect",
+        "count_eqtl_offset_contract",
+        "count_eqtl_calibration"
       ],
       "methodTags": [
         "external-data",
@@ -1044,7 +1069,9 @@
         "pysam",
         "sierra",
         "scape",
-        "glmmtmb"
+        "glmmtmb",
+        "irescue",
+        "memento"
       ],
       "metricIds": [
         "cb_exact",
@@ -1112,7 +1139,10 @@
         "brie_state_association",
         "apa_site_molecular_support",
         "apa_within_gene_usage",
-        "apa_noise_association"
+        "apa_noise_association",
+        "te_bam_recoverability",
+        "te_family_allocation",
+        "te_noise_assignment_sensitivity"
       ],
       "methodTags": [
         "qc",
@@ -1181,7 +1211,8 @@
       "stepIds": [
         "validation",
         "sampleqc",
-        "noise"
+        "noise",
+        "networks"
       ],
       "toolIds": [
         "dropletutils",
@@ -1192,7 +1223,9 @@
         "telegraph",
         "clusterde",
         "countsplit",
-        "memento"
+        "memento",
+        "harissa",
+        "inferelator"
       ],
       "metricIds": [
         "cross_library_molecules",
@@ -1208,7 +1241,9 @@
         "marker_panel_ablation",
         "noise_annotation_uncertainty",
         "sample_noise_precision",
-        "noise_depth_thinning"
+        "noise_depth_thinning",
+        "mechanistic_noise_recovery",
+        "mechanistic_grn_recovery"
       ],
       "methodTags": [
         "benchmark",
@@ -1906,6 +1941,20 @@
       "titleEn": "Medium and metabolic exchange constraints",
       "availability": "external-or-metadata",
       "description": "培养记录中的碳氮源、供氧及交换边界；未测边界以独立情景保存。"
+    },
+    {
+      "id": "repeat_annotation",
+      "title": "酵母重复元件注释",
+      "titleEn": "Yeast repeat annotation",
+      "availability": "prepare",
+      "description": "与BAM参考匹配的Ty家族/位点BED；包括坐标、家族、方向和注释版本。"
+    },
+    {
+      "id": "kinetic_rate_prior",
+      "title": "酵母动力学速率先验",
+      "titleEn": "Yeast kinetic-rate priors",
+      "availability": "external",
+      "description": "带物种、条件、单位与不确定性的RNA/蛋白降解等动力学先验；不由普通快照自动恢复。"
     }
   ],
   "toolGroups": [
@@ -2070,6 +2119,30 @@
       ],
       "selectionRule": "complementary-estimands",
       "description": "ORA解释入选基因集合，GSEA解释有方向排序，细胞集合评分与TF活性估计回答不同问题。"
+    },
+    {
+      "id": "repeat_quantification",
+      "title": "重复元件RNA计数",
+      "titleEn": "Repeat-RNA quantification",
+      "toolIds": [
+        "irescue",
+        "starsolo",
+        "samtools"
+      ],
+      "selectionRule": "complementary-estimands",
+      "description": "保留比对证据、分子等价类与独立重复元件矩阵。"
+    },
+    {
+      "id": "mechanistic_simulation",
+      "title": "机制模拟与时间网络",
+      "titleEn": "Mechanistic simulation and temporal networks",
+      "toolIds": [
+        "harissa",
+        "cardamomot",
+        "scdesign3"
+      ],
+      "selectionRule": "complementary-estimands",
+      "description": "Harissa提供已知机制模拟，CardamomOT接入时间与动力学先验，scDesign3提供经验分布参照。"
     }
   ],
   "compatibilityRules": [
@@ -2208,6 +2281,46 @@
       ],
       "text": "没有独立参考时只能报告方法一致性；分类分数不是自动校准的概率，拒绝标签可能偏向低RNA状态。",
       "textEn": "Without independent labels, report agreement only; scores are not automatically calibrated probabilities, and rejection may disproportionately affect low-RNA states."
+    },
+    {
+      "id": "repeat_counts_separate",
+      "type": "interpretation-boundary",
+      "categoryIds": [
+        "raw_qc",
+        "transcripts"
+      ],
+      "text": "重复元件矩阵使用独立assay；保留原始BAM、多重比对与UR，记录EM分配是否为分数。",
+      "textEn": "Keep repeat counts in a separate assay and preserve multimapping/UMI evidence; record fractional assignments."
+    },
+    {
+      "id": "sample_variance_not_cell_noise",
+      "type": "interpretation-boundary",
+      "categoryIds": [
+        "noise",
+        "differential"
+      ],
+      "text": "跨样本均值方差、同样本细胞间噪音和遗传方差使用不同名称与统计单位。",
+      "textEn": "Use distinct names and units for between-sample mean variance, within-sample cell variability and genetic variance."
+    },
+    {
+      "id": "temporal_prior_gate",
+      "type": "interpretation-boundary",
+      "categoryIds": [
+        "dynamics",
+        "perturbation"
+      ],
+      "text": "时间机制模型需要真实采样时间与酵母动力学先验；固定快照仅启用机制模拟。",
+      "textEn": "Temporal mechanistic inference requires real times and yeast kinetic priors; a static snapshot supports simulation only."
+    },
+    {
+      "id": "grn_evidence_context",
+      "type": "interpretation-boundary",
+      "categoryIds": [
+        "programs_grn",
+        "noise"
+      ],
+      "text": "结合、扰动响应和表达共变分别标记；调控符号属于TF—靶基因边及实验情境。",
+      "textEn": "Separate binding, perturbation-response and coexpression evidence; attach regulatory signs to edges and contexts."
     }
   ],
   "applicabilityLevels": [

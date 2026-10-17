@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-16",
+  "updated": "2026-10-17",
   "scope": "方法与官方来源已关联；尚未在本项目运行或验证。",
   "scopeEn": "Research-plan templates; no analyses have been executed.",
   "projects": [
@@ -4675,6 +4675,887 @@
         ],
         "note": "Reference method applied to a proposed yeast population analysis."
       }
+    },
+    {
+      "id": "ty_repeat_variability",
+      "title": "Ty重复元件RNA与表达变异",
+      "titleEn": "Ty repeat RNA and expression variability",
+      "categoryId": "transcripts",
+      "level": "adapt",
+      "question": "Ty家族RNA的细胞间差异是否随菌株、周期和应激状态变化？",
+      "questionEn": "Does cell-to-cell variation in Ty family RNA change with strain, cell cycle and stress state?",
+      "goal": "Ty家族RNA的细胞间差异是否随菌株、周期和应激状态变化？",
+      "goalEn": "Does cell-to-cell variation in Ty family RNA change with strain, cell cycle and stress state?",
+      "shortText": {
+        "zh": "从保留多重比对的BAM建立独立Ty家族层，再比较可归属分子的状态内分布与分配敏感性。",
+        "en": "Build a separate Ty family assay from BAM retaining multimapping, then compare within-state distributions and assignment sensitivity.",
+        "fr": "Construire un assay de familles Ty à partir du BAM conservant les alignements multiples, puis comparer distributions intra-état et sensibilité aux affectations.",
+        "es": "Crear un ensayo separado de familias Ty desde BAM que conserve alineamientos múltiples y comparar distribuciones intraestado y sensibilidad a las asignaciones.",
+        "eu": "Sortu Ty familien assay bereizia lerrokatze anitzak gordetzen dituen BAMetik; alderatu egoera barruko banaketak eta esleipenen sentikortasuna."
+      },
+      "inputs": [
+        "tagged_bam",
+        "repeat_annotation",
+        "cell_states",
+        "sample_metadata",
+        "culture_replicates"
+      ],
+      "optionalInputs": [],
+      "stepIds": [
+        "bam",
+        "matrix",
+        "noise",
+        "validation",
+        "transcripts"
+      ],
+      "toolIds": [
+        "irescue",
+        "samtools",
+        "memento"
+      ],
+      "metricIds": [
+        "te_bam_recoverability",
+        "te_family_allocation",
+        "te_noise_assignment_sensitivity"
+      ],
+      "workflow": [
+        {
+          "stepId": "bam",
+          "action": "从保留多重比对的BAM建立独立Ty家族层，再比较可归属分子的状态内分布与分配敏感性。",
+          "deliverable": "重复元件比对候选保留率"
+        },
+        {
+          "stepId": "matrix",
+          "action": "核对参考、重复注释和BAM多重比对保留策略。",
+          "deliverable": "Ty家族分子归属与歧义"
+        },
+        {
+          "stepId": "noise",
+          "action": "将唯一证据、歧义分配与背景影响分开输出。",
+          "deliverable": "Ty变异与分配策略敏感性"
+        },
+        {
+          "stepId": "validation",
+          "action": "用培养分组重抽样检查候选稳定性。",
+          "deliverable": "Ty变异与分配策略敏感性"
+        }
+      ],
+      "hypotheses": [],
+      "failureChecks": [
+        "核对参考、重复注释和BAM多重比对保留策略。",
+        "将唯一证据、歧义分配与背景影响分开输出。",
+        "用培养分组重抽样检查候选稳定性。"
+      ],
+      "outputs": [
+        "重复元件比对候选保留率",
+        "Ty家族分子归属与歧义",
+        "Ty变异与分配策略敏感性"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1093/nar/gkae793",
+        "https://github.com/bodegalab/irescue",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11514465/"
+      ],
+      "tags": [
+        "transcripts",
+        "v22-expansion"
+      ],
+      "method": "从保留多重比对的BAM建立独立Ty家族层，再比较可归属分子的状态内分布与分配敏感性。",
+      "methodEn": "Build a separate Ty family assay from BAM retaining multimapping, then compare within-state distributions and assignment sensitivity.",
+      "parameterDecisions": [
+        "核对参考、重复注释和BAM多重比对保留策略。",
+        "将唯一证据、歧义分配与背景影响分开输出。",
+        "用培养分组重抽样检查候选稳定性。"
+      ],
+      "statisticalUnit": "独立培养用于组间推断；分子等价类用于计数审计。",
+      "analysisPrinciples": [],
+      "interpretationBoundary": "输出Ty RNA表达异质性；转座活动、插入位置和DNA拷贝数另需相应证据。",
+      "planningApplicability": "adapt",
+      "paperIds": [
+        "v22_irescue_2024"
+      ],
+      "addedIn": "v22",
+      "executionStatus": "not-run",
+      "requiredInputContracts": [
+        {
+          "id": "repeat_annotation",
+          "contract": "BED contigs and coordinates match the BAM reference; fourth column explicitly defines family or locus resolution."
+        }
+      ],
+      "claimSourceMappings": [
+        {
+          "claim": "从保留多重比对的BAM建立独立Ty家族层，再比较可归属分子的状态内分布与分配敏感性。",
+          "paperIds": [
+            "v22_irescue_2024"
+          ],
+          "type": "proposed-project-adaptation"
+        }
+      ],
+      "speciesValidation": {
+        "target": "Saccharomyces cerevisiae strain collection",
+        "validationIn1011": false,
+        "publishedSystems": [
+          "Homo sapiens",
+          "Mus musculus"
+        ],
+        "note": "Software-method source verified; proposed yeast analysis requires design-specific evaluation."
+      }
+    },
+    {
+      "id": "between_strain_state_variance",
+      "title": "菌株间变异的状态共享与特异部分",
+      "titleEn": "Shared and state-specific components of between-strain variation",
+      "categoryId": "noise",
+      "level": "adapt",
+      "question": "哪些基因的菌株间差异仅在某些细胞状态显现？",
+      "questionEn": "Which genes show between-strain differences only in particular cell states?",
+      "goal": "哪些基因的菌株间差异仅在某些细胞状态显现？",
+      "goalEn": "Which genes show between-strain differences only in particular cell states?",
+      "shortText": {
+        "zh": "建立菌株/培养×状态表达均值及抽样方差，分解共享和状态特异的样本间变异。",
+        "en": "Estimate strain/culture-by-state expression means and sampling variances, then separate shared and state-specific between-sample variation.",
+        "fr": "Estimer moyennes et variances d’échantillonnage par souche/culture et état, puis séparer les variations interéchantillon partagées et spécifiques.",
+        "es": "Estimar medias y varianzas de muestreo por cepa/cultivo y estado; separar variación entre muestras compartida y específica.",
+        "eu": "Estimatu andui/kultura eta egoera bakoitzeko batezbestekoak eta laginketa-bariantzak; bereizi laginen arteko osagai partekatuak eta espezifikoak."
+      },
+      "inputs": [
+        "count_matrix",
+        "sample_metadata",
+        "cell_states"
+      ],
+      "optionalInputs": [],
+      "stepIds": [
+        "noise",
+        "validation"
+      ],
+      "toolIds": [
+        "ctmm",
+        "scdesign3"
+      ],
+      "metricIds": [
+        "state_between_strain_variance",
+        "state_variance_calibration"
+      ],
+      "workflow": [
+        {
+          "stepId": "noise",
+          "action": "建立菌株/培养×状态表达均值及抽样方差，分解共享和状态特异的样本间变异。",
+          "deliverable": "状态特异的菌株间方差"
+        },
+        {
+          "stepId": "validation",
+          "action": "冻结状态定义并检查每个样本的共同支持。",
+          "deliverable": "跨状态方差模型校准"
+        }
+      ],
+      "hypotheses": [],
+      "failureChecks": [
+        "冻结状态定义并检查每个样本的共同支持。",
+        "比较缺失状态处理、亲缘分层与方差模型。"
+      ],
+      "outputs": [
+        "状态特异的菌株间方差",
+        "跨状态方差模型校准"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41467-024-49242-9",
+        "https://github.com/Minhui-Chen/CTMM",
+        "https://www.nature.com/articles/s41467-024-49242-9"
+      ],
+      "tags": [
+        "noise",
+        "v22-expansion"
+      ],
+      "method": "建立菌株/培养×状态表达均值及抽样方差，分解共享和状态特异的样本间变异。",
+      "methodEn": "Estimate strain/culture-by-state expression means and sampling variances, then separate shared and state-specific between-sample variation.",
+      "parameterDecisions": [
+        "冻结状态定义并检查每个样本的共同支持。",
+        "比较缺失状态处理、亲缘分层与方差模型。"
+      ],
+      "statisticalUnit": "样本/菌株是独立推断单位，细胞用于估计均值及抽样误差。",
+      "analysisPrinciples": [],
+      "interpretationBoundary": "结果属于菌株间均值方差；与同菌株内噪音和基因型解释的遗传力分别报告。",
+      "planningApplicability": "adapt",
+      "paperIds": [
+        "v22_ctmm_2024"
+      ],
+      "addedIn": "v22",
+      "executionStatus": "not-run",
+      "requiredInputContracts": [],
+      "claimSourceMappings": [
+        {
+          "claim": "建立菌株/培养×状态表达均值及抽样方差，分解共享和状态特异的样本间变异。",
+          "paperIds": [
+            "v22_ctmm_2024"
+          ],
+          "type": "proposed-project-adaptation"
+        }
+      ],
+      "speciesValidation": {
+        "target": "Saccharomyces cerevisiae strain collection",
+        "validationIn1011": false,
+        "publishedSystems": [
+          "Homo sapiens"
+        ],
+        "note": "Software-method source verified; proposed yeast analysis requires design-specific evaluation."
+      }
+    },
+    {
+      "id": "cross_state_coordination",
+      "title": "同培养中的跨状态协调程序",
+      "titleEn": "Coordinated programs across states within cultures",
+      "categoryId": "programs_grn",
+      "level": "adapt",
+      "question": "同一培养中的G1、复制、分裂或应激状态是否共享菌株相关的表达程序？",
+      "questionEn": "Do G1, replication, division or stress states within a culture share strain-associated expression programs?",
+      "goal": "同一培养中的G1、复制、分裂或应激状态是否共享菌株相关的表达程序？",
+      "goalEn": "Do G1, replication, division or stress states within a culture share strain-associated expression programs?",
+      "shortText": {
+        "zh": "以独立培养为共同索引，将不同状态的程序耦合起来，检验是否在留出菌株中保留。",
+        "en": "Link programs across states using independent cultures as the shared index, then test transfer to held-out strains.",
+        "fr": "Relier les programmes entre états par l’index commun des cultures indépendantes, puis tester sur des souches réservées.",
+        "es": "Vincular programas entre estados mediante cultivos independientes como índice común y probar en cepas reservadas.",
+        "eu": "Lotu egoeren programak kultura independenteen indize komunaren bidez; probatu erreserbatutako anduietan."
+      },
+      "inputs": [
+        "count_matrix",
+        "sample_metadata",
+        "cell_states",
+        "culture_replicates"
+      ],
+      "optionalInputs": [],
+      "stepIds": [
+        "networks",
+        "validation"
+      ],
+      "toolIds": [
+        "dialogue",
+        "cnmf"
+      ],
+      "metricIds": [
+        "cross_state_program_coupling",
+        "cross_state_program_holdout"
+      ],
+      "workflow": [
+        {
+          "stepId": "networks",
+          "action": "以独立培养为共同索引，将不同状态的程序耦合起来，检验是否在留出菌株中保留。",
+          "deliverable": "同培养跨状态程序耦合"
+        },
+        {
+          "stepId": "validation",
+          "action": "仅配对同一培养实际观测到的状态。",
+          "deliverable": "跨状态程序留出稳定性"
+        }
+      ],
+      "hypotheses": [],
+      "failureChecks": [
+        "仅配对同一培养实际观测到的状态。",
+        "按菌株/培养留出并比较固定基因集的程序分数。"
+      ],
+      "outputs": [
+        "同培养跨状态程序耦合",
+        "跨状态程序留出稳定性"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41587-022-01288-0",
+        "https://github.com/livnatje/DIALOGUE/wiki/Tutorial",
+        "https://pubmed.ncbi.nlm.nih.gov/35513526/"
+      ],
+      "tags": [
+        "programs_grn",
+        "v22-expansion"
+      ],
+      "method": "以独立培养为共同索引，将不同状态的程序耦合起来，检验是否在留出菌株中保留。",
+      "methodEn": "Link programs across states using independent cultures as the shared index, then test transfer to held-out strains.",
+      "parameterDecisions": [
+        "仅配对同一培养实际观测到的状态。",
+        "按菌株/培养留出并比较固定基因集的程序分数。"
+      ],
+      "statisticalUnit": "培养级配对，按菌株留出；不将不同状态的细胞一一配对。",
+      "analysisPrinciples": [],
+      "interpretationBoundary": "跨状态协调是观察性表达关联，不能单独证明细胞间通讯。",
+      "planningApplicability": "adapt",
+      "paperIds": [
+        "v22_dialogue_2022"
+      ],
+      "addedIn": "v22",
+      "executionStatus": "not-run",
+      "requiredInputContracts": [],
+      "claimSourceMappings": [
+        {
+          "claim": "以独立培养为共同索引，将不同状态的程序耦合起来，检验是否在留出菌株中保留。",
+          "paperIds": [
+            "v22_dialogue_2022"
+          ],
+          "type": "proposed-project-adaptation"
+        }
+      ],
+      "speciesValidation": {
+        "target": "Saccharomyces cerevisiae strain collection",
+        "validationIn1011": false,
+        "publishedSystems": [
+          "Homo sapiens",
+          "Mus musculus"
+        ],
+        "note": "Software-method source verified; proposed yeast analysis requires design-specific evaluation."
+      }
+    },
+    {
+      "id": "velocity_modules",
+      "title": "模块化RNA动力学与噪音联系",
+      "titleEn": "RNA kinetic modules and expression noise",
+      "categoryId": "dynamics",
+      "level": "conditional",
+      "question": "具有足够剪接证据的基因是否形成稳定动力学模块，模块变化是否伴随表达噪音变化？",
+      "questionEn": "Do genes with sufficient splicing evidence form stable kinetic modules whose changes accompany altered noise?",
+      "goal": "具有足够剪接证据的基因是否形成稳定动力学模块，模块变化是否伴随表达噪音变化？",
+      "goalEn": "Do genes with sufficient splicing evidence form stable kinetic modules whose changes accompany altered noise?",
+      "shortText": {
+        "zh": "在剪接支持充分的基因子集上建立模块化速度模型，比较后验不确定性和周期方向。",
+        "en": "Fit modular velocity models on splice-supported genes and compare posterior uncertainty and cycle direction.",
+        "fr": "Ajuster des modèles modulaires de vitesse aux gènes soutenus par l’épissage et comparer incertitude a posteriori et direction du cycle.",
+        "es": "Ajustar modelos modulares de velocidad en genes respaldados por empalme y comparar incertidumbre posterior y dirección del ciclo.",
+        "eu": "Doitu abiadura-eredu modularrak splicing-euskarria duten geneetan; alderatu posteriorreko ziurgabetasuna eta zikloaren norabidea."
+      },
+      "inputs": [
+        "splicing_layers",
+        "sample_metadata",
+        "cell_states"
+      ],
+      "optionalInputs": [],
+      "stepIds": [
+        "dynamics",
+        "validation"
+      ],
+      "toolIds": [
+        "cell2fate",
+        "velocycle",
+        "scvelo"
+      ],
+      "metricIds": [
+        "velocity_module_support",
+        "velocity_module_uncertainty"
+      ],
+      "workflow": [
+        {
+          "stepId": "dynamics",
+          "action": "在剪接支持充分的基因子集上建立模块化速度模型，比较后验不确定性和周期方向。",
+          "deliverable": "速度模块的基因与状态支持"
+        },
+        {
+          "stepId": "validation",
+          "action": "审计内含子基因的覆盖及功能组成。",
+          "deliverable": "模块化速度的后验不确定性"
+        }
+      ],
+      "hypotheses": [],
+      "failureChecks": [
+        "审计内含子基因的覆盖及功能组成。",
+        "比较模块数、先验、周期模型和留出培养。"
+      ],
+      "outputs": [
+        "速度模块的基因与状态支持",
+        "模块化速度的后验不确定性"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41592-025-02608-3",
+        "https://cell2fate.readthedocs.io/en/latest/cell2fate.html",
+        "https://www.nature.com/articles/s41592-025-02608-3"
+      ],
+      "tags": [
+        "dynamics",
+        "v22-expansion"
+      ],
+      "method": "在剪接支持充分的基因子集上建立模块化速度模型，比较后验不确定性和周期方向。",
+      "methodEn": "Fit modular velocity models on splice-supported genes and compare posterior uncertainty and cycle direction.",
+      "parameterDecisions": [
+        "审计内含子基因的覆盖及功能组成。",
+        "比较模块数、先验、周期模型和留出培养。"
+      ],
+      "statisticalUnit": "培养及菌株用于重复验证；细胞提供状态和剪接计数。",
+      "analysisPrinciples": [],
+      "interpretationBoundary": "模块仅代表被测剪接信息支持的动态；潜在时间不作为进化时间。",
+      "planningApplicability": "conditional",
+      "paperIds": [
+        "v22_cell2fate_2025"
+      ],
+      "addedIn": "v22",
+      "executionStatus": "not-run",
+      "requiredInputContracts": [],
+      "claimSourceMappings": [
+        {
+          "claim": "在剪接支持充分的基因子集上建立模块化速度模型，比较后验不确定性和周期方向。",
+          "paperIds": [
+            "v22_cell2fate_2025"
+          ],
+          "type": "proposed-project-adaptation"
+        }
+      ],
+      "speciesValidation": {
+        "target": "Saccharomyces cerevisiae strain collection",
+        "validationIn1011": false,
+        "publishedSystems": [
+          "Homo sapiens",
+          "Mus musculus"
+        ],
+        "note": "Software-method source verified; proposed yeast analysis requires design-specific evaluation."
+      }
+    },
+    {
+      "id": "regulatory_evidence_layers",
+      "title": "结合、扰动与表达共变的调控证据分层",
+      "titleEn": "Regulatory evidence from binding, perturbation and coexpression",
+      "categoryId": "programs_grn",
+      "level": "adapt",
+      "question": "噪音相关网络边由TF结合、耗竭响应还是表达共变支持？",
+      "questionEn": "Are noise-associated network edges supported by TF binding, depletion responses or coexpression?",
+      "goal": "噪音相关网络边由TF结合、耗竭响应还是表达共变支持？",
+      "goalEn": "Are noise-associated network edges supported by TF binding, depletion responses or coexpression?",
+      "shortText": {
+        "zh": "接入酵母TF结合与快速耗竭数据，分别构建带条件和方向的先验层，比较网络及噪音候选。",
+        "en": "Use yeast TF binding and rapid-depletion data to build condition-specific signed prior layers, then compare networks and noise candidates.",
+        "fr": "Utiliser liaison des TF et déplétion rapide chez la levure pour construire des a priori signés par condition, puis comparer réseaux et candidats du bruit.",
+        "es": "Usar unión de TF y depleción rápida en levadura para construir priors con signo por condición y comparar redes y candidatos de ruido.",
+        "eu": "Erabili legamiaren TF lotura eta deplezio azkarreko datuak baldintzako zeinudun aurretikoak eraikitzeko; alderatu sareak eta zarata-hautagaiak."
+      },
+      "inputs": [
+        "count_matrix",
+        "sample_metadata",
+        "yeast_regulatory_prior",
+        "culture_replicates"
+      ],
+      "optionalInputs": [],
+      "stepIds": [
+        "networks",
+        "validation"
+      ],
+      "toolIds": [
+        "inferelator",
+        "decoupler",
+        "genie3"
+      ],
+      "metricIds": [
+        "grn_edge_evidence_strata",
+        "grn_prior_ablation"
+      ],
+      "workflow": [
+        {
+          "stepId": "networks",
+          "action": "接入酵母TF结合与快速耗竭数据，分别构建带条件和方向的先验层，比较网络及噪音候选。",
+          "deliverable": "调控边的结合与功能证据分层"
+        },
+        {
+          "stepId": "validation",
+          "action": "映射到当前酵母系统基因ID并记录未测基因。",
+          "deliverable": "调控先验证据消融"
+        }
+      ],
+      "hypotheses": [],
+      "failureChecks": [
+        "映射到当前酵母系统基因ID并记录未测基因。",
+        "比较结合、响应、交集及无先验模型。",
+        "验证边与训练先验分开。"
+      ],
+      "outputs": [
+        "调控边的结合与功能证据分层",
+        "调控先验证据消融"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41586-025-08916-0",
+        "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE236948",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12882699/"
+      ],
+      "tags": [
+        "programs_grn",
+        "v22-expansion"
+      ],
+      "method": "接入酵母TF结合与快速耗竭数据，分别构建带条件和方向的先验层，比较网络及噪音候选。",
+      "methodEn": "Use yeast TF binding and rapid-depletion data to build condition-specific signed prior layers, then compare networks and noise candidates.",
+      "parameterDecisions": [
+        "映射到当前酵母系统基因ID并记录未测基因。",
+        "比较结合、响应、交集及无先验模型。",
+        "验证边与训练先验分开。"
+      ],
+      "statisticalUnit": "TF—靶基因边保留实验条件；泛化按培养/菌株或独立证据留出。",
+      "analysisPrinciples": [],
+      "interpretationBoundary": "TF的激活/抑制方向标注在具体边和情境上；单一结合位点不等于功能调控。",
+      "planningApplicability": "adapt",
+      "paperIds": [
+        "v22_tf_evidence_2025"
+      ],
+      "addedIn": "v22",
+      "executionStatus": "not-run",
+      "requiredInputContracts": [
+        {
+          "id": "yeast_regulatory_prior",
+          "contract": "Separate binding assay, rapid-depletion response, sign, strain, condition and source for each TF-target pair."
+        }
+      ],
+      "claimSourceMappings": [
+        {
+          "claim": "接入酵母TF结合与快速耗竭数据，分别构建带条件和方向的先验层，比较网络及噪音候选。",
+          "paperIds": [
+            "v22_tf_evidence_2025"
+          ],
+          "type": "proposed-project-adaptation"
+        }
+      ],
+      "speciesValidation": {
+        "target": "Saccharomyces cerevisiae strain collection",
+        "validationIn1011": false,
+        "publishedSystems": [
+          "Saccharomyces cerevisiae"
+        ],
+        "note": "Software-method source verified; proposed yeast analysis requires design-specific evaluation."
+      },
+      "datasetIds": [
+        "v22_tf_function_2025"
+      ]
+    },
+    {
+      "id": "count_mean_qtl_comparator",
+      "title": "附录：计数均值eQTL与噪音QTL对照",
+      "titleEn": "Appendix: count mean-eQTL versus noise-QTL",
+      "categoryId": "genetics",
+      "level": "conditional",
+      "question": "噪音候选是否可以由均值遗传效应及计数抽样解释？",
+      "questionEn": "Can genetic effects on the mean and count sampling explain candidate noise effects?",
+      "goal": "噪音候选是否可以由均值遗传效应及计数抽样解释？",
+      "goalEn": "Can genetic effects on the mean and count sampling explain candidate noise effects?",
+      "shortText": {
+        "zh": "接入匹配基因型后，以状态内求和计数估计均值eQTL，并与亲缘模型和噪音性状分析并列比较。",
+        "en": "With matched genotypes, estimate mean-eQTL from within-state sum counts and compare kinship models and noise traits.",
+        "fr": "Avec génotypes appariés, estimer les eQTL de moyenne à partir des sommes intra-état, puis comparer modèles de parenté et caractères de bruit.",
+        "es": "Con genotipos emparejados, estimar eQTL de medias mediante sumas intraestado y comparar modelos de parentesco y rasgos de ruido.",
+        "eu": "Genotipo parekatuekin, estimatu batezbesteko eQTLak egoera barruko zenbaketa-baturetatik; alderatu ahaidetasun-ereduak eta zarata-ezaugarriak."
+      },
+      "inputs": [
+        "count_matrix",
+        "sample_metadata",
+        "cell_states",
+        "genotypes",
+        "kinship"
+      ],
+      "optionalInputs": [],
+      "stepIds": [
+        "genetics",
+        "validation"
+      ],
+      "toolIds": [
+        "jaxqtl",
+        "saigeqtl",
+        "gemma"
+      ],
+      "metricIds": [
+        "count_eqtl_offset_contract",
+        "count_eqtl_calibration"
+      ],
+      "workflow": [
+        {
+          "stepId": "genetics",
+          "action": "接入匹配基因型后，以状态内求和计数估计均值eQTL，并与亲缘模型和噪音性状分析并列比较。",
+          "deliverable": "计数eQTL的样本及offset一致性"
+        },
+        {
+          "stepId": "validation",
+          "action": "核对倍性、样本ID、offset及酵母cis窗口。",
+          "deliverable": "计数均值eQTL校准与亲缘敏感性"
+        }
+      ],
+      "hypotheses": [],
+      "failureChecks": [
+        "核对倍性、样本ID、offset及酵母cis窗口。",
+        "检验群体结构残留与亲缘混合模型一致性。"
+      ],
+      "outputs": [
+        "计数eQTL的样本及offset一致性",
+        "计数均值eQTL校准与亲缘敏感性"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1101/2025.01.18.25320755",
+        "https://mancusolab.github.io/jaxqtl/reference/mapping/",
+        "https://www.medrxiv.org/content/10.1101/2025.01.18.25320755v2"
+      ],
+      "tags": [
+        "genetics",
+        "v22-expansion"
+      ],
+      "method": "接入匹配基因型后，以状态内求和计数估计均值eQTL，并与亲缘模型和噪音性状分析并列比较。",
+      "methodEn": "With matched genotypes, estimate mean-eQTL from within-state sum counts and compare kinship models and noise traits.",
+      "parameterDecisions": [
+        "核对倍性、样本ID、offset及酵母cis窗口。",
+        "检验群体结构残留与亲缘混合模型一致性。"
+      ],
+      "statisticalUnit": "基因型对应的菌株/样本；同一菌株细胞不作为独立基因型重复。",
+      "analysisPrinciples": [],
+      "interpretationBoundary": "jaxQTL的均值关联与NB离散参数不能替代差异噪音或噪音QTL检验。",
+      "planningApplicability": "conditional",
+      "paperIds": [
+        "v22_jaxqtl_2025"
+      ],
+      "addedIn": "v22",
+      "executionStatus": "not-run",
+      "requiredInputContracts": [],
+      "claimSourceMappings": [
+        {
+          "claim": "接入匹配基因型后，以状态内求和计数估计均值eQTL，并与亲缘模型和噪音性状分析并列比较。",
+          "paperIds": [
+            "v22_jaxqtl_2025"
+          ],
+          "type": "proposed-project-adaptation"
+        }
+      ],
+      "speciesValidation": {
+        "target": "Saccharomyces cerevisiae strain collection",
+        "validationIn1011": false,
+        "publishedSystems": [
+          "Homo sapiens"
+        ],
+        "note": "Software-method source verified; proposed yeast analysis requires design-specific evaluation."
+      }
+    },
+    {
+      "id": "mechanistic_noise_benchmark",
+      "title": "爆发与网络机制的合成真值实验",
+      "titleEn": "Synthetic ground truth for bursts and network mechanisms",
+      "categoryId": "simulation",
+      "level": "ready",
+      "question": "现有噪音和网络方法能否恢复已知机制产生的变化？",
+      "questionEn": "Can current noise and network methods recover changes generated by known mechanisms?",
+      "goal": "现有噪音和网络方法能否恢复已知机制产生的变化？",
+      "goalEn": "Can current noise and network methods recover changes generated by known mechanisms?",
+      "shortText": {
+        "zh": "构造已知调控网络与爆发参数的模拟真值，再加入捕获与背景层，比较噪音效应、区间和伪边。",
+        "en": "Simulate known networks and burst parameters, add capture and background, then compare noise effects, intervals and false edges.",
+        "fr": "Simuler réseaux et paramètres de bouffées connus, ajouter capture et fond, puis comparer effets de bruit, intervalles et fausses arêtes.",
+        "es": "Simular redes y ráfagas conocidas, añadir captura y fondo, y comparar efectos de ruido, intervalos y aristas falsas.",
+        "eu": "Simulatu sare eta leherketa-parametro ezagunak, gehitu harrapaketa eta hondoa, eta alderatu zarata-efektuak, tarteak eta ertz faltsuak."
+      },
+      "inputs": [
+        "truth_or_simulation"
+      ],
+      "optionalInputs": [],
+      "stepIds": [
+        "validation",
+        "noise",
+        "networks"
+      ],
+      "toolIds": [
+        "harissa",
+        "scdesign3",
+        "inferelator",
+        "memento"
+      ],
+      "metricIds": [
+        "mechanistic_noise_recovery",
+        "mechanistic_grn_recovery"
+      ],
+      "workflow": [
+        {
+          "stepId": "validation",
+          "action": "构造已知调控网络与爆发参数的模拟真值，再加入捕获与背景层，比较噪音效应、区间和伪边。",
+          "deliverable": "机制真值下的噪音恢复"
+        },
+        {
+          "stepId": "noise",
+          "action": "分别控制均值改变、爆发改变、状态混合与技术捕获。",
+          "deliverable": "机制模拟的网络恢复与伪边"
+        },
+        {
+          "stepId": "networks",
+          "action": "使用未参与调参的网络及观测情景评价。",
+          "deliverable": "机制模拟的网络恢复与伪边"
+        }
+      ],
+      "hypotheses": [],
+      "failureChecks": [
+        "分别控制均值改变、爆发改变、状态混合与技术捕获。",
+        "使用未参与调参的网络及观测情景评价。"
+      ],
+      "outputs": [
+        "机制真值下的噪音恢复",
+        "机制模拟的网络恢复与伪边"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1007/978-3-031-42697-1_7",
+        "https://github.com/ulysseherbach/harissa",
+        "https://link.springer.com/chapter/10.1007/978-3-031-42697-1_7",
+        "https://doi.org/10.1371/journal.pcbi.1010962",
+        "https://github.com/eliasventre/cardamom",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10079230/"
+      ],
+      "tags": [
+        "simulation",
+        "v22-expansion"
+      ],
+      "method": "构造已知调控网络与爆发参数的模拟真值，再加入捕获与背景层，比较噪音效应、区间和伪边。",
+      "methodEn": "Simulate known networks and burst parameters, add capture and background, then compare noise effects, intervals and false edges.",
+      "parameterDecisions": [
+        "分别控制均值改变、爆发改变、状态混合与技术捕获。",
+        "使用未参与调参的网络及观测情景评价。"
+      ],
+      "statisticalUnit": "独立模拟情景和随机种子；机制真值及测量真值分别保存。",
+      "analysisPrinciples": [],
+      "interpretationBoundary": "该分支校准分析方法，不将模拟网络或潜在蛋白量当作实验发现。",
+      "planningApplicability": "ready",
+      "paperIds": [
+        "v22_harissa_2023",
+        "v22_mechanistic_grn_2023"
+      ],
+      "addedIn": "v22",
+      "executionStatus": "not-run",
+      "requiredInputContracts": [],
+      "claimSourceMappings": [
+        {
+          "claim": "构造已知调控网络与爆发参数的模拟真值，再加入捕获与背景层，比较噪音效应、区间和伪边。",
+          "paperIds": [
+            "v22_harissa_2023",
+            "v22_mechanistic_grn_2023"
+          ],
+          "type": "proposed-project-adaptation"
+        }
+      ],
+      "speciesValidation": {
+        "target": "Saccharomyces cerevisiae strain collection",
+        "validationIn1011": false,
+        "publishedSystems": [
+          "in silico",
+          "Mus musculus"
+        ],
+        "note": "Software-method source verified; proposed yeast analysis requires design-specific evaluation."
+      }
+    },
+    {
+      "id": "temporal_mechanistic_grn",
+      "title": "附录：时间快照的可执行网络与虚拟干预",
+      "titleEn": "Appendix: executable networks and virtual interventions from timed snapshots",
+      "categoryId": "dynamics",
+      "level": "conditional",
+      "question": "有真实时间与速率先验时，何种机制网络能再生成RNA分布并预测留出条件？",
+      "questionEn": "With real times and rate priors, which mechanistic networks regenerate RNA distributions and predict held-out conditions?",
+      "goal": "有真实时间与速率先验时，何种机制网络能再生成RNA分布并预测留出条件？",
+      "goalEn": "With real times and rate priors, which mechanistic networks regenerate RNA distributions and predict held-out conditions?",
+      "shortText": {
+        "zh": "通过CardamomOT联合网络与时间轨迹拟合，先检验数据再生成，再开展虚拟扰动及动力学先验敏感性。",
+        "en": "Fit networks and time trajectories with CardamomOT, evaluate regeneration first, then virtual perturbations and kinetic-prior sensitivity.",
+        "fr": "Ajuster réseaux et trajectoires avec CardamomOT, vérifier d’abord la régénération, puis perturbations virtuelles et sensibilité aux a priori cinétiques.",
+        "es": "Ajustar redes y trayectorias con CardamomOT, evaluar primero regeneración y después perturbaciones virtuales y sensibilidad a priors cinéticos.",
+        "eu": "Doitu sareak eta denborazko ibilbideak CardamomOTrekin; ebaluatu lehenik birsorkuntza, gero perturbazio birtualak eta aurretiko zinetikoen sentikortasuna."
+      },
+      "inputs": [
+        "count_matrix",
+        "sample_metadata",
+        "timepoints",
+        "kinetic_rate_prior"
+      ],
+      "optionalInputs": [],
+      "stepIds": [
+        "dynamics",
+        "networks",
+        "causal",
+        "validation"
+      ],
+      "toolIds": [
+        "cardamomot",
+        "harissa",
+        "systema"
+      ],
+      "metricIds": [
+        "temporal_mechanistic_regeneration",
+        "kinetic_prior_sensitivity"
+      ],
+      "workflow": [
+        {
+          "stepId": "dynamics",
+          "action": "通过CardamomOT联合网络与时间轨迹拟合，先检验数据再生成，再开展虚拟扰动及动力学先验敏感性。",
+          "deliverable": "时间网络的留出分布再生成"
+        },
+        {
+          "stepId": "networks",
+          "action": "固定代码标签，替换人鼠资源为酵母资源。",
+          "deliverable": "酵母动力学先验敏感性"
+        },
+        {
+          "stepId": "causal",
+          "action": "将真实时间和拟时序分开记录。",
+          "deliverable": "酵母动力学先验敏感性"
+        },
+        {
+          "stepId": "validation",
+          "action": "以留出分布及真实扰动评价生成预测。",
+          "deliverable": "酵母动力学先验敏感性"
+        }
+      ],
+      "hypotheses": [],
+      "failureChecks": [
+        "固定代码标签，替换人鼠资源为酵母资源。",
+        "将真实时间和拟时序分开记录。",
+        "以留出分布及真实扰动评价生成预测。"
+      ],
+      "outputs": [
+        "时间网络的留出分布再生成",
+        "酵母动力学先验敏感性"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1371/journal.pcbi.1014838",
+        "https://cardamomot.readthedocs.io/en/latest/quickstart.html",
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1014838",
+        "https://doi.org/10.1038/s41540-026-00743-x",
+        "https://github.com/fourniecl/inference_trajectories_PDMP",
+        "https://www.nature.com/articles/s41540-026-00743-x"
+      ],
+      "tags": [
+        "dynamics",
+        "v22-expansion"
+      ],
+      "method": "通过CardamomOT联合网络与时间轨迹拟合，先检验数据再生成，再开展虚拟扰动及动力学先验敏感性。",
+      "methodEn": "Fit networks and time trajectories with CardamomOT, evaluate regeneration first, then virtual perturbations and kinetic-prior sensitivity.",
+      "parameterDecisions": [
+        "固定代码标签，替换人鼠资源为酵母资源。",
+        "将真实时间和拟时序分开记录。",
+        "以留出分布及真实扰动评价生成预测。"
+      ],
+      "statisticalUnit": "独立培养和实际采样时间；整培养/时间点留出。",
+      "analysisPrinciples": [],
+      "interpretationBoundary": "若只有单时间点群体数据则保留为计划；时间点和动力学先验接入后开展，真实扰动用于外推验证。",
+      "planningApplicability": "conditional",
+      "paperIds": [
+        "v22_cardamomot_2026",
+        "v22_bursty_transport_2026"
+      ],
+      "addedIn": "v22",
+      "executionStatus": "not-run",
+      "requiredInputContracts": [
+        {
+          "id": "kinetic_rate_prior",
+          "contract": "Yeast-compatible protein kinetic-rate information is required; record RNA kinetic priors, uncertainty and time units."
+        },
+        {
+          "id": "timepoints",
+          "contract": "Experimental measurement times aligned to independent cultures; pseudotime alone is not treated as observed time."
+        }
+      ],
+      "claimSourceMappings": [
+        {
+          "claim": "通过CardamomOT联合网络与时间轨迹拟合，先检验数据再生成，再开展虚拟扰动及动力学先验敏感性。",
+          "paperIds": [
+            "v22_cardamomot_2026",
+            "v22_bursty_transport_2026"
+          ],
+          "type": "proposed-project-adaptation"
+        }
+      ],
+      "speciesValidation": {
+        "target": "Saccharomyces cerevisiae strain collection",
+        "validationIn1011": false,
+        "publishedSystems": [
+          "Homo sapiens",
+          "Mus musculus",
+          "in silico"
+        ],
+        "note": "Software-method source verified; proposed yeast analysis requires design-specific evaluation."
+      }
     }
   ],
   "datasets": [
@@ -4704,6 +5585,20 @@
       ],
       "use": "Optional reference to test context-dependent signature transfer.",
       "verification": "Accession verified in PMC Data Availability; direct GEO rendering returned browser verification."
+    },
+    {
+      "id": "v22_tf_function_2025",
+      "title": "Yeast TF binding and depletion-response reference (Mahendrawada et al., 2025)",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE236948",
+      "accession": "GSE236948",
+      "assay": "External TF-binding and nascent-RNA reference; not project single-cell measurements",
+      "species": "Saccharomyces cerevisiae",
+      "paperIds": [
+        "v22_tf_evidence_2025"
+      ],
+      "use": "Optional prior evidence for single-cell network interpretation; preserve assay, condition and TF-target direction. Not imported or analyzed.",
+      "verification": "NCBI BioProject efetch for PRJNA993162 returns GEO GSE236948 and links PMID 40240607. The GEO web page currently presents browser verification.",
+      "dataRole": "external-regulatory-prior"
     }
   ],
   "analysisFramework": [

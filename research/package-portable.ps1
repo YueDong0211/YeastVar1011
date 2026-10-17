@@ -12,6 +12,10 @@ $folder = Join-Path $stage 'YeastVar1011'
 try {
     Copy-Item -LiteralPath (Join-Path $packageRoot 'dist') -Destination $folder -Recurse
     Copy-Item -LiteralPath (Join-Path $packageRoot 'portable') -Destination $folder -Recurse
+    [IO.Directory]::CreateDirectory((Join-Path $folder 'docs')) | Out-Null
+    foreach ($manual in @('LOCAL_ASSISTANT.md','RESEARCH_UPDATE_v22.md')) {
+        Copy-Item -LiteralPath (Join-Path $packageRoot ('docs/' + $manual)) -Destination (Join-Path $folder 'docs')
+    }
     foreach ($name in @('START.cmd','STOP.cmd','CREATE-SHORTCUT.cmd','LICENSE','THIRD_PARTY_NOTICES.md','DATA_SOURCES.md')) {
         Copy-Item -LiteralPath (Join-Path $packageRoot $name) -Destination $folder
     }

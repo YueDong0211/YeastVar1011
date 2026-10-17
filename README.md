@@ -11,7 +11,7 @@
 [![Website and platform checks](https://github.com/YueDong0211/YeastVar1011/actions/workflows/pages.yml/badge.svg)](https://github.com/YueDong0211/YeastVar1011/actions/workflows/pages.yml)
 [![Raw FASTQ QC integration](https://github.com/YueDong0211/YeastVar1011/actions/workflows/analysis-integration.yml/badge.svg)](https://github.com/YueDong0211/YeastVar1011/actions/workflows/analysis-integration.yml)
 [![Conda package candidate](https://github.com/YueDong0211/YeastVar1011/actions/workflows/bioconda-package.yml/badge.svg)](https://github.com/YueDong0211/YeastVar1011/actions/workflows/bioconda-package.yml)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23429612.svg)](https://doi.org/10.5281/zenodo.23429612)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23429611.svg)](https://doi.org/10.5281/zenodo.23429611)
 
 </div>
 
@@ -33,8 +33,13 @@ YeastVar1011 is an open-source research-plan workstation for yeast single-cell a
 | Research extensions | Enrichment, regulatory and co-expression networks, RNA dynamics, trajectories, perturbation modelling and population-genetic analyses with explicit input requirements |
 | Plan review | Inspect dependencies, parameters, formulas, outputs and primary references; export documents, tables, a workflow and an editable plan backup |
 | Interface | Classic planning or an optional immersive yeast scene; draggable companion, accessible controls, reduced motion and local data management |
+| Local research assistant | A small on-device language model explains retrieved catalogue entries and the current plan, with clickable source records and no API key |
 
 Both planning modes edit the same plan. The 3D cell is an authored biological illustration. Scene responses are interface cues, not experimental observations. Source-specific reference statistics remain distinct from measurements imported from your own project.
+
+Open the draggable companion and choose **Ask assistant → Load small model** to use the local model. The first load downloads about 519 MB of fixed Qwen model files; subsequent loads reuse the browser cache. Questions and selected plan context stay on the device. Stop, unload and model-cache deletion are available in the same panel. Catalogue search also works without loading the model. See [local model setup and verification](docs/LOCAL_ASSISTANT.md).
+
+The v22 catalogue adds Ty/repeat-expression analysis, between-strain variance across cell states, cross-state programmes, modular RNA dynamics, evidence-stratified regulatory networks and mechanistic simulation. New marker evidence includes the complete author-selected Su 2023 amino-acid/glucose-starvation tables and named Brettner 2024 state associations. The [v22 evidence update](docs/RESEARCH_UPDATE_v22.md) describes inputs, sources and remaining coverage needs.
 
 ## Run locally
 

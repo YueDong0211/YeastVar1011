@@ -2,7 +2,7 @@
 'use strict';
 (() => {
  const ROOT='https://github.com/YueDong0211/YeastVar1011';
- const LINKS=Object.freeze({github:ROOT,issues:ROOT+'/issues/new/choose',contribute:ROOT+'/blob/main/CONTRIBUTING.md',licenses:ROOT+'/blob/main/THIRD_PARTY_NOTICES.md',sources:ROOT+'/blob/main/DATA_SOURCES.md',archive:'https://doi.org/10.5281/zenodo.23429612'});
+ const LINKS=Object.freeze({github:ROOT,issues:ROOT+'/issues/new/choose',contribute:ROOT+'/blob/main/CONTRIBUTING.md',licenses:ROOT+'/blob/main/THIRD_PARTY_NOTICES.md',sources:ROOT+'/blob/main/DATA_SOURCES.md',archive:'https://doi.org/10.5281/zenodo.23429611'});
  const TEXT={
   title:['共同完善这个工作站','Build the workstation together','Améliorons cet atelier ensemble','Mejoremos esta estación juntos','Hobetu lan-estazio hau elkarrekin'],
   body:['代码、界面与研究证据均可提出改进。补充 marker 或方法时，请附上原始来源和适用条件。','Contribute code, interface improvements or research evidence. Include the primary source and context for a marker or method.','Proposez du code, des améliorations de l’interface ou des preuves scientifiques. Joignez la source primaire et le contexte du marqueur ou de la méthode.','Aporte código, mejoras de interfaz o evidencias. Incluya la fuente primaria y el contexto del marcador o método.','Ekarri kodea, interfazearen hobekuntzak edo ikerketa-ebidentziak. Gehitu markatzailearen edo metodoaren jatorrizko iturria eta testuingurua.'],

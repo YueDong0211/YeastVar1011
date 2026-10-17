@@ -5,8 +5,8 @@ title: "YeastVar1011: a yeast single-cell research-plan workstation"
 authors:
   - family-names: Dong
     given-names: Yue
-version: 21.0.0
-doi: 10.5281/zenodo.23429612
+version: 22.0.0
+doi: 10.5281/zenodo.23429611
 date-released: 2026-10-17
 license: MIT
 repository-code: "https://github.com/YueDong0211/YeastVar1011"
