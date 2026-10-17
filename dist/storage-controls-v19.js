@@ -37,7 +37,7 @@
  };
  const T=k=>copy[k]?.[Math.max(0,LANGS.indexOf(A()?.prefs?.().language||'zh'))]||k,E=s=>A()?.esc?.(String(s))||String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const TEMP=new Set(['yv.workbench.v5','yv.intro.v2','yv.intro.v3']);
- const APPEARANCE=new Set(['yv.preferences','yv.atelier.window','yv.cell-visual.v5.paused','yv.cinematic.v15.mode','yv.navigation.v4','yv.navigation.v11','yv.export.theme','yv.export.options','yv.journey.v17','yv.mascot.v1','yv.tools.layout',...TEMP]);
+ const APPEARANCE=new Set(['yv.preferences','yv.atelier.window','yv.cell-visual.v5.paused','yv.cinematic.v15.mode','yv.navigation.v4','yv.navigation.v11','yv.export.theme','yv.export.options','yv.journey.v17','yv.specimen.v23','yv.mascot.v1','yv.tools.layout',...TEMP]);
  const OWN=k=>k.startsWith('yv.')||k.startsWith('yv1011-'),RECEIPT='yv.storage.receipt.v19';
  let dialog,opener,returnCompanion=false,scope=null,busy=false,stats=null,observer=null,inspection=0;
  function storageRows(){const rows=[];for(const [type,storage] of [['local',localStorage],['session',sessionStorage]])for(let i=0;i<storage.length;i++){const key=storage.key(i);if(OWN(key)){const value=storage.getItem(key)||'';rows.push({type,key,bytes:2*(key.length+value.length)});}}return rows;}

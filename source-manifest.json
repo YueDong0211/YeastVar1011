@@ -8,8 +8,8 @@
     },
     {
       "path": "dist/app.js",
-      "bytes": 59481,
-      "sha256": "bf255862f074b7df263be6177248fa6d2b0a470927e6da8cfef19a821d85fae6"
+      "bytes": 59655,
+      "sha256": "a3d1663e0bb7ff4eb5e2986ec8d61b2b920ec28ccce53fd035196f2ada188cae"
     },
     {
       "path": "dist/assets/downloads/YeastVar1011-analysis-v21.zip",
@@ -248,8 +248,8 @@
     },
     {
       "path": "dist/controls-v4.js",
-      "bytes": 36686,
-      "sha256": "40ef27a18578ecb70bd51f40bc935d22cc6f156c097690c59b85b61fd1c6bffe"
+      "bytes": 36756,
+      "sha256": "49c1275c5667e005fc877f8dfc7e8f03f71884f3914f3aff7a266100516256ce"
     },
     {
       "path": "dist/data/literature.json",
@@ -428,8 +428,8 @@
     },
     {
       "path": "dist/index.html",
-      "bytes": 12352,
-      "sha256": "cbabf6219aff73ca28c7776abe65d1b3f60dcc287e325b16eb09f1f2f08241d6"
+      "bytes": 12482,
+      "sha256": "ebfc9cf9e2f66ad614d44453a42ecd3d892a3cc971303b84ff74e1a02d83103f"
     },
     {
       "path": "dist/interface-v15.css",
@@ -443,8 +443,8 @@
     },
     {
       "path": "dist/journey-scene-v17.js",
-      "bytes": 57870,
-      "sha256": "cf10991e18ab034f8cb985a200dd85d7b08a90b114a6a8b091db3ce62e559c3f"
+      "bytes": 70629,
+      "sha256": "9c5014cd4fb07a863cc7b5a63df3df5f0fd5ab480a126b7f3795ecdfc87a1fbf"
     },
     {
       "path": "dist/journey-v17.css",
@@ -453,8 +453,8 @@
     },
     {
       "path": "dist/journey-v17.js",
-      "bytes": 59256,
-      "sha256": "5962ef1bfbf065c10bec965e4c1913226881495c9d00985c7b12c2b3b00cc157"
+      "bytes": 59733,
+      "sha256": "380987e3f3af5dc47a356fe26c5ab6864752a447987c840eb9783ec49f142219"
     },
     {
       "path": "dist/lab-locales.js",
@@ -658,8 +658,8 @@
     },
     {
       "path": "dist/polish-v19.css",
-      "bytes": 4401,
-      "sha256": "6f4057d4b7fa97949d1f3d4d91d3475568d49e49596be9d1fc45b20127b48f31"
+      "bytes": 4665,
+      "sha256": "e76f9faa7be8f31c67e50d8a78fa5298821beeacb5c831cbe68084605215831e"
     },
     {
       "path": "dist/polish-v6.css",
@@ -723,8 +723,8 @@
     },
     {
       "path": "dist/storage-controls-v19.js",
-      "bytes": 21124,
-      "sha256": "67cb0983c168306c9438847677e7763bbd702ee38181f5ee4a5c5cb327af92af"
+      "bytes": 21142,
+      "sha256": "2134e1a0f4f50212c2b27246b285837c474c4a2c4e64a45e8c556e69ff2a1ad8"
     },
     {
       "path": "dist/studio.css",
@@ -1513,8 +1513,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 8708,
-      "sha256": "3d9e200e9bad06c2ab503e3cfb3c64118ca2692901efaaaa4f8ab3b6e49b2750"
+      "bytes": 8743,
+      "sha256": "3d48d7d0535a46d698f7e7811649e8ad99809adbad23eeab40503b62dfaf9698"
     },
     {
       "path": "LICENSE",
@@ -1610,6 +1610,21 @@
       "path": ".gitignore",
       "bytes": 122,
       "sha256": "fff26b6779813e48eea31712a6aed2f5f2ea8ed1b786025587bb4e85a1a10c8a"
+    },
+    {
+      "path": "dist/specimen-studio-v23.css",
+      "bytes": 9214,
+      "sha256": "7b51af8400b7807c4b541bd0e9ecddc317fd233922fc0cdd3510b9b23f4b7142"
+    },
+    {
+      "path": "dist/specimen-studio-v23.js",
+      "bytes": 11557,
+      "sha256": "2dd96debd03dcf4d2182f79dcb9929d1dd61b766d739b63ee2cc99f937a88476"
+    },
+    {
+      "path": "docs/SPECIMEN_STUDIO.md",
+      "bytes": 1798,
+      "sha256": "2e2e1033e284c391db057ceee7d2130092f7641dfb744eadbf6675f3d0fa675b"
     }
   ]
 }

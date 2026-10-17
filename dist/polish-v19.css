@@ -14,8 +14,14 @@ html[data-theme] #sidebar .brand-emblem>img{
 /* Dedicated icon frames share an even, non-shrinking centre. */
 .topbar .icon-btn,.a9-window-controls .icon-btn,.pw-metric>.icon-btn,
 .row-actions>.icon-btn,.paper-card-actions>.icon-btn,.companion-hub-close,
-.c18-search-clear,.c4-control,.c4-order-arrow{
+.c18-search-clear{
   display:inline-grid;place-items:center;align-content:center;justify-content:center;
+  padding:0;line-height:1;flex-shrink:0;
+}
+/* Sidebar edit arrows and the mobile close button own their display state in
+   controls-v4.css. Alignment must not reveal them in normal navigation. */
+.c4-control,.c4-order-arrow{
+  place-items:center;align-content:center;justify-content:center;
   padding:0;line-height:1;flex-shrink:0;
 }
 .topbar .icon-btn>svg,.a9-window-controls .icon-btn>svg,

@@ -99,7 +99,7 @@
   function openSidebar(){clearSidebarTimers();if(isExpanded())return;if(mobile()){$('#sidebar')?.classList.add('mobile-open');$('#mobile-shade')?.classList.add('visible')}else peek=true;apply()}
   function closeSidebar({force=false,focus=false}={}){
     const returnFocus=focus||$('#sidebar')?.contains(document.activeElement);
-    clearSidebarTimers();if(mobile()){$('#sidebar')?.classList.remove('mobile-open');$('#mobile-shade')?.classList.remove('visible')}else{if(force){pinned=false;persist()}if(pinned)return;peek=false;suppressHover=hovering;layoutOpen=false;editing=false;toolbar()}
+    clearSidebarTimers();if(mobile()){$('#sidebar')?.classList.remove('mobile-open');$('#mobile-shade')?.classList.remove('visible');layoutOpen=false;editing=false;toolbar()}else{if(force){pinned=false;persist()}if(pinned)return;peek=false;suppressHover=hovering;layoutOpen=false;editing=false;toolbar()}
     apply();if(returnFocus)$('#menu-button')?.focus({preventScroll:true});
   }
   function setPinned(value){if(mobile())return;pinned=!!value;peek=false;clearSidebarTimers();persist();if(!pinned){suppressHover=hovering;layoutOpen=false;editing=false;$('#menu-button')?.focus({preventScroll:true})}toolbar();apply();say(st(pinned?'pinned':'automatic'))}
@@ -244,7 +244,7 @@
     document.addEventListener('click',event=>{const button=event.target.closest('[data-c4]');if(!button)return;event.preventDefault();event.stopPropagation();const action=button.dataset.c4;
       if(action==='toggle-sidebar')toggleSidebar();
       else if(action==='pin-sidebar')setPinned(!pinned);
-      else if(action==='layout'){layoutOpen=!layoutOpen;toolbar();apply();if(layoutOpen)(mobile()?$('[data-c4="arrange"]'):$('#c4-width'))?.focus();else $('[data-c4="layout"]')?.focus();}
+      else if(action==='layout'){layoutOpen=!layoutOpen;if(!layoutOpen)editing=false;toolbar();apply();if(layoutOpen)(mobile()?$('[data-c4="arrange"]'):$('#c4-width'))?.focus();else $('[data-c4="layout"]')?.focus();}
       else if(action==='arrange'){editing=!editing;toolbar();decorateNavigation();apply();if(editing)$('#primary-nav .c4-drag-handle')?.focus();else $('[data-c4="arrange"]')?.focus();}
       else if(action==='reset'){width=248;order=[...DEFAULT_ORDER];persist();decorateNavigation();apply();say(t('resetDone'));}
       else if(action==='up'||action==='down'){const row=button.closest('.c4-nav-row');moveRow(row,action==='up'?-1:1);button.disabled?$('.c4-drag-handle',row)?.focus():button.focus();}
