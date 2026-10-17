@@ -429,7 +429,7 @@
     {
       "path": "dist/index.html",
       "bytes": 12763,
-      "sha256": "2380d553c089178f75fa8b6d60b1ac9da22f58d224d77bc5652e2df48ee90b5f"
+      "sha256": "e0b37742b1f711db385c0d78292998a0391cc2c082d05c585c10c235a0215b68"
     },
     {
       "path": "dist/interface-v15.css",
@@ -518,8 +518,8 @@
     },
     {
       "path": "dist/marker-workspace.js",
-      "bytes": 82435,
-      "sha256": "249aca4d854d3edf24947700839f6ebb9e0ea4b2197e4ae1216ebf5acabeec35"
+      "bytes": 82437,
+      "sha256": "5067518bf71d06e9b7f2fab4b71b1be422b7875e0a32522001b9e6a069eebdf4"
     },
     {
       "path": "dist/mascot.css",
@@ -1673,8 +1673,8 @@
     },
     {
       "path": "research/qa-marker-metadata.cjs",
-      "bytes": 9264,
-      "sha256": "199ce3e81f02a66962f5074464d6104c8dec20ac71d2323c3eea3bc3a0a8b988"
+      "bytes": 9682,
+      "sha256": "f08101bf50f559070f1f85d0f396c28da2e7415f678ba91c3960df2d4da569f1"
     },
     {
       "path": "research/qa-modal-marker-logic.cjs",
