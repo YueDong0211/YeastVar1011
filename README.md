@@ -8,6 +8,10 @@
 
 [Open the workstation](https://yuedong0211.github.io/YeastVar1011/) · [Alternative website](https://yeastvar1011-research-atlas.robust-bread-5701.chatgpt.site) · [Contribute](CONTRIBUTING.md) · [Report an issue](https://github.com/YueDong0211/YeastVar1011/issues/new/choose)
 
+[![Website and platform checks](https://github.com/YueDong0211/YeastVar1011/actions/workflows/pages.yml/badge.svg)](https://github.com/YueDong0211/YeastVar1011/actions/workflows/pages.yml)
+[![Raw FASTQ QC integration](https://github.com/YueDong0211/YeastVar1011/actions/workflows/analysis-integration.yml/badge.svg)](https://github.com/YueDong0211/YeastVar1011/actions/workflows/analysis-integration.yml)
+[![Conda package candidate](https://github.com/YueDong0211/YeastVar1011/actions/workflows/bioconda-package.yml/badge.svg)](https://github.com/YueDong0211/YeastVar1011/actions/workflows/bioconda-package.yml)
+
 </div>
 
 YeastVar1011 is an open-source research-plan workstation for yeast single-cell analysis. It connects QC metrics, analysis tools, multi-tag marker evidence, expression-noise estimands and research extensions to their required inputs and sources. The 1011 *Saccharomyces cerevisiae* collection provides its population-research context.

@@ -32,3 +32,11 @@ html[data-theme] .command-result:hover,html[data-theme] .command-result:focus-vi
 .i15-transition-shortcut{display:block;margin-top:16px;padding-top:15px;border-top:1px solid var(--line);font-size:11px;line-height:1.6;color:var(--green)}
 .a9-appearance-popover{max-height:calc(100dvh - 24px);overflow-y:auto}
 @media(max-width:760px){#breadcrumb-page{font-size:12px;max-width:155px}.i15-search-filters{padding-inline:10px}.command-palette{max-height:calc(100dvh - 24px)!important}.command-input{padding:13px!important}.command-input input{font-size:16px!important}.i15-search-footer{font-size:9px;padding:10px 14px}html[data-theme] .pt-stage-list button{min-height:38px}}
+/* Reserve the language control's width; long page names ellipsize within the breadcrumb. */
+@media(max-width:760px){
+ .topbar .breadcrumb{flex:1;min-width:0}
+ .topbar .breadcrumb>#menu-button{flex-shrink:0}
+ .topbar .header-actions{flex-shrink:0}
+ #breadcrumb-page{display:block;position:relative;flex:0 1 auto;min-width:0;max-width:155px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:1.6;padding-right:20px}
+ #breadcrumb-page:after{position:absolute;right:7px;top:50%;margin-top:-4px}
+}

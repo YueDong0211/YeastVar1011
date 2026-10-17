@@ -44,6 +44,8 @@ The independent `bioconda-package.yml` workflow performs a native Linux build ag
 
 `noarch: generic` is appropriate for these static JavaScript assets and source files. The `__unix` dependency restricts the command wrappers to Unix platforms; Bioconda does not provide Windows packages. Runtime Node.js is constrained to `>=22,<25`, matching the supported Node 22 and 24 lines. The conda-forge Node package has builds for Linux x86_64 and macOS x86_64/ARM64; the dedicated scientific workflow has its own platform and environment requirements.
 
+The recipe exports a major-version bound with `pin_subpackage(name, max_pin="x")`, following Bioconda's semantic-versioning convention. Downstream recipes that build against this package therefore retain a compatible major-version dependency. See the [official pull-request template](https://github.com/bioconda/bioconda-recipes/blob/master/.github/PULL_REQUEST_TEMPLATE.md).
+
 All copy sources are beneath Conda's `SRC_DIR`. Installation targets are beneath `PREFIX`. Wrappers locate `share/yeastvar1011` relative to their installed `bin` location, so the package does not embed a workstation path or assume its original build prefix. `RECIPE_DIR` supplies the wrapper source. No user configuration, browser storage, raw sequencing data, or development cache is copied into the package.
 
 ## Licenses and review

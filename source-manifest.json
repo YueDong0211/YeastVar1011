@@ -218,13 +218,13 @@
     },
     {
       "path": "dist/cluster-workspace-v21.css",
-      "bytes": 19104,
-      "sha256": "b2e112426465f35e3472830a475d5ffa73976b7e920dc87a502af983f695b1f2"
+      "bytes": 19775,
+      "sha256": "64abc38f70cc4ec4f8f40576b88faa8cbaed88350af3696404610fd63f40dd18"
     },
     {
       "path": "dist/cluster-workspace-v21.js",
-      "bytes": 48428,
-      "sha256": "a5d22a19005f3d6e5f4fefcca3d51d670e47bcb6d87e3d3cfac198c893e2baef"
+      "bytes": 49616,
+      "sha256": "2cbf5f378830274ec7bf7a88691369f8c261eab82c9b7d85cc0a33fed86c03d1"
     },
     {
       "path": "dist/companion-hub.css",
@@ -433,8 +433,8 @@
     },
     {
       "path": "dist/interface-v15.css",
-      "bytes": 4328,
-      "sha256": "9ed4626bf62eb7cadb74c6bfb5ac49d7e51d70b37b275bd88355292a0624d5d7"
+      "bytes": 4841,
+      "sha256": "2f7e2c52dd4343282833ba96213a2258403de45c1a61b7b27d3753e87fa4ac54"
     },
     {
       "path": "dist/interface-v15.js",
@@ -1243,8 +1243,8 @@
     },
     {
       "path": "scripts/prepare-public.cjs",
-      "bytes": 3707,
-      "sha256": "cdfdb557916e14375bf282680a4365ae275b9a3e590e5ef6cd6f917c500a546a"
+      "bytes": 3724,
+      "sha256": "5f0494acdeb09aa31cae6834943b5b556aa67f2c94512e29d30dd89eb2311c12"
     },
     {
       "path": "scripts/qa-doctor.cjs",
@@ -1297,9 +1297,19 @@
       "sha256": "018ed5c5502a896ea0edb4e74d859f0bca565887925f14d2fc72f9f2a4268643"
     },
     {
+      "path": ".gitattributes",
+      "bytes": 253,
+      "sha256": "bb88a25c4f4a07aacf87b8ef65f2129e199e9efe5bd38880029e6a8e2e7a177c"
+    },
+    {
       "path": "docs/DEPLOYMENT.md",
       "bytes": 7737,
       "sha256": "9c840a6e9a5e45d6e5a9215e343efd52b879dab800cd5b44a2781b04426567fb"
+    },
+    {
+      "path": "docs/PUBLISHING.md",
+      "bytes": 11117,
+      "sha256": "c8c7d9593f8dd57701a1e4d5f0e740d00b397c2d43ad483593e521793a7279d0"
     },
     {
       "path": "docs/WORKSTATION.md",
@@ -1310,6 +1320,11 @@
       "path": "docs/images/workstation.png",
       "bytes": 936418,
       "sha256": "32bfe4ae7c3cc140a7daa8ec1ba05e3ab08e634c99b5794cf870484f53260d1f"
+    },
+    {
+      "path": "docs/software-methods.md",
+      "bytes": 20962,
+      "sha256": "7bc6729746e2a5c6225ba65f8d093090e79fb9b54c1b89854c9666723ceb19f3"
     },
     {
       "path": "analysis/.gitignore",
@@ -1378,8 +1393,8 @@
     },
     {
       "path": "packaging/bioconda/README.md",
-      "bytes": 5580,
-      "sha256": "a1800108c3bb42d6ce6bfedd07e1d3435b3e6915b287bdc0f5c87a6715ac5ac6"
+      "bytes": 5957,
+      "sha256": "3320953fecb154ba0dba45ab1b2fb04ce39e69d5d43ef446979ed57f48ff3e5d"
     },
     {
       "path": "packaging/bioconda/build.sh",
@@ -1388,8 +1403,8 @@
     },
     {
       "path": "packaging/bioconda/meta.yaml.in",
-      "bytes": 2340,
-      "sha256": "47dec6551e4e1746cb5d6a5fff0ff0c7362bdaf389a84b569a57db271f592c79"
+      "bytes": 2401,
+      "sha256": "1167b55293eca5469be13ce65268ae85f385f67863d60f4243e5745b1ee75cab"
     },
     {
       "path": "packaging/bioconda/run_test.sh",
@@ -1413,13 +1428,13 @@
     },
     {
       "path": "biotools.json",
-      "bytes": 2118,
-      "sha256": "d52cc2fe8ad3112d35427b2248441aee27a1da5fe00471a8f1e40cd6d6b57619"
+      "bytes": 3301,
+      "sha256": "a2ce0dc529bc6d89ea91456983469d433650d770059db826ffa8c3dd42f06917"
     },
     {
       "path": "README.md",
-      "bytes": 6790,
-      "sha256": "e9f189b0653542b9252b6c6e7eaffcb9c162a6d30fda0997396e65e7f6a62163"
+      "bytes": 7403,
+      "sha256": "f78fb6fa7a8e6fd91c8f59ad5d323573497d7a26b7df1e2beadc6363cb48af81"
     },
     {
       "path": "LICENSE",

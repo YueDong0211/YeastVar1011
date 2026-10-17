@@ -4,7 +4,7 @@ const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypt
 const root=path.resolve(__dirname,'..');
 const releaseRoot=path.join(root,'releases');
 const target=path.join(releaseRoot,'public-source-'+new Date().toISOString().replace(/[:.]/g,'-'));
-const top=['dist','portable','scripts','.github','docs','analysis','packaging','.zenodo.json','biotools.json','README.md','LICENSE','CONTRIBUTING.md','THIRD_PARTY_NOTICES.md','DATA_SOURCES.md','CITATION.cff','START.cmd','STOP.cmd','CREATE-SHORTCUT.cmd','package.json','package-lock.json'];
+const top=['dist','portable','scripts','.github','.gitattributes','docs','analysis','packaging','.zenodo.json','biotools.json','README.md','LICENSE','CONTRIBUTING.md','THIRD_PARTY_NOTICES.md','DATA_SOURCES.md','CITATION.cff','START.cmd','STOP.cmd','CREATE-SHORTCUT.cmd','package.json','package-lock.json'];
 const checks=['research/check_site.cjs','research/qa-dev-server.cjs','research/package-portable.ps1'];
 if(!target.startsWith(releaseRoot+path.sep)||fs.existsSync(target))throw Error('Release directory must be a new child of releases/');
 const files=[];
