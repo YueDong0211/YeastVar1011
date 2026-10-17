@@ -66,3 +66,10 @@
 .lm24 .lm22-compose-footer{padding-top:8px}.lm24 #lm22-status{font-size:10px}
 .lm24 .lm24-offline{justify-content:flex-start;gap:8px;line-height:1.6}
 @media(max-width:480px){.companion-hub:has(.lm24) .companion-hub-header{padding:13px 15px;min-height:76px}.companion-hub:has(.lm24) .companion-hub-tabs{padding-inline:8px}.companion-hub:has(.lm24) .companion-hub-tabs button{font-size:10px}}
+
+/* Keep a newly retrieved answer in view before its optional evidence drawer. */
+.lm24:has(.lm22-turn) .lm22-download,.lm24:has(.lm22-turn)>p.lm22-fine:last-child{display:none}
+.lm24:has(.lm22-turn) .lm24-context{padding-block:7px}.lm24:has(.lm22-turn) .lm24-context>span{display:none}
+.lm24:has(.lm22-turn) .lm24-context>button{grid-row:1}
+.lm24 .lm22-conversation{min-height:160px}
+@media(max-height:700px){.lm24 .lm22-conversation{min-height:110px}}

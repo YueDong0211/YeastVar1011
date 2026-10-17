@@ -10,7 +10,7 @@ async function check(name,fn){try{const detail=await fn();checks.push({name,pass
  const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_PATH||(process.platform==='win32'?'C:/Program Files/Google/Chrome/Application/chrome.exe':undefined)});
  const page=await browser.newPage({viewport:{width:1440,height:1000},reducedMotion:'reduce'});
  page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(/huggingface|hf\.co/.test(r.url()))external.push(r.url());});
- await page.addInitScript(()=>{sessionStorage.setItem('yv.intro.v3','seen');});
+  await page.addInitScript(()=>{if(window===window.top)sessionStorage.setItem('yv.intro.v3','seen');});
  try{
   for(let retry=0;retry<20;retry++){try{if((await fetch(base)).ok)break;}catch{}if(retry===19)throw Error('Preview server unavailable');await new Promise(r=>setTimeout(r,250));}
   await page.goto(base);await page.waitForFunction(()=>window.__YV_READY__&&YV_RESEARCH_ASSISTANT&&YV_COMPANION&&document.querySelector('#intro')?.hidden);
@@ -51,19 +51,19 @@ async function check(name,fn){try{const detail=await fn();checks.push({name,pass
    await page.locator('[data-lm22=load]').click();await page.waitForFunction(()=>YV_LOCAL_MODEL.state().status==='ready');
    await page.locator('#lm22-question').fill('IRescue');await page.locator('#lm22-send').click();await page.locator('.lm22-turn:last-child [data-lm22=explain]').click();
    await page.waitForFunction(()=>!YV_RESEARCH_ASSISTANT.state().busy);
-   assert((await page.locator('.lm22-answer-text').innerText()).includes('<img'));assert.equal(await page.locator('.lm22-answer img').count(),0);
+   assert((await page.locator('.lm22-turn:last-child .lm22-answer-text').innerText()).includes('<img'));assert.equal(await page.locator('.lm22-answer img').count(),0);
    assert.equal(await page.evaluate(()=>window.__unsafe),undefined);assert(await page.locator('.lm22-sources [data-lm22=record]').count()>0);
    assert((await page.evaluate(()=>__ui.messages[1].content)).includes('IRescue'));
    assert.equal(await page.evaluate(()=>JSON.stringify(YV_BUILDER.getPlan())),before);
    await page.screenshot({path:path.join(out,'answer-phone.png')});
   });
   await check('Current-plan opt-out excludes the plan from prompt; history clears without unloading',async()=>{
-   await page.locator('#lm22-plan').uncheck();await page.locator('#lm22-question').fill('IRescue');await page.locator('#lm22-send').click();await page.waitForFunction(()=>!YV_RESEARCH_ASSISTANT.state().busy);
+   await page.locator('#lm22-plan').uncheck();await page.locator('#lm22-question').fill('IRescue');await page.locator('#lm22-send').click();await page.locator('.lm22-turn:last-child [data-lm22=explain]').click();await page.waitForFunction(()=>!YV_RESEARCH_ASSISTANT.state().busy);
    assert(!(await page.evaluate(()=>__ui.messages[1].content)).includes('CURRENT PLAN'));
    await page.locator('.lm22-controls > summary').click();await page.locator('[data-lm22=clear]').click();assert.equal(await page.locator('.lm22-turn').count(),0);assert.equal(await page.evaluate(()=>YV_LOCAL_MODEL.state().status),'ready');
   });
   await check('Stop cancels inference; cache removal requires confirmation and preserves plan',async()=>{
-   await page.evaluate(()=>__ui.mode='pending');await page.locator('#lm22-question').fill('IRescue');await page.locator('#lm22-send').click();
+   await page.evaluate(()=>__ui.mode='pending');await page.locator('#lm22-question').fill('IRescue');await page.locator('#lm22-send').click();await page.locator('.lm22-turn:last-child [data-lm22=explain]').click();
    await page.waitForFunction(()=>YV_RESEARCH_ASSISTANT.state().busy);await page.locator('[data-lm22=stop]').click();assert.equal(await page.evaluate(()=>YV_RESEARCH_ASSISTANT.state().busy),false);
    await page.locator('[data-lm22=cache]').click();assert.equal(await page.evaluate(()=>__ui.caches),0);
    await page.locator('[data-lm22=confirm-cache]').click();assert.equal(await page.evaluate(()=>__ui.caches),1);
@@ -74,7 +74,7 @@ async function check(name,fn){try{const detail=await fn();checks.push({name,pass
    assert.equal(await page.locator('.lm22-turn:last-child').getAttribute('data-answer-kind'),'source');
    assert((await page.locator('.lm22-turn:last-child .lm22-answer-text').innerText()).includes('CLN2'));
    assert.equal(await page.evaluate(()=>YV_LOCAL_MODEL.state().status),'idle');
-   await page.locator('.lm22-turn:last-child .lm22-sources [data-lm22=record]').first().click();assert.equal(await page.locator('#yv-companion-panel').isVisible(),false);
+   await page.locator('.lm22-turn:last-child .lm22-sources > summary').click();await page.locator('.lm22-turn:last-child .lm22-sources [data-lm22=record]').first().click();assert.equal(await page.locator('#yv-companion-panel').isVisible(),false);
    await page.locator('#drawer:not([hidden])').waitFor();
    assert((await page.locator('body').innerText()).includes('CLN2'));
   });

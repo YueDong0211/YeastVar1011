@@ -429,7 +429,7 @@
     {
       "path": "dist/index.html",
       "bytes": 12763,
-      "sha256": "eba595c70f20225d5be101ee4639d8ea1d5cd80980c965494139bf069a218820"
+      "sha256": "163ac72cce8c7b6be7630821617cab99fa2b01e500029dfa47961162c7ddcd28"
     },
     {
       "path": "dist/interface-v15.css",
@@ -688,13 +688,13 @@
     },
     {
       "path": "dist/research-assistant-v22.css",
-      "bytes": 12281,
-      "sha256": "c915cd07836f5407be48290561429237338307afa484163544af698a11f11d3b"
+      "bytes": 12735,
+      "sha256": "d5465e235be55af9297bb0a023c26eaaabdfd7e0756d2b150926cbeee763c132"
     },
     {
       "path": "dist/research-assistant-v22.js",
-      "bytes": 41260,
-      "sha256": "fe16409f0e72627f7db78a2e81b1e0260204bf82353ad9f2a3daaf743fe325ce"
+      "bytes": 41397,
+      "sha256": "4b5aec7c7c9cf0912bf107881b9678e9db836a6391dc7c307f0ca0010fb81a22"
     },
     {
       "path": "dist/research-atlas-v8.css",
@@ -1588,8 +1588,8 @@
     },
     {
       "path": "research/qa-assistant-ui-v22.cjs",
-      "bytes": 13783,
-      "sha256": "896455c420f41794e9612442c5024586105d344967e3cef3c77abfa206b23e63"
+      "bytes": 14049,
+      "sha256": "f9ae35a1486b63dded57e69c787ba74821170b9de1b66c85222c195722213bf0"
     },
     {
       "path": "research/qa-local-model-lifecycle-v22.cjs",
