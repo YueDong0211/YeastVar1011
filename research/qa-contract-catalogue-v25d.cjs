@@ -27,6 +27,8 @@ const check=(name,fn)=>{fn();checks++;console.log('PASS '+name);};
 const plan=(toolId,branchId,extra={})=>({schema:'yeastvar1011-plan-v2',inputRoute:'count_matrix',projects:[],tools:[toolId],metrics:[],stages:tools.get(toolId).steps,availableData:['count_matrix','sample_metadata'],parameters:{},toolBranches:branchId?{[toolId]:branchId}:{},inputEvidence:{},methodOptionIds:[],resultSpecificationIds:[],...extra});
 const method=p=>review.methodContext(p,catalog).tools[0];
 const provideEvidence=(p,toolId,branchId)=>{for(const r of review.toolContract(tools.get(toolId)).branches.find(b=>b.id===branchId).evidenceRequirements||[]){p.inputEvidence[r.inputId]??={};p.inputEvidence[r.inputId][r.field]=r.min??'recorded-study-source.tsv';}return p;};
+// Explicit v30 append-only allowlist; earlier identities and frozen hashes stay protected.
+const v30Ids={tools:['stan','sbc','mcmcglmm','mvmorph','iqtree3','raxmlng','beast2','revbayes','ggtree','ete4','slim5','msprime','gcta'],metrics:['h2_architecture_sensitivity','dominance_variance_components','structural_dosage_effects','cis_trans_noise_contrasts','noise_neutral_divergence','evolution_tree_support','evolution_trait_model_comparison','evolution_ancestral_uncertainty','evolution_prediction_validation'],formulas:['noise_genetic_correlation']};
 const knownRoutes='audit_raw mean_noise noise_components noise_power noise_cycle annotation_transfer state_composition grn_rewiring velocity_feasibility trajectory_structure noise_qtl genotype_state foundation_benchmark marker_panel marker_inference_audit local_covariation_modules count_mean_qtl_comparator temporal_mechanistic_grn rna_measurement_length_audit cross_implementation_robustness'.split(' ');
 
 // Frozen pre-extension catalogue, protected by the original SHA-256 below.
@@ -60,7 +62,8 @@ check('All original full route indices, option definitions and citation indices 
  const historicalCopy=JSON.parse(JSON.stringify(index));
  for(const edit of copyEdits){assert.ok(['title','interpretationBoundary'].includes(edit.field));const option=historicalCopy[edit.routeId].methodOptions.find(o=>o.id===edit.optionId);assert.equal(option[edit.field],edit.after);option[edit.field]=edit.before;}
  assert.equal(crypto.createHash('sha256').update(serialize(historicalCopy)).digest('hex'),'8dd3a33871246da4d0c1a563d5decc1f7247cae4406a79d851ca3a6cb08e102c');
- assert.equal(routes.length,55);assert.equal(tools.size,167);assert.equal(metrics.size,312);assert.equal(inputs.size,39);
+ assert.equal(routes.length,55);assert.equal(inputs.size,39);
+ for(const [kind,originalTotal]of [['tools',167],['metrics',312],['formulas',28]]){const records=catalog.workflow[kind];assert.deepEqual(records.filter(x=>x.addedIn==='v30').map(x=>x.id).sort(),[...v30Ids[kind]].sort());assert.equal(records.filter(x=>x.addedIn!=='v30').length,originalTotal);assert.equal(records.length,originalTotal+v30Ids[kind].length);}
  assert.deepEqual(catalog.workflow.tools.filter(x=>x.addedIn==='v29').map(x=>x.id).sort(),['brms','phytools2']);
  assert.deepEqual(catalog.workflow.metrics.filter(x=>x.addedIn==='v29').map(x=>x.id).sort(),['noise_phylogenetic_signal','posterior_sampling_diagnostics']);
 });

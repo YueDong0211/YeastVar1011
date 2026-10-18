@@ -22,7 +22,7 @@ let browser;
  await page.evaluate(()=>YV_COMPANION.open({tab:'community'}));await page.locator('#yv-companion-panel .p20-project').waitFor();assert.equal(await page.locator('#yv-companion-panel [data-project-link=issues]').count(),1);await page.evaluate(()=>YV_COMPANION.close());
  for(const lang of ['zh','en','fr','es','eu']){await page.evaluate(lang=>{YV_APP.setPreference('language',lang);location.hash='overview'},lang);await page.waitForFunction(()=>YV_APP.route()==='overview');assert((await page.locator('.p20-footer-links').innerText()).includes('GitHub'));}
  // Exercise the real tool-card -> floating detail path, not just resolver fixtures.
- const planBeforeQTL=await page.evaluate(()=>JSON.stringify(YV_BUILDER.getPlan()));
+ const planBeforeQTL=await page.evaluate(()=>JSON.stringify((({updated,...rest})=>rest)(YV_BUILDER.getPlan())));
  // Marker filters: one visible category, bounded lists and a single scroll owner.
  await page.evaluate(()=>{YV_APP.setPreference('language','en');location.hash='markers?view=catalogue'});
  await page.locator('#mw-facet-tab-phase').waitFor();
@@ -88,7 +88,7 @@ let browser;
  await page.setViewportSize({width:1440,height:960});
  await page.locator('#language-select').selectOption('en');
  await page.locator('#mw-filter-panel [data-mw="reset"]').click();
- assert.equal(await page.evaluate(()=>JSON.stringify(YV_BUILDER.getPlan())),planBeforeQTL,'Filter navigation must not change the research plan');
+ assert.equal(await page.evaluate(()=>JSON.stringify((({updated,...rest})=>rest)(YV_BUILDER.getPlan()))),planBeforeQTL,'Filter navigation must not change the research plan');
 
  await page.evaluate(()=>{YV_APP.setPreference('language','en');location.hash='projects?view=qtl'});
  await page.locator('#qtl25-query').waitFor();
@@ -113,31 +113,44 @@ let browser;
  await page.locator('.rc12-panel').waitFor();
  await page.locator('.qtl25-navigation a[href="#projects"]').click();
  await page.locator('#ra-query').waitFor();
- assert.equal(await page.evaluate(()=>JSON.stringify(YV_BUILDER.getPlan())),planBeforeQTL,'QTL browsing must not mutate the plan');
+ assert.equal(await page.evaluate(()=>JSON.stringify((({updated,...rest})=>rest)(YV_BUILDER.getPlan()))),planBeforeQTL,'QTL browsing must not mutate the plan');
  // Remote GitHub CI only. Local visual checks use the interactive browser.
  let evolutionCatalogue=false;
  if(process.env.GITHUB_ACTIONS==='true'){
-  const evolutionBefore=await page.evaluate(()=>({plan:JSON.stringify(YV_BUILDER.getPlan()),prefs:JSON.parse(JSON.stringify(YV_APP.prefs())),storedPreferences:localStorage.getItem('yv.preferences'),hash:location.hash}));
+  const evolutionBefore=await page.evaluate(()=>({plan:JSON.stringify((({updated,...rest})=>rest)(YV_BUILDER.getPlan())),prefs:JSON.parse(JSON.stringify(YV_APP.prefs())),storedPreferences:localStorage.getItem('yv.preferences'),hash:location.hash}));
   const evolutionViewport=page.viewportSize();
   try{
    await page.evaluate(()=>{YV_APP.setPreference('language','en');location.hash='projects?view=evolution'});
    await page.locator('#evolution-catalogue-v29').waitFor();
-   assert.equal(await page.locator('[data-ev29-card]').count(),14);
+   assert.equal(await page.locator('[data-ev29-card]').count(),19);
    assert.equal(await page.locator('[data-ev29-details][open]').count(),0,'Evolution cards start collapsed');
    assert.equal(await page.locator('[data-ev29-export]').isDisabled(),true);
    assert.equal(await page.locator('.qtl25-navigation a[href="#projects?view=evolution"][aria-current="page"]').count(),1);
    await page.locator('[data-ev29-select="bayes_noise"]').check();
    await page.locator('[data-ev29-select="ml_tree"]').check();
+   assert(await page.evaluate(()=>['basics','iqtree3'].every(id=>YV_BUILDER.getPlan().tools.includes(id))));
+   assert(await page.evaluate(()=>YV_BUILDER.getPlan().analysisSelections.length===2));
+   assert.equal(await page.evaluate(()=>YV_BUILDER.analysisReview().selections.find(r=>r.id==='evolution:bayes_noise').status),'decision-pending');
+   await page.locator('[data-ev29-customize="ml_tree"] > summary').click();
+   await page.locator('[data-ev29-variant="ml_tree"]').selectOption('raxml');
+   assert(await page.evaluate(()=>YV_BUILDER.getPlan().tools.includes('raxmlng')&&!YV_BUILDER.getPlan().tools.includes('iqtree3')));
+   await page.locator('[data-ev29-variant="ml_tree"]').selectOption('iqtree');
+   await page.locator('[data-ev29-tool-choice="ml_tree"][data-value="iqtree3"]').uncheck();
+   assert(await page.evaluate(()=>YV_BUILDER.analysisReview().selections.find(r=>r.id==='evolution:ml_tree').missingToolIds.includes('iqtree3')));
+   await page.locator('[data-ev29-restore="ml_tree"]').click();
+   assert(await page.evaluate(()=>YV_BUILDER.getPlan().tools.includes('iqtree3')));
+   await page.locator('[data-ev29-customize="ml_tree"] > summary').click();
+
    await page.locator('[data-ev29-family="trait"]').click();
-   assert.equal(await page.locator('[data-ev29-card]').count(),5);
+   assert.equal(await page.locator('[data-ev29-card]').count(),7);
    assert.equal(await page.locator('[data-ev29-family="trait"]').getAttribute('aria-pressed'),'true');
    assert.equal(await page.evaluate(()=>YV_EVOLUTION_CATALOGUE.getState().selected.length),2);
    const evolutionDownload=page.waitForEvent('download');
    await page.locator('[data-ev29-export]').click();
    const evolutionFile=await evolutionDownload;
    const evolutionExport=JSON.parse(require('node:fs').readFileSync(await evolutionFile.path(),'utf8'));
-   assert.equal(evolutionExport.schema,'yeastvar1011.supplementary-method-checklist');
-   assert.equal(evolutionExport.mainPlanModified,false);
+   assert.equal(evolutionExport.schema,'yeastvar1011.evolution-analysis-selection');
+   assert.equal(evolutionExport.mainPlanLinked,true);
    assert.equal(evolutionExport.executionStatus,'not_executed');
    assert.deepEqual(evolutionExport.methods.map(row=>row.id),['bayes_noise','ml_tree'],'Download includes selections hidden by the current category');
    assert(evolutionExport.methods.every(row=>row.sourceUrls.length&&row.papers.every(paper=>paper.doi)));
@@ -145,14 +158,14 @@ let browser;
    assert.equal(await page.locator('[data-ev29-card]').count(),0);
    await page.locator('.ev29-empty [data-ev29-reset]').click();
    assert.equal(await page.evaluate(()=>document.activeElement.id),'ev29-query');
-   assert.equal(await page.locator('[data-ev29-card]').count(),14);
+   assert.equal(await page.locator('[data-ev29-card]').count(),19);
    assert(await page.locator('[data-ev29-select="bayes_noise"]').isChecked());
    assert(await page.locator('[data-ev29-select="ml_tree"]').isChecked());
    await page.locator('#ev29-query').fill('10.1093/molbev/msag117');
    assert.equal(await page.locator('[data-ev29-card]').count(),1);
    assert.equal(await page.locator('[data-ev29-card]').getAttribute('data-ev29-card'),'ml_tree');
    await page.locator('[data-ev29-details="ml_tree"] summary').click();
-   await page.locator('[data-ev29-card="ml_tree"] .ev29-detail-body').waitFor({state:'visible'});
+   await page.locator('[data-ev29-details="ml_tree"] > .ev29-detail-body').waitFor({state:'visible'});
    assert.equal(await page.locator('[data-ev29-card="ml_tree"] .ev29-papers a[href="https://doi.org/10.1093/molbev/msag117"]').count(),1);
    await page.locator('.ev29-toolbar [data-ev29-reset]').click();
    assert.equal(await page.locator('[data-ev29-details="ml_tree"]').getAttribute('open'),'','Opened evidence survives a search round trip');
@@ -167,7 +180,7 @@ let browser;
     for(const language of ['zh','en','fr','es','eu']){
      await page.locator('#language-select').selectOption(language);
      await page.waitForFunction(title=>document.getElementById('ev29-title')?.textContent===title,evolutionTitles[language]);
-     assert.equal(await page.locator('[data-ev29-card]').count(),14);
+     assert.equal(await page.locator('[data-ev29-card]').count(),19);
      if(language!=='zh')assert(!/[\u3400-\u9fff]/u.test(await page.locator('#evolution-catalogue-v29').innerText()),'Untranslated evolution text: '+language);
      for(const id of ['measurement_error','plasticity_convergence']){
       const details=page.locator('[data-ev29-details="'+id+'"]');
@@ -185,12 +198,12 @@ let browser;
    assert(await page.locator('[data-ev29-select="bayes_noise"]').isChecked());
    assert.equal(await page.evaluate(()=>document.activeElement.dataset.ev29Select),'bayes_noise');
    await page.locator('[data-ev29-clear]').click();
-   assert.equal(await page.evaluate(()=>JSON.stringify(YV_BUILDER.getPlan())),evolutionBefore.plan,'Evolution browsing and checklist export must not mutate the main plan');
+   assert.equal(await page.evaluate(()=>JSON.stringify((({updated,...rest})=>rest)(YV_BUILDER.getPlan()))),evolutionBefore.plan,'Removing this page analyses restores pre-existing manual plan selections');
    evolutionCatalogue=true;
   }finally{
    // Restore this section's fixtures; the later scPower branch test keeps its own plan.
    await page.evaluate(saved=>{
-    if(JSON.stringify(YV_BUILDER.getPlan())!==saved.plan)YV_BUILDER.importPlan(JSON.parse(saved.plan));
+    if(JSON.stringify((({updated,...rest})=>rest)(YV_BUILDER.getPlan()))!==saved.plan)YV_BUILDER.importPlan(JSON.parse(saved.plan));
     YV_APP.setPreference('language',saved.prefs.language);
     if(saved.storedPreferences===null)localStorage.removeItem('yv.preferences');else localStorage.setItem('yv.preferences',saved.storedPreferences);
     location.hash=saved.hash;
@@ -198,7 +211,7 @@ let browser;
    if(evolutionViewport)await page.setViewportSize(evolutionViewport);
   }
   assert.deepEqual(await page.evaluate(()=>YV_APP.prefs()),evolutionBefore.prefs,'Evolution checks restore preferences');
-  assert.equal(await page.evaluate(()=>JSON.stringify(YV_BUILDER.getPlan())),evolutionBefore.plan,'Evolution checks preserve the prior plan fixture');
+  assert.equal(await page.evaluate(()=>JSON.stringify((({updated,...rest})=>rest)(YV_BUILDER.getPlan()))),evolutionBefore.plan,'Evolution checks preserve the prior plan fixture');
  }
  // Method references share authoritative metadata with the export catalogue.
  await page.evaluate(()=>{location.hash='literature?tool=alevinfry&period=recent'});
@@ -230,7 +243,7 @@ let browser;
  await page.locator('#ref26-results [data-ref-reset]').click();
  assert.equal(await page.locator('#ref26-tool').inputValue(),'');
  assert.equal(await page.locator('.ref26-record').count(),30);
- assert.equal(await page.evaluate(()=>JSON.stringify(YV_BUILDER.getPlan())),planBeforeQTL,'Reference browsing and export must not mutate the plan');
+ assert.equal(await page.evaluate(()=>JSON.stringify((({updated,...rest})=>rest)(YV_BUILDER.getPlan()))),planBeforeQTL,'Reference browsing and export must not mutate the plan');
  await page.mouse.move(1100,80);
  await page.keyboard.press('Escape');
  await page.locator('#menu-button').click();

@@ -16206,6 +16206,373 @@
         "https://doi.org/10.1080/10635150701313830"
       ],
       "addedIn": "v29"
+    },
+    {
+      "id": "h2_architecture_sensitivity",
+      "stepId": "genetics",
+      "name": "遗传力对亲缘构建的敏感性",
+      "nameEn": "Heritability sensitivity to relationship construction",
+      "definition": "按所选模型保存各字段、估计区间与设计匹配的敏感性结果。",
+      "definitionEn": "Save model-specific fields, estimation intervals and design-matched sensitivity results.",
+      "unit": "模型定义的单位与区间",
+      "denominator": "匹配菌株、性状或模拟重复",
+      "level": "strain/model",
+      "purpose": "遗传力对亲缘构建的敏感性",
+      "tools": [
+        "gcta",
+        "brms"
+      ],
+      "inputIds": [
+        "qtl_traits",
+        "kinship",
+        "genotypes",
+        "sample_metadata"
+      ],
+      "fields": [
+        "h2_by_kernel",
+        "maf_ld_definition",
+        "kernel_correlation",
+        "component_interval",
+        "leave_clade_out_calibration"
+      ],
+      "cautions": [
+        "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。"
+      ],
+      "sourceUrls": [
+        "https://yanglab.westlake.edu.cn/software/gcta/",
+        "https://doi.org/10.1016/j.ajhg.2010.11.011",
+        "https://doi.org/10.18637/jss.v080.i01",
+        "https://paulbuerkner.com/brms/reference/brmsformula.html",
+        "https://paulbuerkner.com/brms/articles/brms_phylogenetics.html",
+        "https://doi.org/10.1080/10635150701313830",
+        "https://doi.org/10.1214/20-BA1221",
+        "https://mc-stan.org/posterior/reference/draws_summary.html"
+      ],
+      "addedIn": "v30"
+    },
+    {
+      "id": "dominance_variance_components",
+      "stepId": "genetics",
+      "name": "加性、显性与非加性方差",
+      "nameEn": "Additive, dominance and non-additive variance",
+      "definition": "按所选模型保存各字段、估计区间与设计匹配的敏感性结果。",
+      "definitionEn": "Save model-specific fields, estimation intervals and design-matched sensitivity results.",
+      "unit": "模型定义的单位与区间",
+      "denominator": "匹配菌株、性状或模拟重复",
+      "level": "strain/model",
+      "purpose": "加性、显性与非加性方差",
+      "tools": [
+        "gcta",
+        "brms"
+      ],
+      "inputIds": [
+        "qtl_traits",
+        "kinship",
+        "genotypes",
+        "sample_metadata"
+      ],
+      "fields": [
+        "additive_variance",
+        "dominance_variance",
+        "kernel_identifiability",
+        "diploid_genotype_support",
+        "uncertainty_interval"
+      ],
+      "cautions": [
+        "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。"
+      ],
+      "sourceUrls": [
+        "https://yanglab.westlake.edu.cn/software/gcta/",
+        "https://doi.org/10.1016/j.ajhg.2010.11.011",
+        "https://doi.org/10.18637/jss.v080.i01",
+        "https://paulbuerkner.com/brms/reference/brmsformula.html",
+        "https://paulbuerkner.com/brms/articles/brms_phylogenetics.html",
+        "https://doi.org/10.1080/10635150701313830",
+        "https://doi.org/10.1214/20-BA1221",
+        "https://mc-stan.org/posterior/reference/draws_summary.html"
+      ],
+      "addedIn": "v30"
+    },
+    {
+      "id": "structural_dosage_effects",
+      "stepId": "genetics",
+      "name": "结构变异与剂量的噪音效应",
+      "nameEn": "Structural-variant and dosage effects on noise",
+      "definition": "按所选模型保存各字段、估计区间与设计匹配的敏感性结果。",
+      "definitionEn": "Save model-specific fields, estimation intervals and design-matched sensitivity results.",
+      "unit": "模型定义的单位与区间",
+      "denominator": "匹配菌株、性状或模拟重复",
+      "level": "strain/model",
+      "purpose": "结构变异与剂量的噪音效应",
+      "tools": [
+        "brms"
+      ],
+      "inputIds": [
+        "qtl_traits",
+        "kinship",
+        "genotypes",
+        "sample_metadata"
+      ],
+      "fields": [
+        "sv_cnv_pav_effect",
+        "copy_number_ploidy",
+        "carrier_count",
+        "mapping_observability",
+        "snp_conditioned_effect"
+      ],
+      "cautions": [
+        "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.18637/jss.v080.i01",
+        "https://paulbuerkner.com/brms/reference/brmsformula.html",
+        "https://paulbuerkner.com/brms/articles/brms_phylogenetics.html",
+        "https://doi.org/10.1080/10635150701313830",
+        "https://doi.org/10.1214/20-BA1221",
+        "https://mc-stan.org/posterior/reference/draws_summary.html"
+      ],
+      "addedIn": "v30"
+    },
+    {
+      "id": "cis_trans_noise_contrasts",
+      "stepId": "genetics",
+      "name": "亲本—杂交体调控对比",
+      "nameEn": "Parent–hybrid regulatory contrasts",
+      "definition": "按所选模型保存各字段、估计区间与设计匹配的敏感性结果。",
+      "definitionEn": "Save model-specific fields, estimation intervals and design-matched sensitivity results.",
+      "unit": "模型定义的单位与区间",
+      "denominator": "匹配菌株、性状或模拟重复",
+      "level": "strain/model",
+      "purpose": "亲本—杂交体调控对比",
+      "tools": [
+        "edger",
+        "scdali"
+      ],
+      "inputIds": [
+        "count_matrix",
+        "variant_counts",
+        "genotypes",
+        "sample_metadata",
+        "culture_replicates"
+      ],
+      "fields": [
+        "parent_expression_contrast",
+        "hybrid_allelic_contrast",
+        "cis_trans_mean_contrast",
+        "noise_parallel_contrast",
+        "allelic_depth_bias"
+      ],
+      "cautions": [
+        "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。"
+      ],
+      "sourceUrls": [
+        "https://bioconductor.org/packages/release/bioc/html/edgeR.html",
+        "https://pmbio.github.io/scdali/",
+        "https://doi.org/10.1186/s13059-021-02593-8",
+        "https://github.com/PMBio/scdali/blob/main/examples/scdali_example.ipynb"
+      ],
+      "addedIn": "v30"
+    },
+    {
+      "id": "noise_neutral_divergence",
+      "stepId": "genetics",
+      "name": "中性校准下的噪音分化",
+      "nameEn": "Neutral-calibrated noise divergence",
+      "definition": "按所选模型保存各字段、估计区间与设计匹配的敏感性结果。",
+      "definitionEn": "Save model-specific fields, estimation intervals and design-matched sensitivity results.",
+      "unit": "模型定义的单位与区间",
+      "denominator": "匹配菌株、性状或模拟重复",
+      "level": "strain/model",
+      "purpose": "中性校准下的噪音分化",
+      "tools": [
+        "msprime",
+        "brms"
+      ],
+      "inputIds": [
+        "qtl_traits",
+        "genotypes",
+        "kinship",
+        "sample_metadata",
+        "truth_or_simulation"
+      ],
+      "fields": [
+        "population_noise_contrast",
+        "neutral_null_distribution",
+        "demography_sensitivity",
+        "observation_model_calibration",
+        "pst_qst_estimand"
+      ],
+      "cautions": [
+        "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。"
+      ],
+      "sourceUrls": [
+        "https://tskit.dev/msprime/docs/stable/intro.html",
+        "https://doi.org/10.1093/genetics/iyab229",
+        "https://doi.org/10.18637/jss.v080.i01",
+        "https://paulbuerkner.com/brms/reference/brmsformula.html",
+        "https://paulbuerkner.com/brms/articles/brms_phylogenetics.html",
+        "https://doi.org/10.1080/10635150701313830",
+        "https://doi.org/10.1214/20-BA1221",
+        "https://mc-stan.org/posterior/reference/draws_summary.html"
+      ],
+      "addedIn": "v30"
+    },
+    {
+      "id": "evolution_tree_support",
+      "stepId": "genetics",
+      "name": "菌株树的支持与不一致性",
+      "nameEn": "Strain-tree support and discordance",
+      "definition": "按所选模型保存各字段、估计区间与设计匹配的敏感性结果。",
+      "definitionEn": "Save model-specific fields, estimation intervals and design-matched sensitivity results.",
+      "unit": "模型定义的单位与区间",
+      "denominator": "匹配菌株、性状或模拟重复",
+      "level": "strain/model",
+      "purpose": "菌株树的支持与不一致性",
+      "tools": [
+        "iqtree3",
+        "raxmlng",
+        "beast2",
+        "revbayes"
+      ],
+      "inputIds": [
+        "genotypes",
+        "sample_metadata"
+      ],
+      "fields": [
+        "alignment_provenance",
+        "site_model",
+        "branch_support",
+        "topology_discordance",
+        "recombination_sensitivity"
+      ],
+      "cautions": [
+        "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。"
+      ],
+      "sourceUrls": [
+        "https://iqtree.github.io/doc/Command-Reference",
+        "https://doi.org/10.1093/molbev/msag117",
+        "https://github.com/amkozlov/raxml-ng/wiki/Tutorial",
+        "https://doi.org/10.1093/bioinformatics/btz305",
+        "https://www.beast2.org/tutorials/",
+        "https://doi.org/10.1371/journal.pcbi.1006650",
+        "https://revbayes.github.io/tutorials/cont_traits/cont_trait_intro.html",
+        "https://doi.org/10.1093/sysbio/syw021"
+      ],
+      "addedIn": "v30"
+    },
+    {
+      "id": "evolution_trait_model_comparison",
+      "stepId": "genetics",
+      "name": "噪音性状演变模型比较",
+      "nameEn": "Noise-trait evolutionary model comparison",
+      "definition": "按所选模型保存各字段、估计区间与设计匹配的敏感性结果。",
+      "definitionEn": "Save model-specific fields, estimation intervals and design-matched sensitivity results.",
+      "unit": "模型定义的单位与区间",
+      "denominator": "匹配菌株、性状或模拟重复",
+      "level": "strain/model",
+      "purpose": "噪音性状演变模型比较",
+      "tools": [
+        "mvmorph",
+        "revbayes"
+      ],
+      "inputIds": [
+        "qtl_traits",
+        "phylogeny",
+        "sample_metadata"
+      ],
+      "fields": [
+        "bm_ou_parameters",
+        "sampling_error_units",
+        "model_weights_or_bayes_factor",
+        "prior_sensitivity",
+        "tree_sensitivity"
+      ],
+      "cautions": [
+        "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。"
+      ],
+      "sourceUrls": [
+        "https://cran.r-project.org/web/packages/mvMORPH/mvMORPH.pdf",
+        "https://doi.org/10.1111/2041-210X.12420",
+        "https://revbayes.github.io/tutorials/cont_traits/cont_trait_intro.html",
+        "https://doi.org/10.1093/sysbio/syw021"
+      ],
+      "addedIn": "v30"
+    },
+    {
+      "id": "evolution_ancestral_uncertainty",
+      "stepId": "genetics",
+      "name": "祖先噪音状态与区间",
+      "nameEn": "Ancestral noise states and intervals",
+      "definition": "按所选模型保存各字段、估计区间与设计匹配的敏感性结果。",
+      "definitionEn": "Save model-specific fields, estimation intervals and design-matched sensitivity results.",
+      "unit": "模型定义的单位与区间",
+      "denominator": "匹配菌株、性状或模拟重复",
+      "level": "strain/model",
+      "purpose": "祖先噪音状态与区间",
+      "tools": [
+        "phytools2",
+        "revbayes"
+      ],
+      "inputIds": [
+        "qtl_traits",
+        "phylogeny",
+        "sample_metadata"
+      ],
+      "fields": [
+        "ancestral_estimate",
+        "conditional_interval",
+        "model_assumption",
+        "tree_posterior_sensitivity"
+      ],
+      "cautions": [
+        "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.7717/peerj.16505",
+        "https://raw.githubusercontent.com/liamrevell/phytools/5c185533dbb3c3076200c1e0aa45de36701e1116/man/phylosig.Rd",
+        "https://doi.org/10.1038/44766",
+        "https://doi.org/10.1080/10635150701313830",
+        "https://revbayes.github.io/tutorials/cont_traits/cont_trait_intro.html",
+        "https://doi.org/10.1093/sysbio/syw021"
+      ],
+      "addedIn": "v30"
+    },
+    {
+      "id": "evolution_prediction_validation",
+      "stepId": "genetics",
+      "name": "演化情景与预测校准",
+      "nameEn": "Evolution scenarios and predictive calibration",
+      "definition": "按所选模型保存各字段、估计区间与设计匹配的敏感性结果。",
+      "definitionEn": "Save model-specific fields, estimation intervals and design-matched sensitivity results.",
+      "unit": "模型定义的单位与区间",
+      "denominator": "匹配菌株、性状或模拟重复",
+      "level": "strain/model",
+      "purpose": "演化情景与预测校准",
+      "tools": [
+        "slim5",
+        "msprime"
+      ],
+      "inputIds": [
+        "truth_or_simulation",
+        "sample_metadata"
+      ],
+      "fields": [
+        "life_history_parameters",
+        "recombination_model",
+        "posterior_or_scenario",
+        "held_out_unit",
+        "predictive_coverage"
+      ],
+      "cautions": [
+        "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。"
+      ],
+      "sourceUrls": [
+        "https://messerlab.org/slim/",
+        "https://doi.org/10.1093/molbev/msaf313",
+        "https://tskit.dev/msprime/docs/stable/intro.html",
+        "https://doi.org/10.1093/genetics/iyab229"
+      ],
+      "addedIn": "v30"
     }
   ],
   "tools": [
@@ -27657,7 +28024,78 @@
           "label": "Paper"
         }
       ],
-      "addedIn": "v12"
+      "addedIn": "v12",
+      "inputContract": {
+        "version": 1,
+        "branchRequired": true,
+        "branches": [
+          {
+            "id": "audited_allelic_counts",
+            "title": {
+              "zh": "已审计等位计数：同质失衡",
+              "en": "Audited allelic counts: homogeneous imbalance",
+              "fr": "Comptages alléliques audités : déséquilibre homogène",
+              "es": "Recuentos alélicos auditados: desequilibrio homogéneo",
+              "eu": "Alelo-zenbaketa auditatuak: desoreka homogeneoa"
+            },
+            "requiredDataMode": "replace",
+            "requiredData": [
+              "variant_counts",
+              "genotypes",
+              "sample_metadata"
+            ],
+            "parameters": {},
+            "executionStatus": "recipe_only",
+            "enforcement": "declaration_completeness_only",
+            "evidenceRequirements": [
+              {
+                "inputId": "variant_counts",
+                "field": "allelic_count_phase_baseline",
+                "label": {
+                  "zh": "等位计数、相位、拷贝基线与偏倚审计来源",
+                  "en": "Allelic-count, phase, dosage-baseline and bias-audit source",
+                  "fr": "Source des comptages, phase, dosage et audit des biais",
+                  "es": "Fuente de recuentos, fase, dosis y auditoría de sesgos",
+                  "eu": "Alelo-zenbaketa, fase, dosi-oinarri eta alborapen-auditoriaren jatorria"
+                }
+              }
+            ]
+          },
+          {
+            "id": "state_allelic_counts",
+            "title": {
+              "zh": "已审计等位计数：状态依赖",
+              "en": "Audited allelic counts: state dependence",
+              "fr": "Comptages alléliques audités : dépendance à l’état",
+              "es": "Recuentos alélicos auditados: dependencia del estado",
+              "eu": "Alelo-zenbaketa auditatuak: egoerarekiko mendekotasuna"
+            },
+            "requiredDataMode": "replace",
+            "requiredData": [
+              "variant_counts",
+              "genotypes",
+              "sample_metadata",
+              "cell_states"
+            ],
+            "parameters": {},
+            "executionStatus": "recipe_only",
+            "enforcement": "declaration_completeness_only",
+            "evidenceRequirements": [
+              {
+                "inputId": "variant_counts",
+                "field": "allelic_count_phase_baseline",
+                "label": {
+                  "zh": "等位计数、相位、拷贝基线与偏倚审计来源",
+                  "en": "Allelic-count, phase, dosage-baseline and bias-audit source",
+                  "fr": "Source des comptages, phase, dosage et audit des biais",
+                  "es": "Fuente de recuentos, fase, dosis y auditoría de sesgos",
+                  "eu": "Alelo-zenbaketa, fase, dosi-oinarri eta alborapen-auditoriaren jatorria"
+                }
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "saigeqtl",
@@ -31021,6 +31459,1354 @@
           }
         ]
       }
+    },
+    {
+      "id": "stan",
+      "name": "Stan / CmdStanR / posterior",
+      "task": "自定义噪音模型的后验抽样与诊断",
+      "taskEn": "Posterior sampling and diagnostics for custom noise models",
+      "steps": [
+        "validation"
+      ],
+      "url": "https://mc-stan.org/cmdstanr/reference/model-method-sample.html",
+      "paperUrl": "https://doi.org/10.18637/jss.v076.i01",
+      "input": [
+        "独立参照或明确模拟真值",
+        "样本、菌株、培养与批次映射",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。"
+      ],
+      "output": [
+        "模型结果、区间与可复核的诊断"
+      ],
+      "entrypoint": "model <- cmdstanr::cmdstan_model(stan_file)\nfit <- model$sample(data=model_data, chains=n_chains, parallel_chains=n_parallel, iter_warmup=n_warmup, iter_sampling=n_sampling, seed=recorded_seed)\nfit$summary()\nfit$diagnostic_summary()\nposterior::summarise_draws(fit$draws())",
+      "parameters": [
+        {
+          "name": "stan_file / model_data / chains / iter_warmup / iter_sampling / seed",
+          "meaning": "模型文件与运行环境",
+          "selection": "按研究问题选择模型、参数与种子；保存软件版本和完整调用。",
+          "required": true
+        },
+        {
+          "name": "runtime / package dependencies",
+          "meaning": "CmdStan, cmdstanr, posterior",
+          "selection": "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。"
+      ],
+      "yeastStatus": "条件性",
+      "role": "对照",
+      "sourceUrls": [
+        "https://mc-stan.org/cmdstanr/reference/model-method-sample.html",
+        "https://doi.org/10.18637/jss.v076.i01"
+      ],
+      "categoryIds": [
+        "evolution",
+        "genetics",
+        "validation"
+      ],
+      "methodTags": [
+        "evolution",
+        "noise",
+        "planning-recipe"
+      ],
+      "applicability": {
+        "level": "conditional",
+        "reason": "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "reasonEn": "Check trait scale, strain order, replication and estimation error; assess calibration with design-matched simulations.",
+        "requiredData": [
+          "truth_or_simulation",
+          "sample_metadata"
+        ],
+        "optionalData": []
+      },
+      "sourceKind": "documentation",
+      "paperStatus": "verified",
+      "documentationStatus": "documentation-linked",
+      "sourceLinks": [
+        {
+          "url": "https://mc-stan.org/cmdstanr/reference/model-method-sample.html",
+          "kind": "documentation",
+          "label": "官方方法文档"
+        },
+        {
+          "url": "https://doi.org/10.18637/jss.v076.i01",
+          "kind": "research_article",
+          "label": "方法论文"
+        }
+      ],
+      "executionStatus": "recipe_only",
+      "addedIn": "v30",
+      "versionEvidence": {
+        "version": "official interface documentation",
+        "checkedOn": "2026-10-18",
+        "source": "https://mc-stan.org/cmdstanr/reference/model-method-sample.html",
+        "apiSignatureVerified": true,
+        "biologicalExecution": false,
+        "runtimeInstalled": false
+      }
+    },
+    {
+      "id": "sbc",
+      "name": "SBC",
+      "task": "贝叶斯计算的模拟校准",
+      "taskEn": "Simulation calibration of Bayesian computation",
+      "steps": [
+        "validation"
+      ],
+      "url": "https://hyunjimoon.github.io/SBC/articles/SBC.html",
+      "paperUrl": "https://doi.org/10.1214/23-BA1404",
+      "input": [
+        "独立参照或明确模拟真值",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。"
+      ],
+      "output": [
+        "模型结果、区间与可复核的诊断"
+      ],
+      "entrypoint": "results <- SBC::compute_SBC(sbc_datasets, fitted_model_backend)\nSBC::plot_rank_hist(results)",
+      "parameters": [
+        {
+          "name": "SBC_datasets / backend / test quantities / simulation design",
+          "meaning": "模型文件与运行环境",
+          "selection": "按研究问题选择模型、参数与种子；保存软件版本和完整调用。",
+          "required": true
+        },
+        {
+          "name": "runtime / package dependencies",
+          "meaning": "R, SBC, model backend",
+          "selection": "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。"
+      ],
+      "yeastStatus": "条件性",
+      "role": "对照",
+      "sourceUrls": [
+        "https://hyunjimoon.github.io/SBC/articles/SBC.html",
+        "https://doi.org/10.1214/23-BA1404"
+      ],
+      "categoryIds": [
+        "evolution",
+        "genetics",
+        "validation"
+      ],
+      "methodTags": [
+        "evolution",
+        "noise",
+        "planning-recipe"
+      ],
+      "applicability": {
+        "level": "conditional",
+        "reason": "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "reasonEn": "Check trait scale, strain order, replication and estimation error; assess calibration with design-matched simulations.",
+        "requiredData": [
+          "truth_or_simulation"
+        ],
+        "optionalData": []
+      },
+      "sourceKind": "documentation",
+      "paperStatus": "verified",
+      "documentationStatus": "documentation-linked",
+      "sourceLinks": [
+        {
+          "url": "https://hyunjimoon.github.io/SBC/articles/SBC.html",
+          "kind": "documentation",
+          "label": "官方方法文档"
+        },
+        {
+          "url": "https://doi.org/10.1214/23-BA1404",
+          "kind": "research_article",
+          "label": "方法论文"
+        }
+      ],
+      "executionStatus": "recipe_only",
+      "addedIn": "v30",
+      "versionEvidence": {
+        "version": "official interface documentation",
+        "checkedOn": "2026-10-18",
+        "source": "https://hyunjimoon.github.io/SBC/articles/SBC.html",
+        "apiSignatureVerified": true,
+        "biologicalExecution": false,
+        "runtimeInstalled": false
+      }
+    },
+    {
+      "id": "mcmcglmm",
+      "name": "MCMCglmm",
+      "task": "含亲缘与测量方差的贝叶斯混合模型",
+      "taskEn": "Bayesian mixed models with relatedness and measurement variance",
+      "steps": [
+        "genetics"
+      ],
+      "url": "https://cran.r-project.org/web/packages/MCMCglmm/MCMCglmm.pdf",
+      "paperUrl": "https://doi.org/10.18637/jss.v033.i02",
+      "input": [
+        "样本层表达或噪音性状及协变量",
+        "样本、菌株、培养与批次映射",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。"
+      ],
+      "output": [
+        "模型结果、区间与可复核的诊断"
+      ],
+      "entrypoint": "args <- list(fixed=estimate ~ mean_covariate + batch, family=\"gaussian\", data=traits, mev=traits$sampling_se^2, prior=reviewed_prior, nitt=n_iterations, burnin=n_burnin, thin=n_thin)\nif (covariance_mode != \"independent\") { args$random <- ~strain_id; args$ginverse <- list(strain_id=A_inverse) }\nfit <- do.call(MCMCglmm::MCMCglmm, args)",
+      "parameters": [
+        {
+          "name": "fixed / random / ginverse / mev / prior / nitt / burnin / thin",
+          "meaning": "模型文件与运行环境",
+          "selection": "按研究问题选择模型、参数与种子；保存软件版本和完整调用。",
+          "required": true
+        },
+        {
+          "name": "runtime / package dependencies",
+          "meaning": "R, MCMCglmm",
+          "selection": "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。",
+          "required": true
+        },
+        {
+          "name": "ginverse / mev",
+          "meaning": "inverse relationship covariance / sampling variance",
+          "selection": "ginverse 使用亲缘协方差的逆；mev 使用同尺度抽样方差。后验 SD 需另行校准。",
+          "required": true
+        },
+        {
+          "name": "covariance_mode",
+          "meaning": "模型文件与运行环境",
+          "selection": "按研究问题选择模型、参数与种子；保存软件版本和完整调用。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。"
+      ],
+      "yeastStatus": "条件性",
+      "role": "对照",
+      "sourceUrls": [
+        "https://cran.r-project.org/web/packages/MCMCglmm/MCMCglmm.pdf",
+        "https://doi.org/10.18637/jss.v033.i02"
+      ],
+      "categoryIds": [
+        "evolution",
+        "genetics",
+        "validation"
+      ],
+      "methodTags": [
+        "evolution",
+        "noise",
+        "planning-recipe"
+      ],
+      "applicability": {
+        "level": "conditional",
+        "reason": "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "reasonEn": "Check trait scale, strain order, replication and estimation error; assess calibration with design-matched simulations.",
+        "requiredData": [
+          "qtl_traits",
+          "sample_metadata"
+        ],
+        "optionalData": []
+      },
+      "sourceKind": "documentation",
+      "paperStatus": "verified",
+      "documentationStatus": "documentation-linked",
+      "sourceLinks": [
+        {
+          "url": "https://cran.r-project.org/web/packages/MCMCglmm/MCMCglmm.pdf",
+          "kind": "documentation",
+          "label": "官方方法文档"
+        },
+        {
+          "url": "https://doi.org/10.18637/jss.v033.i02",
+          "kind": "research_article",
+          "label": "方法论文"
+        }
+      ],
+      "executionStatus": "recipe_only",
+      "addedIn": "v30",
+      "versionEvidence": {
+        "version": "official interface documentation",
+        "checkedOn": "2026-10-18",
+        "source": "https://cran.r-project.org/web/packages/MCMCglmm/MCMCglmm.pdf",
+        "apiSignatureVerified": true,
+        "biologicalExecution": false,
+        "runtimeInstalled": false
+      },
+      "inputContract": {
+        "version": 1,
+        "branchRequired": true,
+        "branches": [
+          {
+            "id": "independent",
+            "title": {
+              "zh": "独立观测的测量误差回归",
+              "en": "Measurement-error regression for independent observations",
+              "fr": "Régression avec erreur de mesure et observations indépendantes",
+              "es": "Regresión con error de medida y observaciones independientes",
+              "eu": "Behaketa independenteen neurketa-erroreko erregresioa"
+            },
+            "requiredDataMode": "replace",
+            "requiredData": [
+              "qtl_traits",
+              "sample_metadata"
+            ],
+            "parameters": {
+              "covariance_mode": "independent"
+            },
+            "executionStatus": "recipe_only",
+            "enforcement": "declaration_completeness_only",
+            "evidenceRequirements": [
+              {
+                "inputId": "qtl_traits",
+                "field": "sampling_se_source",
+                "label": {
+                  "zh": "性状尺度与抽样 SE 来源",
+                  "en": "Trait scale and sampling-SE source",
+                  "fr": "Échelle et source de l’erreur-type",
+                  "es": "Escala y fuente del error estándar",
+                  "eu": "Ezaugarri-eskala eta laginketa-SEaren jatorria"
+                }
+              }
+            ]
+          },
+          {
+            "id": "kinship",
+            "title": {
+              "zh": "基因组亲缘 K",
+              "en": "Genomic kinship K",
+              "fr": "Parenté génomique K",
+              "es": "Parentesco genómico K",
+              "eu": "K ahaidetasun genomikoa"
+            },
+            "requiredDataMode": "replace",
+            "requiredData": [
+              "qtl_traits",
+              "sample_metadata",
+              "kinship"
+            ],
+            "parameters": {
+              "covariance_mode": "kinship"
+            },
+            "executionStatus": "recipe_only",
+            "enforcement": "declaration_completeness_only",
+            "evidenceRequirements": [
+              {
+                "inputId": "qtl_traits",
+                "field": "sampling_se_source",
+                "label": {
+                  "zh": "性状尺度与抽样 SE 来源",
+                  "en": "Trait scale and sampling-SE source",
+                  "fr": "Échelle et source de l’erreur-type",
+                  "es": "Escala y fuente del error estándar",
+                  "eu": "Ezaugarri-eskala eta laginketa-SEaren jatorria"
+                }
+              }
+            ]
+          },
+          {
+            "id": "phylogeny",
+            "title": {
+              "zh": "菌株树协方差 C",
+              "en": "Strain-tree covariance C",
+              "fr": "Covariance C de l’arbre",
+              "es": "Covarianza C del árbol",
+              "eu": "Andui-zuhaitzaren C kobariantza"
+            },
+            "requiredDataMode": "replace",
+            "requiredData": [
+              "qtl_traits",
+              "sample_metadata",
+              "phylogeny"
+            ],
+            "parameters": {
+              "covariance_mode": "phylogeny"
+            },
+            "executionStatus": "recipe_only",
+            "enforcement": "declaration_completeness_only",
+            "evidenceRequirements": [
+              {
+                "inputId": "qtl_traits",
+                "field": "sampling_se_source",
+                "label": {
+                  "zh": "性状尺度与抽样 SE 来源",
+                  "en": "Trait scale and sampling-SE source",
+                  "fr": "Échelle et source de l’erreur-type",
+                  "es": "Escala y fuente del error estándar",
+                  "eu": "Ezaugarri-eskala eta laginketa-SEaren jatorria"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "mvmorph",
+      "name": "mvMORPH",
+      "task": "连续噪音性状的多变量演变模型",
+      "taskEn": "Multivariate evolution of continuous noise traits",
+      "steps": [
+        "genetics"
+      ],
+      "url": "https://cran.r-project.org/web/packages/mvMORPH/mvMORPH.pdf",
+      "paperUrl": "https://doi.org/10.1111/2041-210X.12420",
+      "input": [
+        "样本层表达或噪音性状及协变量",
+        "样本、菌株、培养与批次映射",
+        "与样本匹配的群体历史或系统树",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。"
+      ],
+      "output": [
+        "模型结果、区间与可复核的诊断"
+      ],
+      "entrypoint": "bm <- mvMORPH::mvBM(tree, trait_matrix, error=sampling_variance_matrix, model=\"BM1\")\nou <- mvMORPH::mvOU(tree, trait_matrix, error=sampling_variance_matrix, model=\"OU1\")\nmvMORPH::aicw(list(bm,ou), aicc=TRUE)",
+      "parameters": [
+        {
+          "name": "tree / data / error (sampling variance) / model / optimization",
+          "meaning": "模型文件与运行环境",
+          "selection": "按研究问题选择模型、参数与种子；保存软件版本和完整调用。",
+          "required": true
+        },
+        {
+          "name": "runtime / package dependencies",
+          "meaning": "R, mvMORPH",
+          "selection": "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。",
+          "required": true
+        },
+        {
+          "name": "error",
+          "meaning": "sampling_variance_matrix = sampling_SE^2",
+          "selection": "error 输入抽样方差，按树末端与性状列对齐；OU 拟合本身不确定历史选择。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。",
+        "核对根、末端匹配、分支单位及重组／杂交敏感性；细胞状态轨迹单独分析。"
+      ],
+      "yeastStatus": "条件性",
+      "role": "对照",
+      "sourceUrls": [
+        "https://cran.r-project.org/web/packages/mvMORPH/mvMORPH.pdf",
+        "https://doi.org/10.1111/2041-210X.12420"
+      ],
+      "categoryIds": [
+        "evolution",
+        "genetics",
+        "validation"
+      ],
+      "methodTags": [
+        "evolution",
+        "noise",
+        "planning-recipe"
+      ],
+      "applicability": {
+        "level": "conditional",
+        "reason": "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "reasonEn": "Check trait scale, strain order, replication and estimation error; assess calibration with design-matched simulations.",
+        "requiredData": [
+          "qtl_traits",
+          "sample_metadata",
+          "phylogeny"
+        ],
+        "optionalData": []
+      },
+      "sourceKind": "documentation",
+      "paperStatus": "verified",
+      "documentationStatus": "documentation-linked",
+      "sourceLinks": [
+        {
+          "url": "https://cran.r-project.org/web/packages/mvMORPH/mvMORPH.pdf",
+          "kind": "documentation",
+          "label": "官方方法文档"
+        },
+        {
+          "url": "https://doi.org/10.1111/2041-210X.12420",
+          "kind": "research_article",
+          "label": "方法论文"
+        }
+      ],
+      "executionStatus": "recipe_only",
+      "addedIn": "v30",
+      "versionEvidence": {
+        "version": "official interface documentation",
+        "checkedOn": "2026-10-18",
+        "source": "https://cran.r-project.org/web/packages/mvMORPH/mvMORPH.pdf",
+        "apiSignatureVerified": true,
+        "biologicalExecution": false,
+        "runtimeInstalled": false
+      }
+    },
+    {
+      "id": "iqtree3",
+      "name": "IQ-TREE 3",
+      "task": "基因组序列的最大似然菌株树",
+      "taskEn": "Maximum-likelihood strain trees from genomic sequences",
+      "steps": [
+        "genetics"
+      ],
+      "url": "https://iqtree.github.io/doc/Command-Reference",
+      "paperUrl": "https://doi.org/10.1093/molbev/msag117",
+      "input": [
+        "与实际scRNA菌株匹配的基因型",
+        "样本、菌株、培养与批次映射",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。"
+      ],
+      "output": [
+        "模型结果、区间与可复核的诊断"
+      ],
+      "entrypoint": "iqtree3 -s <AUDITED_DNA_ALIGNMENT> -m <MODEL_OR_MFP> -B <BOOTSTRAP_REPLICATES> -T <THREADS> -seed <SEED> -pre <OUTPUT_PREFIX>",
+      "parameters": [
+        {
+          "name": "-s / -m / -B / -T / -seed / -pre",
+          "meaning": "模型文件与运行环境",
+          "selection": "按研究问题选择模型、参数与种子；保存软件版本和完整调用。",
+          "required": true
+        },
+        {
+          "name": "runtime / package dependencies",
+          "meaning": "IQ-TREE 3",
+          "selection": "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。"
+      ],
+      "yeastStatus": "条件性",
+      "role": "对照",
+      "sourceUrls": [
+        "https://iqtree.github.io/doc/Command-Reference",
+        "https://doi.org/10.1093/molbev/msag117"
+      ],
+      "categoryIds": [
+        "evolution",
+        "genetics",
+        "validation"
+      ],
+      "methodTags": [
+        "evolution",
+        "noise",
+        "planning-recipe"
+      ],
+      "applicability": {
+        "level": "conditional",
+        "reason": "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "reasonEn": "Check trait scale, strain order, replication and estimation error; assess calibration with design-matched simulations.",
+        "requiredData": [
+          "genotypes",
+          "sample_metadata"
+        ],
+        "optionalData": []
+      },
+      "sourceKind": "documentation",
+      "paperStatus": "verified",
+      "documentationStatus": "documentation-linked",
+      "sourceLinks": [
+        {
+          "url": "https://iqtree.github.io/doc/Command-Reference",
+          "kind": "documentation",
+          "label": "官方方法文档"
+        },
+        {
+          "url": "https://doi.org/10.1093/molbev/msag117",
+          "kind": "research_article",
+          "label": "方法论文"
+        }
+      ],
+      "executionStatus": "recipe_only",
+      "addedIn": "v30",
+      "versionEvidence": {
+        "version": "official interface documentation",
+        "checkedOn": "2026-10-18",
+        "source": "https://iqtree.github.io/doc/Command-Reference",
+        "apiSignatureVerified": true,
+        "biologicalExecution": false,
+        "runtimeInstalled": false
+      }
+    },
+    {
+      "id": "raxmlng",
+      "name": "RAxML-NG",
+      "task": "菌株树的替代最大似然实现",
+      "taskEn": "Alternative maximum-likelihood strain-tree inference",
+      "steps": [
+        "genetics"
+      ],
+      "url": "https://github.com/amkozlov/raxml-ng/wiki/Tutorial",
+      "paperUrl": "https://doi.org/10.1093/bioinformatics/btz305",
+      "input": [
+        "与实际scRNA菌株匹配的基因型",
+        "样本、菌株、培养与批次映射",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。"
+      ],
+      "output": [
+        "模型结果、区间与可复核的诊断"
+      ],
+      "entrypoint": "raxml-ng --all --msa <AUDITED_DNA_ALIGNMENT> --model <SUBSTITUTION_MODEL> --bs-trees <BOOTSTRAP_REPLICATES> --threads <THREADS> --seed <SEED> --prefix <OUTPUT_PREFIX>",
+      "parameters": [
+        {
+          "name": "--msa / --model / --bs-trees / --seed / --threads",
+          "meaning": "模型文件与运行环境",
+          "selection": "按研究问题选择模型、参数与种子；保存软件版本和完整调用。",
+          "required": true
+        },
+        {
+          "name": "runtime / package dependencies",
+          "meaning": "RAxML-NG",
+          "selection": "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。"
+      ],
+      "yeastStatus": "条件性",
+      "role": "对照",
+      "sourceUrls": [
+        "https://github.com/amkozlov/raxml-ng/wiki/Tutorial",
+        "https://doi.org/10.1093/bioinformatics/btz305"
+      ],
+      "categoryIds": [
+        "evolution",
+        "genetics",
+        "validation"
+      ],
+      "methodTags": [
+        "evolution",
+        "noise",
+        "planning-recipe"
+      ],
+      "applicability": {
+        "level": "conditional",
+        "reason": "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "reasonEn": "Check trait scale, strain order, replication and estimation error; assess calibration with design-matched simulations.",
+        "requiredData": [
+          "genotypes",
+          "sample_metadata"
+        ],
+        "optionalData": []
+      },
+      "sourceKind": "documentation",
+      "paperStatus": "verified",
+      "documentationStatus": "documentation-linked",
+      "sourceLinks": [
+        {
+          "url": "https://github.com/amkozlov/raxml-ng/wiki/Tutorial",
+          "kind": "documentation",
+          "label": "官方方法文档"
+        },
+        {
+          "url": "https://doi.org/10.1093/bioinformatics/btz305",
+          "kind": "research_article",
+          "label": "方法论文"
+        }
+      ],
+      "executionStatus": "recipe_only",
+      "addedIn": "v30",
+      "versionEvidence": {
+        "version": "official interface documentation",
+        "checkedOn": "2026-10-18",
+        "source": "https://github.com/amkozlov/raxml-ng/wiki/Tutorial",
+        "apiSignatureVerified": true,
+        "biologicalExecution": false,
+        "runtimeInstalled": false
+      }
+    },
+    {
+      "id": "beast2",
+      "name": "BEAST 2",
+      "task": "有明确校准的贝叶斯菌株历史模型",
+      "taskEn": "Calibrated Bayesian strain-history models",
+      "steps": [
+        "genetics"
+      ],
+      "url": "https://www.beast2.org/tutorials/",
+      "paperUrl": "https://doi.org/10.1371/journal.pcbi.1006650",
+      "input": [
+        "与实际scRNA菌株匹配的基因型",
+        "样本、菌株、培养与批次映射",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。"
+      ],
+      "output": [
+        "模型结果、区间与可复核的诊断"
+      ],
+      "entrypoint": "beast -threads <THREADS> -seed <SEED> <REVIEWED_MODEL_XML>",
+      "parameters": [
+        {
+          "name": "XML / substitution model / clock / tree prior / calibration / MCMC",
+          "meaning": "模型文件与运行环境",
+          "selection": "按研究问题选择模型、参数与种子；保存软件版本和完整调用。",
+          "required": true
+        },
+        {
+          "name": "runtime / package dependencies",
+          "meaning": "BEAST 2, model-specific packages",
+          "selection": "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。"
+      ],
+      "yeastStatus": "条件性",
+      "role": "对照",
+      "sourceUrls": [
+        "https://www.beast2.org/tutorials/",
+        "https://doi.org/10.1371/journal.pcbi.1006650"
+      ],
+      "categoryIds": [
+        "evolution",
+        "genetics",
+        "validation"
+      ],
+      "methodTags": [
+        "evolution",
+        "noise",
+        "planning-recipe"
+      ],
+      "applicability": {
+        "level": "conditional",
+        "reason": "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "reasonEn": "Check trait scale, strain order, replication and estimation error; assess calibration with design-matched simulations.",
+        "requiredData": [
+          "genotypes",
+          "sample_metadata"
+        ],
+        "optionalData": []
+      },
+      "sourceKind": "documentation",
+      "paperStatus": "verified",
+      "documentationStatus": "documentation-linked",
+      "sourceLinks": [
+        {
+          "url": "https://www.beast2.org/tutorials/",
+          "kind": "documentation",
+          "label": "官方方法文档"
+        },
+        {
+          "url": "https://doi.org/10.1371/journal.pcbi.1006650",
+          "kind": "research_article",
+          "label": "方法论文"
+        }
+      ],
+      "executionStatus": "recipe_only",
+      "addedIn": "v30",
+      "versionEvidence": {
+        "version": "official interface documentation",
+        "checkedOn": "2026-10-18",
+        "source": "https://www.beast2.org/tutorials/",
+        "apiSignatureVerified": true,
+        "biologicalExecution": false,
+        "runtimeInstalled": false
+      }
+    },
+    {
+      "id": "revbayes",
+      "name": "RevBayes",
+      "task": "贝叶斯树与连续性状演变模型",
+      "taskEn": "Bayesian trees and continuous-trait evolution",
+      "steps": [
+        "genetics"
+      ],
+      "url": "https://revbayes.github.io/tutorials/cont_traits/cont_trait_intro.html",
+      "paperUrl": "https://doi.org/10.1093/sysbio/syw021",
+      "input": [
+        "样本层表达或噪音性状及协变量",
+        "与样本匹配的群体历史或系统树",
+        "样本、菌株、培养与批次映射",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。"
+      ],
+      "output": [
+        "模型结果、区间与可复核的诊断"
+      ],
+      "entrypoint": "rb <REVIEWED_REV_MODEL_SCRIPT>",
+      "parameters": [
+        {
+          "name": "Rev model / likelihood / priors / monitors / moves / seed",
+          "meaning": "模型文件与运行环境",
+          "selection": "按研究问题选择模型、参数与种子；保存软件版本和完整调用。",
+          "required": true
+        },
+        {
+          "name": "runtime / package dependencies",
+          "meaning": "RevBayes",
+          "selection": "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。",
+          "required": true
+        },
+        {
+          "name": "model_class",
+          "meaning": "模型文件与运行环境",
+          "selection": "按研究问题选择模型、参数与种子；保存软件版本和完整调用。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。",
+        "核对根、末端匹配、分支单位及重组／杂交敏感性；细胞状态轨迹单独分析。"
+      ],
+      "yeastStatus": "条件性",
+      "role": "对照",
+      "sourceUrls": [
+        "https://revbayes.github.io/tutorials/cont_traits/cont_trait_intro.html",
+        "https://doi.org/10.1093/sysbio/syw021"
+      ],
+      "categoryIds": [
+        "evolution",
+        "genetics",
+        "validation"
+      ],
+      "methodTags": [
+        "evolution",
+        "noise",
+        "planning-recipe"
+      ],
+      "applicability": {
+        "level": "conditional",
+        "reason": "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "reasonEn": "Check trait scale, strain order, replication and estimation error; assess calibration with design-matched simulations.",
+        "requiredData": [
+          "sample_metadata"
+        ],
+        "optionalData": []
+      },
+      "sourceKind": "documentation",
+      "paperStatus": "verified",
+      "documentationStatus": "documentation-linked",
+      "sourceLinks": [
+        {
+          "url": "https://revbayes.github.io/tutorials/cont_traits/cont_trait_intro.html",
+          "kind": "documentation",
+          "label": "官方方法文档"
+        },
+        {
+          "url": "https://doi.org/10.1093/sysbio/syw021",
+          "kind": "research_article",
+          "label": "方法论文"
+        }
+      ],
+      "executionStatus": "recipe_only",
+      "addedIn": "v30",
+      "versionEvidence": {
+        "version": "official interface documentation",
+        "checkedOn": "2026-10-18",
+        "source": "https://revbayes.github.io/tutorials/cont_traits/cont_trait_intro.html",
+        "apiSignatureVerified": true,
+        "biologicalExecution": false,
+        "runtimeInstalled": false
+      },
+      "inputContract": {
+        "version": 1,
+        "branchRequired": true,
+        "branches": [
+          {
+            "id": "sequence_tree",
+            "title": {
+              "zh": "序列与贝叶斯菌株树",
+              "en": "Sequences and Bayesian strain trees",
+              "fr": "Séquences et arbres bayésiens",
+              "es": "Secuencias y árboles bayesianos",
+              "eu": "Sekuentziak eta andui-zuhaitz bayestarrak"
+            },
+            "requiredDataMode": "replace",
+            "requiredData": [
+              "genotypes",
+              "sample_metadata"
+            ],
+            "parameters": {
+              "model_class": "sequence_tree"
+            },
+            "evidenceRequirements": [],
+            "executionStatus": "recipe_only",
+            "enforcement": "declaration_completeness_only"
+          },
+          {
+            "id": "trait_evolution",
+            "title": {
+              "zh": "已有树上的连续性状",
+              "en": "Continuous traits on a supplied tree",
+              "fr": "Caractères continus sur un arbre fourni",
+              "es": "Rasgos continuos en un árbol aportado",
+              "eu": "Emandako zuhaitzeko ezaugarri jarraituak"
+            },
+            "requiredDataMode": "replace",
+            "requiredData": [
+              "qtl_traits",
+              "phylogeny",
+              "sample_metadata"
+            ],
+            "parameters": {
+              "model_class": "trait_evolution"
+            },
+            "evidenceRequirements": [],
+            "executionStatus": "recipe_only",
+            "enforcement": "declaration_completeness_only"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ggtree",
+      "name": "ggtree",
+      "task": "菌株树与噪音注释的联合展示",
+      "taskEn": "Joint display of strain trees and noise annotations",
+      "steps": [
+        "genetics"
+      ],
+      "url": "https://yulab-smu.top/treedata-book/",
+      "paperUrl": "https://doi.org/10.1111/2041-210X.12628",
+      "input": [
+        "与样本匹配的群体历史或系统树",
+        "样本、菌株、培养与批次映射",
+        "样本层表达或噪音性状及协变量",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。"
+      ],
+      "output": [
+        "模型结果、区间与可复核的诊断"
+      ],
+      "entrypoint": "library(ggtree)\np <- ggtree(tree) %<+% tip_metadata\np + geom_tippoint(aes(colour=noise_trait))",
+      "parameters": [
+        {
+          "name": "tree / tip_metadata / trait scale / uncertainty / layout",
+          "meaning": "模型文件与运行环境",
+          "selection": "按研究问题选择模型、参数与种子；保存软件版本和完整调用。",
+          "required": true
+        },
+        {
+          "name": "runtime / package dependencies",
+          "meaning": "R, ggtree, ggplot2",
+          "selection": "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。",
+        "核对根、末端匹配、分支单位及重组／杂交敏感性；细胞状态轨迹单独分析。"
+      ],
+      "yeastStatus": "条件性",
+      "role": "对照",
+      "sourceUrls": [
+        "https://yulab-smu.top/treedata-book/",
+        "https://doi.org/10.1111/2041-210X.12628"
+      ],
+      "categoryIds": [
+        "evolution",
+        "genetics",
+        "validation"
+      ],
+      "methodTags": [
+        "evolution",
+        "noise",
+        "planning-recipe"
+      ],
+      "applicability": {
+        "level": "conditional",
+        "reason": "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "reasonEn": "Check trait scale, strain order, replication and estimation error; assess calibration with design-matched simulations.",
+        "requiredData": [
+          "phylogeny",
+          "sample_metadata",
+          "qtl_traits"
+        ],
+        "optionalData": []
+      },
+      "sourceKind": "documentation",
+      "paperStatus": "verified",
+      "documentationStatus": "documentation-linked",
+      "sourceLinks": [
+        {
+          "url": "https://yulab-smu.top/treedata-book/",
+          "kind": "documentation",
+          "label": "官方方法文档"
+        },
+        {
+          "url": "https://doi.org/10.1111/2041-210X.12628",
+          "kind": "research_article",
+          "label": "方法论文"
+        }
+      ],
+      "executionStatus": "recipe_only",
+      "addedIn": "v30",
+      "versionEvidence": {
+        "version": "official interface documentation",
+        "checkedOn": "2026-10-18",
+        "source": "https://yulab-smu.top/treedata-book/",
+        "apiSignatureVerified": true,
+        "biologicalExecution": false,
+        "runtimeInstalled": false
+      }
+    },
+    {
+      "id": "ete4",
+      "name": "ETE 4",
+      "task": "菌株树的交互检查与注释",
+      "taskEn": "Interactive strain-tree inspection and annotation",
+      "steps": [
+        "genetics"
+      ],
+      "url": "https://etetoolkit.github.io/ete/",
+      "paperUrl": "https://doi.org/10.1093/molbev/msw046",
+      "input": [
+        "与样本匹配的群体历史或系统树",
+        "样本、菌株、培养与批次映射",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。"
+      ],
+      "output": [
+        "模型结果、区间与可复核的诊断"
+      ],
+      "entrypoint": "from ete4 import Tree\ntree = Tree(open(tree_path).read())\nfor leaf in tree:\n    leaf.add_props(**tip_annotations.get(leaf.name, {}))\nprint(tree.write(props=None))\n# Interactive output requires the ETE display environment:\ntree.explore()",
+      "parameters": [
+        {
+          "name": "Newick / parser / node labels / annotation / display backend",
+          "meaning": "模型文件与运行环境",
+          "selection": "按研究问题选择模型、参数与种子；保存软件版本和完整调用。",
+          "required": true
+        },
+        {
+          "name": "runtime / package dependencies",
+          "meaning": "Python, ete4; display dependencies by output mode",
+          "selection": "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。",
+        "核对根、末端匹配、分支单位及重组／杂交敏感性；细胞状态轨迹单独分析。"
+      ],
+      "yeastStatus": "条件性",
+      "role": "对照",
+      "sourceUrls": [
+        "https://etetoolkit.github.io/ete/",
+        "https://doi.org/10.1093/molbev/msw046"
+      ],
+      "categoryIds": [
+        "evolution",
+        "genetics",
+        "validation"
+      ],
+      "methodTags": [
+        "evolution",
+        "noise",
+        "planning-recipe"
+      ],
+      "applicability": {
+        "level": "conditional",
+        "reason": "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "reasonEn": "Check trait scale, strain order, replication and estimation error; assess calibration with design-matched simulations.",
+        "requiredData": [
+          "phylogeny",
+          "sample_metadata"
+        ],
+        "optionalData": []
+      },
+      "sourceKind": "documentation",
+      "paperStatus": "verified",
+      "documentationStatus": "documentation-linked",
+      "sourceLinks": [
+        {
+          "url": "https://etetoolkit.github.io/ete/",
+          "kind": "documentation",
+          "label": "官方方法文档"
+        },
+        {
+          "url": "https://doi.org/10.1093/molbev/msw046",
+          "kind": "research_article",
+          "label": "方法论文"
+        }
+      ],
+      "executionStatus": "recipe_only",
+      "addedIn": "v30",
+      "versionEvidence": {
+        "version": "official interface documentation",
+        "checkedOn": "2026-10-18",
+        "source": "https://etetoolkit.github.io/ete/",
+        "apiSignatureVerified": true,
+        "biologicalExecution": false,
+        "runtimeInstalled": false
+      }
+    },
+    {
+      "id": "slim5",
+      "name": "SLiM 5",
+      "task": "给定生活史与选择设定的正向演化模拟",
+      "taskEn": "Forward evolution under specified life history and selection",
+      "steps": [
+        "genetics",
+        "validation"
+      ],
+      "url": "https://messerlab.org/slim/",
+      "paperUrl": "https://doi.org/10.1093/molbev/msaf313",
+      "input": [
+        "独立参照或明确模拟真值",
+        "样本、菌株、培养与批次映射",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。"
+      ],
+      "output": [
+        "模型结果、区间与可复核的诊断"
+      ],
+      "entrypoint": "slim -s <SEED> <REVIEWED_LIFE_HISTORY_MODEL.slim>",
+      "parameters": [
+        {
+          "name": "life cycle / mutation / recombination / selection / sampling / observation",
+          "meaning": "模型文件与运行环境",
+          "selection": "按研究问题选择模型、参数与种子；保存软件版本和完整调用。",
+          "required": true
+        },
+        {
+          "name": "runtime / package dependencies",
+          "meaning": "SLiM 5",
+          "selection": "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。"
+      ],
+      "yeastStatus": "条件性",
+      "role": "对照",
+      "sourceUrls": [
+        "https://messerlab.org/slim/",
+        "https://doi.org/10.1093/molbev/msaf313"
+      ],
+      "categoryIds": [
+        "evolution",
+        "genetics",
+        "validation"
+      ],
+      "methodTags": [
+        "evolution",
+        "noise",
+        "planning-recipe"
+      ],
+      "applicability": {
+        "level": "conditional",
+        "reason": "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "reasonEn": "Check trait scale, strain order, replication and estimation error; assess calibration with design-matched simulations.",
+        "requiredData": [
+          "truth_or_simulation",
+          "sample_metadata"
+        ],
+        "optionalData": []
+      },
+      "sourceKind": "documentation",
+      "paperStatus": "verified",
+      "documentationStatus": "documentation-linked",
+      "sourceLinks": [
+        {
+          "url": "https://messerlab.org/slim/",
+          "kind": "documentation",
+          "label": "官方方法文档"
+        },
+        {
+          "url": "https://doi.org/10.1093/molbev/msaf313",
+          "kind": "research_article",
+          "label": "方法论文"
+        }
+      ],
+      "executionStatus": "recipe_only",
+      "addedIn": "v30",
+      "versionEvidence": {
+        "version": "official interface documentation",
+        "checkedOn": "2026-10-18",
+        "source": "https://messerlab.org/slim/",
+        "apiSignatureVerified": true,
+        "biologicalExecution": false,
+        "runtimeInstalled": false
+      }
+    },
+    {
+      "id": "msprime",
+      "name": "msprime",
+      "task": "中性群体历史、祖先重组与抽样模拟",
+      "taskEn": "Neutral demography, ancestral recombination and sampling",
+      "steps": [
+        "genetics",
+        "validation"
+      ],
+      "url": "https://tskit.dev/msprime/docs/stable/intro.html",
+      "paperUrl": "https://doi.org/10.1093/genetics/iyab229",
+      "input": [
+        "独立参照或明确模拟真值",
+        "样本、菌株、培养与批次映射",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。"
+      ],
+      "output": [
+        "模型结果、区间与可复核的诊断"
+      ],
+      "entrypoint": "import msprime\nancestry = msprime.sim_ancestry(samples=sample_specification, demography=demography, ploidy=declared_ploidy, sequence_length=sequence_length, recombination_rate=recombination_rate, random_seed=recorded_seed)\nmutated = msprime.sim_mutations(ancestry, rate=mutation_rate, random_seed=mutation_seed)",
+      "parameters": [
+        {
+          "name": "samples / demography / ploidy / recombination_rate / sequence_length / mutation rate",
+          "meaning": "模型文件与运行环境",
+          "selection": "按研究问题选择模型、参数与种子；保存软件版本和完整调用。",
+          "required": true
+        },
+        {
+          "name": "runtime / package dependencies",
+          "meaning": "Python, msprime, tskit",
+          "selection": "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。"
+      ],
+      "yeastStatus": "条件性",
+      "role": "对照",
+      "sourceUrls": [
+        "https://tskit.dev/msprime/docs/stable/intro.html",
+        "https://doi.org/10.1093/genetics/iyab229"
+      ],
+      "categoryIds": [
+        "evolution",
+        "genetics",
+        "validation"
+      ],
+      "methodTags": [
+        "evolution",
+        "noise",
+        "planning-recipe"
+      ],
+      "applicability": {
+        "level": "conditional",
+        "reason": "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "reasonEn": "Check trait scale, strain order, replication and estimation error; assess calibration with design-matched simulations.",
+        "requiredData": [
+          "truth_or_simulation",
+          "sample_metadata"
+        ],
+        "optionalData": []
+      },
+      "sourceKind": "documentation",
+      "paperStatus": "verified",
+      "documentationStatus": "documentation-linked",
+      "sourceLinks": [
+        {
+          "url": "https://tskit.dev/msprime/docs/stable/intro.html",
+          "kind": "documentation",
+          "label": "官方方法文档"
+        },
+        {
+          "url": "https://doi.org/10.1093/genetics/iyab229",
+          "kind": "research_article",
+          "label": "方法论文"
+        }
+      ],
+      "executionStatus": "recipe_only",
+      "addedIn": "v30",
+      "versionEvidence": {
+        "version": "official interface documentation",
+        "checkedOn": "2026-10-18",
+        "source": "https://tskit.dev/msprime/docs/stable/intro.html",
+        "apiSignatureVerified": true,
+        "biologicalExecution": false,
+        "runtimeInstalled": false
+      }
+    },
+    {
+      "id": "gcta",
+      "name": "GCTA",
+      "task": "多亲缘矩阵的遗传方差与敏感性对照",
+      "taskEn": "Genetic variance and sensitivity across relationship matrices",
+      "steps": [
+        "genetics"
+      ],
+      "url": "https://yanglab.westlake.edu.cn/software/gcta/",
+      "paperUrl": "https://doi.org/10.1016/j.ajhg.2010.11.011",
+      "input": [
+        "样本层表达或噪音性状及协变量",
+        "同一分析样本集合的亲缘矩阵",
+        "样本、菌株、培养与批次映射",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。"
+      ],
+      "output": [
+        "模型结果、区间与可复核的诊断"
+      ],
+      "entrypoint": "gcta64 --grm <AUDITED_GRM_PREFIX> --pheno <STRAIN_TRAITS> --covar <CATEGORICAL_COVARIATES> --qcovar <CONTINUOUS_COVARIATES> --reml --out <OUTPUT_PREFIX>\n# Multiple components: replace --grm with --mgrm <GRM_PREFIX_LIST>\n# Genetic correlation: use --reml-bivar <TRAIT_COLUMN_1> <TRAIT_COLUMN_2>",
+      "parameters": [
+        {
+          "name": "--grm / --mgrm / --pheno / --covar / --qcovar / --reml / --reml-bivar",
+          "meaning": "模型文件与运行环境",
+          "selection": "按研究问题选择模型、参数与种子；保存软件版本和完整调用。",
+          "required": true
+        },
+        {
+          "name": "runtime / package dependencies",
+          "meaning": "GCTA; externally audited yeast GRM",
+          "selection": "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "配套模型、比对或模拟脚本须另行准备；此处保存规划配方。",
+        "预先审计酵母倍性、MAF/LD 权重和 GRM 尺度；标准 GREML 不直接传播噪音性状的异方差测量误差，须与误差模型或匹配模拟并列。"
+      ],
+      "yeastStatus": "条件性",
+      "role": "对照",
+      "sourceUrls": [
+        "https://yanglab.westlake.edu.cn/software/gcta/",
+        "https://doi.org/10.1016/j.ajhg.2010.11.011"
+      ],
+      "categoryIds": [
+        "evolution",
+        "genetics",
+        "validation"
+      ],
+      "methodTags": [
+        "evolution",
+        "noise",
+        "planning-recipe"
+      ],
+      "applicability": {
+        "level": "conditional",
+        "reason": "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。",
+        "reasonEn": "Check trait scale, strain order, replication and estimation error; assess calibration with design-matched simulations.",
+        "requiredData": [
+          "qtl_traits",
+          "kinship",
+          "sample_metadata"
+        ],
+        "optionalData": []
+      },
+      "sourceKind": "documentation",
+      "paperStatus": "verified",
+      "documentationStatus": "documentation-linked",
+      "sourceLinks": [
+        {
+          "url": "https://yanglab.westlake.edu.cn/software/gcta/",
+          "kind": "documentation",
+          "label": "官方方法文档"
+        },
+        {
+          "url": "https://doi.org/10.1016/j.ajhg.2010.11.011",
+          "kind": "research_article",
+          "label": "方法论文"
+        }
+      ],
+      "executionStatus": "recipe_only",
+      "addedIn": "v30",
+      "versionEvidence": {
+        "version": "official interface documentation",
+        "checkedOn": "2026-10-18",
+        "source": "https://yanglab.westlake.edu.cn/software/gcta/",
+        "apiSignatureVerified": true,
+        "biologicalExecution": false,
+        "runtimeInstalled": false
+      }
     }
   ],
   "formulas": [
@@ -31753,6 +33539,28 @@
       ],
       "derivation": "project_combination_of_documented_measurement_error_and_covariance_models",
       "addedIn": "v29"
+    },
+    {
+      "id": "noise_genetic_correlation",
+      "name": "均值与噪音性状的遗传相关",
+      "expression": "r_g = G_12 / sqrt(G_11 * G_22)",
+      "variables": [
+        {
+          "symbol": "G",
+          "meaning": "G 为明确尺度与亲缘模型下的遗传协方差矩阵；方差接近零时，相关估计可能不稳定。"
+        }
+      ],
+      "assumptions": [
+        "检查性状尺度、菌株顺序、重复结构与估计误差；用匹配设计的模拟检查校准。"
+      ],
+      "purpose": "比较共享遗传变化，并传播两个性状的估计误差。",
+      "sourceUrl": "https://www.xzlab.org/software/GEMMAmanual.pdf",
+      "sourceUrls": [
+        "https://www.xzlab.org/software/GEMMAmanual.pdf",
+        "https://yanglab.westlake.edu.cn/software/gcta/"
+      ],
+      "addedIn": "v30",
+      "definitionStatus": "standard genetic covariance identity; noise-trait application requires calibrated measurement error"
     }
   ],
   "principles": [

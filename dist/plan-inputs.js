@@ -27,13 +27,43 @@ const applyRoute=(plan,next,catalog)=>{
 const list=x=>Array.isArray(x)?x:[],own=(o,k)=>Object.hasOwn(o||{},k);
 const optionKey=(routeId,id)=>routeId+':'+id;
 const toolContract=tool=>tool?.inputContract||{version:1,branchRequired:!!tool?.conditionalInputRequirements?.length,branches:list(tool?.conditionalInputRequirements).map(b=>({...b,id:b.id||b.branch,requiredDataMode:b.requiredDataMode||'extend'}))};
-const optionRows=(plan,catalog)=>list(plan.methodOptionIds).map(key=>{for(const route of catalog.projects?.projects||[]){const option=list(route.methodOptions).find(o=>optionKey(route.id,o.id)===key);if(option)return {key,routeId:route.id,active:list(plan.projects).includes(route.id),option};}return {key,active:false,unresolved:true};});
+const optionRows=(plan,catalog)=>[...new Set([...list(plan.methodOptionIds),...list(plan.analysisSelections).flatMap(r=>list(r.methodOptionIds))])].map(key=>{for(const route of catalog.projects?.projects||[]){const option=list(route.methodOptions).find(o=>optionKey(route.id,o.id)===key);if(option)return {key,routeId:route.id,active:list(plan.projects).includes(route.id)||list(plan.analysisSelections).some(r=>list(r.methodOptionIds).includes(key)),option};}return {key,active:false,unresolved:true};});
 const evidenceValue=(plan,requirement)=>plan.inputEvidence?.[requirement.inputId]?.[requirement.field];
 const supplied=v=>typeof v==='string'&&!!v.trim();
 const suppliedCells=v=>supplied(v)||Array.isArray(v)&&v.length>0&&v.every(supplied);
 const requirementMet=(plan,r)=>{const v=evidenceValue(plan,r);const numeric=(typeof v==='number'||supplied(v))&&Number.isFinite(Number(v));const present=r.min===undefined?supplied(v):numeric&&Number(v)>=r.min&&(!r.field.endsWith('_count')||Number.isInteger(Number(v)));return present&&(!r.values||r.values.includes(v));};
 const directionFields={rooted_pseudotime:['sourceRef','rootReason'],observed_time:['sourceRef','timeColumn','units'],velocity:['sourceRef','quantifier','reference','splicedLayer','unsplicedLayer','ambiguityRules','diagnosticsRef']};
 function directionReview(plan,mode){const d=plan.directionProvenance||{},issues=[];if(!mode||!directionFields[mode])return {mode:mode||null,issues:['directionMode'],status:'direction-pending'};if(d.mode!==mode)issues.push('directionMode');for(const key of directionFields[mode])if(!supplied(d[key]))issues.push(key);if(mode==='rooted_pseudotime'&&!suppliedCells(d.rootCells)&&!supplied(d.rootState))issues.push('rootCellsOrState');return {mode,issues,status:issues.length?'evidence-pending':'conditions-recorded',provenance:d};}
+const metricInputs=m=>[...new Set([...(['fastq','tags'].includes(m.stepId)?['raw_fastq']:m.stepId==='bam'?['tagged_bam']:m.stepId==='matrix'?['count_matrix',...(['spliced_count','unspliced_count','ambiguous_fraction','matrix_layer_reconciliation'].includes(m.id)?['splicing_layers']:[])]:['cellqc','sampleqc','integration','annotation','markers','noise','networks'].includes(m.stepId)?['count_matrix']:[]),...list(m.inputIds)])];
+function analysisContext(plan,catalog){
+ const selections=[],available=new Set(list(plan.availableData)),knownInputs=new Set(catalog.categories.dataRequirements.map(x=>x.id));
+ const allOptions=optionRows(plan,catalog),requests=new Map();
+ for(const r of list(plan.analysisSelections))for(const [id,b]of Object.entries(r.toolBranches||{})){if(!requests.has(id))requests.set(id,new Set());requests.get(id).add(b);}
+ for(const recipe of list(plan.analysisSelections)){
+  const issues=[],requiredData=new Set(list(recipe.requiredData)),toolIds=new Set(list(recipe.toolIds)),metricIds=new Set(list(recipe.metricIds));
+  const issue=(kind,extra={})=>issues.push({kind,analysisId:recipe.id,...extra});
+  for(const id of list(recipe.contextProjectIds))if(!catalog.projects.projects.some(r=>r.id===id))issue('analysis-route-unknown',{routeId:id});
+  for(const id of list(recipe.projectIds)){const r=catalog.projects.projects.find(x=>x.id===id);if(!r){issue('analysis-route-unknown',{routeId:id});continue;}(r.baseToolIds||r.toolIds||[]).forEach(x=>toolIds.add(x));(r.baseMetricIds||r.metricIds||[]).forEach(x=>metricIds.add(x));list(r.inputs).forEach(x=>requiredData.add(x));}
+  for(const key of list(recipe.methodOptionIds)){const row=allOptions.find(x=>x.key===key);if(!row||row.unresolved){issue('analysis-option-unknown',{optionId:key});continue;}list(row.option.toolIds).forEach(x=>toolIds.add(x));list(row.option.metricIds).forEach(x=>metricIds.add(x));list(row.option.requiredData).forEach(x=>requiredData.add(x));}
+  const missingToolIds=[...toolIds].filter(id=>!list(plan.tools).includes(id)),missingMetricIds=[...metricIds].filter(id=>!list(plan.metrics).includes(id));
+  missingToolIds.forEach(toolId=>issue('analysis-tool-missing',{toolId}));missingMetricIds.forEach(metricId=>issue('analysis-metric-missing',{metricId}));
+  for(const id of toolIds){const tool=catalog.workflow.tools.find(x=>x.id===id);if(!tool){if(!missingToolIds.includes(id))issue('analysis-tool-missing',{toolId:id});continue;}const contract=toolContract(tool),branch=list(contract.branches).find(b=>b.id===plan.toolBranches?.[id]);
+   const needed=branch?.requiredDataMode==='replace'?list(branch.requiredData):[...list(tool.applicability?.requiredData),...list(branch?.requiredData)];needed.forEach(x=>requiredData.add(x));
+   const requested=recipe.toolBranches?.[id];if(requested&&(requests.get(id)?.size>1||requested!==plan.toolBranches?.[id]))issue('analysis-branch-conflict',{toolId:id,requested,selected:plan.toolBranches?.[id]||null});
+   if(contract.branchRequired&&!branch)issue('analysis-branch-pending',{toolId:id});
+   for(const r of list(branch?.evidenceRequirements))if(!requirementMet(plan,r))issue('analysis-evidence-pending',{toolId:id,inputId:r.inputId,field:r.field,label:r.label});
+   for(const [key,value]of Object.entries(branch?.parameters||{}))if(own(plan.parameters?.[id],key)&&String(plan.parameters[id][key])!==String(value))issue('analysis-parameter-conflict',{toolId:id,field:key});
+   if(needed.includes('directional_evidence')||branch?.directionMode){const d=directionReview(plan,branch?.directionMode||plan.directionProvenance?.mode);for(const field of d.issues)issue('analysis-direction-pending',{toolId:id,field});for(const input of ({rooted_pseudotime:['pseudotime','sample_metadata'],observed_time:['timepoints','sample_metadata'],velocity:['splicing_layers']}[d.mode]||[]))requiredData.add(input);}
+  }
+  for(const id of metricIds){const m=catalog.workflow.metrics.find(x=>x.id===id);if(m)metricInputs(m).forEach(x=>requiredData.add(x));}
+  for(const id of requiredData)if(!knownInputs.has(id))issue('analysis-input-unknown',{inputId:id});
+  const additionalRequirements=list(recipe.additionalRequirements).map(r=>{const value=plan.analysisInputEvidence?.[recipe.id]?.[r.id],sourceRef=supplied(value)?value.trim():'';return {...r,sourceRef,status:sourceRef?'conditions-recorded':'evidence-pending'};});for(const r of additionalRequirements)if(r.status==='evidence-pending')issue('analysis-external-input-pending',{inputId:r.id,label:r.label,sourceUrl:r.sourceUrl});
+  const missingData=[...requiredData].filter(id=>!available.has(id)),overrides={excludedToolIds:[...toolIds].filter(id=>list(plan.excludedToolIds).includes(id)),excludedMetricIds:[...metricIds].filter(id=>list(plan.excludedMetricIds).includes(id)),branches:Object.entries(recipe.toolBranches||{}).filter(([id,b])=>plan.toolBranches?.[id]!==b).map(([toolId,requested])=>({toolId,requested,selected:plan.toolBranches?.[toolId]||null}))};
+  const decision=issues.some(x=>['analysis-branch-conflict','analysis-branch-pending','analysis-evidence-pending','analysis-direction-pending','analysis-parameter-conflict'].includes(x.kind));
+  selections.push({id:recipe.id,recipe,toolIds:[...toolIds],metricIds:[...metricIds],requiredData:[...requiredData],missingData,missingToolIds,missingMetricIds,issues,overrides,additionalRequirements,status:decision?'decision-pending':missingToolIds.length||missingMetricIds.length?'dependency-pending':issues.length||missingData.length?'input-pending':'conditions-recorded'});
+ }
+ return {version:1,selections,requiredData:[...new Set(selections.flatMap(x=>x.requiredData))],issues:selections.flatMap(x=>x.issues),executionStatus:'planning_only'};
+}
 function methodContext(plan,catalog){
  const available=new Set(list(plan.availableData)),options=optionRows(plan,catalog),issues=[],tools=[];
  for(const row of options){if(row.unresolved)issues.push({kind:'unknown-option',optionId:row.key});else if(row.active)for(const id of row.option.toolIds||[])if(!list(plan.tools).includes(id))issues.push({kind:'option-tool-missing',optionId:row.key,toolId:id});}
@@ -47,7 +77,9 @@ function methodContext(plan,catalog){
   const unmet=requiredData.filter(id=>!available.has(id));tools.push({toolId,branchId:branchId||null,branch:branch||null,requiredData,unmet,issues:local,direction,status:local.length?'decision-pending':unmet.length?'input-pending':'conditions-recorded'});issues.push(...local);
  }
  for(const [toolId,branchId]of Object.entries(plan.toolBranches||{}))if(!catalog.workflow.tools.some(t=>t.id===toolId))issues.push({kind:'unknown-tool-branch',toolId,branchId});
- return {version:1,options,tools,issues,executionStatus:'planning_only'};
+ const analyses=analysisContext(plan,catalog);issues.push(...analyses.issues);
+ for(const t of tools){const extra=analyses.issues.filter(x=>x.toolId===t.toolId);if(extra.length){t.issues.push(...extra);t.status='decision-pending';}}
+ return {version:1,options,tools,issues,analyses,executionStatus:'planning_only'};
 }
 const review = (plan, catalog) => {
   const methods=methodContext(plan,catalog);
@@ -144,6 +176,7 @@ const review = (plan, catalog) => {
   };
   methods.tools.forEach(t=>t.requiredData.forEach(key=>resolve(key,t.toolId+(t.branchId?':'+t.branchId:''))));
   methods.options.filter(r=>r.active&&!r.unresolved).forEach(r=>list(r.option.requiredData).forEach(key=>resolve(key,r.key)));
+  methods.analyses.selections.forEach(r=>r.requiredData.forEach(key=>resolve(key,'analysis:'+r.id)));
   for(const issue of methods.issues)if(issue.inputId)resolve(issue.inputId,issue.toolId+':'+(issue.branchId||''));
   // A retained research question keeps its input requirements even if a method is deselected.
   for(const project of catalog.projects?.projects||[]){
@@ -152,8 +185,7 @@ const review = (plan, catalog) => {
   }
   // Metrics also carry input requirements: an exported matrix metric cannot be ready without its source.
   for(const m of catalog.workflow.metrics.filter(m=>(plan.metrics||[]).includes(m.id))){
-    const needs=['fastq','tags'].includes(m.stepId)?['raw_fastq']:m.stepId==='bam'?['tagged_bam']:m.stepId==='matrix'?['count_matrix',...(['spliced_count','unspliced_count','ambiguous_fraction','matrix_layer_reconciliation'].includes(m.id)?['splicing_layers']:[])]:['cellqc','sampleqc','integration','annotation','markers','noise','networks'].includes(m.stepId)?['count_matrix']:[];
-    [...new Set([...needs,...(m.inputIds||[])])].forEach(key=>resolve(key,m.id));
+    metricInputs(m).forEach(key=>resolve(key,m.id));
   }
   for(const result of catalog.projects?.resultSpecifications||[]){
     if((plan.resultSpecificationIds||[]).includes(result.id))
@@ -168,9 +200,9 @@ const review = (plan, catalog) => {
     const effective=new Set([...contexts.flatMap(t=>t.requiredData),...methods.options.filter(r=>r.active&&!r.unresolved&&list(r.option.toolIds).some(id=>list(rule.toolIds).includes(id))).flatMap(r=>list(r.option.requiredData))]);
     return {...rule,catalogueRequiredData:rule.requiredData,requiredData:list(rule.requiredData).filter(id=>effective.has(id)),selectedBranches:contexts.map(t=>({toolId:t.toolId,branchId:t.branchId}))};
   });
-  return {inputs: [...rows.values()], rules, route:route(plan), skippedStages:excludedStages(plan),methodDecisions:methods,contractIssues:methods.issues};
+  return {inputs: [...rows.values()], rules, route:route(plan), skippedStages:excludedStages(plan),methodDecisions:methods,contractIssues:methods.issues,analysisSelections:methods.analyses};
 };
 const toolContext=(plan,tool,catalog)=>{const ctx=methodContext(plan,catalog).tools.find(t=>t.toolId===tool.id);let result=tool;if(route(plan)!=='raw_fastq'&&['dropest','scpipe'].includes(tool.id)){const requiredData=['tagged_bam','reference'];result={...tool,input:requiredData.map(id=>catalog.categories.dataRequirements.find(r=>r.id===id)?.title||id),entrypoint:tool.id==='dropest'?'dropest -f -c <TAG_CONFIG.xml> -g <REFERENCE.gtf> <TAGGED.bam>':'sc_demultiplex(<TAGGED_BAM_AND_BARCODE_ANNOTATION>); sc_gene_counting(<VALIDATED_INPUTS>)',selectedInputRoute:'tagged_bam'};}const branchURLs=new Set(list(toolContract(tool).branches).flatMap(b=>list(b.sourceUrls))),selectedURLs=[...new Set([...list(result.sourceUrls).filter(url=>!branchURLs.has(url)),...list(ctx?.branch?.sourceUrls)])];return ctx?{...result,sourceUrls:selectedURLs,...(ctx.branch?{input:ctx.requiredData}:{}),applicability:{...result.applicability,requiredData:ctx.requiredData,optionalData:list(result.applicability?.optionalData).filter(id=>!ctx.requiredData.includes(id)&&(!ctx.branch||!list(toolContract(tool).branches).some(b=>list(b.requiredData).includes(id))))},selectedBranch:ctx.branchId,contractReview:ctx,resolvedParameters:{...plan.parameters?.[tool.id],...ctx.branch?.parameters}}:result;};
-Object.assign(review,{methodContext,toolContract,optionRows,optionKey,directionReview,directionFields,route,excludedStages,stageDependencies,applyRoute,toolContext,applicableStages:(plan,catalog)=>catalog.workflow.steps.filter(s=>plan.stages.includes(s.id)).map(s=>s.id)});
+Object.assign(review,{methodContext,analysisContext,metricInputs,toolContract,optionRows,optionKey,directionReview,directionFields,route,excludedStages,stageDependencies,applyRoute,toolContext,applicableStages:(plan,catalog)=>catalog.workflow.steps.filter(s=>plan.stages.includes(s.id)).map(s=>s.id)});
 window.YV_INPUTS=review;
 })();

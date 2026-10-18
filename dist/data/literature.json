@@ -19454,7 +19454,9 @@
         }
       },
       "addedIn": "v29_evolution",
-      "toolIds": []
+      "toolIds": [
+        "revbayes"
+      ]
     },
     {
       "id": "ev29_23ab4ba88723",
@@ -19603,7 +19605,9 @@
         }
       },
       "addedIn": "v29_evolution",
-      "toolIds": []
+      "toolIds": [
+        "iqtree3"
+      ]
     },
     {
       "id": "ev29_370a751c4e22",
@@ -19687,7 +19691,9 @@
         }
       },
       "addedIn": "v29_evolution",
-      "toolIds": []
+      "toolIds": [
+        "slim5"
+      ]
     },
     {
       "id": "ev29_01e0b1f27bfd",
@@ -19916,7 +19922,9 @@
         }
       },
       "addedIn": "v29_evolution",
-      "toolIds": []
+      "toolIds": [
+        "msprime"
+      ]
     },
     {
       "id": "ev29_7a598af3c802",
@@ -20009,7 +20017,9 @@
         }
       },
       "addedIn": "v29_evolution",
-      "toolIds": []
+      "toolIds": [
+        "ggtree"
+      ]
     },
     {
       "id": "ev29_1c91c891d761",
@@ -20092,7 +20102,9 @@
         }
       },
       "addedIn": "v29_evolution",
-      "toolIds": []
+      "toolIds": [
+        "mvmorph"
+      ]
     },
     {
       "id": "ev29_f0824818e439",
@@ -20154,7 +20166,9 @@
         }
       },
       "addedIn": "v29_evolution",
-      "toolIds": []
+      "toolIds": [
+        "mcmcglmm"
+      ]
     },
     {
       "id": "ev29_9fade1682fce",
@@ -20261,7 +20275,9 @@
         }
       },
       "addedIn": "v29_evolution",
-      "toolIds": []
+      "toolIds": [
+        "stan"
+      ]
     },
     {
       "id": "ev29_7f8989be79c6",
@@ -20581,7 +20597,9 @@
         }
       },
       "addedIn": "v29_evolution",
-      "toolIds": []
+      "toolIds": [
+        "sbc"
+      ]
     },
     {
       "id": "ev29_c91ee65c22da",
@@ -20749,7 +20767,9 @@
         "indexFirstPublication": "2019-04-08"
       },
       "addedIn": "v29_evolution",
-      "toolIds": []
+      "toolIds": [
+        "beast2"
+      ]
     },
     {
       "id": "ev29_768d19a90167",
@@ -20844,7 +20864,9 @@
         "indexFirstPublication": "2019-11-01"
       },
       "addedIn": "v29_evolution",
-      "toolIds": []
+      "toolIds": [
+        "raxmlng"
+      ]
     },
     {
       "id": "ev29_d0b8ec870fab",
@@ -20928,7 +20950,676 @@
         "indexFirstPublication": "2016-02-26"
       },
       "addedIn": "v29_evolution",
+      "toolIds": [
+        "ete4"
+      ]
+    },
+    {
+      "id": "ev30_de9db0fcfb55",
+      "title": "Reevaluation of SNP heritability in complex human traits",
+      "authors": [
+        "Doug Speed",
+        "Na Cai",
+        "UCLEB Consortium",
+        "Michael R Johnson",
+        "Sergey Nejentsev",
+        "David J Balding"
+      ],
+      "cslAuthors": [
+        {
+          "family": "Speed",
+          "given": "Doug"
+        },
+        {
+          "family": "Cai",
+          "given": "Na"
+        },
+        {
+          "literal": "UCLEB Consortium"
+        },
+        {
+          "family": "Johnson",
+          "given": "Michael R"
+        },
+        {
+          "family": "Nejentsev",
+          "given": "Sergey"
+        },
+        {
+          "family": "Balding",
+          "given": "David J"
+        }
+      ],
+      "year": 2017,
+      "journal": "Nature genetics",
+      "volume": "49",
+      "issue": "7",
+      "pages": "986-992",
+      "articleNumber": "",
+      "doi": "10.1038/ng.3865",
+      "url": "https://doi.org/10.1038/ng.3865",
+      "sourceUrls": [
+        "https://doi.org/10.1038/ng.3865",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1038%2Fng.3865&format=json&resultType=core"
+      ],
+      "topics": [
+        "Bayesian inference",
+        "Evolutionary biology"
+      ],
+      "species": [
+        "Methodology"
+      ],
+      "studyType": "Computational method",
+      "evidence": "Published method and official documentation",
+      "summary": "Reevaluation of SNP heritability in complex human traits",
+      "contribution": "Reevaluation of SNP heritability in complex human traits",
+      "limitations": [],
+      "status": "verified",
+      "selection": "curated",
+      "publicationType": "peer-reviewed",
+      "metadataVerified": true,
+      "verificationDate": "2026-10-18",
+      "inWindow": true,
+      "dateEvidence": {
+        "indexFirstPublication": "2017-05-22",
+        "journalDateOfPublication": "2017 Jul"
+      },
+      "addedIn": "v30_population",
       "toolIds": []
+    },
+    {
+      "id": "ev30_aa461e656554",
+      "title": "Dominance genetic variation contributes little to the missing heritability for human complex traits",
+      "authors": [
+        "Zhihong Zhu",
+        "Andrew Bakshi",
+        "Anna A E Vinkhuyzen",
+        "Gibran Hemani",
+        "Sang Hong Lee",
+        "Ilja M Nolte",
+        "Jana V van Vliet-Ostaptchouk",
+        "Harold Snieder",
+        "LifeLines Cohort Study",
+        "Tonu Esko",
+        "Lili Milani",
+        "Reedik Mägi",
+        "Andres Metspalu",
+        "William G Hill",
+        "Bruce S Weir",
+        "Michael E Goddard",
+        "Peter M Visscher",
+        "Jian Yang"
+      ],
+      "cslAuthors": [
+        {
+          "family": "Zhu",
+          "given": "Zhihong"
+        },
+        {
+          "family": "Bakshi",
+          "given": "Andrew"
+        },
+        {
+          "family": "Vinkhuyzen",
+          "given": "Anna A E"
+        },
+        {
+          "family": "Hemani",
+          "given": "Gibran"
+        },
+        {
+          "family": "Lee",
+          "given": "Sang Hong"
+        },
+        {
+          "family": "Nolte",
+          "given": "Ilja M"
+        },
+        {
+          "family": "van Vliet-Ostaptchouk",
+          "given": "Jana V"
+        },
+        {
+          "family": "Snieder",
+          "given": "Harold"
+        },
+        {
+          "literal": "LifeLines Cohort Study"
+        },
+        {
+          "family": "Esko",
+          "given": "Tonu"
+        },
+        {
+          "family": "Milani",
+          "given": "Lili"
+        },
+        {
+          "family": "Mägi",
+          "given": "Reedik"
+        },
+        {
+          "family": "Metspalu",
+          "given": "Andres"
+        },
+        {
+          "family": "Hill",
+          "given": "William G"
+        },
+        {
+          "family": "Weir",
+          "given": "Bruce S"
+        },
+        {
+          "family": "Goddard",
+          "given": "Michael E"
+        },
+        {
+          "family": "Visscher",
+          "given": "Peter M"
+        },
+        {
+          "family": "Yang",
+          "given": "Jian"
+        }
+      ],
+      "year": 2015,
+      "journal": "American journal of human genetics",
+      "volume": "96",
+      "issue": "3",
+      "pages": "377-385",
+      "articleNumber": "",
+      "doi": "10.1016/j.ajhg.2015.01.001",
+      "url": "https://doi.org/10.1016/j.ajhg.2015.01.001",
+      "sourceUrls": [
+        "https://doi.org/10.1016/j.ajhg.2015.01.001",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1016%2Fj.ajhg.2015.01.001&format=json&resultType=core"
+      ],
+      "topics": [
+        "Bayesian inference",
+        "Evolutionary biology"
+      ],
+      "species": [
+        "Methodology"
+      ],
+      "studyType": "Computational method",
+      "evidence": "Published method and official documentation",
+      "summary": "Dominance genetic variation contributes little to the missing heritability for human complex traits",
+      "contribution": "Dominance genetic variation contributes little to the missing heritability for human complex traits",
+      "limitations": [],
+      "status": "verified",
+      "selection": "curated",
+      "publicationType": "peer-reviewed",
+      "metadataVerified": true,
+      "verificationDate": "2026-10-18",
+      "inWindow": true,
+      "dateEvidence": {
+        "indexFirstPublication": "2015-02-12",
+        "journalDateOfPublication": "2015 Mar"
+      },
+      "addedIn": "v30_population",
+      "toolIds": []
+    },
+    {
+      "id": "ev30_0e44ca932abc",
+      "title": "Non-additive genetic components contribute significantly to population-wide gene expression variation",
+      "authors": [
+        "Andreas Tsouris",
+        "Gauthier Brach",
+        "Joseph Schacherer",
+        "Jing Hou"
+      ],
+      "cslAuthors": [
+        {
+          "family": "Tsouris",
+          "given": "Andreas"
+        },
+        {
+          "family": "Brach",
+          "given": "Gauthier"
+        },
+        {
+          "family": "Schacherer",
+          "given": "Joseph"
+        },
+        {
+          "family": "Hou",
+          "given": "Jing"
+        }
+      ],
+      "year": 2024,
+      "journal": "Cell genomics",
+      "volume": "4",
+      "issue": "1",
+      "pages": "100459",
+      "articleNumber": "",
+      "doi": "10.1016/j.xgen.2023.100459",
+      "url": "https://doi.org/10.1016/j.xgen.2023.100459",
+      "sourceUrls": [
+        "https://doi.org/10.1016/j.xgen.2023.100459",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1016%2Fj.xgen.2023.100459&format=json&resultType=core"
+      ],
+      "topics": [
+        "Bayesian inference",
+        "Evolutionary biology"
+      ],
+      "species": [
+        "Methodology"
+      ],
+      "studyType": "Computational method",
+      "evidence": "Published method and official documentation",
+      "summary": "Non-additive genetic components contribute significantly to population-wide gene expression variation",
+      "contribution": "Non-additive genetic components contribute significantly to population-wide gene expression variation",
+      "limitations": [],
+      "status": "verified",
+      "selection": "curated",
+      "publicationType": "peer-reviewed",
+      "metadataVerified": true,
+      "verificationDate": "2026-10-18",
+      "inWindow": true,
+      "dateEvidence": {
+        "indexFirstPublication": "2023-12-04",
+        "journalDateOfPublication": "2024 Jan",
+        "publisherIssueDate": "2024-01-10"
+      },
+      "addedIn": "v30_population",
+      "toolIds": []
+    },
+    {
+      "id": "ev30_f8f5da4affc8",
+      "title": "Contrasting Frequencies and Effects of cis- and trans-Regulatory Mutations Affecting Gene Expression",
+      "authors": [
+        "Brian P H Metzger",
+        "Fabien Duveau",
+        "David C Yuan",
+        "Stephen Tryban",
+        "Bing Yang",
+        "Patricia J Wittkopp"
+      ],
+      "cslAuthors": [
+        {
+          "family": "Metzger",
+          "given": "Brian P H"
+        },
+        {
+          "family": "Duveau",
+          "given": "Fabien"
+        },
+        {
+          "family": "Yuan",
+          "given": "David C"
+        },
+        {
+          "family": "Tryban",
+          "given": "Stephen"
+        },
+        {
+          "family": "Yang",
+          "given": "Bing"
+        },
+        {
+          "family": "Wittkopp",
+          "given": "Patricia J"
+        }
+      ],
+      "year": 2016,
+      "journal": "Molecular biology and evolution",
+      "volume": "33",
+      "issue": "5",
+      "pages": "1131-1146",
+      "articleNumber": "",
+      "doi": "10.1093/molbev/msw011",
+      "url": "https://doi.org/10.1093/molbev/msw011",
+      "sourceUrls": [
+        "https://doi.org/10.1093/molbev/msw011",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1093%2Fmolbev%2Fmsw011&format=json&resultType=core"
+      ],
+      "topics": [
+        "Bayesian inference",
+        "Evolutionary biology"
+      ],
+      "species": [
+        "Methodology"
+      ],
+      "studyType": "Computational method",
+      "evidence": "Published method and official documentation",
+      "summary": "Contrasting Frequencies and Effects of cis- and trans-Regulatory Mutations Affecting Gene Expression",
+      "contribution": "Contrasting Frequencies and Effects of cis- and trans-Regulatory Mutations Affecting Gene Expression",
+      "limitations": [],
+      "status": "verified",
+      "selection": "curated",
+      "publicationType": "peer-reviewed",
+      "metadataVerified": true,
+      "verificationDate": "2026-10-18",
+      "inWindow": true,
+      "dateEvidence": {
+        "indexFirstPublication": "2016-01-18",
+        "journalDateOfPublication": "2016 May"
+      },
+      "addedIn": "v30_population",
+      "toolIds": []
+    },
+    {
+      "id": "ev30_46c85f61d3fe",
+      "title": "Cis-regulatory variants affect gene expression dynamics in yeast",
+      "authors": [
+        "Ching-Hua Shih",
+        "Justin Fay"
+      ],
+      "cslAuthors": [
+        {
+          "family": "Shih",
+          "given": "Ching-Hua"
+        },
+        {
+          "family": "Fay",
+          "given": "Justin"
+        }
+      ],
+      "year": 2021,
+      "journal": "eLife",
+      "volume": "10",
+      "issue": "",
+      "pages": "e68469",
+      "articleNumber": "",
+      "doi": "10.7554/elife.68469",
+      "url": "https://doi.org/10.7554/eLife.68469",
+      "sourceUrls": [
+        "https://doi.org/10.7554/eLife.68469",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.7554%2FeLife.68469&format=json&resultType=core"
+      ],
+      "topics": [
+        "Bayesian inference",
+        "Evolutionary biology"
+      ],
+      "species": [
+        "Methodology"
+      ],
+      "studyType": "Computational method",
+      "evidence": "Published method and official documentation",
+      "summary": "Cis-regulatory variants affect gene expression dynamics in yeast",
+      "contribution": "Cis-regulatory variants affect gene expression dynamics in yeast",
+      "limitations": [],
+      "status": "verified",
+      "selection": "curated",
+      "publicationType": "peer-reviewed",
+      "metadataVerified": true,
+      "verificationDate": "2026-10-18",
+      "inWindow": true,
+      "dateEvidence": {
+        "indexFirstPublication": "2021-08-09",
+        "journalDateOfPublication": "2021 Aug"
+      },
+      "addedIn": "v30_population",
+      "toolIds": []
+    },
+    {
+      "id": "ev30_350293cbd973",
+      "title": "DRIFTSEL: an R package for detecting signals of natural selection in quantitative traits",
+      "authors": [
+        "M Karhunen",
+        "J Merilä",
+        "T Leinonen",
+        "J M Cano",
+        "O Ovaskainen"
+      ],
+      "cslAuthors": [
+        {
+          "family": "Karhunen",
+          "given": "M"
+        },
+        {
+          "family": "Merilä",
+          "given": "J"
+        },
+        {
+          "family": "Leinonen",
+          "given": "T"
+        },
+        {
+          "family": "Cano",
+          "given": "J M"
+        },
+        {
+          "family": "Ovaskainen",
+          "given": "O"
+        }
+      ],
+      "year": 2013,
+      "journal": "Molecular ecology resources",
+      "volume": "13",
+      "issue": "4",
+      "pages": "746-754",
+      "articleNumber": "",
+      "doi": "10.1111/1755-0998.12111",
+      "url": "https://doi.org/10.1111/1755-0998.12111",
+      "sourceUrls": [
+        "https://doi.org/10.1111/1755-0998.12111",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1111%2F1755-0998.12111&format=json&resultType=core"
+      ],
+      "topics": [
+        "Bayesian inference",
+        "Evolutionary biology"
+      ],
+      "species": [
+        "Methodology"
+      ],
+      "studyType": "Computational method",
+      "evidence": "Published method and official documentation",
+      "summary": "DRIFTSEL: an R package for detecting signals of natural selection in quantitative traits",
+      "contribution": "DRIFTSEL: an R package for detecting signals of natural selection in quantitative traits",
+      "limitations": [],
+      "status": "verified",
+      "selection": "curated",
+      "publicationType": "peer-reviewed",
+      "metadataVerified": true,
+      "verificationDate": "2026-10-18",
+      "inWindow": true,
+      "dateEvidence": {
+        "indexFirstPublication": "2013-05-09",
+        "journalDateOfPublication": "2013 Jul"
+      },
+      "addedIn": "v30_population",
+      "toolIds": []
+    },
+    {
+      "id": "ev30_bf79e3bdad4e",
+      "title": "A new method to uncover signatures of divergent and stabilizing selection in quantitative traits",
+      "authors": [
+        "Otso Ovaskainen",
+        "Markku Karhunen",
+        "Chaozhi Zheng",
+        "José Manuel Cano Arias",
+        "Juha Merilä"
+      ],
+      "cslAuthors": [
+        {
+          "family": "Ovaskainen",
+          "given": "Otso"
+        },
+        {
+          "family": "Karhunen",
+          "given": "Markku"
+        },
+        {
+          "family": "Zheng",
+          "given": "Chaozhi"
+        },
+        {
+          "family": "Arias",
+          "given": "José Manuel Cano"
+        },
+        {
+          "family": "Merilä",
+          "given": "Juha"
+        }
+      ],
+      "year": 2011,
+      "journal": "Genetics",
+      "volume": "189",
+      "issue": "2",
+      "pages": "621-632",
+      "articleNumber": "",
+      "doi": "10.1534/genetics.111.129387",
+      "url": "https://doi.org/10.1534/genetics.111.129387",
+      "sourceUrls": [
+        "https://doi.org/10.1534/genetics.111.129387",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1534%2Fgenetics.111.129387&format=json&resultType=core"
+      ],
+      "topics": [
+        "Bayesian inference",
+        "Evolutionary biology"
+      ],
+      "species": [
+        "Methodology"
+      ],
+      "studyType": "Computational method",
+      "evidence": "Published method and official documentation",
+      "summary": "A new method to uncover signatures of divergent and stabilizing selection in quantitative traits",
+      "contribution": "A new method to uncover signatures of divergent and stabilizing selection in quantitative traits",
+      "limitations": [],
+      "status": "verified",
+      "selection": "curated",
+      "publicationType": "peer-reviewed",
+      "metadataVerified": true,
+      "verificationDate": "2026-10-18",
+      "inWindow": true,
+      "dateEvidence": {
+        "indexFirstPublication": "2011-08-11",
+        "journalDateOfPublication": "2011 Oct"
+      },
+      "addedIn": "v30_population",
+      "toolIds": []
+    },
+    {
+      "id": "ev30_856c3d480d74",
+      "title": "Effects of marker type and filtering criteria on QST–FST comparisons",
+      "authors": [
+        "Zitong Li",
+        "Ari Löytynoja",
+        "Antoine Fraimout",
+        "Juha Merilä"
+      ],
+      "cslAuthors": [
+        {
+          "family": "Li",
+          "given": "Zitong"
+        },
+        {
+          "family": "Löytynoja",
+          "given": "Ari"
+        },
+        {
+          "family": "Fraimout",
+          "given": "Antoine"
+        },
+        {
+          "family": "Merilä",
+          "given": "Juha"
+        }
+      ],
+      "year": 2019,
+      "journal": "Royal Society open science",
+      "volume": "6",
+      "issue": "11",
+      "pages": "190666",
+      "articleNumber": "",
+      "doi": "10.1098/rsos.190666",
+      "url": "https://doi.org/10.1098/rsos.190666",
+      "sourceUrls": [
+        "https://doi.org/10.1098/rsos.190666",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1098%2Frsos.190666&format=json&resultType=core"
+      ],
+      "topics": [
+        "Bayesian inference",
+        "Evolutionary biology"
+      ],
+      "species": [
+        "Methodology"
+      ],
+      "studyType": "Computational method",
+      "evidence": "Published method and official documentation",
+      "summary": "Effects of marker type and filtering criteria on QST–FST comparisons",
+      "contribution": "Effects of marker type and filtering criteria on QST–FST comparisons",
+      "limitations": [],
+      "status": "verified",
+      "selection": "curated",
+      "publicationType": "peer-reviewed",
+      "metadataVerified": true,
+      "verificationDate": "2026-10-18",
+      "inWindow": true,
+      "dateEvidence": {
+        "indexFirstPublication": "2019-11-06",
+        "journalDateOfPublication": "2019 Nov"
+      },
+      "addedIn": "v30_population",
+      "toolIds": []
+    },
+    {
+      "id": "ev30_2d3d549bc1ff",
+      "title": "GCTA: a tool for genome-wide complex trait analysis",
+      "authors": [
+        "Jian Yang",
+        "S Hong Lee",
+        "Michael E Goddard",
+        "Peter M Visscher"
+      ],
+      "cslAuthors": [
+        {
+          "family": "Yang",
+          "given": "Jian"
+        },
+        {
+          "family": "Lee",
+          "given": "S Hong"
+        },
+        {
+          "family": "Goddard",
+          "given": "Michael E"
+        },
+        {
+          "family": "Visscher",
+          "given": "Peter M"
+        }
+      ],
+      "year": 2011,
+      "journal": "American journal of human genetics",
+      "volume": "88",
+      "issue": "1",
+      "pages": "76-82",
+      "articleNumber": "",
+      "doi": "10.1016/j.ajhg.2010.11.011",
+      "url": "https://doi.org/10.1016/j.ajhg.2010.11.011",
+      "sourceUrls": [
+        "https://doi.org/10.1016/j.ajhg.2010.11.011",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1016%2Fj.ajhg.2010.11.011&format=json&resultType=core"
+      ],
+      "topics": [
+        "Bayesian inference",
+        "Evolutionary biology"
+      ],
+      "species": [
+        "Methodology"
+      ],
+      "studyType": "Computational method",
+      "evidence": "Published method and official documentation",
+      "summary": "GCTA: a tool for genome-wide complex trait analysis",
+      "contribution": "GCTA: a tool for genome-wide complex trait analysis",
+      "limitations": [],
+      "status": "verified",
+      "selection": "curated",
+      "publicationType": "peer-reviewed",
+      "metadataVerified": true,
+      "verificationDate": "2026-10-18",
+      "inWindow": true,
+      "dateEvidence": {
+        "indexFirstPublication": "2010-12-17",
+        "journalDateOfPublication": "2011 Jan"
+      },
+      "addedIn": "v30_population",
+      "toolIds": [
+        "gcta"
+      ]
     }
   ],
   "excludedRecords": [
@@ -21041,10 +21732,10 @@
     "windowUpdate": "2026-10-18：工作库窗口扩展为2010年至当前日期；历史经典保留，候选检索与基因证据审核分开记录。"
   },
   "counts": {
-    "records": 279,
-    "curated": 257,
+    "records": 288,
+    "curated": 266,
     "discovered": 22,
-    "inWindow": 268,
+    "inWindow": 277,
     "preprints": 4,
     "byEvidence": {
       "可迁移方法": 130,
@@ -21059,7 +21750,7 @@
       "来源特异的研究证据": 12,
       "群体RNA参考": 3,
       "Source-specific genetic evidence": 25,
-      "Published method and official documentation": 15
+      "Published method and official documentation": 24
     },
     "byStudyType": {
       "方法": 138,
@@ -21080,7 +21771,7 @@
       "方法与机制证据": 12,
       "群体RNA参考": 3,
       "QTL": 25,
-      "Computational method": 15
+      "Computational method": 24
     },
     "linkedVersionRecords": 16,
     "v2AddedOrReviewed": 33,
@@ -21089,10 +21780,11 @@
     "v5AddedOrReviewed": 4,
     "v24AddedOrReviewed": 4,
     "v25AddedOrReviewed": 12,
-    "total": 279,
+    "total": 288,
     "v25cPopulationAddedOrReviewed": 12,
     "v25dMarkerAddedOrReviewed": 3,
     "v25eQTLAddedOrReviewed": 41,
-    "v29AddedOrReviewed": 17
+    "v29AddedOrReviewed": 17,
+    "v30AddedOrReviewed": 9
   }
 }

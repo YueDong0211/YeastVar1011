@@ -1,0 +1,486 @@
+[
+  {
+    "doi": "10.1038/ng.3865",
+    "csl": {
+      "type": "article-journal",
+      "title": "Reevaluation of SNP heritability in complex human traits",
+      "author": [
+        {
+          "family": "Speed",
+          "given": "Doug"
+        },
+        {
+          "family": "Cai",
+          "given": "Na"
+        },
+        {
+          "literal": "UCLEB Consortium"
+        },
+        {
+          "family": "Johnson",
+          "given": "Michael R"
+        },
+        {
+          "family": "Nejentsev",
+          "given": "Sergey"
+        },
+        {
+          "family": "Balding",
+          "given": "David J"
+        }
+      ],
+      "DOI": "10.1038/ng.3865",
+      "URL": "https://doi.org/10.1038/ng.3865",
+      "issued": {
+        "date-parts": [
+          [
+            2017,
+            7
+          ]
+        ]
+      },
+      "container-title": "Nature genetics",
+      "volume": "49",
+      "issue": "7",
+      "page": "986-992"
+    },
+    "metadataSource": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1038%2Fng.3865&format=json&resultType=core",
+    "dateEvidence": {
+      "indexFirstPublication": "2017-05-22",
+      "journalDateOfPublication": "2017 Jul"
+    },
+    "verifiedOn": "2026-10-18",
+    "PMID": "28530675"
+  },
+  {
+    "doi": "10.1016/j.ajhg.2015.01.001",
+    "csl": {
+      "type": "article-journal",
+      "title": "Dominance genetic variation contributes little to the missing heritability for human complex traits",
+      "author": [
+        {
+          "family": "Zhu",
+          "given": "Zhihong"
+        },
+        {
+          "family": "Bakshi",
+          "given": "Andrew"
+        },
+        {
+          "family": "Vinkhuyzen",
+          "given": "Anna A E"
+        },
+        {
+          "family": "Hemani",
+          "given": "Gibran"
+        },
+        {
+          "family": "Lee",
+          "given": "Sang Hong"
+        },
+        {
+          "family": "Nolte",
+          "given": "Ilja M"
+        },
+        {
+          "family": "van Vliet-Ostaptchouk",
+          "given": "Jana V"
+        },
+        {
+          "family": "Snieder",
+          "given": "Harold"
+        },
+        {
+          "literal": "LifeLines Cohort Study"
+        },
+        {
+          "family": "Esko",
+          "given": "Tonu"
+        },
+        {
+          "family": "Milani",
+          "given": "Lili"
+        },
+        {
+          "family": "Mägi",
+          "given": "Reedik"
+        },
+        {
+          "family": "Metspalu",
+          "given": "Andres"
+        },
+        {
+          "family": "Hill",
+          "given": "William G"
+        },
+        {
+          "family": "Weir",
+          "given": "Bruce S"
+        },
+        {
+          "family": "Goddard",
+          "given": "Michael E"
+        },
+        {
+          "family": "Visscher",
+          "given": "Peter M"
+        },
+        {
+          "family": "Yang",
+          "given": "Jian"
+        }
+      ],
+      "DOI": "10.1016/j.ajhg.2015.01.001",
+      "URL": "https://doi.org/10.1016/j.ajhg.2015.01.001",
+      "issued": {
+        "date-parts": [
+          [
+            2015,
+            3
+          ]
+        ]
+      },
+      "container-title": "American journal of human genetics",
+      "volume": "96",
+      "issue": "3",
+      "page": "377-385"
+    },
+    "metadataSource": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1016%2Fj.ajhg.2015.01.001&format=json&resultType=core",
+    "dateEvidence": {
+      "indexFirstPublication": "2015-02-12",
+      "journalDateOfPublication": "2015 Mar"
+    },
+    "verifiedOn": "2026-10-18",
+    "PMID": "25683123"
+  },
+  {
+    "doi": "10.1016/j.xgen.2023.100459",
+    "csl": {
+      "type": "article-journal",
+      "title": "Non-additive genetic components contribute significantly to population-wide gene expression variation",
+      "author": [
+        {
+          "family": "Tsouris",
+          "given": "Andreas"
+        },
+        {
+          "family": "Brach",
+          "given": "Gauthier"
+        },
+        {
+          "family": "Schacherer",
+          "given": "Joseph"
+        },
+        {
+          "family": "Hou",
+          "given": "Jing"
+        }
+      ],
+      "DOI": "10.1016/j.xgen.2023.100459",
+      "URL": "https://doi.org/10.1016/j.xgen.2023.100459",
+      "issued": {
+        "date-parts": [
+          [
+            2024,
+            1
+          ]
+        ]
+      },
+      "container-title": "Cell genomics",
+      "volume": "4",
+      "issue": "1",
+      "page": "100459"
+    },
+    "metadataSource": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1016%2Fj.xgen.2023.100459&format=json&resultType=core",
+    "dateEvidence": {
+      "indexFirstPublication": "2023-12-04",
+      "journalDateOfPublication": "2024 Jan",
+      "publisherIssueDate": "2024-01-10"
+    },
+    "verifiedOn": "2026-10-18",
+    "PMID": "38190102"
+  },
+  {
+    "doi": "10.1093/molbev/msw011",
+    "csl": {
+      "type": "article-journal",
+      "title": "Contrasting Frequencies and Effects of cis- and trans-Regulatory Mutations Affecting Gene Expression",
+      "author": [
+        {
+          "family": "Metzger",
+          "given": "Brian P H"
+        },
+        {
+          "family": "Duveau",
+          "given": "Fabien"
+        },
+        {
+          "family": "Yuan",
+          "given": "David C"
+        },
+        {
+          "family": "Tryban",
+          "given": "Stephen"
+        },
+        {
+          "family": "Yang",
+          "given": "Bing"
+        },
+        {
+          "family": "Wittkopp",
+          "given": "Patricia J"
+        }
+      ],
+      "DOI": "10.1093/molbev/msw011",
+      "URL": "https://doi.org/10.1093/molbev/msw011",
+      "issued": {
+        "date-parts": [
+          [
+            2016,
+            5
+          ]
+        ]
+      },
+      "container-title": "Molecular biology and evolution",
+      "volume": "33",
+      "issue": "5",
+      "page": "1131-1146"
+    },
+    "metadataSource": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1093%2Fmolbev%2Fmsw011&format=json&resultType=core",
+    "dateEvidence": {
+      "indexFirstPublication": "2016-01-18",
+      "journalDateOfPublication": "2016 May"
+    },
+    "verifiedOn": "2026-10-18",
+    "PMID": "26782996"
+  },
+  {
+    "doi": "10.7554/eLife.68469",
+    "csl": {
+      "type": "article-journal",
+      "title": "Cis-regulatory variants affect gene expression dynamics in yeast",
+      "author": [
+        {
+          "family": "Shih",
+          "given": "Ching-Hua"
+        },
+        {
+          "family": "Fay",
+          "given": "Justin"
+        }
+      ],
+      "DOI": "10.7554/eLife.68469",
+      "URL": "https://doi.org/10.7554/eLife.68469",
+      "issued": {
+        "date-parts": [
+          [
+            2021,
+            8
+          ]
+        ]
+      },
+      "container-title": "eLife",
+      "volume": "10",
+      "page": "e68469"
+    },
+    "metadataSource": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.7554%2FeLife.68469&format=json&resultType=core",
+    "dateEvidence": {
+      "indexFirstPublication": "2021-08-09",
+      "journalDateOfPublication": "2021 Aug"
+    },
+    "verifiedOn": "2026-10-18",
+    "PMID": "34369376"
+  },
+  {
+    "doi": "10.1111/1755-0998.12111",
+    "csl": {
+      "type": "article-journal",
+      "title": "DRIFTSEL: an R package for detecting signals of natural selection in quantitative traits",
+      "author": [
+        {
+          "family": "Karhunen",
+          "given": "M"
+        },
+        {
+          "family": "Merilä",
+          "given": "J"
+        },
+        {
+          "family": "Leinonen",
+          "given": "T"
+        },
+        {
+          "family": "Cano",
+          "given": "J M"
+        },
+        {
+          "family": "Ovaskainen",
+          "given": "O"
+        }
+      ],
+      "DOI": "10.1111/1755-0998.12111",
+      "URL": "https://doi.org/10.1111/1755-0998.12111",
+      "issued": {
+        "date-parts": [
+          [
+            2013,
+            7
+          ]
+        ]
+      },
+      "container-title": "Molecular ecology resources",
+      "volume": "13",
+      "issue": "4",
+      "page": "746-754"
+    },
+    "metadataSource": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1111%2F1755-0998.12111&format=json&resultType=core",
+    "dateEvidence": {
+      "indexFirstPublication": "2013-05-09",
+      "journalDateOfPublication": "2013 Jul"
+    },
+    "verifiedOn": "2026-10-18",
+    "PMID": "23656704"
+  },
+  {
+    "doi": "10.1534/genetics.111.129387",
+    "csl": {
+      "type": "article-journal",
+      "title": "A new method to uncover signatures of divergent and stabilizing selection in quantitative traits",
+      "author": [
+        {
+          "family": "Ovaskainen",
+          "given": "Otso"
+        },
+        {
+          "family": "Karhunen",
+          "given": "Markku"
+        },
+        {
+          "family": "Zheng",
+          "given": "Chaozhi"
+        },
+        {
+          "family": "Arias",
+          "given": "José Manuel Cano"
+        },
+        {
+          "family": "Merilä",
+          "given": "Juha"
+        }
+      ],
+      "DOI": "10.1534/genetics.111.129387",
+      "URL": "https://doi.org/10.1534/genetics.111.129387",
+      "issued": {
+        "date-parts": [
+          [
+            2011,
+            10
+          ]
+        ]
+      },
+      "container-title": "Genetics",
+      "volume": "189",
+      "issue": "2",
+      "page": "621-632"
+    },
+    "metadataSource": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1534%2Fgenetics.111.129387&format=json&resultType=core",
+    "dateEvidence": {
+      "indexFirstPublication": "2011-08-11",
+      "journalDateOfPublication": "2011 Oct"
+    },
+    "verifiedOn": "2026-10-18",
+    "PMID": "21840853"
+  },
+  {
+    "doi": "10.1098/rsos.190666",
+    "csl": {
+      "type": "article-journal",
+      "title": "Effects of marker type and filtering criteria on QST–FST comparisons",
+      "author": [
+        {
+          "family": "Li",
+          "given": "Zitong"
+        },
+        {
+          "family": "Löytynoja",
+          "given": "Ari"
+        },
+        {
+          "family": "Fraimout",
+          "given": "Antoine"
+        },
+        {
+          "family": "Merilä",
+          "given": "Juha"
+        }
+      ],
+      "DOI": "10.1098/rsos.190666",
+      "URL": "https://doi.org/10.1098/rsos.190666",
+      "issued": {
+        "date-parts": [
+          [
+            2019,
+            11
+          ]
+        ]
+      },
+      "container-title": "Royal Society open science",
+      "volume": "6",
+      "issue": "11",
+      "page": "190666"
+    },
+    "metadataSource": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1098%2Frsos.190666&format=json&resultType=core",
+    "dateEvidence": {
+      "indexFirstPublication": "2019-11-06",
+      "journalDateOfPublication": "2019 Nov"
+    },
+    "verifiedOn": "2026-10-18",
+    "PMID": "31827824"
+  },
+  {
+    "doi": "10.1016/j.ajhg.2010.11.011",
+    "csl": {
+      "type": "article-journal",
+      "title": "GCTA: a tool for genome-wide complex trait analysis",
+      "author": [
+        {
+          "family": "Yang",
+          "given": "Jian"
+        },
+        {
+          "family": "Lee",
+          "given": "S Hong"
+        },
+        {
+          "family": "Goddard",
+          "given": "Michael E"
+        },
+        {
+          "family": "Visscher",
+          "given": "Peter M"
+        }
+      ],
+      "DOI": "10.1016/j.ajhg.2010.11.011",
+      "URL": "https://doi.org/10.1016/j.ajhg.2010.11.011",
+      "issued": {
+        "date-parts": [
+          [
+            2011,
+            1
+          ]
+        ]
+      },
+      "container-title": "American journal of human genetics",
+      "volume": "88",
+      "issue": "1",
+      "page": "76-82"
+    },
+    "metadataSource": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1016%2Fj.ajhg.2010.11.011&format=json&resultType=core",
+    "dateEvidence": {
+      "indexFirstPublication": "2010-12-17",
+      "journalDateOfPublication": "2011 Jan"
+    },
+    "verifiedOn": "2026-10-18",
+    "PMID": "21167468"
+  }
+]

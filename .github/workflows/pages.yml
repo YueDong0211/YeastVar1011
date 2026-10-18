@@ -58,6 +58,8 @@ jobs:
       - run: node research/qa-marker-ux-v26.cjs
       - run: node research/qa-marker-filters-v27.cjs
       - run: node research/qa-evolution-core-v29.cjs
+      - run: node research/qa-analysis-linking-v30.cjs
+      - run: node research/qa-evolution-catalogue-v30.cjs
       - run: node research/qa-evolution-ui-v29.cjs
       - run: node research/v25-methods-test.cjs
       - run: node research/qa-database-preparation-v25.cjs

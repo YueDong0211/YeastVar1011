@@ -9,8 +9,11 @@ let n=0;const check=(label,fn)=>{fn();n++;console.log('PASS '+label)};
 const plan=(tool,branch,availableData)=>({projects:[],tools:[tool],stages:['genetics'],metrics:[],availableData,inputRoute:'count_matrix',toolBranches:{[tool]:branch},parameters:{},methodOptionIds:[],inputEvidence:{}});
 const evidence=t=>{const result={};for(const r of by(t.tools[0]).inputContract.branches.find(x=>x.id===t.toolBranches[t.tools[0]]).evidenceRequirements){result[r.inputId]??={};result[r.inputId][r.field]='source-and-design-record.tsv';}return{...t,inputEvidence:result}};
 const context=t=>I.methodContext(t,catalog).tools[0];
-check('Existing catalogue identities are retained and only two core tools/metrics added',()=>{
- assert.equal(w.tools.length,167);assert.equal(w.metrics.length,312);assert.equal(p.projects.length,55);assert.equal(c.dataRequirements.length,39);
+// Explicit v30 append-only allowlist; earlier identities and frozen hashes stay protected.
+const v30Ids={tools:['stan','sbc','mcmcglmm','mvmorph','iqtree3','raxmlng','beast2','revbayes','ggtree','ete4','slim5','msprime','gcta'],metrics:['h2_architecture_sensitivity','dominance_variance_components','structural_dosage_effects','cis_trans_noise_contrasts','noise_neutral_divergence','evolution_tree_support','evolution_trait_model_comparison','evolution_ancestral_uncertainty','evolution_prediction_validation'],formulas:['noise_genetic_correlation']};
+check('Existing v29 core identities are retained with the exact append-only v30 extension',()=>{
+ assert.equal(p.projects.length,55);assert.equal(c.dataRequirements.length,39);
+ for(const [kind,originalTotal]of [['tools',167],['metrics',312],['formulas',28]]){assert.deepEqual(w[kind].filter(x=>x.addedIn==='v30').map(x=>x.id).sort(),[...v30Ids[kind]].sort());assert.equal(w[kind].filter(x=>x.addedIn!=='v30').length,originalTotal);assert.equal(w[kind].length,originalTotal+v30Ids[kind].length);}
  for(const [file,key,records]of [['workflow.json','tools',w.tools],['workflow.json','metrics',w.metrics],['workflow.json','formulas',w.formulas],['projects.json','projects',p.projects],['research-categories.json','dataRequirements',c.dataRequirements]]){
   const old=JSON.parse(cp.execFileSync('git',['show','HEAD:dist/data/'+file],{cwd:root,encoding:'utf8',maxBuffer:16*1024*1024}));for(const row of old[key])assert.ok(records.some(x=>x.id===row.id),'Lost '+row.id);
  }

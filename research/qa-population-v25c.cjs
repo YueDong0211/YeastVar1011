@@ -18,15 +18,18 @@ vm.createContext(ctx);
 for(const file of ['dist/vendor/citations/citeproc.js','dist/citation-data.js','dist/v25-research-locales.js'])vm.runInContext(read(file),ctx,{filename:file});
 ctx.window.CSL=ctx.CSL;vm.runInContext(read('dist/citations.js'),ctx);
 const c=ctx.window.YV_CITATION_DATA,refs=new Map(c.records.map(x=>[x.id,x])),metrics=new Map(w.metrics.map(x=>[x.id,x])),routes=new Map(p.projects.map(x=>[x.id,x]));
+// Explicit v30 append-only allowlist; earlier identities and frozen hashes stay protected.
+const v30Ids={tools:['stan','sbc','mcmcglmm','mvmorph','iqtree3','raxmlng','beast2','revbayes','ggtree','ete4','slim5','msprime','gcta'],metrics:['h2_architecture_sensitivity','dominance_variance_components','structural_dosage_effects','cis_trans_noise_contrasts','noise_neutral_divergence','evolution_tree_support','evolution_trait_model_comparison','evolution_ancestral_uncertainty','evolution_prediction_validation'],formulas:['noise_genetic_correlation']};
 const current={tools:w.tools,metrics:w.metrics,formulas:w.formulas,routes:p.projects,papers:l.papers,references:c.records};
 for(const [kind,ids] of Object.entries(baseline)){
  const actual=current[kind].map(x=>x.id);check(new Set(actual).size===actual.length,'Unique '+kind);
  for(const id of ids)check(actual.includes(id),'Retain baseline '+kind+' '+id);
 }
-assert.deepEqual(w.tools.filter(x=>!baseline.tools.includes(x.id)).map(x=>x.id).sort(),['brms','phytools2']);count++;
-assert.deepEqual(w.formulas.filter(x=>!baseline.formulas.includes(x.id)).map(x=>x.id).sort(),['bayes_noise_posterior','noise_trait_sampling_covariance']);count++;
+assert.deepEqual(w.tools.filter(x=>!baseline.tools.includes(x.id)).map(x=>x.id).sort(),['brms','phytools2',...v30Ids.tools].sort());count++;
+assert.deepEqual(w.formulas.filter(x=>!baseline.formulas.includes(x.id)).map(x=>x.id).sort(),['bayes_noise_posterior','noise_trait_sampling_covariance',...v30Ids.formulas].sort());count++;
 check(p.projects.length===baseline.routes.length,'No new route');
-assert.deepEqual(w.metrics.filter(x=>!baseline.metrics.includes(x.id)).map(x=>x.id).sort(),['noise_phylogenetic_signal','posterior_sampling_diagnostics','v25c_gene_observability']);count++;
+assert.deepEqual(w.metrics.filter(x=>!baseline.metrics.includes(x.id)).map(x=>x.id).sort(),['noise_phylogenetic_signal','posterior_sampling_diagnostics','v25c_gene_observability',...v30Ids.metrics].sort());count++;
+for(const kind of ['tools','metrics','formulas']){assert.deepEqual(w[kind].filter(x=>x.addedIn==='v30').map(x=>x.id).sort(),[...v30Ids[kind]].sort());count++;}
 const populationPaperIds=new Set(l.papers.filter(x=>x.addedIn==='v25c_population').map(x=>x.id));
 check(populationPaperIds.size===12,'Twelve v25c population references retained');
 check(c.records.filter(x=>populationPaperIds.has(x.literatureId)).length===12,'Twelve matching v25c population CSL records retained');
