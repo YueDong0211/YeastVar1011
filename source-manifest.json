@@ -1488,8 +1488,8 @@
     },
     {
       "path": "scripts/smoke-public.cjs",
-      "bytes": 10761,
-      "sha256": "6eedc9e57e42588546f391803a93ed0918f28337dcb08604968a2045f22d644d"
+      "bytes": 10953,
+      "sha256": "c29bb8b9ae53c5ead0d359803c9efbf67ad07267c56b3290bd3d454c636587a7"
     },
     {
       "path": ".github/ISSUE_TEMPLATE/bug_report.md",
