@@ -1,6 +1,8 @@
 'use strict';
 (() => {
 const rows={
+libraryGuide:['证据说明','Evidence guide','Guide des preuves','Guía de evidencia','Ebidentzia-gida'],
+searchGuide:['搜索说明','Search guide','Guide de recherche','Guía de búsqueda','Bilaketa-gida'],
 filterCategories:['筛选类别','Filter categories','Catégories de filtres','Categorías de filtro','Iragazki-kategoriak'],
 facetPhase:['周期','Cycle','Cycle','Ciclo','Zikloa'],
 facetTags:['标签','Tags','Étiquettes','Etiquetas','Etiketak'],

@@ -493,8 +493,8 @@
     },
     {
       "path": "dist/index.html",
-      "bytes": 13934,
-      "sha256": "5ac9da7472e3cd00094c0f479c8c7d103e165f17f40c269f30f75665a9e29d5e"
+      "bytes": 13997,
+      "sha256": "792184c74b14877162a7b8944bd830c4aeafcfc616a833fa676c95e5975c0bba"
     },
     {
       "path": "dist/interface-v15.css",
@@ -567,6 +567,11 @@
       "sha256": "35bb3644ec95547809023a4fa794c00556c2b6b437c19c3d09f83d70cf5cad6f"
     },
     {
+      "path": "dist/marker-layout-v28.css",
+      "bytes": 18601,
+      "sha256": "2bde7866b14ed48bae0c012224c6e65e79efd32b6cfed4e2fee11e7cd10e0e5f"
+    },
+    {
       "path": "dist/marker-preview-v13.css",
       "bytes": 13295,
       "sha256": "33fbf56d40caec8cf6fcc1d1a60b20609da02a2da6bb49a204c7a927ce1cc48b"
@@ -583,8 +588,8 @@
     },
     {
       "path": "dist/marker-workspace-locales.js",
-      "bytes": 68221,
-      "sha256": "81899e0fdcb46e58b197c515338ba2917529b4ea8ba47a0d6ef3c16c570edad8"
+      "bytes": 68433,
+      "sha256": "128927b00a54299b3f832b59b45350bc0423606cd65bdc903c50cd8df91316cc"
     },
     {
       "path": "dist/marker-workspace.css",
@@ -593,8 +598,8 @@
     },
     {
       "path": "dist/marker-workspace.js",
-      "bytes": 108550,
-      "sha256": "f9b303bc151b914eb479d5d3f68e84b27132ca72b1eb5936b10b3a6c9c7397b6"
+      "bytes": 109084,
+      "sha256": "556c071c79985b7621f64b4a327e8cfdc5238809c20325ba4e9f8628de2c926c"
     },
     {
       "path": "dist/mascot.css",
@@ -1493,8 +1498,8 @@
     },
     {
       "path": "scripts/smoke-public.cjs",
-      "bytes": 16017,
-      "sha256": "1278bc7b7e03fdb4f688b4fea0b8fa36c613a064ee03ba79900291182e20f1bb"
+      "bytes": 16630,
+      "sha256": "b591c64a1f7f2da55c0b83c0010b6a393be4b6e64107712d8c0a19de272a025d"
     },
     {
       "path": ".github/ISSUE_TEMPLATE/bug_report.md",
