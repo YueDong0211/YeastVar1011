@@ -1,7 +1,7 @@
 {
   "updated": "2026-10-18",
-  "scope": "方法与官方来源已关联；尚未在本项目运行或验证。",
-  "scopeEn": "Research-plan templates; no analyses have been executed.",
+  "scope": "研究方案目录：关联方法、输入要求、诊断指标与官方来源。",
+  "scopeEn": "Research-plan catalogue linking methods, input requirements, diagnostics and official sources.",
   "projects": [
     {
       "id": "audit_raw",
@@ -85,7 +85,7 @@
       "workflow": [
         {
           "stepId": "design",
-          "action": "将菌株、独立培养、捕获文库和测序lane分开；1011是酿酒酵母菌株集合，不是1011个物种。",
+          "action": "分别记录菌株、独立培养、捕获文库和测序 lane；1011 集合中的对象为酿酒酵母菌株。",
           "deliverable": "不可变cell_id规则 · 样本层级表 · 输入缺项记录"
         },
         {
@@ -113,7 +113,7 @@
         "核对同一文库各lane的barcode结构和参考是否一致，并检验纠错或比对损失是否集中在特定lane。"
       ],
       "failureChecks": [
-        "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。"
+        "结合设计矩阵秩、编码方式与目标 contrast 审查混杂和可估计性；分别建模菌株关联与菌株内培养变异。"
       ],
       "outputs": [
         "BAM标签逐项完整率",
@@ -158,7 +158,7 @@
       ],
       "statisticalUnit": "QC按文库、lane、read、分子和细胞分别计量；后续条件效应推断再使用培养重复。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。"
+        "调用模板；执行后记录版本、参数与诊断。"
       ],
       "interpretationBoundary": "输出：分子计数与处理流程的质量诊断。",
       "paperIds": [
@@ -188,7 +188,7 @@
             "v25_7fe5101ca916"
           ],
           "executionStatus": "recipe_only",
-          "interpretationBoundary": "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。"
+          "interpretationBoundary": "结合设计矩阵秩、编码方式与目标 contrast 审查混杂和可估计性；分别建模菌株关联与菌株内培养变异。"
         },
         {
           "id": "v25f_qc_pool_manifest",
@@ -219,7 +219,7 @@
             "https://bioconductor.org/packages/release/bioc/html/limma.html"
           ],
           "executionStatus": "proposed_export_contract_not_executed",
-          "interpretationBoundary": "细胞和lane不等于独立培养；同基因型培养物混合且无额外标签后，其来源不能靠SNP恢复。",
+          "interpretationBoundary": "以独立培养记录定义生物学重复；同基因型培养混池后需保留独立标签以追踪来源，SNP 仅区分可辨别的基因型。",
           "designReview": {
             "title": {
               "zh": "混池身份与培养追踪",
@@ -305,11 +305,11 @@
               "https://bioconductor.org/packages/release/bioc/html/limma.html"
             ],
             "interpretationBoundary": {
-              "zh": "细胞和lane不等于独立培养；同基因型培养物混合且无额外标签后，其来源不能靠SNP恢复。",
-              "en": "Cells and lanes are not independent cultures. SNPs cannot recover separately cultured samples with the same genotype after unlabelled pooling.",
-              "fr": "Les cellules et les lanes ne sont pas des cultures indépendantes. Les SNP ne séparent pas des cultures de même génotype mélangées sans étiquette supplémentaire.",
-              "es": "Las células y los carriles no son cultivos independientes. Los SNP no separan cultivos del mismo genotipo mezclados sin etiquetas adicionales.",
-              "eu": "Zelulak eta sekuentziazio-erreiak ez dira kultura independenteak. SNPek ezin dituzte etiketa gehigarririk gabe nahastutako genotipo bereko kulturak bereizi."
+              "zh": "以独立培养记录定义生物学重复；同基因型培养混池后需保留独立标签以追踪来源，SNP 仅区分可辨别的基因型。",
+              "en": "Define biological replicates from independent-culture records; pooled cultures with the same genotype require separate labels to retain provenance, while SNPs distinguish separable genotypes.",
+              "fr": "Définir les répétitions biologiques à partir des cultures indépendantes ; les cultures mélangées de même génotype exigent des étiquettes distinctes pour conserver leur origine, les SNP distinguant les génotypes séparables.",
+              "es": "Definir las réplicas biológicas a partir de cultivos independientes; los cultivos mezclados del mismo genotipo requieren etiquetas distintas para conservar su origen, mientras los SNP distinguen genotipos separables.",
+              "eu": "Definitu erreplika biologikoak kultura independenteen erregistroekin; genotipo bereko kultura nahasiek etiketa bereiziak behar dituzte jatorria gordetzeko, eta SNPek genotipo bereizgarriak bereizten dituzte."
             },
             "fieldIds": [
               "strain_id",
@@ -369,7 +369,7 @@
             "https://github.com/single-cell-genetics/vireo/blob/master/doc/manual.rst"
           ],
           "executionStatus": "proposed_export_contract_not_executed",
-          "interpretationBoundary": "全VCF距离不能替代实际RNA可判别信息；无可判别位点的候选保留等价身份组。跨SNP累计UMI需声明分子是否重复。",
+          "interpretationBoundary": "以实际 RNA 覆盖的可判别位点评估菌株身份；缺少区分位点时保留等价身份组，跨 SNP 汇总 UMI 时核对重复分子。",
           "designReview": {
             "title": {
               "zh": "实际覆盖的身份判别信息",
@@ -451,11 +451,11 @@
               "https://github.com/single-cell-genetics/vireo/blob/master/doc/manual.rst"
             ],
             "interpretationBoundary": {
-              "zh": "全VCF距离不能替代实际RNA可判别信息；无可判别位点的候选保留等价身份组。跨SNP累计UMI需声明分子是否重复。",
-              "en": "Whole-VCF distance does not replace observed RNA discrimination. Retain equivalent identity groups when no distinguishing sites exist; declare whether UMIs are counted repeatedly across SNPs.",
-              "fr": "La distance sur le VCF entier ne remplace pas le pouvoir discriminant de l’ARN observé. Conserver les groupes indiscernables et préciser le recomptage éventuel des UMI entre SNP.",
-              "es": "La distancia del VCF completo no sustituye la discriminación del ARN observado. Conservar grupos indistinguibles y declarar si los UMI se cuentan de nuevo entre SNP.",
-              "eu": "VCF osoaren distantziak ez du behatutako RNAren bereizmen-informazioa ordezkatzen. Bereizi ezin diren identitate-taldeak gorde, eta adierazi UMIak SNP artean berriz zenbatzen diren."
+              "zh": "以实际 RNA 覆盖的可判别位点评估菌株身份；缺少区分位点时保留等价身份组，跨 SNP 汇总 UMI 时核对重复分子。",
+              "en": "Assess strain identity using discriminating sites covered by RNA; retain equivalent identity groups when sites are uninformative and check duplicate molecules when aggregating UMIs across SNPs.",
+              "fr": "Évaluer l’identité des souches avec les sites discriminants couverts par l’ARN ; conserver des groupes d’identités équivalentes si nécessaire et vérifier les molécules dupliquées lors de l’agrégation des UMI entre SNP.",
+              "es": "Evaluar la identidad de cepas con sitios discriminantes cubiertos por ARN; conservar grupos de identidades equivalentes cuando falte información y comprobar moléculas duplicadas al agregar UMI entre SNP.",
+              "eu": "Ebaluatu anduien identitatea RNAk estalitako gune bereizgarriekin; gune informatiborik ez badago mantendu identitate baliokideen taldeak, eta egiaztatu molekula bikoiztuak SNPen arteko UMIak batzean."
             },
             "fieldIds": [
               "barcode",
@@ -1298,7 +1298,7 @@
             "https://bioconductor.org/packages/release/bioc/html/limma.html"
           ],
           "executionStatus": "proposed_export_contract_not_executed",
-          "interpretationBoundary": "细胞和lane不等于独立培养；同基因型培养物混合且无额外标签后，其来源不能靠SNP恢复。",
+          "interpretationBoundary": "以独立培养记录定义生物学重复；同基因型培养混池后需保留独立标签以追踪来源，SNP 仅区分可辨别的基因型。",
           "designReview": {
             "title": {
               "zh": "混池身份与培养追踪",
@@ -1384,11 +1384,11 @@
               "https://bioconductor.org/packages/release/bioc/html/limma.html"
             ],
             "interpretationBoundary": {
-              "zh": "细胞和lane不等于独立培养；同基因型培养物混合且无额外标签后，其来源不能靠SNP恢复。",
-              "en": "Cells and lanes are not independent cultures. SNPs cannot recover separately cultured samples with the same genotype after unlabelled pooling.",
-              "fr": "Les cellules et les lanes ne sont pas des cultures indépendantes. Les SNP ne séparent pas des cultures de même génotype mélangées sans étiquette supplémentaire.",
-              "es": "Las células y los carriles no son cultivos independientes. Los SNP no separan cultivos del mismo genotipo mezclados sin etiquetas adicionales.",
-              "eu": "Zelulak eta sekuentziazio-erreiak ez dira kultura independenteak. SNPek ezin dituzte etiketa gehigarririk gabe nahastutako genotipo bereko kulturak bereizi."
+              "zh": "以独立培养记录定义生物学重复；同基因型培养混池后需保留独立标签以追踪来源，SNP 仅区分可辨别的基因型。",
+              "en": "Define biological replicates from independent-culture records; pooled cultures with the same genotype require separate labels to retain provenance, while SNPs distinguish separable genotypes.",
+              "fr": "Définir les répétitions biologiques à partir des cultures indépendantes ; les cultures mélangées de même génotype exigent des étiquettes distinctes pour conserver leur origine, les SNP distinguant les génotypes séparables.",
+              "es": "Definir las réplicas biológicas a partir de cultivos independientes; los cultivos mezclados del mismo genotipo requieren etiquetas distintas para conservar su origen, mientras los SNP distinguen genotipos separables.",
+              "eu": "Definitu erreplika biologikoak kultura independenteen erregistroekin; genotipo bereko kultura nahasiek etiketa bereiziak behar dituzte jatorria gordetzeko, eta SNPek genotipo bereizgarriak bereizten dituzte."
             },
             "fieldIds": [
               "strain_id",
@@ -1448,7 +1448,7 @@
             "https://github.com/single-cell-genetics/vireo/blob/master/doc/manual.rst"
           ],
           "executionStatus": "proposed_export_contract_not_executed",
-          "interpretationBoundary": "全VCF距离不能替代实际RNA可判别信息；无可判别位点的候选保留等价身份组。跨SNP累计UMI需声明分子是否重复。",
+          "interpretationBoundary": "以实际 RNA 覆盖的可判别位点评估菌株身份；缺少区分位点时保留等价身份组，跨 SNP 汇总 UMI 时核对重复分子。",
           "designReview": {
             "title": {
               "zh": "实际覆盖的身份判别信息",
@@ -1530,11 +1530,11 @@
               "https://github.com/single-cell-genetics/vireo/blob/master/doc/manual.rst"
             ],
             "interpretationBoundary": {
-              "zh": "全VCF距离不能替代实际RNA可判别信息；无可判别位点的候选保留等价身份组。跨SNP累计UMI需声明分子是否重复。",
-              "en": "Whole-VCF distance does not replace observed RNA discrimination. Retain equivalent identity groups when no distinguishing sites exist; declare whether UMIs are counted repeatedly across SNPs.",
-              "fr": "La distance sur le VCF entier ne remplace pas le pouvoir discriminant de l’ARN observé. Conserver les groupes indiscernables et préciser le recomptage éventuel des UMI entre SNP.",
-              "es": "La distancia del VCF completo no sustituye la discriminación del ARN observado. Conservar grupos indistinguibles y declarar si los UMI se cuentan de nuevo entre SNP.",
-              "eu": "VCF osoaren distantziak ez du behatutako RNAren bereizmen-informazioa ordezkatzen. Bereizi ezin diren identitate-taldeak gorde, eta adierazi UMIak SNP artean berriz zenbatzen diren."
+              "zh": "以实际 RNA 覆盖的可判别位点评估菌株身份；缺少区分位点时保留等价身份组，跨 SNP 汇总 UMI 时核对重复分子。",
+              "en": "Assess strain identity using discriminating sites covered by RNA; retain equivalent identity groups when sites are uninformative and check duplicate molecules when aggregating UMIs across SNPs.",
+              "fr": "Évaluer l’identité des souches avec les sites discriminants couverts par l’ARN ; conserver des groupes d’identités équivalentes si nécessaire et vérifier les molécules dupliquées lors de l’agrégation des UMI entre SNP.",
+              "es": "Evaluar la identidad de cepas con sitios discriminantes cubiertos por ARN; conservar grupos de identidades equivalentes cuando falte información y comprobar moléculas duplicadas al agregar UMI entre SNP.",
+              "eu": "Ebaluatu anduien identitatea RNAk estalitako gune bereizgarriekin; gune informatiborik ez badago mantendu identitate baliokideen taldeak, eta egiaztatu molekula bikoiztuak SNPen arteko UMIak batzean."
             },
             "fieldIds": [
               "barcode",
@@ -2398,13 +2398,13 @@
       ],
       "failureChecks": [
         "用均值等效证据区分稳定均值与低功效下的未检出差异。",
-        "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。",
+        "结合设计矩阵秩、编码方式与目标 contrast 审查混杂和可估计性；分别建模菌株关联与菌株内培养变异。",
         "WithSpikes=FALSE：同一建模生物群体需有多个真实技术重复，并在BatchInfo中记录；单一batch不满足要求。",
         "菌株、处理或随机拆分的细胞不能冒充技术重复；独立培养重复另用于生物学推断。",
         "此处列明两条技术分支；自动输入检查目前只核对计数与样本信息，技术重复或spike证据需人工确认。",
         "并列保留模型失配、先验敏感性与拟合失败记录；培养层推断不以细胞数替代独立重复。",
-        "单条件中的应激分数或拟时序不等于环境可塑性；反应规范需要同一菌株在明确环境间的可比测量。",
-        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。"
+        "用同一菌株在明确环境间的可比测量估计反应规范；单条件应激分数和拟时序描述条件内状态。",
+        "这些字段定义分析与导出内容；模型拟合和数据诊断由所选工具完成。"
       ],
       "outputs": [
         "平方变异系数",
@@ -2473,8 +2473,8 @@
       ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。",
-        "研究比较阅读；未接入默认工具或可执行配方。",
+        "调用模板；执行后记录版本、参数与诊断。",
+        "方法比较资料，用于评估模型假设、输入要求与迁移条件。",
         "噪音关联是否在原始计数测量模型与人类enQTL的均值趋势残差定义间保持一致？",
         "并列保存观察与拟合CV²、比值、对数底数、矩阵来源、有效细胞数和缺失原因，比较归一化与性状定义的敏感性。",
         "可追溯计数与SCT比较层、菌株/培养/状态标签；关联另需匹配基因型、亲缘和真实样本量，结构缺失不得当作普通缺失值插补。",
@@ -2522,7 +2522,7 @@
             "v25_7fe5101ca916"
           ],
           "executionStatus": "recipe_only",
-          "interpretationBoundary": "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。"
+          "interpretationBoundary": "结合设计矩阵秩、编码方式与目标 contrast 审查混杂和可估计性；分别建模菌株关联与菌株内培养变异。"
         },
         {
           "id": "v25f_noise_matrix_estimand_audit",
@@ -2928,7 +2928,7 @@
             "https://doi.org/10.1093/biostatistics/kxac047"
           ],
           "executionStatus": "proposed_export_contract_not_executed",
-          "interpretationBoundary": "同一面板产生的标签一致率不是真值准确率；Poisson分拆仅在相应模型下独立，不能替代真实培养重复。",
+          "interpretationBoundary": "同一面板的标签一致率衡量内部一致性；准确率使用独立参考，Poisson 分拆的独立性按模型检查，培养重复依据采样记录。",
           "designReview": {
             "title": {
               "zh": "区分同面板一致性与独立验证",
@@ -2993,11 +2993,11 @@
               "https://doi.org/10.1093/biostatistics/kxac047"
             ],
             "interpretationBoundary": {
-              "zh": "同一面板产生的标签一致率不是真值准确率；Poisson分拆仅在相应模型下独立，不能替代真实培养重复。",
-              "en": "Agreement between labels from the same panel is not ground-truth accuracy; Poisson splitting is independent only under its model and does not replace culture replication.",
-              "fr": "L’accord entre étiquettes du même panel n’est pas une exactitude face à une vérité ; la division de Poisson n’est indépendante que sous son modèle et ne remplace pas les répétitions de culture.",
-              "es": "La concordancia de etiquetas del mismo panel no es exactitud frente a una verdad; la división Poisson solo es independiente bajo su modelo y no sustituye réplicas de cultivo.",
-              "eu": "Panel bereko etiketen adostasuna ez da egia-erreferentziaren araberako zehaztasuna; Poisson zatiketa bere eredupean baino ez da independentea eta ez ditu kultibo-errepikak ordezkatzen."
+              "zh": "同一面板的标签一致率衡量内部一致性；准确率使用独立参考，Poisson 分拆的独立性按模型检查，培养重复依据采样记录。",
+              "en": "Agreement from the same panel measures internal consistency; assess accuracy with an independent reference, check Poisson-splitting independence under its model, and define culture replicates from sampling records.",
+              "fr": "L’accord d’un même panel mesure la cohérence interne ; évaluer l’exactitude sur une référence indépendante, vérifier l’indépendance du découpage de Poisson sous son modèle et définir les répétitions par les relevés de culture.",
+              "es": "La concordancia del mismo panel mide consistencia interna; evaluar exactitud con una referencia independiente, verificar la independencia de la división de Poisson bajo su modelo y definir réplicas con los registros de cultivo.",
+              "eu": "Panel bereko adostasunak barne-koherentzia neurtzen du; ebaluatu zehaztasuna erreferentzia independentearekin, egiaztatu Poisson banaketaren independentzia bere ereduaren arabera, eta definitu erreplikak kultura-erregistroekin."
             },
             "fieldIds": [
               "training_unit_ids",
@@ -3822,7 +3822,7 @@
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
       "analysisPrinciples": [
         "状态内剩余变异仍可包含隐藏状态与测量偏差，不自动等于内在噪音。",
-        "调用配方；尚未在项目数据上执行。"
+        "调用模板；执行后记录版本、参数与诊断。"
       ],
       "interpretationBoundary": "估计对象：所选细胞状态和测量模型下的表达变异。",
       "reviewedIn": "v4",
@@ -4182,7 +4182,7 @@
       ],
       "failureChecks": [
         "RNA快照的双峰或状态比例不能确定切换速率；群体关联不能单独证明历史选择，蛋白、bulk与成像证据另列。",
-        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。"
+        "这些字段定义分析与导出内容；模型拟合和数据诊断由所选工具完成。"
       ],
       "outputs": [
         "完整表达分布变化",
@@ -4316,7 +4316,7 @@
         "在纯技术阴性模拟中评估假阳性校准；在已知噪音效应模拟中比较深度、细胞数和培养数的检出率。"
       ],
       "failureChecks": [
-        "这是均值DE/eQTL功效，不是噪音QTL功效。替换人类默认参数；原生eQTL模拟的二倍体HWE假设须适配酵母倍性与群体结构。遗传样本量按菌株而非细胞计。"
+        "估计均值 DE/eQTL 功效；噪音 QTL 另设功效模型。以酵母试点替换人类默认参数，适配原生二倍体 HWE 模拟与酵母倍性、群体结构的差异，遗传样本量按菌株计。"
       ],
       "outputs": [
         "每菌株噪音估计精度曲线",
@@ -4355,7 +4355,7 @@
       ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。"
+        "调用模板；执行后记录版本、参数与诊断。"
       ],
       "interpretationBoundary": "功效和校准只针对已明确的模拟模型与参数范围；模拟逼真不证明真实生物学机制。",
       "updatedIn": "v12",
@@ -4386,7 +4386,7 @@
             "v25_dd5fab2e6d62"
           ],
           "executionStatus": "recipe_only",
-          "interpretationBoundary": "这是均值DE/eQTL功效，不是噪音QTL功效。替换人类默认参数；原生eQTL模拟的二倍体HWE假设须适配酵母倍性与群体结构。遗传样本量按菌株而非细胞计。"
+          "interpretationBoundary": "估计均值 DE/eQTL 功效；噪音 QTL 另设功效模型。以酵母试点替换人类默认参数，适配原生二倍体 HWE 模拟与酵母倍性、群体结构的差异，遗传样本量按菌株计。"
         },
         {
           "id": "v25f_finite_cell_noise_precision",
@@ -4550,7 +4550,7 @@
             "https://yulab-smu.top/biomedical-knowledge-mining-book/universal-api.html"
           ],
           "executionStatus": "proposed_export_contract_not_executed",
-          "interpretationBoundary": "离群带不是已校准显著性；多重校正不能修复无效p值。跨菌株共享度以可评估菌株为分母，富集并不证明因果机制。",
+          "interpretationBoundary": "分别报告描述性离群带与经零模型校准的 p 值，再进行多重校正；共享度以可评估菌株为分母，富集结果用于提出功能假设。",
           "designReview": {
             "title": {
               "zh": "空模型、FDR与匹配富集",
@@ -4600,11 +4600,11 @@
               "https://yulab-smu.top/biomedical-knowledge-mining-book/universal-api.html"
             ],
             "interpretationBoundary": {
-              "zh": "离群带不是已校准显著性；多重校正不能修复无效p值。跨菌株共享度以可评估菌株为分母，富集并不证明因果机制。",
-              "en": "An outlier band is not calibrated significance; multiplicity correction cannot repair invalid p-values. Cross-strain sharing uses eligible strains as denominator, and enrichment is not causal evidence.",
-              "fr": "Une bande de valeurs atypiques n’est pas une significativité calibrée ; la correction multiple ne répare pas des valeurs p invalides. Le partage utilise les souches admissibles comme dénominateur ; l’enrichissement n’est pas causal.",
-              "es": "Una banda de valores atípicos no equivale a significación calibrada; la corrección múltiple no repara valores p inválidos. La compartición usa cepas elegibles como denominador; el enriquecimiento no es causal.",
-              "eu": "Muturreko balioen banda ez da esangura kalibratua; zuzenketa anizkoitzak ez ditu p-balio baliogabeak konpontzen. Anduien arteko partekatzeak ebaluagarriak ditu izendatzaile; aberastea ez da kausalitate-froga."
+              "zh": "分别报告描述性离群带与经零模型校准的 p 值，再进行多重校正；共享度以可评估菌株为分母，富集结果用于提出功能假设。",
+              "en": "Report descriptive outlier bands separately from null-calibrated p values before multiplicity correction; use evaluable strains as the sharing denominator and enrichment results to propose functional hypotheses.",
+              "fr": "Distinguer bandes descriptives d’écart et valeurs p calibrées sous le modèle nul avant correction multiple ; calculer le partage sur les souches évaluables et utiliser l’enrichissement pour formuler des hypothèses fonctionnelles.",
+              "es": "Separar bandas descriptivas de valores atípicos y valores p calibrados bajo el nulo antes de corregir multiplicidad; usar cepas evaluables como denominador e interpretar el enriquecimiento como hipótesis funcional.",
+              "eu": "Bereizi banda deskriptiboak eta eredu nuluarekin kalibratutako p balioak zuzenketa anizkoitzaren aurretik; erabili andui ebaluagarriak izendatzaile gisa eta aberaste-emaitzak hipotesi funtzionaletarako."
             },
             "fieldIds": [
               "statistic_kind",
@@ -5023,7 +5023,7 @@
       ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。"
+        "调用模板；执行后记录版本、参数与诊断。"
       ],
       "interpretationBoundary": "输出：细胞状态坐标、分支概率或剪接动力学方向。时间尺度由实际时间信息校准。",
       "reviewedIn": "v4",
@@ -5379,7 +5379,7 @@
             "https://doi.org/10.1093/biostatistics/kxac047"
           ],
           "executionStatus": "proposed_export_contract_not_executed",
-          "interpretationBoundary": "同一面板产生的标签一致率不是真值准确率；Poisson分拆仅在相应模型下独立，不能替代真实培养重复。",
+          "interpretationBoundary": "同一面板的标签一致率衡量内部一致性；准确率使用独立参考，Poisson 分拆的独立性按模型检查，培养重复依据采样记录。",
           "designReview": {
             "title": {
               "zh": "区分同面板一致性与独立验证",
@@ -5444,11 +5444,11 @@
               "https://doi.org/10.1093/biostatistics/kxac047"
             ],
             "interpretationBoundary": {
-              "zh": "同一面板产生的标签一致率不是真值准确率；Poisson分拆仅在相应模型下独立，不能替代真实培养重复。",
-              "en": "Agreement between labels from the same panel is not ground-truth accuracy; Poisson splitting is independent only under its model and does not replace culture replication.",
-              "fr": "L’accord entre étiquettes du même panel n’est pas une exactitude face à une vérité ; la division de Poisson n’est indépendante que sous son modèle et ne remplace pas les répétitions de culture.",
-              "es": "La concordancia de etiquetas del mismo panel no es exactitud frente a una verdad; la división Poisson solo es independiente bajo su modelo y no sustituye réplicas de cultivo.",
-              "eu": "Panel bereko etiketen adostasuna ez da egia-erreferentziaren araberako zehaztasuna; Poisson zatiketa bere eredupean baino ez da independentea eta ez ditu kultibo-errepikak ordezkatzen."
+              "zh": "同一面板的标签一致率衡量内部一致性；准确率使用独立参考，Poisson 分拆的独立性按模型检查，培养重复依据采样记录。",
+              "en": "Agreement from the same panel measures internal consistency; assess accuracy with an independent reference, check Poisson-splitting independence under its model, and define culture replicates from sampling records.",
+              "fr": "L’accord d’un même panel mesure la cohérence interne ; évaluer l’exactitude sur une référence indépendante, vérifier l’indépendance du découpage de Poisson sous son modèle et définir les répétitions par les relevés de culture.",
+              "es": "La concordancia del mismo panel mide consistencia interna; evaluar exactitud con una referencia independiente, verificar la independencia de la división de Poisson bajo su modelo y definir réplicas con los registros de cultivo.",
+              "eu": "Panel bereko adostasunak barne-koherentzia neurtzen du; ebaluatu zehaztasuna erreferentzia independentearekin, egiaztatu Poisson banaketaren independentzia bere ereduaren arabera, eta definitu erreplikak kultura-erregistroekin."
             },
             "fieldIds": [
               "training_unit_ids",
@@ -5560,7 +5560,7 @@
         "比较整体留出菌株上的标签一致性、置信校准及unknown比例，与随机细胞划分结果和简单marker评分作对照。"
       ],
       "failureChecks": [
-        "没有独立参考时只能报告方法一致性；分类分数不是自动校准的概率，拒绝标签可能偏向低RNA状态。",
+        "用独立参考评估注释准确率；缺少参考时报告方法一致性。分类分数需概率校准，并检查拒绝标签对低 RNA 状态的偏倚。",
         "GO功能成员不自动是状态marker；同一基因可有多个用途，缺少实测表达不能写成低表达。",
         "现有实现按细胞随机划分；菌株分组需适配器。跨菌株分布变化时不继承覆盖保证。CellTypist分支内部归一化，使用独立计数副本；不用人类预训练标签解释酵母。",
         "原生chooseR随机抽细胞；培养分块与留出验证需项目适配，不能混作原生输出。稳定群不等于离散细胞类型。先检查旧版Seurat接口与成对矩阵内存。"
@@ -5608,7 +5608,7 @@
       ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。"
+        "调用模板；执行后记录版本、参数与诊断。"
       ],
       "interpretationBoundary": "标签按RNA状态、功能角色和蛋白证据分层；记录参考情境与未分配细胞。",
       "reviewedIn": "v13",
@@ -5773,7 +5773,7 @@
       "failureChecks": [
         "使用log归一化副本。0.99.3默认fix.all.zero会为零方差样本添加随机噪声；本配方关闭它并记录退化基因。分支支持另调用evaluate_uncertainty，不能从趋势p值推算。",
         "RNA快照的双峰或状态比例不能确定切换速率；群体关联不能单独证明历史选择，蛋白、bulk与成像证据另列。",
-        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。"
+        "这些字段定义分析与导出内容；模型拟合和数据诊断由所选工具完成。"
       ],
       "outputs": [
         "样本间状态组成差异",
@@ -5807,7 +5807,7 @@
       ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。",
+        "调用模板；执行后记录版本、参数与诊断。",
         "哪些独立证据能将观察到的噪音与状态比例连接到状态切换、遗传变化或适应度？",
         "记录RNA快照、培养重现、时间/谱系、基因型关联、干预重构和适应度测量证据；展示来源，不生成未经校准的适应性分数。",
         "计数、状态和培养可支持分布/比例；切换速率需时间/谱系与生长死亡约束，选择/适应度需已有基因组历史、干预或匹配适应度资料。"
@@ -6227,11 +6227,11 @@
       ],
       "failureChecks": [
         "聚合降低细胞间变异；网络发现用聚合层，表达噪音检验保留原始UMI分布。",
-        "重叠metacell不是独立培养重复；群体关联需另外控制菌株亲缘，WGCNA不会自动完成。",
-        "共表达边与hub排序不证明直接调控或因果；模块标签不是每个基因的特异功能。",
-        "GO富集不等于通路激活；先固定酵母标识符、可测背景与比较方向。",
+        "记录 metacell 的共享细胞并保留独立培养层级；群体关联另建包含菌株亲缘的模型。",
+        "共表达边和 hub 排序用于筛选关联候选；调控机制需独立证据，模块功能按成员富集解释。",
+        "固定酵母标识符、可测基因背景与比较方向；GO 富集表示功能集合的过度代表，通路活性另行评估。",
         "负协方差也可能来自同源分子归属或相对RNA分配；协方差置零仅是代数基线，不代表已验证的缓冲干预。",
-        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。"
+        "这些字段定义分析与导出内容；模型拟合和数据诊断由所选工具完成。"
       ],
       "outputs": [
         "表达程序使用率与稳定性",
@@ -6377,7 +6377,7 @@
             "https://yulab-smu.top/biomedical-knowledge-mining-book/universal-api.html"
           ],
           "executionStatus": "proposed_export_contract_not_executed",
-          "interpretationBoundary": "离群带不是已校准显著性；多重校正不能修复无效p值。跨菌株共享度以可评估菌株为分母，富集并不证明因果机制。",
+          "interpretationBoundary": "分别报告描述性离群带与经零模型校准的 p 值，再进行多重校正；共享度以可评估菌株为分母，富集结果用于提出功能假设。",
           "designReview": {
             "title": {
               "zh": "空模型、FDR与匹配富集",
@@ -6427,11 +6427,11 @@
               "https://yulab-smu.top/biomedical-knowledge-mining-book/universal-api.html"
             ],
             "interpretationBoundary": {
-              "zh": "离群带不是已校准显著性；多重校正不能修复无效p值。跨菌株共享度以可评估菌株为分母，富集并不证明因果机制。",
-              "en": "An outlier band is not calibrated significance; multiplicity correction cannot repair invalid p-values. Cross-strain sharing uses eligible strains as denominator, and enrichment is not causal evidence.",
-              "fr": "Une bande de valeurs atypiques n’est pas une significativité calibrée ; la correction multiple ne répare pas des valeurs p invalides. Le partage utilise les souches admissibles comme dénominateur ; l’enrichissement n’est pas causal.",
-              "es": "Una banda de valores atípicos no equivale a significación calibrada; la corrección múltiple no repara valores p inválidos. La compartición usa cepas elegibles como denominador; el enriquecimiento no es causal.",
-              "eu": "Muturreko balioen banda ez da esangura kalibratua; zuzenketa anizkoitzak ez ditu p-balio baliogabeak konpontzen. Anduien arteko partekatzeak ebaluagarriak ditu izendatzaile; aberastea ez da kausalitate-froga."
+              "zh": "分别报告描述性离群带与经零模型校准的 p 值，再进行多重校正；共享度以可评估菌株为分母，富集结果用于提出功能假设。",
+              "en": "Report descriptive outlier bands separately from null-calibrated p values before multiplicity correction; use evaluable strains as the sharing denominator and enrichment results to propose functional hypotheses.",
+              "fr": "Distinguer bandes descriptives d’écart et valeurs p calibrées sous le modèle nul avant correction multiple ; calculer le partage sur les souches évaluables et utiliser l’enrichissement pour formuler des hypothèses fonctionnelles.",
+              "es": "Separar bandas descriptivas de valores atípicos y valores p calibrados bajo el nulo antes de corregir multiplicidad; usar cepas evaluables como denominador e interpretar el enriquecimiento como hipótesis funcional.",
+              "eu": "Bereizi banda deskriptiboak eta eredu nuluarekin kalibratutako p balioak zuzenketa anizkoitzaren aurretik; erabili andui ebaluagarriak izendatzaile gisa eta aberaste-emaitzak hipotesi funtzionaletarako."
             },
             "fieldIds": [
               "statistic_kind",
@@ -6682,8 +6682,8 @@
       ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。",
-        "研究比较阅读；未接入默认工具或可执行配方。",
+        "调用模板；执行后记录版本、参数与诊断。",
+        "方法比较资料，用于评估模型假设、输入要求与迁移条件。",
         "同一菌株与状态划分下，细胞层面的均值eQTL是否与现有计数模型及状态交互结果一致？",
         "比较匹配SNP–基因效应、校准、亲缘模型与状态交互；Airqtl残差方差参数不作为噪音QTL检验。",
         "原始计数、细胞→培养/样本→菌株映射、匹配DNA基因型与倍性、参考坐标、状态和协变量；cGRN另需有效cis遗传工具及独立证据。",
@@ -6813,7 +6813,7 @@
         "检验速度方向在有效基因子集、重抽样和模型选择间是否一致，并与打乱剪接层对应关系的阴性对照比较。"
       ],
       "failureChecks": [
-        "菌株编号、拟时序和系统发育次序不能替代实验时间。传输边不是谱系追踪或进化祖先；不用人类增殖或凋亡默认基因给酵母加权。"
+        "使用真实采样时间建立传输模型，并以酵母证据设定增殖与死亡权重；传输边表示状态间的模型联系，谱系与祖先关系另需追踪或遗传证据。"
       ],
       "outputs": [
         "动力学有效基因数",
@@ -6839,7 +6839,7 @@
       ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。"
+        "调用模板；执行后记录版本、参数与诊断。"
       ],
       "interpretationBoundary": "输出：细胞状态坐标、分支概率或剪接动力学方向。时间尺度由实际时间信息校准。",
       "paperIds": [
@@ -6868,7 +6868,7 @@
             "v25_e34069812e6f"
           ],
           "executionStatus": "recipe_only",
-          "interpretationBoundary": "菌株编号、拟时序和系统发育次序不能替代实验时间。传输边不是谱系追踪或进化祖先；不用人类增殖或凋亡默认基因给酵母加权。"
+          "interpretationBoundary": "使用真实采样时间建立传输模型，并以酵母证据设定增殖与死亡权重；传输边表示状态间的模型联系，谱系与祖先关系另需追踪或遗传证据。"
         }
       ],
       "baseToolIds": [
@@ -6965,9 +6965,9 @@
         "这是均值趋势检验，不是差异噪音检验。重采样不能解决培养伪重复；无真实轨迹时须用空模型检查循环选基因造成的假信号。",
         "使用log归一化副本。0.99.3默认fix.all.zero会为零方差样本添加随机噪声；本配方关闭它并记录退化基因。分支支持另调用evaluate_uncertainty，不能从趋势p值推算。",
         "循环模板会引入闭环结构，不能单凭结果证明周期存在；相位不是物理时间。增强或过滤矩阵只作对照，噪音结论回到原始计数。",
-        "菌株编号、拟时序和系统发育次序不能替代实验时间。传输边不是谱系追踪或进化祖先；不用人类增殖或凋亡默认基因给酵母加权。",
+        "使用真实采样时间建立传输模型，并以酵母证据设定增殖与死亡权重；传输边表示状态间的模型联系，谱系与祖先关系另需追踪或遗传证据。",
         "RNA快照的双峰或状态比例不能确定切换速率；群体关联不能单独证明历史选择，蛋白、bulk与成像证据另列。",
-        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。"
+        "这些字段定义分析与导出内容；模型拟合和数据诊断由所选工具完成。"
       ],
       "outputs": [
         "轨迹顺序稳定性",
@@ -7015,7 +7015,7 @@
       ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。",
+        "调用模板；执行后记录版本、参数与诊断。",
         "哪些独立证据能将观察到的噪音与状态比例连接到状态切换、遗传变化或适应度？",
         "记录RNA快照、培养重现、时间/谱系、基因型关联、干预重构和适应度测量证据；展示来源，不生成未经校准的适应性分数。",
         "计数、状态和培养可支持分布/比例；切换速率需时间/谱系与生长死亡约束，选择/适应度需已有基因组历史、干预或匹配适应度资料。"
@@ -7157,7 +7157,7 @@
             "v25_e34069812e6f"
           ],
           "executionStatus": "recipe_only",
-          "interpretationBoundary": "菌株编号、拟时序和系统发育次序不能替代实验时间。传输边不是谱系追踪或进化祖先；不用人类增殖或凋亡默认基因给酵母加权。"
+          "interpretationBoundary": "使用真实采样时间建立传输模型，并以酵母证据设定增殖与死亡权重；传输边表示状态间的模型联系，谱系与祖先关系另需追踪或遗传证据。"
         }
       ],
       "populationExtensions": [
@@ -7541,10 +7541,10 @@
         "零假设：控制亲缘、均值、批次及性状估计误差后，待检验位点与噪音性状无关联。"
       ],
       "failureChecks": [
-        "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。",
-        "未检出不等于结构缺失；没有DNA证据时保留未知，缺失基因的噪音性状不填零或邻近值。",
-        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。",
-        "细胞间噪音、菌株均值差异与噪音性状遗传方差分别报告；增加细胞不能替代独立菌株或培养重复。"
+        "结合设计矩阵秩、编码方式与目标 contrast 审查混杂和可估计性；分别建模菌株关联与菌株内培养变异。",
+        "用 DNA 证据区分结构缺失与 RNA 未检出；证据不足记为未知，结构缺失基因的噪音性状记为缺失值。",
+        "这些字段定义分析与导出内容；模型拟合和数据诊断由所选工具完成。",
+        "分别报告细胞间噪音、菌株均值差异与噪音性状遗传方差，并列出菌株数、独立培养数和各培养细胞数。"
       ],
       "outputs": [
         "噪音性状遗传力估计",
@@ -7592,8 +7592,8 @@
       ],
       "statisticalUnit": "遗传比较以菌株为单位；培养重复估计重现性，细胞估计菌株内分布。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。",
-        "研究比较阅读；未接入默认工具或可执行配方。",
+        "调用模板；执行后记录版本、参数与诊断。",
+        "方法比较资料，用于评估模型假设、输入要求与迁移条件。",
         "噪音关联是否在原始计数测量模型与人类enQTL的均值趋势残差定义间保持一致？",
         "并列保存观察与拟合CV²、比值、对数底数、矩阵来源、有效细胞数和缺失原因，比较归一化与性状定义的敏感性。",
         "可追溯计数与SCT比较层、菌株/培养/状态标签；关联另需匹配基因型、亲缘和真实样本量，结构缺失不得当作普通缺失值插补。",
@@ -7657,7 +7657,7 @@
             "v25_7fe5101ca916"
           ],
           "executionStatus": "recipe_only",
-          "interpretationBoundary": "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。"
+          "interpretationBoundary": "结合设计矩阵秩、编码方式与目标 contrast 审查混杂和可估计性；分别建模菌株关联与菌株内培养变异。"
         },
         {
           "id": "v25f_noise_design_estimability",
@@ -7823,18 +7823,18 @@
               "eu": "Zarataren heredagarritasuna: izendatzailea eta errorea"
             },
             "purpose": {
-              "zh": "将噪音性状及SE/抽样协方差连接到亲缘模型；并列均值、离散与状态效应，声明可辨识方差组分和遗传力分母。标准GEMMA/limix不自动传播第一阶段SE。",
-              "en": "Join noise traits and SE/sampling covariance to a kinship model. Compare mean, dispersion and state effects; declare identifiable variance components and the heritability denominator. Standard GEMMA/limix does not automatically propagate first-stage SE.",
-              "fr": "Relier traits de bruit et erreurs-types/covariance au modèle de parenté. Comparer effets moyens, dispersion et états ; préciser composantes identifiables et dénominateur. GEMMA/limix standard ne propage pas automatiquement ces erreurs.",
-              "es": "Conectar rasgos de ruido y errores estándar/covarianza al modelo de parentesco. Comparar media, dispersión y estado; declarar componentes identificables y denominador. GEMMA/limix estándar no propaga automáticamente esos errores.",
-              "eu": "Lotu zarata-ezaugarriak eta errore estandarrak/laginketa-kobariantza ahaidetasun-ereduari. Konparatu batezbesteko, dispertsio eta egoera-efektuak; zehaztu osagai identifikagarriak eta izendatzailea. GEMMA/limix arruntak ez ditu lehen urratseko erroreak automatikoki hedatzen."
+              "zh": "将噪音性状与 SE/抽样协方差传入显式测量误差模型，并与亲缘模型衔接；并列报告均值、离散与状态效应，明确可辨识方差组分和遗传力分母。使用标准 GEMMA/limix 时另实现第一阶段 SE 传播。",
+              "en": "Pass noise traits and their SEs or sampling covariance to an explicit measurement-error model linked to kinship; report mean, dispersion and state effects together, with identifiable variance components and the heritability denominator. Implement first-stage SE propagation separately when using standard GEMMA/limix.",
+              "fr": "Relier les traits de bruit et leurs erreurs types ou covariances à un modèle explicite d’erreur de mesure avec apparentement ; rapporter effets de moyenne, dispersion et état, composantes identifiables et dénominateur d’héritabilité. Avec GEMMA/limix standard, implémenter séparément la propagation des erreurs du premier stade.",
+              "es": "Conectar rasgos de ruido y sus errores estándar o covarianzas con un modelo explícito de error de medición y parentesco; informar efectos de media, dispersión y estado, componentes identificables y denominador de heredabilidad. Con GEMMA/limix estándar, implementar por separado la propagación del error de la primera etapa.",
+              "eu": "Lotu zarata-ezaugarriak eta haien SEak edo laginketa-kobariantza neurketa-errorearen eredu esplizitu eta ahaidetasunarekin; adierazi batezbesteko, dispertsio eta egoera-efektuak, osagai identifikagarriak eta heredagarritasunaren izendatzailea. GEMMA/limix estandarrean, ezarri bereizita lehen etapako SEen hedapena."
             },
             "description": {
-              "zh": "将噪音性状及SE/抽样协方差连接到亲缘模型；并列均值、离散与状态效应，声明可辨识方差组分和遗传力分母。标准GEMMA/limix不自动传播第一阶段SE。",
-              "en": "Join noise traits and SE/sampling covariance to a kinship model. Compare mean, dispersion and state effects; declare identifiable variance components and the heritability denominator. Standard GEMMA/limix does not automatically propagate first-stage SE.",
-              "fr": "Relier traits de bruit et erreurs-types/covariance au modèle de parenté. Comparer effets moyens, dispersion et états ; préciser composantes identifiables et dénominateur. GEMMA/limix standard ne propage pas automatiquement ces erreurs.",
-              "es": "Conectar rasgos de ruido y errores estándar/covarianza al modelo de parentesco. Comparar media, dispersión y estado; declarar componentes identificables y denominador. GEMMA/limix estándar no propaga automáticamente esos errores.",
-              "eu": "Lotu zarata-ezaugarriak eta errore estandarrak/laginketa-kobariantza ahaidetasun-ereduari. Konparatu batezbesteko, dispertsio eta egoera-efektuak; zehaztu osagai identifikagarriak eta izendatzailea. GEMMA/limix arruntak ez ditu lehen urratseko erroreak automatikoki hedatzen."
+              "zh": "将噪音性状与 SE/抽样协方差传入显式测量误差模型，并与亲缘模型衔接；并列报告均值、离散与状态效应，明确可辨识方差组分和遗传力分母。使用标准 GEMMA/limix 时另实现第一阶段 SE 传播。",
+              "en": "Pass noise traits and their SEs or sampling covariance to an explicit measurement-error model linked to kinship; report mean, dispersion and state effects together, with identifiable variance components and the heritability denominator. Implement first-stage SE propagation separately when using standard GEMMA/limix.",
+              "fr": "Relier les traits de bruit et leurs erreurs types ou covariances à un modèle explicite d’erreur de mesure avec apparentement ; rapporter effets de moyenne, dispersion et état, composantes identifiables et dénominateur d’héritabilité. Avec GEMMA/limix standard, implémenter séparément la propagation des erreurs du premier stade.",
+              "es": "Conectar rasgos de ruido y sus errores estándar o covarianzas con un modelo explícito de error de medición y parentesco; informar efectos de media, dispersión y estado, componentes identificables y denominador de heredabilidad. Con GEMMA/limix estándar, implementar por separado la propagación del error de la primera etapa.",
+              "eu": "Lotu zarata-ezaugarriak eta haien SEak edo laginketa-kobariantza neurketa-errorearen eredu esplizitu eta ahaidetasunarekin; adierazi batezbesteko, dispertsio eta egoera-efektuak, osagai identifikagarriak eta heredagarritasunaren izendatzailea. GEMMA/limix estandarrean, ezarri bereizita lehen etapako SEen hedapena."
             },
             "fields": [
               {
@@ -7893,11 +7893,11 @@
               "eu": "Bariantza genetikoak zarata-ezaugarri fidagarria adierazten du, ala zelula mugatuak, batezbestekoaren efektuak edo sorten aldeak?"
             },
             "methodChoice": {
-              "zh": "将噪音性状及SE/抽样协方差连接到亲缘模型；并列均值、离散与状态效应，声明可辨识方差组分和遗传力分母。标准GEMMA/limix不自动传播第一阶段SE。",
-              "en": "Join noise traits and SE/sampling covariance to a kinship model. Compare mean, dispersion and state effects; declare identifiable variance components and the heritability denominator. Standard GEMMA/limix does not automatically propagate first-stage SE.",
-              "fr": "Relier traits de bruit et erreurs-types/covariance au modèle de parenté. Comparer effets moyens, dispersion et états ; préciser composantes identifiables et dénominateur. GEMMA/limix standard ne propage pas automatiquement ces erreurs.",
-              "es": "Conectar rasgos de ruido y errores estándar/covarianza al modelo de parentesco. Comparar media, dispersión y estado; declarar componentes identificables y denominador. GEMMA/limix estándar no propaga automáticamente esos errores.",
-              "eu": "Lotu zarata-ezaugarriak eta errore estandarrak/laginketa-kobariantza ahaidetasun-ereduari. Konparatu batezbesteko, dispertsio eta egoera-efektuak; zehaztu osagai identifikagarriak eta izendatzailea. GEMMA/limix arruntak ez ditu lehen urratseko erroreak automatikoki hedatzen."
+              "zh": "将噪音性状与 SE/抽样协方差传入显式测量误差模型，并与亲缘模型衔接；并列报告均值、离散与状态效应，明确可辨识方差组分和遗传力分母。使用标准 GEMMA/limix 时另实现第一阶段 SE 传播。",
+              "en": "Pass noise traits and their SEs or sampling covariance to an explicit measurement-error model linked to kinship; report mean, dispersion and state effects together, with identifiable variance components and the heritability denominator. Implement first-stage SE propagation separately when using standard GEMMA/limix.",
+              "fr": "Relier les traits de bruit et leurs erreurs types ou covariances à un modèle explicite d’erreur de mesure avec apparentement ; rapporter effets de moyenne, dispersion et état, composantes identifiables et dénominateur d’héritabilité. Avec GEMMA/limix standard, implémenter séparément la propagation des erreurs du premier stade.",
+              "es": "Conectar rasgos de ruido y sus errores estándar o covarianzas con un modelo explícito de error de medición y parentesco; informar efectos de media, dispersión y estado, componentes identificables y denominador de heredabilidad. Con GEMMA/limix estándar, implementar por separado la propagación del error de la primera etapa.",
+              "eu": "Lotu zarata-ezaugarriak eta haien SEak edo laginketa-kobariantza neurketa-errorearen eredu esplizitu eta ahaidetasunarekin; adierazi batezbesteko, dispertsio eta egoera-efektuak, osagai identifikagarriak eta heredagarritasunaren izendatzailea. GEMMA/limix estandarrean, ezarri bereizita lehen etapako SEen hedapena."
             },
             "inputNote": {
               "zh": "必须有性状估计误差、匹配DNA/亲缘和倍性编码；培养组分另需可区分重复。共享趋势诱导的误差相关性需记录，不能默认独立。",
@@ -8055,7 +8055,7 @@
             "https://bioconductor.org/packages/release/bioc/html/limma.html"
           ],
           "executionStatus": "proposed_export_contract_not_executed",
-          "interpretationBoundary": "细胞和lane不等于独立培养；同基因型培养物混合且无额外标签后，其来源不能靠SNP恢复。",
+          "interpretationBoundary": "以独立培养记录定义生物学重复；同基因型培养混池后需保留独立标签以追踪来源，SNP 仅区分可辨别的基因型。",
           "designReview": {
             "title": {
               "zh": "混池身份与培养追踪",
@@ -8141,11 +8141,11 @@
               "https://bioconductor.org/packages/release/bioc/html/limma.html"
             ],
             "interpretationBoundary": {
-              "zh": "细胞和lane不等于独立培养；同基因型培养物混合且无额外标签后，其来源不能靠SNP恢复。",
-              "en": "Cells and lanes are not independent cultures. SNPs cannot recover separately cultured samples with the same genotype after unlabelled pooling.",
-              "fr": "Les cellules et les lanes ne sont pas des cultures indépendantes. Les SNP ne séparent pas des cultures de même génotype mélangées sans étiquette supplémentaire.",
-              "es": "Las células y los carriles no son cultivos independientes. Los SNP no separan cultivos del mismo genotipo mezclados sin etiquetas adicionales.",
-              "eu": "Zelulak eta sekuentziazio-erreiak ez dira kultura independenteak. SNPek ezin dituzte etiketa gehigarririk gabe nahastutako genotipo bereko kulturak bereizi."
+              "zh": "以独立培养记录定义生物学重复；同基因型培养混池后需保留独立标签以追踪来源，SNP 仅区分可辨别的基因型。",
+              "en": "Define biological replicates from independent-culture records; pooled cultures with the same genotype require separate labels to retain provenance, while SNPs distinguish separable genotypes.",
+              "fr": "Définir les répétitions biologiques à partir des cultures indépendantes ; les cultures mélangées de même génotype exigent des étiquettes distinctes pour conserver leur origine, les SNP distinguant les génotypes séparables.",
+              "es": "Definir las réplicas biológicas a partir de cultivos independientes; los cultivos mezclados del mismo genotipo requieren etiquetas distintas para conservar su origen, mientras los SNP distinguen genotipos separables.",
+              "eu": "Definitu erreplika biologikoak kultura independenteen erregistroekin; genotipo bereko kultura nahasiek etiketa bereiziak behar dituzte jatorria gordetzeko, eta SNPek genotipo bereizgarriak bereizten dituzte."
             },
             "fieldIds": [
               "strain_id",
@@ -8466,10 +8466,10 @@
         "零假设：遗传效应不随细胞状态变化；比较带交互项与无交互项的模型并检查共同状态支持。"
       ],
       "failureChecks": [
-        "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。",
+        "结合设计矩阵秩、编码方式与目标 contrast 审查混杂和可估计性；分别建模菌株关联与菌株内培养变异。",
         "负协方差也可能来自同源分子归属或相对RNA分配；协方差置零仅是代数基线，不代表已验证的缓冲干预。",
-        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。",
-        "单条件中的应激分数或拟时序不等于环境可塑性；反应规范需要同一菌株在明确环境间的可比测量。"
+        "这些字段定义分析与导出内容；模型拟合和数据诊断由所选工具完成。",
+        "用同一菌株在明确环境间的可比测量估计反应规范；单条件应激分数和拟时序描述条件内状态。"
       ],
       "outputs": [
         "基因型×连续细胞状态效应",
@@ -8505,8 +8505,8 @@
       ],
       "statisticalUnit": "遗传比较以菌株为单位；培养重复估计重现性，细胞估计菌株内分布。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。",
-        "研究比较阅读；未接入默认工具或可执行配方。",
+        "调用模板；执行后记录版本、参数与诊断。",
+        "方法比较资料，用于评估模型假设、输入要求与迁移条件。",
         "同一菌株与状态划分下，细胞层面的均值eQTL是否与现有计数模型及状态交互结果一致？",
         "比较匹配SNP–基因效应、校准、亲缘模型与状态交互；Airqtl残差方差参数不作为噪音QTL检验。",
         "原始计数、细胞→培养/样本→菌株映射、匹配DNA基因型与倍性、参考坐标、状态和协变量；cGRN另需有效cis遗传工具及独立证据。",
@@ -8557,7 +8557,7 @@
             "v25_7fe5101ca916"
           ],
           "executionStatus": "recipe_only",
-          "interpretationBoundary": "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。"
+          "interpretationBoundary": "结合设计矩阵秩、编码方式与目标 contrast 审查混杂和可估计性；分别建模菌株关联与菌株内培养变异。"
         },
         {
           "id": "v25f_dosage_expression_boundary",
@@ -8813,9 +8813,9 @@
         "检验噪音性状与已有谱系或群体标签的关联，在控制均值、测量偏差和样本相关性后是否仍存在。"
       ],
       "failureChecks": [
-        "细胞间噪音、菌株均值差异与噪音性状遗传方差分别报告；增加细胞不能替代独立菌株或培养重复。",
-        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。",
-        "单条件中的应激分数或拟时序不等于环境可塑性；反应规范需要同一菌株在明确环境间的可比测量。",
+        "分别报告细胞间噪音、菌株均值差异与噪音性状遗传方差，并列出菌株数、独立培养数和各培养细胞数。",
+        "这些字段定义分析与导出内容；模型拟合和数据诊断由所选工具完成。",
+        "用同一菌株在明确环境间的可比测量估计反应规范；单条件应激分数和拟时序描述条件内状态。",
         "RNA快照的双峰或状态比例不能确定切换速率；群体关联不能单独证明历史选择，蛋白、bulk与成像证据另列。"
       ],
       "outputs": [
@@ -9015,8 +9015,8 @@
         "对同一FASTQ进行配对比较，检验噪音候选是否随参考、注释或多重比对分配策略显著改变。"
       ],
       "failureChecks": [
-        "未检出不等于结构缺失；没有DNA证据时保留未知，缺失基因的噪音性状不填零或邻近值。",
-        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。"
+        "用 DNA 证据区分结构缺失与 RNA 未检出；证据不足记为未知，结构缺失基因的噪音性状记为缺失值。",
+        "这些字段定义分析与导出内容；模型拟合和数据诊断由所选工具完成。"
       ],
       "outputs": [
         "参考注释版本的计数敏感性",
@@ -9245,7 +9245,7 @@
             "https://github.com/single-cell-genetics/vireo/blob/master/doc/manual.rst"
           ],
           "executionStatus": "proposed_export_contract_not_executed",
-          "interpretationBoundary": "全VCF距离不能替代实际RNA可判别信息；无可判别位点的候选保留等价身份组。跨SNP累计UMI需声明分子是否重复。",
+          "interpretationBoundary": "以实际 RNA 覆盖的可判别位点评估菌株身份；缺少区分位点时保留等价身份组，跨 SNP 汇总 UMI 时核对重复分子。",
           "designReview": {
             "title": {
               "zh": "实际覆盖的身份判别信息",
@@ -9327,11 +9327,11 @@
               "https://github.com/single-cell-genetics/vireo/blob/master/doc/manual.rst"
             ],
             "interpretationBoundary": {
-              "zh": "全VCF距离不能替代实际RNA可判别信息；无可判别位点的候选保留等价身份组。跨SNP累计UMI需声明分子是否重复。",
-              "en": "Whole-VCF distance does not replace observed RNA discrimination. Retain equivalent identity groups when no distinguishing sites exist; declare whether UMIs are counted repeatedly across SNPs.",
-              "fr": "La distance sur le VCF entier ne remplace pas le pouvoir discriminant de l’ARN observé. Conserver les groupes indiscernables et préciser le recomptage éventuel des UMI entre SNP.",
-              "es": "La distancia del VCF completo no sustituye la discriminación del ARN observado. Conservar grupos indistinguibles y declarar si los UMI se cuentan de nuevo entre SNP.",
-              "eu": "VCF osoaren distantziak ez du behatutako RNAren bereizmen-informazioa ordezkatzen. Bereizi ezin diren identitate-taldeak gorde, eta adierazi UMIak SNP artean berriz zenbatzen diren."
+              "zh": "以实际 RNA 覆盖的可判别位点评估菌株身份；缺少区分位点时保留等价身份组，跨 SNP 汇总 UMI 时核对重复分子。",
+              "en": "Assess strain identity using discriminating sites covered by RNA; retain equivalent identity groups when sites are uninformative and check duplicate molecules when aggregating UMIs across SNPs.",
+              "fr": "Évaluer l’identité des souches avec les sites discriminants couverts par l’ARN ; conserver des groupes d’identités équivalentes si nécessaire et vérifier les molécules dupliquées lors de l’agrégation des UMI entre SNP.",
+              "es": "Evaluar la identidad de cepas con sitios discriminantes cubiertos por ARN; conservar grupos de identidades equivalentes cuando falte información y comprobar moléculas duplicadas al agregar UMI entre SNP.",
+              "eu": "Ebaluatu anduien identitatea RNAk estalitako gune bereizgarriekin; gune informatiborik ez badago mantendu identitate baliokideen taldeak, eta egiaztatu molekula bikoiztuak SNPen arteko UMIak batzean."
             },
             "fieldIds": [
               "barcode",
@@ -9589,7 +9589,7 @@
       ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。"
+        "调用模板；执行后记录版本、参数与诊断。"
       ],
       "interpretationBoundary": "基准结果仅适用于匹配输入和任务；更好的低维图不等于更准确的噪音估计或可解释的调控机制。",
       "paperIds": [
@@ -9768,7 +9768,7 @@
       ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。"
+        "调用模板；执行后记录版本、参数与诊断。"
       ],
       "interpretationBoundary": "标签按RNA状态、功能角色和蛋白证据分层；记录参考情境与未分配细胞。",
       "reviewedIn": "v13",
@@ -10414,7 +10414,7 @@
       ],
       "statisticalUnit": "按菌株或培养划分训练与评价；细胞为组内观测，独立参考标签的来源单列。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。"
+        "调用模板；执行后记录版本、参数与诊断。"
       ],
       "interpretationBoundary": "这条验证链评估证据独立性与敏感性，不自动产生真值标签，也不把统计稳定性等同于机制证明。",
       "reviewedIn": "v13",
@@ -10863,7 +10863,7 @@
             "https://doi.org/10.1093/biostatistics/kxac047"
           ],
           "executionStatus": "proposed_export_contract_not_executed",
-          "interpretationBoundary": "同一面板产生的标签一致率不是真值准确率；Poisson分拆仅在相应模型下独立，不能替代真实培养重复。",
+          "interpretationBoundary": "同一面板的标签一致率衡量内部一致性；准确率使用独立参考，Poisson 分拆的独立性按模型检查，培养重复依据采样记录。",
           "designReview": {
             "title": {
               "zh": "区分同面板一致性与独立验证",
@@ -10928,11 +10928,11 @@
               "https://doi.org/10.1093/biostatistics/kxac047"
             ],
             "interpretationBoundary": {
-              "zh": "同一面板产生的标签一致率不是真值准确率；Poisson分拆仅在相应模型下独立，不能替代真实培养重复。",
-              "en": "Agreement between labels from the same panel is not ground-truth accuracy; Poisson splitting is independent only under its model and does not replace culture replication.",
-              "fr": "L’accord entre étiquettes du même panel n’est pas une exactitude face à une vérité ; la division de Poisson n’est indépendante que sous son modèle et ne remplace pas les répétitions de culture.",
-              "es": "La concordancia de etiquetas del mismo panel no es exactitud frente a una verdad; la división Poisson solo es independiente bajo su modelo y no sustituye réplicas de cultivo.",
-              "eu": "Panel bereko etiketen adostasuna ez da egia-erreferentziaren araberako zehaztasuna; Poisson zatiketa bere eredupean baino ez da independentea eta ez ditu kultibo-errepikak ordezkatzen."
+              "zh": "同一面板的标签一致率衡量内部一致性；准确率使用独立参考，Poisson 分拆的独立性按模型检查，培养重复依据采样记录。",
+              "en": "Agreement from the same panel measures internal consistency; assess accuracy with an independent reference, check Poisson-splitting independence under its model, and define culture replicates from sampling records.",
+              "fr": "L’accord d’un même panel mesure la cohérence interne ; évaluer l’exactitude sur une référence indépendante, vérifier l’indépendance du découpage de Poisson sous son modèle et définir les répétitions par les relevés de culture.",
+              "es": "La concordancia del mismo panel mide consistencia interna; evaluar exactitud con una referencia independiente, verificar la independencia de la división de Poisson bajo su modelo y definir réplicas con los registros de cultivo.",
+              "eu": "Panel bereko adostasunak barne-koherentzia neurtzen du; ebaluatu zehaztasuna erreferentzia independentearekin, egiaztatu Poisson banaketaren independentzia bere ereduaren arabera, eta definitu erreplikak kultura-erregistroekin."
             },
             "fieldIds": [
               "training_unit_ids",
@@ -11181,7 +11181,7 @@
         "在仅改变均值的模拟中，均值对照可响应，而均值条件化的噪音检验应控制误报。"
       ],
       "failureChecks": [
-        "scDist 估计条件间多变量均值距离；不能替代方差或完整分布检验。",
+        "scDist 估计条件间的多变量均值距离；方差与完整分布变化分别选择相应检验。",
         "分类AUC不能区分均值、协方差、组成或批次贡献；天然菌株差异不是干预因果效应。"
       ],
       "outputs": [
@@ -11209,7 +11209,7 @@
       ],
       "statisticalUnit": "细胞是培养内观测；跨条件推断以独立培养为单位，并保留菌株层级。",
       "analysisPrinciples": [],
-      "interpretationBoundary": "scDist 估计条件间多变量均值距离；不能替代方差或完整分布检验。",
+      "interpretationBoundary": "scDist 估计条件间的多变量均值距离；方差与完整分布变化分别选择相应检验。",
       "parentProjectIds": [
         "mean_noise",
         "noise_components",
@@ -11372,7 +11372,7 @@
       ],
       "statisticalUnit": "细胞是培养内观测；跨条件推断以独立培养为单位，并保留菌株层级。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。"
+        "调用模板；执行后记录版本、参数与诊断。"
       ],
       "interpretationBoundary": "使用转录相似图识别局部共变；图边不是空间邻接、遗传谱系或因果调控边。",
       "parentProjectIds": [
@@ -12431,8 +12431,8 @@
       ],
       "hypotheses": [],
       "failureChecks": [
-        "未检出不等于结构缺失；没有DNA证据时保留未知，缺失基因的噪音性状不填零或邻近值。",
-        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。",
+        "用 DNA 证据区分结构缺失与 RNA 未检出；证据不足记为未知，结构缺失基因的噪音性状记为缺失值。",
+        "这些字段定义分析与导出内容；模型拟合和数据诊断由所选工具完成。",
         "负协方差也可能来自同源分子归属或相对RNA分配；协方差置零仅是代数基线，不代表已验证的缓冲干预。"
       ],
       "outputs": [
@@ -12733,7 +12733,7 @@
       ],
       "statisticalUnit": "遗传比较以菌株为单位；培养重复估计重现性，细胞估计菌株内分布。",
       "analysisPrinciples": [
-        "研究比较阅读；未接入默认工具或可执行配方。",
+        "方法比较资料，用于评估模型假设、输入要求与迁移条件。",
         "噪音关联是否在原始计数测量模型与人类enQTL的均值趋势残差定义间保持一致？",
         "并列保存观察与拟合CV²、比值、对数底数、矩阵来源、有效细胞数和缺失原因，比较归一化与性状定义的敏感性。",
         "可追溯计数与SCT比较层、菌株/培养/状态标签；关联另需匹配基因型、亲缘和真实样本量，结构缺失不得当作普通缺失值插补。",
@@ -13740,8 +13740,8 @@
       "failureChecks": [
         "冻结状态定义并检查每个样本的共同支持。",
         "比较缺失状态处理、亲缘分层与方差模型。",
-        "细胞间噪音、菌株均值差异与噪音性状遗传方差分别报告；增加细胞不能替代独立菌株或培养重复。",
-        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。"
+        "分别报告细胞间噪音、菌株均值差异与噪音性状遗传方差，并列出菌株数、独立培养数和各培养细胞数。",
+        "这些字段定义分析与导出内容；模型拟合和数据诊断由所选工具完成。"
       ],
       "outputs": [
         "状态特异的菌株间方差",
@@ -14076,7 +14076,7 @@
         "比较结合、响应、交集及无先验模型。",
         "验证边与训练先验分开。",
         "RNA快照的双峰或状态比例不能确定切换速率；群体关联不能单独证明历史选择，蛋白、bulk与成像证据另列。",
-        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。"
+        "这些字段定义分析与导出内容；模型拟合和数据诊断由所选工具完成。"
       ],
       "outputs": [
         "调控边的结合与功能证据分层",
@@ -14229,7 +14229,7 @@
       "failureChecks": [
         "核对倍性、样本ID、offset及酵母cis窗口。",
         "检验群体结构残留与亲缘混合模型一致性。",
-        "这是均值DE/eQTL功效，不是噪音QTL功效。替换人类默认参数；原生eQTL模拟的二倍体HWE假设须适配酵母倍性与群体结构。遗传样本量按菌株而非细胞计。"
+        "估计均值 DE/eQTL 功效；噪音 QTL 另设功效模型。以酵母试点替换人类默认参数，适配原生二倍体 HWE 模拟与酵母倍性、群体结构的差异，遗传样本量按菌株计。"
       ],
       "outputs": [
         "计数eQTL的样本及offset一致性",
@@ -14262,8 +14262,8 @@
       ],
       "statisticalUnit": "基因型对应的菌株/样本；同一菌株细胞不作为独立基因型重复。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。",
-        "研究比较阅读；未接入默认工具或可执行配方。",
+        "调用模板；执行后记录版本、参数与诊断。",
+        "方法比较资料，用于评估模型假设、输入要求与迁移条件。",
         "同一菌株与状态划分下，细胞层面的均值eQTL是否与现有计数模型及状态交互结果一致？",
         "比较匹配SNP–基因效应、校准、亲缘模型与状态交互；Airqtl残差方差参数不作为噪音QTL检验。",
         "原始计数、细胞→培养/样本→菌株映射、匹配DNA基因型与倍性、参考坐标、状态和协变量；cGRN另需有效cis遗传工具及独立证据。",
@@ -14320,7 +14320,7 @@
             "v25_dd5fab2e6d62"
           ],
           "executionStatus": "recipe_only",
-          "interpretationBoundary": "这是均值DE/eQTL功效，不是噪音QTL功效。替换人类默认参数；原生eQTL模拟的二倍体HWE假设须适配酵母倍性与群体结构。遗传样本量按菌株而非细胞计。"
+          "interpretationBoundary": "估计均值 DE/eQTL 功效；噪音 QTL 另设功效模型。以酵母试点替换人类默认参数，适配原生二倍体 HWE 模拟与酵母倍性、群体结构的差异，遗传样本量按菌株计。"
         },
         {
           "id": "v25f_noise_h2_measurement_error",
@@ -14365,18 +14365,18 @@
               "eu": "Zarataren heredagarritasuna: izendatzailea eta errorea"
             },
             "purpose": {
-              "zh": "将噪音性状及SE/抽样协方差连接到亲缘模型；并列均值、离散与状态效应，声明可辨识方差组分和遗传力分母。标准GEMMA/limix不自动传播第一阶段SE。",
-              "en": "Join noise traits and SE/sampling covariance to a kinship model. Compare mean, dispersion and state effects; declare identifiable variance components and the heritability denominator. Standard GEMMA/limix does not automatically propagate first-stage SE.",
-              "fr": "Relier traits de bruit et erreurs-types/covariance au modèle de parenté. Comparer effets moyens, dispersion et états ; préciser composantes identifiables et dénominateur. GEMMA/limix standard ne propage pas automatiquement ces erreurs.",
-              "es": "Conectar rasgos de ruido y errores estándar/covarianza al modelo de parentesco. Comparar media, dispersión y estado; declarar componentes identificables y denominador. GEMMA/limix estándar no propaga automáticamente esos errores.",
-              "eu": "Lotu zarata-ezaugarriak eta errore estandarrak/laginketa-kobariantza ahaidetasun-ereduari. Konparatu batezbesteko, dispertsio eta egoera-efektuak; zehaztu osagai identifikagarriak eta izendatzailea. GEMMA/limix arruntak ez ditu lehen urratseko erroreak automatikoki hedatzen."
+              "zh": "将噪音性状与 SE/抽样协方差传入显式测量误差模型，并与亲缘模型衔接；并列报告均值、离散与状态效应，明确可辨识方差组分和遗传力分母。使用标准 GEMMA/limix 时另实现第一阶段 SE 传播。",
+              "en": "Pass noise traits and their SEs or sampling covariance to an explicit measurement-error model linked to kinship; report mean, dispersion and state effects together, with identifiable variance components and the heritability denominator. Implement first-stage SE propagation separately when using standard GEMMA/limix.",
+              "fr": "Relier les traits de bruit et leurs erreurs types ou covariances à un modèle explicite d’erreur de mesure avec apparentement ; rapporter effets de moyenne, dispersion et état, composantes identifiables et dénominateur d’héritabilité. Avec GEMMA/limix standard, implémenter séparément la propagation des erreurs du premier stade.",
+              "es": "Conectar rasgos de ruido y sus errores estándar o covarianzas con un modelo explícito de error de medición y parentesco; informar efectos de media, dispersión y estado, componentes identificables y denominador de heredabilidad. Con GEMMA/limix estándar, implementar por separado la propagación del error de la primera etapa.",
+              "eu": "Lotu zarata-ezaugarriak eta haien SEak edo laginketa-kobariantza neurketa-errorearen eredu esplizitu eta ahaidetasunarekin; adierazi batezbesteko, dispertsio eta egoera-efektuak, osagai identifikagarriak eta heredagarritasunaren izendatzailea. GEMMA/limix estandarrean, ezarri bereizita lehen etapako SEen hedapena."
             },
             "description": {
-              "zh": "将噪音性状及SE/抽样协方差连接到亲缘模型；并列均值、离散与状态效应，声明可辨识方差组分和遗传力分母。标准GEMMA/limix不自动传播第一阶段SE。",
-              "en": "Join noise traits and SE/sampling covariance to a kinship model. Compare mean, dispersion and state effects; declare identifiable variance components and the heritability denominator. Standard GEMMA/limix does not automatically propagate first-stage SE.",
-              "fr": "Relier traits de bruit et erreurs-types/covariance au modèle de parenté. Comparer effets moyens, dispersion et états ; préciser composantes identifiables et dénominateur. GEMMA/limix standard ne propage pas automatiquement ces erreurs.",
-              "es": "Conectar rasgos de ruido y errores estándar/covarianza al modelo de parentesco. Comparar media, dispersión y estado; declarar componentes identificables y denominador. GEMMA/limix estándar no propaga automáticamente esos errores.",
-              "eu": "Lotu zarata-ezaugarriak eta errore estandarrak/laginketa-kobariantza ahaidetasun-ereduari. Konparatu batezbesteko, dispertsio eta egoera-efektuak; zehaztu osagai identifikagarriak eta izendatzailea. GEMMA/limix arruntak ez ditu lehen urratseko erroreak automatikoki hedatzen."
+              "zh": "将噪音性状与 SE/抽样协方差传入显式测量误差模型，并与亲缘模型衔接；并列报告均值、离散与状态效应，明确可辨识方差组分和遗传力分母。使用标准 GEMMA/limix 时另实现第一阶段 SE 传播。",
+              "en": "Pass noise traits and their SEs or sampling covariance to an explicit measurement-error model linked to kinship; report mean, dispersion and state effects together, with identifiable variance components and the heritability denominator. Implement first-stage SE propagation separately when using standard GEMMA/limix.",
+              "fr": "Relier les traits de bruit et leurs erreurs types ou covariances à un modèle explicite d’erreur de mesure avec apparentement ; rapporter effets de moyenne, dispersion et état, composantes identifiables et dénominateur d’héritabilité. Avec GEMMA/limix standard, implémenter séparément la propagation des erreurs du premier stade.",
+              "es": "Conectar rasgos de ruido y sus errores estándar o covarianzas con un modelo explícito de error de medición y parentesco; informar efectos de media, dispersión y estado, componentes identificables y denominador de heredabilidad. Con GEMMA/limix estándar, implementar por separado la propagación del error de la primera etapa.",
+              "eu": "Lotu zarata-ezaugarriak eta haien SEak edo laginketa-kobariantza neurketa-errorearen eredu esplizitu eta ahaidetasunarekin; adierazi batezbesteko, dispertsio eta egoera-efektuak, osagai identifikagarriak eta heredagarritasunaren izendatzailea. GEMMA/limix estandarrean, ezarri bereizita lehen etapako SEen hedapena."
             },
             "fields": [
               {
@@ -14435,11 +14435,11 @@
               "eu": "Bariantza genetikoak zarata-ezaugarri fidagarria adierazten du, ala zelula mugatuak, batezbestekoaren efektuak edo sorten aldeak?"
             },
             "methodChoice": {
-              "zh": "将噪音性状及SE/抽样协方差连接到亲缘模型；并列均值、离散与状态效应，声明可辨识方差组分和遗传力分母。标准GEMMA/limix不自动传播第一阶段SE。",
-              "en": "Join noise traits and SE/sampling covariance to a kinship model. Compare mean, dispersion and state effects; declare identifiable variance components and the heritability denominator. Standard GEMMA/limix does not automatically propagate first-stage SE.",
-              "fr": "Relier traits de bruit et erreurs-types/covariance au modèle de parenté. Comparer effets moyens, dispersion et états ; préciser composantes identifiables et dénominateur. GEMMA/limix standard ne propage pas automatiquement ces erreurs.",
-              "es": "Conectar rasgos de ruido y errores estándar/covarianza al modelo de parentesco. Comparar media, dispersión y estado; declarar componentes identificables y denominador. GEMMA/limix estándar no propaga automáticamente esos errores.",
-              "eu": "Lotu zarata-ezaugarriak eta errore estandarrak/laginketa-kobariantza ahaidetasun-ereduari. Konparatu batezbesteko, dispertsio eta egoera-efektuak; zehaztu osagai identifikagarriak eta izendatzailea. GEMMA/limix arruntak ez ditu lehen urratseko erroreak automatikoki hedatzen."
+              "zh": "将噪音性状与 SE/抽样协方差传入显式测量误差模型，并与亲缘模型衔接；并列报告均值、离散与状态效应，明确可辨识方差组分和遗传力分母。使用标准 GEMMA/limix 时另实现第一阶段 SE 传播。",
+              "en": "Pass noise traits and their SEs or sampling covariance to an explicit measurement-error model linked to kinship; report mean, dispersion and state effects together, with identifiable variance components and the heritability denominator. Implement first-stage SE propagation separately when using standard GEMMA/limix.",
+              "fr": "Relier les traits de bruit et leurs erreurs types ou covariances à un modèle explicite d’erreur de mesure avec apparentement ; rapporter effets de moyenne, dispersion et état, composantes identifiables et dénominateur d’héritabilité. Avec GEMMA/limix standard, implémenter séparément la propagation des erreurs du premier stade.",
+              "es": "Conectar rasgos de ruido y sus errores estándar o covarianzas con un modelo explícito de error de medición y parentesco; informar efectos de media, dispersión y estado, componentes identificables y denominador de heredabilidad. Con GEMMA/limix estándar, implementar por separado la propagación del error de la primera etapa.",
+              "eu": "Lotu zarata-ezaugarriak eta haien SEak edo laginketa-kobariantza neurketa-errorearen eredu esplizitu eta ahaidetasunarekin; adierazi batezbesteko, dispertsio eta egoera-efektuak, osagai identifikagarriak eta heredagarritasunaren izendatzailea. GEMMA/limix estandarrean, ezarri bereizita lehen etapako SEen hedapena."
             },
             "inputNote": {
               "zh": "必须有性状估计误差、匹配DNA/亲缘和倍性编码；培养组分另需可区分重复。共享趋势诱导的误差相关性需记录，不能默认独立。",
@@ -14673,7 +14673,7 @@
         "固定代码标签，替换人鼠资源为酵母资源。",
         "将真实时间和拟时序分开记录。",
         "以留出分布及真实扰动评价生成预测。",
-        "菌株编号、拟时序和系统发育次序不能替代实验时间。传输边不是谱系追踪或进化祖先；不用人类增殖或凋亡默认基因给酵母加权。"
+        "使用真实采样时间建立传输模型，并以酵母证据设定增殖与死亡权重；传输边表示状态间的模型联系，谱系与祖先关系另需追踪或遗传证据。"
       ],
       "outputs": [
         "时间网络的留出分布再生成",
@@ -14704,7 +14704,7 @@
       ],
       "statisticalUnit": "独立培养和实际采样时间；整培养/时间点留出。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。"
+        "调用模板；执行后记录版本、参数与诊断。"
       ],
       "interpretationBoundary": "若只有单时间点群体数据则保留为计划；时间点和动力学先验接入后开展，真实扰动用于外推验证。",
       "planningApplicability": "conditional",
@@ -14768,7 +14768,7 @@
             "v25_e34069812e6f"
           ],
           "executionStatus": "recipe_only",
-          "interpretationBoundary": "菌株编号、拟时序和系统发育次序不能替代实验时间。传输边不是谱系追踪或进化祖先；不用人类增殖或凋亡默认基因给酵母加权。"
+          "interpretationBoundary": "使用真实采样时间建立传输模型，并以酵母证据设定增殖与死亡权重；传输边表示状态间的模型联系，谱系与祖先关系另需追踪或遗传证据。"
         }
       ],
       "baseToolIds": [
@@ -14884,7 +14884,7 @@
       ],
       "hypotheses": [],
       "analysisPrinciples": [
-        "项目审计定义；所列函数提供原始结果，导出字段由项目汇总，不是工具原生同名指标。"
+        "项目定义的汇总指标：从所列函数的原始结果计算，并保留字段与输出的对应关系。"
       ],
       "tags": [
         "noise",
@@ -15033,8 +15033,8 @@
       ],
       "hypotheses": [],
       "analysisPrinciples": [
-        "项目审计定义；所列函数提供原始结果，导出字段由项目汇总，不是工具原生同名指标。",
-        "调用配方；尚未在项目数据上执行。"
+        "项目定义的汇总指标：从所列函数的原始结果计算，并保留字段与输出的对应关系。",
+        "调用模板；执行后记录版本、参数与诊断。"
       ],
       "tags": [
         "dynamics",
@@ -15252,8 +15252,8 @@
       ],
       "hypotheses": [],
       "analysisPrinciples": [
-        "项目审计定义；所列函数提供原始结果，导出字段由项目汇总，不是工具原生同名指标。",
-        "调用配方；尚未在项目数据上执行。"
+        "项目定义的汇总指标：从所列函数的原始结果计算，并保留字段与输出的对应关系。",
+        "调用模板；执行后记录版本、参数与诊断。"
       ],
       "tags": [
         "simulation",
@@ -15569,7 +15569,7 @@
       ],
       "hypotheses": [],
       "analysisPrinciples": [
-        "项目审计定义；所列函数提供原始结果，导出字段由项目汇总，不是工具原生同名指标。"
+        "项目定义的汇总指标：从所列函数的原始结果计算，并保留字段与输出的对应关系。"
       ],
       "tags": [
         "noise",
@@ -15660,7 +15660,7 @@
             "https://yulab-smu.top/biomedical-knowledge-mining-book/universal-api.html"
           ],
           "executionStatus": "proposed_export_contract_not_executed",
-          "interpretationBoundary": "离群带不是已校准显著性；多重校正不能修复无效p值。跨菌株共享度以可评估菌株为分母，富集并不证明因果机制。",
+          "interpretationBoundary": "分别报告描述性离群带与经零模型校准的 p 值，再进行多重校正；共享度以可评估菌株为分母，富集结果用于提出功能假设。",
           "designReview": {
             "title": {
               "zh": "空模型、FDR与匹配富集",
@@ -15710,11 +15710,11 @@
               "https://yulab-smu.top/biomedical-knowledge-mining-book/universal-api.html"
             ],
             "interpretationBoundary": {
-              "zh": "离群带不是已校准显著性；多重校正不能修复无效p值。跨菌株共享度以可评估菌株为分母，富集并不证明因果机制。",
-              "en": "An outlier band is not calibrated significance; multiplicity correction cannot repair invalid p-values. Cross-strain sharing uses eligible strains as denominator, and enrichment is not causal evidence.",
-              "fr": "Une bande de valeurs atypiques n’est pas une significativité calibrée ; la correction multiple ne répare pas des valeurs p invalides. Le partage utilise les souches admissibles comme dénominateur ; l’enrichissement n’est pas causal.",
-              "es": "Una banda de valores atípicos no equivale a significación calibrada; la corrección múltiple no repara valores p inválidos. La compartición usa cepas elegibles como denominador; el enriquecimiento no es causal.",
-              "eu": "Muturreko balioen banda ez da esangura kalibratua; zuzenketa anizkoitzak ez ditu p-balio baliogabeak konpontzen. Anduien arteko partekatzeak ebaluagarriak ditu izendatzaile; aberastea ez da kausalitate-froga."
+              "zh": "分别报告描述性离群带与经零模型校准的 p 值，再进行多重校正；共享度以可评估菌株为分母，富集结果用于提出功能假设。",
+              "en": "Report descriptive outlier bands separately from null-calibrated p values before multiplicity correction; use evaluable strains as the sharing denominator and enrichment results to propose functional hypotheses.",
+              "fr": "Distinguer bandes descriptives d’écart et valeurs p calibrées sous le modèle nul avant correction multiple ; calculer le partage sur les souches évaluables et utiliser l’enrichissement pour formuler des hypothèses fonctionnelles.",
+              "es": "Separar bandas descriptivas de valores atípicos y valores p calibrados bajo el nulo antes de corregir multiplicidad; usar cepas evaluables como denominador e interpretar el enriquecimiento como hipótesis funcional.",
+              "eu": "Bereizi banda deskriptiboak eta eredu nuluarekin kalibratutako p balioak zuzenketa anizkoitzaren aurretik; erabili andui ebaluagarriak izendatzaile gisa eta aberaste-emaitzak hipotesi funtzionaletarako."
             },
             "fieldIds": [
               "statistic_kind",

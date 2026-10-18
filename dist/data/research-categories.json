@@ -3,8 +3,8 @@
   "version": "2.0",
   "title": "1011酵母单细胞研究方案构建器",
   "titleEn": "1011 Yeast Single-cell Research Builder",
-  "scope": "从已有短读scRNA FASTQ出发，按研究问题选择分析、指标、工具与依赖；网站不执行测序分析，也不承诺所有分支当前可运行。",
-  "scopeEn": "Select analyses, metrics, tools and dependencies from existing short-read scRNA FASTQ; the site does not execute sequencing analyses or guarantee branch eligibility.",
+  "scope": "从短读 scRNA FASTQ 出发，按研究问题组合分析、指标与工具，并核对各分支所需数据，形成可导出的研究方案。",
+  "scopeEn": "Build an exportable research plan from short-read scRNA FASTQ by selecting analyses, metrics and tools and checking the data required by each branch.",
   "categories": [
     {
       "id": "raw_qc",
@@ -1793,7 +1793,7 @@
       "title": "原始FASTQ",
       "titleEn": "Raw FASTQ",
       "availability": "provided",
-      "description": "当前已知具备；尚未实际读取项目FASTQ。"
+      "description": "已有原始 FASTQ；核对文件清单、校验值与测序信息。"
     },
     {
       "id": "library_structure",
@@ -1849,7 +1849,7 @@
       "title": "已有QC报告和工具日志",
       "titleEn": "Existing QC reports and tool logs",
       "availability": "derived",
-      "description": "聚合工具读取实际产生的报告；不是直接读取FASTQ代替各项检查。"
+      "description": "聚合各检查工具实际生成的报告，并记录工具版本与输入文件。"
     },
     {
       "id": "cell_qc_metrics",
@@ -1989,7 +1989,7 @@
       "title": "同一分析样本集合的亲缘矩阵",
       "titleEn": "Kinship matrix for the analyzed sample set",
       "availability": "external-derived",
-      "description": "样本×样本矩阵；与样本顺序、倍性和基因型编码匹配，不能替代变异×变异LD。"
+      "description": "样本×样本亲缘矩阵需匹配样本顺序、倍性和基因型编码；变异×变异 LD 矩阵另行提供。"
     },
     {
       "id": "ld_matrix",
@@ -2010,7 +2010,7 @@
       "title": "真实取样时间",
       "titleEn": "Observed sampling times",
       "availability": "external-or-metadata",
-      "description": "必须来自原采样记录；拟时序不是替代品。"
+      "description": "使用原始采样记录中的时间值、单位与样本对应关系。"
     },
     {
       "id": "metabolic_labeling",
@@ -2262,8 +2262,8 @@
         "metacell-only",
         "integrated-expression-only"
       ],
-      "text": "主噪音分析保留原始分子计数；插补、聚合和整合输出可作辅助但不能替代。",
-      "textEn": "Keep original molecule counts for the main variability analysis; imputation, aggregation and integration are auxiliary."
+      "text": "主噪音分析使用原始分子计数；插补、聚合和整合结果用于辅助比较。",
+      "textEn": "Use raw molecule counts for the primary noise analysis and imputed, aggregated or integrated outputs for supporting comparisons."
     },
     {
       "id": "no_fake_introns",
@@ -2384,8 +2384,8 @@
         "state_annotation",
         "noise"
       ],
-      "text": "没有独立参考时只能报告方法一致性；分类分数不是自动校准的概率，拒绝标签可能偏向低RNA状态。",
-      "textEn": "Without independent labels, report agreement only; scores are not automatically calibrated probabilities, and rejection may disproportionately affect low-RNA states."
+      "text": "用独立参考评估注释准确率；缺少参考时报告方法一致性。分类分数需概率校准，并检查拒绝标签对低 RNA 状态的偏倚。",
+      "textEn": "Assess annotation accuracy with an independent reference; report method agreement when none is available. Calibrate classification scores and check rejection bias in low-RNA states."
     },
     {
       "id": "repeat_counts_separate",
@@ -2464,8 +2464,8 @@
       "requiredData": [
         "sample_metadata"
       ],
-      "text": "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。",
-      "textEn": "Full rank does not remove confounding. Non-estimable coefficients depend on coding order and do not replace contrast-specific checks. Strain associations and within-strain culture replication are different levels."
+      "text": "结合设计矩阵秩、编码方式与目标 contrast 审查混杂和可估计性；分别建模菌株关联与菌株内培养变异。",
+      "textEn": "Assess confounding and estimability jointly from design-matrix rank, coding and the target contrast; model strain associations and within-strain culture variation separately."
     },
     {
       "id": "v25_annotation_conformal_gate",
@@ -2575,8 +2575,8 @@
         "sample_metadata",
         "timepoints"
       ],
-      "text": "菌株编号、拟时序和系统发育次序不能替代实验时间。传输边不是谱系追踪或进化祖先；不用人类增殖或凋亡默认基因给酵母加权。",
-      "textEn": "Strain IDs, pseudotime and phylogenetic order cannot replace experimental time. Transport edges are not lineage tracing or evolutionary ancestry. Do not weight yeast with default human proliferation or apoptosis genes."
+      "text": "使用真实采样时间建立传输模型，并以酵母证据设定增殖与死亡权重；传输边表示状态间的模型联系，谱系与祖先关系另需追踪或遗传证据。",
+      "textEn": "Build transport models from observed sampling times and yeast-supported growth and death weights; transport edges link states in a model, while lineage and ancestry require tracing or genetic evidence."
     },
     {
       "id": "v25_power_mean_eqtl_gate",
@@ -2589,8 +2589,8 @@
         "sample_metadata",
         "culture_replicates"
       ],
-      "text": "这是均值DE/eQTL功效，不是噪音QTL功效。替换人类默认参数；原生eQTL模拟的二倍体HWE假设须适配酵母倍性与群体结构。遗传样本量按菌株而非细胞计。",
-      "textEn": "This models mean DE/eQTL power, not noise-QTL power. Replace human defaults and adapt native diploid/HWE eQTL simulation to yeast ploidy and structure. Genetic sample size counts strains, not cells."
+      "text": "估计均值 DE/eQTL 功效；噪音 QTL 另设功效模型。以酵母试点替换人类默认参数，适配原生二倍体 HWE 模拟与酵母倍性、群体结构的差异，遗传样本量按菌株计。",
+      "textEn": "Estimate mean DE/eQTL power; use a separate power model for noise QTLs. Replace human defaults with yeast pilots, adapt native diploid-HWE simulation to yeast ploidy and population structure, and count strains as genetic samples."
     }
   ],
   "applicabilityLevels": [

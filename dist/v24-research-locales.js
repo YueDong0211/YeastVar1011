@@ -13,11 +13,11 @@
     "es": "Sin calibración temporal independiente, interpretar las tasas en unidades de referencia del modelo; los parámetros ajustados no establecen automáticamente tasas absolutas ni ruido puramente intrínseco.",
     "eu": "Denbora-kalibrazio independenterik gabe, interpretatu tasak ereduaren erreferentzia-unitateetan; doitutako parametroek ez dituzte berez transkripzio-tasa absolutuak edo barne-zarata hutsa ezartzen."
   },
-  "项目审计定义；所列函数提供原始结果，导出字段由项目汇总，不是工具原生同名指标。": {
-    "en": "Project audit definition: listed functions supply native results; export fields are project summaries, not same-named native tool metrics.",
-    "fr": "Définition d’audit du projet : les fonctions fournissent les résultats natifs ; les champs exportés sont des synthèses du projet, pas des mesures natives homonymes.",
-    "es": "Definición de auditoría del proyecto: las funciones aportan resultados originales; los campos exportados son resúmenes del proyecto, no métricas nativas homónimas.",
-    "eu": "Proiektuaren auditoretza-definizioa: funtzioek jatorrizko emaitzak ematen dituzte; esportazio-eremuak proiektuaren laburpenak dira, ez tresnaren izen bereko neurriak."
+  "项目定义的汇总指标：从所列函数的原始结果计算，并保留字段与输出的对应关系。": {
+    "en": "Project-defined summary metric: calculate it from the listed functions’ original outputs and retain the field-to-output mapping.",
+    "fr": "Indicateur de synthèse défini par le projet : le calculer à partir des sorties des fonctions et conserver leur correspondance avec les champs.",
+    "es": "Métrica de resumen definida por el proyecto: calcularla desde las salidas de las funciones y conservar la correspondencia con los campos.",
+    "eu": "Proiektuak definitutako laburpen-metrika: kalkulatu funtzioen irteeretatik, eta gorde eremuen eta irteeren arteko lotura."
   },
   "按字段分别报告": {
     "en": "Report units per field",

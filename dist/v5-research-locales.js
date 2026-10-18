@@ -24,11 +24,11 @@ Object.assign(window.YV_TEXT,{
     "es": "Módulos, eigengenes, kME y conservación",
     "eu": "Moduluak, eigengene-ak, kME eta kontserbazioa"
   },
-  "共表达边与hub排序不证明直接调控或因果；模块标签不是每个基因的特异功能。": {
-    "en": "Co-expression edges and hub ranks do not establish direct regulation or causality; module labels are not specific functions of every member.",
-    "fr": "Les arêtes et rangs de hubs ne prouvent ni régulation directe ni causalité ; une étiquette de module ne définit pas chaque membre.",
-    "es": "Las aristas y rangos de hubs no prueban regulación directa ni causalidad; la etiqueta del módulo no define cada miembro.",
-    "eu": "Ko-adierazpen ertzek eta hub sailkapenek ez dute zuzeneko erregulazioa edo kausalitatea frogatzen; modulu-etiketak ez ditu kide guztiak definitzen."
+  "共表达边和 hub 排序用于筛选关联候选；调控机制需独立证据，模块功能按成员富集解释。": {
+    "en": "Use coexpression edges and hub rankings to prioritize association candidates; regulatory mechanisms require independent evidence, and module functions are interpreted from member enrichment.",
+    "fr": "Utiliser coexpression et classement des hubs pour prioriser les associations ; les mécanismes de régulation exigent des preuves indépendantes, et les fonctions des modules s’interprètent par enrichissement.",
+    "es": "Utilizar aristas de coexpresión y rankings de hubs para priorizar asociaciones; los mecanismos reguladores requieren evidencia independiente y las funciones de módulos se interpretan por enriquecimiento.",
+    "eu": "Erabili koadierazpen-ertzak eta hub sailkapenak asoziazio-hautagaiak lehenesteko; mekanismoek ebidentzia independentea behar dute, eta moduluen funtzioak aberaste bidez interpretatzen dira."
   },
   "聚合降低细胞间变异；网络发现用聚合层，表达噪音检验保留原始UMI分布。": {
     "en": "Aggregation reduces cell-to-cell variation. Use aggregates for network discovery and retain original UMI distributions for noise inference.",
@@ -36,11 +36,11 @@ Object.assign(window.YV_TEXT,{
     "es": "La agregación reduce la variabilidad celular. Usar agregados para redes y conservar UMI originales para inferir ruido.",
     "eu": "Agregazioak zelulen arteko aldakortasuna murrizten du. Erabili agregatuak sareak aurkitzeko eta gorde jatorrizko UMIak zarata inferitzeko."
   },
-  "重叠metacell不是独立培养重复；群体关联需另外控制菌株亲缘，WGCNA不会自动完成。": {
-    "en": "Overlapping metacells are not independent culture replicates. Population associations require separate kinship control; WGCNA does not provide it automatically.",
-    "fr": "Des métacellules partagées ne sont pas des cultures indépendantes. Les associations de population nécessitent un contrôle distinct de parenté.",
-    "es": "Las metacélulas solapadas no son cultivos independientes. Las asociaciones poblacionales necesitan controlar el parentesco por separado.",
-    "eu": "Metazelula gainjarriak ez dira kultibo-errepika independenteak. Populazio-elkarteek ahaidetasunaren kontrol bereizia behar dute."
+  "记录 metacell 的共享细胞并保留独立培养层级；群体关联另建包含菌株亲缘的模型。": {
+    "en": "Record shared cells among metacells and retain independent-culture units; fit a separate kinship-aware model for population associations.",
+    "fr": "Consigner les cellules partagées entre métacellules et conserver les unités de culture indépendante ; ajuster un modèle tenant compte de l’apparentement pour les associations populationnelles.",
+    "es": "Registrar las células compartidas entre metacélulas y conservar los cultivos independientes; ajustar un modelo con parentesco para las asociaciones poblacionales.",
+    "eu": "Erregistratu metazelulen artean partekatutako zelulak eta mantendu kultura independenteen unitateak; doitu ahaidetasuna kontuan hartzen duen eredua populazio-asoziazioetarako."
   },
   "需验证酵母稀疏度、聚合设计、样本数量及留出菌株的可重复性；未在本项目执行。": {
     "en": "Validate yeast sparsity, aggregation design, sample size and held-out-strain reproducibility; not executed in this project.",
@@ -168,11 +168,11 @@ Object.assign(window.YV_TEXT,{
     "es": "Registrar universo probado, mapeos correctos y fallidos, versión y tamaño de conjuntos, genes compartidos y familia de pruebas.",
     "eu": "Gorde testatutako unibertsoa, ID mapaketa zuzenak eta hutsak, multzoen bertsioa eta tamaina, gene partekatuak eta proba-familia."
   },
-  "GO富集不等于通路激活；先固定酵母标识符、可测背景与比较方向。": {
-    "en": "GO enrichment does not establish pathway activation; fix yeast identifiers, measurable background and contrast direction.",
-    "fr": "L’enrichissement GO ne prouve pas l’activation ; fixer les identifiants de levure, le fond mesurable et le contraste.",
-    "es": "El enriquecimiento GO no prueba activación; fijar identificadores de levadura, fondo medible y dirección del contraste.",
-    "eu": "GO aberasteak ez du aktibazioa frogatzen; finkatu legamiaren IDak, hondo neurgarria eta kontrastearen norabidea."
+  "固定酵母标识符、可测基因背景与比较方向；GO 富集表示功能集合的过度代表，通路活性另行评估。": {
+    "en": "Fix yeast identifiers, the measurable-gene background and comparison direction; GO enrichment indicates over-representation of functional sets, while pathway activity is assessed separately.",
+    "fr": "Fixer les identifiants de levure, le fond de gènes mesurables et le sens de comparaison ; l’enrichissement GO indique une surreprésentation fonctionnelle, l’activité étant évaluée séparément.",
+    "es": "Fijar identificadores de levadura, el fondo de genes medibles y la dirección de comparación; GO indica sobrerrepresentación funcional y la actividad se evalúa por separado.",
+    "eu": "Finkatu legamiaren identifikatzaileak, gene neurgarrien hondoa eta konparazio-norabidea; GO aberasteak funtzio-multzoen gainordezkaritza adierazten du, eta jarduera bereizita ebaluatzen da."
   },
   "联合记录候选幂、拓扑拟合、平均连接度、相关方法与模块切分敏感性。": {
     "en": "Jointly record candidate powers, topology fit, mean connectivity, correlation method and module-splitting sensitivity.",

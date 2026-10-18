@@ -1,10 +1,10 @@
 window.YV_TEXT = window.YV_TEXT || {};
 Object.assign(window.YV_TEXT, {
-  "将菌株、独立培养、捕获文库和测序lane分开；1011是酿酒酵母菌株集合，不是1011个物种。": {
-    "en": "Separate strains, independent cultures, capture libraries and sequencing lanes; 1011 is a collection of S. cerevisiae strains, not 1011 species.",
-    "fr": "Distinguer souches, cultures indépendantes, bibliothèques de capture et pistes de séquençage ; 1011 désigne une collection de souches de S. cerevisiae, pas 1011 espèces.",
-    "es": "Separar cepas, cultivos independientes, bibliotecas de captura y carriles de secuenciación; 1011 es una colección de cepas de S. cerevisiae, no 1011 especies.",
-    "eu": "Bereizi anduiak, kultibo independenteak, harrapaketa-liburutegiak eta sekuentziazio-erreiak; 1011 S. cerevisiae anduien bilduma da, ez 1011 espezie."
+  "分别记录菌株、独立培养、捕获文库和测序 lane；1011 集合中的对象为酿酒酵母菌株。": {
+    "en": "Record strain, independent culture, capture library and sequencing lane separately; the 1011 collection comprises S. cerevisiae strains.",
+    "fr": "Consigner séparément souche, culture indépendante, bibliothèque de capture et lane de séquençage ; la collection 1011 comprend des souches de S. cerevisiae.",
+    "es": "Registrar por separado cepa, cultivo independiente, biblioteca de captura y carril de secuenciación; la colección 1011 comprende cepas de S. cerevisiae.",
+    "eu": "Erregistratu bereizita anduia, kultura independentea, harrapaketa-liburutegia eta sekuentziazio-erreia; 1011 bilduma S. cerevisiae anduiek osatzen dute."
   },
   "不可变cell_id规则 · 样本层级表 · 输入缺项记录": {
     "en": "Immutable cell_id rule · Sample hierarchy table · Missing-input log",
@@ -2568,23 +2568,23 @@ Object.assign(window.YV_TEXT, {
     "es": "Verosimilitud cinética de histogramas",
     "eu": "Zenbaketa-histogramen egiantza zinetikoa"
   },
-  "先固定计数对象、排除规则与分层单位；这是待计算指标，不是自动删样阈值。": {
-    "en": "Fix counting units, exclusions and strata before computation; this is a planned metric, not an automatic rejection threshold.",
-    "fr": "Définir les unités, exclusions et strates avant calcul ; cet indicateur prévu ne constitue pas un seuil automatique de rejet.",
-    "es": "Fijar unidades, exclusiones y estratos antes del cálculo; esta métrica prevista no es un umbral automático de exclusión.",
-    "eu": "Zenbaketa-unitateak, bazterketak eta geruzak finkatu kalkulatu aurretik; aurreikusitako metrika hau ez da baztertzeko atalase automatikoa."
+  "记录计数对象、排除规则、分层单位与过滤依据。": {
+    "en": "Record the counting unit, exclusion rules, strata and filtering rationale.",
+    "fr": "Consigner l’unité de comptage, les règles d’exclusion, les strates et les motifs de filtrage.",
+    "es": "Registrar la unidad de conteo, las reglas de exclusión, los estratos y los criterios de filtrado.",
+    "eu": "Erregistratu zenbaketa-unitatea, baztertzeko arauak, geruzak eta iragazteko oinarriak."
   },
-  "需要基于官方输出编写项目汇总；软件不会自动输出此项目自定义指标。": {
-    "en": "Requires project aggregation of official outputs; the software does not emit this project-defined metric directly.",
-    "fr": "Nécessite une agrégation des sorties officielles ; le logiciel ne produit pas directement cet indicateur propre au projet.",
-    "es": "Requiere agregar salidas oficiales; el programa no genera directamente esta métrica específica del proyecto.",
-    "eu": "Irteera ofizialak proiekturako agregatu behar dira; softwareak ez du proiektuaren metrika hau zuzenean ematen."
+  "从官方输出计算项目汇总指标，并保存计算规则与原始结果。": {
+    "en": "Calculate project summary metrics from official outputs and retain the calculation rules and original results.",
+    "fr": "Calculer les indicateurs de synthèse à partir des sorties officielles et conserver les règles de calcul et les résultats originaux.",
+    "es": "Calcular métricas de resumen desde las salidas oficiales y conservar las reglas de cálculo y los resultados originales.",
+    "eu": "Kalkulatu proiektuaren laburpen-metrikak irteera ofizialetatik, eta gorde kalkulu-arauak eta jatorrizko emaitzak."
   },
-  "保留原始UMI计数用于分布推断；插补、平滑及整合表达不能替代原始分布。": {
-    "en": "Retain raw UMI counts for distribution inference; imputation, smoothing and integrated expression do not replace the original distribution.",
-    "fr": "Conserver les UMI bruts pour inférer les distributions ; imputation, lissage et expression intégrée ne les remplacent pas.",
-    "es": "Conservar los UMI brutos para inferir distribuciones; imputación, suavizado y expresión integrada no sustituyen la distribución original.",
-    "eu": "Gorde UMI zenbaketa gordinak banaketak inferitzeko; egozpenak, leuntzeak eta adierazpen integratuak ez dute jatorrizko banaketa ordezkatzen."
+  "使用原始 UMI 计数推断表达分布；插补、平滑和整合结果另存为辅助表示。": {
+    "en": "Infer expression distributions from raw UMI counts; store imputed, smoothed and integrated results as auxiliary representations.",
+    "fr": "Inférer les distributions d’expression à partir des UMI bruts ; conserver séparément les représentations imputées, lissées et intégrées.",
+    "es": "Inferir distribuciones de expresión desde los UMI brutos; guardar los resultados imputados, suavizados e integrados como representaciones auxiliares.",
+    "eu": "Inferitu adierazpen-banaketak UMI zenbaketa gordinetatik; gorde egoztutako, leundutako eta integratutako emaitzak laguntza-adierazpen gisa."
   },
   "以独立培养为推断单位，细胞为培养内观测；重抽样必须保留该层级。": {
     "en": "Use independent cultures as inferential units and cells as observations within cultures; preserve this hierarchy in resampling.",
@@ -3138,11 +3138,11 @@ Object.assign(window.YV_TEXT, {
     "es": "Limitar conclusiones con cultivos reservados, simulaciones nulas y sensibilidad, no solo gráficos 2D.",
     "eu": "Mugatu ondorioak gordetako hazkuntzekin, simulazio nuluekin eta sentikortasunarekin; ez erabili 2D grafikoak bakarrik."
   },
-  "方法与官方来源已关联；尚未在本项目运行或验证。": {
-    "en": "Methods and official sources are linked; this project has not run or validated them.",
-    "fr": "Méthodes et sources officielles liées ; non exécutées ni validées dans ce projet.",
-    "es": "Métodos y fuentes oficiales enlazados; no ejecutados ni validados en este proyecto.",
-    "eu": "Metodoak eta iturri ofizialak lotuta; proiektu honetan ez dira exekutatu edo balioztatu."
+  "研究方案目录：关联方法、输入要求、诊断指标与官方来源。": {
+    "en": "Research-plan catalogue linking methods, input requirements, diagnostics and official sources.",
+    "fr": "Catalogue de plans de recherche reliant méthodes, données requises, diagnostics et sources officielles.",
+    "es": "Catálogo de planes de investigación que vincula métodos, datos necesarios, diagnósticos y fuentes oficiales.",
+    "eu": "Metodoak, beharrezko datuak, diagnostikoak eta iturri ofizialak lotzen dituen ikerketa-planen katalogoa."
   },
   "明确比较单位、条件、培养重复和待检验效应。": {
     "en": "Specify comparison units, conditions, culture replicates and estimands.",

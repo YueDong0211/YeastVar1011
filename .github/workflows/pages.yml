@@ -54,6 +54,8 @@ jobs:
       - run: node research/qa-h02-adversarial-v25d.cjs
       - run: node research/qa-qtl-ui-v25e.cjs
       - run: node research/qa-qtl-catalogue-v25e.cjs
+      - run: node research/qa-reference-library-v26.cjs
+      - run: node research/qa-marker-ux-v26.cjs
       - run: node research/v25-methods-test.cjs
       - run: node research/qa-database-preparation-v25.cjs
       - uses: actions/setup-python@v5

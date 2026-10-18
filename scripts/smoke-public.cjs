@@ -47,6 +47,36 @@ let browser;
  await page.locator('.qtl25-navigation a[href="#projects"]').click();
  await page.locator('#ra-query').waitFor();
  assert.equal(await page.evaluate(()=>JSON.stringify(YV_BUILDER.getPlan())),planBeforeQTL,'QTL browsing must not mutate the plan');
+ // Method references share authoritative metadata with the export catalogue.
+ await page.evaluate(()=>{location.hash='literature?tool=alevinfry&period=recent'});
+ await page.locator('#ref26-query').waitFor();
+ assert.equal(await page.locator('.ref26-record').count(),1);
+ assert((await page.locator('.ref26-record h2').innerText()).includes('Alevin-fry unlocks'));
+ assert((await page.locator('.ref26-authors').innerText()).includes('et al.'));
+ await page.locator('[data-ref-apa] summary').click();
+ assert((await page.locator('.ref26-apa').innerText()).includes('Patro'));
+ assert((await page.locator('.ref26-apa').innerText()).includes('2022'));
+ const referenceDownload=page.waitForEvent('download');
+ await page.locator('[data-ref-export="csl"]').click();
+ const downloadedReference=await referenceDownload;
+ const cslReferences=JSON.parse(require('node:fs').readFileSync(await downloadedReference.path(),'utf8'));
+ assert.equal(cslReferences.length,1);assert.equal(cslReferences[0].DOI,'10.1038/s41592-022-01408-3');assert.equal(cslReferences[0].author.length,6);
+ for(const lang of ['zh','en','fr','es','eu']){
+  await page.locator('#language-select').selectOption(lang);
+  assert.equal(await page.locator('.ref26-record').count(),1);
+  assert.equal(await page.locator('#ref26-tool').inputValue(),'alevinfry');
+ }
+ await page.locator('[data-ref-tool="alevinfry"]').click();
+ await page.locator('#drawer [data-method-tool="alevinfry"]').waitFor();
+ await page.locator('.method-apa-head a[href^="#literature"]').click();
+ await page.locator('#ref26-tool').waitFor();
+ assert.equal(await page.locator('#ref26-tool').inputValue(),'alevinfry');
+ assert.equal(await page.locator('#ref26-period').inputValue(),'all');
+ await page.locator('#ref26-query').fill('unmatched-reference-v26');
+ await page.locator('#ref26-results [data-ref-reset]').click();
+ assert.equal(await page.locator('#ref26-tool').inputValue(),'');
+ assert.equal(await page.locator('.ref26-record').count(),30);
+ assert.equal(await page.evaluate(()=>JSON.stringify(YV_BUILDER.getPlan())),planBeforeQTL,'Reference browsing and export must not mutate the plan');
  await page.mouse.move(1100,80);
  await page.keyboard.press('Escape');
  await page.locator('#menu-button').click();
@@ -78,7 +108,7 @@ let browser;
  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Horizontal overflow: method branch dialog');
  await page.locator('#close-drawer').click();
  await page.setViewportSize({width:390,height:844});
- for(const route of ['overview','cluster','workbench?stage=scope','markers?view=catalogue','markers?view=panel','markers?view=databases','projects?view=qtl','projects?view=coverage','contribute','settings']){await page.evaluate(hash=>location.hash=hash,route);await page.waitForFunction(hash=>YV_APP.route()===hash.split('?')[0],route);await page.waitForTimeout(100);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Horizontal overflow: '+route);}
+ for(const route of ['overview','cluster','workbench?stage=scope','markers?view=catalogue','markers?view=panel','markers?view=databases','projects?view=qtl','projects?view=coverage','literature','contribute','settings']){await page.evaluate(hash=>location.hash=hash,route);await page.waitForFunction(hash=>YV_APP.route()===hash.split('?')[0],route);await page.waitForTimeout(100);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Horizontal overflow: '+route);}
  assert.deepEqual(errors,[]);assert.deepEqual(failedLocal,[]);
  console.log(JSON.stringify({passed:true,routes:routes.length,languages:5,mobile:true,qtlCatalogue:true,methodBranchDialog:true,branchPersistence:true,projectLinks:true,runtimeErrors:errors,failedLocal},null,2));
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(async()=>{await browser?.close();server.kill();});

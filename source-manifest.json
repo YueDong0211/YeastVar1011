@@ -8,8 +8,8 @@
     },
     {
       "path": "dist/app.js",
-      "bytes": 59659,
-      "sha256": "0c6a6ccf5e5bbef69fe2dc88810b5943af08c0e7fe95e188390a68a6fe4332a6"
+      "bytes": 59575,
+      "sha256": "e79acf7bc586f5626d3bfe153ef8adeb7ced257869d2fba1ac4f7e5f2cf689b0"
     },
     {
       "path": "dist/assets/downloads/YeastVar1011-analysis-v21.zip",
@@ -48,8 +48,8 @@
     },
     {
       "path": "dist/assistant-context-v24.js",
-      "bytes": 20429,
-      "sha256": "94f3840897e1418da9271d9e5f4f2b5fa2616f53173788161304449bfb50b53a"
+      "bytes": 19629,
+      "sha256": "e3300bccf23cb820aee6dd020c15f90fe41022193b2aae51291dd3cb5ffae221"
     },
     {
       "path": "dist/atelier-library-v11.css",
@@ -73,8 +73,8 @@
     },
     {
       "path": "dist/builder-locales.js",
-      "bytes": 30567,
-      "sha256": "12bd67c65c9ab4f8504d27b301fb075b0baf751478392bef39136a441a7ef17b"
+      "bytes": 28017,
+      "sha256": "b7a4df276dae56eb626d13f6808eb74eeca991c703b5fcc479dfc352a1cf4a83"
     },
     {
       "path": "dist/builder.js",
@@ -83,8 +83,8 @@
     },
     {
       "path": "dist/catalogue-bundle.js",
-      "bytes": 3694380,
-      "sha256": "1b44fe9fca4f4f43eb2ef93260e16466b968b2b72b0693cf4badeaafa5dcddc3"
+      "bytes": 3681871,
+      "sha256": "b90599eba012335f31e9f6f5b47b1300152247ca1e78660712b42cda58e7f77a"
     },
     {
       "path": "dist/catalogue-parts/markers-001.js",
@@ -198,8 +198,8 @@
     },
     {
       "path": "dist/category-locales.js",
-      "bytes": 69665,
-      "sha256": "29bdf480c9928aacce6a688055609fd29ffd3b18288ebc4cd676314222354fde"
+      "bytes": 69231,
+      "sha256": "7791b2f2748755e1ee3a7c602091c76bb31c2e8c2d31c9a5662dcf7ede08d784"
     },
     {
       "path": "dist/cell-visual-v5.css",
@@ -258,8 +258,8 @@
     },
     {
       "path": "dist/companion-hub.js",
-      "bytes": 30680,
-      "sha256": "dc8c50ca45283f6f03adb27c8226887ac2599734e85336d69cddc9053f0d09dc"
+      "bytes": 29770,
+      "sha256": "9a28f8aa31d86e15d60705d63593dd6b53ae54f1e16c5fbbd5ee2b2a42f1a853"
     },
     {
       "path": "dist/content-locales.js",
@@ -398,23 +398,23 @@
     },
     {
       "path": "dist/data/projects.json",
-      "bytes": 1124992,
-      "sha256": "949f9f9e8a195ec5245ab5196530d518123afe2f3c695f65b484e1a6fbf2875f"
+      "bytes": 1109253,
+      "sha256": "d3a955aacb4ed83b0ddfae82246e99db11cd3358e28c28bac01667f5fca314ed"
     },
     {
       "path": "dist/data/research-categories.json",
-      "bytes": 79743,
-      "sha256": "129b2186a96752299d1f485c0c6a621676f66910764092aa09a0797411312be3"
+      "bytes": 79769,
+      "sha256": "f457cfd715f2367053e9bc7a837fba70ac65e85a8c876b8f2fc5e82948f1cfed"
     },
     {
       "path": "dist/data/workflow.json",
-      "bytes": 1211902,
-      "sha256": "3e21f4935ead8c3968a2cefbd8acad515d33ae5992bc62d4da22dbd7e8f783e3"
+      "bytes": 1163547,
+      "sha256": "5928036d067364161031c622d69b03a131fc8967c777956aa14d88d11189fbf3"
     },
     {
       "path": "dist/data-loader.js",
       "bytes": 5452,
-      "sha256": "36069ae89abd7a369f62058a8a06a0a76af98381c04adc37a2a8ab2e8d939155"
+      "sha256": "3e1d469fe3e64c169a6dce11f5b332974c53465eda1a379e7c7760f1a6527e7d"
     },
     {
       "path": "dist/database-hub-v24.css",
@@ -423,18 +423,23 @@
     },
     {
       "path": "dist/database-hub-v24.js",
-      "bytes": 40355,
-      "sha256": "e527e5ff70993bf569e6dac67453623c9d9a421075e31f09f689eb9e78f8ac65"
+      "bytes": 40425,
+      "sha256": "d7fa65fe0bf68587cd2d744466574ff39d79d700a388d462c27c1eeb645f6127"
     },
     {
       "path": "dist/database-resources-v25.js",
-      "bytes": 12423,
-      "sha256": "46a8e25e3eb9aba7d8c95a9a0c104b55c3895cad1d1f7acf1f9865ba9fa09d78"
+      "bytes": 12120,
+      "sha256": "9899fd5db951b14953af628a9fd693f5c606bf5fc0ff3f2f2c5da4c1843472d5"
     },
     {
       "path": "dist/detail-locales.js",
       "bytes": 418867,
       "sha256": "1286b5691003de4912b08714c6f9639ac3594c00b3f11090805ceace3f120531"
+    },
+    {
+      "path": "dist/editorial-polish-v26.css",
+      "bytes": 3849,
+      "sha256": "73a48991f7257787fd3e48624a773dd7d41b59cb80d3b29c81c5f6946b56102e"
     },
     {
       "path": "dist/experience.js",
@@ -453,8 +458,8 @@
     },
     {
       "path": "dist/export-layout-v10.js",
-      "bytes": 18554,
-      "sha256": "2f20c17e0d92ae0590ecc87521d08f2b7cd573e63dd05278db33f0e65c10a016"
+      "bytes": 18313,
+      "sha256": "378c57e8c0ae76a122854fc433041b262e52f6d6906f9a62ce7550e75e96b62d"
     },
     {
       "path": "dist/export-studio.css",
@@ -463,8 +468,8 @@
     },
     {
       "path": "dist/export-studio.js",
-      "bytes": 35186,
-      "sha256": "db17e6ceace5e1b3b1474c58db17ea052a2b56e949c9395af3abd02160887570"
+      "bytes": 35095,
+      "sha256": "163c43725515890bcdf31a53502855eba07915639bdd8230266ca497c6232357"
     },
     {
       "path": "dist/galaxy.css",
@@ -483,13 +488,13 @@
     },
     {
       "path": "dist/guide.js",
-      "bytes": 20077,
-      "sha256": "e7a3a53da1b1ce31c0c0544447948397c96585ff62c83e5b5ce6eb8c95702f6f"
+      "bytes": 20034,
+      "sha256": "0ffcac515afba5171f729332c177d6710ee599445182efa7745316ae25c47cbb"
     },
     {
       "path": "dist/index.html",
-      "bytes": 13648,
-      "sha256": "34d32dbf853cf02c759654695717b8c0dbfc6d8b86e70db74f91bf3efb3068dc"
+      "bytes": 13870,
+      "sha256": "40b0ffdff1cc2b438df84b3193979e1ac61c31c4c3b82ddcca02fab11eb7a6ad"
     },
     {
       "path": "dist/interface-v15.css",
@@ -513,13 +518,13 @@
     },
     {
       "path": "dist/journey-v17.js",
-      "bytes": 59733,
-      "sha256": "380987e3f3af5dc47a356fe26c5ab6864752a447987c840eb9783ec49f142219"
+      "bytes": 59230,
+      "sha256": "cbca643b9fb0f465b1c5f187285c82f9d82208b7a06085c19366948e902eaee2"
     },
     {
       "path": "dist/lab-locales.js",
-      "bytes": 25521,
-      "sha256": "df7bcad26ab5366837bcb2715ccad7216d3fdead38aaaf8e7e525308e8c65377"
+      "bytes": 23958,
+      "sha256": "aec6b27eda23172d9b281bbca482edc69fb959f5f32a5f43403716e968a7c31e"
     },
     {
       "path": "dist/lab.css",
@@ -548,8 +553,8 @@
     },
     {
       "path": "dist/locales.js",
-      "bytes": 89057,
-      "sha256": "63b2718b82190443ccc2a7d63b2b31c0a4e962d8e163f40f3d8da70b2cdcefa7"
+      "bytes": 87225,
+      "sha256": "d0ddf1104cffed405cf2b03d8223571d8cd410d2056f10dc753b909bddfbf906"
     },
     {
       "path": "dist/mark.svg",
@@ -563,8 +568,8 @@
     },
     {
       "path": "dist/marker-preview-v13.js",
-      "bytes": 40039,
-      "sha256": "20f368a414887330f225b4b620f8750d19681888f2eb8760f380fa52ad80bee1"
+      "bytes": 39755,
+      "sha256": "fbb190b8017501370459d7ff411f6b8eb46f24bc442d92b5f2a1d580519d149a"
     },
     {
       "path": "dist/marker-selection-v25c.js",
@@ -573,8 +578,8 @@
     },
     {
       "path": "dist/marker-workspace-locales.js",
-      "bytes": 69462,
-      "sha256": "d428cd47686fec01aa3cd5817f39578536d9dd82369061bacf9283d1a381f5df"
+      "bytes": 67010,
+      "sha256": "9f1b862e6fa1467c63d223df2a622b8c5a22e58584aee1faaa7290d379b2d50a"
     },
     {
       "path": "dist/marker-workspace.css",
@@ -583,8 +588,8 @@
     },
     {
       "path": "dist/marker-workspace.js",
-      "bytes": 106234,
-      "sha256": "f8b0e874a1275c9888489139639d8b8722c11ff76c05832821a7ec1955b7a358"
+      "bytes": 105102,
+      "sha256": "b995d9490510d46e5eeb47113d001015ed12eb11767cd7c36a98942d44c7a661"
     },
     {
       "path": "dist/mascot.css",
@@ -608,8 +613,8 @@
     },
     {
       "path": "dist/methods.js",
-      "bytes": 28354,
-      "sha256": "1424b3ee1e5390cf3d29e1acf26d395b98ca9b9a092e1b642d8a8f958223c852"
+      "bytes": 27157,
+      "sha256": "1bda0cbe8ed8e93340f82b6fa6c8da2e16abc70c83c4d6095bfdcb0ed499599a"
     },
     {
       "path": "dist/mode-transitions-v17.js",
@@ -658,8 +663,8 @@
     },
     {
       "path": "dist/plan-contracts-locales-v25d.js",
-      "bytes": 17504,
-      "sha256": "5114978fc86410595db4c720f34556d62561acb4cb325a6906486a88f5c01506"
+      "bytes": 17371,
+      "sha256": "9f715b8fb9d62daf61d603285ceb562e09e5383cb5c0bc5563a168593f77759e"
     },
     {
       "path": "dist/plan-contracts-v25d.css",
@@ -718,8 +723,8 @@
     },
     {
       "path": "dist/plan-tools-v5.js",
-      "bytes": 19743,
-      "sha256": "004ef172d69c5509b845d6c34e99cb9be568c5e85c849ec46e2e58237e184604"
+      "bytes": 19521,
+      "sha256": "c119a1223affd9e50dbe8391c632da406af6064d9985432cb21780c543ad752b"
     },
     {
       "path": "dist/plan-workbench.css",
@@ -728,8 +733,8 @@
     },
     {
       "path": "dist/plan-workbench.js",
-      "bytes": 44304,
-      "sha256": "68bcf6f1b922f67c0a9f1cb9a7fc8fe6d1ef3e2e0e5cd30da19f34538ba3f13a"
+      "bytes": 44347,
+      "sha256": "f92f03c4a9604c3c1119694d1bdc36bc24ee88dd1fbf5654cef9c4e0fb982c0b"
     },
     {
       "path": "dist/polish-v19.css",
@@ -748,8 +753,8 @@
     },
     {
       "path": "dist/population-study-v25f.js",
-      "bytes": 10873,
-      "sha256": "dc5691b5d26387b213afa5f16329faf0f77ae1e690412f95ae0d2d3f27cfd528"
+      "bytes": 10706,
+      "sha256": "5e9b77eb64ead6cf35ea32d4090d87e3ef7ee84e25633da6901c704d9c2c4e1a"
     },
     {
       "path": "dist/presentation-v20.css",
@@ -777,6 +782,16 @@
       "sha256": "4d5ba6a2c3646e00cf869b32fc4a71a25e6a9b1256fd517bb0b8fc3a8a36881f"
     },
     {
+      "path": "dist/reference-library-v26.css",
+      "bytes": 4768,
+      "sha256": "4e1652f339e113a06a2e8b2abf4573f860840157d2adb093e3aa11ef3c9d46dd"
+    },
+    {
+      "path": "dist/reference-library-v26.js",
+      "bytes": 21583,
+      "sha256": "17fd9c68c3296b55eb4360881bca36be353250e8424717c3d9fc07e05114ce06"
+    },
+    {
       "path": "dist/refinements.css",
       "bytes": 8241,
       "sha256": "5f4e70632acc2532bd62ebf914db7817b0d32f2492a8cf62a7f4df27aeb6ffbd"
@@ -788,8 +803,8 @@
     },
     {
       "path": "dist/research-assistant-v22.js",
-      "bytes": 41402,
-      "sha256": "013b4fda5af723a9015ebf12f52a7d90612f0d80eeea4edeccd4fdc688ced5db"
+      "bytes": 41417,
+      "sha256": "a02c431fc75315b527414ca1994e3450cadc621edf53f3b4d120d75c49e85604"
     },
     {
       "path": "dist/research-atlas-v8.css",
@@ -798,8 +813,8 @@
     },
     {
       "path": "dist/research-atlas-v8.js",
-      "bytes": 23993,
-      "sha256": "88e80923c1d69c4384bb89f2c31f2d78bc5f7b583ad9349b14bc1987ea8e0000"
+      "bytes": 23973,
+      "sha256": "d34a1610d0a45ace7b5d649a5d8173841f3d2d902f07eb0494f32577fa4a4033"
     },
     {
       "path": "dist/research-coverage-v12.css",
@@ -853,8 +868,8 @@
     },
     {
       "path": "dist/user-experience-v16.js",
-      "bytes": 11773,
-      "sha256": "821b8f480ff1b69f1d457ca40085638591b1b000762a8de4b56289cbd0ebae46"
+      "bytes": 11651,
+      "sha256": "bd0e29e5c0292f6668f9f52c3a2aaa8dbc6fec26bf6bcfe3f385a7f3d00ff160"
     },
     {
       "path": "dist/v10-research-locales.js",
@@ -883,8 +898,8 @@
     },
     {
       "path": "dist/v24-research-locales.js",
-      "bytes": 92441,
-      "sha256": "506f94b4e5dff524a496df7384132cdde9ff66f7e51f63380036eed3d447e92a"
+      "bytes": 92327,
+      "sha256": "c40262d8effa19ebbc5ecbb73eca3e2fa7faa7a10411d2a25d48d9364826288d"
     },
     {
       "path": "dist/v25-marker-locales.js",
@@ -893,8 +908,8 @@
     },
     {
       "path": "dist/v25-research-locales.js",
-      "bytes": 177280,
-      "sha256": "8e30afc38661494e9c6ef1184aef8fef95dd7fecfb38b72e701025a7d4a73f13"
+      "bytes": 263454,
+      "sha256": "7f1131238b831340b6326ffc1e03ffa716bc0be14e7e578e39b52e36a9bf3f49"
     },
     {
       "path": "dist/v25d-evidence-locales.js",
@@ -908,18 +923,18 @@
     },
     {
       "path": "dist/v25f-design-review-locales.js",
-      "bytes": 72345,
-      "sha256": "b2a4de6307daf3db0f997ba895428d69180e8798905a1ff517492f59d1e62ede"
+      "bytes": 73302,
+      "sha256": "7983cabdde2b6467220d2c6abb3a1a0b0b8af646eec165509f6fcc7ea4501968"
     },
     {
       "path": "dist/v3-research-locales.js",
-      "bytes": 314266,
-      "sha256": "d4c7ee14122eadbc85063b867c0fceb983333471de0507a33d0b1be553366fbb"
+      "bytes": 314151,
+      "sha256": "779dc0f4f4411b94efd446bea4e65d1c54c919d4e564436ff6d3657baaf0ad82"
     },
     {
       "path": "dist/v3-ui-locales.js",
-      "bytes": 14141,
-      "sha256": "fd5d0d1a99b02e83c7e8808a1a681c917ae94cd593ce3cbcc6ecfea22ccce662"
+      "bytes": 13040,
+      "sha256": "eb317fada2c7146bac96771e70dfd6b9c9599163c52d575895360a51e3f3703d"
     },
     {
       "path": "dist/v3.css",
@@ -933,13 +948,13 @@
     },
     {
       "path": "dist/v4-research-locales.js",
-      "bytes": 40817,
-      "sha256": "986d5a8317d9bb50811a655a2ca23baf4cf05732396d8d4afcb1b51d319b56f2"
+      "bytes": 40966,
+      "sha256": "5acadbbcf38be329d6e0447e357ebbda1c2cee786be6f75ff4587c725ab010b7"
     },
     {
       "path": "dist/v5-research-locales.js",
-      "bytes": 18645,
-      "sha256": "119a5c71f07c2bf1767636a31675087602ffcdc6cf8dc9f04e76e7832f2eec4f"
+      "bytes": 19339,
+      "sha256": "3534b2f53d6a67b81d39c6a102fd22ab3fddf6be39841c02a832ad9b9334d8b9"
     },
     {
       "path": "dist/v6-research-locales.js",
@@ -948,8 +963,8 @@
     },
     {
       "path": "dist/v8-research-locales.js",
-      "bytes": 361893,
-      "sha256": "e3c53758ecb0c409242e7f4c0e1bae6c2f16af66e288c9de28edce7a43dbc8d1"
+      "bytes": 362055,
+      "sha256": "8e30ec67532311fae8a899d8a64d3b527e8eb9667b646cbe652a79602810d9d2"
     },
     {
       "path": "dist/vendor/EXCELJS-LICENSE.txt",
@@ -1378,8 +1393,8 @@
     },
     {
       "path": "dist/workstation.js",
-      "bytes": 17268,
-      "sha256": "2837af6f93b32be858193080ce54395899e78c3d12a8b85fc9e16a30db1a03b0"
+      "bytes": 16752,
+      "sha256": "875b4b2f979c1b9a90575de2a74b1bbc70ffe0c9507e181ce8c20134badacf94"
     },
     {
       "path": "dist/yeast3d.css",
@@ -1448,8 +1463,8 @@
     },
     {
       "path": "scripts/prepare-public.cjs",
-      "bytes": 5482,
-      "sha256": "28b468084ba07218bafeec964cd48d0b2289a22bb0ad882b12fd5b7d18551c60"
+      "bytes": 5554,
+      "sha256": "212e3af30724c162c541df29b6b76c2ddc4414dab935c8004f74240c962caf98"
     },
     {
       "path": "scripts/qa-doctor.cjs",
@@ -1473,8 +1488,8 @@
     },
     {
       "path": "scripts/smoke-public.cjs",
-      "bytes": 8588,
-      "sha256": "3a450bd9918809b69ef11c50ad3ac82e24427391be7c002c87baf8cd362f7297"
+      "bytes": 10761,
+      "sha256": "6eedc9e57e42588546f391803a93ed0918f28337dcb08604968a2045f22d644d"
     },
     {
       "path": ".github/ISSUE_TEMPLATE/bug_report.md",
@@ -1498,8 +1513,8 @@
     },
     {
       "path": ".github/workflows/pages.yml",
-      "bytes": 3729,
-      "sha256": "bb2838b16768bc48982ee03bc14510f2465207a0df055b350c8ac34da04639a4"
+      "bytes": 3835,
+      "sha256": "74eacfaf0b414adf0b946b34026aa40c2b34f0ed976fb03e260ca2e6c6ed27ae"
     },
     {
       "path": ".gitattributes",
@@ -1853,8 +1868,8 @@
     },
     {
       "path": "research/qa-population-v25c.cjs",
-      "bytes": 39157,
-      "sha256": "07376a6a35e65307502695ed79fd2255ae11b5583ae8f448ad25e245c5839c2b"
+      "bytes": 39303,
+      "sha256": "eda15be7317f3957aeb348ab5122189305d08c0fc8b4b3d79b8ded62acb0a8c3"
     },
     {
       "path": "research/qa-marker-regressions-v25d.cjs",
@@ -1878,13 +1893,13 @@
     },
     {
       "path": "research/qa-contract-catalogue-v25d.cjs",
-      "bytes": 28810,
-      "sha256": "be52002ba312283cede4b427e7c8a7a7ae52bb9f03dcedac310c312fcb804ef3"
+      "bytes": 33620,
+      "sha256": "65a93e35feef25eb4341af3def83f3c15ec2125b5f2885f7274c205b7de1ec02"
     },
     {
       "path": "research/qa-h02-adversarial-v25d.cjs",
-      "bytes": 14435,
-      "sha256": "db9245fc85a172348ef422eb505d6ab4102409305d025c93fb16105aab8d0d6a"
+      "bytes": 14721,
+      "sha256": "f3be87354aec1d538d8a24705f163a057b803dbb642af8980cb07543ba26f2f5"
     },
     {
       "path": "research/qa-qtl-ui-v25e.cjs",
@@ -1895,6 +1910,16 @@
       "path": "research/qa-qtl-catalogue-v25e.cjs",
       "bytes": 4072,
       "sha256": "dcb9e717566ed81bd6327a4e60d053b9a7e0b51eb2131ee98fd82fe78acb1735"
+    },
+    {
+      "path": "research/qa-reference-library-v26.cjs",
+      "bytes": 8703,
+      "sha256": "35979815443784e122e620879028d8c023d42d27674d2dc94a7e9f0a3b6b93da"
+    },
+    {
+      "path": "research/qa-marker-ux-v26.cjs",
+      "bytes": 5240,
+      "sha256": "bcad5af954800d4c0a411d2f2a8b298f7ffd8079411a074003839fa1834c147d"
     },
     {
       "path": "research/v25b-marker-proposals.json",

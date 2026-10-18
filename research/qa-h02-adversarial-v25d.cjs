@@ -87,7 +87,10 @@ check('Biological cultures and fractional counts cannot establish technical repl
 check('Missing eQTL data cannot produce a complete-plan summary',()=>{
  const o=observed('MISSING_EQTL_INPUT_REVIEW');assert.equal(o.method.status,'input-pending');assert.deepEqual(plain(o.method.unmet),['genotypes','kinship']);
  assert.ok(!o.panel.includes('<p>Plan conditions recorded</p>'));assert.ok(o.panel.includes('Inputs pending'));
- assert.match(maps.tool.get('scpower').limitations[0],/不是噪音QTL功效/);
+ assert.match(maps.tool.get('scpower').limitations[0],/估计均值 DE\/eQTL 功效；噪音 QTL 另设功效模型/);
+ assert.match(maps.tool.get('scpower').limitations[0],/二倍体 HWE/);
+ assert.match(maps.tool.get('scpower').limitations[0],/酵母倍性、群体结构/);
+ assert.match(maps.tool.get('scpower').limitations[0],/遗传样本量按菌株计/);
 });
 check('Historical and extended real routes cancel optional tools, metrics and sources together',()=>{
  assert.equal(data.projects.projects.filter(r=>(r.methodOptions||[]).some(o=>o.addedIn!=='v25f_design_review')).length,20);assert.equal(data.projects.projects.filter(r=>r.methodOptions?.length).length,24);assert.equal(data.projects.projects.flatMap(r=>r.methodOptions||[]).filter(o=>o.addedIn==='v25f_design_review').length,54);assert.deepEqual(findings.filter(f=>f.id.startsWith('OPTION_LEAK_')),[]);

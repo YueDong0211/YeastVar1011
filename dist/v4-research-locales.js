@@ -24,11 +24,11 @@ Object.assign(window.YV_TEXT, {
     "es": "Elegir según los datos y análisis de sensibilidad predefinidos; no hay umbral universal.",
     "eu": "Aukeratu datuen euskarriaren eta aurrez zehaztutako sentikortasun-adarren arabera; ez dago atalase unibertsalik."
   },
-  "项目汇总指标；需汇总官方输出，工作站不执行计算。": {
-    "en": "Project-defined summary of official outputs; the workstation does not run the analysis.",
-    "fr": "Résumé propre au projet des sorties officielles ; la station n’exécute pas l’analyse.",
-    "es": "Resumen del proyecto a partir de salidas oficiales; la estación no ejecuta el análisis.",
-    "eu": "Irteera ofizialen proiektuko laburpena; lan-estazioak ez du analisia exekutatzen."
+  "由所列工具的原始输出汇总计算，并记录汇总规则。": {
+    "en": "Calculate the summary from the listed tools’ original outputs and record the aggregation rules.",
+    "fr": "Calculer la synthèse à partir des sorties originales des outils et consigner les règles d’agrégation.",
+    "es": "Calcular el resumen a partir de las salidas originales de las herramientas y registrar las reglas de agregación.",
+    "eu": "Kalkulatu laburpena tresnen jatorrizko irteeretatik, eta erregistratu agregazio-arauak."
   },
   "模型校准": {
     "en": "Model calibration",
@@ -108,11 +108,11 @@ Object.assign(window.YV_TEXT, {
     "es": "En cepas reservadas con etiquetas independientes, seguir cobertura aceptada, errores, sensibilidad por estado y desconocidos según reglas de puntuación.",
     "eu": "Etiketa independenteak dituzten gordetako anduietan, jarraitu onartutako estaldura, erroreak, egoerako berreskuratzea eta ezezagunak puntuazio-arauen arabera."
   },
-  "没有独立参考时只能报告方法一致性；分类分数不是自动校准的概率，拒绝标签可能偏向低RNA状态。": {
-    "en": "Without independent labels, report agreement only; scores are not automatically calibrated probabilities, and rejection may disproportionately affect low-RNA states.",
-    "fr": "Sans étiquettes indépendantes, rapporter uniquement la concordance ; les scores ne sont pas des probabilités calibrées et le rejet peut viser les états pauvres en ARN.",
-    "es": "Sin etiquetas independientes, informar solo concordancia; las puntuaciones no son probabilidades calibradas y el rechazo puede afectar más a estados con poco ARN.",
-    "eu": "Etiketa independenterik gabe, adostasuna soilik eman; puntuazioak ez dira probabilitate kalibratuak eta baztertzeak RNA gutxiko egoerei gehiago eragin diezaieke."
+  "用独立参考评估注释准确率；缺少参考时报告方法一致性。分类分数需概率校准，并检查拒绝标签对低 RNA 状态的偏倚。": {
+    "en": "Assess annotation accuracy with an independent reference; report method agreement when none is available. Calibrate classification scores and check rejection bias in low-RNA states.",
+    "fr": "Évaluer l’exactitude sur une référence indépendante ; sinon, rapporter l’accord entre méthodes. Calibrer les scores et vérifier le biais de rejet des états à faible ARN.",
+    "es": "Evaluar exactitud con una referencia independiente; si falta, informar de concordancia entre métodos. Calibrar las puntuaciones y comprobar sesgo de rechazo en estados de bajo ARN.",
+    "eu": "Ebaluatu anotazioaren zehaztasuna erreferentzia independentearekin; halakorik gabe, adierazi metodoen adostasuna. Kalibratu puntuazioak eta aztertu RNA gutxiko egoeren baztertze-alborapena."
   },
   "Marker集合分数的技术依赖": {
     "en": "Technical dependence of marker-set scores",

@@ -53,7 +53,7 @@
     auto:['自动','Automatic','Automatique','Automático','Automatikoa'],
     cpu:['兼容模式（CPU）','Compatibility (CPU)','Compatibilité (CPU)','Compatibilidad (CPU)','Bateragarritasuna (CPU)'],
     question:['你的研究问题','Your research question','Votre question scientifique','Su pregunta científica','Zure ikerketa-galdera'],
-    placeholder:['例如：CLN2可以注释什么状态？表达噪音分析还缺哪些输入？','For example: what does CLN2 annotate? What inputs are missing for expression-noise analysis?','Exemple : quel état CLN2 indique-t-il ? Quelles données manquent pour étudier le bruit d’expression ?','Por ejemplo: ¿qué estado indica CLN2? ¿Qué datos faltan para analizar el ruido de expresión?','Adibidez: zer egoera adierazten du CLN2k? Zer datu falta dira adierazpen-zarata aztertzeko?'],
+    placeholder:["输入基因、方法或研究问题","Enter a gene, method or research question","Saisissez un gène, une méthode ou une question scientifique","Escriba un gen, método o pregunta científica","Idatzi gene bat, metodo bat edo ikerketa-galdera bat"],
     include:['结合当前方案','Use current plan','Utiliser le plan actuel','Usar el plan actual','Erabili uneko plana'],
     send:['提问','Ask','Demander','Preguntar','Galdetu'],
     stop:['停止','Stop','Arrêter','Detener','Gelditu'],

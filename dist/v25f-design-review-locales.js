@@ -127,11 +127,11 @@
     "es": "Registrar tipo de estadístico, nulo/selección, familia de pruebas, errores/cobertura, denominador elegible y fondo emparejado.",
     "eu": "Erregistratu estatistiko mota, hipotesi nulua/hautaketa, proba-familia, errorea/estaldura, izendatzaile ebaluagarria eta parekatutako atzeko multzoa."
   },
-  "离群带不是已校准显著性；多重校正不能修复无效p值。跨菌株共享度以可评估菌株为分母，富集并不证明因果机制。": {
-    "en": "An outlier band is not calibrated significance; multiplicity correction cannot repair invalid p-values. Cross-strain sharing uses eligible strains as denominator, and enrichment is not causal evidence.",
-    "fr": "Une bande de valeurs atypiques n’est pas une significativité calibrée ; la correction multiple ne répare pas des valeurs p invalides. Le partage utilise les souches admissibles comme dénominateur ; l’enrichissement n’est pas causal.",
-    "es": "Una banda de valores atípicos no equivale a significación calibrada; la corrección múltiple no repara valores p inválidos. La compartición usa cepas elegibles como denominador; el enriquecimiento no es causal.",
-    "eu": "Muturreko balioen banda ez da esangura kalibratua; zuzenketa anizkoitzak ez ditu p-balio baliogabeak konpontzen. Anduien arteko partekatzeak ebaluagarriak ditu izendatzaile; aberastea ez da kausalitate-froga."
+  "分别报告描述性离群带与经零模型校准的 p 值，再进行多重校正；共享度以可评估菌株为分母，富集结果用于提出功能假设。": {
+    "en": "Report descriptive outlier bands separately from null-calibrated p values before multiplicity correction; use evaluable strains as the sharing denominator and enrichment results to propose functional hypotheses.",
+    "fr": "Distinguer bandes descriptives d’écart et valeurs p calibrées sous le modèle nul avant correction multiple ; calculer le partage sur les souches évaluables et utiliser l’enrichissement pour formuler des hypothèses fonctionnelles.",
+    "es": "Separar bandas descriptivas de valores atípicos y valores p calibrados bajo el nulo antes de corregir multiplicidad; usar cepas evaluables como denominador e interpretar el enriquecimiento como hipótesis funcional.",
+    "eu": "Bereizi banda deskriptiboak eta eredu nuluarekin kalibratutako p balioak zuzenketa anizkoitzaren aurretik; erabili andui ebaluagarriak izendatzaile gisa eta aberaste-emaitzak hipotesi funtzionaletarako."
   },
   "候选由真实变异产生，还是筛选、均值/深度和可评估背景造成？": {
     "en": "Do candidates reflect variability, or selection, mean/depth and eligibility effects?",
@@ -187,11 +187,11 @@
     "es": "Heredabilidad del ruido: denominador y error",
     "eu": "Zarataren heredagarritasuna: izendatzailea eta errorea"
   },
-  "将噪音性状及SE/抽样协方差连接到亲缘模型；并列均值、离散与状态效应，声明可辨识方差组分和遗传力分母。标准GEMMA/limix不自动传播第一阶段SE。": {
-    "en": "Join noise traits and SE/sampling covariance to a kinship model. Compare mean, dispersion and state effects; declare identifiable variance components and the heritability denominator. Standard GEMMA/limix does not automatically propagate first-stage SE.",
-    "fr": "Relier traits de bruit et erreurs-types/covariance au modèle de parenté. Comparer effets moyens, dispersion et états ; préciser composantes identifiables et dénominateur. GEMMA/limix standard ne propage pas automatiquement ces erreurs.",
-    "es": "Conectar rasgos de ruido y errores estándar/covarianza al modelo de parentesco. Comparar media, dispersión y estado; declarar componentes identificables y denominador. GEMMA/limix estándar no propaga automáticamente esos errores.",
-    "eu": "Lotu zarata-ezaugarriak eta errore estandarrak/laginketa-kobariantza ahaidetasun-ereduari. Konparatu batezbesteko, dispertsio eta egoera-efektuak; zehaztu osagai identifikagarriak eta izendatzailea. GEMMA/limix arruntak ez ditu lehen urratseko erroreak automatikoki hedatzen."
+  "将噪音性状与 SE/抽样协方差传入显式测量误差模型，并与亲缘模型衔接；并列报告均值、离散与状态效应，明确可辨识方差组分和遗传力分母。使用标准 GEMMA/limix 时另实现第一阶段 SE 传播。": {
+    "en": "Pass noise traits and their SEs or sampling covariance to an explicit measurement-error model linked to kinship; report mean, dispersion and state effects together, with identifiable variance components and the heritability denominator. Implement first-stage SE propagation separately when using standard GEMMA/limix.",
+    "fr": "Relier les traits de bruit et leurs erreurs types ou covariances à un modèle explicite d’erreur de mesure avec apparentement ; rapporter effets de moyenne, dispersion et état, composantes identifiables et dénominateur d’héritabilité. Avec GEMMA/limix standard, implémenter séparément la propagation des erreurs du premier stade.",
+    "es": "Conectar rasgos de ruido y sus errores estándar o covarianzas con un modelo explícito de error de medición y parentesco; informar efectos de media, dispersión y estado, componentes identificables y denominador de heredabilidad. Con GEMMA/limix estándar, implementar por separado la propagación del error de la primera etapa.",
+    "eu": "Lotu zarata-ezaugarriak eta haien SEak edo laginketa-kobariantza neurketa-errorearen eredu esplizitu eta ahaidetasunarekin; adierazi batezbesteko, dispertsio eta egoera-efektuak, osagai identifikagarriak eta heredagarritasunaren izendatzailea. GEMMA/limix estandarrean, ezarri bereizita lehen etapako SEen hedapena."
   },
   "区分潜在性状与观测性状的遗传力，保存误差处理、亲缘尺度、有效菌株支持及均值/批次校准方案。": {
     "en": "Distinguish latent-trait and observed-trait heritability; record error handling, kinship scale, strain support and mean/batch calibration.",
@@ -331,11 +331,11 @@
     "es": "Modelo de división, origen de parámetros, verdad independiente e intervalo reservado",
     "eu": "Zatiketa-eredua, parametroen jatorria, egia independentea eta gordetako efektu-tartea"
   },
-  "同一面板产生的标签一致率不是真值准确率；Poisson分拆仅在相应模型下独立，不能替代真实培养重复。": {
-    "en": "Agreement between labels from the same panel is not ground-truth accuracy; Poisson splitting is independent only under its model and does not replace culture replication.",
-    "fr": "L’accord entre étiquettes du même panel n’est pas une exactitude face à une vérité ; la division de Poisson n’est indépendante que sous son modèle et ne remplace pas les répétitions de culture.",
-    "es": "La concordancia de etiquetas del mismo panel no es exactitud frente a una verdad; la división Poisson solo es independiente bajo su modelo y no sustituye réplicas de cultivo.",
-    "eu": "Panel bereko etiketen adostasuna ez da egia-erreferentziaren araberako zehaztasuna; Poisson zatiketa bere eredupean baino ez da independentea eta ez ditu kultibo-errepikak ordezkatzen."
+  "同一面板的标签一致率衡量内部一致性；准确率使用独立参考，Poisson 分拆的独立性按模型检查，培养重复依据采样记录。": {
+    "en": "Agreement from the same panel measures internal consistency; assess accuracy with an independent reference, check Poisson-splitting independence under its model, and define culture replicates from sampling records.",
+    "fr": "L’accord d’un même panel mesure la cohérence interne ; évaluer l’exactitude sur une référence indépendante, vérifier l’indépendance du découpage de Poisson sous son modèle et définir les répétitions par les relevés de culture.",
+    "es": "La concordancia del mismo panel mide consistencia interna; evaluar exactitud con una referencia independiente, verificar la independencia de la división de Poisson bajo su modelo y definir réplicas con los registros de cultivo.",
+    "eu": "Panel bereko adostasunak barne-koherentzia neurtzen du; ebaluatu zehaztasuna erreferentzia independentearekin, egiaztatu Poisson banaketaren independentzia bere ereduaren arabera, eta definitu erreplikak kultura-erregistroekin."
   },
   "分开RNA染色体信号与DNA剂量证据": {
     "en": "Separate chromosome RNA signals from DNA dosage evidence",
@@ -451,11 +451,11 @@
     "es": "Las listas comparan identidades esperadas, observadas y de referencia; rango y contrastes no estimables delimitan comparaciones posibles.",
     "eu": "Zerrendek espero diren, behatutako eta erreferentziako identitateak alderatzen dituzte; matrizearen heina eta kontraste ez-estimagarriak mugak dira."
   },
-  "细胞和lane不等于独立培养；同基因型培养物混合且无额外标签后，其来源不能靠SNP恢复。": {
-    "en": "Cells and lanes are not independent cultures. SNPs cannot recover separately cultured samples with the same genotype after unlabelled pooling.",
-    "fr": "Les cellules et les lanes ne sont pas des cultures indépendantes. Les SNP ne séparent pas des cultures de même génotype mélangées sans étiquette supplémentaire.",
-    "es": "Las células y los carriles no son cultivos independientes. Los SNP no separan cultivos del mismo genotipo mezclados sin etiquetas adicionales.",
-    "eu": "Zelulak eta sekuentziazio-erreiak ez dira kultura independenteak. SNPek ezin dituzte etiketa gehigarririk gabe nahastutako genotipo bereko kulturak bereizi."
+  "以独立培养记录定义生物学重复；同基因型培养混池后需保留独立标签以追踪来源，SNP 仅区分可辨别的基因型。": {
+    "en": "Define biological replicates from independent-culture records; pooled cultures with the same genotype require separate labels to retain provenance, while SNPs distinguish separable genotypes.",
+    "fr": "Définir les répétitions biologiques à partir des cultures indépendantes ; les cultures mélangées de même génotype exigent des étiquettes distinctes pour conserver leur origine, les SNP distinguant les génotypes séparables.",
+    "es": "Definir las réplicas biológicas a partir de cultivos independientes; los cultivos mezclados del mismo genotipo requieren etiquetas distintas para conservar su origen, mientras los SNP distinguen genotipos separables.",
+    "eu": "Definitu erreplika biologikoak kultura independenteen erregistroekin; genotipo bereko kultura nahasiek etiketa bereiziak behar dituzte jatorria gordetzeko, eta SNPek genotipo bereizgarriak bereizten dituzte."
   },
   "实际覆盖的身份判别信息": {
     "en": "Observed information for identity discrimination",
@@ -481,11 +481,11 @@
     "es": "Huellas y orden de filtros identifican el panel; conservar la población de MAF y la unidad UMI entre sitios.",
     "eu": "Hash-ek eta iragazkien ordenak panela identifikatzen dute; MAF populazioa eta gune arteko UMI unitatea gorde."
   },
-  "全VCF距离不能替代实际RNA可判别信息；无可判别位点的候选保留等价身份组。跨SNP累计UMI需声明分子是否重复。": {
-    "en": "Whole-VCF distance does not replace observed RNA discrimination. Retain equivalent identity groups when no distinguishing sites exist; declare whether UMIs are counted repeatedly across SNPs.",
-    "fr": "La distance sur le VCF entier ne remplace pas le pouvoir discriminant de l’ARN observé. Conserver les groupes indiscernables et préciser le recomptage éventuel des UMI entre SNP.",
-    "es": "La distancia del VCF completo no sustituye la discriminación del ARN observado. Conservar grupos indistinguibles y declarar si los UMI se cuentan de nuevo entre SNP.",
-    "eu": "VCF osoaren distantziak ez du behatutako RNAren bereizmen-informazioa ordezkatzen. Bereizi ezin diren identitate-taldeak gorde, eta adierazi UMIak SNP artean berriz zenbatzen diren."
+  "以实际 RNA 覆盖的可判别位点评估菌株身份；缺少区分位点时保留等价身份组，跨 SNP 汇总 UMI 时核对重复分子。": {
+    "en": "Assess strain identity using discriminating sites covered by RNA; retain equivalent identity groups when sites are uninformative and check duplicate molecules when aggregating UMIs across SNPs.",
+    "fr": "Évaluer l’identité des souches avec les sites discriminants couverts par l’ARN ; conserver des groupes d’identités équivalentes si nécessaire et vérifier les molécules dupliquées lors de l’agrégation des UMI entre SNP.",
+    "es": "Evaluar la identidad de cepas con sitios discriminantes cubiertos por ARN; conservar grupos de identidades equivalentes cuando falte información y comprobar moléculas duplicadas al agregar UMI entre SNP.",
+    "eu": "Ebaluatu anduien identitatea RNAk estalitako gune bereizgarriekin; gune informatiborik ez badago mantendu identitate baliokideen taldeak, eta egiaztatu molekula bikoiztuak SNPen arteko UMIak batzean."
   },
   "菌株解混校准与敏感性": {
     "en": "Demultiplexing calibration and sensitivity",

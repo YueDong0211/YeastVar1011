@@ -15,7 +15,7 @@
   current:['继续当前方案','Continue your plan','Reprendre votre plan','Continuar el plan','Jarraitu zure plana'],
   resume:['继续编辑','Continue editing','Continuer la modification','Seguir editando','Jarraitu editatzen'],
   review:['预览与导出','Preview & export','Aperçu et export','Vista previa y exportación','Aurrebista eta esportazioa'],
-  template:['当前已载入表达噪音起始方案。请根据已有数据调整方法和指标，再补充研究方向。','An expression-noise starting plan is loaded. Adjust its methods and measures to your data, then choose research directions.','Un plan initial sur le bruit d’expression est chargé. Adaptez ses méthodes et mesures à vos données, puis choisissez les axes.','Se ha cargado un plan inicial de ruido de expresión. Adapta métodos y medidas a tus datos y elige los ejes.','Adierazpen-zarataren hasierako plana kargatu da. Egokitu metodoak eta neurriak zure datuetara, eta hautatu ildoak.'],
+  template:["表达噪音模板已载入。按已有数据调整方法、指标和研究方向。", "Expression-noise template loaded. Adjust methods, measures and directions to your data.", "Modèle sur le bruit d’expression chargé. Adaptez méthodes, indicateurs et axes à vos données.", "Plantilla de ruido de expresión cargada. Ajuste métodos, indicadores y líneas a sus datos.", "Adierazpen-zarataren txantiloia kargatuta. Egokitu metodoak, adierazleak eta ildoak zure datuetara."],
   templateTitle:['从起始方案开始','Start from a suggested plan','Partir d’un plan proposé','Partir de un plan sugerido','Hasi proposatutako planetik'],
   collapse:['收起辅助入口','Collapse helper links','Réduire les liens d’aide','Contraer enlaces de ayuda','Tolestu laguntza-estekak'],
   helper:['查找与设置','Search & settings','Recherche et réglages','Búsqueda y ajustes','Bilaketa eta ezarpenak']

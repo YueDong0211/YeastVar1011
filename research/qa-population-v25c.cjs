@@ -55,7 +55,7 @@ check(m.cautions.some(x=>x.includes('无DNA时保留未知')),'Unknown without D
 check(w.steps.find(x=>x.id==='matrix').metricIds.includes(m.id),'Matrix-stage metric');
 for(const id of ['reference_bias','noise_qtl','paralog_transcript_buffering'])check(routes.get(id).metricIds.includes(m.id),'Observability route '+id);
 for(const id of ['qtl_effect_uncertainty','noise_genetic_partition']){
- const v=metrics.get(id);check(v.definition.includes('标准误/抽样协方差或后验样本'),'Trait uncertainty propagated');check(v.cautions.some(x=>x.includes('增加细胞不能替代')),'Independent units retained');
+ const v=metrics.get(id);check(v.definition.includes('标准误/抽样协方差或后验样本'),'Trait uncertainty propagated');check(v.cautions.some(x=>x.includes('分别报告细胞间噪音、菌株均值差异与噪音性状遗传方差') && x.includes('菌株数、独立培养数和各培养细胞数')),'Independent units and distinct noise estimands retained');
 }
 check(metrics.get('noise_reaction_norm').cautions.some(x=>x.includes('明确重复环境/处理')),'Real environment input');
 check(metrics.get('paralog_covariance_contribution').cautions.some(x=>x.includes('代数基线')),'Algebraic baseline distinct');
