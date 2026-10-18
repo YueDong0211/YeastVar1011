@@ -31,6 +31,7 @@ YeastVar1011 is an open-source research-plan workstation for yeast single-cell a
 | Marker evidence | Search genes and sources, combine tags, inspect cycle and functional evidence, compare reference panels and build a selected marker panel |
 | Expression noise | Define biological units and estimands, distinguish mean effects and state composition, specify measurement models, replication and robustness checks |
 | Research extensions | Enrichment, regulatory and co-expression networks, RNA dynamics, trajectories, perturbation modelling and population-genetic analyses with explicit input requirements |
+| QTL catalogue | Compare expression, within-strain noise, distribution, co-expression, state, RNA-processing and additional-omics QTL traits; inspect their statistical units, input alternatives, methods and source papers |
 | Plan review | Inspect dependencies, parameters, formulas, outputs and primary references; export documents, tables, a workflow and an editable plan backup |
 | Interface | Classic planning or an optional immersive yeast scene; a live yeast customization studio, draggable companion, accessible controls, reduced motion and local data management |
 | Local research assistant | A small on-device language model explains retrieved catalogue entries and the current plan, with clickable source records and no API key |

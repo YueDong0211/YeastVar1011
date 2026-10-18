@@ -22,6 +22,31 @@ let browser;
  await page.evaluate(()=>YV_COMPANION.open({tab:'community'}));await page.locator('#yv-companion-panel .p20-project').waitFor();assert.equal(await page.locator('#yv-companion-panel [data-project-link=issues]').count(),1);await page.evaluate(()=>YV_COMPANION.close());
  for(const lang of ['zh','en','fr','es','eu']){await page.evaluate(lang=>{YV_APP.setPreference('language',lang);location.hash='overview'},lang);await page.waitForFunction(()=>YV_APP.route()==='overview');assert((await page.locator('.p20-footer-links').innerText()).includes('GitHub'));}
  // Exercise the real tool-card -> floating detail path, not just resolver fixtures.
+ const planBeforeQTL=await page.evaluate(()=>JSON.stringify(YV_BUILDER.getPlan()));
+ await page.evaluate(()=>{YV_APP.setPreference('language','en');location.hash='projects?view=qtl'});
+ await page.locator('#qtl25-query').waitFor();
+ assert.equal(await page.locator('[data-qtl-card]').count(),19);
+ await page.locator('#qtl25-query').fill('pQTL');
+ assert.equal(await page.locator('[data-qtl-card]').count(),1);
+ await page.locator('[data-qtl-details="protein_qtl"] summary').click();
+ await page.locator('[data-qtl-card="protein_qtl"] [data-qtl-paper]').click();
+ await page.locator('#drawer').waitFor({state:'visible'});
+ assert((await page.locator('#drawer').innerText()).includes('Species-wide quantitative transcriptomes'));
+ await page.locator('#close-drawer').click();
+ await page.locator('#qtl25-query').fill('unmatchable-xqz');
+ await page.locator('#qtl25-results [data-qtl-reset]').click();
+ await page.locator('[data-qtl-family="variance"]').click();
+ assert.equal(await page.locator('[data-qtl-card]').count(),5);
+ for(const lang of ['zh','en','fr','es','eu']){
+  await page.locator('#language-select').selectOption(lang);
+  assert.equal(await page.locator('[data-qtl-card]').count(),5);
+  assert.equal(await page.locator('.qtl25-navigation [aria-current="page"]').count(),1);
+ }
+ await page.locator('.qtl25-navigation a[href="#projects?view=coverage"]').click();
+ await page.locator('.rc12-panel').waitFor();
+ await page.locator('.qtl25-navigation a[href="#projects"]').click();
+ await page.locator('#ra-query').waitFor();
+ assert.equal(await page.evaluate(()=>JSON.stringify(YV_BUILDER.getPlan())),planBeforeQTL,'QTL browsing must not mutate the plan');
  await page.mouse.move(1100,80);
  await page.keyboard.press('Escape');
  await page.locator('#menu-button').click();
@@ -53,7 +78,7 @@ let browser;
  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Horizontal overflow: method branch dialog');
  await page.locator('#close-drawer').click();
  await page.setViewportSize({width:390,height:844});
- for(const route of ['overview','cluster','workbench?stage=scope','markers?view=catalogue','markers?view=panel','markers?view=databases','contribute','settings']){await page.evaluate(hash=>location.hash=hash,route);await page.waitForFunction(hash=>YV_APP.route()===hash.split('?')[0],route);await page.waitForTimeout(100);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Horizontal overflow: '+route);}
+ for(const route of ['overview','cluster','workbench?stage=scope','markers?view=catalogue','markers?view=panel','markers?view=databases','projects?view=qtl','projects?view=coverage','contribute','settings']){await page.evaluate(hash=>location.hash=hash,route);await page.waitForFunction(hash=>YV_APP.route()===hash.split('?')[0],route);await page.waitForTimeout(100);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Horizontal overflow: '+route);}
  assert.deepEqual(errors,[]);assert.deepEqual(failedLocal,[]);
- console.log(JSON.stringify({passed:true,routes:routes.length,languages:5,mobile:true,methodBranchDialog:true,branchPersistence:true,projectLinks:true,runtimeErrors:errors,failedLocal},null,2));
+ console.log(JSON.stringify({passed:true,routes:routes.length,languages:5,mobile:true,qtlCatalogue:true,methodBranchDialog:true,branchPersistence:true,projectLinks:true,runtimeErrors:errors,failedLocal},null,2));
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(async()=>{await browser?.close();server.kill();});

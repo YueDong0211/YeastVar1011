@@ -1,7 +1,7 @@
 'use strict';
 (() => {
   const A=()=>window.YV_APP,E=x=>A().esc(x),X=x=>A().tx(x);
-  let coverage=false;
+  const active=()=>new URLSearchParams(location.hash.split('?')[1]||'').get('view')==='coverage';
   const words={
     framework:['分析设计','Analysis design','Plan d’analyse','Diseño del análisis','Analisi-diseinua'],
     routes:['研究路线','Research routes','Parcours de recherche','Rutas de investigación','Ikerketa-bideak'],
@@ -14,9 +14,9 @@
     docs:['官方方法资料','Official documentation','Documentation officielle','Documentación oficial','Dokumentazio ofiziala'],
   };
   const T=k=>words[k]?.[['zh','en','fr','es','eu'].indexOf(A().prefs().language)]||k;
-  function navigation(){return `<nav class="rc12-tabs" aria-label="${E(T('title'))}">${[['routes',false],['coverage',true]].map(([k,on])=>`<button type="button" data-rc12="${k}" aria-pressed="${coverage===on}">${A().icon(on?'workflow':'chart')}${E(T(k))}</button>`).join('')}</nav>`;}
+  function navigation(){return `<nav class="rc12-tabs" aria-label="${E(T('title'))}">${[['routes',false],['coverage',true]].map(([k,on])=>`<button type="button" data-rc12="${k}" aria-pressed="${active()===on}">${A().icon(on?'workflow':'chart')}${E(T(k))}</button>`).join('')}</nav>`;}
   function panel(){const d=A().data(),map=new Map(d.projects.projects.map(p=>[p.id,p]));return `<section class="rc12-panel"><header><span class="eyebrow">RESEARCH / EVIDENCE</span><h2>${E(T('title'))}</h2><p>${E(T('lead'))}</p><details class="rc12-framework"><summary>${E(T('framework'))}</summary><ul>${(d.projects.analysisFramework||[]).map(s=>`<li>${E(X(s))}</li>`).join('')}</ul></details></header><div class="rc12-grid">${(d.projects.researchCoverage||[]).map(row=>`<article class="rc12-topic" data-coverage="${E(row.id)}"><div class="rc12-heading"><span>${A().icon(row.icon||'chart')}</span><h3>${E(X(row.title))}</h3></div><p>${E(X(row.question))}</p><div class="rc12-input"><small>${E(T('input'))}</small><span>${E(X(row.inputSummary))}</span></div><div class="rc12-routes">${row.projectIds.map(id=>map.get(id)).filter(Boolean).map(p=>`<button type="button" data-action="open" data-kind="project" data-id="${E(p.id)}"><span>${E(X(p.title))}</span>${A().icon('arrow')}</button>`).join('')}</div></article>`).join('')}</div></section>`;}
   function sources(p){const d=A().data(),ids=new Set(p.paperIds||[]),papers=d.literature.papers.filter(r=>ids.has(r.id)),paperURLs=new Set(papers.flatMap(r=>[r.url,...(r.sourceUrls||[]),'https://doi.org/'+r.doi]));const docs=[...new Set(p.sourceUrls||[])].filter(u=>!paperURLs.has(u));return `<section class="project-section rc12-sources"><h3>${E(T('sources'))}</h3>${papers.map(r=>`<button data-action="open" data-kind="paper" data-id="${E(r.id)}"><strong>${E(r.title)}</strong><span>${E(r.journal)} · ${E(r.year)} ${A().icon('arrow')}</span></button>`).join('')}${docs.length?`<details ${papers.length?'':'open'}><summary>${E(T('docs'))}</summary>${docs.map(u=>A().link(u,new URL(u).hostname.replace(/^www\./,''))).join('<br>')}</details>`:''}</section>`;}
-  document.addEventListener('click',e=>{const el=e.target.closest('[data-rc12]');if(!el)return;coverage=el.dataset.rc12==='coverage';A().render();document.querySelector('.rc12-tabs button[aria-pressed="true"]')?.focus({preventScroll:true});});
-  window.YV_RESEARCH_COVERAGE={navigation,panel,sources,active:()=>coverage};
+  document.addEventListener('click',e=>{const el=e.target.closest('[data-rc12]');if(!el)return;location.hash=el.dataset.rc12==='coverage'?'projects?view=coverage':'projects';});
+  window.YV_RESEARCH_COVERAGE={navigation,panel,sources,active};
 })();

@@ -73,3 +73,15 @@ For corrections, use the repository issue tracker and include the affected gene 
 - Solari et al. (2024), iScience 27(1):108727, https://doi.org/10.1016/j.isci.2023.108727. Figure 1B supplies four total-RNA Northern-blot references: ENO2, PDC1 and PAB1 increase after nutrient replenishment; NCE102 decreases. The ribosomal-fraction RT-qPCR and protein measurements are different assays and are not imported as single-cell RNA values. The issue year is 2024; online publication was 14 December 2023. Original article license: CC BY-NC-ND 4.0. No article figures or full text are redistributed in the public package.
 
 Source licenses remain independent of the software license. Eleven new gene identities also receive 120 specific GO-slim functional assertions and three ontology-root metadata mappings from the retained SGD snapshot. The complete catalogue contains 5,286 genes and 30,240 evidence occurrences; 30,235 are unique assertion identities.
+
+### v25e QTL classification
+
+The research-directions page includes 19 QTL reading cards, grouped by RNA traits, distributional variation, biological context and additional omics. Each card links to existing routes, tools, metrics and source papers, and specifies its trait, statistical unit and required inputs in all five interface languages. These are planning records; browsing a card does not execute a genetic analysis or change the current plan.
+
+Within-strain cell-to-cell variation is distinct from conditional residual variation between strain-level observations. Detection proportion does not by itself identify transcriptional bursting, and a dynamic eQTL along a state coordinate is not an RNA-velocity estimate. Additional-omics cards offer separate paths for mapping measured traits or integrating published QTL results.
+
+- Boocock et al., [eLife 95566, Version of Record](https://doi.org/10.7554/eLife.95566.3): haploid segregant eQTL and cell-state mapping are distinct from allelic RNA-overdispersion comparisons in F1 diploid cells. The formal version reuses the existing paper identity.
+- [distQTL](https://doi.org/10.1093/nargab/lqaf155) is linked to the published article. Its distributional association tests require design and relatedness assessment before adaptation to natural yeast populations.
+- [Alexander et al. (2026)](https://doi.org/10.64898/2026.05.29.728873) is labelled as a preprint. Its programme-activity QTL results concern a yeast cross; they are not validation in the 1011 natural-isolate collection. Mapping results and the availability of raw single-cell data are recorded separately.
+
+The update checks 41 source records, adds 25 literature entries, and retains existing paper and citation identities. The complete library contains 264 literature entries and 300 citation records, including tool citations. Bibliographic records carry original authors, dates, DOI links and formatted APA references.
