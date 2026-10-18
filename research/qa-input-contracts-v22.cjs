@@ -21,8 +21,8 @@ const getProject = id => {
   return project;
 };
 const planFor = (project, overrides = {}) => ({
-  projects: [project.id], stages: [...project.stepIds], tools: [...project.toolIds],
-  metrics: [...project.metricIds], resultSpecificationIds: [],
+  projects: [project.id], stages: [...project.stepIds], tools: [...(project.baseToolIds || project.toolIds)],
+  metrics: [...(project.baseMetricIds || project.metricIds)], methodOptionIds: [], resultSpecificationIds: [],
   availableData: ['raw_fastq'], inputRoute: 'raw_fastq', edges: [], ...overrides
 });
 let checks = 0;

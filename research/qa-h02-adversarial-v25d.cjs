@@ -37,7 +37,18 @@ add('MISSING_EQTL_INPUT_REVIEW','No genotypes or kinship are declared although s
 // P03: actual routes, no fabricated fixture; optional-source leakage after cancellation.
 for(const route of data.projects.projects.filter(r=>r.methodOptions?.length)){
  B.importPlan(fresh());B.setProjects([route.id]);
- const options=route.methodOptions,optionOnlySources=new Set(options.flatMap(o=>(o.toolIds||[]).flatMap(id=>maps.tool.get(id)?.sourceUrls||[])));
+ const options=route.methodOptions;
+ // Sources may legitimately be shared by a base tool/metric and an optional audit.
+ // Derive ownership from catalogue records, never from the export being tested.
+ const sourceList=x=>[...(x?.sourceUrls||[]),...(x?.collection?.sourceUrls||[]),x?.url,x?.paperUrl,x?.doi?('https://doi.org/'+x.doi):null].filter(Boolean);
+ const {methodOptions:unusedOptions,...baseProject}=route;
+ const baseStageRecords=B.getPlan().stages.map(id=>maps.step.get(id)).filter(Boolean);
+ const baseFormulaRecords=[...new Set(baseStageRecords.flatMap(s=>s.formulaIds||[]))].map(id=>maps.formula.get(id)).filter(Boolean);
+ // Shared references may also originate in a base metric's diagnostics, a stage,
+ // a formula, or a project input contract. Audit these actual owned records too.
+ const baseOwnedRecords=[{...baseProject,sourceUrls:route.baseSourceUrls||route.sourceUrls},...(route.baseToolIds||[]).map(id=>maps.tool.get(id)).filter(Boolean),...(route.baseMetricIds||[]).map(id=>maps.metric.get(id)).filter(Boolean),...baseStageRecords,...baseFormulaRecords,...(route.basePaperIds||[]).map(id=>data.literature.papers.find(p=>p.id===id)).filter(Boolean)];
+ const baseOwnedSources=new Set(H.ctx.window.YV_MARKER_SELECTION.referenceLinks(baseOwnedRecords));
+ const optionOnlySources=new Set(options.flatMap(o=>[...(o.sourceUrls||[]),...(o.toolIds||[]).flatMap(id=>sourceList(maps.tool.get(id)))]).filter(url=>!baseOwnedSources.has(url)));
  const base=B.exported();const initialLeaks=base.sourceUrls.filter(url=>optionOnlySources.has(url));
  for(const o of options)B.setMethodOption(route.id,o.id,true);
  for(const o of options)B.setMethodOption(route.id,o.id,false);
@@ -78,8 +89,8 @@ check('Missing eQTL data cannot produce a complete-plan summary',()=>{
  assert.ok(!o.panel.includes('<p>Plan conditions recorded</p>'));assert.ok(o.panel.includes('Inputs pending'));
  assert.match(maps.tool.get('scpower').limitations[0],/不是噪音QTL功效/);
 });
-check('All twenty real routes cancel optional tools, metrics and sources together',()=>{
- assert.equal(data.projects.projects.filter(r=>r.methodOptions?.length).length,20);assert.deepEqual(findings.filter(f=>f.id.startsWith('OPTION_LEAK_')),[]);
+check('Historical and extended real routes cancel optional tools, metrics and sources together',()=>{
+ assert.equal(data.projects.projects.filter(r=>(r.methodOptions||[]).some(o=>o.addedIn!=='v25f_design_review')).length,20);assert.equal(data.projects.projects.filter(r=>r.methodOptions?.length).length,24);assert.equal(data.projects.projects.flatMap(r=>r.methodOptions||[]).filter(o=>o.addedIn==='v25f_design_review').length,54);assert.deepEqual(findings.filter(f=>f.id.startsWith('OPTION_LEAK_')),[]);
 });
 check('Manual Slingshot selection does not silently select other dynamic methods or their data',()=>{
  const o=observed('MANUAL_TOOL_STAGE_METRICS');assert.deepEqual(plain(o.tools),['slingshot']);assert.deepEqual(plain(o.options),[]);assert.deepEqual(plain(o.optionalMetrics),[]);assert.deepEqual(plain(o.optionalMethodURLs),[]);
@@ -96,4 +107,4 @@ check('Inactive saved route options do not leak into exports; reselecting resume
  const o=observed('RESELECT_ROUTE_OPTIONS');assert.deepEqual(plain(o.afterRemoval.activeOptions),[]);assert.deepEqual(plain(o.afterRemoval.tools),[]);
  assert.ok(o.afterReselect.storedOptions.includes('trajectory_structure:v25_temporal_ot'));assert.ok(o.afterReselect.tools.includes('moscot'));
 });
-console.log(JSON.stringify({status:'passed',audit:'H02/H04 independent adversarial regressions',checks,realRoutesAudited:20,productionMutations:false,biologicalExecution:false,browser:false}));
+console.log(JSON.stringify({status:'passed',audit:'H02/H04 independent adversarial regressions',checks,historicalRoutesAudited:20,realRoutesAudited:24,newDesignReviewAttachments:54,productionMutations:false,biologicalExecution:false,browser:false}));
