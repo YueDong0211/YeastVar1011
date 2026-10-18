@@ -6,12 +6,12 @@ const root=path.resolve(__dirname,'..'),read=f=>fs.readFileSync(path.join(root,'
 const languages=['zh','en','fr','es','eu'],families=['posterior','heritability','tree','trait','simulation'];
 const data={projects:JSON.parse(read('data/projects.json')),workflow:JSON.parse(read('data/workflow.json')),categories:JSON.parse(read('data/research-categories.json')),literature:JSON.parse(read('data/literature.json')),markers:{markers:[],sources:[]}};
 const originalData=JSON.stringify(data),handlers={},windowHandlers={},opened=[],downloads=[],blobs=[],revoked=[],store=new Map();
-let language='en',focused='',notice='';
+let language='en',focused='',notice='',liveRoot=null;
 const maps={tool:new Map(data.workflow.tools.map(x=>[x.id,x])),metric:new Map(data.workflow.metrics.map(x=>[x.id,x])),step:new Map(data.workflow.steps.map(x=>[x.id,x])),formula:new Map(data.workflow.formulas.map(x=>[x.id,x])),project:new Map(data.projects.projects.map(x=>[x.id,x])),marker:new Map(),source:new Map()};
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const query={value:'',focus(){focused='ev29-query';}},document={
  addEventListener(type,fn){(handlers[type]??=[]).push(fn);},querySelector:()=>null,querySelectorAll:()=>[],
- getElementById(id){return id==='ev29-query'?query:id==='ev29-message'?{set textContent(v){notice=v;}}:null;},
+ getElementById(id){return id==='evolution-catalogue-v29'?liveRoot:id==='ev29-query'?query:id==='ev29-message'?{set textContent(v){notice=v;}}:null;},
  createElement(){return {click(){downloads.push({name:this.download,url:this.href});},remove(){}};},body:{appendChild(){}}
 };
 class DownloadURL extends URL{};DownloadURL.createObjectURL=b=>(blobs.push(b),'blob:evolution-'+blobs.length);DownloadURL.revokeObjectURL=u=>revoked.push(u);
@@ -106,5 +106,21 @@ const ids=xs=>[...xs].sort();
  const unchanged=plain(B.getPlan());search('phylogenetic');click({ev29Family:'tree'});reset();UI.panel();UI.records();assert.deepEqual(plain(B.getPlan()),unchanged,'Browsing must not mutate selected recipes or source evidence');
  console.log('PASS variant-specific model formulas/calls/notes display in five languages and survive both exports and plan re-import');
 
- console.log(JSON.stringify({passed:true,checks:9,methods:rows.length,languages:5,browser:false,mainPlanLinked:true}));
+ B.importPlan(empty);reset();choose('ml_tree');
+ let rendered='',disclosures=[{dataset:{ev29Customize:'ml_tree'},open:true,isConnected:true},{dataset:{ev29Details:'ml_tree'},open:true,isConnected:true}];
+ liveRoot={querySelectorAll(selector){return selector.startsWith('[data-ev29-details]')?disclosures:[];},querySelector(selector){return selector==='#ev29-results'?{set innerHTML(html){rendered=html;}}:null;}};
+ // Native toggle events are queued: selection can happen before the event is delivered.
+ // Preserve the live DOM state even when the state cache has not seen that event.
+ change({ev29Variant:'ml_tree'},'raxml');
+ assert(rendered.includes('data-ev29-customize="ml_tree" open'),'Open customization survives the first rapid variant change');
+ assert(rendered.includes('data-ev29-details="ml_tree" open'),'Open evidence survives rerender');
+ emit('toggle',{dataset:{ev29Customize:'ml_tree'},open:false,isConnected:false});
+ change({ev29Variant:'ml_tree'},'iqtree');
+ assert(rendered.includes('data-ev29-customize="ml_tree" open'),'Detached toggle cannot collapse replacement controls');
+ assert.equal(saved('ml_tree').variantId,'iqtree');
+ disclosures[0].open=false;search('IQ-TREE');
+ assert(!rendered.includes('data-ev29-customize="ml_tree" open'),'A live closed disclosure remains closed');
+ liveRoot=null;
+ console.log('PASS rapid variant changes snapshot native disclosure state before queued toggle delivery and ignore detached toggle events');
+ console.log(JSON.stringify({passed:true,checks:10,methods:rows.length,languages:5,browser:false,mainPlanLinked:true}));
 })().catch(error=>{console.error(error);process.exitCode=1;});

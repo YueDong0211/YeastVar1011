@@ -458,8 +458,8 @@
     },
     {
       "path": "dist/evolution-catalogue-v29.js",
-      "bytes": 76318,
-      "sha256": "f8c5cb82c392811138ca113bf50b8b4310610c611f41c90190853838247f2dd3"
+      "bytes": 76813,
+      "sha256": "dfca277ab35f4eec7499cd5b2745572db2cc593cfbcbd77aa7a16de28b9acd7f"
     },
     {
       "path": "dist/evolution-core-locales-v29.js",
@@ -2003,8 +2003,8 @@
     },
     {
       "path": "research/qa-evolution-ui-v29.cjs",
-      "bytes": 21611,
-      "sha256": "4880398585399a6be7eb390c3e1c667113839f7f1b8cf295a175712776d7868a"
+      "bytes": 23145,
+      "sha256": "4a7c2bf3be131dec5912562f45465c3e55b38ba67d0c509b23c85951d22dead9"
     },
     {
       "path": "research/add-evolution-core-v29.cjs",
