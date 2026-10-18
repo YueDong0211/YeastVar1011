@@ -40,8 +40,9 @@ check(tools.get('limma').applicability.requiredData.includes('sample_metadata'),
 check(tools.get('conformalsc').applicability.requiredData.includes('yeast_annotation_reference'),'Yeast reference required');
 check(tools.get('scprisma').applicability.requiredData.includes('yeast_cycle_reference'),'Cycle anchors required');
 check(tools.get('moscot').applicability.requiredData.includes('timepoints'),'Real time required');
-check(tools.get('scpower').conditionalInputRequirements[0].requiredData.includes('genotypes'),'eQTL genotype gate');
-check(tools.get('scpower').conditionalInputRequirements[0].requiredData.includes('kinship'),'eQTL population structure gate');
+const eqtlBranch=tools.get('scpower').conditionalInputRequirements.find(x=>x.branch==='eqtl');
+check(eqtlBranch?.requiredData.includes('genotypes'),'eQTL genotype gate');
+check(eqtlBranch?.requiredData.includes('kinship'),'eQTL population structure gate');
 check(tools.get('scpower').entrypoint.includes('power.general.withDoublets')&&!tools.get('scpower').entrypoint.includes('scPower::power.de'),'Exported scPower API');
 check(tools.get('lamian').entrypoint.includes('fix.all.zero = FALSE'),'No hidden noise injection');
 check(metrics.get('v25_bigsur_correlation').inputIds.includes('culture_replicates'),'Independent edge replication input');

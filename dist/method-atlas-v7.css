@@ -22,6 +22,8 @@
   min-width: 0;
 }
 .method-detail *, .method-detail *::before, .method-detail *::after { box-sizing: border-box; }
+.detail-drawer.a9-floating .method-detail { --method-top-offset: 0px; }
+.detail-drawer.a9-floating .method-detail .method-section { scroll-margin-top: 80px; }
 .method-detail :is(button,input,a,summary):focus-visible { outline: 2px solid var(--method-cyan); outline-offset: 4px; }
 .method-detail :is(p,li,h2,h3,h4,code,a,span,strong) { overflow-wrap: anywhere; }
 .method-detail svg { flex-shrink: 0; }

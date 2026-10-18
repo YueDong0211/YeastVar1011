@@ -11,8 +11,9 @@ const continuous=rna.filter(({e})=>e.relation==='source_continuous_RNA_associati
 const functional=assertions.filter(({e})=>e.addedIn==='v25c-function'),newGenes=markers.filter(m=>m.addedIn==='v25c');
 const idsOf=rows=>[...new Set(rows.map(row=>row.m.id))].sort(),plain=value=>JSON.parse(JSON.stringify(value));
 const sourceId='wang2022_s5_correlation',roots=new Set(['GO:0003674','GO:0008150','GO:0005575']);
-assert.equal(markers.length,5275);assert.equal(header.markerCount,markers.length);assert.equal(assertions.length,30056);
-assert.equal(new Set(assertions.map(({e})=>e.evidenceId)).size,30051);assert.equal(new Set(markers.map(m=>m.id)).size,markers.length);assert.equal(header.sources.length,50);
+const later=assertions.filter(({e})=>!['v25c','v25c-function'].includes(e.addedIn)&&/^v25[d-z]/.test(e.addedIn||''));
+assert.equal(markers.filter(m=>!/^v25[d-z]/.test(m.addedIn||'')).length,5275);assert.equal(header.markerCount,markers.length);assert.equal(assertions.length-later.length,30056);
+assert.equal(new Set(assertions.filter(row=>!later.includes(row)).map(({e})=>e.evidenceId)).size,30051);assert.equal(new Set(markers.map(m=>m.id)).size,markers.length);assert.equal(header.sources.filter(s=>!/^v25[d-z]/.test(s.addedIn||'')).length,50);
 assert.equal(rna.length,901);assert.equal(continuous.length,895);assert.equal(idsOf(continuous).length,850);assert.equal(heterogeneity.length,6);
 assert.equal(functional.length,808);assert.equal(newGenes.length,125);
 console.log('PASS published v25c counts, stable assertion identity and separate RNA/function additions');
@@ -70,7 +71,7 @@ for(const m of newGenes){
  assert.equal(m.identityProvenance.database,'Saccharomyces Genome Database');assert.equal(new URL(m.identityProvenance.url).hostname,'downloads.yeastgenome.org');assert(/^[a-f0-9]{64}$/.test(m.identityProvenance.sha256));
  for(const key of ['mean','detection','rank','specificity'])assert.equal(m.expression[key],null,m.symbol+' project '+key);
  assert.equal(m.completeness.expression,'requires_project_counts');assert.equal(m.go.length,0,'GO-slim is not full GAF evidence');
- assert(m.evidence.some(e=>e.addedIn==='v25c'));assert(m.evidence.every(e=>['v25c','v25c-function'].includes(e.addedIn)));
+ assert(m.evidence.some(e=>e.addedIn==='v25c'));assert(m.evidence.every(e=>['v25c','v25c-function'].includes(e.addedIn)||/^v25[d-z]/.test(e.addedIn||'')));
 }
 console.log('PASS SGD identity/provenance correspondence, original source-statistic fields and unmeasured project expression for all 125 new genes');
 

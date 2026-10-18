@@ -21170,7 +21170,7 @@
         "未测spike-in不能补出绝对技术校准；良好链混合也不能解决模型不可辨识。",
         "Regression=TRUE估计相对均值趋势的残差变异；残差并不等同于内在噪音。",
         "审查trace、rank-normalized R-hat、bulk/tail ESS、MCSE及先验/后验预测；额外多链汇总需保留真实chain维度并实现提取。",
-        "此处列明两条技术分支；自动输入检查目前只核对计数与样本信息，技术重复或spike证据需人工确认。",
+        "按所选分支检查输入与来源字段是否完整；技术设计仍需人工核对，记录完整不代表模型已验证或执行。",
         "调用配方；尚未在项目数据上执行。"
       ],
       "yeastStatus": "条件性",
@@ -21195,8 +21195,8 @@
       ],
       "applicability": {
         "level": "conditional",
-        "reason": "此处列明两条技术分支；自动输入检查目前只核对计数与样本信息，技术重复或spike证据需人工确认。",
-        "reasonEn": "Both technical branches are documented here; automatic input checks currently cover counts and metadata only. Technical-replicate or spike evidence requires manual review.",
+        "reason": "按所选分支检查输入与来源字段是否完整；技术设计仍需人工核对，记录完整不代表模型已验证或执行。",
+        "reasonEn": "Check input and source fields for the selected branch. The technical design still needs review; complete records do not establish model validity or execution.",
         "requiredData": [
           "count_matrix",
           "sample_metadata"
@@ -21247,7 +21247,55 @@
             "sample_metadata"
           ],
           "contract": "WithSpikes=TRUE：提供真实spike-in身份和每反应输入分子数，并核对稀释与体积。",
-          "enforcement": "documented_not_automated"
+          "enforcement": "declaration_completeness_only",
+          "id": "with_spikes",
+          "requiredDataMode": "extend",
+          "executionStatus": "recipe_only",
+          "title": {
+            "zh": "含 spike-in 的技术校准",
+            "en": "Technical calibration with spike-ins",
+            "fr": "Étalonnage technique avec spike-ins",
+            "es": "Calibración técnica con spike-ins",
+            "eu": "Spike-in bidezko kalibrazio teknikoa"
+          },
+          "parameters": {
+            "WithSpikes": "TRUE"
+          },
+          "evidenceRequirements": [
+            {
+              "inputId": "count_matrix",
+              "field": "spike_feature_ids",
+              "label": {
+                "zh": "spike-in 特征 ID 与来源",
+                "en": "Spike-in feature IDs and source",
+                "fr": "Identifiants et source des spike-ins",
+                "es": "Identificadores y fuente de los spike-ins",
+                "eu": "Spike-in ezaugarrien IDak eta iturburua"
+              }
+            },
+            {
+              "inputId": "sample_metadata",
+              "field": "spike_molecules_per_reaction_source",
+              "label": {
+                "zh": "每反应 spike-in 分子数及记录来源",
+                "en": "Spike-in molecules per reaction and record source",
+                "fr": "Molécules spike-in par réaction et source",
+                "es": "Moléculas de spike-in por reacción y fuente",
+                "eu": "Erreakzio bakoitzeko spike-in molekulak eta erregistroaren iturburua"
+              }
+            },
+            {
+              "inputId": "sample_metadata",
+              "field": "spike_volume_dilution_source",
+              "label": {
+                "zh": "加样体积、稀释与批次记录",
+                "en": "Added volume, dilution and batch record",
+                "fr": "Volume ajouté, dilution et relevé de lot",
+                "es": "Volumen añadido, dilución y registro de lote",
+                "eu": "Gehitutako bolumena, diluzioa eta sorta erregistroa"
+              }
+            }
+          ]
         },
         {
           "branch": "without_spikes",
@@ -21257,7 +21305,67 @@
             "sample_metadata"
           ],
           "contract": "WithSpikes=FALSE：同一建模生物群体需有多个真实技术重复，并在BatchInfo中记录；单一batch不满足要求。",
-          "enforcement": "documented_not_automated"
+          "enforcement": "declaration_completeness_only",
+          "id": "without_spikes",
+          "requiredDataMode": "extend",
+          "executionStatus": "recipe_only",
+          "title": {
+            "zh": "无 spike-in，具有真实技术重复",
+            "en": "No spike-ins, with genuine technical replicates",
+            "fr": "Sans spike-ins, avec répétitions techniques réelles",
+            "es": "Sin spike-ins, con réplicas técnicas reales",
+            "eu": "Spike-in gabe, benetako erreplika teknikoekin"
+          },
+          "parameters": {
+            "WithSpikes": "FALSE"
+          },
+          "evidenceRequirements": [
+            {
+              "inputId": "sample_metadata",
+              "field": "technical_batch_column",
+              "label": {
+                "zh": "BatchInfo 对应的技术批次列",
+                "en": "Technical batch column used by BatchInfo",
+                "fr": "Colonne de lot technique utilisée par BatchInfo",
+                "es": "Columna de lote técnico utilizada por BatchInfo",
+                "eu": "BatchInfo-k erabilitako sorta teknikoaren zutabea"
+              }
+            },
+            {
+              "inputId": "sample_metadata",
+              "field": "technical_replicate_count",
+              "label": {
+                "zh": "同一建模生物群体的真实技术重复数",
+                "en": "Genuine technical replicate count for the same modelled biological population",
+                "fr": "Nombre de répétitions techniques réelles de la même population biologique modélisée",
+                "es": "Número de réplicas técnicas reales de la misma población biológica modelada",
+                "eu": "Modelatutako populazio biologiko bereko benetako erreplika teknikoen kopurua"
+              },
+              "min": 2
+            },
+            {
+              "inputId": "sample_metadata",
+              "field": "technical_population_definition",
+              "label": {
+                "zh": "共同建模的生物群体定义",
+                "en": "Definition of the jointly modelled biological population",
+                "fr": "Définition de la population biologique modélisée conjointement",
+                "es": "Definición de la población biológica modelada conjuntamente",
+                "eu": "Batera modelatutako populazio biologikoaren definizioa"
+              }
+            },
+            {
+              "inputId": "sample_metadata",
+              "field": "technical_design_source",
+              "label": {
+                "zh": "真实技术重复的设计与记录来源",
+                "en": "Design and record source for genuine technical replication",
+                "fr": "Plan et source attestant la répétition technique réelle",
+                "es": "Diseño y fuente de las réplicas técnicas reales",
+                "eu": "Benetako erreplikazio teknikoaren diseinua eta erregistro iturburua"
+              }
+            }
+          ]
         }
       ],
       "inputRequirements": [
@@ -21271,7 +21379,7 @@
         }
       ],
       "executionStatus": "recipe_only",
-      "reviewedIn": "v25c",
+      "reviewedIn": "v25d",
       "reviewedOn": "2026-10-18",
       "versionEvidence": {
         "version": "2.23.2 source snapshot",
@@ -23770,7 +23878,10 @@
       "role": "探索",
       "sourceUrls": [
         "https://cellrank.readthedocs.io/en/stable/api/index.html",
-        "https://doi.org/10.1038/s41592-024-02303-9"
+        "https://doi.org/10.1038/s41592-024-02303-9",
+        "https://cellrank.readthedocs.io/en/stable/api/_autosummary/kernels/cellrank.kernels.PseudotimeKernel.html",
+        "https://cellrank.readthedocs.io/en/stable/api/_autosummary/kernels/cellrank.kernels.RealTimeKernel.html",
+        "https://cellrank.readthedocs.io/en/stable/api/_autosummary/kernels/cellrank.kernels.VelocityKernel.html"
       ],
       "categoryIds": [
         "dynamics"
@@ -23792,7 +23903,7 @@
       },
       "evidenceScope": "官方方法及文档核对；未声称已在1011群体复现",
       "addedIn": "v2",
-      "reviewedOn": "2026-10-15",
+      "reviewedOn": "2026-10-18",
       "documentationStatus": "documentation-linked",
       "paperStatus": "paper-linked",
       "sourceLinks": [
@@ -23805,9 +23916,106 @@
           "url": "https://doi.org/10.1038/s41592-024-02303-9",
           "kind": "research_article",
           "label": "研究论文"
+        },
+        {
+          "url": "https://cellrank.readthedocs.io/en/stable/api/_autosummary/kernels/cellrank.kernels.PseudotimeKernel.html",
+          "kind": "documentation",
+          "label": "官方调用与诊断"
+        },
+        {
+          "url": "https://cellrank.readthedocs.io/en/stable/api/_autosummary/kernels/cellrank.kernels.RealTimeKernel.html",
+          "kind": "documentation",
+          "label": "官方调用与诊断"
+        },
+        {
+          "url": "https://cellrank.readthedocs.io/en/stable/api/_autosummary/kernels/cellrank.kernels.VelocityKernel.html",
+          "kind": "documentation",
+          "label": "官方调用与诊断"
         }
       ],
-      "sourceKind": "documentation"
+      "sourceKind": "documentation",
+      "executionStatus": "recipe_only",
+      "inputContract": {
+        "version": 1,
+        "branchRequired": true,
+        "branches": [
+          {
+            "id": "rooted_pseudotime",
+            "title": {
+              "zh": "指定起点的拟时序方向",
+              "en": "Rooted pseudotime direction",
+              "fr": "Direction du pseudotemps avec origine définie",
+              "es": "Dirección de pseudotiempo con origen definido",
+              "eu": "Hasiera zehaztuko pseudodenboraren norabidea"
+            },
+            "requiredDataMode": "replace",
+            "requiredData": [
+              "count_matrix",
+              "pseudotime",
+              "sample_metadata"
+            ],
+            "parameters": {
+              "kernel": "PseudotimeKernel"
+            },
+            "directionMode": "rooted_pseudotime",
+            "evidenceRequirements": [],
+            "executionStatus": "recipe_only",
+            "sourceUrls": [
+              "https://cellrank.readthedocs.io/en/stable/api/_autosummary/kernels/cellrank.kernels.PseudotimeKernel.html"
+            ]
+          },
+          {
+            "id": "observed_time",
+            "title": {
+              "zh": "真实采样时间方向",
+              "en": "Observed sampling-time direction",
+              "fr": "Direction des temps de prélèvement observés",
+              "es": "Dirección del tiempo de muestreo observado",
+              "eu": "Behatutako laginketa denboraren norabidea"
+            },
+            "requiredDataMode": "replace",
+            "requiredData": [
+              "count_matrix",
+              "timepoints",
+              "sample_metadata"
+            ],
+            "parameters": {
+              "kernel": "RealTimeKernel"
+            },
+            "directionMode": "observed_time",
+            "evidenceRequirements": [],
+            "executionStatus": "recipe_only",
+            "sourceUrls": [
+              "https://cellrank.readthedocs.io/en/stable/api/_autosummary/kernels/cellrank.kernels.RealTimeKernel.html"
+            ]
+          },
+          {
+            "id": "velocity",
+            "title": {
+              "zh": "经诊断的 RNA velocity 方向",
+              "en": "Diagnosed RNA-velocity direction",
+              "fr": "Direction de la vélocité ARN après diagnostics",
+              "es": "Dirección de velocidad de ARN con diagnósticos",
+              "eu": "Diagnostikatutako RNA abiaduraren norabidea"
+            },
+            "requiredDataMode": "replace",
+            "requiredData": [
+              "count_matrix",
+              "splicing_layers"
+            ],
+            "parameters": {
+              "kernel": "VelocityKernel"
+            },
+            "directionMode": "velocity",
+            "evidenceRequirements": [],
+            "executionStatus": "recipe_only",
+            "sourceUrls": [
+              "https://cellrank.readthedocs.io/en/stable/api/_autosummary/kernels/cellrank.kernels.VelocityKernel.html"
+            ]
+          }
+        ]
+      },
+      "reviewedIn": "v25d"
     },
     {
       "id": "dynamo",
@@ -29090,8 +29298,8 @@
     {
       "id": "chooser",
       "name": "chooseR",
-      "task": "聚类分辨率与培养间稳定性评估",
-      "taskEn": "Cluster resolution and between-culture stability",
+      "task": "聚类分辨率与细胞重采样稳定性",
+      "taskEn": "Cluster resolution and cell-resampling stability",
       "steps": [
         "integration",
         "annotation",
@@ -29100,10 +29308,10 @@
       "url": "https://github.com/rbpatt2019/chooseR/blob/410bdbfaebcbc57df45176491545a1165e3c6fc5/R/pipeline.R",
       "paperUrl": "https://doi.org/10.1186/s12859-021-03957-4",
       "input": [
-        "表达对象、候选分辨率及真实培养分组；另保留每次抽样的细胞清单。"
+        "表达对象、细胞身份及候选分辨率；记录每次细胞重采样清单。培养留出扩展另需真实培养分组。"
       ],
       "output": [
-        "共聚类概率、轮廓稳定性及留出培养复现"
+        "原生输出为细胞共聚类与稳定性；培养留出复现需单独实现。"
       ],
       "entrypoint": "source('R/pipeline.R')\nclusters <- multiple_cluster(obj, n = resampling_runs, size = sampling_fraction, npcs = retained_dimensions, res = resolution, reduction = representation, assay = assay_name)",
       "parameters": [
@@ -29183,15 +29391,15 @@
       "inputRequirements": [
         {
           "id": "count_matrix",
-          "contract": "表达对象、候选分辨率及真实培养分组；另保留每次抽样的细胞清单。"
+          "contract": "表达对象、细胞身份及候选分辨率；记录每次细胞重采样清单。培养留出扩展另需真实培养分组。"
         },
         {
           "id": "sample_metadata",
-          "contract": "表达对象、候选分辨率及真实培养分组；另保留每次抽样的细胞清单。"
+          "contract": "表达对象、细胞身份及候选分辨率；记录每次细胞重采样清单。培养留出扩展另需真实培养分组。"
         },
         {
           "id": "culture_replicates",
-          "contract": "表达对象、候选分辨率及真实培养分组；另保留每次抽样的细胞清单。"
+          "contract": "表达对象、细胞身份及候选分辨率；记录每次细胞重采样清单。培养留出扩展另需真实培养分组。"
         }
       ],
       "speciesValidation": {
@@ -29207,9 +29415,24 @@
             "count_matrix",
             "sample_metadata"
           ],
-          "contract": "原生chooseR随机抽细胞；培养分块与留出验证需项目适配，不能混作原生输出。稳定群不等于离散细胞类型。先检查旧版Seurat接口与成对矩阵内存。"
+          "contract": "原生chooseR随机抽细胞；培养分块与留出验证需项目适配，不能混作原生输出。稳定群不等于离散细胞类型。先检查旧版Seurat接口与成对矩阵内存。",
+          "id": "native-cell-subsampling-only",
+          "title": {
+            "zh": "原生细胞重采样",
+            "en": "Native cell resampling",
+            "fr": "Rééchantillonnage natif des cellules",
+            "es": "Remuestreo nativo de células",
+            "eu": "Jatorrizko zelula birlaginketa"
+          },
+          "requiredDataMode": "replace",
+          "parameters": {},
+          "evidenceRequirements": [],
+          "enforcement": "declaration_completeness_only",
+          "executionStatus": "recipe_only"
         }
-      ]
+      ],
+      "reviewedIn": "v25d",
+      "reviewedOn": "2026-10-18"
     },
     {
       "id": "bipca",
@@ -29934,6 +30157,12 @@
       "entrypoint": "power_result <- do.call(scPower::power.general.withDoublets, yeast_pilot_parameters)",
       "parameters": [
         {
+          "name": "type",
+          "meaning": "均值检验分支参数",
+          "selection": "将所选分支的 type 写入 yeast_pilot_parameters$type：均值差异用 de，均值 eQTL 用 eqtl。",
+          "required": true
+        },
+        {
           "name": "yeast_pilot_parameters",
           "meaning": "显式提供nSamples、nCells、深度、基因数、双细胞模型、效应先验与检测规则；不继承人类默认值。",
           "selection": "显式提供nSamples、nCells、深度、基因数、双细胞模型、效应先验与检测规则；不继承人类默认值。",
@@ -30029,15 +30258,153 @@
       "executionStatus": "recipe_only",
       "conditionalInputRequirements": [
         {
+          "branch": "mean_de",
+          "id": "mean_de",
+          "title": {
+            "zh": "均值差异检测功效",
+            "en": "Mean differential-expression power",
+            "fr": "Puissance de l’expression différentielle moyenne",
+            "es": "Potencia para expresión diferencial media",
+            "eu": "Batezbesteko adierazpen diferentzialaren potentzia"
+          },
+          "requiredDataMode": "extend",
+          "requiredData": [],
+          "parameters": {
+            "type": "de"
+          },
+          "contract": "均值差异功效使用酵母试点与真实独立样本设计；细胞数不能代替培养或菌株数。",
+          "evidenceRequirements": [
+            {
+              "inputId": "count_matrix",
+              "field": "yeast_pilot_parameter_source",
+              "label": {
+                "zh": "酵母计数试点、效应先验与检测模型来源",
+                "en": "Sources for yeast count pilots, effect priors and detection model",
+                "fr": "Sources des données pilotes de comptage, a priori d’effet et modèle de détection chez la levure",
+                "es": "Fuentes del piloto de conteos de levadura, priors de efecto y modelo de detección",
+                "eu": "Legamiaren zenbaketa pilotuen, efektu a priori-en eta detekzio ereduaren iturburuak"
+              }
+            },
+            {
+              "inputId": "sample_metadata",
+              "field": "independent_sample_definition",
+              "label": {
+                "zh": "独立样本定义与样本 ID 对应",
+                "en": "Independent sample definition and sample-ID mapping",
+                "fr": "Définition des échantillons indépendants et correspondance des identifiants",
+                "es": "Definición de muestras independientes y correspondencia de identificadores",
+                "eu": "Lagin independenteen definizioa eta lagin IDen lotura"
+              }
+            },
+            {
+              "inputId": "culture_replicates",
+              "field": "replicate_mapping_source",
+              "label": {
+                "zh": "独立培养对应表与来源",
+                "en": "Independent-culture mapping and source",
+                "fr": "Correspondance des cultures indépendantes et source",
+                "es": "Correspondencia de cultivos independientes y fuente",
+                "eu": "Kultura independenteen lotura eta iturburua"
+              }
+            }
+          ],
+          "enforcement": "declaration_completeness_only",
+          "executionStatus": "recipe_only"
+        },
+        {
           "branch": "eqtl",
           "requiredData": [
             "genotypes",
             "kinship",
             "sample_metadata"
           ],
-          "contract": "这是均值DE/eQTL功效，不是噪音QTL功效。替换人类默认参数；原生eQTL模拟的二倍体HWE假设须适配酵母倍性与群体结构。遗传样本量按菌株而非细胞计。"
+          "contract": "这是均值DE/eQTL功效，不是噪音QTL功效。替换人类默认参数；原生eQTL模拟的二倍体HWE假设须适配酵母倍性与群体结构。遗传样本量按菌株而非细胞计。",
+          "id": "eqtl",
+          "title": {
+            "zh": "均值 eQTL 功效",
+            "en": "Mean-eQTL power",
+            "fr": "Puissance eQTL de la moyenne",
+            "es": "Potencia eQTL de la media",
+            "eu": "Batezbesteko eQTL potentzia"
+          },
+          "requiredDataMode": "extend",
+          "parameters": {
+            "type": "eqtl"
+          },
+          "enforcement": "declaration_completeness_only",
+          "executionStatus": "recipe_only",
+          "evidenceRequirements": [
+            {
+              "inputId": "count_matrix",
+              "field": "yeast_pilot_parameter_source",
+              "label": {
+                "zh": "酵母计数试点、效应先验与检测模型来源",
+                "en": "Sources for yeast count pilots, effect priors and detection model",
+                "fr": "Sources des données pilotes de comptage, a priori d’effet et modèle de détection chez la levure",
+                "es": "Fuentes del piloto de conteos de levadura, priors de efecto y modelo de detección",
+                "eu": "Legamiaren zenbaketa pilotuen, efektu a priori-en eta detekzio ereduaren iturburuak"
+              }
+            },
+            {
+              "inputId": "sample_metadata",
+              "field": "independent_sample_definition",
+              "label": {
+                "zh": "独立样本定义与样本 ID 对应",
+                "en": "Independent sample definition and sample-ID mapping",
+                "fr": "Définition des échantillons indépendants et correspondance des identifiants",
+                "es": "Definición de muestras independientes y correspondencia de identificadores",
+                "eu": "Lagin independenteen definizioa eta lagin IDen lotura"
+              }
+            },
+            {
+              "inputId": "culture_replicates",
+              "field": "replicate_mapping_source",
+              "label": {
+                "zh": "独立培养对应表与来源",
+                "en": "Independent-culture mapping and source",
+                "fr": "Correspondance des cultures indépendantes et source",
+                "es": "Correspondencia de cultivos independientes y fuente",
+                "eu": "Kultura independenteen lotura eta iturburua"
+              }
+            },
+            {
+              "inputId": "genotypes",
+              "field": "strain_alignment_source",
+              "label": {
+                "zh": "基因型、表达样本与菌株的对应来源",
+                "en": "Source matching genotypes, expression samples and strains",
+                "fr": "Source d’appariement entre génotypes, expression et souches",
+                "es": "Fuente de correspondencia entre genotipos, muestras de expresión y cepas",
+                "eu": "Genotipoak, adierazpen laginak eta anduiak lotzen dituen iturburua"
+              }
+            },
+            {
+              "inputId": "genotypes",
+              "field": "ploidy_frequency_policy",
+              "label": {
+                "zh": "酵母倍性、等位频率与 HWE 适配方案",
+                "en": "Yeast ploidy, allele-frequency and HWE adaptation plan",
+                "fr": "Plan d’adaptation de la ploïdie, des fréquences alléliques et de HWE chez la levure",
+                "es": "Plan de adaptación de ploidía, frecuencias alélicas y HWE en levadura",
+                "eu": "Legamiaren ploidia, alelo maiztasuna eta HWE egokitzeko plana"
+              }
+            },
+            {
+              "inputId": "kinship",
+              "field": "structure_model_source",
+              "label": {
+                "zh": "亲缘关系与群体结构校准来源",
+                "en": "Source for kinship and population-structure calibration",
+                "fr": "Source d’étalonnage de l’apparentement et de la structure de population",
+                "es": "Fuente de calibración de parentesco y estructura poblacional",
+                "eu": "Ahaidetasuna eta populazio egitura kalibratzeko iturburua"
+              }
+            }
+          ]
         }
-      ]
+      ],
+      "reviewedIn": "v25d",
+      "reviewedOn": "2026-10-18"
     }
   ],
   "formulas": [

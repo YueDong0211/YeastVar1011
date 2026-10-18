@@ -1,0 +1,30 @@
+'use strict';
+// Exercise the shipped click/scroll handlers with layout geometry; no browser or DOM automation.
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict');
+const handlers={},frames=[];let reduced=false,focused='',calls=[];
+const prefs=()=>({reducedMotion:reduced,language:'en'});
+const context={window:{YV_APP:{prefs}},document:{addEventListener:(name,fn)=>(handlers[name]??=[]).push(fn)},getComputedStyle:node=>node.style,matchMedia:()=>({matches:false}),requestAnimationFrame:fn=>(frames.push(fn),frames.length)};
+vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../dist/methods.js'),'utf8'),context,{filename:'methods.js'});
+const flush=()=>{while(frames.length)frames.shift()();};
+const keys=['inputs','parameters','outputs','limits','sources'];
+const buttons=keys.map(key=>({dataset:{methodJump:key},attributes:{},setAttribute(k,v){this.attributes[k]=v;},removeAttribute(k){delete this.attributes[k];}}));
+const nav={style:{top:'0px'},offsetHeight:48,querySelector:selector=>buttons.find(b=>selector.includes('"'+b.dataset.methodJump+'"'))};
+const box=id=>({id,scrollTop:0,scrollHeight:3000,clientHeight:500,clientTop:2,style:{overflowY:'visible'},getBoundingClientRect:()=>({top:100}),querySelector:selector=>selector==='.method-detail'?root:null,scrollTo(options){calls.push({id,options});this.scrollTop=options.top;}});
+const drawer=box('drawer'),content=box('drawer-content');
+let activeScroller=content;
+const positions={inputs:300,parameters:600,outputs:1100,limits:1600,sources:2200};
+const sections=keys.map(key=>({dataset:{methodSection:key},getBoundingClientRect:()=>({top:100+positions[key]-activeScroller.scrollTop}),focus(){focused=key;},querySelector:()=>({setAttribute(){}})}));
+const root={isConnected:true,closest:selector=>selector==='#drawer'?drawer:selector==='#drawer-content'?content:null,querySelector:selector=>selector==='.method-jump-nav'?nav:sections.find(s=>selector.includes('"'+s.dataset.methodSection+'"')),querySelectorAll:selector=>selector.startsWith('.method-jump-nav')?buttons:sections};
+buttons.forEach(button=>button.closest=selector=>selector==='.method-detail'?root:null);
+const jump=key=>handlers.click[0]({target:{closest:selector=>selector==='[data-method-jump]'?buttons.find(b=>b.dataset.methodJump===key):null}});
+const scroll=node=>{handlers.scroll[0]({target:node});flush();};
+const current=()=>buttons.filter(b=>b.attributes['aria-current']==='location').map(b=>b.dataset.methodJump);
+function layout(floating){drawer.style.overflowY=floating?'hidden':'auto';content.style.overflowY=floating?'auto':'visible';nav.style.top=floating?'0px':'72px';activeScroller=floating?content:drawer;drawer.scrollTop=content.scrollTop=0;calls=[];}
+layout(true);jump('parameters');assert.equal(calls.length,1);assert.equal(calls[0].id,'drawer-content');assert.equal(calls[0].options.top,532);assert.equal(calls[0].options.behavior,'smooth');assert.equal(focused,'parameters');scroll(content);assert.deepEqual(current(),['parameters']);
+const before=current();scroll(drawer);assert.deepEqual(current(),before);content.scrollTop=1050;scroll(content);assert.deepEqual(current(),['outputs']);content.scrollTop=2500;scroll(content);assert.deepEqual(current(),['sources']);
+console.log('PASS floating drawer jumps and highlights through #drawer-content, ignoring frame scroll');
+layout(false);jump('parameters');assert.equal(calls[0].id,'drawer');assert.equal(calls[0].options.top,460);scroll(drawer);assert.deepEqual(current(),['parameters']);drawer.scrollTop=1000;scroll(drawer);assert.deepEqual(current(),['outputs']);
+console.log('PASS docked drawer uses the frame, sticky offset and matching active-section boundary');
+layout(true);reduced=true;jump('sources');assert.equal(calls[0].options.behavior,'auto');assert.equal(calls[0].id,'drawer-content');layout(false);jump('outputs');assert.equal(calls[0].id,'drawer');assert.equal(calls[0].options.behavior,'auto');
+console.log('PASS changing layout needs no listener rebinding and reduced-motion navigation stays immediate');
+console.log(JSON.stringify({status:'passed',checks:3,browser:false,productionMutations:false}));

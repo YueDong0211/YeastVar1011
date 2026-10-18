@@ -56,3 +56,14 @@ The catalogue now retains 5,275 SGD-resolved gene records and 30,056 source-rela
 - **Data preservation** was checked against the preceding 28,347 occurrences. All existing evidence was retained, including five exact duplicate occurrences with shared stable assertion IDs. The 29 unresolved rows in the new source extraction were not imported.
 
 Primary sources: [Wang et al., 2022](https://doi.org/10.1111/acel.13712), [Nadal-Ribelles et al., 2019](https://doi.org/10.1038/s41564-018-0346-9), and [SGD GO-slim mapping](https://downloads.yeastgenome.org/curation/literature/go_slim_mapping.tab). Source files and row locators are recorded with the assertions; the public release distributes attributed facts and provenance, not archived papers or supplementary workbooks.
+
+
+## v25d: non-cycle RNA references and selected-method contracts
+
+This release retains all 5,275 earlier gene records and 30,056 evidence occurrences. It adds 11 SGD-resolved gene identities, 64 bulk-RNA reference relationships and 120 independently classified GO-slim functional relationships: 5,286 genes, 30,240 occurrences, 30,235 unique assertions and 52 registered sources in total.
+
+The RNA additions comprise 60 source-verified members of the Nocedal et al. (2017) sporulation reference set and four Northern-blot references from Solari et al. (2024). Nocedal reused the Chu et al. (1998) RNA data; both papers are included when this reference is cited. Five source records remain in the review queue because of missing RNA values or current SGD identity qualifications. Three GO ontology-root mappings remain metadata and do not create functional evidence. No early/middle/late sporulation phase, project expression value, specificity score or single-cell annotation claim is inferred.
+
+The reproductive navigation group complements the existing stress, metabolism, age, regulatory and functional groups. Per-assertion selection, source-specific conditions and direction remain separate from gene-level tag unions/intersections. Nested source rules and original statistical column labels are readable in the evidence dialog.
+
+Twenty routes now expose stored optional-method decisions. BASiCS, chooseR, scPower and CellRank use branch-dependent input declarations; direction provenance distinguishes rooted pseudotime, observed sampling time and RNA velocity. JSON, HTML, Markdown and XLSX exports retain these decisions and cite selected options. Declared inputs are planning records, not completed biological analyses. Older saved manual selections are retained.

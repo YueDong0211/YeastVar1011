@@ -148,6 +148,31 @@
           "executionStatus": "recipe_only",
           "interpretationBoundary": "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。"
         }
+      ],
+      "baseToolIds": [
+        "seqkit",
+        "fastqc",
+        "multiqc",
+        "starsolo",
+        "samtools",
+        "pysam",
+        "picard"
+      ],
+      "baseMetricIds": [
+        "bam_tag_completeness",
+        "cb_base_quality",
+        "umi_base_quality",
+        "matrix_layer_reconciliation",
+        "cb_umi_layout_concordance",
+        "bam_sequence_cigar_consistency",
+        "bam_input_read_reconciliation"
+      ],
+      "basePaperIds": [],
+      "baseSourceUrls": [
+        "https://github.com/alexdobin/STAR/blob/master/docs/STARsolo.md",
+        "https://www.htslib.org/doc/samtools-stats.html",
+        "https://github.com/alexdobin/STAR/blob/master/source/parametersDefault",
+        "https://broadinstitute.github.io/picard/command-line-overview.html#ValidateSamFile"
       ]
     },
     {
@@ -473,6 +498,52 @@
           "executionStatus": "not_executed",
           "automatedBranchGate": false
         }
+      ],
+      "baseToolIds": [
+        "memento",
+        "basics",
+        "glmmtmb",
+        "scvar"
+      ],
+      "baseMetricIds": [
+        "noise_cv2",
+        "noise_fano",
+        "noise_dispersion",
+        "noise_mean_matching",
+        "noise_interval",
+        "noise_normalization_estimand",
+        "noise_annotation_uncertainty",
+        "noise_mean_equivalence"
+      ],
+      "basePaperIds": [
+        "v12_basics_2016",
+        "v12_basics_2018",
+        "v12_basics_correction_2019",
+        "v25c_d6dd705b7b49",
+        "lit-1d1ed65a87f2",
+        "v25c_642b4adb2f52",
+        "v12_chapal_2019",
+        "v25c_0d63116780d0",
+        "v25c_ad7237679298"
+      ],
+      "baseSourceUrls": [
+        "https://doi.org/10.1016/j.cell.2024.09.044",
+        "https://doi.org/10.1371/journal.pcbi.1014030",
+        "https://bioconductor.org/books/release/OSCA.basic/normalization.html",
+        "https://doi.org/10.1093/biostatistics/kxac047",
+        "https://bioconductor.org/packages/release/bioc/vignettes/SingleR/inst/doc/SingleR.html",
+        "https://doi.org/10.1186/s13059-016-0930-3",
+        "https://doi.org/10.1016/j.cels.2018.06.011",
+        "https://doi.org/10.1016/j.cels.2019.08.003",
+        "https://www.bioconductor.org/packages/devel/bioc/vignettes/BASiCS/inst/doc/BASiCS.html",
+        "https://bioconductor.org/packages/release/bioc/vignettes/BASiCS/inst/doc/BASiCS.html",
+        "https://doi.org/10.1214/20-BA1221",
+        "https://doi.org/10.1016/j.celrep.2025.116612",
+        "https://doi.org/10.1016/j.crmeth.2024.100933",
+        "https://doi.org/10.1371/journal.pgen.1001185",
+        "https://doi.org/10.1371/journal.pbio.3000289",
+        "https://doi.org/10.7554/elife.05856",
+        "https://doi.org/10.1038/ncomms12959"
       ]
     },
     {
@@ -601,6 +672,24 @@
           "executionStatus": "recipe_only",
           "interpretationBoundary": "原生chooseR随机抽细胞；培养分块与留出验证需项目适配，不能混作原生输出。稳定群不等于离散细胞类型。先检查旧版Seurat接口与成对矩阵内存。"
         }
+      ],
+      "baseToolIds": [
+        "memento",
+        "sccomp",
+        "glmmtmb"
+      ],
+      "baseMetricIds": [
+        "noise_state_component",
+        "composition_effect",
+        "composition_variability",
+        "noise_annotation_uncertainty"
+      ],
+      "basePaperIds": [],
+      "baseSourceUrls": [
+        "https://doi.org/10.1016/j.cell.2024.09.044",
+        "https://doi.org/10.1073/pnas.2203828120",
+        "https://doi.org/10.1093/biostatistics/kxac047",
+        "https://bioconductor.org/packages/release/bioc/vignettes/SingleR/inst/doc/SingleR.html"
       ]
     },
     {
@@ -846,6 +935,22 @@
           "executionStatus": "recipe_only",
           "interpretationBoundary": "这是均值DE/eQTL功效，不是噪音QTL功效。替换人类默认参数；原生eQTL模拟的二倍体HWE假设须适配酵母倍性与群体结构。遗传样本量按菌株而非细胞计。"
         }
+      ],
+      "baseToolIds": [
+        "scdesign3",
+        "screadsim",
+        "memento"
+      ],
+      "baseMetricIds": [
+        "sample_noise_precision",
+        "null_false_positive",
+        "interval_coverage",
+        "noise_depth_thinning"
+      ],
+      "basePaperIds": [],
+      "baseSourceUrls": [
+        "https://doi.org/10.1038/s41587-023-01772-1",
+        "https://doi.org/10.1016/j.cell.2024.09.044"
       ]
     },
     {
@@ -1127,6 +1232,27 @@
           "executionStatus": "recipe_only",
           "interpretationBoundary": "循环模板会引入闭环结构，不能单凭结果证明周期存在；相位不是物理时间。增强或过滤矩阵只作对照，噪音结论回到原始计数。"
         }
+      ],
+      "baseToolIds": [
+        "tricycle",
+        "schot",
+        "tradeseq",
+        "memento"
+      ],
+      "baseMetricIds": [
+        "cycle_phase_transfer",
+        "network_local_covariance",
+        "noise_state_component",
+        "marker_panel_ablation",
+        "noise_annotation_uncertainty"
+      ],
+      "basePaperIds": [],
+      "baseSourceUrls": [
+        "https://doi.org/10.1038/s41592-020-0885-x",
+        "https://elifesciences.org/articles/51254",
+        "https://github.com/MarioniLab/geneBasisR",
+        "https://doi.org/10.1093/biostatistics/kxac047",
+        "https://bioconductor.org/packages/release/bioc/vignettes/SingleR/inst/doc/SingleR.html"
       ]
     },
     {
@@ -1307,6 +1433,36 @@
           "executionStatus": "recipe_only",
           "interpretationBoundary": "原生chooseR随机抽细胞；培养分块与留出验证需项目适配，不能混作原生输出。稳定群不等于离散细胞类型。先检查旧版Seurat接口与成对矩阵内存。"
         }
+      ],
+      "baseToolIds": [
+        "singler",
+        "celltypist",
+        "ucell",
+        "presto",
+        "lmd"
+      ],
+      "baseMetricIds": [
+        "annotation_holdout_accuracy",
+        "annotation_margin",
+        "annotation_conflict",
+        "marker_stability",
+        "marker_evidence_contract",
+        "annotation_rejection_curve",
+        "marker_score_technical_dependence",
+        "marker_display_contract",
+        "marker_localization_multiscale"
+      ],
+      "basePaperIds": [
+        "v13_lmd_2025"
+      ],
+      "baseSourceUrls": [
+        "https://bioconductor.org/packages/release/bioc/vignettes/SingleR/inst/doc/SingleR.html",
+        "https://elifesciences.org/articles/51254",
+        "https://www.yeastgenome.org/help/gene-ontology",
+        "https://bioconductor.org/packages/release/bioc/vignettes/UCell/inst/doc/UCell_vignette_basic.html",
+        "https://doi.org/10.1038/s42003-025-08485-y",
+        "https://klugerlab.github.io/LocalizedMarkerDetector/reference/LMD.html",
+        "https://scanpy.readthedocs.io/en/stable/generated/scanpy.pl.dotplot.html"
       ]
     },
     {
@@ -1456,6 +1612,29 @@
           "executionStatus": "not_executed",
           "automatedBranchGate": false
         }
+      ],
+      "baseToolIds": [
+        "sccoda",
+        "sccomp",
+        "milo"
+      ],
+      "baseMetricIds": [
+        "composition_effect",
+        "composition_variability",
+        "neighborhood_abundance"
+      ],
+      "basePaperIds": [
+        "v25c_01684f3d0721",
+        "v25c_3273eb9c55f4",
+        "v25c_937bee9e0c39",
+        "v25c_0d63116780d0"
+      ],
+      "baseSourceUrls": [
+        "https://doi.org/10.1073/pnas.2203828120",
+        "https://doi.org/10.1038/s41467-019-11116-w",
+        "https://doi.org/10.1038/s42003-025-09414-9",
+        "https://doi.org/10.1371/journal.pbio.3000433",
+        "https://doi.org/10.7554/elife.05856"
       ]
     },
     {
@@ -1747,6 +1926,23 @@
           "executionStatus": "not_executed",
           "automatedBranchGate": false
         }
+      ],
+      "baseToolIds": [
+        "inferelator",
+        "genie3",
+        "decoupler"
+      ],
+      "baseMetricIds": [
+        "network_edge_stability",
+        "regulon_activity",
+        "network_covariance"
+      ],
+      "basePaperIds": [
+        "v25c_e0ad2a723e06"
+      ],
+      "baseSourceUrls": [
+        "https://doi.org/10.1093/nar/gkac1041",
+        "https://doi.org/10.1038/s41467-025-66214-9"
       ]
     },
     {
@@ -1865,6 +2061,21 @@
           "executionStatus": "recipe_only",
           "interpretationBoundary": "菌株编号、拟时序和系统发育次序不能替代实验时间。传输边不是谱系追踪或进化祖先；不用人类增殖或凋亡默认基因给酵母加权。"
         }
+      ],
+      "baseToolIds": [
+        "scvelo",
+        "velovi",
+        "cellrank"
+      ],
+      "baseMetricIds": [
+        "velocity_genes",
+        "velocity_fit",
+        "velocity_uncertainty",
+        "fate_probabilities"
+      ],
+      "basePaperIds": [],
+      "baseSourceUrls": [
+        "https://scvelo.readthedocs.io/"
       ]
     },
     {
@@ -2156,6 +2367,30 @@
           "executionStatus": "not_executed",
           "automatedBranchGate": false
         }
+      ],
+      "baseToolIds": [
+        "slingshot",
+        "monocle3",
+        "condiments",
+        "tradeseq"
+      ],
+      "baseMetricIds": [
+        "trajectory_stability",
+        "trajectory_condition_differences",
+        "embedding_reliability"
+      ],
+      "basePaperIds": [
+        "v25c_01684f3d0721",
+        "v25c_3273eb9c55f4",
+        "v25c_937bee9e0c39",
+        "v25c_0d63116780d0"
+      ],
+      "baseSourceUrls": [
+        "https://bioconductor.org/packages/release/bioc/html/slingshot.html",
+        "https://doi.org/10.1038/s41467-019-11116-w",
+        "https://doi.org/10.1038/s42003-025-09414-9",
+        "https://doi.org/10.1371/journal.pbio.3000433",
+        "https://doi.org/10.7554/elife.05856"
       ]
     },
     {
@@ -2630,6 +2865,44 @@
           "executionStatus": "not_executed",
           "automatedBranchGate": false
         }
+      ],
+      "baseToolIds": [
+        "gemma",
+        "limix",
+        "qtltools"
+      ],
+      "baseMetricIds": [
+        "noise_heritability",
+        "qtl_calibration",
+        "qtl_effect_uncertainty",
+        "noise_genetic_partition",
+        "genetic_covariance_qtl",
+        "v25c_gene_observability"
+      ],
+      "basePaperIds": [
+        "lit-90ddd2efc890",
+        "v12_coqtl_2018",
+        "v25c_d6dd705b7b49",
+        "lit-1d1ed65a87f2",
+        "lit-da620a49174b",
+        "v25c_7cf3de0b54a6",
+        "v25c_adb73242a7f4",
+        "v25c_8438cde4ebbb",
+        "v25c_01e81b5cf8b0",
+        "v25c_e0ad2a723e06"
+      ],
+      "baseSourceUrls": [
+        "https://elifesciences.org/reviewed-preprints/95566",
+        "https://doi.org/10.7554/eLife.95566.3",
+        "https://doi.org/10.1038/s41588-018-0089-9",
+        "https://doi.org/10.1016/j.celrep.2025.116612",
+        "https://doi.org/10.1016/j.crmeth.2024.100933",
+        "https://doi.org/10.1038/s41586-025-09637-0",
+        "https://doi.org/10.7554/elife.05462",
+        "https://doi.org/10.7554/elife.15743",
+        "https://doi.org/10.1080/10635150701313830",
+        "https://doi.org/10.18637/jss.v080.i01",
+        "https://doi.org/10.1038/s41467-025-66214-9"
       ]
     },
     {
@@ -2831,6 +3104,36 @@
           "appliesTo": "noise_environment_response",
           "enforcement": "documented_not_automated"
         }
+      ],
+      "baseToolIds": [
+        "cellregmap",
+        "limix"
+      ],
+      "baseMetricIds": [
+        "genotype_context_effect",
+        "qtl_calibration",
+        "noise_reaction_norm"
+      ],
+      "basePaperIds": [
+        "lit-b1e4190af7b0",
+        "v12_response_eqtl_2025",
+        "v25c_e0ad2a723e06",
+        "v12_chapal_2019",
+        "v25c_642b4adb2f52",
+        "v25c_ad7237679298",
+        "lit-fed34aa2df8d",
+        "v25c_0d63116780d0"
+      ],
+      "baseSourceUrls": [
+        "https://elifesciences.org/reviewed-preprints/95566",
+        "https://doi.org/10.15252/msb.202110663",
+        "https://doi.org/10.1038/s41588-025-02344-6",
+        "https://doi.org/10.1038/s41467-025-66214-9",
+        "https://doi.org/10.1371/journal.pbio.3000289",
+        "https://doi.org/10.1371/journal.pgen.1001185",
+        "https://doi.org/10.1038/ncomms12959",
+        "https://doi.org/10.1038/s41598-021-01558-y",
+        "https://doi.org/10.7554/elife.05856"
       ]
     },
     {
@@ -3242,6 +3545,20 @@
           "executionStatus": "recipe_only",
           "interpretationBoundary": "核对来源仍为2025预印本。矩阵双尺度化用于表示比较；不得用去噪矩阵替代噪音或QTL表型。先评估稀疏性、SVD与内存。"
         }
+      ],
+      "baseToolIds": [
+        "scyeast",
+        "scanpy",
+        "scdeed"
+      ],
+      "baseMetricIds": [
+        "foundation_transfer_audit",
+        "annotation_holdout_accuracy",
+        "embedding_reliability"
+      ],
+      "basePaperIds": [],
+      "baseSourceUrls": [
+        "https://doi.org/10.1016/j.synbio.2026.05.014"
       ]
     },
     {
@@ -3401,6 +3718,44 @@
           "executionStatus": "recipe_only",
           "interpretationBoundary": "高变基因不自动成为状态marker或噪音QTL。校正相关仍非因果；用培养留出检验边。相关模块与特征模块的可用接口分别核验。"
         }
+      ],
+      "baseToolIds": [
+        "genebasis",
+        "presto",
+        "ucell",
+        "clusterde",
+        "countsplit",
+        "lmd",
+        "hotspot"
+      ],
+      "baseMetricIds": [
+        "panel_reconstruction",
+        "marker_stability",
+        "marker_specificity",
+        "marker_auc",
+        "marker_evidence_contract",
+        "marker_panel_ablation",
+        "marker_postcluster_null",
+        "marker_score_technical_dependence",
+        "marker_display_contract",
+        "marker_panel_frontier",
+        "marker_localization_multiscale"
+      ],
+      "basePaperIds": [
+        "v13_lmd_2025"
+      ],
+      "baseSourceUrls": [
+        "https://github.com/MarioniLab/geneBasisR",
+        "https://www.yeastgenome.org/help/gene-ontology",
+        "https://doi.org/10.1093/biostatistics/kxac047",
+        "https://github.com/JSB-UCLA/ClusterDE",
+        "https://doi.org/10.1177/15578666251383562",
+        "https://bioconductor.org/packages/release/bioc/vignettes/UCell/inst/doc/UCell_vignette_basic.html",
+        "https://doi.org/10.1038/s42003-025-08485-y",
+        "https://klugerlab.github.io/LocalizedMarkerDetector/reference/LMD.html",
+        "https://doi.org/10.1186/s13059-021-02548-z",
+        "https://scanpy.readthedocs.io/en/stable/generated/scanpy.pl.dotplot.html",
+        "https://satijalab.org/seurat/reference/dotplot"
       ]
     },
     {
@@ -3680,6 +4035,33 @@
           "executionStatus": "recipe_only",
           "interpretationBoundary": "这是均值趋势检验，不是差异噪音检验。重采样不能解决培养伪重复；无真实轨迹时须用空模型检查循环选基因造成的假信号。"
         }
+      ],
+      "baseToolIds": [
+        "singler",
+        "ucell",
+        "genebasis",
+        "clusterde",
+        "countsplit",
+        "memento",
+        "scdesign3"
+      ],
+      "baseMetricIds": [
+        "marker_evidence_contract",
+        "marker_panel_ablation",
+        "marker_postcluster_null",
+        "annotation_rejection_curve",
+        "marker_score_technical_dependence",
+        "noise_annotation_uncertainty",
+        "noise_crossfit_sensitivity"
+      ],
+      "basePaperIds": [],
+      "baseSourceUrls": [
+        "https://github.com/JSB-UCLA/ClusterDE",
+        "https://doi.org/10.1177/15578666251383562",
+        "https://anna-neufeld.github.io/countsplit/reference/countsplit.html",
+        "https://doi.org/10.1093/biostatistics/kxac047",
+        "https://github.com/MarioniLab/geneBasisR",
+        "https://bioconductor.org/packages/release/bioc/vignettes/SingleR/inst/doc/SingleR.html"
       ]
     },
     {
@@ -4163,6 +4545,23 @@
           "executionStatus": "recipe_only",
           "interpretationBoundary": "高变基因不自动成为状态marker或噪音QTL。校正相关仍非因果；用培养留出检验边。相关模块与特征模块的可用接口分别核验。"
         }
+      ],
+      "baseToolIds": [
+        "hotspot",
+        "memento",
+        "cnmf"
+      ],
+      "baseMetricIds": [
+        "hotspot_autocorrelation",
+        "hotspot_local_pair_association",
+        "hotspot_module_holdout"
+      ],
+      "basePaperIds": [
+        "v8_hotspot_2021"
+      ],
+      "baseSourceUrls": [
+        "https://pubmed.ncbi.nlm.nih.gov/33951459/",
+        "https://github.com/YosefLab/Hotspot"
       ]
     },
     {
@@ -7011,6 +7410,25 @@
           "executionStatus": "not_executed",
           "automatedBranchGate": false
         }
+      ],
+      "baseToolIds": [
+        "jaxqtl",
+        "saigeqtl",
+        "gemma"
+      ],
+      "baseMetricIds": [
+        "count_eqtl_offset_contract",
+        "count_eqtl_calibration"
+      ],
+      "basePaperIds": [
+        "v22_jaxqtl_2025",
+        "v25c_e0ad2a723e06"
+      ],
+      "baseSourceUrls": [
+        "https://doi.org/10.1101/2025.01.18.25320755",
+        "https://mancusolab.github.io/jaxqtl/reference/mapping/",
+        "https://www.medrxiv.org/content/10.1101/2025.01.18.25320755v2",
+        "https://doi.org/10.1038/s41467-025-66214-9"
       ]
     },
     {
@@ -7292,6 +7710,27 @@
           "executionStatus": "recipe_only",
           "interpretationBoundary": "菌株编号、拟时序和系统发育次序不能替代实验时间。传输边不是谱系追踪或进化祖先；不用人类增殖或凋亡默认基因给酵母加权。"
         }
+      ],
+      "baseToolIds": [
+        "cardamomot",
+        "harissa",
+        "systema"
+      ],
+      "baseMetricIds": [
+        "temporal_mechanistic_regeneration",
+        "kinetic_prior_sensitivity"
+      ],
+      "basePaperIds": [
+        "v22_cardamomot_2026",
+        "v22_bursty_transport_2026"
+      ],
+      "baseSourceUrls": [
+        "https://doi.org/10.1371/journal.pcbi.1014838",
+        "https://cardamomot.readthedocs.io/en/latest/quickstart.html",
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1014838",
+        "https://doi.org/10.1038/s41540-026-00743-x",
+        "https://github.com/fourniecl/inference_trajectories_PDMP",
+        "https://www.nature.com/articles/s41540-026-00743-x"
       ]
     },
     {
@@ -7610,6 +8049,23 @@
           "executionStatus": "recipe_only",
           "interpretationBoundary": "核对来源仍为2025预印本。矩阵双尺度化用于表示比较；不得用去噪矩阵替代噪音或QTL表型。先评估稀疏性、SVD与内存。"
         }
+      ],
+      "baseToolIds": [
+        "monod",
+        "scanpy"
+      ],
+      "baseMetricIds": [
+        "unspliced_length_sensitivity",
+        "sequencing_model_sensitivity"
+      ],
+      "basePaperIds": [
+        "v24_premrna_length_2023",
+        "v24_monod_2025"
+      ],
+      "baseSourceUrls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9843228/",
+        "https://monod-examples.readthedocs.io/en/latest/usage.html",
+        "https://www.nature.com/articles/s41592-025-02832-x"
       ]
     },
     {
@@ -7817,6 +8273,23 @@
           "executionStatus": "recipe_only",
           "interpretationBoundary": "高变基因不自动成为状态marker或噪音QTL。校正相关仍非因果；用培养留出检验边。相关模块与特征模块的可用接口分别核验。"
         }
+      ],
+      "baseToolIds": [
+        "seurat",
+        "scanpy",
+        "memento"
+      ],
+      "baseMetricIds": [
+        "implementation_representation_concordance",
+        "implementation_inference_stability"
+      ],
+      "basePaperIds": [
+        "v24_package_versioning_2026"
+      ],
+      "baseSourceUrls": [
+        "https://pubmed.ncbi.nlm.nih.gov/41903535/",
+        "https://scanpy.readthedocs.io/en/stable/",
+        "https://satijalab.org/seurat/articles/pbmc3k_tutorial"
       ]
     },
     {

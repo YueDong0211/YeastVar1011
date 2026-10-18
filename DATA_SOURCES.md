@@ -64,3 +64,12 @@ Plans can select individual stable evidence IDs. An omitted evidence-ID field pr
 The research context includes the 1011 *S. cerevisiae* collection and the associated population genomics, transcriptomics, proteomics, and long-read studies listed by the [Haplo team](https://www.haploteam.org/papers/). These references establish the project background. The application does not imply that all associated measurements are bundled, that population genotypes can be inferred from a reference marker label, or that unpublished single-cell data have been released.
 
 For corrections, use the repository issue tracker and include the affected gene or source ID, the original publication/table, and the proposed correction. Preserve provenance when exporting or extending a marker panel, and cite the original biological studies and analysis tools used in an actual analysis.
+
+
+### v25d source additions
+
+- Nocedal, Mancera, and Johnson (2017), eLife 6:e23250, https://doi.org/10.7554/eLife.23250. Figure 6—figure supplement 2 is joined to Supplementary file 1 by the original S. cerevisiae identifiers. The 60 imported RNA references retain raw columns T and U, source row numbers and the distinction from the paper's other-species comparisons. Five figure members are held for source/identity review. Original article license: CC BY 4.0.
+- Chu et al. (1998), Science 282:699–705, https://doi.org/10.1126/science.282.5389.699. This is the original bulk microarray reference reused by Nocedal. A complete citation and data accessions GDS104/GSE27 are retained; this release does not reclassify the time course into new single-cell phases.
+- Solari et al. (2024), iScience 27(1):108727, https://doi.org/10.1016/j.isci.2023.108727. Figure 1B supplies four total-RNA Northern-blot references: ENO2, PDC1 and PAB1 increase after nutrient replenishment; NCE102 decreases. The ribosomal-fraction RT-qPCR and protein measurements are different assays and are not imported as single-cell RNA values. The issue year is 2024; online publication was 14 December 2023. Original article license: CC BY-NC-ND 4.0. No article figures or full text are redistributed in the public package.
+
+Source licenses remain independent of the software license. Eleven new gene identities also receive 120 specific GO-slim functional assertions and three ontology-root metadata mappings from the retained SGD snapshot. The complete catalogue contains 5,286 genes and 30,240 evidence occurrences; 30,235 are unique assertion identities.

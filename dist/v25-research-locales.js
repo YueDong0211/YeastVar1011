@@ -807,16 +807,16 @@
     },
     "chooser": {
       "en": {
-        "task": "Cluster resolution and between-culture stability"
+        "task": "Cluster resolution and cell-resampling stability"
       },
       "fr": {
-        "task": "Résolution des groupes et stabilité entre cultures"
+        "task": "Résolution des groupes et stabilité au rééchantillonnage cellulaire"
       },
       "es": {
-        "task": "Resolución de grupos y estabilidad entre cultivos"
+        "task": "Resolución de grupos y estabilidad del remuestreo celular"
       },
       "eu": {
-        "task": "Klusterren bereizmena eta kultiboen arteko egonkortasuna"
+        "task": "Multzoen bereizmena eta zelula birlaginketaren egonkortasuna"
       }
     },
     "bipca": {
@@ -1717,3 +1717,49 @@ window.YV_CONTENT=window.YV_CONTENT||{};window.YV_CONTENT.metrics=window.YV_CONT
 Object.assign(window.YV_TEXT,{"方法与机制证据": {"en": "Method and mechanism evidence", "fr": "Preuves de méthode et de mécanisme", "es": "Evidencia de método y mecanismo", "eu": "Metodo eta mekanismo ebidentzia"}, "跨物种统计方法": {"en": "Cross-species statistical methodology", "fr": "Méthodologie statistique interspécifique", "es": "Metodología estadística entre especies", "eu": "Espezie arteko estatistika metodologia"}});
 
 Object.assign(window.YV_TEXT,{"关联效应量与其标准误、噪音性状本身的估计误差分别保存，再传播至QTL与遗传力模型。": {"en": "Retain association effect estimates and their standard errors separately from uncertainty in the noise trait, then propagate trait uncertainty to QTL and heritability models.", "fr": "Conserver séparément effets d’association et erreurs-types, et incertitude du trait de bruit ; propager ensuite cette incertitude aux modèles QTL et d’héritabilité.", "es": "Conservar efectos de asociación y errores estándar separados de la incertidumbre del rasgo de ruido, y propagar esta a los modelos de QTL y heredabilidad.", "eu": "Gorde elkarte efektuak eta haien errore estandarrak zarata ezaugarriaren ziurgabetasunetik bereizita; ondoren hedatu ezaugarriaren ziurgabetasuna QTL eta heredagarritasun ereduetara."}, "分别估计标记捕获的加性遗传方差、稳定菌株差异和培养方差；模型须可辨识，并报告噪音性状误差。": {"en": "Estimate marker-captured additive genetic variance, stable strain differences and culture variance separately; require model identifiability and report noise-trait error.", "fr": "Estimer séparément variance génétique additive captée par les marqueurs, différences stables de souche et variance de culture ; vérifier l’identifiabilité et rapporter l’erreur du trait.", "es": "Estimar por separado varianza genética aditiva capturada por marcadores, diferencias estables entre cepas y varianza de cultivo; exigir identificabilidad e informar el error del rasgo.", "eu": "Estimatu bereizita markatzaileek jasotako bariantza genetiko gehigarria, andui desberdintasun egonkorrak eta kultura bariantza; egiaztatu identifikagarritasuna eta eman zarata ezaugarriaren errorea."}});
+
+// v25d: method branch declaration contracts.
+Object.assign(window.YV_TEXT || (window.YV_TEXT = {}), {
+  "按所选分支检查输入与来源字段是否完整；技术设计仍需人工核对，记录完整不代表模型已验证或执行。": {
+    "en": "Check input and source fields for the selected branch. The technical design still needs review; complete records do not establish model validity or execution.",
+    "fr": "Vérifier les champs d’entrée et de source de la branche choisie. Le plan technique reste à examiner ; des champs complets ne prouvent ni la validité ni l’exécution du modèle.",
+    "es": "Comprobar los campos de entrada y fuente de la rama elegida. El diseño técnico requiere revisión; un registro completo no demuestra validez ni ejecución del modelo.",
+    "eu": "Egiaztatu hautatutako adarraren sarrera eta iturburu eremuak osatuta daudela. Diseinu teknikoa berrikusi behar da; erregistro osoak ez du ereduaren baliozkotasuna edo exekuzioa frogatzen."
+  },
+  "聚类分辨率与细胞重采样稳定性": {
+    "en": "Cluster resolution and cell-resampling stability",
+    "fr": "Résolution des groupes et stabilité au rééchantillonnage cellulaire",
+    "es": "Resolución de grupos y estabilidad del remuestreo celular",
+    "eu": "Multzoen bereizmena eta zelula birlaginketaren egonkortasuna"
+  },
+  "表达对象、细胞身份及候选分辨率；记录每次细胞重采样清单。培养留出扩展另需真实培养分组。": {
+    "en": "Expression object, cell identities and candidate resolutions; record each cell-resampling manifest. Culture holdouts additionally require genuine culture groups.",
+    "fr": "Objet d’expression, identités cellulaires et résolutions candidates ; consigner les cellules de chaque rééchantillonnage. Les validations par culture exigent des groupes de cultures réels.",
+    "es": "Objeto de expresión, identidades celulares y resoluciones candidatas; registrar las células de cada remuestreo. La validación por cultivos requiere grupos de cultivo reales.",
+    "eu": "Adierazpen objektua, zelulen identitateak eta bereizmen hautagaiak; gorde birlaginketa bakoitzeko zelulen zerrenda. Kultura bidezko balidazioak benetako kultura taldeak behar ditu."
+  },
+  "原生输出为细胞共聚类与稳定性；培养留出复现需单独实现。": {
+    "en": "Native outputs cover cell co-clustering and stability; culture-holdout replication requires a separate implementation.",
+    "fr": "Les sorties natives décrivent le co-regroupement cellulaire et sa stabilité ; la validation par culture requiert une implémentation distincte.",
+    "es": "Las salidas nativas describen el agrupamiento conjunto y su estabilidad; la validación con cultivos excluidos requiere una implementación adicional.",
+    "eu": "Jatorrizko irteerek zelulen baterako taldekatzea eta egonkortasuna jasotzen dituzte; kulturak kanpoan utzita balidatzeko inplementazio bereizia behar da."
+  },
+  "均值差异功效使用酵母试点与真实独立样本设计；细胞数不能代替培养或菌株数。": {
+    "en": "Mean-DE power uses yeast pilot data and the genuine independent-sample design; cell counts do not replace culture or strain counts.",
+    "fr": "La puissance DE de la moyenne utilise des données pilotes de levure et le plan réel d’échantillons indépendants ; le nombre de cellules ne remplace ni cultures ni souches.",
+    "es": "La potencia para diferencias de medias usa datos piloto de levadura y muestras independientes reales; el número de células no sustituye a cultivos o cepas.",
+    "eu": "Batezbesteko DE potentziak legamiaren datu pilotuak eta benetako lagin independenteen diseinua erabiltzen ditu; zelula kopuruak ez du kultura edo andui kopurua ordezten."
+  },
+  "均值检验分支参数": {
+    "en": "Mean-test branch parameter",
+    "fr": "Paramètre de branche du test de moyenne",
+    "es": "Parámetro de rama de prueba de medias",
+    "eu": "Batezbesteko probaren adarreko parametroa"
+  },
+  "将所选分支的 type 写入 yeast_pilot_parameters$type：均值差异用 de，均值 eQTL 用 eqtl。": {
+    "en": "Copy branch type into yeast_pilot_parameters$type: de for mean DE, eqtl for mean eQTL.",
+    "fr": "Reporter le type de branche dans yeast_pilot_parameters$type : de pour la DE moyenne, eqtl pour l’eQTL moyen.",
+    "es": "Copiar el tipo de rama a yeast_pilot_parameters$type: de para DE de la media, eqtl para eQTL de la media.",
+    "eu": "Kopiatu adarraren type yeast_pilot_parameters$type eremura: de batezbesteko DErako, eqtl batezbesteko eQTLrako."
+  }
+});

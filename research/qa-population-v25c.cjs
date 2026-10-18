@@ -25,7 +25,9 @@ for(const [kind,ids] of Object.entries(baseline)){
 }
 check(w.tools.length===baseline.tools.length,'No new tools');check(w.formulas.length===baseline.formulas.length,'No new formula');check(p.projects.length===baseline.routes.length,'No new route');
 check(w.metrics.length===baseline.metrics.length+1,'Exactly one new metric');
-check(l.papers.filter(x=>x.addedIn==='v25c_population').length===12,'Twelve new references');check(c.records.length===baseline.references.length+12,'Twelve CSL records');
+const populationPaperIds=new Set(l.papers.filter(x=>x.addedIn==='v25c_population').map(x=>x.id));
+check(populationPaperIds.size===12,'Twelve v25c population references retained');
+check(c.records.filter(x=>populationPaperIds.has(x.literatureId)).length===12,'Twelve matching v25c population CSL records retained');
 for(const [zh,values] of Object.entries(additions)){
  check(/[\u3400-\u9fff]/.test(zh),'Chinese source text');
  for(const lang of languages.slice(1))check(typeof values[lang]==='string'&&values[lang].trim()&&!/[\u3400-\u9fff]/.test(values[lang]),'Complete '+lang+' '+zh);

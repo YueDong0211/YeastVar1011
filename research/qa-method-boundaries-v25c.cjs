@@ -27,7 +27,7 @@ const boundaryText = localeContext.window.YV_TEXT;
 let checks = 0;
 const check = (name, test) => { test(); checks++; console.log(`PASS ${name}`); };
 
-check('BASiCS records alternative technical designs without inventing input IDs or automated gates', () => {
+check('BASiCS records alternative technical designs with declaration-only completeness checks', () => {
   assert.deepEqual(basics.applicability.requiredData, ['count_matrix', 'sample_metadata']);
   assert.equal(basics.conditionalInputRequirements.length, 2);
   const branches = new Map(basics.conditionalInputRequirements.map(x => [x.branch, x]));
@@ -35,12 +35,16 @@ check('BASiCS records alternative technical designs without inventing input IDs 
   assert.equal(branches.get('without_spikes').condition, 'WithSpikes=FALSE');
   const known = new Set(catalog.categories.dataRequirements.map(x => x.id));
   for (const row of branches.values()) {
-    assert.equal(row.enforcement, 'documented_not_automated');
+    assert.equal(row.enforcement, 'declaration_completeness_only');
+    assert.equal(row.id, row.branch);
+    assert.equal(row.requiredDataMode, 'extend');
+    assert.ok(row.evidenceRequirements.length >= 3);
     assert.ok(row.requiredData.every(id => known.has(id)));
     assert.deepEqual(row.requiredData, ['count_matrix', 'sample_metadata']);
   }
-  assert.match(basics.applicability.reason, /自动输入检查目前只核对/);
-  assert.match(basics.applicability.reason, /人工确认/);
+  assert.match(basics.applicability.reason, /字段是否完整/);
+  assert.match(basics.applicability.reason, /人工核对/);
+  assert.match(basics.applicability.reason, /不代表模型已验证或执行/);
 });
 
 check('No-spike replication and spike amount requirements reach visible method fields', () => {
@@ -151,10 +155,12 @@ for (const file of ['dist/plan-inputs.js', 'dist/methods.js', 'dist/experience.j
   vm.runInContext(read(file), renderContext, {filename: file});
 }
 
-check('Current resolver does not pretend to have implemented the technical OR gate', () => {
+check('Resolver requires a branch declaration without claiming biological verification', () => {
   const result = renderContext.window.YV_INPUTS({...selectedPlan, tools: ['basics']}, catalog);
   assert.ok(result.inputs.every(x => x.status === 'declared'));
   assert.equal(result.inputs.length, 2);
+  assert.ok(result.contractIssues.some(x => x.kind === 'branch-pending' && x.toolId === 'basics'));
+  assert.equal(result.methodDecisions.executionStatus, 'planning_only');
   assert.ok(basics.limitations.includes(basics.applicability.reason));
 });
 
