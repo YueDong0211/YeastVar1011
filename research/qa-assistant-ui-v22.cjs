@@ -83,7 +83,7 @@ async function check(name,fn){try{const detail=await fn();checks.push({name,pass
    await page.evaluate(()=>{YV_APP.closeDrawer();YV_COMPANION.close();location.hash='#markers?view=catalogue';});
    await page.setViewportSize({width:1440,height:1000});await page.locator('.mw-catalogue').waitFor();
    const reset=page.locator('.mw-active-filters [data-mw=reset]');if(await reset.count())await reset.click();
-   await page.locator('.mw-facet[data-mw-facet=metadata] > summary').click();
+   await page.locator('#mw-facet-tab-advanced').click();assert.equal(await page.locator('#mw-facet-tab-advanced').getAttribute('aria-pressed'),'true');await page.locator('#mw-facet-content[data-mw-facet=advanced] #mw-condition-query').waitFor({state:'visible'});
    await page.locator('#mw-condition-query').fill('NaCl');
    await page.waitForFunction(()=>YV_MARKERS.getState().condition==='NaCl');
    await page.locator('select[data-mw-value=direction]').selectOption('higher');
@@ -93,7 +93,7 @@ async function check(name,fn){try{const detail=await fn();checks.push({name,pass
    await page.locator('.mw-tabs [data-mw=tab][data-value=databases]').click();await page.waitForURL('**/#markers?view=databases');await waitDatabase('metadata: first tab click');
    await page.locator('.mw-tabs [data-mw=tab][data-value=coverage]').click();await page.waitForURL('**/#markers?view=coverage');
    await page.goBack();await page.waitForURL('**/#markers?view=databases');await waitDatabase('metadata: Back from coverage');
-   await page.goBack();await page.waitForURL('**/#markers?view=catalogue');await page.locator('#mw-condition-query').waitFor({state:'attached'});
+   await page.goBack();await page.waitForURL('**/#markers?view=catalogue');await page.locator('#mw-condition-query').waitFor({state:'visible'});assert.equal(await page.evaluate(()=>YV_MARKERS.getState().activeFacet),'advanced');
    assert.equal(await page.locator('#mw-condition-query').inputValue(),'NaCl');assert.equal(await page.locator('select[data-mw-value=direction]').inputValue(),'higher');
    assert.match(await page.locator('.mw-result-summary > strong').innerText(),/^235\b/);assert.equal(await page.evaluate(()=>JSON.stringify(YV_MARKERS.exportData().candidateQuery.filters)),filtered);
    assert.equal(await page.evaluate(()=>JSON.stringify(YV_BUILDER.getPlan())),before);

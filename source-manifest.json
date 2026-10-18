@@ -494,7 +494,7 @@
     {
       "path": "dist/index.html",
       "bytes": 13934,
-      "sha256": "f70d73e0f594cd4f45ba4552f6f5a4d7a0da3f2c615e484977ea214147688d5a"
+      "sha256": "5ac9da7472e3cd00094c0f479c8c7d103e165f17f40c269f30f75665a9e29d5e"
     },
     {
       "path": "dist/interface-v15.css",
@@ -593,8 +593,8 @@
     },
     {
       "path": "dist/marker-workspace.js",
-      "bytes": 108457,
-      "sha256": "0e407085acd6c97024952b1a37b1d6cee00c8f215f4819b2e23c1f9c3102bf48"
+      "bytes": 108550,
+      "sha256": "f9b303bc151b914eb479d5d3f68e84b27132ca72b1eb5936b10b3a6c9c7397b6"
     },
     {
       "path": "dist/mascot.css",
@@ -1493,8 +1493,8 @@
     },
     {
       "path": "scripts/smoke-public.cjs",
-      "bytes": 15725,
-      "sha256": "a6a0f9db7baa6c6fffb463c9ca3037aa3174ceb4537922371126a7e68d5ebbfb"
+      "bytes": 16017,
+      "sha256": "1278bc7b7e03fdb4f688b4fea0b8fa36c613a064ee03ba79900291182e20f1bb"
     },
     {
       "path": ".github/ISSUE_TEMPLATE/bug_report.md",
@@ -1773,8 +1773,8 @@
     },
     {
       "path": "research/qa-assistant-ui-v22.cjs",
-      "bytes": 15954,
-      "sha256": "968054d5d9938b3b058b5519617bf16327fa05faf8dbeafbffd600862146aec7"
+      "bytes": 16222,
+      "sha256": "6222ac54d9e4f177abc7df57861f6655076bd8325b8d6d1539e64714699b76d9"
     },
     {
       "path": "research/qa-local-model-lifecycle-v22.cjs",

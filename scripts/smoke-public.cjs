@@ -75,6 +75,11 @@ let browser;
    await choice.scrollIntoViewIfNeeded();
    assert(await choice.evaluate(label=>{const r=label.getBoundingClientRect(),hit=document.elementFromPoint(r.x+r.width/2,r.y+r.height/2);return !!hit&&label.contains(hit)}),'Covered source choice '+width);
   }
+  if(width<=600){
+   await page.locator('.mw-filter-done').click();
+   await page.waitForFunction(()=>{const r=document.querySelector('.mw-results')?.getBoundingClientRect();return r&&r.top>=70&&r.top<160});
+   assert.equal(await page.locator('#mw-filter-panel').isVisible(),false);
+  }
  }
  await page.setViewportSize({width:1440,height:960});
  await page.locator('#language-select').selectOption('en');
