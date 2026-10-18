@@ -264,6 +264,7 @@
     new MutationObserver(apply).observe($('#sidebar'),{attributes:true,attributeFilter:['class']});
     window.addEventListener('resize',()=>{endDrag(true);finishResize();clearSidebarTimers();hovering=false;suppressHover=false;peek=false;apply();},{passive:true});
     window.addEventListener('blur',()=>{endDrag(true);finishResize();});
+    window.addEventListener('hashchange',()=>{if(!pinned)closeSidebar();});
     afterRender();
   }
   window.YV_CONTROLS={init,afterRender,apply,icon,polishOptions,setPinned,toggleSidebar,closeSidebar,getState:()=>({width,order:[...order],editing,layoutOpen,pinned,peek,expanded:isExpanded()})};

@@ -22,11 +22,16 @@ let browser;
  await page.evaluate(()=>YV_COMPANION.open({tab:'community'}));await page.locator('#yv-companion-panel .p20-project').waitFor();assert.equal(await page.locator('#yv-companion-panel [data-project-link=issues]').count(),1);await page.evaluate(()=>YV_COMPANION.close());
  for(const lang of ['zh','en','fr','es','eu']){await page.evaluate(lang=>{YV_APP.setPreference('language',lang);location.hash='overview'},lang);await page.waitForFunction(()=>YV_APP.route()==='overview');assert((await page.locator('.p20-footer-links').innerText()).includes('GitHub'));}
  // Exercise the real tool-card -> floating detail path, not just resolver fixtures.
+ await page.mouse.move(1100,80);
+ await page.keyboard.press('Escape');
+ await page.locator('#menu-button').click();
+ assert(await page.evaluate(()=>YV_CONTROLS.getState().expanded),'Sidebar opens before route-change regression');
  await page.evaluate(()=>{
   YV_APP.setPreference('language','en');
   YV_BUILDER.importPlan({schema:'yeastvar1011-plan-v2',title:'Browser contract regression',objective:'',projects:[],stages:['validation'],tools:['scpower'],metrics:[],markers:[],edges:[],availableData:['count_matrix','sample_metadata'],inputRoute:'count_matrix',parameters:{},methodContractsVersion:1,methodOptionIds:[],manualToolIds:['scpower'],manualMetricIds:[],toolBranches:{},inputEvidence:{},directionProvenance:null});
   location.hash='tools?q=scPower';
  });
+ await page.waitForFunction(()=>!YV_CONTROLS.getState().expanded);
  await page.getByRole('button',{name:'scPower',exact:true}).click();
  await page.locator('#drawer select[data-pc-branch="scpower"]').waitFor({state:'attached'});
  await page.locator('#drawer select[data-pc-branch="scpower"]').selectOption('mean_de');

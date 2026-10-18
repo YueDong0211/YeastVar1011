@@ -273,8 +273,8 @@
     },
     {
       "path": "dist/controls-v4.js",
-      "bytes": 36756,
-      "sha256": "49c1275c5667e005fc877f8dfc7e8f03f71884f3914f3aff7a266100516256ce"
+      "bytes": 36833,
+      "sha256": "9bbe4a837628a2bebe3fe95b315a3f16e21fd629777a16e8760275d605a118d5"
     },
     {
       "path": "dist/data/literature.json",
@@ -488,8 +488,8 @@
     },
     {
       "path": "dist/index.html",
-      "bytes": 13249,
-      "sha256": "cb2741789537be1b5d77e436d30ec83064d529e00cb84c1b9d338aa6371ef87f"
+      "bytes": 13253,
+      "sha256": "f0be3b49f46a752756dda041c759c74e23ffc12131cef645026e9ff56183d3d8"
     },
     {
       "path": "dist/interface-v15.css",
@@ -1443,8 +1443,8 @@
     },
     {
       "path": "scripts/smoke-public.cjs",
-      "bytes": 6531,
-      "sha256": "8878f130f635f2f26c946a6adf1c82bf2186c8c8afdcfdde85ddb1b9fe4817f7"
+      "bytes": 6833,
+      "sha256": "4efaeefdb665875e404d0ce4cb6a97784f179bfd56e4342dd33639b42fbd9be3"
     },
     {
       "path": ".github/ISSUE_TEMPLATE/bug_report.md",
