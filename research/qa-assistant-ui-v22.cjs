@@ -98,20 +98,23 @@ async function check(name,fn){try{const detail=await fn();checks.push({name,pass
    assert.match(await page.locator('.mw-result-summary > strong').innerText(),/^235\b/);assert.equal(await page.evaluate(()=>JSON.stringify(YV_MARKERS.exportData().candidateQuery.filters)),filtered);
    assert.equal(await page.evaluate(()=>JSON.stringify(YV_BUILDER.getPlan())),before);
   });
-  await check('Twelve database cards and expanded import fields fit five languages at 320, 390 and 1440 pixels',async()=>{
+  await check('Every registered database card and its import fields fit five languages at 320, 390 and 1440 pixels',async()=>{
    // Isolate this check from a previous navigation failure at the same hash.
    await page.evaluate(()=>{YV_COMPANION.close();location.hash='#markers?view=catalogue';});await page.locator('.mw-catalogue').waitFor({state:'visible',timeout:5000});
    await page.evaluate(()=>{location.hash='#markers?view=databases';});await waitDatabase('database layouts: fresh deep link');
+   const expectedResourceIds=await page.evaluate(()=>YV_DATABASE_HUB.resources().map(r=>r.id).sort());
+   assert(expectedResourceIds.length>0,'The resource catalogue must not be empty');
+   assert.equal(new Set(expectedResourceIds).size,expectedResourceIds.length,'Resource identities must be unique');
    for(const width of [320,390,1440])for(const language of ['zh','en','fr','es','eu']){
     await page.setViewportSize({width,height:width<500?844:1000});await page.evaluate(language=>YV_APP.setPreference('language',language),language);
-    assert.equal(await page.locator('.db24-card').count(),12,`${language}/${width}: resource count`);
+    assert.deepEqual(await page.locator('.db24-card').evaluateAll(nodes=>nodes.map(el=>el.dataset.db24Id).sort()),expectedResourceIds,`${language}/${width}: complete resource identities`);
     await page.locator('.db24-card details').evaluateAll(nodes=>nodes.forEach(el=>el.open=true));
     const bounds=await page.locator('.db24').evaluate(el=>({width:el.clientWidth,scroll:el.scrollWidth,left:el.getBoundingClientRect().left,right:el.getBoundingClientRect().right,document:document.documentElement.scrollWidth,viewport:document.documentElement.clientWidth}));
     assert(bounds.scroll<=bounds.width+1,`${language}/${width}: database content ${JSON.stringify(bounds)}`);assert(bounds.left>=-1&&bounds.right<=width+1,`${language}/${width}: database bounds ${JSON.stringify(bounds)}`);assert(bounds.document<=bounds.viewport+1,`${language}/${width}: document overflow ${JSON.stringify(bounds)}`);
    }
    await page.evaluate(()=>YV_APP.setPreference('language','zh'));await page.setViewportSize({width:1440,height:1000});
-   await page.locator('[data-db24-field=q]').fill('TF');assert.equal(await page.locator('.db24-card').count(),3);await page.locator('[data-db24=reset]').click();assert.equal(await page.locator('.db24-card').count(),12);
-   await page.screenshot({path:path.join(out,'database-desktop.png')});return{resources:12,viewports:[320,390,1440],languages:5};
+   await page.locator('[data-db24-field=q]').fill('TF');assert.equal(await page.locator('.db24-card').count(),3);await page.locator('[data-db24=reset]').click();assert.deepEqual(await page.locator('.db24-card').evaluateAll(nodes=>nodes.map(el=>el.dataset.db24Id).sort()),expectedResourceIds);
+   await page.screenshot({path:path.join(out,'database-desktop.png')});return{resources:expectedResourceIds.length,viewports:[320,390,1440],languages:5};
   });
   await check('Assistant review navigation retains its deep tab and opens the visible checks panel directly',async()=>{
    await page.evaluate(()=>YV_COMPANION.open({tab:'guide'}));await page.locator('[data-lm22=audit]').first().click();

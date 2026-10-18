@@ -1683,8 +1683,8 @@
     },
     {
       "path": "research/qa-assistant-ui-v22.cjs",
-      "bytes": 15460,
-      "sha256": "e37db5b62ead1d8e3ed1f4052f831a321b29244c4513f74bcaa117bd98f85bb2"
+      "bytes": 15954,
+      "sha256": "968054d5d9938b3b058b5519617bf16327fa05faf8dbeafbffd600862146aec7"
     },
     {
       "path": "research/qa-local-model-lifecycle-v22.cjs",
