@@ -1808,8 +1808,8 @@
     },
     {
       "path": "research/qa-population-v25c.cjs",
-      "bytes": 31006,
-      "sha256": "ae0e47f928185807b9b6c0eef66a61554a0f7292157d00b52f3c641132b54e7c"
+      "bytes": 39011,
+      "sha256": "6cbe2428ad984f091c88147e5d294b259ff29ccafc280e825d133102fe2eb1ab"
     },
     {
       "path": "research/qa-marker-regressions-v25d.cjs",
