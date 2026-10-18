@@ -1,0 +1,1417 @@
+[
+  {
+    "doi": "10.7717/peerj.16505",
+    "csl": {
+      "type": "article-journal",
+      "title": "phytools 2.0: an updated R ecosystem for phylogenetic comparative methods (and other things)",
+      "author": [
+        {
+          "given": "Liam J.",
+          "family": "Revell"
+        }
+      ],
+      "DOI": "10.7717/peerj.16505",
+      "URL": "https://doi.org/10.7717/peerj.16505",
+      "issued": {
+        "date-parts": [
+          [
+            2024,
+            1,
+            5
+          ]
+        ]
+      },
+      "container-title": "PeerJ",
+      "volume": "12",
+      "page": "e16505",
+      "article-number": "e16505"
+    },
+    "metadataSource": "https://api.crossref.org/works/10.7717%2Fpeerj.16505",
+    "dateEvidence": {
+      "online": {
+        "date-parts": [
+          [
+            2024,
+            1,
+            5
+          ]
+        ]
+      },
+      "print": null,
+      "issued": {
+        "date-parts": [
+          [
+            2024,
+            1,
+            5
+          ]
+        ]
+      }
+    },
+    "verifiedOn": "2026-10-18"
+  },
+  {
+    "doi": "10.1093/sysbio/syw021",
+    "csl": {
+      "type": "article-journal",
+      "title": "RevBayes: Bayesian Phylogenetic Inference Using Graphical Models and an Interactive Model-Specification Language",
+      "author": [
+        {
+          "given": "Sebastian",
+          "family": "Höhna"
+        },
+        {
+          "given": "Michael J.",
+          "family": "Landis"
+        },
+        {
+          "given": "Tracy A.",
+          "family": "Heath"
+        },
+        {
+          "given": "Bastien",
+          "family": "Boussau"
+        },
+        {
+          "given": "Nicolas",
+          "family": "Lartillot"
+        },
+        {
+          "given": "Brian R.",
+          "family": "Moore"
+        },
+        {
+          "given": "John P.",
+          "family": "Huelsenbeck"
+        },
+        {
+          "given": "Fredrik",
+          "family": "Ronquist"
+        }
+      ],
+      "DOI": "10.1093/sysbio/syw021",
+      "URL": "https://doi.org/10.1093/sysbio/syw021",
+      "issued": {
+        "date-parts": [
+          [
+            2016,
+            7
+          ]
+        ]
+      },
+      "container-title": "Systematic Biology",
+      "volume": "65",
+      "issue": "4",
+      "page": "726-736"
+    },
+    "metadataSource": "https://api.crossref.org/works/10.1093%2Fsysbio%2Fsyw021",
+    "dateEvidence": {
+      "online": {
+        "date-parts": [
+          [
+            2016,
+            5,
+            28
+          ]
+        ]
+      },
+      "print": {
+        "date-parts": [
+          [
+            2016,
+            7
+          ]
+        ]
+      },
+      "issued": {
+        "date-parts": [
+          [
+            2016,
+            5,
+            28
+          ]
+        ]
+      }
+    },
+    "verifiedOn": "2026-10-18"
+  },
+  {
+    "doi": "10.1093/molbev/msag117",
+    "csl": {
+      "type": "article-journal",
+      "title": "IQ-TREE 3: phylogenomic inference software using complex evolutionary models",
+      "author": [
+        {
+          "given": "Thomas K F",
+          "family": "Wong"
+        },
+        {
+          "given": "Nhan",
+          "family": "Ly-Trong"
+        },
+        {
+          "given": "Huaiyan",
+          "family": "Ren"
+        },
+        {
+          "given": "Piyumal",
+          "family": "Demotte"
+        },
+        {
+          "given": "Hector",
+          "family": "Baños"
+        },
+        {
+          "given": "Andrew J",
+          "family": "Roger"
+        },
+        {
+          "given": "Edward",
+          "family": "Susko"
+        },
+        {
+          "given": "Chris",
+          "family": "Bielow"
+        },
+        {
+          "given": "Nicola",
+          "family": "De Maio"
+        },
+        {
+          "given": "Nick",
+          "family": "Goldman"
+        },
+        {
+          "given": "Matthew W",
+          "family": "Hahn"
+        },
+        {
+          "given": "Mario",
+          "family": "dos Reis"
+        },
+        {
+          "given": "Le Sy",
+          "family": "Vinh"
+        },
+        {
+          "given": "Gavin",
+          "family": "Huttley"
+        },
+        {
+          "given": "Robert",
+          "family": "Lanfear"
+        },
+        {
+          "given": "Bui Quang",
+          "family": "Minh"
+        }
+      ],
+      "DOI": "10.1093/molbev/msag117",
+      "URL": "https://doi.org/10.1093/molbev/msag117",
+      "issued": {
+        "date-parts": [
+          [
+            2026,
+            5,
+            1
+          ]
+        ]
+      },
+      "container-title": "Molecular Biology and Evolution",
+      "volume": "43",
+      "issue": "5",
+      "article-number": "msag117"
+    },
+    "metadataSource": "https://api.crossref.org/works/10.1093%2Fmolbev%2Fmsag117",
+    "dateEvidence": {
+      "online": {
+        "date-parts": [
+          [
+            2026,
+            5,
+            5
+          ]
+        ]
+      },
+      "print": {
+        "date-parts": [
+          [
+            2026,
+            5,
+            1
+          ]
+        ]
+      },
+      "issued": {
+        "date-parts": [
+          [
+            2026,
+            5,
+            1
+          ]
+        ]
+      }
+    },
+    "verifiedOn": "2026-10-18"
+  },
+  {
+    "doi": "10.1093/molbev/msaf313",
+    "csl": {
+      "type": "article-journal",
+      "title": "SLiM 5: Eco-evolutionary Simulations Across Multiple Chromosomes and Full Genomes",
+      "author": [
+        {
+          "given": "Benjamin C",
+          "family": "Haller"
+        },
+        {
+          "given": "Peter L",
+          "family": "Ralph"
+        },
+        {
+          "given": "Philipp W",
+          "family": "Messer"
+        }
+      ],
+      "DOI": "10.1093/molbev/msaf313",
+      "URL": "https://doi.org/10.1093/molbev/msaf313",
+      "issued": {
+        "date-parts": [
+          [
+            2026,
+            1,
+            3
+          ]
+        ]
+      },
+      "container-title": "Molecular Biology and Evolution",
+      "volume": "43",
+      "issue": "1",
+      "article-number": "msaf313"
+    },
+    "metadataSource": "https://api.crossref.org/works/10.1093%2Fmolbev%2Fmsaf313",
+    "dateEvidence": {
+      "online": {
+        "date-parts": [
+          [
+            2025,
+            11,
+            26
+          ]
+        ]
+      },
+      "print": {
+        "date-parts": [
+          [
+            2026,
+            1,
+            3
+          ]
+        ]
+      },
+      "issued": {
+        "date-parts": [
+          [
+            2025,
+            11,
+            26
+          ]
+        ]
+      }
+    },
+    "verifiedOn": "2026-10-18"
+  },
+  {
+    "doi": "10.1093/genetics/iyab229",
+    "csl": {
+      "type": "article-journal",
+      "title": "Efficient ancestry and mutation simulation with msprime 1.0",
+      "author": [
+        {
+          "given": "Franz",
+          "family": "Baumdicker"
+        },
+        {
+          "given": "Gertjan",
+          "family": "Bisschop"
+        },
+        {
+          "given": "Daniel",
+          "family": "Goldstein"
+        },
+        {
+          "given": "Graham",
+          "family": "Gower"
+        },
+        {
+          "given": "Aaron P",
+          "family": "Ragsdale"
+        },
+        {
+          "given": "Georgia",
+          "family": "Tsambos"
+        },
+        {
+          "given": "Sha",
+          "family": "Zhu"
+        },
+        {
+          "given": "Bjarki",
+          "family": "Eldon"
+        },
+        {
+          "given": "E Castedo",
+          "family": "Ellerman"
+        },
+        {
+          "given": "Jared G",
+          "family": "Galloway"
+        },
+        {
+          "given": "Ariella L",
+          "family": "Gladstein"
+        },
+        {
+          "given": "Gregor",
+          "family": "Gorjanc"
+        },
+        {
+          "given": "Bing",
+          "family": "Guo"
+        },
+        {
+          "given": "Ben",
+          "family": "Jeffery"
+        },
+        {
+          "given": "Warren W",
+          "family": "Kretzschumar"
+        },
+        {
+          "given": "Konrad",
+          "family": "Lohse"
+        },
+        {
+          "given": "Michael",
+          "family": "Matschiner"
+        },
+        {
+          "given": "Dominic",
+          "family": "Nelson"
+        },
+        {
+          "given": "Nathaniel S",
+          "family": "Pope"
+        },
+        {
+          "given": "Consuelo D",
+          "family": "Quinto-Cortés"
+        },
+        {
+          "given": "Murillo F",
+          "family": "Rodrigues"
+        },
+        {
+          "given": "Kumar",
+          "family": "Saunack"
+        },
+        {
+          "given": "Thibaut",
+          "family": "Sellinger"
+        },
+        {
+          "given": "Kevin",
+          "family": "Thornton"
+        },
+        {
+          "given": "Hugo",
+          "family": "van Kemenade"
+        },
+        {
+          "given": "Anthony W",
+          "family": "Wohns"
+        },
+        {
+          "given": "Yan",
+          "family": "Wong"
+        },
+        {
+          "given": "Simon",
+          "family": "Gravel"
+        },
+        {
+          "given": "Andrew D",
+          "family": "Kern"
+        },
+        {
+          "given": "Jere",
+          "family": "Koskela"
+        },
+        {
+          "given": "Peter L",
+          "family": "Ralph"
+        },
+        {
+          "given": "Jerome",
+          "family": "Kelleher"
+        }
+      ],
+      "DOI": "10.1093/genetics/iyab229",
+      "URL": "https://doi.org/10.1093/genetics/iyab229",
+      "issued": {
+        "date-parts": [
+          [
+            2022,
+            3,
+            3
+          ]
+        ]
+      },
+      "container-title": "Genetics",
+      "volume": "220",
+      "issue": "3",
+      "article-number": "iyab229"
+    },
+    "metadataSource": "https://api.crossref.org/works/10.1093%2Fgenetics%2Fiyab229",
+    "dateEvidence": {
+      "online": {
+        "date-parts": [
+          [
+            2021,
+            12,
+            13
+          ]
+        ]
+      },
+      "print": {
+        "date-parts": [
+          [
+            2022,
+            3,
+            3
+          ]
+        ]
+      },
+      "issued": {
+        "date-parts": [
+          [
+            2021,
+            12,
+            13
+          ]
+        ]
+      }
+    },
+    "verifiedOn": "2026-10-18"
+  },
+  {
+    "doi": "10.1111/2041-210x.12628",
+    "csl": {
+      "type": "article-journal",
+      "title": "ggtree : an r package for visualization and annotation of phylogenetic trees with their covariates and other associated data",
+      "author": [
+        {
+          "given": "Guangchuang",
+          "family": "Yu"
+        },
+        {
+          "given": "David K.",
+          "family": "Smith"
+        },
+        {
+          "given": "Huachen",
+          "family": "Zhu"
+        },
+        {
+          "given": "Yi",
+          "family": "Guan"
+        },
+        {
+          "given": "Tommy Tsan‐Yuk",
+          "family": "Lam"
+        }
+      ],
+      "DOI": "10.1111/2041-210x.12628",
+      "URL": "https://doi.org/10.1111/2041-210x.12628",
+      "issued": {
+        "date-parts": [
+          [
+            2017,
+            1
+          ]
+        ]
+      },
+      "container-title": "Methods in Ecology and Evolution",
+      "volume": "8",
+      "issue": "1",
+      "page": "28-36"
+    },
+    "metadataSource": "https://api.crossref.org/works/10.1111%2F2041-210X.12628",
+    "dateEvidence": {
+      "online": {
+        "date-parts": [
+          [
+            2016,
+            9,
+            22
+          ]
+        ]
+      },
+      "print": {
+        "date-parts": [
+          [
+            2017,
+            1
+          ]
+        ]
+      },
+      "issued": {
+        "date-parts": [
+          [
+            2016,
+            9,
+            22
+          ]
+        ]
+      }
+    },
+    "verifiedOn": "2026-10-18"
+  },
+  {
+    "doi": "10.1111/2041-210x.12420",
+    "csl": {
+      "type": "article-journal",
+      "title": "mv morph : an r package for fitting multivariate evolutionary models to morphometric data",
+      "author": [
+        {
+          "given": "Julien",
+          "family": "Clavel"
+        },
+        {
+          "given": "Gilles",
+          "family": "Escarguel"
+        },
+        {
+          "given": "Gildas",
+          "family": "Merceron"
+        }
+      ],
+      "DOI": "10.1111/2041-210x.12420",
+      "URL": "https://doi.org/10.1111/2041-210x.12420",
+      "issued": {
+        "date-parts": [
+          [
+            2015,
+            11
+          ]
+        ]
+      },
+      "container-title": "Methods in Ecology and Evolution",
+      "volume": "6",
+      "issue": "11",
+      "page": "1311-1319"
+    },
+    "metadataSource": "https://api.crossref.org/works/10.1111%2F2041-210X.12420",
+    "dateEvidence": {
+      "online": {
+        "date-parts": [
+          [
+            2015,
+            7,
+            14
+          ]
+        ]
+      },
+      "print": {
+        "date-parts": [
+          [
+            2015,
+            11
+          ]
+        ]
+      },
+      "issued": {
+        "date-parts": [
+          [
+            2015,
+            7,
+            14
+          ]
+        ]
+      }
+    },
+    "verifiedOn": "2026-10-18"
+  },
+  {
+    "doi": "10.18637/jss.v080.i01",
+    "csl": {
+      "type": "article-journal",
+      "title": "brms : An R Package for Bayesian Multilevel Models Using Stan",
+      "author": [
+        {
+          "given": "Paul-Christian",
+          "family": "Bürkner"
+        }
+      ],
+      "DOI": "10.18637/jss.v080.i01",
+      "URL": "https://doi.org/10.18637/jss.v080.i01",
+      "issued": {
+        "date-parts": [
+          [
+            2017
+          ]
+        ]
+      },
+      "container-title": "Journal of Statistical Software",
+      "volume": "80",
+      "issue": "1",
+      "page": "1–28"
+    },
+    "metadataSource": "https://api.crossref.org/works/10.18637%2Fjss.v080.i01",
+    "dateEvidence": {
+      "online": {
+        "date-parts": [
+          [
+            2017
+          ]
+        ]
+      },
+      "print": null,
+      "issued": {
+        "date-parts": [
+          [
+            2017
+          ]
+        ]
+      }
+    },
+    "verifiedOn": "2026-10-18"
+  },
+  {
+    "doi": "10.18637/jss.v033.i02",
+    "csl": {
+      "type": "article-journal",
+      "title": "MCMC Methods for Multi-Response Generalized Linear Mixed Models: The MCMCglmm R Package",
+      "author": [
+        {
+          "given": "Jarrod D.",
+          "family": "Hadfield"
+        }
+      ],
+      "DOI": "10.18637/jss.v033.i02",
+      "URL": "https://doi.org/10.18637/jss.v033.i02",
+      "issued": {
+        "date-parts": [
+          [
+            2010
+          ]
+        ]
+      },
+      "container-title": "Journal of Statistical Software",
+      "volume": "33",
+      "issue": "2",
+      "page": "1–22"
+    },
+    "metadataSource": "https://api.crossref.org/works/10.18637%2Fjss.v033.i02",
+    "dateEvidence": {
+      "online": {
+        "date-parts": [
+          [
+            2010
+          ]
+        ]
+      },
+      "print": null,
+      "issued": {
+        "date-parts": [
+          [
+            2010
+          ]
+        ]
+      }
+    },
+    "verifiedOn": "2026-10-18"
+  },
+  {
+    "doi": "10.18637/jss.v076.i01",
+    "csl": {
+      "type": "article-journal",
+      "title": "Stan : A Probabilistic Programming Language",
+      "author": [
+        {
+          "given": "Bob",
+          "family": "Carpenter"
+        },
+        {
+          "given": "Andrew",
+          "family": "Gelman"
+        },
+        {
+          "given": "Matthew D.",
+          "family": "Hoffman"
+        },
+        {
+          "given": "Daniel",
+          "family": "Lee"
+        },
+        {
+          "given": "Ben",
+          "family": "Goodrich"
+        },
+        {
+          "given": "Michael",
+          "family": "Betancourt"
+        },
+        {
+          "given": "Marcus",
+          "family": "Brubaker"
+        },
+        {
+          "given": "Jiqiang",
+          "family": "Guo"
+        },
+        {
+          "given": "Peter",
+          "family": "Li"
+        },
+        {
+          "given": "Allen",
+          "family": "Riddell"
+        }
+      ],
+      "DOI": "10.18637/jss.v076.i01",
+      "URL": "https://doi.org/10.18637/jss.v076.i01",
+      "issued": {
+        "date-parts": [
+          [
+            2017
+          ]
+        ]
+      },
+      "container-title": "Journal of Statistical Software",
+      "volume": "76",
+      "issue": "1",
+      "page": "1–32"
+    },
+    "metadataSource": "https://api.crossref.org/works/10.18637%2Fjss.v076.i01",
+    "dateEvidence": {
+      "online": {
+        "date-parts": [
+          [
+            2017
+          ]
+        ]
+      },
+      "print": null,
+      "issued": {
+        "date-parts": [
+          [
+            2017
+          ]
+        ]
+      }
+    },
+    "verifiedOn": "2026-10-18"
+  },
+  {
+    "doi": "10.7717/peerj-cs.1516",
+    "csl": {
+      "type": "article-journal",
+      "title": "PyMC: a modern, and comprehensive probabilistic programming framework in Python",
+      "author": [
+        {
+          "given": "Oriol",
+          "family": "Abril-Pla"
+        },
+        {
+          "given": "Virgile",
+          "family": "Andreani"
+        },
+        {
+          "given": "Colin",
+          "family": "Carroll"
+        },
+        {
+          "given": "Larry",
+          "family": "Dong"
+        },
+        {
+          "given": "Christopher J.",
+          "family": "Fonnesbeck"
+        },
+        {
+          "given": "Maxim",
+          "family": "Kochurov"
+        },
+        {
+          "given": "Ravin",
+          "family": "Kumar"
+        },
+        {
+          "given": "Junpeng",
+          "family": "Lao"
+        },
+        {
+          "given": "Christian C.",
+          "family": "Luhmann"
+        },
+        {
+          "given": "Osvaldo A.",
+          "family": "Martin"
+        },
+        {
+          "given": "Michael",
+          "family": "Osthege"
+        },
+        {
+          "given": "Ricardo",
+          "family": "Vieira"
+        },
+        {
+          "given": "Thomas",
+          "family": "Wiecki"
+        },
+        {
+          "given": "Robert",
+          "family": "Zinkov"
+        }
+      ],
+      "DOI": "10.7717/peerj-cs.1516",
+      "URL": "https://doi.org/10.7717/peerj-cs.1516",
+      "issued": {
+        "date-parts": [
+          [
+            2023,
+            9,
+            1
+          ]
+        ]
+      },
+      "container-title": "PeerJ Computer Science",
+      "volume": "9",
+      "page": "e1516",
+      "article-number": "e1516"
+    },
+    "metadataSource": "https://api.crossref.org/works/10.7717%2Fpeerj-cs.1516",
+    "dateEvidence": {
+      "online": {
+        "date-parts": [
+          [
+            2023,
+            9,
+            1
+          ]
+        ]
+      },
+      "print": null,
+      "issued": {
+        "date-parts": [
+          [
+            2023,
+            9,
+            1
+          ]
+        ]
+      }
+    },
+    "verifiedOn": "2026-10-18"
+  },
+  {
+    "doi": "10.1214/20-ba1221",
+    "csl": {
+      "type": "article-journal",
+      "title": "Rank-Normalization, Folding, and Localization: An Improved Rˆ for Assessing Convergence of MCMC (with Discussion)",
+      "author": [
+        {
+          "given": "Aki",
+          "family": "Vehtari"
+        },
+        {
+          "given": "Andrew",
+          "family": "Gelman"
+        },
+        {
+          "given": "Daniel",
+          "family": "Simpson"
+        },
+        {
+          "given": "Bob",
+          "family": "Carpenter"
+        },
+        {
+          "given": "Paul-Christian",
+          "family": "Bürkner"
+        }
+      ],
+      "DOI": "10.1214/20-ba1221",
+      "URL": "https://doi.org/10.1214/20-ba1221",
+      "issued": {
+        "date-parts": [
+          [
+            2021,
+            6,
+            1
+          ]
+        ]
+      },
+      "container-title": "Bayesian Analysis",
+      "volume": "16",
+      "issue": "2",
+      "page": "667-718"
+    },
+    "metadataSource": "https://api.crossref.org/works/10.1214%2F20-BA1221",
+    "dateEvidence": {
+      "online": null,
+      "print": {
+        "date-parts": [
+          [
+            2021,
+            6,
+            1
+          ]
+        ]
+      },
+      "issued": {
+        "date-parts": [
+          [
+            2021,
+            6,
+            1
+          ]
+        ]
+      }
+    },
+    "verifiedOn": "2026-10-18"
+  },
+  {
+    "doi": "10.1214/23-ba1404",
+    "csl": {
+      "type": "article-journal",
+      "title": "Simulation-Based Calibration Checking for Bayesian Computation: The Choice of Test Quantities Shapes Sensitivity",
+      "author": [
+        {
+          "given": "Martin",
+          "family": "Modrák"
+        },
+        {
+          "given": "Angie H.",
+          "family": "Moon"
+        },
+        {
+          "given": "Shinyoung",
+          "family": "Kim"
+        },
+        {
+          "given": "Paul",
+          "family": "Bürkner"
+        },
+        {
+          "given": "Niko",
+          "family": "Huurre"
+        },
+        {
+          "given": "Kateřina",
+          "family": "Faltejsková"
+        },
+        {
+          "given": "Andrew",
+          "family": "Gelman"
+        },
+        {
+          "given": "Aki",
+          "family": "Vehtari"
+        }
+      ],
+      "DOI": "10.1214/23-ba1404",
+      "URL": "https://doi.org/10.1214/23-ba1404",
+      "issued": {
+        "date-parts": [
+          [
+            2025,
+            6,
+            1
+          ]
+        ]
+      },
+      "container-title": "Bayesian Analysis",
+      "volume": "20",
+      "issue": "2",
+      "page": "461-488"
+    },
+    "metadataSource": "https://api.crossref.org/works/10.1214%2F23-BA1404",
+    "dateEvidence": {
+      "online": null,
+      "print": {
+        "date-parts": [
+          [
+            2025,
+            6,
+            1
+          ]
+        ]
+      },
+      "issued": {
+        "date-parts": [
+          [
+            2025,
+            6,
+            1
+          ]
+        ]
+      }
+    },
+    "verifiedOn": "2026-10-18"
+  },
+  {
+    "doi": "10.1093/bioinformatics/btaf581",
+    "csl": {
+      "type": "article-journal",
+      "title": "Scalable inference and identifiability of kinetic parameters for transcriptional bursting from single cell data",
+      "author": [
+        {
+          "given": "Junhao",
+          "family": "Gu"
+        },
+        {
+          "given": "Nandor",
+          "family": "Laszik"
+        },
+        {
+          "given": "Christopher E",
+          "family": "Miles"
+        },
+        {
+          "given": "Jun",
+          "family": "Allard"
+        },
+        {
+          "given": "Timothy L",
+          "family": "Downing"
+        },
+        {
+          "given": "Elizabeth L",
+          "family": "Read"
+        }
+      ],
+      "DOI": "10.1093/bioinformatics/btaf581",
+      "URL": "https://doi.org/10.1093/bioinformatics/btaf581",
+      "issued": {
+        "date-parts": [
+          [
+            2025,
+            11,
+            1
+          ]
+        ]
+      },
+      "container-title": "Bioinformatics",
+      "volume": "41",
+      "issue": "11",
+      "article-number": "btaf581"
+    },
+    "metadataSource": "https://api.crossref.org/works/10.1093%2Fbioinformatics%2Fbtaf581",
+    "dateEvidence": {
+      "online": {
+        "date-parts": [
+          [
+            2025,
+            10,
+            22
+          ]
+        ]
+      },
+      "print": {
+        "date-parts": [
+          [
+            2025,
+            11,
+            1
+          ]
+        ]
+      },
+      "issued": {
+        "date-parts": [
+          [
+            2025,
+            10,
+            22
+          ]
+        ]
+      }
+    },
+    "verifiedOn": "2026-10-18"
+  },
+  {
+    "doi": "10.1371/journal.pcbi.1006650",
+    "csl": {
+      "type": "article-journal",
+      "title": "BEAST 2.5: An advanced software platform for Bayesian evolutionary analysis",
+      "author": [
+        {
+          "family": "Bouckaert",
+          "given": "Remco"
+        },
+        {
+          "family": "Vaughan",
+          "given": "Timothy G"
+        },
+        {
+          "family": "Barido-Sottani",
+          "given": "Joëlle"
+        },
+        {
+          "family": "Duchêne",
+          "given": "Sebastián"
+        },
+        {
+          "family": "Fourment",
+          "given": "Mathieu"
+        },
+        {
+          "family": "Gavryushkina",
+          "given": "Alexandra"
+        },
+        {
+          "family": "Heled",
+          "given": "Joseph"
+        },
+        {
+          "family": "Jones",
+          "given": "Graham"
+        },
+        {
+          "family": "Kühnert",
+          "given": "Denise"
+        },
+        {
+          "family": "De Maio",
+          "given": "Nicola"
+        },
+        {
+          "family": "Matschiner",
+          "given": "Michael"
+        },
+        {
+          "family": "Mendes",
+          "given": "Fábio K"
+        },
+        {
+          "family": "Müller",
+          "given": "Nicola F"
+        },
+        {
+          "family": "Ogilvie",
+          "given": "Huw A"
+        },
+        {
+          "family": "du Plessis",
+          "given": "Louis"
+        },
+        {
+          "family": "Popinga",
+          "given": "Alex"
+        },
+        {
+          "family": "Rambaut",
+          "given": "Andrew"
+        },
+        {
+          "family": "Rasmussen",
+          "given": "David"
+        },
+        {
+          "family": "Siveroni",
+          "given": "Igor"
+        },
+        {
+          "family": "Suchard",
+          "given": "Marc A"
+        },
+        {
+          "family": "Wu",
+          "given": "Chieh-Hsi"
+        },
+        {
+          "family": "Xie",
+          "given": "Dong"
+        },
+        {
+          "family": "Zhang",
+          "given": "Chi"
+        },
+        {
+          "family": "Stadler",
+          "given": "Tanja"
+        },
+        {
+          "family": "Drummond",
+          "given": "Alexei J"
+        }
+      ],
+      "DOI": "10.1371/journal.pcbi.1006650",
+      "URL": "https://doi.org/10.1371/journal.pcbi.1006650",
+      "issued": {
+        "date-parts": [
+          [
+            2019
+          ]
+        ]
+      },
+      "container-title": "PLoS computational biology",
+      "volume": "15",
+      "issue": "4",
+      "page": "e1006650"
+    },
+    "metadataSource": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1371/journal.pcbi.1006650&format=json&resultType=core",
+    "dateEvidence": {
+      "indexFirstPublication": "2019-04-08"
+    },
+    "verifiedOn": "2026-10-18"
+  },
+  {
+    "doi": "10.1093/bioinformatics/btz305",
+    "csl": {
+      "type": "article-journal",
+      "title": "RAxML-NG: a fast, scalable and user-friendly tool for maximum likelihood phylogenetic inference",
+      "author": [
+        {
+          "given": "Alexey M",
+          "family": "Kozlov"
+        },
+        {
+          "given": "Diego",
+          "family": "Darriba"
+        },
+        {
+          "given": "Tomáš",
+          "family": "Flouri"
+        },
+        {
+          "given": "Benoit",
+          "family": "Morel"
+        },
+        {
+          "given": "Alexandros",
+          "family": "Stamatakis"
+        }
+      ],
+      "DOI": "10.1093/bioinformatics/btz305",
+      "URL": "https://doi.org/10.1093/bioinformatics/btz305",
+      "issued": {
+        "date-parts": [
+          [
+            2019,
+            11,
+            1
+          ]
+        ]
+      },
+      "container-title": "Bioinformatics",
+      "volume": "35",
+      "issue": "21",
+      "page": "4453-4455"
+    },
+    "metadataSource": "https://api.crossref.org/works/10.1093%2Fbioinformatics%2Fbtz305",
+    "dateEvidence": {
+      "online": {
+        "date-parts": [
+          [
+            2019,
+            5,
+            9
+          ]
+        ]
+      },
+      "print": {
+        "date-parts": [
+          [
+            2019,
+            11,
+            1
+          ]
+        ]
+      },
+      "issued": {
+        "date-parts": [
+          [
+            2019,
+            5,
+            9
+          ]
+        ]
+      },
+      "indexFirstPublication": "2019-11-01"
+    },
+    "verifiedOn": "2026-10-18",
+    "crossCheckSource": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1093%2Fbioinformatics%2Fbtz305&format=json&resultType=core",
+    "PMID": "31070718"
+  },
+  {
+    "doi": "10.1093/molbev/msw046",
+    "csl": {
+      "type": "article-journal",
+      "title": "ETE 3: Reconstruction, Analysis, and Visualization of Phylogenomic Data",
+      "author": [
+        {
+          "given": "Jaime",
+          "family": "Huerta-Cepas"
+        },
+        {
+          "given": "François",
+          "family": "Serra"
+        },
+        {
+          "given": "Peer",
+          "family": "Bork"
+        }
+      ],
+      "DOI": "10.1093/molbev/msw046",
+      "URL": "https://doi.org/10.1093/molbev/msw046",
+      "issued": {
+        "date-parts": [
+          [
+            2016,
+            6
+          ]
+        ]
+      },
+      "container-title": "Molecular Biology and Evolution",
+      "volume": "33",
+      "issue": "6",
+      "page": "1635-1638"
+    },
+    "metadataSource": "https://api.crossref.org/works/10.1093%2Fmolbev%2Fmsw046",
+    "dateEvidence": {
+      "online": {
+        "date-parts": [
+          [
+            2016,
+            2,
+            26
+          ]
+        ]
+      },
+      "print": {
+        "date-parts": [
+          [
+            2016,
+            6
+          ]
+        ]
+      },
+      "issued": {
+        "date-parts": [
+          [
+            2016,
+            2,
+            26
+          ]
+        ]
+      },
+      "indexFirstPublication": "2016-02-26"
+    },
+    "verifiedOn": "2026-10-18",
+    "crossCheckSource": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1093%2Fmolbev%2Fmsw046&format=json&resultType=core",
+    "PMID": "26921390"
+  }
+]

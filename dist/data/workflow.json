@@ -1247,7 +1247,8 @@
         "v25_cluster_stability",
         "v25_temporal_holdout",
         "v25_power_detection",
-        "v25_power_prior_transfer"
+        "v25_power_prior_transfer",
+        "posterior_sampling_diagnostics"
       ],
       "toolIds": [
         "dropletutils",
@@ -1291,11 +1292,13 @@
         "lamian",
         "scprisma",
         "moscot",
-        "scpower"
+        "scpower",
+        "brms"
       ],
       "formulaIds": [
         "null_error_rate",
-        "poisson_count_split"
+        "poisson_count_split",
+        "bayes_noise_posterior"
       ],
       "sourceUrls": [
         "https://www.nature.com/articles/s41587-023-01772-1",
@@ -1363,7 +1366,8 @@
         "noise_genetic_partition",
         "noise_reaction_norm",
         "count_eqtl_offset_contract",
-        "count_eqtl_calibration"
+        "count_eqtl_calibration",
+        "noise_phylogenetic_signal"
       ],
       "toolIds": [
         "cellsnp",
@@ -1376,10 +1380,14 @@
         "saigeqtl",
         "gmmat",
         "jaxqtl",
-        "scpower"
+        "scpower",
+        "brms",
+        "phytools2"
       ],
       "formulaIds": [
-        "lmm_heritability"
+        "lmm_heritability",
+        "bayes_noise_posterior",
+        "noise_trait_sampling_covariance"
       ],
       "sourceUrls": [
         "https://doi.org/10.1371/journal.pgen.1008045",
@@ -6266,13 +6274,18 @@
       "purpose": "估计遗传背景对稳定性的贡献",
       "tools": [
         "gemma",
-        "limix"
+        "limix",
+        "brms"
       ],
       "cautions": [
-        "依基因型覆盖、亲缘与环境设计，不是每个细胞的遗传力。"
+        "依基因型覆盖、亲缘与环境设计，不是每个细胞的遗传力。",
+        "se()使用抽样标准误。第一阶段后验标准差需经校准或联合建模；直接把后验当似然会重复计入先验。相关估计误差需显式抽样协方差或联合模型。",
+        "菌株是遗传比较单位，培养用于重复性，细胞用于估计菌株内分布。树方差占比和Pagel λ描述系统发育结构；SNP遗传力另需基因组K及明确方差分母。"
       ],
       "sourceUrls": [
-        "https://doi.org/10.1371/journal.pgen.1008045"
+        "https://doi.org/10.1371/journal.pgen.1008045",
+        "https://doi.org/10.18637/jss.v080.i01",
+        "https://doi.org/10.1080/10635150701313830"
       ]
     },
     {
@@ -6310,14 +6323,17 @@
       "tools": [
         "gemma",
         "limix",
-        "qtltools"
+        "qtltools",
+        "brms"
       ],
       "cautions": [
         "关联效应量与其标准误、噪音性状本身的估计误差分别保存，再传播至QTL与遗传力模型。",
         "记录计数对象、排除规则、分层单位与过滤依据。",
         "菌株×培养×状态噪音性状及其误差、基因型亲缘、真实培养结构和协变量；均值、状态组成与噪音是不同性状。",
         "分别报告细胞间噪音、菌株均值差异与噪音性状遗传方差，并列出菌株数、独立培养数和各培养细胞数。",
-        "这些字段定义分析与导出内容；模型拟合和数据诊断由所选工具完成。"
+        "这些字段定义分析与导出内容；模型拟合和数据诊断由所选工具完成。",
+        "se()使用抽样标准误。第一阶段后验标准差需经校准或联合建模；直接把后验当似然会重复计入先验。相关估计误差需显式抽样协方差或联合模型。",
+        "菌株是遗传比较单位，培养用于重复性，细胞用于估计菌株内分布。树方差占比和Pagel λ描述系统发育结构；SNP遗传力另需基因组K及明确方差分母。"
       ],
       "sourceUrls": [
         "https://doi.org/10.1371/journal.pgen.1008045",
@@ -12040,7 +12056,8 @@
       "level": "gene / population",
       "tools": [
         "limix",
-        "gemma"
+        "gemma",
+        "brms"
       ],
       "inputIds": [
         "qtl_traits",
@@ -12053,7 +12070,9 @@
         "分别估计标记捕获的加性遗传方差、稳定菌株差异和培养方差；模型须可辨识，并报告噪音性状误差。",
         "菌株×培养×状态噪音性状及其误差、基因型亲缘、真实培养结构和协变量；均值、状态组成与噪音是不同性状。",
         "分别报告细胞间噪音、菌株均值差异与噪音性状遗传方差，并列出菌株数、独立培养数和各培养细胞数。",
-        "这些字段定义分析与导出内容；模型拟合和数据诊断由所选工具完成。"
+        "这些字段定义分析与导出内容；模型拟合和数据诊断由所选工具完成。",
+        "se()使用抽样标准误。第一阶段后验标准差需经校准或联合建模；直接把后验当似然会重复计入先验。相关估计误差需显式抽样协方差或联合模型。",
+        "菌株是遗传比较单位，培养用于重复性，细胞用于估计菌株内分布。树方差占比和Pagel λ描述系统发育结构；SNP遗传力另需基因组K及明确方差分母。"
       ],
       "sourceUrls": [
         "https://limix.github.io/about/",
@@ -16113,6 +16132,80 @@
           "https://doi.org/10.7554/elife.15743"
         ]
       }
+    },
+    {
+      "id": "posterior_sampling_diagnostics",
+      "stepId": "validation",
+      "name": "后验抽样与预测校准",
+      "nameEn": "Posterior sampling and predictive calibration",
+      "definition": "保存独立链、rank-normalized R-hat、bulk/tail ESS、MCSE与发散；并列先验敏感性、后验预测和留出菌株/支系校准。",
+      "unit": "诊断量与预测误差",
+      "denominator": "逐参数、逐链及预定义留出单位",
+      "level": "模型/链/菌株",
+      "purpose": "区分采样精度、模型拟合和外推校准",
+      "tools": [
+        "brms",
+        "basics",
+        "baredsc"
+      ],
+      "cautions": [
+        "R-hat与链ESS用于真实MCMC链；变分推断样本需另行校准。收敛诊断通过后仍需检验模型与估计目标。",
+        "该配方组合官方API进行项目适配。检查高斯性状近似、先验敏感性、设计秩及预测校准；MCMC用于给定模型的后验抽样，未来进化预测另需机制与时间信息。"
+      ],
+      "fields": [
+        "chain_id",
+        "rank_normalized_rhat",
+        "ess_bulk",
+        "ess_tail",
+        "mcse",
+        "divergent_transitions",
+        "prior_sensitivity",
+        "posterior_predictive_discrepancy",
+        "held_out_strain_clade_scheme",
+        "predictive_interval_coverage"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1214/20-BA1221",
+        "https://mc-stan.org/posterior/reference/draws_summary.html",
+        "https://doi.org/10.18637/jss.v080.i01"
+      ],
+      "addedIn": "v29"
+    },
+    {
+      "id": "noise_phylogenetic_signal",
+      "stepId": "genetics",
+      "name": "噪音性状的系统发育信号",
+      "nameEn": "Phylogenetic signal in noise traits",
+      "definition": "Pagel λ、对数似然、相对λ=0的检验及树/误差敏感性",
+      "unit": "λ、对数似然及检验结果",
+      "denominator": "已定义树及每菌株性状尺度",
+      "level": "基因/菌株树",
+      "purpose": "检验相近菌株是否具有相似噪音性状",
+      "tools": [
+        "phytools2"
+      ],
+      "cautions": [
+        "λ由似然优化估计，检验相对λ=0的系统发育信号；可行上限由树决定，可能超过1。λ不是遗传力、选择强度或适应性证据。",
+        "菌株树需来自明确的历史重建依据，记录重组、杂交与拓扑敏感性。RNA状态轨迹和RNA velocity描述细胞状态过程，不能替代菌株历史树。",
+        "菌株是遗传比较单位，培养用于重复性，细胞用于估计菌株内分布。树方差占比和Pagel λ描述系统发育结构；SNP遗传力另需基因组K及明确方差分母。"
+      ],
+      "fields": [
+        "trait_scale",
+        "sampling_se_source",
+        "tree_source",
+        "tip_mapping",
+        "lambda",
+        "log_likelihood",
+        "lambda_zero_test",
+        "feasible_lambda_max",
+        "tree_error_sensitivity"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.7717/peerj.16505",
+        "https://doi.org/10.1038/44766",
+        "https://doi.org/10.1080/10635150701313830"
+      ],
+      "addedIn": "v29"
     }
   ],
   "tools": [
@@ -30405,6 +30498,529 @@
       ],
       "reviewedIn": "v25d",
       "reviewedOn": "2026-10-18"
+    },
+    {
+      "id": "brms",
+      "name": "brms",
+      "task": "菌株噪音的贝叶斯协方差模型",
+      "taskEn": "Bayesian covariance models of strain noise",
+      "steps": [
+        "genetics",
+        "validation"
+      ],
+      "url": "https://paulbuerkner.com/brms/",
+      "paperUrl": "https://doi.org/10.18637/jss.v080.i01",
+      "input": [
+        "菌株层面的连续噪音性状、明确尺度及抽样标准误；培养、状态、均值和批次协变量。",
+        "按问题选择基因组亲缘K或树协方差C，核对尺度、菌株顺序和正定性。两者高度相关时，分别拟合并比较敏感性；联合模型需额外可辨识性依据。"
+      ],
+      "output": [
+        "性状效应、协方差组分及后验区间",
+        "保存独立链、rank-normalized R-hat、bulk/tail ESS、MCSE与发散；并列先验敏感性、后验预测和留出菌株/支系校准。"
+      ],
+      "entrypoint": "fit <- brms::brm(estimate | se(sampling_se, sigma=TRUE) ~ mean_covariate + batch + (1 | gr(strain_id, cov=A)), data=traits, data2=list(A=A_checked), family=gaussian(), prior=reviewed_priors, chains=n_chains, iter=n_iter, warmup=n_warmup, seed=recorded_seed)\nposterior::summarise_draws(posterior::as_draws_array(fit))\nbrms::nuts_params(fit)\nbrms::pp_check(fit)",
+      "parameters": [
+        {
+          "name": "se(sampling_se, sigma=TRUE)",
+          "meaning": "抽样误差与额外残差",
+          "selection": "se()使用抽样标准误。第一阶段后验标准差需经校准或联合建模；直接把后验当似然会重复计入先验。相关估计误差需显式抽样协方差或联合模型。",
+          "required": true
+        },
+        {
+          "name": "A / gr(strain_id, cov=A)",
+          "meaning": "选择K或C协方差",
+          "selection": "按问题选择基因组亲缘K或树协方差C，核对尺度、菌株顺序和正定性。两者高度相关时，分别拟合并比较敏感性；联合模型需额外可辨识性依据。",
+          "required": true
+        },
+        {
+          "name": "prior / chains / iter / warmup / seed",
+          "meaning": "先验与后验抽样方案",
+          "selection": "保存独立链、rank-normalized R-hat、bulk/tail ESS、MCSE与发散；并列先验敏感性、后验预测和留出菌株/支系校准。",
+          "required": true
+        },
+        {
+          "name": "formula / likelihood",
+          "meaning": "模型、尺度与可估计性",
+          "selection": "该配方组合官方API进行项目适配。检查高斯性状近似、先验敏感性、设计秩及预测校准；MCMC用于给定模型的后验抽样，未来进化预测另需机制与时间信息。",
+          "required": true
+        },
+        {
+          "name": "version / backend",
+          "meaning": "官方API与版本依据",
+          "selection": "以brms 2.23.2官方接口为依据；执行时记录安装版本、Stan后端和posterior版本。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "se()使用抽样标准误。第一阶段后验标准差需经校准或联合建模；直接把后验当似然会重复计入先验。相关估计误差需显式抽样协方差或联合模型。",
+        "按问题选择基因组亲缘K或树协方差C，核对尺度、菌株顺序和正定性。两者高度相关时，分别拟合并比较敏感性；联合模型需额外可辨识性依据。",
+        "菌株是遗传比较单位，培养用于重复性，细胞用于估计菌株内分布。树方差占比和Pagel λ描述系统发育结构；SNP遗传力另需基因组K及明确方差分母。",
+        "该配方组合官方API进行项目适配。检查高斯性状近似、先验敏感性、设计秩及预测校准；MCMC用于给定模型的后验抽样，未来进化预测另需机制与时间信息。",
+        "规划器检查输入与来源字段是否完整；矩阵、树和采样诊断由实际数据分析核验。"
+      ],
+      "yeastStatus": "条件性",
+      "role": "对照",
+      "categoryIds": [
+        "genetics",
+        "evolution",
+        "validation"
+      ],
+      "methodTags": [
+        "Bayesian",
+        "mixed-model",
+        "uncertainty",
+        "variance-components"
+      ],
+      "applicability": {
+        "level": "conditional",
+        "reason": "该配方组合官方API进行项目适配。检查高斯性状近似、先验敏感性、设计秩及预测校准；MCMC用于给定模型的后验抽样，未来进化预测另需机制与时间信息。",
+        "reasonEn": "This recipe combines official APIs for project adaptation. Check the Gaussian trait approximation, prior sensitivity, design rank and predictive calibration. MCMC samples a specified model posterior; forecasting evolution requires additional mechanisms and temporal information.",
+        "requiredData": [
+          "qtl_traits",
+          "sample_metadata"
+        ],
+        "optionalData": [
+          "culture_replicates",
+          "truth_or_simulation"
+        ]
+      },
+      "sourceUrls": [
+        "https://doi.org/10.18637/jss.v080.i01",
+        "https://paulbuerkner.com/brms/reference/brmsformula.html",
+        "https://paulbuerkner.com/brms/articles/brms_phylogenetics.html",
+        "https://doi.org/10.1080/10635150701313830",
+        "https://doi.org/10.1214/20-BA1221",
+        "https://mc-stan.org/posterior/reference/draws_summary.html"
+      ],
+      "sourceLinks": [
+        {
+          "url": "https://doi.org/10.18637/jss.v080.i01",
+          "kind": "research_article",
+          "label": "原始方法论文"
+        },
+        {
+          "url": "https://paulbuerkner.com/brms/reference/brmsformula.html",
+          "kind": "documentation",
+          "label": "官方API与版本依据"
+        },
+        {
+          "url": "https://paulbuerkner.com/brms/articles/brms_phylogenetics.html",
+          "kind": "documentation",
+          "label": "官方API与版本依据"
+        },
+        {
+          "url": "https://doi.org/10.1080/10635150701313830",
+          "kind": "research_article",
+          "label": "原始方法论文"
+        },
+        {
+          "url": "https://doi.org/10.1214/20-BA1221",
+          "kind": "research_article",
+          "label": "原始方法论文"
+        },
+        {
+          "url": "https://mc-stan.org/posterior/reference/draws_summary.html",
+          "kind": "documentation",
+          "label": "官方API与版本依据"
+        }
+      ],
+      "sourceKind": "documentation",
+      "paperStatus": "verified",
+      "documentationStatus": "documentation-linked",
+      "executionStatus": "recipe_only",
+      "addedIn": "v29",
+      "versionEvidence": {
+        "version": "2.23.2 official documentation",
+        "checkedOn": "2026-10-18",
+        "source": "https://paulbuerkner.com/brms/reference/brmsformula.html",
+        "apiSignatureVerified": true,
+        "biologicalExecution": false,
+        "runtimeInstalled": false
+      },
+      "inputContract": {
+        "version": 1,
+        "branchRequired": true,
+        "branches": [
+          {
+            "id": "kinship",
+            "title": {
+              "zh": "基因组亲缘K模型",
+              "en": "Genomic kinship K model",
+              "fr": "Modèle d’apparentement génomique K",
+              "es": "Modelo de parentesco genómico K",
+              "eu": "K ahaidetasun genomikoaren eredua"
+            },
+            "requiredDataMode": "replace",
+            "requiredData": [
+              "qtl_traits",
+              "sample_metadata",
+              "kinship"
+            ],
+            "parameters": {
+              "covariance_source": "genomic_K"
+            },
+            "evidenceRequirements": [
+              {
+                "inputId": "qtl_traits",
+                "field": "sampling_se_source",
+                "label": {
+                  "zh": "性状尺度、估计目标与抽样SE来源",
+                  "en": "Trait scale, estimand and sampling-SE source",
+                  "fr": "Échelle, cible estimée et source des erreurs types",
+                  "es": "Escala, objetivo estimado y fuente del error estándar",
+                  "eu": "Ezaugarri-eskala, estimazio-helburua eta SEaren jatorria"
+                }
+              },
+              {
+                "inputId": "qtl_traits",
+                "field": "first_stage_likelihood_prior_handling",
+                "label": {
+                  "zh": "第一阶段似然、先验与两阶段误差校准记录",
+                  "en": "First-stage likelihood, prior and two-stage error-calibration record",
+                  "fr": "Vraisemblance, a priori du premier stade et calibration en deux étapes",
+                  "es": "Verosimilitud, prior inicial y calibración del error en dos etapas",
+                  "eu": "Lehen etapako egiantzekotasun, aurretiko eta bi etapako errore-kalibrazioaren erregistroa"
+                }
+              },
+              {
+                "inputId": "sample_metadata",
+                "field": "strain_culture_design_source",
+                "label": {
+                  "zh": "菌株、培养、状态与批次设计列及独立单位",
+                  "en": "Strain, culture, state and batch design columns and independent units",
+                  "fr": "Colonnes souche, culture, état, lot et unités indépendantes",
+                  "es": "Columnas de cepa, cultivo, estado, lote y unidades independientes",
+                  "eu": "Andui, kultura, egoera, sorta diseinu-zutabeak eta unitate independenteak"
+                }
+              },
+              {
+                "inputId": "kinship",
+                "field": "genomic_K_provenance_alignment",
+                "label": {
+                  "zh": "基因组K来源、尺度、菌株顺序与正定性检查",
+                  "en": "Genomic K source, scale, strain order and positive-definiteness check",
+                  "fr": "Source de K génomique, échelle, ordre et définition positive",
+                  "es": "Fuente de K genómico, escala, orden y definición positiva",
+                  "eu": "K genomikoaren jatorria, eskala, ordena eta definitutasun positiboa"
+                }
+              }
+            ],
+            "enforcement": "declaration_completeness_only"
+          },
+          {
+            "id": "phylogeny",
+            "title": {
+              "zh": "菌株树协方差C模型",
+              "en": "Strain-tree covariance C model",
+              "fr": "Modèle de covariance C de l’arbre des souches",
+              "es": "Modelo de covarianza C del árbol de cepas",
+              "eu": "Andui-zuhaitzaren C kobariantza eredua"
+            },
+            "requiredDataMode": "replace",
+            "requiredData": [
+              "qtl_traits",
+              "sample_metadata",
+              "phylogeny"
+            ],
+            "parameters": {
+              "covariance_source": "phylogenetic_C"
+            },
+            "evidenceRequirements": [
+              {
+                "inputId": "qtl_traits",
+                "field": "sampling_se_source",
+                "label": {
+                  "zh": "性状尺度、估计目标与抽样SE来源",
+                  "en": "Trait scale, estimand and sampling-SE source",
+                  "fr": "Échelle, cible estimée et source des erreurs types",
+                  "es": "Escala, objetivo estimado y fuente del error estándar",
+                  "eu": "Ezaugarri-eskala, estimazio-helburua eta SEaren jatorria"
+                }
+              },
+              {
+                "inputId": "qtl_traits",
+                "field": "first_stage_likelihood_prior_handling",
+                "label": {
+                  "zh": "第一阶段似然、先验与两阶段误差校准记录",
+                  "en": "First-stage likelihood, prior and two-stage error-calibration record",
+                  "fr": "Vraisemblance, a priori du premier stade et calibration en deux étapes",
+                  "es": "Verosimilitud, prior inicial y calibración del error en dos etapas",
+                  "eu": "Lehen etapako egiantzekotasun, aurretiko eta bi etapako errore-kalibrazioaren erregistroa"
+                }
+              },
+              {
+                "inputId": "sample_metadata",
+                "field": "strain_culture_design_source",
+                "label": {
+                  "zh": "菌株、培养、状态与批次设计列及独立单位",
+                  "en": "Strain, culture, state and batch design columns and independent units",
+                  "fr": "Colonnes souche, culture, état, lot et unités indépendantes",
+                  "es": "Columnas de cepa, cultivo, estado, lote y unidades independientes",
+                  "eu": "Andui, kultura, egoera, sorta diseinu-zutabeak eta unitate independenteak"
+                }
+              },
+              {
+                "inputId": "phylogeny",
+                "field": "tree_source_root_branch_units",
+                "label": {
+                  "zh": "树来源、重建方法、根与分支长度单位",
+                  "en": "Tree source, reconstruction method, root and branch-length units",
+                  "fr": "Source de l’arbre, reconstruction, racine et unités des branches",
+                  "es": "Fuente del árbol, reconstrucción, raíz y unidades de las ramas",
+                  "eu": "Zuhaitzaren jatorria, berreraikuntza, erroa eta adar-unitateak"
+                }
+              },
+              {
+                "inputId": "phylogeny",
+                "field": "tip_trait_mapping",
+                "label": {
+                  "zh": "树末端到菌株性状的匹配与聚合规则",
+                  "en": "Tree-tip to strain-trait matching and aggregation rules",
+                  "fr": "Correspondance extrémités–traits et règles d’agrégation",
+                  "es": "Correspondencia terminales–rasgos y reglas de agregación",
+                  "eu": "Zuhaitz-mutur eta andui-ezaugarrien parekatzea eta agregazioa"
+                }
+              },
+              {
+                "inputId": "phylogeny",
+                "field": "recombination_hybrid_topology_policy",
+                "label": {
+                  "zh": "重组、杂交与备选拓扑的敏感性方案",
+                  "en": "Sensitivity plan for recombination, hybridization and alternative topologies",
+                  "fr": "Sensibilité à la recombinaison, hybridation et topologies alternatives",
+                  "es": "Sensibilidad a recombinación, hibridación y topologías alternativas",
+                  "eu": "Birkonbinazio, hibridazio eta topologia alternatiboen sentikortasun-plana"
+                }
+              },
+              {
+                "inputId": "phylogeny",
+                "field": "tree_covariance_construction",
+                "label": {
+                  "zh": "树协方差C的构建、尺度与正定性检查",
+                  "en": "Tree-covariance C construction, scale and positive-definiteness check",
+                  "fr": "Construction, échelle et définition positive de C",
+                  "es": "Construcción, escala y definición positiva de C",
+                  "eu": "C zuhaitz-kobariantza eraikitzea, eskala eta definitutasun positiboa"
+                }
+              }
+            ],
+            "enforcement": "declaration_completeness_only"
+          }
+        ]
+      }
+    },
+    {
+      "id": "phytools2",
+      "name": "phytools 2",
+      "task": "含性状抽样误差的系统发育信号",
+      "taskEn": "Phylogenetic signal with trait sampling error",
+      "steps": [
+        "genetics"
+      ],
+      "url": "https://www.phytools.org/",
+      "paperUrl": "https://doi.org/10.7717/peerj.16505",
+      "input": [
+        "已有菌株树及分支长度、根与来源；每个末端对应一个可比较的噪音性状和抽样标准误。",
+        "菌株层面的连续噪音性状、明确尺度及抽样标准误；培养、状态、均值和批次协变量。"
+      ],
+      "output": [
+        "Pagel λ、对数似然、相对λ=0的检验及树/误差敏感性"
+      ],
+      "entrypoint": "stopifnot(setequal(tree$tip.label, names(noise_trait)), setequal(names(noise_trait), names(sampling_se)))\nresult <- phytools::phylosig(tree, noise_trait[tree$tip.label], method=\"lambda\", test=TRUE, se=sampling_se[tree$tip.label])\nprint(result)",
+      "parameters": [
+        {
+          "name": "method=\"lambda\" / test=TRUE",
+          "meaning": "似然信号检验",
+          "selection": "λ由似然优化估计，检验相对λ=0的系统发育信号；可行上限由树决定，可能超过1。λ不是遗传力、选择强度或适应性证据。",
+          "required": true
+        },
+        {
+          "name": "se / x",
+          "meaning": "性状尺度、估计目标与抽样SE来源",
+          "selection": "phytools::phylosig的se参数提供与x同尺度、同菌株名称的性状抽样标准误。第一阶段后验标准差需先校准；相关性状估计误差需使用可表示抽样协方差的模型。",
+          "required": true
+        },
+        {
+          "name": "tree",
+          "meaning": "树来源、重建方法、根与分支长度单位",
+          "selection": "菌株树需来自明确的历史重建依据，记录重组、杂交与拓扑敏感性。RNA状态轨迹和RNA velocity描述细胞状态过程，不能替代菌株历史树。",
+          "required": true
+        },
+        {
+          "name": "version / commit",
+          "meaning": "官方API与版本依据",
+          "selection": "核验phylosig.Rd提交5c185533dbb3c3076200c1e0aa45de36701e1116；执行时记录安装版本与数值敏感性。",
+          "required": true
+        }
+      ],
+      "limitations": [
+        "λ由似然优化估计，检验相对λ=0的系统发育信号；可行上限由树决定，可能超过1。λ不是遗传力、选择强度或适应性证据。",
+        "菌株树需来自明确的历史重建依据，记录重组、杂交与拓扑敏感性。RNA状态轨迹和RNA velocity描述细胞状态过程，不能替代菌株历史树。",
+        "phytools::phylosig的se参数提供与x同尺度、同菌株名称的性状抽样标准误。第一阶段后验标准差需先校准；相关性状估计误差需使用可表示抽样协方差的模型。",
+        "规划器检查输入与来源字段是否完整；矩阵、树和采样诊断由实际数据分析核验。"
+      ],
+      "yeastStatus": "条件性",
+      "role": "对照",
+      "categoryIds": [
+        "evolution",
+        "genetics"
+      ],
+      "methodTags": [
+        "external-data",
+        "uncertainty",
+        "sensitivity"
+      ],
+      "applicability": {
+        "level": "conditional",
+        "reason": "菌株树需来自明确的历史重建依据，记录重组、杂交与拓扑敏感性。RNA状态轨迹和RNA velocity描述细胞状态过程，不能替代菌株历史树。",
+        "reasonEn": "A strain tree needs an explicit historical reconstruction basis, with recombination, hybridization and topology sensitivity recorded. RNA trajectories and RNA velocity describe cell-state processes rather than strain ancestry.",
+        "requiredData": [
+          "qtl_traits",
+          "sample_metadata",
+          "phylogeny"
+        ],
+        "optionalData": [
+          "culture_replicates",
+          "truth_or_simulation"
+        ]
+      },
+      "sourceUrls": [
+        "https://doi.org/10.7717/peerj.16505",
+        "https://raw.githubusercontent.com/liamrevell/phytools/5c185533dbb3c3076200c1e0aa45de36701e1116/man/phylosig.Rd",
+        "https://doi.org/10.1038/44766",
+        "https://doi.org/10.1080/10635150701313830"
+      ],
+      "sourceLinks": [
+        {
+          "url": "https://doi.org/10.7717/peerj.16505",
+          "kind": "research_article",
+          "label": "原始方法论文"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/liamrevell/phytools/5c185533dbb3c3076200c1e0aa45de36701e1116/man/phylosig.Rd",
+          "kind": "documentation",
+          "label": "官方API与版本依据"
+        },
+        {
+          "url": "https://doi.org/10.1038/44766",
+          "kind": "research_article",
+          "label": "原始方法论文"
+        },
+        {
+          "url": "https://doi.org/10.1080/10635150701313830",
+          "kind": "research_article",
+          "label": "原始方法论文"
+        }
+      ],
+      "paperStatus": "verified",
+      "documentationStatus": "documentation-linked",
+      "sourceKind": "documentation",
+      "executionStatus": "recipe_only",
+      "addedIn": "v29",
+      "versionEvidence": {
+        "version": "phytools 2; official source snapshot",
+        "repositoryCommit": "5c185533dbb3c3076200c1e0aa45de36701e1116",
+        "source": "https://raw.githubusercontent.com/liamrevell/phytools/5c185533dbb3c3076200c1e0aa45de36701e1116/man/phylosig.Rd",
+        "checkedOn": "2026-10-18",
+        "apiSignatureVerified": true,
+        "biologicalExecution": false,
+        "runtimeInstalled": false
+      },
+      "inputContract": {
+        "version": 1,
+        "branchRequired": true,
+        "branches": [
+          {
+            "id": "lambda_with_sampling_error",
+            "title": {
+              "zh": "Pagel λ与抽样标准误",
+              "en": "Pagel λ with sampling standard errors",
+              "fr": "λ de Pagel avec erreurs types d’échantillonnage",
+              "es": "λ de Pagel con errores estándar de muestreo",
+              "eu": "Pagelen λ laginketa-errore estandarrekin"
+            },
+            "requiredDataMode": "replace",
+            "requiredData": [
+              "qtl_traits",
+              "sample_metadata",
+              "phylogeny"
+            ],
+            "parameters": {
+              "method": "lambda",
+              "test": "TRUE"
+            },
+            "evidenceRequirements": [
+              {
+                "inputId": "qtl_traits",
+                "field": "sampling_se_source",
+                "label": {
+                  "zh": "性状尺度、估计目标与抽样SE来源",
+                  "en": "Trait scale, estimand and sampling-SE source",
+                  "fr": "Échelle, cible estimée et source des erreurs types",
+                  "es": "Escala, objetivo estimado y fuente del error estándar",
+                  "eu": "Ezaugarri-eskala, estimazio-helburua eta SEaren jatorria"
+                }
+              },
+              {
+                "inputId": "qtl_traits",
+                "field": "first_stage_likelihood_prior_handling",
+                "label": {
+                  "zh": "第一阶段似然、先验与两阶段误差校准记录",
+                  "en": "First-stage likelihood, prior and two-stage error-calibration record",
+                  "fr": "Vraisemblance, a priori du premier stade et calibration en deux étapes",
+                  "es": "Verosimilitud, prior inicial y calibración del error en dos etapas",
+                  "eu": "Lehen etapako egiantzekotasun, aurretiko eta bi etapako errore-kalibrazioaren erregistroa"
+                }
+              },
+              {
+                "inputId": "sample_metadata",
+                "field": "strain_culture_design_source",
+                "label": {
+                  "zh": "菌株、培养、状态与批次设计列及独立单位",
+                  "en": "Strain, culture, state and batch design columns and independent units",
+                  "fr": "Colonnes souche, culture, état, lot et unités indépendantes",
+                  "es": "Columnas de cepa, cultivo, estado, lote y unidades independientes",
+                  "eu": "Andui, kultura, egoera, sorta diseinu-zutabeak eta unitate independenteak"
+                }
+              },
+              {
+                "inputId": "phylogeny",
+                "field": "tree_source_root_branch_units",
+                "label": {
+                  "zh": "树来源、重建方法、根与分支长度单位",
+                  "en": "Tree source, reconstruction method, root and branch-length units",
+                  "fr": "Source de l’arbre, reconstruction, racine et unités des branches",
+                  "es": "Fuente del árbol, reconstrucción, raíz y unidades de las ramas",
+                  "eu": "Zuhaitzaren jatorria, berreraikuntza, erroa eta adar-unitateak"
+                }
+              },
+              {
+                "inputId": "phylogeny",
+                "field": "tip_trait_mapping",
+                "label": {
+                  "zh": "树末端到菌株性状的匹配与聚合规则",
+                  "en": "Tree-tip to strain-trait matching and aggregation rules",
+                  "fr": "Correspondance extrémités–traits et règles d’agrégation",
+                  "es": "Correspondencia terminales–rasgos y reglas de agregación",
+                  "eu": "Zuhaitz-mutur eta andui-ezaugarrien parekatzea eta agregazioa"
+                }
+              },
+              {
+                "inputId": "phylogeny",
+                "field": "recombination_hybrid_topology_policy",
+                "label": {
+                  "zh": "重组、杂交与备选拓扑的敏感性方案",
+                  "en": "Sensitivity plan for recombination, hybridization and alternative topologies",
+                  "fr": "Sensibilité à la recombinaison, hybridation et topologies alternatives",
+                  "es": "Sensibilidad a recombinación, hibridación y topologías alternativas",
+                  "eu": "Birkonbinazio, hibridazio eta topologia alternatiboen sentikortasun-plana"
+                }
+              }
+            ],
+            "enforcement": "declaration_completeness_only"
+          }
+        ]
+      }
     }
   ],
   "formulas": [
@@ -31071,6 +31687,72 @@
       "purpose": "与同菌株内表达噪音分别量化跨菌株差异。",
       "sourceUrl": "https://doi.org/10.1038/s41467-024-49242-9",
       "addedIn": "v22"
+    },
+    {
+      "id": "bayes_noise_posterior",
+      "name": "噪音模型的贝叶斯后验",
+      "nameEn": "Bayesian posterior for a noise model",
+      "expression": "p(theta | y, M) = p(y | theta, M) p(theta | M) / integral p(y | theta, M) p(theta | M) dtheta",
+      "variables": [
+        {
+          "symbol": "theta",
+          "meaning": "模型参数及可辨识潜变量"
+        },
+        {
+          "symbol": "M",
+          "meaning": "明确的观测模型、设计和先验"
+        }
+      ],
+      "assumptions": [
+        "该配方组合官方API进行项目适配。检查高斯性状近似、先验敏感性、设计秩及预测校准；MCMC用于给定模型的后验抽样，未来进化预测另需机制与时间信息。",
+        "se()使用抽样标准误。第一阶段后验标准差需经校准或联合建模；直接把后验当似然会重复计入先验。相关估计误差需显式抽样协方差或联合模型。"
+      ],
+      "purpose": "保存独立链、rank-normalized R-hat、bulk/tail ESS、MCSE与发散；并列先验敏感性、后验预测和留出菌株/支系校准。",
+      "sourceUrl": "https://doi.org/10.18637/jss.v080.i01",
+      "sourceUrls": [
+        "https://doi.org/10.18637/jss.v080.i01",
+        "https://doi.org/10.1214/20-BA1221"
+      ],
+      "derivation": "standard_bayes_identity",
+      "addedIn": "v29"
+    },
+    {
+      "id": "noise_trait_sampling_covariance",
+      "name": "噪音性状抽样误差与K或C",
+      "nameEn": "Noise-trait sampling error with K or C",
+      "expression": "y_hat = X beta + Z u + e + epsilon; u ~ N(0, tau_A^2 A); e ~ N(0, sigma^2 I); epsilon ~ N(0, S); A = K OR C; Var(y_hat) = tau_A^2 Z A Z^T + sigma^2 I + S",
+      "variables": [
+        {
+          "symbol": "y_hat",
+          "meaning": "菌株层面的连续噪音性状、明确尺度及抽样标准误；培养、状态、均值和批次协变量。"
+        },
+        {
+          "symbol": "Z",
+          "meaning": "观测到菌株的设计矩阵；每菌株仅一行观测且顺序一致时Z=I。"
+        },
+        {
+          "symbol": "S",
+          "meaning": "第一阶段抽样协方差；独立误差时为diag(sampling_se²)"
+        },
+        {
+          "symbol": "A",
+          "meaning": "按问题选择基因组亲缘K或树协方差C，核对尺度、菌株顺序和正定性。两者高度相关时，分别拟合并比较敏感性；联合模型需额外可辨识性依据。"
+        }
+      ],
+      "assumptions": [
+        "se()使用抽样标准误。第一阶段后验标准差需经校准或联合建模；直接把后验当似然会重复计入先验。相关估计误差需显式抽样协方差或联合模型。",
+        "按问题选择基因组亲缘K或树协方差C，核对尺度、菌株顺序和正定性。两者高度相关时，分别拟合并比较敏感性；联合模型需额外可辨识性依据。",
+        "菌株是遗传比较单位，培养用于重复性，细胞用于估计菌株内分布。树方差占比和Pagel λ描述系统发育结构；SNP遗传力另需基因组K及明确方差分母。"
+      ],
+      "purpose": "把有限细胞估计误差与菌株相关方差分开",
+      "sourceUrl": "https://doi.org/10.1080/10635150701313830",
+      "sourceUrls": [
+        "https://doi.org/10.1080/10635150701313830",
+        "https://paulbuerkner.com/brms/articles/brms_phylogenetics.html",
+        "https://paulbuerkner.com/brms/reference/brmsformula.html"
+      ],
+      "derivation": "project_combination_of_documented_measurement_error_and_covariance_models",
+      "addedIn": "v29"
     }
   ],
   "principles": [

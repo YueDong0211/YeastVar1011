@@ -8768,13 +8768,14 @@
       "goal": "已有群体谱系中，噪音性状与遗传背景的关联能否独立于批次和均值？",
       "inputs": [
         "qtl_traits",
-        "sample_metadata",
-        "phylogeny"
+        "sample_metadata"
       ],
       "optionalInputs": [
         "culture_replicates",
         "genotypes",
-        "kinship"
+        "kinship",
+        "phylogeny",
+        "truth_or_simulation"
       ],
       "stepIds": [
         "noise",
@@ -8782,15 +8783,17 @@
         "validation"
       ],
       "toolIds": [
-        "limix",
-        "glmmtmb"
+        "brms",
+        "phytools2"
       ],
       "metricIds": [
         "noise_heritability",
         "qtl_effect_uncertainty",
         "sample_confounded_design",
         "noise_reaction_norm",
-        "noise_genetic_partition"
+        "noise_genetic_partition",
+        "posterior_sampling_diagnostics",
+        "noise_phylogenetic_signal"
       ],
       "workflow": [
         {
@@ -8816,12 +8819,15 @@
         "分别报告细胞间噪音、菌株均值差异与噪音性状遗传方差，并列出菌株数、独立培养数和各培养细胞数。",
         "这些字段定义分析与导出内容；模型拟合和数据诊断由所选工具完成。",
         "用同一菌株在明确环境间的可比测量估计反应规范；单条件应激分数和拟时序描述条件内状态。",
-        "RNA快照的双峰或状态比例不能确定切换速率；群体关联不能单独证明历史选择，蛋白、bulk与成像证据另列。"
+        "RNA快照的双峰或状态比例不能确定切换速率；群体关联不能单独证明历史选择，蛋白、bulk与成像证据另列。",
+        "se()使用抽样标准误。第一阶段后验标准差需经校准或联合建模；直接把后验当似然会重复计入先验。相关估计误差需显式抽样协方差或联合模型。",
+        "按问题选择基因组亲缘K或树协方差C，核对尺度、菌株顺序和正定性。两者高度相关时，分别拟合并比较敏感性；联合模型需额外可辨识性依据。",
+        "菌株树需来自明确的历史重建依据，记录重组、杂交与拓扑敏感性。RNA状态轨迹和RNA velocity描述细胞状态过程，不能替代菌株历史树。"
       ],
       "outputs": [
-        "噪音性状遗传力估计",
-        "QTL效应与估计误差",
-        "菌株、培养与批次混杂程度"
+        "性状效应、协方差组分及后验区间",
+        "Pagel λ、对数似然、相对λ=0的检验及树/误差敏感性",
+        "保存独立链、rank-normalized R-hat、bulk/tail ESS、MCSE与发散；并列先验敏感性、后验预测和留出菌株/支系校准。"
       ],
       "sourceUrls": [
         "https://doi.org/10.1038/s41586-018-0030-5",
@@ -8838,7 +8844,10 @@
         "https://doi.org/10.1038/ncomms12959",
         "https://doi.org/10.1038/s41467-019-11116-w",
         "https://doi.org/10.1038/s42003-025-09414-9",
-        "https://doi.org/10.1371/journal.pbio.3000433"
+        "https://doi.org/10.1371/journal.pbio.3000433",
+        "https://doi.org/10.7717/peerj.16505",
+        "https://doi.org/10.1214/20-BA1221",
+        "https://doi.org/10.1038/44766"
       ],
       "tags": [
         "evolution",
@@ -8846,7 +8855,7 @@
       ],
       "evidenceStatus": "原始论文与官方方法资料",
       "addedIn": "v3",
-      "method": "将条件化噪音关联到亲缘、谱系和生态来源；比较谱系内分化、跨谱系重现与环境反应规范，再整合已有选择和适应度证据解释遗传缓冲与可塑性。",
+      "method": "菌株噪音的贝叶斯协方差模型；含性状抽样误差的系统发育信号",
       "parameterDecisions": [],
       "statisticalUnit": "遗传比较以菌株为单位；培养重复估计重现性，细胞估计菌株内分布。",
       "analysisPrinciples": [
@@ -8858,9 +8867,10 @@
         "明确重复环境/处理、同菌株可比状态、培养重复及均值/噪音估计；遗传解释需亲缘，启动子解释需外部注释。",
         "哪些独立证据能将观察到的噪音与状态比例连接到状态切换、遗传变化或适应度？",
         "记录RNA快照、培养重现、时间/谱系、基因型关联、干预重构和适应度测量证据；展示来源，不生成未经校准的适应性分数。",
-        "计数、状态和培养可支持分布/比例；切换速率需时间/谱系与生长死亡约束，选择/适应度需已有基因组历史、干预或匹配适应度资料。"
+        "计数、状态和培养可支持分布/比例；切换速率需时间/谱系与生长死亡约束，选择/适应度需已有基因组历史、干预或匹配适应度资料。",
+        "该配方组合官方API进行项目适配。检查高斯性状近似、先验敏感性、设计秩及预测校准；MCMC用于给定模型的后验抽样，未来进化预测另需机制与时间信息。"
       ],
-      "interpretationBoundary": "表达轨迹描述状态顺序；群体历史使用已有基因组亲缘或谱系。",
+      "interpretationBoundary": "菌株是遗传比较单位，培养用于重复性，细胞用于估计菌株内分布。树方差占比和Pagel λ描述系统发育结构；SNP遗传力另需基因组K及明确方差分母。",
       "reviewedIn": "v12",
       "isAppendix": true,
       "paperIds": [
@@ -8878,7 +8888,7 @@
         "v25c_3273eb9c55f4",
         "v25c_937bee9e0c39"
       ],
-      "updatedIn": "v12",
+      "updatedIn": "v29",
       "populationExtensions": [
         {
           "id": "V25CP04",
@@ -8929,7 +8939,7 @@
       "requiredInputContracts": [
         {
           "id": "qtl_traits",
-          "contract": "菌株×培养×状态噪音性状及其误差、基因型亲缘、真实培养结构和协变量；均值、状态组成与噪音是不同性状。",
+          "contract": "菌株层面的连续噪音性状、明确尺度及抽样标准误；培养、状态、均值和批次协变量。 se()使用抽样标准误。第一阶段后验标准差需经校准或联合建模；直接把后验当似然会重复计入先验。相关估计误差需显式抽样协方差或联合模型。",
           "enforcement": "documented_not_automated"
         },
         {
@@ -8937,6 +8947,175 @@
           "contract": "明确重复环境/处理、同菌株可比状态、培养重复及均值/噪音估计；遗传解释需亲缘，启动子解释需外部注释。",
           "appliesTo": "noise_environment_response",
           "enforcement": "documented_not_automated"
+        }
+      ],
+      "baseToolIds": [
+        "brms"
+      ],
+      "baseMetricIds": [
+        "qtl_effect_uncertainty",
+        "posterior_sampling_diagnostics"
+      ],
+      "basePaperIds": [
+        "v12_plasticity_2025",
+        "v12_duveau_2018",
+        "v25c_8438cde4ebbb",
+        "v25c_01e81b5cf8b0",
+        "v25c_e0ad2a723e06",
+        "v25c_d6dd705b7b49",
+        "v25c_642b4adb2f52",
+        "v12_chapal_2019",
+        "v25c_0d63116780d0",
+        "v25c_ad7237679298",
+        "v25c_01684f3d0721",
+        "v25c_3273eb9c55f4",
+        "v25c_937bee9e0c39"
+      ],
+      "baseSourceUrls": [
+        "https://doi.org/10.1038/s41586-018-0030-5",
+        "https://doi.org/10.1038/s41586-025-09637-0",
+        "https://doi.org/10.1038/s41559-024-02582-7",
+        "https://doi.org/10.7554/eLife.37272",
+        "https://doi.org/10.1080/10635150701313830",
+        "https://doi.org/10.18637/jss.v080.i01",
+        "https://doi.org/10.1038/s41467-025-66214-9",
+        "https://doi.org/10.1016/j.celrep.2025.116612",
+        "https://doi.org/10.1371/journal.pgen.1001185",
+        "https://doi.org/10.1371/journal.pbio.3000289",
+        "https://doi.org/10.7554/elife.05856",
+        "https://doi.org/10.1038/ncomms12959",
+        "https://doi.org/10.1038/s41467-019-11116-w",
+        "https://doi.org/10.1038/s42003-025-09414-9",
+        "https://doi.org/10.1371/journal.pbio.3000433",
+        "https://doi.org/10.1214/20-BA1221"
+      ],
+      "methodOptions": [
+        {
+          "id": "phylogenetic_signal",
+          "title": "Pagel λ与抽样标准误",
+          "titleEn": "Pagel λ with sampling standard errors",
+          "toolIds": [
+            "phytools2"
+          ],
+          "metricIds": [
+            "noise_phylogenetic_signal"
+          ],
+          "requiredData": [
+            "qtl_traits",
+            "sample_metadata",
+            "phylogeny"
+          ],
+          "optionalData": [
+            "culture_replicates",
+            "truth_or_simulation"
+          ],
+          "sourceUrls": [
+            "https://doi.org/10.7717/peerj.16505",
+            "https://doi.org/10.1038/44766",
+            "https://doi.org/10.1080/10635150701313830"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "λ由似然优化估计，检验相对λ=0的系统发育信号；可行上限由树决定，可能超过1。λ不是遗传力、选择强度或适应性证据。",
+          "methodBranchHint": {
+            "toolId": "phytools2",
+            "branchId": "lambda_with_sampling_error",
+            "selection": "explicit_tool_branch_required"
+          },
+          "addedIn": "v29",
+          "designReview": {
+            "title": {
+              "zh": "Pagel λ与抽样标准误",
+              "en": "Pagel λ with sampling standard errors",
+              "fr": "λ de Pagel avec erreurs types d’échantillonnage",
+              "es": "λ de Pagel con errores estándar de muestreo",
+              "eu": "Pagelen λ laginketa-errore estandarrekin"
+            },
+            "purpose": {
+              "zh": "λ由似然优化估计，检验相对λ=0的系统发育信号；可行上限由树决定，可能超过1。λ不是遗传力、选择强度或适应性证据。",
+              "en": "λ is estimated by likelihood optimization, testing phylogenetic signal relative to λ=0. Its feasible upper bound depends on the tree and may exceed 1. λ is not heritability, selection strength or evidence of adaptation.",
+              "fr": "λ est estimé par optimisation de la vraisemblance, avec test du signal par rapport à λ=0. Sa borne supérieure dépend de l’arbre et peut dépasser 1. λ ne mesure ni héritabilité, ni force de sélection, ni adaptation.",
+              "es": "λ se estima optimizando la verosimilitud y contrasta señal frente a λ=0. Su límite superior depende del árbol y puede superar 1. λ no es heredabilidad, intensidad de selección ni evidencia de adaptación.",
+              "eu": "λ egiantzekotasuna optimizatuz estimatzen da, λ=0-rekiko seinalea probatuz. Goiko muga zuhaitzaren araberakoa da eta 1 baino handiagoa izan daiteke. λ ez da heredagarritasuna, hautespen-indarra edo egokitzapen-ebidentzia."
+            },
+            "fields": [],
+            "sourceUrls": [
+              "https://doi.org/10.7717/peerj.16505",
+              "https://doi.org/10.1080/10635150701313830"
+            ],
+            "interpretationBoundary": {
+              "zh": "规划器检查输入与来源字段是否完整；矩阵、树和采样诊断由实际数据分析核验。",
+              "en": "The planner checks completeness of inputs and provenance fields; actual analyses validate matrices, trees and sampler diagnostics.",
+              "fr": "Le planificateur vérifie les champs d’entrée et de provenance ; l’analyse effective valide matrices, arbres et diagnostics d’échantillonnage.",
+              "es": "El planificador comprueba entradas y procedencia; el análisis real valida matrices, árboles y diagnósticos de muestreo.",
+              "eu": "Planifikatzaileak sarreren eta jatorri-eremuen osotasuna egiaztatzen du; benetako analisiak baliozkotzen ditu matrizeak, zuhaitzak eta laginketa-diagnostikoak."
+            }
+          }
+        },
+        {
+          "id": "bayesian_covariance",
+          "title": "菌株噪音的贝叶斯协方差模型",
+          "titleEn": "Bayesian covariance models of strain noise",
+          "toolIds": [
+            "brms"
+          ],
+          "metricIds": [
+            "qtl_effect_uncertainty",
+            "posterior_sampling_diagnostics"
+          ],
+          "requiredData": [
+            "qtl_traits",
+            "sample_metadata"
+          ],
+          "optionalData": [
+            "culture_replicates",
+            "truth_or_simulation"
+          ],
+          "sourceUrls": [
+            "https://doi.org/10.18637/jss.v080.i01",
+            "https://paulbuerkner.com/brms/reference/brmsformula.html",
+            "https://paulbuerkner.com/brms/articles/brms_phylogenetics.html",
+            "https://doi.org/10.1080/10635150701313830",
+            "https://doi.org/10.1214/20-BA1221"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "按问题选择基因组亲缘K或树协方差C，核对尺度、菌株顺序和正定性。两者高度相关时，分别拟合并比较敏感性；联合模型需额外可辨识性依据。",
+          "methodBranchHint": {
+            "toolId": "brms",
+            "branchIds": [
+              "kinship",
+              "phylogeny"
+            ],
+            "selection": "explicit_tool_branch_required"
+          },
+          "addedIn": "v29",
+          "designReview": {
+            "title": {
+              "zh": "菌株噪音的贝叶斯协方差模型",
+              "en": "Bayesian covariance models of strain noise",
+              "fr": "Modèles bayésiens de covariance du bruit entre souches",
+              "es": "Modelos bayesianos de covarianza del ruido entre cepas",
+              "eu": "Anduien zarataren kobariantza eredu bayestarrak"
+            },
+            "purpose": {
+              "zh": "按问题选择基因组亲缘K或树协方差C，核对尺度、菌株顺序和正定性。两者高度相关时，分别拟合并比较敏感性；联合模型需额外可辨识性依据。",
+              "en": "Choose genomic kinship K or tree covariance C for the question, checking scale, strain order and positive definiteness. When strongly correlated, fit separate models and compare sensitivity; a joint model needs additional identifiability evidence.",
+              "fr": "Choisir l’apparentement génomique K ou la covariance de l’arbre C ; vérifier échelle, ordre des souches et définition positive. Si elles sont fortement corrélées, comparer des modèles séparés ; leur combinaison exige une justification d’identifiabilité.",
+              "es": "Elegir parentesco genómico K o covarianza del árbol C; comprobar escala, orden de cepas y definición positiva. Si están muy correlacionadas, comparar modelos separados; combinarlas exige justificar su identificabilidad.",
+              "eu": "Aukeratu K ahaidetasun genomikoa edo C zuhaitz-kobariantza; egiaztatu eskala, anduien ordena eta definitutasun positiboa. Oso korrelatuta badaude, doitu eredu bereiziak; baterako ereduak identifikagarritasun-ebidentzia behar du."
+            },
+            "fields": [],
+            "sourceUrls": [
+              "https://doi.org/10.18637/jss.v080.i01",
+              "https://doi.org/10.1080/10635150701313830"
+            ],
+            "interpretationBoundary": {
+              "zh": "规划器检查输入与来源字段是否完整；矩阵、树和采样诊断由实际数据分析核验。",
+              "en": "The planner checks completeness of inputs and provenance fields; actual analyses validate matrices, trees and sampler diagnostics.",
+              "fr": "Le planificateur vérifie les champs d’entrée et de provenance ; l’analyse effective valide matrices, arbres et diagnostics d’échantillonnage.",
+              "es": "El planificador comprueba entradas y procedencia; el análisis real valida matrices, árboles y diagnósticos de muestreo.",
+              "eu": "Planifikatzaileak sarreren eta jatorri-eremuen osotasuna egiaztatzen du; benetako analisiak baliozkotzen ditu matrizeak, zuhaitzak eta laginketa-diagnostikoak."
+            }
+          }
         }
       ]
     },

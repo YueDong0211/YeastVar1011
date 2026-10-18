@@ -1085,7 +1085,9 @@
         "gmmat",
         "jaxqtl",
         "limma",
-        "scpower"
+        "scpower",
+        "brms",
+        "phytools2"
       ],
       "metricIds": [
         "identity_posterior",
@@ -1112,7 +1114,9 @@
         "v25_nonestimable",
         "v25_replication_map",
         "v25_power_detection",
-        "v25_power_prior_transfer"
+        "v25_power_prior_transfer",
+        "noise_phylogenetic_signal",
+        "posterior_sampling_diagnostics"
       ],
       "methodTags": [
         "external-data",
@@ -1425,7 +1429,9 @@
         "coloc",
         "twosamplemr",
         "cellregmap",
-        "glmmtmb"
+        "glmmtmb",
+        "brms",
+        "phytools2"
       ],
       "metricIds": [
         "noise_heritability",
@@ -1442,7 +1448,9 @@
         "noise_crossfit_sensitivity",
         "sample_confounded_design",
         "noise_reaction_norm",
-        "noise_genetic_partition"
+        "noise_genetic_partition",
+        "noise_phylogenetic_signal",
+        "posterior_sampling_diagnostics"
       ],
       "methodTags": [
         "external-data",
@@ -1451,14 +1459,15 @@
         "mixed-model"
       ],
       "requiredData": [
-        "count_matrix",
-        "sample_metadata",
-        "phylogeny"
+        "qtl_traits",
+        "sample_metadata"
       ],
       "optionalData": [
         "genotypes",
         "kinship",
-        "culture_replicates"
+        "culture_replicates",
+        "phylogeny",
+        "truth_or_simulation"
       ],
       "defaultSelected": false,
       "selectionMode": "research-question",

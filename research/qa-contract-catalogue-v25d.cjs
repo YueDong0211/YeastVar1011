@@ -35,14 +35,34 @@ const historicalIndex=JSON.parse(require('node:zlib').gunzipSync(Buffer.from('H4
 check('All original full route indices, option definitions and citation indices are preserved',()=>{
  assert.equal(crypto.createHash('sha256').update(serialize(historicalIndex)).digest('hex'),'8dd3a33871246da4d0c1a563d5decc1f7247cae4406a79d851ca3a6cb08e102c');
  const index=Object.fromEntries(routes.map(r=>{const baseline=historicalIndex[r.id];assert.ok(baseline,r.id+' unexpected route');return [r.id,Object.fromEntries(['toolIds','metricIds','paperIds','sourceUrls','methodOptions'].map(k=>[k,(r[k]||[]).filter(x=>k==='methodOptions'?baseline[k].some(o=>o.id===x.id):baseline[k].includes(x))]))];}));
- for(const r of routes){const baseline=historicalIndex[r.id],added=(r.methodOptions||[]).filter(o=>!baseline.methodOptions.some(b=>b.id===o.id));for(const o of added)assert.equal(o.addedIn,'v25f_design_review',r.id+':'+o.id);for(const k of ['toolIds','metricIds','paperIds','sourceUrls'])for(const id of (r[k]||[]).filter(x=>!baseline[k].includes(x)))assert.ok(added.some(o=>(o[k]||[]).includes(id)),r.id+' unowned added '+k+':'+id);}
+ for(const r of routes){const baseline=historicalIndex[r.id],added=(r.methodOptions||[]).filter(o=>!baseline.methodOptions.some(b=>b.id===o.id));for(const o of added){
+  const evolutionV29=r.id==='evolution_context'&&['bayesian_covariance','phylogenetic_signal'].includes(o.id);
+  assert.equal(o.addedIn,evolutionV29?'v29':'v25f_design_review',r.id+':'+o.id);
+ }for(const k of ['toolIds','metricIds','paperIds','sourceUrls'])for(const id of (r[k]||[]).filter(x=>!baseline[k].includes(x)))assert.ok(added.some(o=>(o[k]||[]).includes(id)),r.id+' unowned added '+k+':'+id);}
+
+ // v29 changes exactly one former appendix recipe. Audit its old index first,
+ // then reverse only the approved tool replacement for the original hash test.
+ // Its original tools remain available elsewhere in the complete catalogue.
+ const evolved=routes.find(r=>r.id==='evolution_context');
+ assert.equal(evolved.updatedIn,'v29');
+ assert.deepEqual(historicalIndex.evolution_context.toolIds,['limix','glmmtmb']);
+ for(const id of historicalIndex.evolution_context.toolIds)assert.ok(tools.has(id),id+' retained globally');
+ assert.deepEqual(evolved.toolIds,['brms','phytools2']);
+ assert.deepEqual(evolved.baseToolIds,['brms']);
+ assert.deepEqual(evolved.baseMetricIds,['qtl_effect_uncertainty','posterior_sampling_diagnostics']);
+ assert.deepEqual(evolved.inputs,['qtl_traits','sample_metadata']);
+ assert.deepEqual(evolved.methodOptions.map(o=>o.id).sort(),['bayesian_covariance','phylogenetic_signal']);
+ assert.deepEqual(index.evolution_context.toolIds,[],'Only the two approved historical recipe tools were replaced');
+ index.evolution_context.toolIds=[...historicalIndex.evolution_context.toolIds];
 
  // Version only the explicitly reviewed display strings; preserve the original full-index hash.
  const copyEdits=[{"routeId":"audit_raw","optionId":"v25_design_estimability","field":"interpretationBoundary","before":"满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。","after":"结合设计矩阵秩、编码方式与目标 contrast 审查混杂和可估计性；分别建模菌株关联与菌株内培养变异。"},{"routeId":"mean_noise","optionId":"v25_design_estimability","field":"interpretationBoundary","before":"满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。","after":"结合设计矩阵秩、编码方式与目标 contrast 审查混杂和可估计性；分别建模菌株关联与菌株内培养变异。"},{"routeId":"noise_qtl","optionId":"v25_design_estimability","field":"interpretationBoundary","before":"满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。","after":"结合设计矩阵秩、编码方式与目标 contrast 审查混杂和可估计性；分别建模菌株关联与菌株内培养变异。"},{"routeId":"genotype_state","optionId":"v25_design_estimability","field":"interpretationBoundary","before":"满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。","after":"结合设计矩阵秩、编码方式与目标 contrast 审查混杂和可估计性；分别建模菌株关联与菌株内培养变异。"},{"routeId":"noise_power","optionId":"v25_power_mean_eqtl","field":"interpretationBoundary","before":"这是均值DE/eQTL功效，不是噪音QTL功效。替换人类默认参数；原生eQTL模拟的二倍体HWE假设须适配酵母倍性与群体结构。遗传样本量按菌株而非细胞计。","after":"估计均值 DE/eQTL 功效；噪音 QTL 另设功效模型。以酵母试点替换人类默认参数，适配原生二倍体 HWE 模拟与酵母倍性、群体结构的差异，遗传样本量按菌株计。"},{"routeId":"velocity_feasibility","optionId":"v25_temporal_ot","field":"interpretationBoundary","before":"菌株编号、拟时序和系统发育次序不能替代实验时间。传输边不是谱系追踪或进化祖先；不用人类增殖或凋亡默认基因给酵母加权。","after":"使用真实采样时间建立传输模型，并以酵母证据设定增殖与死亡权重；传输边表示状态间的模型联系，谱系与祖先关系另需追踪或遗传证据。"},{"routeId":"trajectory_structure","optionId":"v25_temporal_ot","field":"interpretationBoundary","before":"菌株编号、拟时序和系统发育次序不能替代实验时间。传输边不是谱系追踪或进化祖先；不用人类增殖或凋亡默认基因给酵母加权。","after":"使用真实采样时间建立传输模型，并以酵母证据设定增殖与死亡权重；传输边表示状态间的模型联系，谱系与祖先关系另需追踪或遗传证据。"},{"routeId":"count_mean_qtl_comparator","optionId":"v25_power_mean_eqtl","field":"interpretationBoundary","before":"这是均值DE/eQTL功效，不是噪音QTL功效。替换人类默认参数；原生eQTL模拟的二倍体HWE假设须适配酵母倍性与群体结构。遗传样本量按菌株而非细胞计。","after":"估计均值 DE/eQTL 功效；噪音 QTL 另设功效模型。以酵母试点替换人类默认参数，适配原生二倍体 HWE 模拟与酵母倍性、群体结构的差异，遗传样本量按菌株计。"},{"routeId":"temporal_mechanistic_grn","optionId":"v25_temporal_ot","field":"interpretationBoundary","before":"菌株编号、拟时序和系统发育次序不能替代实验时间。传输边不是谱系追踪或进化祖先；不用人类增殖或凋亡默认基因给酵母加权。","after":"使用真实采样时间建立传输模型，并以酵母证据设定增殖与死亡权重；传输边表示状态间的模型联系，谱系与祖先关系另需追踪或遗传证据。"}];
  const historicalCopy=JSON.parse(JSON.stringify(index));
  for(const edit of copyEdits){assert.ok(['title','interpretationBoundary'].includes(edit.field));const option=historicalCopy[edit.routeId].methodOptions.find(o=>o.id===edit.optionId);assert.equal(option[edit.field],edit.after);option[edit.field]=edit.before;}
  assert.equal(crypto.createHash('sha256').update(serialize(historicalCopy)).digest('hex'),'8dd3a33871246da4d0c1a563d5decc1f7247cae4406a79d851ca3a6cb08e102c');
- assert.equal(routes.length,55);assert.equal(tools.size,165);assert.equal(metrics.size,310);assert.equal(inputs.size,39);
+ assert.equal(routes.length,55);assert.equal(tools.size,167);assert.equal(metrics.size,312);assert.equal(inputs.size,39);
+ assert.deepEqual(catalog.workflow.tools.filter(x=>x.addedIn==='v29').map(x=>x.id).sort(),['brms','phytools2']);
+ assert.deepEqual(catalog.workflow.metrics.filter(x=>x.addedIn==='v29').map(x=>x.id).sort(),['noise_phylogenetic_signal','posterior_sampling_diagnostics']);
 });
 check('Twenty audited base sets plus selected extensions cover the preserved full indices',()=>{
  const affected=routes.filter(r=>r.methodOptions?.length);const legacyAffected=routes.filter(r=>historicalIndex[r.id].methodOptions.length);assert.deepEqual(legacyAffected.map(r=>r.id).sort(),knownRoutes.sort());
@@ -50,7 +70,12 @@ check('Twenty audited base sets plus selected extensions cover the preserved ful
   for(const [all,base,keyset] of [['toolIds','baseToolIds',tools],['metricIds','baseMetricIds',metrics]]){
    assert.ok(r[base].length,`${r.id} empty ${base}`);assert.equal(new Set(r[base]).size,r[base].length);
    assert.ok(r[base].every(id=>keyset.has(id)&&r[all].includes(id)));
-   assert.deepEqual([...new Set([...r[base],...r.methodOptions.flatMap(o=>o[all]||[])])].sort(),[...r[all]].sort());
+   const selected=[...new Set([...r[base],...r.methodOptions.flatMap(o=>o[all]||[])])];
+   // These four historical appendix metrics remain browseable but are no longer
+   // implicit defaults: they have distinct genomic/culture/count dependencies.
+   const retainedContext=r.id==='evolution_context'&&all==='metricIds'?['noise_heritability','sample_confounded_design','noise_reaction_norm','noise_genetic_partition']:[];
+   for(const id of retainedContext){assert.ok(historicalIndex.evolution_context.metricIds.includes(id));assert.ok(!selected.includes(id));}
+   assert.deepEqual([...new Set([...selected,...retainedContext])].sort(),[...r[all]].sort());
   }
   for(const id of r.basePaperIds)assert.ok(papers.has(id)&&r.paperIds.includes(id));
   for(const url of r.baseSourceUrls)assert.ok(r.sourceUrls.includes(url));
@@ -59,7 +84,10 @@ check('Twenty audited base sets plus selected extensions cover the preserved ful
   for(const o of r.methodOptions)for(const inputId of o.requiredData||[])assert.ok(inputs.has(inputId));
  }
  assert.equal(Object.values(historicalIndex).reduce((n,r)=>n+r.methodOptions.length,0),29);
- assert.equal(affected.reduce((n,r)=>n+r.methodOptions.length,0),83);
+ assert.equal(affected.reduce((n,r)=>n+r.methodOptions.length,0),85);
+ assert.equal(affected.length,25);
+ assert.deepEqual(routes.filter(r=>(r.methodOptions||[]).some(o=>o.addedIn==='v29')).map(r=>r.id),['evolution_context']);
+ assert.equal(affected.flatMap(r=>r.methodOptions).filter(o=>o.addedIn==='v29').length,2);
  assert.deepEqual(routes.find(r=>r.id==='trajectory_structure').baseToolIds,['slingshot','monocle3','condiments','tradeseq']);
  assert.ok(routes.find(r=>r.id==='mean_noise').baseToolIds.includes('basics'));
  assert.ok(routes.find(r=>r.id==='noise_qtl').baseMetricIds.includes('v25c_gene_observability'));
@@ -143,4 +171,4 @@ check('Every added visible text has full five-language coverage without stale ch
  for(const [zh,translations]of Object.entries(block)){assert.match(zh,/[\u3400-\u9fff]/);for(const lang of languages.slice(1)){assert.ok(translations[lang]?.trim());assert.ok(!/[\u3400-\u9fff]/.test(translations[lang]));}}
  const chooser=tools.get('chooser');for(const lang of languages.slice(1))assert.equal(context.window.YV_CONTENT.tools.chooser[lang].task,block[chooser.task][lang]);
 });
-console.log(JSON.stringify({status:'passed',checks,routes:routes.length,tools:tools.size,metrics:metrics.size,inputs:inputs.size,auditedBaseRoutes:20,historicalOptionAttachments:29,optionAttachments:83,newDesignReviewAttachments:54,branchTools:4,branches:8,execution:'declaration checks only',biologicalExecution:false}));
+console.log(JSON.stringify({status:'passed',checks,routes:routes.length,tools:tools.size,metrics:metrics.size,inputs:inputs.size,auditedHistoricalBaseRoutes:20,currentOptionRoutes:25,historicalOptionAttachments:29,optionAttachments:85,newDesignReviewAttachments:54,evolutionV29Attachments:2,historicalBranchTools:4,historicalBranches:8,execution:'declaration checks only',biologicalExecution:false}));

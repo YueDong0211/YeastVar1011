@@ -83,8 +83,8 @@
     },
     {
       "path": "dist/catalogue-bundle.js",
-      "bytes": 3681871,
-      "sha256": "b90599eba012335f31e9f6f5b47b1300152247ca1e78660712b42cda58e7f77a"
+      "bytes": 3742134,
+      "sha256": "4d3c6869c0b757031cf8dffd0374f7ce12ffd9a74518beadd4395094d0d57ce5"
     },
     {
       "path": "dist/catalogue-parts/markers-001.js",
@@ -223,8 +223,8 @@
     },
     {
       "path": "dist/citation-data.js",
-      "bytes": 661612,
-      "sha256": "63fdc38d6423e97a92a33efcde6341436acb9e0452c48eb8aecf6fa7ad9ad55e"
+      "bytes": 683440,
+      "sha256": "cd85045f761ef87047d9d624464ff5fc4d5d602cc2baeea920d249b973af24a4"
     },
     {
       "path": "dist/citations.js",
@@ -278,8 +278,8 @@
     },
     {
       "path": "dist/data/literature.json",
-      "bytes": 550270,
-      "sha256": "a7bd652d64fdf43d315d43dc8344ce3d3b13ed85920586a50db975680a43b817"
+      "bytes": 785589,
+      "sha256": "630c01170260bec732f763f8474b9f1570608c95dc8dc94915eacd43451271b0"
     },
     {
       "path": "dist/data/markers/part-001.json",
@@ -398,23 +398,23 @@
     },
     {
       "path": "dist/data/projects.json",
-      "bytes": 1109253,
-      "sha256": "d3a955aacb4ed83b0ddfae82246e99db11cd3358e28c28bac01667f5fca314ed"
+      "bytes": 1120146,
+      "sha256": "0a4c4f595117545b021c721ea1cd7eba5f64d68492edc9c12ee2ccf6c865f820"
     },
     {
       "path": "dist/data/research-categories.json",
-      "bytes": 79769,
-      "sha256": "f457cfd715f2367053e9bc7a837fba70ac65e85a8c876b8f2fc5e82948f1cfed"
+      "bytes": 80030,
+      "sha256": "05caecc7ac81b5db7a8e81e0498b5f7a1c86cb6bf6dbacd4f5ead44538b460b2"
     },
     {
       "path": "dist/data/workflow.json",
-      "bytes": 1163547,
-      "sha256": "5928036d067364161031c622d69b03a131fc8967c777956aa14d88d11189fbf3"
+      "bytes": 1197875,
+      "sha256": "a82e83587b6e6ad4ccc51b1b0ed842c521923209dc12839b9d83720ee7e1f3f9"
     },
     {
       "path": "dist/data-loader.js",
       "bytes": 5452,
-      "sha256": "3e1d469fe3e64c169a6dce11f5b332974c53465eda1a379e7c7760f1a6527e7d"
+      "sha256": "34d37a296cf95cc069ea9ec5ec3f27bf93cf3b0f81f7440d72f8d66b897049f1"
     },
     {
       "path": "dist/database-hub-v24.css",
@@ -440,6 +440,21 @@
       "path": "dist/editorial-polish-v26.css",
       "bytes": 3849,
       "sha256": "73a48991f7257787fd3e48624a773dd7d41b59cb80d3b29c81c5f6946b56102e"
+    },
+    {
+      "path": "dist/evolution-catalogue-v29.css",
+      "bytes": 6640,
+      "sha256": "c51baa030c34f719a694eff0ac9260c980e5b84090f4623c578f4bca9fc24f57"
+    },
+    {
+      "path": "dist/evolution-catalogue-v29.js",
+      "bytes": 58337,
+      "sha256": "640cd7dd7aa2c4d56ec3b30ff4220801924bfd96c1b2cbea60d2821386e127a1"
+    },
+    {
+      "path": "dist/evolution-core-locales-v29.js",
+      "bytes": 29417,
+      "sha256": "9e16b4cf01b85dcedbdbe1ca5c102dff5a20dd86f4ddf093cbda7a64e7eb3b3f"
     },
     {
       "path": "dist/experience.js",
@@ -493,8 +508,8 @@
     },
     {
       "path": "dist/index.html",
-      "bytes": 13997,
-      "sha256": "792184c74b14877162a7b8944bd830c4aeafcfc616a833fa676c95e5975c0bba"
+      "bytes": 14203,
+      "sha256": "d759d127799a39d2cff2987ab4b2d0e381739efc3e04984c3ce8c1e553b4855c"
     },
     {
       "path": "dist/interface-v15.css",
@@ -788,8 +803,8 @@
     },
     {
       "path": "dist/qtl-catalogue-v25e.js",
-      "bytes": 16647,
-      "sha256": "4d5ba6a2c3646e00cf869b32fc4a71a25e6a9b1256fd517bb0b8fc3a8a36881f"
+      "bytes": 16831,
+      "sha256": "17190b6a1781b1708713b67c93ffeb01c4f437cb0af06dae2c9a0ccb85280411"
     },
     {
       "path": "dist/reference-library-v26.css",
@@ -823,8 +838,8 @@
     },
     {
       "path": "dist/research-atlas-v8.js",
-      "bytes": 23973,
-      "sha256": "d34a1610d0a45ace7b5d649a5d8173841f3d2d902f07eb0494f32577fa4a4033"
+      "bytes": 24090,
+      "sha256": "b0f32f4150aaaacc9eddc61a7946b3eeaa9a990da4ea6e52006c93c13049044d"
     },
     {
       "path": "dist/research-coverage-v12.css",
@@ -1473,8 +1488,8 @@
     },
     {
       "path": "scripts/prepare-public.cjs",
-      "bytes": 5591,
-      "sha256": "af6df98e1ed4d45c292546d6daf56b80857c5e10827caf9c689b9bec07d45bf9"
+      "bytes": 5785,
+      "sha256": "6b0abe8a839ee232213aec87f6caf7805060173a4bc23be888c4e31b0cb000cd"
     },
     {
       "path": "scripts/qa-doctor.cjs",
@@ -1498,8 +1513,8 @@
     },
     {
       "path": "scripts/smoke-public.cjs",
-      "bytes": 16630,
-      "sha256": "b591c64a1f7f2da55c0b83c0010b6a393be4b6e64107712d8c0a19de272a025d"
+      "bytes": 23439,
+      "sha256": "afd4aeda4734d4c8692a8750261de0c8e5e513eee06b8afb2941075ad13a8666"
     },
     {
       "path": ".github/ISSUE_TEMPLATE/bug_report.md",
@@ -1523,8 +1538,8 @@
     },
     {
       "path": ".github/workflows/pages.yml",
-      "bytes": 3889,
-      "sha256": "228532b00f30f9bd8684a9c9f17b68f3a481dfe31a5d326379005f064eebd3e4"
+      "bytes": 3995,
+      "sha256": "417302d60cf8a2edeae2b0d87f79762944051ae445bc3af5c71e2bf13ca36c4f"
     },
     {
       "path": ".gitattributes",
@@ -1878,8 +1893,8 @@
     },
     {
       "path": "research/qa-population-v25c.cjs",
-      "bytes": 39303,
-      "sha256": "eda15be7317f3957aeb348ab5122189305d08c0fc8b4b3d79b8ded62acb0a8c3"
+      "bytes": 39676,
+      "sha256": "5dc6e87fa8a2609e5e7c103648e3a10d647e8efae228b3c20b78ad23a3950a8b"
     },
     {
       "path": "research/qa-marker-regressions-v25d.cjs",
@@ -1903,13 +1918,13 @@
     },
     {
       "path": "research/qa-contract-catalogue-v25d.cjs",
-      "bytes": 33620,
-      "sha256": "65a93e35feef25eb4341af3def83f3c15ec2125b5f2885f7274c205b7de1ec02"
+      "bytes": 36031,
+      "sha256": "a13cdaf5abb7c8d44e3b7037be50c49db3a73fa91855c297c95388ccce12c44f"
     },
     {
       "path": "research/qa-h02-adversarial-v25d.cjs",
-      "bytes": 14721,
-      "sha256": "f3be87354aec1d538d8a24705f163a057b803dbb642af8980cb07543ba26f2f5"
+      "bytes": 15647,
+      "sha256": "dbbf1e9bd5ba0747776c82e9d9ba527a1cd6ea3f8dfa5f42ba99f7b2cace2f26"
     },
     {
       "path": "research/qa-qtl-ui-v25e.cjs",
@@ -1935,6 +1950,31 @@
       "path": "research/qa-marker-filters-v27.cjs",
       "bytes": 8248,
       "sha256": "6dc1fb68d61ab6f2342486827646a94ccb5f2def67e488192aa2360ff730fde6"
+    },
+    {
+      "path": "research/qa-evolution-core-v29.cjs",
+      "bytes": 8921,
+      "sha256": "5be3b91a4119a75b90e8565a3903a79517eb2cab868e6430834cbb7310677f91"
+    },
+    {
+      "path": "research/qa-evolution-ui-v29.cjs",
+      "bytes": 13751,
+      "sha256": "572bf6fe4178d806423a803a9979edd84fda9ecff3899cacd9eedd3716152325"
+    },
+    {
+      "path": "research/add-evolution-core-v29.cjs",
+      "bytes": 39065,
+      "sha256": "3f2e3131dc3726892ec88ff504e3ee1a108fae8b4e9bbb0ee62a1fe845431c66"
+    },
+    {
+      "path": "research/add-evolution-references-v29.py",
+      "bytes": 7909,
+      "sha256": "29a014c05494927dbdf574e19ecb242ca9e9a66401515760e6dc46b6fb4b863e"
+    },
+    {
+      "path": "research/evolution-references-v29.json",
+      "bytes": 31137,
+      "sha256": "868fb5b3b433675e03cfbc7fca1d78d78e0c06eb8d8f40baa7e055604440fa58"
     },
     {
       "path": "research/v25b-marker-proposals.json",

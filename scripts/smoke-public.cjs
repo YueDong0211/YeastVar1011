@@ -114,6 +114,92 @@ let browser;
  await page.locator('.qtl25-navigation a[href="#projects"]').click();
  await page.locator('#ra-query').waitFor();
  assert.equal(await page.evaluate(()=>JSON.stringify(YV_BUILDER.getPlan())),planBeforeQTL,'QTL browsing must not mutate the plan');
+ // Remote GitHub CI only. Local visual checks use the interactive browser.
+ let evolutionCatalogue=false;
+ if(process.env.GITHUB_ACTIONS==='true'){
+  const evolutionBefore=await page.evaluate(()=>({plan:JSON.stringify(YV_BUILDER.getPlan()),prefs:JSON.parse(JSON.stringify(YV_APP.prefs())),storedPreferences:localStorage.getItem('yv.preferences'),hash:location.hash}));
+  const evolutionViewport=page.viewportSize();
+  try{
+   await page.evaluate(()=>{YV_APP.setPreference('language','en');location.hash='projects?view=evolution'});
+   await page.locator('#evolution-catalogue-v29').waitFor();
+   assert.equal(await page.locator('[data-ev29-card]').count(),14);
+   assert.equal(await page.locator('[data-ev29-details][open]').count(),0,'Evolution cards start collapsed');
+   assert.equal(await page.locator('[data-ev29-export]').isDisabled(),true);
+   assert.equal(await page.locator('.qtl25-navigation a[href="#projects?view=evolution"][aria-current="page"]').count(),1);
+   await page.locator('[data-ev29-select="bayes_noise"]').check();
+   await page.locator('[data-ev29-select="ml_tree"]').check();
+   await page.locator('[data-ev29-family="trait"]').click();
+   assert.equal(await page.locator('[data-ev29-card]').count(),5);
+   assert.equal(await page.locator('[data-ev29-family="trait"]').getAttribute('aria-pressed'),'true');
+   assert.equal(await page.evaluate(()=>YV_EVOLUTION_CATALOGUE.getState().selected.length),2);
+   const evolutionDownload=page.waitForEvent('download');
+   await page.locator('[data-ev29-export]').click();
+   const evolutionFile=await evolutionDownload;
+   const evolutionExport=JSON.parse(require('node:fs').readFileSync(await evolutionFile.path(),'utf8'));
+   assert.equal(evolutionExport.schema,'yeastvar1011.supplementary-method-checklist');
+   assert.equal(evolutionExport.mainPlanModified,false);
+   assert.equal(evolutionExport.executionStatus,'not_executed');
+   assert.deepEqual(evolutionExport.methods.map(row=>row.id),['bayes_noise','ml_tree'],'Download includes selections hidden by the current category');
+   assert(evolutionExport.methods.every(row=>row.sourceUrls.length&&row.papers.every(paper=>paper.doi)));
+   await page.locator('#ev29-query').fill('unmatched-evolution-v29');
+   assert.equal(await page.locator('[data-ev29-card]').count(),0);
+   await page.locator('.ev29-empty [data-ev29-reset]').click();
+   assert.equal(await page.evaluate(()=>document.activeElement.id),'ev29-query');
+   assert.equal(await page.locator('[data-ev29-card]').count(),14);
+   assert(await page.locator('[data-ev29-select="bayes_noise"]').isChecked());
+   assert(await page.locator('[data-ev29-select="ml_tree"]').isChecked());
+   await page.locator('#ev29-query').fill('10.1093/molbev/msag117');
+   assert.equal(await page.locator('[data-ev29-card]').count(),1);
+   assert.equal(await page.locator('[data-ev29-card]').getAttribute('data-ev29-card'),'ml_tree');
+   await page.locator('[data-ev29-details="ml_tree"] summary').click();
+   await page.locator('[data-ev29-card="ml_tree"] .ev29-detail-body').waitFor({state:'visible'});
+   assert.equal(await page.locator('[data-ev29-card="ml_tree"] .ev29-papers a[href="https://doi.org/10.1093/molbev/msag117"]').count(),1);
+   await page.locator('.ev29-toolbar [data-ev29-reset]').click();
+   assert.equal(await page.locator('[data-ev29-details="ml_tree"]').getAttribute('open'),'','Opened evidence survives a search round trip');
+   await page.locator('[data-ev29-details="ml_tree"] summary').click();
+   await page.locator('[data-ev29-clear]').click();
+   assert.equal(await page.locator('[data-ev29-select]:checked').count(),0);
+   assert.equal(await page.locator('[data-ev29-export]').isDisabled(),true);
+   assert.equal(await page.locator('[data-ev29-clear]').isDisabled(),true);
+   const evolutionTitles={zh:'噪音、遗传与进化',en:'Noise, genetics and evolution',fr:'Bruit, génétique et évolution',es:'Ruido, genética y evolución',eu:'Zarata, genetika eta eboluzioa'};
+   for(const width of [1440,390,320]){
+    await page.setViewportSize({width,height:width===1440?960:844});
+    for(const language of ['zh','en','fr','es','eu']){
+     await page.locator('#language-select').selectOption(language);
+     await page.waitForFunction(title=>document.getElementById('ev29-title')?.textContent===title,evolutionTitles[language]);
+     assert.equal(await page.locator('[data-ev29-card]').count(),14);
+     if(language!=='zh')assert(!/[\u3400-\u9fff]/u.test(await page.locator('#evolution-catalogue-v29').innerText()),'Untranslated evolution text: '+language);
+     for(const id of ['measurement_error','plasticity_convergence']){
+      const details=page.locator('[data-ev29-details="'+id+'"]');
+      if(!await details.evaluate(node=>node.open))await details.locator('summary').click();
+      await details.locator('.ev29-detail-body').waitFor({state:'visible'});
+     }
+     assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Horizontal overflow: evolution '+width+'/'+language);
+     const panelOverflow=await page.locator('#evolution-catalogue-v29').evaluate(panel=>panel.scrollWidth>panel.clientWidth+1);
+     assert.equal(panelOverflow,false,'Panel overflow: evolution '+width+'/'+language);
+    }
+   }
+   // Native keyboard operation stays within the disclosure/checklist controls.
+   await page.locator('[data-ev29-select="bayes_noise"]').focus();
+   await page.keyboard.press('Space');
+   assert(await page.locator('[data-ev29-select="bayes_noise"]').isChecked());
+   assert.equal(await page.evaluate(()=>document.activeElement.dataset.ev29Select),'bayes_noise');
+   await page.locator('[data-ev29-clear]').click();
+   assert.equal(await page.evaluate(()=>JSON.stringify(YV_BUILDER.getPlan())),evolutionBefore.plan,'Evolution browsing and checklist export must not mutate the main plan');
+   evolutionCatalogue=true;
+  }finally{
+   // Restore this section's fixtures; the later scPower branch test keeps its own plan.
+   await page.evaluate(saved=>{
+    if(JSON.stringify(YV_BUILDER.getPlan())!==saved.plan)YV_BUILDER.importPlan(JSON.parse(saved.plan));
+    YV_APP.setPreference('language',saved.prefs.language);
+    if(saved.storedPreferences===null)localStorage.removeItem('yv.preferences');else localStorage.setItem('yv.preferences',saved.storedPreferences);
+    location.hash=saved.hash;
+   },evolutionBefore);
+   if(evolutionViewport)await page.setViewportSize(evolutionViewport);
+  }
+  assert.deepEqual(await page.evaluate(()=>YV_APP.prefs()),evolutionBefore.prefs,'Evolution checks restore preferences');
+  assert.equal(await page.evaluate(()=>JSON.stringify(YV_BUILDER.getPlan())),evolutionBefore.plan,'Evolution checks preserve the prior plan fixture');
+ }
  // Method references share authoritative metadata with the export catalogue.
  await page.evaluate(()=>{location.hash='literature?tool=alevinfry&period=recent'});
  await page.locator('#ref26-query').waitFor();
@@ -178,5 +264,5 @@ let browser;
  await page.setViewportSize({width:390,height:844});
  for(const route of ['overview','cluster','workbench?stage=scope','markers?view=catalogue','markers?view=panel','markers?view=databases','projects?view=qtl','projects?view=coverage','literature','contribute','settings']){await page.evaluate(hash=>location.hash=hash,route);await page.waitForFunction(hash=>YV_APP.route()===hash.split('?')[0],route);await page.waitForTimeout(100);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Horizontal overflow: '+route);}
  assert.deepEqual(errors,[]);assert.deepEqual(failedLocal,[]);
- console.log(JSON.stringify({passed:true,routes:routes.length,languages:5,mobile:true,qtlCatalogue:true,methodBranchDialog:true,markerFilterLayout:true,branchPersistence:true,projectLinks:true,runtimeErrors:errors,failedLocal},null,2));
+ console.log(JSON.stringify({passed:true,routes:routes.length,languages:5,mobile:true,qtlCatalogue:true,evolutionCatalogue,methodBranchDialog:true,markerFilterLayout:true,branchPersistence:true,projectLinks:true,runtimeErrors:errors,failedLocal},null,2));
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(async()=>{await browser?.close();server.kill();});

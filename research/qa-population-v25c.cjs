@@ -23,8 +23,10 @@ for(const [kind,ids] of Object.entries(baseline)){
  const actual=current[kind].map(x=>x.id);check(new Set(actual).size===actual.length,'Unique '+kind);
  for(const id of ids)check(actual.includes(id),'Retain baseline '+kind+' '+id);
 }
-check(w.tools.length===baseline.tools.length,'No new tools');check(w.formulas.length===baseline.formulas.length,'No new formula');check(p.projects.length===baseline.routes.length,'No new route');
-check(w.metrics.length===baseline.metrics.length+1,'Exactly one new metric');
+assert.deepEqual(w.tools.filter(x=>!baseline.tools.includes(x.id)).map(x=>x.id).sort(),['brms','phytools2']);count++;
+assert.deepEqual(w.formulas.filter(x=>!baseline.formulas.includes(x.id)).map(x=>x.id).sort(),['bayes_noise_posterior','noise_trait_sampling_covariance']);count++;
+check(p.projects.length===baseline.routes.length,'No new route');
+assert.deepEqual(w.metrics.filter(x=>!baseline.metrics.includes(x.id)).map(x=>x.id).sort(),['noise_phylogenetic_signal','posterior_sampling_diagnostics','v25c_gene_observability']);count++;
 const populationPaperIds=new Set(l.papers.filter(x=>x.addedIn==='v25c_population').map(x=>x.id));
 check(populationPaperIds.size===12,'Twelve v25c population references retained');
 check(c.records.filter(x=>populationPaperIds.has(x.literatureId)).length===12,'Twelve matching v25c population CSL records retained');
@@ -91,7 +93,8 @@ for(const row of newRefs){
  const engine=new ctx.CSL.Engine({retrieveLocale:()=>c.locale,retrieveItem:id=>refs.get(id).csl},c.style,'en-US');engine.setOutputFormat('text');engine.updateItems([r.id]);const apa=engine.makeBibliography()[1].join('').trim();
  check(paper.apa7===apa&&apa.includes(row.doi)&&!/undefined|NaN|CSL STYLE ERROR/.test(apa),'Valid stored APA7 '+row.doi);
  for(const s of [paper.summary,paper.contribution,paper.markerUse,paper.evidence,paper.studyType,...paper.topics,...paper.limitations,...paper.species.filter(s=>/[\u3400-\u9fff]/.test(s))])check(!!additions[s],'Localized source prose');
- check(paper.toolIds.length===0,'No tools invented from research sources');
+ // The original brms method now has its explicitly registered, source-verified tool record.
+ assert.deepEqual(paper.toolIds,paper.doi==='10.18637/jss.v080.i01'?['brms']:[]);count++;
 }
 const switching=l.papers.find(x=>x.doi==='10.1038/s42003-025-09414-9');check(switching.year===2026&&switching.onlineYear===2025&&switching.issueYear===2026,'Online vs issue year');
 check(l.papers.find(x=>x.doi==='10.7554/elife.15743').corrects==='10.7554/elife.05462','Correction linked');

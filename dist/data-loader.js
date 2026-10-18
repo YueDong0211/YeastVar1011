@@ -39,7 +39,7 @@
     const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),timeout);
     try{
       const pairs=await Promise.all(names.map(async name=>{
-        const url=new URL(`data/${name}.json?v=26.0.0`,scriptBase);
+        const url=new URL(`data/${name}.json?v=29.0.0`,scriptBase);
         const response=await fetch(url,{signal:controller.signal,cache:'no-cache'});
         if(!response.ok)throw Error(`${name}.json: HTTP ${response.status}`);
         let catalogue=await response.json();
@@ -64,7 +64,7 @@
     }finally{clearTimeout(timer);controller.abort()}
   }
   async function perform(options){
-    const bundleUrl=options.bundleUrl||'catalogue-bundle.js?v=26.0.0';
+    const bundleUrl=options.bundleUrl||'catalogue-bundle.js?v=29.0.0';
     const useBundle=options.preferBundle??location.protocol==='file:';
     let networkError;
     if(!useBundle){

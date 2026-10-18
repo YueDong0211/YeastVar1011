@@ -93,7 +93,15 @@ check('Missing eQTL data cannot produce a complete-plan summary',()=>{
  assert.match(maps.tool.get('scpower').limitations[0],/遗传样本量按菌株计/);
 });
 check('Historical and extended real routes cancel optional tools, metrics and sources together',()=>{
- assert.equal(data.projects.projects.filter(r=>(r.methodOptions||[]).some(o=>o.addedIn!=='v25f_design_review')).length,20);assert.equal(data.projects.projects.filter(r=>r.methodOptions?.length).length,24);assert.equal(data.projects.projects.flatMap(r=>r.methodOptions||[]).filter(o=>o.addedIn==='v25f_design_review').length,54);assert.deepEqual(findings.filter(f=>f.id.startsWith('OPTION_LEAK_')),[]);
+ const original='audit_raw mean_noise noise_components noise_power noise_cycle annotation_transfer state_composition grn_rewiring velocity_feasibility trajectory_structure noise_qtl genotype_state foundation_benchmark marker_panel marker_inference_audit local_covariation_modules count_mean_qtl_comparator temporal_mechanistic_grn rna_measurement_length_audit cross_implementation_robustness'.split(' ').sort();
+ const historical=data.projects.projects.filter(r=>(r.methodOptions||[]).some(o=>!['v25f_design_review','v29'].includes(o.addedIn))).map(r=>r.id).sort();
+ assert.deepEqual(historical,original);assert.equal(historical.length,20);
+ assert.equal(data.projects.projects.filter(r=>(r.methodOptions||[]).some(o=>o.addedIn!=='v25f_design_review')).length,21);
+ assert.equal(data.projects.projects.filter(r=>r.methodOptions?.length).length,25);
+ assert.equal(data.projects.projects.flatMap(r=>r.methodOptions||[]).filter(o=>o.addedIn==='v25f_design_review').length,54);
+ const evolution=data.projects.projects.flatMap(r=>(r.methodOptions||[]).filter(o=>o.addedIn==='v29').map(o=>r.id+':'+o.id)).sort();
+ assert.deepEqual(evolution,['evolution_context:bayesian_covariance','evolution_context:phylogenetic_signal']);
+ assert.deepEqual(findings.filter(f=>f.id.startsWith('OPTION_LEAK_')),[]);
 });
 check('Manual Slingshot selection does not silently select other dynamic methods or their data',()=>{
  const o=observed('MANUAL_TOOL_STAGE_METRICS');assert.deepEqual(plain(o.tools),['slingshot']);assert.deepEqual(plain(o.options),[]);assert.deepEqual(plain(o.optionalMetrics),[]);assert.deepEqual(plain(o.optionalMethodURLs),[]);
@@ -110,4 +118,4 @@ check('Inactive saved route options do not leak into exports; reselecting resume
  const o=observed('RESELECT_ROUTE_OPTIONS');assert.deepEqual(plain(o.afterRemoval.activeOptions),[]);assert.deepEqual(plain(o.afterRemoval.tools),[]);
  assert.ok(o.afterReselect.storedOptions.includes('trajectory_structure:v25_temporal_ot'));assert.ok(o.afterReselect.tools.includes('moscot'));
 });
-console.log(JSON.stringify({status:'passed',audit:'H02/H04 independent adversarial regressions',checks,historicalRoutesAudited:20,realRoutesAudited:24,newDesignReviewAttachments:54,productionMutations:false,biologicalExecution:false,browser:false}));
+console.log(JSON.stringify({status:'passed',audit:'H02/H04 independent adversarial regressions',checks,historicalRoutesAudited:20,realRoutesAudited:25,newDesignReviewAttachments:54,evolutionV29Attachments:2,productionMutations:false,biologicalExecution:false,browser:false}));
