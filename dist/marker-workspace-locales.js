@@ -1,6 +1,19 @@
 'use strict';
 (() => {
 const rows={
+filterCategories:['筛选类别','Filter categories','Catégories de filtres','Categorías de filtro','Iragazki-kategoriak'],
+facetPhase:['周期','Cycle','Cycle','Ciclo','Zikloa'],
+facetTags:['标签','Tags','Étiquettes','Etiquetas','Etiketak'],
+facetSources:['来源','Sources','Sources','Fuentes','Iturriak'],
+facetGrade:['等级','Grade','Niveau','Nivel','Maila'],
+facetType:['类型','Type','Type','Tipo','Mota'],
+facetMore:['更多','More','Plus','Más','Gehiago'],
+commonConditions:['常用条件','Common filters','Filtres courants','Filtros habituales','Ohiko iragazkiak'],
+detailedConditions:['详细条件','Detailed filters','Filtres détaillés','Filtros detallados','Iragazki zehatzak'],
+activeConditions:['项条件','active filters','filtres actifs','filtros activos','iragazki aktibo'],
+showMoreOptions:['显示更多','Show more','Afficher plus','Mostrar más','Erakutsi gehiago'],
+showFewerOptions:['收起列表','Show fewer','Réduire la liste','Reducir la lista','Laburtu zerrenda'],
+sourceSearch:['搜索来源、作者或题名','Search source, author or title','Rechercher source, auteur ou titre','Buscar fuente, autor o título','Bilatu iturria, egilea edo izenburua'],
 sourceCorrelation:['原表相关系数；变量与尺度见来源记录','Source correlation coefficient; variables and scale are defined in the source record','Coefficient de corrélation de la source ; variables et échelle précisées dans la fiche','Coeficiente de correlación original; variables y escala en el registro fuente','Iturriko korrelazio-koefizientea; aldagaiak eta eskala iturri-fitxan'],
 sourceUnadjustedP:['原表未校正P值','Unadjusted source P value','Valeur P non corrigée de la source','Valor P original sin ajustar','Iturriko doitu gabeko P balioa'],
 recordMode:["逐条选择证据","Choose individual evidence","Choisir les preuves individuellement","Elegir evidencias individuales","Hautatu ebidentziak banaka"],

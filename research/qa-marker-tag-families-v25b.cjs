@@ -97,7 +97,11 @@ for(const lang of ['zh','en','fr','es','eu']){
  assert.equal(exported.records[0].reference.id,cwp2.id);assert(exported.records[0].reference.evidence.some(e=>e.tag===histone));
  assert.deepEqual(plain(plan),originalPlan);
 }
-language='en';filter({tagQ:window.YV_TEXT[histone].en,tagFamily:'familyAll'});
+language='en';
+// The compact filter workspace renders only the active category. Follow its real navigation before searching tags.
+handlers.click.at(-1)({target:{closest:()=>({dataset:{mw:'facet-tab',value:'tags'}})}});
+assert.equal(app.getState().activeFacet,'tags');
+filter({tagQ:window.YV_TEXT[histone].en,tagFamily:'familyAll'});
 assert(test.filterPanel().includes('value="'+escape(histone)+'"'),'Translated label search yields the unchanged canonical tag control');
 assert(refreshes>0);assert.equal(digest(),before,'Navigation and translation never mutate real gene/evidence data');
 console.log('PASS five-language checkbox/search/export identity, retained selection and immutable source evidence');

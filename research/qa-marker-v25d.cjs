@@ -18,13 +18,16 @@ const held=header.sourceReviewQueue.filter(e=>e.addedIn==='v25d');assert.equal(h
 console.log('PASS exact release counts, B RNA/C functional evidence, original assay and direction, held source identities and no invented measurements');
 const catalogue={...header,markers};let language='zh';const maps={marker:new Map(markers.map(m=>[m.id,m])),source:new Map(header.sources.map(s=>[s.id,s]))};
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const ctx={console,URL,URLSearchParams,setTimeout,clearTimeout,sessionStorage:{getItem:()=>null,setItem(){}},location:{hash:'#markers'},document:{addEventListener(){},querySelector(){return null;}},window:{addEventListener(){}}};
+const handlers={};
+const ctx={console,URL,URLSearchParams,setTimeout,clearTimeout,sessionStorage:{getItem:()=>null,setItem(){}},location:{hash:'#markers'},document:{addEventListener(type,fn){(handlers[type]||=[]).push(fn);},querySelector(){return null;}},window:{addEventListener(){}}};
 ctx.window.YV_APP={prefs:()=>({language}),esc,tx:x=>ctx.window.YV_TEXT?.[x]?.[language]??String(x??''),t:k=>k,data:()=>({markers:catalogue}),maps:()=>maps};
 ctx.window.YV_BUILDER={getPlan:()=>({markers:[]})};ctx.window.YV_RESEARCH_ATLAS={text:k=>k};
 const load=(f,transform=s=>s)=>vm.runInNewContext(transform(read(f)),ctx,{filename:f});
 for(const f of ['marker-selection-v25c.js','marker-workspace-locales.js','v25-marker-locales.js','v25d-evidence-locales.js'])load(f);
-load('marker-workspace.js',s=>s.replace('window.YV_MARKERS={','window.__qa={resetFilters,evidencePurpose,familyMatches,filterPanel};window.YV_MARKERS={'));load('marker-preview-v13.js');
+load('marker-workspace.js',s=>s.replace('window.YV_MARKERS={','window.__qa={resetFilters,evidencePurpose,familyMatches,filterPanel,setRefresh(fn){refresh=fn;}};window.YV_MARKERS={'));
+const workspaceClick=handlers.click.at(-1);load('marker-preview-v13.js');
 const ws=ctx.window.YV_MARKERS,qa=ctx.window.__qa,preview=ctx.window.YV_MARKER_PREVIEW;
+qa.setRefresh(()=>{});
 const ids=rs=>[...new Set(rs.map(r=>r.m.id))].sort();
 const filter=(p={})=>{qa.resetFilters();ws.setFilters({browseScope:'annotation',sources:['nocedal2017_fig6s2'],...p});return Array.from(ws.filterResults()).sort();};
 assert.deepEqual(filter({evidencePurpose:'rnaReference'}),ids(nocedal));assert.deepEqual(filter({evidencePurpose:'authorPanel'}),[]);
@@ -33,6 +36,9 @@ assert.deepEqual(filter({direction:'lower'}),[]);assert.deepEqual(filter({phases
 assert.deepEqual(filter({sources:['solari2024_fig1b'],direction:'lower'}),ids(solari.filter(r=>r.m.symbol==='NCE102')));
 assert.deepEqual(filter({sources:['solari2024_fig1b'],direction:'higher'}),ids(solari.filter(r=>r.m.symbol!=='NCE102')));
 for(const r of rna)assert.equal(qa.evidencePurpose(r.e),'rnaReference');
+// Open the actual tag category before asserting controls in its active-only content area.
+workspaceClick({target:{closest:()=>({dataset:{mw:'facet-tab',value:'tags'}})}});
+assert.equal(ws.getState().activeFacet,'tags');
 ws.setFilters({tagFamily:'familyReproduction',tagQ:'孢子形成上调RNA',q:'SPO1'});assert(qa.familyMatches(nocedal[0].e.tag));assert(!qa.familyMatches(solari[0].e.tag));
 for(const lang of ['zh','en','fr','es','eu']){
  language=lang;assert.notEqual(ws.text('familyReproduction'),'familyReproduction');assert(qa.filterPanel().includes(ws.text('familyReproduction')));

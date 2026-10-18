@@ -493,8 +493,8 @@
     },
     {
       "path": "dist/index.html",
-      "bytes": 13870,
-      "sha256": "40b0ffdff1cc2b438df84b3193979e1ac61c31c4c3b82ddcca02fab11eb7a6ad"
+      "bytes": 13934,
+      "sha256": "f70d73e0f594cd4f45ba4552f6f5a4d7a0da3f2c615e484977ea214147688d5a"
     },
     {
       "path": "dist/interface-v15.css",
@@ -562,6 +562,11 @@
       "sha256": "7551a5c7618a3586714b9272428021de0010ccee5ddac325f29cc9e2026c717a"
     },
     {
+      "path": "dist/marker-filters-v27.css",
+      "bytes": 8358,
+      "sha256": "35bb3644ec95547809023a4fa794c00556c2b6b437c19c3d09f83d70cf5cad6f"
+    },
+    {
       "path": "dist/marker-preview-v13.css",
       "bytes": 13295,
       "sha256": "33fbf56d40caec8cf6fcc1d1a60b20609da02a2da6bb49a204c7a927ce1cc48b"
@@ -578,8 +583,8 @@
     },
     {
       "path": "dist/marker-workspace-locales.js",
-      "bytes": 67010,
-      "sha256": "9f1b862e6fa1467c63d223df2a622b8c5a22e58584aee1faaa7290d379b2d50a"
+      "bytes": 68221,
+      "sha256": "81899e0fdcb46e58b197c515338ba2917529b4ea8ba47a0d6ef3c16c570edad8"
     },
     {
       "path": "dist/marker-workspace.css",
@@ -588,8 +593,8 @@
     },
     {
       "path": "dist/marker-workspace.js",
-      "bytes": 105102,
-      "sha256": "b995d9490510d46e5eeb47113d001015ed12eb11767cd7c36a98942d44c7a661"
+      "bytes": 108457,
+      "sha256": "0e407085acd6c97024952b1a37b1d6cee00c8f215f4819b2e23c1f9c3102bf48"
     },
     {
       "path": "dist/mascot.css",
@@ -1463,8 +1468,8 @@
     },
     {
       "path": "scripts/prepare-public.cjs",
-      "bytes": 5554,
-      "sha256": "212e3af30724c162c541df29b6b76c2ddc4414dab935c8004f74240c962caf98"
+      "bytes": 5591,
+      "sha256": "af6df98e1ed4d45c292546d6daf56b80857c5e10827caf9c689b9bec07d45bf9"
     },
     {
       "path": "scripts/qa-doctor.cjs",
@@ -1488,8 +1493,8 @@
     },
     {
       "path": "scripts/smoke-public.cjs",
-      "bytes": 10953,
-      "sha256": "c29bb8b9ae53c5ead0d359803c9efbf67ad07267c56b3290bd3d454c636587a7"
+      "bytes": 15725,
+      "sha256": "a6a0f9db7baa6c6fffb463c9ca3037aa3174ceb4537922371126a7e68d5ebbfb"
     },
     {
       "path": ".github/ISSUE_TEMPLATE/bug_report.md",
@@ -1513,8 +1518,8 @@
     },
     {
       "path": ".github/workflows/pages.yml",
-      "bytes": 3835,
-      "sha256": "74eacfaf0b414adf0b946b34026aa40c2b34f0ed976fb03e260ca2e6c6ed27ae"
+      "bytes": 3889,
+      "sha256": "228532b00f30f9bd8684a9c9f17b68f3a481dfe31a5d326379005f064eebd3e4"
     },
     {
       "path": ".gitattributes",
@@ -1833,8 +1838,8 @@
     },
     {
       "path": "research/qa-marker-tag-families-v25b.cjs",
-      "bytes": 8751,
-      "sha256": "2e5bbc37b876de1e28c6d54d6a3c08bcfa04fa03851bc66fc18fcf8f604895fb"
+      "bytes": 9006,
+      "sha256": "87bbc55384d392ba047c30a259be42dd7236a12a0346badde4ba39b258d4e7ea"
     },
     {
       "path": "research/qa-marker-source-context-v25b.cjs",
@@ -1878,8 +1883,8 @@
     },
     {
       "path": "research/qa-marker-v25d.cjs",
-      "bytes": 7315,
-      "sha256": "87017b24890713e52666fcd6c5fdb17825583e4a444f29cc849c8316283e1026"
+      "bytes": 7694,
+      "sha256": "50321cf612f778c18034f97ad9e5b38432596651cd1f433d10e01578e6f11e99"
     },
     {
       "path": "research/qa-plan-contracts-v25d.cjs",
@@ -1920,6 +1925,11 @@
       "path": "research/qa-marker-ux-v26.cjs",
       "bytes": 5240,
       "sha256": "bcad5af954800d4c0a411d2f2a8b298f7ffd8079411a074003839fa1834c147d"
+    },
+    {
+      "path": "research/qa-marker-filters-v27.cjs",
+      "bytes": 8248,
+      "sha256": "6dc1fb68d61ab6f2342486827646a94ccb5f2def67e488192aa2360ff730fde6"
     },
     {
       "path": "research/v25b-marker-proposals.json",

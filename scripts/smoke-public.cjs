@@ -23,6 +23,64 @@ let browser;
  for(const lang of ['zh','en','fr','es','eu']){await page.evaluate(lang=>{YV_APP.setPreference('language',lang);location.hash='overview'},lang);await page.waitForFunction(()=>YV_APP.route()==='overview');assert((await page.locator('.p20-footer-links').innerText()).includes('GitHub'));}
  // Exercise the real tool-card -> floating detail path, not just resolver fixtures.
  const planBeforeQTL=await page.evaluate(()=>JSON.stringify(YV_BUILDER.getPlan()));
+ // Marker filters: one visible category, bounded lists and a single scroll owner.
+ await page.evaluate(()=>{YV_APP.setPreference('language','en');location.hash='markers?view=catalogue'});
+ await page.locator('#mw-facet-tab-phase').waitFor();
+ assert.equal(await page.locator('#mw-facet-content [data-mw-filter="phases"]').count(),7,'Cycle choices need no preliminary disclosure');
+ await page.locator('[data-mw-filter="phases"][value="G1"]').check();
+ const selectedResult=await page.locator('.mw-result-summary strong').innerText();
+ await page.locator('#mw-facet-tab-sources').click();
+ assert.equal(await page.locator('.mw-source-options [data-mw-filter="sources"]').count(),8);
+ const sourceIds=()=>page.locator('.mw-source-options input').evaluateAll(nodes=>nodes.map(n=>n.value));
+ const firstSources=await sourceIds();
+ await page.locator('[data-mw="facet-page"][data-key="sourcePage"][data-value="2"]').click();
+ const secondSources=await sourceIds();
+ assert(firstSources.every(id=>!secondSources.includes(id)),'Source pages must contain different records');
+ assert.equal(await page.evaluate(()=>document.activeElement.id),'mw-source-query','Paging focus stays within its category');
+ assert.equal(await page.locator('.mw-result-summary strong').innerText(),selectedResult,'Paging must not change evidence filters');
+ await page.locator('#mw-source-query').fill('Jariani');
+ await page.waitForFunction(()=>{const choices=[...document.querySelectorAll('.mw-source-options input')];return choices.length>0&&choices.length<8&&choices.every(n=>n.value.toLowerCase().includes('jariani'))});
+ assert.equal(await page.locator('.mw-result-summary strong').innerText(),selectedResult,'Choice search must not change evidence filters');
+ await page.locator('#mw-source-query').fill('');
+ await page.waitForFunction(()=>document.querySelectorAll('.mw-source-options input').length===8);
+ const sourceId=(await sourceIds())[0];
+ await page.locator('.mw-source-options input').first().check();
+ await page.locator('#mw-facet-tab-phase').click();
+ assert(await page.locator('[data-mw-filter="phases"][value="G1"]').isChecked());
+ assert.equal(await page.locator('.mw-active-filters [data-key="sources"]').count(),1,'Selections remain removable outside their page');
+ await page.locator('#mw-filter-panel [data-mw="reset"]').click();
+ // Cover the actual breakpoints, long translated labels, and a 200%-equivalent viewport.
+ for(const [width,language] of [[1440,'en'],[1101,'zh'],[1100,'es'],[601,'eu'],[600,'fr'],[390,'zh'],[360,'en']]){
+  await page.setViewportSize({width,height:width===600?480:844});
+  await page.locator('#language-select').selectOption(language);
+  const toggle=page.locator('.mw-mobile-filter-toggle');
+  if(await toggle.isVisible()&&await toggle.getAttribute('aria-expanded')!=='true')await toggle.click();
+  for(const key of ['phase','tags','sources','grade','hierarchy','advanced']){
+   await page.locator('#mw-facet-tab-'+key).click();
+   assert.equal(await page.locator('#mw-facet-content').count(),1);
+   const layout=await page.locator('#mw-filter-panel').evaluate(pane=>({
+    overflow:document.documentElement.scrollWidth>innerWidth+1,
+    nested:[...pane.querySelectorAll('.mw-facet-body,.mw-tag-options,.mw-source-options,.mw-go-term-list')].filter(n=>{const s=getComputedStyle(n);return /(auto|scroll)/.test(s.overflowY)&&n.scrollHeight>n.clientHeight+1}).map(n=>n.className),
+    paneScroll:/(auto|scroll)/.test(getComputedStyle(pane).overflowY),
+    tabCount:pane.querySelectorAll('.mw-filter-tab').length
+   }));
+   assert.equal(layout.overflow,false,'Horizontal overflow '+width+'/'+language+'/'+key);
+   assert.deepEqual(layout.nested,[],'Nested facet scroll '+width+'/'+key);
+   assert.equal(layout.paneScroll,width>1100,'Only desktop pane owns vertical scrolling');
+   assert.equal(layout.tabCount,6);
+  }
+  // First and last source choices must receive a real pointer hit after scrolling.
+  await page.locator('#mw-facet-tab-sources').click();
+  for(const choice of [page.locator('.mw-source-options label').first(),page.locator('.mw-source-options label').last()]){
+   await choice.scrollIntoViewIfNeeded();
+   assert(await choice.evaluate(label=>{const r=label.getBoundingClientRect(),hit=document.elementFromPoint(r.x+r.width/2,r.y+r.height/2);return !!hit&&label.contains(hit)}),'Covered source choice '+width);
+  }
+ }
+ await page.setViewportSize({width:1440,height:960});
+ await page.locator('#language-select').selectOption('en');
+ await page.locator('#mw-filter-panel [data-mw="reset"]').click();
+ assert.equal(await page.evaluate(()=>JSON.stringify(YV_BUILDER.getPlan())),planBeforeQTL,'Filter navigation must not change the research plan');
+
  await page.evaluate(()=>{YV_APP.setPreference('language','en');location.hash='projects?view=qtl'});
  await page.locator('#qtl25-query').waitFor();
  assert.equal(await page.locator('[data-qtl-card]').count(),19);
@@ -111,5 +169,5 @@ let browser;
  await page.setViewportSize({width:390,height:844});
  for(const route of ['overview','cluster','workbench?stage=scope','markers?view=catalogue','markers?view=panel','markers?view=databases','projects?view=qtl','projects?view=coverage','literature','contribute','settings']){await page.evaluate(hash=>location.hash=hash,route);await page.waitForFunction(hash=>YV_APP.route()===hash.split('?')[0],route);await page.waitForTimeout(100);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Horizontal overflow: '+route);}
  assert.deepEqual(errors,[]);assert.deepEqual(failedLocal,[]);
- console.log(JSON.stringify({passed:true,routes:routes.length,languages:5,mobile:true,qtlCatalogue:true,methodBranchDialog:true,branchPersistence:true,projectLinks:true,runtimeErrors:errors,failedLocal},null,2));
+ console.log(JSON.stringify({passed:true,routes:routes.length,languages:5,mobile:true,qtlCatalogue:true,methodBranchDialog:true,markerFilterLayout:true,branchPersistence:true,projectLinks:true,runtimeErrors:errors,failedLocal},null,2));
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(async()=>{await browser?.close();server.kill();});

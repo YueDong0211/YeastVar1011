@@ -1,0 +1,253 @@
+/* A single scroll owner for marker facets. Lists grow in normal flow; their
+   search and incremental disclosure control the amount shown. */
+.mw-workspace .mw-results { scroll-margin-top: 100px; }
+.mw-workspace #mw-filter-panel {
+  min-width: 0;
+  border-radius: 16px;
+  background: var(--surface);
+  overflow: visible;
+  max-height: none;
+  scrollbar-gutter: stable;
+}
+.mw-workspace #mw-filter-panel .mw-filter-title {
+  position: static;
+  padding: 16px;
+  gap: 12px;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--line);
+}
+.mw-workspace #mw-filter-panel .mw-filter-title strong {
+  flex-wrap: wrap;
+  min-width: 0;
+  line-height: 1.5;
+}
+.mw-workspace #mw-filter-panel .mw-filter-title strong small {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 400;
+}
+.mw-workspace #mw-filter-panel .mw-filter-title .mw-text-button {
+  flex: 0 0 auto;
+  padding: 2px 0;
+  min-height: 28px;
+}
+.mw-workspace #mw-filter-panel .mw-filter-section-label {
+  margin: 0;
+  padding: 14px 16px 8px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: .04em;
+}
+.mw-workspace #mw-filter-panel .mw-filter-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  padding: 12px;
+  margin: 0;
+  border-bottom: 1px solid var(--line);
+  overflow: visible;
+}
+.mw-workspace #mw-filter-panel .mw-filter-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  min-width: 0;
+  min-height: 42px;
+  padding: 9px 5px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 11px;
+  line-height: 1.5;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.mw-workspace #mw-filter-panel .mw-filter-tab svg { width: 15px; height: 15px; }
+.mw-workspace #mw-filter-panel .mw-filter-tab:hover {
+  color: var(--text);
+  background: color-mix(in srgb, var(--green) 5%, var(--surface));
+}
+.mw-workspace #mw-filter-panel .mw-filter-tab[aria-pressed=true] {
+  color: var(--green);
+  border-color: color-mix(in srgb, var(--green) 45%, var(--line));
+  background: color-mix(in srgb, var(--green) 10%, var(--surface));
+}
+.mw-workspace #mw-filter-panel .mw-active-facet { min-width: 0; padding: 16px; }
+.mw-workspace #mw-filter-panel .mw-active-facet > :is(h3, h4) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 14px;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+.mw-workspace #mw-filter-panel .mw-active-facet > .mw-facet-body { padding: 0; }
+.mw-workspace #mw-filter-panel .mw-active-facet[data-mw-facet=phase] .mw-facet-body {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+.mw-workspace #mw-filter-panel .mw-active-facet[data-mw-facet=phase] .mw-option {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 8px;
+  min-height: 42px;
+  align-items: center;
+}
+.mw-workspace #mw-filter-panel .mw-active-facet[data-mw-facet=phase] .mw-option:has(input:checked) {
+  border-color: color-mix(in srgb, var(--green) 60%, var(--line));
+  background: color-mix(in srgb, var(--green) 8%, var(--surface));
+}
+.mw-workspace #mw-filter-panel .mw-active-facet[data-mw-facet=phase] .mw-option input { margin-top: 0; }
+.mw-workspace #mw-filter-panel .mw-facet { margin: 0; }
+.mw-workspace #mw-filter-panel .mw-facet > summary {
+  position: static;
+  min-height: 54px;
+  padding: 14px 16px;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.55;
+  border-radius: 0;
+  border-bottom: 0;
+  background: transparent;
+}
+.mw-workspace #mw-filter-panel .mw-facet > summary > span {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.mw-workspace #mw-filter-panel .mw-facet > summary > i { flex: none; margin-left: 4px; }
+.mw-workspace #mw-filter-panel .mw-facet[open] > summary {
+  color: var(--green);
+  background: color-mix(in srgb, var(--green) 6%, var(--surface));
+}
+.mw-workspace #mw-filter-panel .mw-facet-selected {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  min-height: 22px;
+  padding: 2px 6px;
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--green) 12%, var(--surface));
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.mw-workspace #mw-filter-panel :is(.mw-facet-body, .mw-tag-options, .mw-source-options, .mw-go-term-list) {
+  position: static;
+  max-height: none;
+  height: auto;
+  overflow: visible;
+  overscroll-behavior: auto;
+}
+.mw-workspace #mw-filter-panel .mw-facet-body { padding: 14px 16px 18px; }
+.mw-workspace #mw-filter-panel .mw-hierarchy-kinds { gap: 8px; }
+.mw-workspace #mw-filter-panel .mw-kind-button {
+  min-width: 0;
+  min-height: 48px;
+  padding: 10px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.mw-workspace #mw-filter-panel .mw-option {
+  min-height: 38px;
+  padding: 8px 0;
+  align-items: flex-start;
+  line-height: 1.6;
+}
+.mw-workspace #mw-filter-panel .mw-option input { margin-top: 2px; }
+.mw-workspace #mw-filter-panel .mw-option input[type=checkbox] {
+  box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  min-height: 18px;
+  flex: 0 0 18px;
+  padding: 0;
+}
+.mw-workspace #mw-filter-panel .mw-option b { padding-top: 2px; flex: none; }
+.mw-workspace #mw-filter-panel .mw-small-search { min-height: 40px; padding: 9px 10px; }
+.mw-workspace #mw-filter-panel .mw-small-search input { font: inherit; font-size: 11px; }
+.mw-workspace #mw-filter-panel .mw-segment { gap: 8px; margin-bottom: 12px; }
+.mw-workspace #mw-filter-panel .mw-segment .mw-button { min-height: 42px; line-height: 1.6; }
+.mw-workspace #mw-filter-panel .mw-tag-choice { gap: 6px; }
+.mw-workspace #mw-filter-panel .mw-tag-exclude { align-self: center; flex: none; }
+.mw-workspace #mw-filter-panel .mw-facet-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  padding-top: 12px;
+  margin-top: 8px;
+  border-top: 1px solid var(--line);
+  font-size: 10px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.mw-workspace #mw-filter-panel .mw-facet-pagination .mw-text-button { min-height: 36px; padding: 6px 0; }
+.mw-workspace #mw-filter-panel .mw-detail-fieldset {
+  margin: 0 0 16px;
+  padding: 0 0 16px;
+  min-width: 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+}
+.mw-workspace #mw-filter-panel .mw-detail-fieldset:last-child { margin-bottom: 0; padding-bottom: 0; border: 0; }
+.mw-workspace #mw-filter-panel .mw-detail-fieldset > legend {
+  padding: 0 0 12px;
+  color: var(--text);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.mw-workspace #mw-filter-panel .mw-select-label { padding: 8px 0 12px; border: 0; line-height: 1.65; }
+.mw-workspace #mw-filter-panel .mw-select-label :is(select, .rich-select) { width: 100%; max-width: 100%; }
+.mw-workspace #mw-filter-panel .mw-filter-done {
+  display: none;
+  position: static;
+  z-index: auto;
+  margin: 0;
+  min-height: 44px;
+  border-radius: 0 0 16px 16px;
+}
+@media (min-width: 1101px) {
+  .mw-workspace .mw-catalogue > #mw-filter-panel {
+    position: sticky;
+    top: 96px;
+    max-height: calc(100dvh - 122px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    overscroll-behavior-y: contain;
+  }
+}
+@media (max-width: 1100px) {
+  .mw-workspace .mw-catalogue > #mw-filter-panel {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    scrollbar-gutter: auto;
+  }
+}
+@media (max-width: 600px) {
+  .mw-workspace #mw-filter-panel .mw-filter-done { display: flex; }
+  .mw-workspace #mw-filter-panel .mw-filter-title { padding: 14px; }
+  .mw-workspace #mw-filter-panel .mw-facet > summary { min-height: 52px; padding: 13px 14px; }
+  .mw-workspace #mw-filter-panel .mw-facet-body { padding: 12px 14px 16px; }
+  .mw-workspace #mw-filter-panel .mw-option { min-height: 44px; font-size: 12px; }
+  .mw-workspace #mw-filter-panel .mw-option input { margin-top: 3px; }
+  .mw-workspace #mw-filter-panel .mw-small-search { min-height: 44px; }
+  .mw-workspace #mw-filter-panel .mw-small-search input { font-size: 13px; }
+  .mw-workspace #mw-filter-panel .mw-filter-section-label { padding: 12px 14px 4px; }
+  .mw-workspace #mw-filter-panel .mw-filter-tabs { padding: 10px; }
+  .mw-workspace #mw-filter-panel .mw-filter-tab { min-height: 44px; font-size: 12px; }
+  .mw-workspace #mw-filter-panel .mw-active-facet { padding: 14px; }
+}
