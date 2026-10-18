@@ -26,7 +26,7 @@ assert.equal(api.filtered({status:'imported'}).length,2);assert.equal(api.filter
 assert.equal(api.geneLinks('CLN2')[0].url,'https://www.yeastgenome.org/locus/S000006177');assert.equal(api.geneLinks('YPL256C')[0].url,api.geneLinks('CLN2')[0].url);assert.equal(api.geneLinks('SHARED').length,0,'ambiguous aliases must not create gene queries');assert.equal(api.geneLinks('CLN2 OR test').length,0);
 for(const [lang,title] of [['zh','数据库入口'],['en','Data resources'],['fr','Ressources de données'],['es','Recursos de datos'],['eu','Datu-baliabideak']]){language=lang;assert.equal(api.text('title'),title);const html=api.page();assert.ok(html.includes(title));assert.doesNotMatch(html,/undefined|onsubmit=/);for(const href of html.matchAll(/href="([^"]+)"/g))assert.ok(/^https:\/\/|^#markers\?view=importTab$/.test(href[1]));}
 language='zh';listeners.get('input')({target:{dataset:{db24Field:'q'},value:'<img src=x onerror=1>'}});assert.match(api.page(),/&lt;img/);assert.doesNotMatch(api.page(),/<img src=x/);
-listeners.get('click')({target:{closest:()=>({dataset:{db24:'reset'}})}});assert.equal(nodes.get('#db24-count').textContent,'12 / 12');
+listeners.get('click')({target:{closest:selector=>selector==='[data-db24]'?({dataset:{db24:'reset'}}):null}});assert.equal(nodes.get('#db24-count').textContent,'12 / 12');
 listeners.get('change')({target:{dataset:{db24Field:'status'},value:'imported'}});assert.equal(nodes.get('#db24-count').textContent,'2 / 12');
 listeners.get('input')({target:{dataset:{db24Field:'gene'},value:'CLN2'}});assert.match(nodes.get('#db24-gene-result').innerHTML,/S000006177/);
 let prevented=false;listeners.get('submit')({target:{matches:s=>s==='.db24-filters'},preventDefault(){prevented=true;}});assert.equal(prevented,true);

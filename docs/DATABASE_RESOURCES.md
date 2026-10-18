@@ -52,6 +52,57 @@ The [official pySCENIC requirements](https://pyscenic.readthedocs.io/en/latest/i
 
 During this check, JASPAR identified its current site as release 2026 and exposed a Fungi download group. YeTFaSCo's download page selected version 1.02 and separated all profiles from expert-curated profiles. The UI does not freeze these as universally current versions; retain the actual downloaded release/version in each preparation manifest. No REST endpoint availability is asserted or required by the module.
 
+## Resource preparation and species scope
+
+The directory now contains nineteen official resources. The seven additions are
+YeastPathways, Ensembl Fungi, UniProtKB, PomBase, Single Cell Expression Atlas,
+CZ CELLxGENE Census and scPerturb. Each card provides five-language descriptions,
+retained import fields, official documentation and interpretation limits.
+
+Species scope classifies the directory, not the individual downloaded records:
+
+- `yeast`: a resource focused on budding yeast.
+- `multi`: a multi-species resource whose organism and strain must be checked per record.
+- `comparison`: other-species or methods-comparison material. Its labels are not
+  automatically transferred to S. cerevisiae.
+
+GO, BioGRID and other multi-species resources can contain budding-yeast data;
+selecting the yeast-focused filter is not a search of all databases containing yeast.
+
+Users can select cards into a preparation list. The list persists in the current
+tab's session storage; filtering retains selected entries, while clearing filters
+and clearing the list are separate actions. Removing a selected item preserves
+keyboard focus on its neighbour or the list heading. Export downloads
+`YeastVar1011-data-preparation.json` locally with stable resource IDs, official
+links, scope, retained fields, catalogue coverage and any `planningInputs` links.
+Source release, downloaded file, retrieval date, checksum, organism, assembly and
+ID-mapping report remain empty until supplied. `readyForAnalysis` is false. Merely
+selecting a resource does not satisfy a workflow input or import database content.
+
+The June 2026 Ensembl Fungi archive is an explicit reproducibility entry, not a
+claim that every project uses that release. CELLxGENE Census metadata must retain
+the chosen Census version, count unit and `is_primary_data`; its official schema
+includes distinct sequencing assays and duplicate cells across source datasets.
+PomBase orthology is a comparison layer, and protein localization from UniProt
+remains distinct from measured single-cell RNA abundance.
+
+Official sources checked on 2026-10-18:
+
+- [YeastPathways](https://pathway.yeastgenome.org/)
+- [Ensembl Fungi June 2026 archive](https://jun2026-fungi.ensembl.org/index.html)
+- [UniProt ID mapping](https://www.uniprot.org/help/id_mapping)
+- [PomBase ortholog documentation](https://www.pombase.org/documentation/orthologs)
+- [Single Cell Expression Atlas](https://www.ebi.ac.uk/gxa/sc/home)
+- [CELLxGENE Census documentation](https://chanzuckerberg.github.io/cellxgene-census/)
+- [Peidli et al., scPerturb (2024)](https://doi.org/10.1038/s41592-023-02144-y)
+
 ## Verification
 
 `node research/qa-database-hub-v24.cjs` checks the twelve entries, all five interface languages, dynamic source/coverage handling, search and combined filters, imported-versus-linked distinction, motif prerequisite discovery and preparation fields, exact unambiguous gene links, escaped search input, delegated controls, current marker shards and absence of network calls. Short ASCII acronyms use word boundaries, so matches such as `TF` inside `platform` are excluded. Browser layout review remains separate from these data and logic checks.
+
+`node research/qa-database-preparation-v25.cjs` loads the complete nineteen-resource
+directory and exercises species filtering, selections across filters, removal,
+session retention, empty and populated exports, immutable metadata and five-language
+labels. It confirms that preparation does not claim downloaded data or trigger
+network queries. The older test intentionally also checks the twelve-resource base
+when the extension script is absent.

@@ -1,0 +1,371 @@
+{
+  "checked_on": "2026-10-18",
+  "sources": [
+    {
+      "repo": "SONGDONGYUAN1994/PseudotimeDE",
+      "path": "R/runPseudotimeDE.R",
+      "url": "https://raw.githubusercontent.com/SONGDONGYUAN1994/PseudotimeDE/c278a487e11159b8c7f046f3943699e7ec232067/R/runPseudotimeDE.R",
+      "signatures": [
+        {
+          "name": "runPseudotimeDE",
+          "signature": "gene.vec,\n                            ori.tbl,\n                            sub.tbl,\n                            mat,\n                            assay.use = \"counts\",\n                            model = c(\"nb\", \"zinb\", \"gaussian\", \"auto\", \"qgam\"),\n                            k = 6,\n                            knots = c(0:5/5),\n                            fix.weight = TRUE,\n                            aicdiff = 10,\n                            seed = 123,\n                            quant = 0.5,\n                            usebam = FALSE,\n                            seurat.assay = 'RNA',\n                            mc.cores = 2,\n                            mc.preschedule = TRUE,\n                            SIMPLIFY = TRUE",
+          "line": 40
+        }
+      ]
+    },
+    {
+      "repo": "Winnie09/Lamian",
+      "path": "R/lamian_test.R",
+      "url": "https://raw.githubusercontent.com/Winnie09/Lamian/bf7d1285393d8e3277235faa2ea4a7569191e350/R/lamian_test.R",
+      "signatures": [
+        {
+          "name": "lamian_test",
+          "signature": "expr, cellanno, pseudotime, design=NULL, testvar=2, permuiter=100, EMmaxiter=100, EMitercutoff=0.05, verbose.output = FALSE, ncores=detectCores(), test.type='Time', fit.resolution = 1000, return.all.data = TRUE, overall.only = FALSE, test.method = 'permutation', ncores.fit = 1, fix.all.zero = TRUE, cutoff = 1e-5, sd.adjust = 1",
+          "line": 30
+        }
+      ]
+    },
+    {
+      "repo": "Winnie09/Lamian",
+      "path": "R/evaluate_uncertainty.R",
+      "url": "https://raw.githubusercontent.com/Winnie09/Lamian/bf7d1285393d8e3277235faa2ea4a7569191e350/R/evaluate_uncertainty.R",
+      "signatures": [
+        {
+          "name": "evaluate_uncertainty",
+          "signature": "inferobj,\n           n.permute,\n           subset.cell = NULL,\n           design = NULL,\n           return.ctcomp = FALSE \n           # branchPropTest.method = 'ttest', ## this is a quick way to call the t-test in branchPropTest(); however, if want to use the multinom test, call branchPropTest() separately. \n           # branchPropTest.value.log = FALSE\n  ",
+          "line": 16
+        }
+      ]
+    },
+    {
+      "repo": "heiniglab/scPower",
+      "path": "R/power.R",
+      "url": "https://raw.githubusercontent.com/heiniglab/scPower/82039da57fb53839c7c88bdc6745aced4b7017b9/R/power.R",
+      "signatures": [
+        {
+          "name": "power.general.withDoublets",
+          "signature": "nSamples,nCells,readDepth,ct.freq,\n                                     type,ref.study,ref.study.name,\n                                     samplesPerLane,read.umi.fit,\n                                     gamma.mixed.fits,ct,\n                                     disp.fun.param,\n                                     mappingEfficiency=0.8,\n                                     multipletRate=7.67e-06,multipletFactor=1.82,\n                                     min.UMI.counts=3,perc.indiv.expr=0.5,\n                                     cutoffVersion=\"absolute\",\n                                     nGenes=21000,samplingMethod=\"quantiles\",\n                                     multipletRateGrowth=\"linear\",\n                                     sign.threshold=0.05,\n                                     MTmethod=\"Bonferroni\",\n                                     useSimulatedPower=TRUE,\n                                     simThreshold=4,\n                                     speedPowerCalc=FALSE,\n                                     indepSNPs=10,\n                                     ssize.ratio.de=1,\n                                     returnResultsDetailed=FALSE",
+          "line": 75
+        },
+        {
+          "name": "power.eqtl.simulated.help",
+          "signature": "count.mean,Rsq,nSamples,\n                                    size.estimates,af=NULL",
+          "line": 1727
+        }
+      ]
+    },
+    {
+      "repo": "rbpatt2019/chooseR",
+      "path": "R/pipeline.R",
+      "url": "https://raw.githubusercontent.com/rbpatt2019/chooseR/410bdbfaebcbc57df45176491545a1165e3c6fc5/R/pipeline.R",
+      "signatures": [
+        {
+          "name": "multiple_cluster",
+          "signature": "\n                             obj,\n                             n = 100,\n                             size = 0.8,\n                             npcs = 100,\n                             res = 1.2,\n                             reduction = \"pca\",\n                             assay = \"SCT\"",
+          "line": 30
+        }
+      ]
+    },
+    {
+      "repo": "digital-medicine-research-group-UNAV/conformalized_single_cell_annotator",
+      "path": "conformalSC_annotator.py",
+      "url": "https://raw.githubusercontent.com/digital-medicine-research-group-UNAV/conformalized_single_cell_annotator/526bad858b120137d01267bde7ccb5dda5431308/conformalSC_annotator.py",
+      "signatures": [
+        {
+          "name": "__init__",
+          "arguments": [
+            "self",
+            "X",
+            "var_query",
+            "obs_query",
+            "var_query_gene_column_name",
+            "underlying_model"
+          ],
+          "accepts_kwargs": null,
+          "line": 33
+        },
+        {
+          "name": "configure",
+          "arguments": [
+            "self",
+            "reference_path",
+            "model_architecture",
+            "OOD_detector",
+            "CP_predictor",
+            "cell_names_column",
+            "cell_types_excluded_treshold",
+            "test",
+            "alpha",
+            "non_conformity_function",
+            "epoch",
+            "batch_size",
+            "random_state",
+            "verbose"
+          ],
+          "accepts_kwargs": null,
+          "line": 188
+        },
+        {
+          "name": "annotate",
+          "arguments": [
+            "self",
+            "obsm_layer",
+            "obsm",
+            "layer",
+            "obsm_OOD"
+          ],
+          "accepts_kwargs": null,
+          "line": 489
+        }
+      ]
+    },
+    {
+      "repo": "KlugerLab/bipca",
+      "path": "python/bipca/bipca.py",
+      "url": "https://raw.githubusercontent.com/KlugerLab/bipca/8842e4ce6d2d7c8a4bbf686591f4dc9c7c30b051/python/bipca/bipca.py",
+      "signatures": [
+        {
+          "name": "__init__",
+          "arguments": [
+            "self",
+            "variance_estimator",
+            "qits",
+            "P",
+            "normalized_KS",
+            "minimize_mean",
+            "fit_sigma",
+            "seed",
+            "n_subsamples",
+            "oversample_factor",
+            "b",
+            "bhat",
+            "c",
+            "chat",
+            "keep_aspect",
+            "read_counts",
+            "use_eig",
+            "dense_svd",
+            "default_shrinker",
+            "sinkhorn_tol",
+            "n_iter",
+            "n_components",
+            "exact",
+            "subsample_threshold",
+            "conserve_memory",
+            "logger",
+            "verbose",
+            "suppress",
+            "subsample_size",
+            "backend",
+            "svd_backend",
+            "sinkhorn_backend",
+            "njobs"
+          ],
+          "accepts_kwargs": "kwargs",
+          "line": 171
+        },
+        {
+          "name": "mp_rank",
+          "arguments": [
+            "self"
+          ],
+          "accepts_kwargs": null,
+          "line": 375
+        },
+        {
+          "name": "fit",
+          "arguments": [
+            "self",
+            "A"
+          ],
+          "accepts_kwargs": null,
+          "line": 534
+        },
+        {
+          "name": "get_plotting_spectrum",
+          "arguments": [
+            "self",
+            "subsample",
+            "get_raw",
+            "dense_svd",
+            "reset",
+            "X"
+          ],
+          "accepts_kwargs": null,
+          "line": 1138
+        }
+      ]
+    },
+    {
+      "repo": "theislab/moscot",
+      "path": "src/moscot/problems/time/_lineage.py",
+      "url": "https://raw.githubusercontent.com/theislab/moscot/d6e1bb10398cb9ad1e8577552439a6c571a4903a/src/moscot/problems/time/_lineage.py",
+      "signatures": [
+        {
+          "name": "__init__",
+          "arguments": [
+            "self",
+            "adata"
+          ],
+          "accepts_kwargs": "kwargs",
+          "line": 39
+        },
+        {
+          "name": "prepare",
+          "arguments": [
+            "self",
+            "time_key",
+            "joint_attr",
+            "policy",
+            "cost",
+            "cost_kwargs",
+            "a",
+            "b",
+            "marginal_kwargs",
+            "subset",
+            "reference",
+            "xy_callback",
+            "x_callback",
+            "y_callback",
+            "xy_callback_kwargs",
+            "x_callback_kwargs",
+            "y_callback_kwargs",
+            "x",
+            "y",
+            "xy"
+          ],
+          "accepts_kwargs": null,
+          "line": 42
+        },
+        {
+          "name": "solve",
+          "arguments": [
+            "self",
+            "epsilon",
+            "tau_a",
+            "tau_b",
+            "rank",
+            "scale_cost",
+            "batch_size",
+            "stage",
+            "initializer",
+            "initializer_kwargs",
+            "jit",
+            "threshold",
+            "lse_mode",
+            "min_iterations",
+            "max_iterations",
+            "device"
+          ],
+          "accepts_kwargs": "kwargs",
+          "line": 174
+        },
+        {
+          "name": "prepare",
+          "arguments": [
+            "self",
+            "time_key",
+            "lineage_attr",
+            "joint_attr",
+            "policy",
+            "cost",
+            "cost_kwargs",
+            "a",
+            "b",
+            "marginal_kwargs",
+            "subset",
+            "reference",
+            "xy_callback",
+            "x_callback",
+            "y_callback",
+            "xy_callback_kwargs",
+            "x_callback_kwargs",
+            "y_callback_kwargs",
+            "x",
+            "y",
+            "xy"
+          ],
+          "accepts_kwargs": null,
+          "line": 293
+        },
+        {
+          "name": "solve",
+          "arguments": [
+            "self",
+            "alpha",
+            "epsilon",
+            "tau_a",
+            "tau_b",
+            "rank",
+            "scale_cost",
+            "batch_size",
+            "stage",
+            "initializer",
+            "initializer_kwargs",
+            "jit",
+            "min_iterations",
+            "max_iterations",
+            "threshold",
+            "linear_solver_kwargs",
+            "device"
+          ],
+          "accepts_kwargs": "kwargs",
+          "line": 443
+        }
+      ]
+    },
+    {
+      "repo": "landerlabcode/BigSur",
+      "path": "src/BigSur/feature_selection.py",
+      "url": "https://raw.githubusercontent.com/landerlabcode/BigSur/cb6343ac5e45da374ff0d34ffb98766969be3c39/src/BigSur/feature_selection.py",
+      "signatures": [
+        {
+          "name": "mcfano_feature_selection",
+          "arguments": [
+            "adata",
+            "layer",
+            "cv",
+            "n_genes_for_PCA",
+            "min_mcfano_cutoff",
+            "p_val_cutoff",
+            "return_residuals",
+            "n_jobs",
+            "verbose"
+          ],
+          "accepts_kwargs": null,
+          "line": 26
+        }
+      ]
+    },
+    {
+      "repo": "nitzanlab/scPrisma",
+      "path": "scPrisma/algorithms.py",
+      "url": "https://raw.githubusercontent.com/nitzanlab/scPrisma/b7bc40b7277654b917f0dae45f65935fdd3328d4/scPrisma/algorithms.py",
+      "signatures": [
+        {
+          "name": "reconstruction_cyclic",
+          "arguments": [
+            "A",
+            "iterNum",
+            "batch_size",
+            "gamma",
+            "lr",
+            "verbose",
+            "final_loss",
+            "optimize_alpha"
+          ],
+          "accepts_kwargs": null,
+          "line": 338
+        },
+        {
+          "name": "e_to_range",
+          "arguments": [
+            "E"
+          ],
+          "accepts_kwargs": null,
+          "line": 1600
+        }
+      ]
+    }
+  ]
+}

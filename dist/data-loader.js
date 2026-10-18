@@ -39,14 +39,16 @@
     const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),timeout);
     try{
       const pairs=await Promise.all(names.map(async name=>{
-        const url=new URL(`data/${name}.json?v=22.0`,scriptBase);
+        const url=new URL(`data/${name}.json?v=25.0.1`,scriptBase);
         const response=await fetch(url,{signal:controller.signal,cache:'no-cache'});
         if(!response.ok)throw Error(`${name}.json: HTTP ${response.status}`);
         let catalogue=await response.json();
         if(name==='markers'&&catalogue?.format==='yv-marker-shards-v1'){
           if(!Array.isArray(catalogue.shards)||!Number.isInteger(catalogue.markerCount)||catalogue.markerCount<0||catalogue.shards.some(part=>typeof part!=='string'||!part))throw Error('markers.json: invalid shard manifest.');
           const parts=await Promise.all(catalogue.shards.map(async part=>{
-            const partUrl=new URL(part,url);if(!partUrl.search)partUrl.search=url.search;
+            const partUrl=new URL(part,url),version=catalogue.shardVersions?.[part];
+            if(typeof version==='string'&&/^[a-f0-9]{16}$/.test(version))partUrl.search='?v='+version;
+            else if(!partUrl.search)partUrl.search=url.search;
             const partResponse=await fetch(partUrl,{signal:controller.signal,cache:'no-cache'});
             if(!partResponse.ok)throw Error(`${part}: HTTP ${partResponse.status}`);
             const rows=await partResponse.json();if(!Array.isArray(rows))throw Error(`${part}: expected a marker array.`);
@@ -62,7 +64,7 @@
     }finally{clearTimeout(timer);controller.abort()}
   }
   async function perform(options){
-    const bundleUrl=options.bundleUrl||'catalogue-bundle.js?v=22.0';
+    const bundleUrl=options.bundleUrl||'catalogue-bundle.js?v=25.0.1';
     const useBundle=options.preferBundle??location.protocol==='file:';
     let networkError;
     if(!useBundle){

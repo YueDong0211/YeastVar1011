@@ -1,0 +1,645 @@
+{
+  "format": "yeastvar-marker-source-manifest-v1",
+  "retrieved": "2026-10-18",
+  "scope": "Focused source-verified expansion, not exhaustive coverage of all 2010–2026 literature.",
+  "core": [
+    {
+      "sourceId": "gasch2017_s3",
+      "doi": "10.1371/journal.pbio.2004050",
+      "datasetAccession": "GSE102475",
+      "url": "https://journals.plos.org/plosbiology/article/file?id=10.1371/journal.pbio.2004050.s003&type=supplementary",
+      "paperUrl": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.2004050",
+      "file": "research/v25-sources/gasch2017-s3.xlsx",
+      "sha256": "18c25bc6d25762fe0e5b5eb7b3c96a5947e8e7bd0bb92cb5e858c38ed28e13be",
+      "bytes": 57522,
+      "status": "downloaded-and-source-rows-verified",
+      "importAudit": {
+        "status": "source-table-row-verified",
+        "kind": "author_scRNA_annotation_panel",
+        "officialSupplement": "S3 Table",
+        "sourceSheet": "Sheet1",
+        "selection": "Published table rows; no added statistical cutoff.",
+        "importedRelationships": 61,
+        "unresolvedRows": 0
+      }
+    },
+    {
+      "sourceId": "urbonaite2021_s2",
+      "doi": "10.1038/s42003-021-02320-w",
+      "datasetAccession": "GSE165686",
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs42003-021-02320-w/MediaObjects/42003_2021_2320_MOESM4_ESM.xlsx",
+      "paperUrl": "https://www.nature.com/articles/s42003-021-02320-w",
+      "file": "research/v25-sources/42003_2021_2320_MOESM4_ESM.xlsx",
+      "sha256": "e293939df4fb1d77d9ab35f8e1038960fb2b315c11a02846502daab90c7440d5",
+      "bytes": 336930,
+      "status": "downloaded-and-source-rows-verified",
+      "importAudit": {
+        "status": "source-table-row-verified",
+        "kind": "reference_statistics",
+        "officialSupplement": "Supplementary Data 2",
+        "sourceSheet": "S2",
+        "selection": "Published table rows; no added statistical cutoff.",
+        "importedRelationships": 0,
+        "unresolvedRows": 0,
+        "importedMeasurements": 373,
+        "sourceRows": 4777,
+        "distinctSourceORFs": 4777,
+        "sourceDenominatorStatus": "unresolved",
+        "denominatorChecks": {
+          "D": {
+            "rows": 1398,
+            "mean_times_844_integer": 1398,
+            "mean_times_condition_n_integer": 0
+          },
+          "G": {
+            "rows": 1548,
+            "mean_times_844_integer": 1548,
+            "mean_times_condition_n_integer": 1
+          },
+          "M": {
+            "rows": 491,
+            "mean_times_844_integer": 491,
+            "mean_times_condition_n_integer": 0
+          },
+          "MG": {
+            "rows": 1340,
+            "mean_times_844_integer": 1340,
+            "mean_times_condition_n_integer": 1
+          }
+        },
+        "note": "原文 SD、MEAN、CV 的原始值。4777个ORF各仅一行，全部MEAN与合并844个细胞的分母相容，与报道的各条件细胞数不一致；sample字段及条件内统计分母尚未核实，不用于跨条件噪音或表达排序。",
+        "noMarkerEvidenceCreated": true
+      }
+    },
+    {
+      "sourceId": "urbonaite2021_s4",
+      "doi": "10.1038/s42003-021-02320-w",
+      "datasetAccession": "GSE165686",
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs42003-021-02320-w/MediaObjects/42003_2021_2320_MOESM6_ESM.xlsx",
+      "paperUrl": "https://www.nature.com/articles/s42003-021-02320-w",
+      "file": "research/v25-sources/42003_2021_2320_MOESM6_ESM.xlsx",
+      "sha256": "4b313477e1f6fe3863d5039eeafa32f19f6e101ff2d8dd98131a6c582fccd47b",
+      "bytes": 18560,
+      "status": "downloaded-and-source-rows-verified",
+      "importAudit": {
+        "status": "source-table-row-verified",
+        "kind": "SC3_author_selected_markers",
+        "officialSupplement": "Supplementary Data 4",
+        "sourceSheet": "S3",
+        "selection": "Published table rows; no added statistical cutoff.",
+        "importedRelationships": 116,
+        "unresolvedRows": 7,
+        "sourceRows": 123
+      }
+    },
+    {
+      "sourceId": "urbonaite2021_s6",
+      "doi": "10.1038/s42003-021-02320-w",
+      "datasetAccession": "GSE165686",
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs42003-021-02320-w/MediaObjects/42003_2021_2320_MOESM8_ESM.xlsx",
+      "paperUrl": "https://www.nature.com/articles/s42003-021-02320-w",
+      "file": "research/v25-sources/42003_2021_2320_MOESM8_ESM.xlsx",
+      "sha256": "96370f6da22056566b5a7e5243c3af77215a6dc478fd520617b9c25da0068d61",
+      "bytes": 33225,
+      "status": "downloaded-and-source-rows-verified",
+      "importAudit": {
+        "status": "source-table-row-verified",
+        "kind": "condition_differential_RNA",
+        "officialSupplement": "Supplementary Data 6",
+        "sourceSheet": "S4",
+        "selection": "Published table rows; no added statistical cutoff.",
+        "importedRelationships": 226,
+        "unresolvedRows": 0,
+        "countsByAuthorGroupAndDirection": {
+          "DMSO:positive": 2,
+          "DMSO:negative": 5,
+          "Guanine:positive": 42,
+          "Guanine:negative": 29,
+          "MPA:positive": 45,
+          "MPA:negative": 11,
+          "MG:positive": 42,
+          "MG:negative": 50
+        },
+        "maximumPublishedAdjustedP": 0.0318793772776163,
+        "directionSignMismatches": []
+      }
+    },
+    {
+      "sourceId": "urbonaite2021_s7",
+      "doi": "10.1038/s42003-021-02320-w",
+      "datasetAccession": "GSE165686",
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs42003-021-02320-w/MediaObjects/42003_2021_2320_MOESM9_ESM.xlsx",
+      "paperUrl": "https://www.nature.com/articles/s42003-021-02320-w",
+      "file": "research/v25-sources/42003_2021_2320_MOESM9_ESM.xlsx",
+      "sha256": "39b923388e9f466ac86cd40f817317e574ed5b647786a2f563b660636b1adcd3",
+      "bytes": 39715,
+      "status": "downloaded-and-source-rows-verified",
+      "importAudit": {
+        "status": "source-table-row-verified",
+        "kind": "eight_subgroup_differential_RNA",
+        "officialSupplement": "Supplementary Data 7",
+        "sourceSheet": "S5",
+        "selection": "Published table rows; no added statistical cutoff.",
+        "importedRelationships": 281,
+        "unresolvedRows": 0,
+        "countsByAuthorGroupAndDirection": {
+          "DMSO.1:positive": 5,
+          "DMSO.1:negative": 7,
+          "DMSO.2:positive": 1,
+          "DMSO.2:negative": 4,
+          "MG.1:positive": 45,
+          "MG.1:negative": 45,
+          "MG.2:positive": 11,
+          "MG.2:negative": 3,
+          "MG.3:positive": 7,
+          "MG.3:negative": 1,
+          "G.1:positive": 13,
+          "G.1:negative": 13,
+          "G.2:positive": 49,
+          "G.2:negative": 21,
+          "M:positive": 45,
+          "M:negative": 11
+        },
+        "maximumPublishedAdjustedP": 0.0470351969965265,
+        "directionSignMismatches": []
+      }
+    },
+    {
+      "sourceId": "urbonaite2021_s8",
+      "doi": "10.1038/s42003-021-02320-w",
+      "datasetAccession": "GSE165686",
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs42003-021-02320-w/MediaObjects/42003_2021_2320_MOESM10_ESM.xlsx",
+      "paperUrl": "https://www.nature.com/articles/s42003-021-02320-w",
+      "file": "research/v25-sources/42003_2021_2320_MOESM10_ESM.xlsx",
+      "sha256": "e6c9c6ee811869f4c1edf80e34c668018726c0e35e7fc0ae882235ad1f810b35",
+      "bytes": 30413,
+      "status": "downloaded-and-source-rows-verified",
+      "importAudit": {
+        "status": "source-table-row-verified",
+        "kind": "pooled_SC3_differential_RNA",
+        "officialSupplement": "Supplementary Data 8",
+        "sourceSheet": "S6",
+        "selection": "Published table rows; no added statistical cutoff.",
+        "importedRelationships": 191,
+        "unresolvedRows": 0,
+        "countsByAuthorGroupAndDirection": {
+          "1:positive": 17,
+          "1:negative": 16,
+          "2:positive": 43,
+          "2:negative": 21,
+          "3:positive": 11,
+          "3:negative": 9,
+          "4:positive": 24,
+          "4:negative": 50
+        },
+        "maximumPublishedAdjustedP": 0.0471629632556756,
+        "directionSignMismatches": []
+      }
+    }
+  ],
+  "supportingContext": [
+    {
+      "file": "research/v25-sources/urbonaite2021.xml",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8245502/fullTextXML",
+      "role": "full-text context",
+      "sha256": "91e43d97c3817cce2d4029854a1d7dce8dede6def27f04583b5729191be9affd",
+      "bytes": 114095
+    },
+    {
+      "file": "research/v25-sources/gasch2017.xml",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5746276/fullTextXML",
+      "role": "full-text context",
+      "sha256": "a8b16b9738c695667ffef21e046d5617878c84734b56b838d705b2b5cf62ec54",
+      "bytes": 259715
+    },
+    {
+      "file": "research/v25-sources/urbonaite2021-supp.zip",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8245502/supplementaryFiles",
+      "role": "publisher supplementary workbook package",
+      "sha256": "1f9db4215b4bdee6e22a11b3f976e6afbe2bc555790fd4184388c3e99a0f7bb0",
+      "bytes": 7204480
+    },
+    {
+      "file": "research/v25-sources/urbonaite2021-crossref.json",
+      "url": "https://api.crossref.org/works/10.1038/s42003-021-02320-w",
+      "role": "citation metadata",
+      "sha256": "6e18763670de0c523e18527cac7d0a200875ff5bb9a0a62a80b74bae900e5221",
+      "bytes": 21091
+    },
+    {
+      "file": "research/v25-sources/gasch2017-crossref.json",
+      "url": "https://api.crossref.org/works/10.1371/journal.pbio.2004050",
+      "role": "citation metadata",
+      "sha256": "2c373f12b36ff1294f2c2fd501b98f7cd1bf584ccf05358c530f1cbde3d5b6d0",
+      "bytes": 41363
+    },
+    {
+      "file": "research/v25-sources/urbonaite2021-analysis.R",
+      "url": "https://raw.githubusercontent.com/hemberg-lab/yeastDrop-Seq/1bd25a789c8d44b1d9208d64865023d3f67f0a0c/05_Downstream_Analysis.R",
+      "role": "analysis code; only.pos discrepancy retained",
+      "sha256": "0baef864cb9e3f77cde7057582b544fdce508dfd0d68c577d3601dee26de8ac8",
+      "bytes": 14164
+    },
+    {
+      "file": "research/v25-sources/urbonaite2021-04_QC_count_matrix.R",
+      "url": "https://raw.githubusercontent.com/hemberg-lab/yeastDrop-Seq/1bd25a789c8d44b1d9208d64865023d3f67f0a0c/04_QC_count_matrix.R",
+      "role": "count/mean/noise methods",
+      "sha256": "158da6b2368a2f6414b314a4c783e36a0e128b82f422467b9d45ae649741d3fa",
+      "bytes": 6460
+    },
+    {
+      "file": "research/v25-sources/urbonaite2021-wrapper.R",
+      "url": "https://raw.githubusercontent.com/hemberg-lab/yeastDrop-Seq/1bd25a789c8d44b1d9208d64865023d3f67f0a0c/in_house_scripts/wrapper.R",
+      "role": "calculateCV definition",
+      "sha256": "4fe6b8b9ea1025dcfb61c7a11c328d8fae47b2bc5db6599a15ed8324b29dea3d",
+      "bytes": 2822
+    }
+  ],
+  "identitySource": {
+    "database": "Saccharomyces Genome Database",
+    "url": "https://downloads.yeastgenome.org/curation/chromosomal_feature/SGD_features.tab",
+    "file": "research/cache/v4/sgd_features.tab",
+    "sha256": "dccdc13c111bfe3e1aeaccf085206ea35b77aebdc6a514289562a0b457ed6a03",
+    "mappingPolicy": "Unique source systematic ID or existing SGD alias; no invalid suffix removal.",
+    "sourceFields": {
+      "id": 1,
+      "featureType": 2,
+      "qualification": 3,
+      "systematic": 4,
+      "symbol": 5,
+      "aliases": 6,
+      "description": 16
+    }
+  },
+  "added": {
+    "relationships": 875,
+    "uniqueGenes": 377,
+    "newGenesAgainstOriginalBaseline": 12,
+    "authorPanels": 11,
+    "differentialStates": 16,
+    "sources": 6
+  },
+  "held": {
+    "invalidSourceIdentifiers": [
+      {
+        "sourceId": "urbonaite2021_s4",
+        "sourceSheet": "S3",
+        "sourceRow": 22,
+        "sourceGene": "YOL058W1",
+        "sourceSymbol": "YOL058W1",
+        "candidateIds": [],
+        "reason": "No unique SGD identity. Original invalid suffix is not removed."
+      },
+      {
+        "sourceId": "urbonaite2021_s4",
+        "sourceSheet": "S3",
+        "sourceRow": 23,
+        "sourceGene": "YHR162W1",
+        "sourceSymbol": "YHR162W1",
+        "candidateIds": [],
+        "reason": "No unique SGD identity. Original invalid suffix is not removed."
+      },
+      {
+        "sourceId": "urbonaite2021_s4",
+        "sourceSheet": "S3",
+        "sourceRow": 24,
+        "sourceGene": "YMR096W1",
+        "sourceSymbol": "YMR096W1",
+        "candidateIds": [],
+        "reason": "No unique SGD identity. Original invalid suffix is not removed."
+      },
+      {
+        "sourceId": "urbonaite2021_s4",
+        "sourceSheet": "S3",
+        "sourceRow": 25,
+        "sourceGene": "YDR158W1",
+        "sourceSymbol": "YDR158W1",
+        "candidateIds": [],
+        "reason": "No unique SGD identity. Original invalid suffix is not removed."
+      },
+      {
+        "sourceId": "urbonaite2021_s4",
+        "sourceSheet": "S3",
+        "sourceRow": 26,
+        "sourceGene": "YMR097C1",
+        "sourceSymbol": "YMR097C1",
+        "candidateIds": [],
+        "reason": "No unique SGD identity. Original invalid suffix is not removed."
+      },
+      {
+        "sourceId": "urbonaite2021_s4",
+        "sourceSheet": "S3",
+        "sourceRow": 27,
+        "sourceGene": "YDL066W1",
+        "sourceSymbol": "YDL066W1",
+        "candidateIds": [],
+        "reason": "No unique SGD identity. Original invalid suffix is not removed."
+      },
+      {
+        "sourceId": "urbonaite2021_s4",
+        "sourceSheet": "S3",
+        "sourceRow": 32,
+        "sourceGene": "YGL009C1",
+        "sourceSymbol": "YGL009C1",
+        "candidateIds": [],
+        "reason": "No unique SGD identity. Original invalid suffix is not removed."
+      }
+    ],
+    "unresolvedSummaryMeasurements": 373,
+    "productionMeasurementDefault": 0
+  },
+  "existingSourcesChecked": [
+    "gasch2017",
+    "gasch2017_s8",
+    "nadal2019",
+    "brettner2024_states",
+    "shabestary2024_s1",
+    "spellman1998"
+  ],
+  "deferred": [
+    {
+      "id": "gasch2017_s2",
+      "doi": "10.1371/journal.pbio.2004050",
+      "year": 2017,
+      "url": "https://journals.plos.org/plosbiology/article/file?id=10.1371/journal.pbio.2004050.s002&type=supplementary",
+      "files": [
+        "gasch2017-s2.xlsx"
+      ],
+      "status": "downloaded-not-imported",
+      "reason": "Spline-based detection/abundance comparison lists. These are not cell-state marker panels; column strings also contain neighboring ORFs.",
+      "fileIntegrity": [
+        {
+          "file": "research/v25-sources/gasch2017-s2.xlsx",
+          "sha256": "b3af624bfb429714928d0dbdb1dc8a75179b46acdfb6fbebbb691e56228c20d1",
+          "bytes": 288188
+        }
+      ]
+    },
+    {
+      "id": "amoussouvi2018",
+      "doi": "10.1038/s41540-018-0053-4",
+      "year": 2018,
+      "url": "https://www.nature.com/articles/s41540-018-0053-4",
+      "files": [
+        "amoussouvi2018.xml",
+        "amoussouvi2018-supp.zip",
+        "41540_2018_53_MOESM2_ESM.xlsx"
+      ],
+      "status": "downloaded-next-batch-candidate",
+      "reason": "SIC1/CLN2/CLB5 smFISH count distributions by morphologically assigned phase and salt time point. Preserve distributions instead of interpreting every phase bin as a positive RNA marker; WHI5/SPC42 staging is protein/morphology evidence.",
+      "fileIntegrity": [
+        {
+          "file": "research/v25-sources/amoussouvi2018.xml",
+          "sha256": "7837d55a2fb304307d015240c693a1679c2489868fbbc6670fc928593bc701c8",
+          "bytes": 149341
+        },
+        {
+          "file": "research/v25-sources/amoussouvi2018-supp.zip",
+          "sha256": "f132a65f574e8caedcb4ba8b1d5b326b65432a3146d1628505526995d3b20d7e",
+          "bytes": 2734756
+        },
+        {
+          "file": "research/v25-sources/41540_2018_53_MOESM2_ESM.xlsx",
+          "sha256": "d80c1a503af18b1d7e45034ae3355f96542a53363b892ca7624173805b6bd5a8",
+          "bytes": 46290
+        }
+      ]
+    },
+    {
+      "id": "schreiber2025",
+      "doi": "10.3390/cells14060412",
+      "year": 2025,
+      "url": "https://www.mdpi.com/2073-4409/14/6/412",
+      "files": [
+        "schreiber2025.xml",
+        "schreiber2025-supp.zip"
+      ],
+      "status": "downloaded-next-batch-candidate",
+      "reason": "Five paralog pairs studied by smiFISH; supplements contain PDF rather than downloadable raw count tables. Need figure/condition-specific extraction; no global expression ranks or interchangeable-paralog claim.",
+      "fileIntegrity": [
+        {
+          "file": "research/v25-sources/schreiber2025.xml",
+          "sha256": "2c7b35ec6230bc93308ad6df450bd232c0ab380e28ad1a8f3be6f1c3e17c1f2e",
+          "bytes": 153593
+        },
+        {
+          "file": "research/v25-sources/schreiber2025-supp.zip",
+          "sha256": "75d1f7eec1f6e34a654b2407d0b2e3e49525125002104051c2f1806aaf7d0bfb",
+          "bytes": 5298894
+        }
+      ]
+    },
+    {
+      "id": "eder2026_v3",
+      "doi": "10.1101/2025.03.12.642837",
+      "year": 2026,
+      "url": "https://doi.org/10.1101/2025.03.12.642837",
+      "datasetAccession": [
+        "GSE251966",
+        "GSE309715"
+      ],
+      "dataUrl": "https://osf.io/pcngh/",
+      "files": [
+        "eder-preprint-versions.json",
+        "eder2026-README",
+        "eder2026-Eder_et_al_2026_Data_Analysis.R",
+        "eder2026-misfolded.sc.consensus.csv",
+        "eder2026-glucose.sc.consensus.csv",
+        "eder2026-sucrose.sc.consensus.csv",
+        "eder2026-flu.sc.consensus.csv"
+      ],
+      "status": "partial-download-not-imported",
+      "latestVersion": "3; 2026-08-19; preprint",
+      "reason": "Official author code requires Supplemental_Table_1_SR_Genes.csv for authored stress-response panels; that table was not retrieved. Downloaded consensus CSVs contain tested genes and code negates logFC for figures. Do not import all rows as markers or guess direction. PMC12803069 is version 2, not the latest version.",
+      "olderVersionFiles": [
+        "brettner2026.xml",
+        "eder2026-supp.zip"
+      ],
+      "fileIntegrity": [
+        {
+          "file": "research/v25-sources/eder-preprint-versions.json",
+          "sha256": "7724a577de62af5fed76595cc55c971de3980a0a1c5bf8f7c55c0964d006b117",
+          "bytes": 9180
+        },
+        {
+          "file": "research/v25-sources/eder2026-README",
+          "sha256": "c0e2aafa9bd4d8c296fdadfe190b75301270a7101ae5a62f3e423f8445b822cb",
+          "bytes": 1495
+        },
+        {
+          "file": "research/v25-sources/eder2026-Eder_et_al_2026_Data_Analysis.R",
+          "sha256": "f57152069479091b83c9d55a0afa3cee8d564f0ac9eb46498146c8ff24029c2e",
+          "bytes": 236914
+        },
+        {
+          "file": "research/v25-sources/eder2026-misfolded.sc.consensus.csv",
+          "sha256": "2b6c31412e282c39bd55bad18d0a02ee5b8363771dfb2064779320e954199803",
+          "bytes": 408543
+        },
+        {
+          "file": "research/v25-sources/eder2026-glucose.sc.consensus.csv",
+          "sha256": "9214f84fb8dd10cc2fe9f140739c0d884716ef7e69995cec84371e11fc3ff566",
+          "bytes": 414462
+        },
+        {
+          "file": "research/v25-sources/eder2026-sucrose.sc.consensus.csv",
+          "sha256": "e0ec050497c93e96d96dc4dfa4d02d1ac1f71b6834a0b8bb7852b207baa2f951",
+          "bytes": 405133
+        },
+        {
+          "file": "research/v25-sources/eder2026-flu.sc.consensus.csv",
+          "sha256": "a7e7a0d5028f711adab9447576e99cb4e4c977126a31a4d3b49468c439417e60",
+          "bytes": 530876
+        }
+      ]
+    },
+    {
+      "id": "brettner2024_complete_s1",
+      "doi": "10.1002/yea.3927",
+      "year": 2024,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11146634/",
+      "files": [
+        "brettner2024-supp-download-error.xml"
+      ],
+      "status": "supplement-unavailable-via-tested-route",
+      "reason": "Europe PMC returned an explicit non-OA-download-subset error. Existing catalogue has eight named text-supported genes; no complete supplementary table import is claimed.",
+      "fileIntegrity": [
+        {
+          "file": "research/v25-sources/brettner2024-supp-download-error.xml",
+          "sha256": "aec33563ec1fa9ccd15829a991eaecf8b1c73e5d80fd0b43b7c6b4e5137a9d97",
+          "bytes": 297
+        }
+      ]
+    },
+    {
+      "id": "nadal2019_extra",
+      "doi": "10.1038/s41564-018-0346-9",
+      "year": 2019,
+      "url": "https://www.nature.com/articles/s41564-018-0346-9",
+      "files": [
+        "nadal2019.xml"
+      ],
+      "status": "full-text-reviewed-existing-source",
+      "reason": "Existing catalogue already has named genes; no additional original gene table verified in this batch.",
+      "fileIntegrity": [
+        {
+          "file": "research/v25-sources/nadal2019.xml",
+          "sha256": "6d9510abfe17c54b0b6ec6a6e417cfc976f3a459ac8da57451a6606e5bc1a572",
+          "bytes": 109691
+        }
+      ]
+    },
+    {
+      "id": "urbonaite2021_other_supplements",
+      "doi": "10.1038/s42003-021-02320-w",
+      "year": 2021,
+      "url": "https://www.nature.com/articles/s42003-021-02320-w",
+      "files": [
+        "42003_2021_2320_MOESM3_ESM.xlsx",
+        "42003_2021_2320_MOESM5_ESM.xlsx",
+        "42003_2021_2320_MOESM7_ESM.xlsx",
+        "42003_2021_2320_MOESM11_ESM.xlsx",
+        "42003_2021_2320_MOESM12_ESM.xlsx"
+      ],
+      "status": "downloaded-not-imported-as-markers",
+      "reason": "Other source supplements include cell/classification/expression/GO material. No GO enrichment membership or all-tested-gene matrix is promoted to an RNA annotation marker.",
+      "fileIntegrity": [
+        {
+          "file": "research/v25-sources/42003_2021_2320_MOESM3_ESM.xlsx",
+          "sha256": "92320bab21f6a2450495bd9876da385c5e9ddfe9e5d38eeb6b08631d4d3672d7",
+          "bytes": 35919
+        },
+        {
+          "file": "research/v25-sources/42003_2021_2320_MOESM5_ESM.xlsx",
+          "sha256": "c9bbeded8b496daf9653c2354b93c2beaa13238822c27ae59fa9c23bf167e1c0",
+          "bytes": 901114
+        },
+        {
+          "file": "research/v25-sources/42003_2021_2320_MOESM7_ESM.xlsx",
+          "sha256": "ddb14e4a80ce037842f4836835feedf96a9ab61d9d7170011fafe8a4600b607c",
+          "bytes": 1323689
+        },
+        {
+          "file": "research/v25-sources/42003_2021_2320_MOESM11_ESM.xlsx",
+          "sha256": "16d5f06dcaff183c106d36d31a5bc98b5842733b924d214f4ddcc99e5269a6d9",
+          "bytes": 23986
+        },
+        {
+          "file": "research/v25-sources/42003_2021_2320_MOESM12_ESM.xlsx",
+          "sha256": "a30d7f20b91891c913e8455f3ea8d85f6f626123fe34a8b52023cdde7e42227c",
+          "bytes": 47177
+        }
+      ]
+    }
+  ],
+  "legacyMetadataProposalCounts": {
+    "shabestary_glutamine": 2439,
+    "gasch_s8_assay_context": 859,
+    "shabestary_proline": 1716
+  },
+  "existingDuplicateEvidenceReview": {
+    "S000000520": {
+      "symbol": "BUD3",
+      "relationships": 2,
+      "tags": [
+        "G2",
+        "M"
+      ],
+      "decision": "Retain pending original-table row audit; not silently delete."
+    },
+    "S000003556": {
+      "symbol": "MPS3",
+      "relationships": 2,
+      "tags": [
+        "G1",
+        "G1"
+      ],
+      "decision": "Retain pending original-table row audit; not silently delete."
+    },
+    "S000000566": {
+      "symbol": "MRC1",
+      "relationships": 2,
+      "tags": [
+        "G1",
+        "G1"
+      ],
+      "decision": "Retain pending original-table row audit; not silently delete."
+    },
+    "S000001429": {
+      "symbol": "SDL1",
+      "relationships": 2,
+      "tags": [
+        "M",
+        "M"
+      ],
+      "decision": "Retain pending original-table row audit; not silently delete."
+    },
+    "S000004497": {
+      "symbol": "SRC1",
+      "relationships": 2,
+      "tags": [
+        "M",
+        "M"
+      ],
+      "decision": "Retain pending original-table row audit; not silently delete."
+    },
+    "S000000568": {
+      "symbol": "VAC17",
+      "relationships": 2,
+      "tags": [
+        "G2",
+        "G2"
+      ],
+      "decision": "Retain pending original-table row audit; not silently delete."
+    }
+  },
+  "provenanceIssues": [
+    "Urbonaite Supplementary Data 2 has 4777 unique ORFs, one row each, and MEAN values compatible with 844-cell denominator; source sample grouping is unresolved.",
+    "Urbonaite published differential tables include negative values; archived current analysis script uses only.pos=TRUE. Import table values without claiming exact code reconstruction.",
+    "Urbonaite sc3_plot_markers plot AUROC setting is not used to re-filter the published marker table.",
+    "Urbonaite supplementary data numbers differ from legacy internal sheet names; both are preserved.",
+    "Gasch S3 B column includes neighboring ORFs; only column A UID is used for identity.",
+    "Gasch CLN2 author category is DNA replication; no added G1/S phase assignment.",
+    "Seven invalid suffixed ORFs remain unresolved even though stripping a final 1 could suggest a canonical gene."
+  ]
+}

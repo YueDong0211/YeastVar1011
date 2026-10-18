@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-17",
+  "updated": "2026-10-18",
   "scope": "方法与官方来源已关联；尚未在本项目运行或验证。",
   "scopeEn": "Research-plan templates; no analyses have been executed.",
   "projects": [
@@ -18,14 +18,17 @@
         "reference"
       ],
       "optionalInputs": [
-        "culture_replicates"
+        "culture_replicates",
+        "sample_metadata"
       ],
       "stepIds": [
         "design",
         "fastq",
         "tags",
         "bam",
-        "matrix"
+        "matrix",
+        "sampleqc",
+        "validation"
       ],
       "toolIds": [
         "seqkit",
@@ -34,7 +37,8 @@
         "starsolo",
         "samtools",
         "pysam",
-        "picard"
+        "picard",
+        "limma"
       ],
       "metricIds": [
         "bam_tag_completeness",
@@ -43,7 +47,10 @@
         "matrix_layer_reconciliation",
         "cb_umi_layout_concordance",
         "bam_sequence_cigar_consistency",
-        "bam_input_read_reconciliation"
+        "bam_input_read_reconciliation",
+        "v25_design_rank",
+        "v25_nonestimable",
+        "v25_replication_map"
       ],
       "workflow": [
         {
@@ -75,7 +82,9 @@
       "hypotheses": [
         "核对同一文库各lane的barcode结构和参考是否一致，并检验纠错或比对损失是否集中在特定lane。"
       ],
-      "failureChecks": [],
+      "failureChecks": [
+        "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。"
+      ],
       "outputs": [
         "BAM标签逐项完整率",
         "CB区段质量分布",
@@ -83,13 +92,17 @@
         "Gene、GeneFull与剪接层计数核对",
         "CB/UMI提取结构一致性",
         "BAM序列、质量与CIGAR一致性",
-        "FASTQ到BAM的read守恒核对"
+        "FASTQ到BAM的read守恒核对",
+        "设计矩阵秩、别名系数与真实重复覆盖表"
       ],
       "sourceUrls": [
         "https://github.com/alexdobin/STAR/blob/master/docs/STARsolo.md",
         "https://www.htslib.org/doc/samtools-stats.html",
         "https://github.com/alexdobin/STAR/blob/master/source/parametersDefault",
-        "https://broadinstitute.github.io/picard/command-line-overview.html#ValidateSamFile"
+        "https://broadinstitute.github.io/picard/command-line-overview.html#ValidateSamFile",
+        "https://doi.org/10.1093/nar/gkv007",
+        "https://doi.org/10.1038/s41467-021-25960-2",
+        "https://bioconductor.org/packages/release/bioc/manuals/limma/man/limma.pdf"
       ],
       "tags": [
         "raw_qc",
@@ -98,10 +111,44 @@
       "evidenceStatus": "原始论文与官方方法资料",
       "addedIn": "v3",
       "method": "逐文库保留原始FASTQ校验、区段质量和参考版本；输出纠错前后CB/UMI、带标签BAM、未筛选矩阵与多个计数层，再核对read→分子→细胞的损失。",
-      "parameterDecisions": [],
+      "parameterDecisions": [
+        "在每个实际拟合的样本与状态子集中重新构建设计矩阵。"
+      ],
       "statisticalUnit": "QC按文库、lane、read、分子和细胞分别计量；后续条件效应推断再使用培养重复。",
-      "analysisPrinciples": [],
-      "interpretationBoundary": "输出：分子计数与处理流程的质量诊断。"
+      "analysisPrinciples": [
+        "调用配方；尚未在项目数据上执行。"
+      ],
+      "interpretationBoundary": "输出：分子计数与处理流程的质量诊断。",
+      "paperIds": [
+        "v25_4cb493e88582",
+        "v25_7fe5101ca916"
+      ],
+      "methodOptions": [
+        {
+          "id": "v25_design_estimability",
+          "title": "审查比较设计、混杂与真实重复",
+          "toolIds": [
+            "limma"
+          ],
+          "metricIds": [
+            "v25_design_rank",
+            "v25_nonestimable",
+            "v25_replication_map"
+          ],
+          "requiredData": [
+            "sample_metadata"
+          ],
+          "optionalData": [
+            "culture_replicates"
+          ],
+          "paperIds": [
+            "v25_4cb493e88582",
+            "v25_7fe5101ca916"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。"
+        }
+      ]
     },
     {
       "id": "qc_multiverse",
@@ -234,13 +281,15 @@
         "sampleqc",
         "annotation",
         "noise",
-        "validation"
+        "validation",
+        "design"
       ],
       "toolIds": [
         "memento",
         "basics",
         "glmmtmb",
-        "scvar"
+        "scvar",
+        "limma"
       ],
       "metricIds": [
         "noise_cv2",
@@ -250,7 +299,10 @@
         "noise_interval",
         "noise_normalization_estimand",
         "noise_annotation_uncertainty",
-        "noise_mean_equivalence"
+        "noise_mean_equivalence",
+        "v25_design_rank",
+        "v25_nonestimable",
+        "v25_replication_map"
       ],
       "workflow": [
         {
@@ -283,7 +335,8 @@
         "零假设：在可比均值、状态和测量模型下，各比较组的表达离散度相同。"
       ],
       "failureChecks": [
-        "用均值等效证据区分稳定均值与低功效下的未检出差异。"
+        "用均值等效证据区分稳定均值与低功效下的未检出差异。",
+        "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。"
       ],
       "outputs": [
         "平方变异系数",
@@ -292,7 +345,8 @@
         "噪音比较的均值重叠支持",
         "噪音效应不确定性",
         "RNA测量目标与归一化敏感性",
-        "注释不确定性向噪音结果的传播"
+        "注释不确定性向噪音结果的传播",
+        "设计矩阵秩、别名系数与真实重复覆盖表"
       ],
       "sourceUrls": [
         "https://doi.org/10.1016/j.cell.2024.09.044",
@@ -303,7 +357,10 @@
         "https://doi.org/10.1186/s13059-016-0930-3",
         "https://doi.org/10.1016/j.cels.2018.06.011",
         "https://doi.org/10.1016/j.cels.2019.08.003",
-        "https://www.bioconductor.org/packages/devel/bioc/vignettes/BASiCS/inst/doc/BASiCS.html"
+        "https://www.bioconductor.org/packages/devel/bioc/vignettes/BASiCS/inst/doc/BASiCS.html",
+        "https://doi.org/10.1093/nar/gkv007",
+        "https://doi.org/10.1038/s41467-021-25960-2",
+        "https://bioconductor.org/packages/release/bioc/manuals/limma/man/limma.pdf"
       ],
       "tags": [
         "noise",
@@ -314,18 +371,49 @@
       "method": "联合估计均值与均值条件化变异，比较菌株、培养及状态内效应；对“仅噪音改变”候选同时报告均值等效区间与噪音效应区间。",
       "parameterDecisions": [
         "按表达量、检出率与深度界定可比较基因；预先声明最小有意义的均值及变异效应。",
-        "固定计数层、培养层重抽样与检验集合；并列保存效应、区间和校正概率。"
+        "固定计数层、培养层重抽样与检验集合；并列保存效应、区间和校正概率。",
+        "在每个实际拟合的样本与状态子集中重新构建设计矩阵。"
       ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
-      "analysisPrinciples": [],
+      "analysisPrinciples": [
+        "调用配方；尚未在项目数据上执行。"
+      ],
       "interpretationBoundary": "估计对象：所选细胞状态和测量模型下的表达变异。",
       "reviewedIn": "v4",
       "paperIds": [
         "v12_basics_2016",
         "v12_basics_2018",
-        "v12_basics_correction_2019"
+        "v12_basics_correction_2019",
+        "v25_4cb493e88582",
+        "v25_7fe5101ca916"
       ],
-      "updatedIn": "v12"
+      "updatedIn": "v12",
+      "methodOptions": [
+        {
+          "id": "v25_design_estimability",
+          "title": "审查比较设计、混杂与真实重复",
+          "toolIds": [
+            "limma"
+          ],
+          "metricIds": [
+            "v25_design_rank",
+            "v25_nonestimable",
+            "v25_replication_map"
+          ],
+          "requiredData": [
+            "sample_metadata"
+          ],
+          "optionalData": [
+            "culture_replicates"
+          ],
+          "paperIds": [
+            "v25_4cb493e88582",
+            "v25_7fe5101ca916"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。"
+        }
+      ]
     },
     {
       "id": "noise_components",
@@ -348,18 +436,22 @@
         "annotation",
         "noise",
         "markers",
-        "validation"
+        "validation",
+        "integration"
       ],
       "toolIds": [
         "memento",
         "sccomp",
-        "glmmtmb"
+        "glmmtmb",
+        "chooser"
       ],
       "metricIds": [
         "noise_state_component",
         "composition_effect",
         "composition_variability",
-        "noise_annotation_uncertainty"
+        "noise_annotation_uncertainty",
+        "v25_cluster_coassignment",
+        "v25_cluster_stability"
       ],
       "workflow": [
         {
@@ -386,18 +478,23 @@
       "hypotheses": [
         "若差异完全由状态组成驱动，将各组重加权为共同状态比例后，总体方差差异应消失。"
       ],
-      "failureChecks": [],
+      "failureChecks": [
+        "原生chooseR随机抽细胞；培养分块与留出验证需项目适配，不能混作原生输出。稳定群不等于离散细胞类型。先检查旧版Seurat接口与成对矩阵内存。"
+      ],
       "outputs": [
         "状态内与状态间方差分解",
         "样本间状态组成差异",
         "状态组成的样本间变异",
-        "注释不确定性向噪音结果的传播"
+        "注释不确定性向噪音结果的传播",
+        "共聚类概率、轮廓稳定性及留出培养复现"
       ],
       "sourceUrls": [
         "https://doi.org/10.1016/j.cell.2024.09.044",
         "https://doi.org/10.1073/pnas.2203828120",
         "https://doi.org/10.1093/biostatistics/kxac047",
-        "https://bioconductor.org/packages/release/bioc/vignettes/SingleR/inst/doc/SingleR.html"
+        "https://bioconductor.org/packages/release/bioc/vignettes/SingleR/inst/doc/SingleR.html",
+        "https://doi.org/10.1186/s12859-021-03957-4",
+        "https://github.com/rbpatt2019/chooseR/blob/410bdbfaebcbc57df45176491545a1165e3c6fc5/R/pipeline.R"
       ],
       "tags": [
         "noise",
@@ -406,13 +503,45 @@
       "evidenceStatus": "原始论文与官方方法资料",
       "addedIn": "v3",
       "method": "应用全方差分解分开状态内方差和状态均值差异；同时重加权为共同状态组成，比较原始群体与标准化群体的异质性。",
-      "parameterDecisions": [],
+      "parameterDecisions": [
+        "联合比较抽样次数、抽样比例、分辨率与保留维度；在固定源码仓库目录调用pipeline.R。"
+      ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
       "analysisPrinciples": [
-        "状态内剩余变异仍可包含隐藏状态与测量偏差，不自动等于内在噪音。"
+        "状态内剩余变异仍可包含隐藏状态与测量偏差，不自动等于内在噪音。",
+        "调用配方；尚未在项目数据上执行。"
       ],
       "interpretationBoundary": "估计对象：所选细胞状态和测量模型下的表达变异。",
-      "reviewedIn": "v4"
+      "reviewedIn": "v4",
+      "paperIds": [
+        "v25_da9bb160f8a9"
+      ],
+      "methodOptions": [
+        {
+          "id": "v25_cluster_stability",
+          "title": "聚类分辨率与培养间稳定性评估",
+          "toolIds": [
+            "chooser"
+          ],
+          "metricIds": [
+            "v25_cluster_coassignment",
+            "v25_cluster_stability"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata",
+            "culture_replicates"
+          ],
+          "optionalData": [
+            "cell_states"
+          ],
+          "paperIds": [
+            "v25_da9bb160f8a9"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "原生chooseR随机抽细胞；培养分块与留出验证需项目适配，不能混作原生输出。稳定群不等于离散细胞类型。先检查旧版Seurat接口与成对矩阵内存。"
+        }
+      ]
     },
     {
       "id": "distribution_shapes",
@@ -516,23 +645,30 @@
         "sample_metadata"
       ],
       "optionalInputs": [
-        "culture_replicates"
+        "culture_replicates",
+        "genotypes",
+        "kinship"
       ],
       "stepIds": [
         "sampleqc",
         "noise",
-        "validation"
+        "validation",
+        "design",
+        "genetics"
       ],
       "toolIds": [
         "scdesign3",
         "screadsim",
-        "memento"
+        "memento",
+        "scpower"
       ],
       "metricIds": [
         "sample_noise_precision",
         "null_false_positive",
         "interval_coverage",
-        "noise_depth_thinning"
+        "noise_depth_thinning",
+        "v25_power_detection",
+        "v25_power_prior_transfer"
       ],
       "workflow": [
         {
@@ -554,16 +690,21 @@
       "hypotheses": [
         "在纯技术阴性模拟中评估假阳性校准；在已知噪音效应模拟中比较深度、细胞数和培养数的检出率。"
       ],
-      "failureChecks": [],
+      "failureChecks": [
+        "这是均值DE/eQTL功效，不是噪音QTL功效。替换人类默认参数；原生eQTL模拟的二倍体HWE假设须适配酵母倍性与群体结构。遗传样本量按菌株而非细胞计。"
+      ],
       "outputs": [
         "每菌株噪音估计精度曲线",
         "阴性模拟假阳性率",
         "效应区间覆盖率",
-        "UMI抽稀后噪音效应稳定性"
+        "UMI抽稀后噪音效应稳定性",
+        "表达可检测概率、条件检验功效及酵母先验敏感性"
       ],
       "sourceUrls": [
         "https://doi.org/10.1038/s41587-023-01772-1",
-        "https://doi.org/10.1016/j.cell.2024.09.044"
+        "https://doi.org/10.1016/j.cell.2024.09.044",
+        "https://doi.org/10.1038/s41467-021-26779-7",
+        "https://github.com/heiniglab/scPower/blob/82039da57fb53839c7c88bdc6745aced4b7017b9/R/power.R"
       ],
       "tags": [
         "simulation",
@@ -573,12 +714,45 @@
       "addedIn": "v3",
       "method": "从现有数据校准深度、稀疏性和相关结构；分别改变均值、离散度、状态比例及捕获差异，比较菌株覆盖、培养数、细胞数和深度对检出能力的贡献。",
       "parameterDecisions": [
-        "固定待检测效应、测量模型和重抽样层级；输出功效—成本曲线及效应区间覆盖。"
+        "固定待检测效应、测量模型和重抽样层级；输出功效—成本曲线及效应区间覆盖。",
+        "显式提供nSamples、nCells、深度、基因数、双细胞模型、效应先验与检测规则；不继承人类默认值。"
       ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
-      "analysisPrinciples": [],
+      "analysisPrinciples": [
+        "调用配方；尚未在项目数据上执行。"
+      ],
       "interpretationBoundary": "功效和校准只针对已明确的模拟模型与参数范围；模拟逼真不证明真实生物学机制。",
-      "updatedIn": "v12"
+      "updatedIn": "v12",
+      "paperIds": [
+        "v25_dd5fab2e6d62"
+      ],
+      "methodOptions": [
+        {
+          "id": "v25_power_mean_eqtl",
+          "title": "以酵母试点校准均值检验功效与检测概率",
+          "toolIds": [
+            "scpower"
+          ],
+          "metricIds": [
+            "v25_power_detection",
+            "v25_power_prior_transfer"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata",
+            "culture_replicates"
+          ],
+          "optionalData": [
+            "genotypes",
+            "kinship"
+          ],
+          "paperIds": [
+            "v25_dd5fab2e6d62"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "这是均值DE/eQTL功效，不是噪音QTL功效。替换人类默认参数；原生eQTL模拟的二倍体HWE假设须适配酵母倍性与群体结构。遗传样本量按菌株而非细胞计。"
+        }
+      ]
     },
     {
       "id": "burst_identifiability",
@@ -669,26 +843,40 @@
         "yeast_cycle_reference"
       ],
       "optionalInputs": [
-        "culture_replicates"
+        "culture_replicates",
+        "sample_metadata",
+        "truth_or_simulation",
+        "timepoints"
       ],
       "stepIds": [
         "annotation",
         "dynamics",
         "noise",
-        "networks"
+        "networks",
+        "markers",
+        "validation"
       ],
       "toolIds": [
         "tricycle",
         "schot",
         "tradeseq",
-        "memento"
+        "memento",
+        "pseudotimede",
+        "lamian",
+        "scprisma"
       ],
       "metricIds": [
         "cycle_phase_transfer",
         "network_local_covariance",
         "noise_state_component",
         "marker_panel_ablation",
-        "noise_annotation_uncertainty"
+        "noise_annotation_uncertainty",
+        "v25_pseudotime_rank_stability",
+        "v25_pseudotimede_tests",
+        "v25_lamian_curve_effect",
+        "v25_lamian_branch_support",
+        "v25_cycle_spectral_agreement",
+        "v25_cycle_enhancement_sensitivity"
       ],
       "workflow": [
         {
@@ -715,20 +903,33 @@
       "hypotheses": [
         "零假设：控制周期均值趋势后，局部表达方差或基因相关不随周期相位变化。"
       ],
-      "failureChecks": [],
+      "failureChecks": [
+        "这是均值趋势检验，不是差异噪音检验。重采样不能解决培养伪重复；无真实轨迹时须用空模型检查循环选基因造成的假信号。",
+        "使用log归一化副本。0.99.3默认fix.all.zero会为零方差样本添加随机噪声；本配方关闭它并记录退化基因。分支支持另调用evaluate_uncertainty，不能从趋势p值推算。",
+        "循环模板会引入闭环结构，不能单凭结果证明周期存在；相位不是物理时间。增强或过滤矩阵只作对照，噪音结论回到原始计数。"
+      ],
       "outputs": [
         "酵母周期参考覆盖与相位一致性",
         "沿状态梯度的局部协方差变化",
         "状态内与状态间方差分解",
         "Marker面板消融与冗余敏感性",
-        "注释不确定性向噪音结果的传播"
+        "注释不确定性向噪音结果的传播",
+        "排序稳定性与考虑拟时序不确定性的基因趋势检验",
+        "整体、均值及趋势差异；分支支持与细胞组成不确定性",
+        "循环排序、独立周期一致性与增强前后敏感性"
       ],
       "sourceUrls": [
         "https://doi.org/10.1038/s41592-020-0885-x",
         "https://elifesciences.org/articles/51254",
         "https://github.com/MarioniLab/geneBasisR",
         "https://doi.org/10.1093/biostatistics/kxac047",
-        "https://bioconductor.org/packages/release/bioc/vignettes/SingleR/inst/doc/SingleR.html"
+        "https://bioconductor.org/packages/release/bioc/vignettes/SingleR/inst/doc/SingleR.html",
+        "https://doi.org/10.1186/s13059-021-02341-y",
+        "https://github.com/SONGDONGYUAN1994/PseudotimeDE/blob/c278a487e11159b8c7f046f3943699e7ec232067/R/runPseudotimeDE.R",
+        "https://doi.org/10.1038/s41467-023-42841-y",
+        "https://github.com/Winnie09/Lamian/blob/bf7d1285393d8e3277235faa2ea4a7569191e350/R/lamian_test.R",
+        "https://doi.org/10.1038/s41587-023-01663-5",
+        "https://github.com/nitzanlab/scPrisma/blob/b7bc40b7277654b917f0dae45f65935fdd3328d4/scPrisma/algorithms.py"
       ],
       "tags": [
         "dynamics",
@@ -737,11 +938,102 @@
       "evidenceStatus": "原始论文与官方方法资料",
       "addedIn": "v3",
       "method": "用独立周期证据建立环形或连续相位；沿相位分别拟合均值和局部方差/相关曲线，比较菌株，同时检验窗口宽度、排序和状态学习复用偏差。",
-      "parameterDecisions": [],
+      "parameterDecisions": [
+        "保持细胞ID一致；每个子样本重建排序，不只截取原排序。",
+        "依据酵母试点数据与预先声明的敏感性分析选择。",
+        "以独立培养为设计矩阵行，明确目标变量、细胞归属与交换性约束。",
+        "关闭随机补噪，记录拟合失败；按设计校准置换与并行资源。",
+        "记录归一化与模板；周期方向和起点由独立marker锚定并检验不同锚点。"
+      ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
-      "analysisPrinciples": [],
+      "analysisPrinciples": [
+        "调用配方；尚未在项目数据上执行。"
+      ],
       "interpretationBoundary": "输出：细胞状态坐标、分支概率或剪接动力学方向。时间尺度由实际时间信息校准。",
-      "reviewedIn": "v4"
+      "reviewedIn": "v4",
+      "paperIds": [
+        "v25_949746203f4b",
+        "v25_fbb576e7a429",
+        "v25_6df2c67a844a"
+      ],
+      "methodOptions": [
+        {
+          "id": "v25_pseudotime_uncertainty",
+          "title": "传播拟时序排序不确定性至趋势检验",
+          "toolIds": [
+            "pseudotimede"
+          ],
+          "metricIds": [
+            "v25_pseudotime_rank_stability",
+            "v25_pseudotimede_tests"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "cell_states",
+            "sample_metadata"
+          ],
+          "optionalData": [
+            "culture_replicates",
+            "yeast_cycle_reference",
+            "truth_or_simulation"
+          ],
+          "paperIds": [
+            "v25_949746203f4b"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "这是均值趋势检验，不是差异噪音检验。重采样不能解决培养伪重复；无真实轨迹时须用空模型检查循环选基因造成的假信号。"
+        },
+        {
+          "id": "v25_multisample_trajectories",
+          "title": "多培养轨迹趋势与分支不确定性",
+          "toolIds": [
+            "lamian"
+          ],
+          "metricIds": [
+            "v25_lamian_curve_effect",
+            "v25_lamian_branch_support"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata",
+            "cell_states",
+            "culture_replicates"
+          ],
+          "optionalData": [
+            "timepoints"
+          ],
+          "paperIds": [
+            "v25_fbb576e7a429"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "使用log归一化副本。0.99.3默认fix.all.zero会为零方差样本添加随机噪声；本配方关闭它并记录退化基因。分支支持另调用evaluate_uncertainty，不能从趋势p值推算。"
+        },
+        {
+          "id": "v25_cycle_spectral",
+          "title": "周期结构重建与周期信号敏感性",
+          "toolIds": [
+            "scprisma"
+          ],
+          "metricIds": [
+            "v25_cycle_spectral_agreement",
+            "v25_cycle_enhancement_sensitivity"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata",
+            "yeast_cycle_reference"
+          ],
+          "optionalData": [
+            "culture_replicates",
+            "truth_or_simulation"
+          ],
+          "paperIds": [
+            "v25_6df2c67a844a"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "循环模板会引入闭环结构，不能单凭结果证明周期存在；相位不是物理时间。增强或过滤矩阵只作对照，噪音结论回到原始计数。"
+        }
+      ]
     },
     {
       "id": "annotation_transfer",
@@ -758,19 +1050,23 @@
         "yeast_annotation_reference"
       ],
       "optionalInputs": [
-        "culture_replicates"
+        "culture_replicates",
+        "cell_states"
       ],
       "stepIds": [
         "annotation",
         "markers",
-        "validation"
+        "validation",
+        "integration"
       ],
       "toolIds": [
         "singler",
         "celltypist",
         "ucell",
         "presto",
-        "lmd"
+        "lmd",
+        "conformalsc",
+        "chooser"
       ],
       "metricIds": [
         "annotation_holdout_accuracy",
@@ -781,7 +1077,12 @@
         "annotation_rejection_curve",
         "marker_score_technical_dependence",
         "marker_display_contract",
-        "marker_localization_multiscale"
+        "marker_localization_multiscale",
+        "v25_annotation_set_coverage",
+        "v25_annotation_set_size",
+        "v25_annotation_ood",
+        "v25_cluster_coassignment",
+        "v25_cluster_stability"
       ],
       "workflow": [
         {
@@ -805,7 +1106,9 @@
       ],
       "failureChecks": [
         "没有独立参考时只能报告方法一致性；分类分数不是自动校准的概率，拒绝标签可能偏向低RNA状态。",
-        "GO功能成员不自动是状态marker；同一基因可有多个用途，缺少实测表达不能写成低表达。"
+        "GO功能成员不自动是状态marker；同一基因可有多个用途，缺少实测表达不能写成低表达。",
+        "现有实现按细胞随机划分；菌株分组需适配器。跨菌株分布变化时不继承覆盖保证。CellTypist分支内部归一化，使用独立计数副本；不用人类预训练标签解释酵母。",
+        "原生chooseR随机抽细胞；培养分块与留出验证需项目适配，不能混作原生输出。稳定群不等于离散细胞类型。先检查旧版Seurat接口与成对矩阵内存。"
       ],
       "outputs": [
         "留出菌株的注释与marker泛化",
@@ -814,7 +1117,9 @@
         "跨菌株marker稳定性",
         "Marker证据、标识符与用途一致性",
         "注释接受覆盖率与参考错误曲线",
-        "Marker集合分数的技术依赖"
+        "Marker集合分数的技术依赖",
+        "候选标签集合、集合大小、验证覆盖率与参考外分数",
+        "共聚类概率、轮廓稳定性及留出培养复现"
       ],
       "sourceUrls": [
         "https://bioconductor.org/packages/release/bioc/vignettes/SingleR/inst/doc/SingleR.html",
@@ -823,7 +1128,11 @@
         "https://bioconductor.org/packages/release/bioc/vignettes/UCell/inst/doc/UCell_vignette_basic.html",
         "https://doi.org/10.1038/s42003-025-08485-y",
         "https://klugerlab.github.io/LocalizedMarkerDetector/reference/LMD.html",
-        "https://scanpy.readthedocs.io/en/stable/generated/scanpy.pl.dotplot.html"
+        "https://scanpy.readthedocs.io/en/stable/generated/scanpy.pl.dotplot.html",
+        "https://doi.org/10.1093/bioinformatics/btaf521",
+        "https://github.com/digital-medicine-research-group-UNAV/conformalized_single_cell_annotator/blob/526bad858b120137d01267bde7ccb5dda5431308/conformalSC_annotator.py",
+        "https://doi.org/10.1186/s12859-021-03957-4",
+        "https://github.com/rbpatt2019/chooseR/blob/410bdbfaebcbc57df45176491545a1165e3c6fc5/R/pipeline.R"
       ],
       "tags": [
         "state_annotation",
@@ -837,15 +1146,73 @@
         "在菌株和状态内，检查集合分数与UMI、检出基因数、背景比例及文库的关系，并对照匹配表达量和集合大小的基因集。",
         "冻结参考基因与标签，按完整菌株和研究来源留出测试，分别记录新状态与技术域差异。",
         "同一标签轴比较参考与预测；周期、应激、代谢等不同标签轴保存共现关系。并列显示unknown、混合标签及样本来源。",
-        "在连续状态或聚类边界不稳定时，加入LMD局部marker排序，并与Hotspot和分组差异分析比较；在留出菌株检验位置与方向。"
+        "在连续状态或聚类边界不稳定时，加入LMD局部marker排序，并与Hotspot和分组差异分析比较；在留出菌株检验位置与方向。",
+        "指定酵母参考和单一注释轴；周期、应激等轴分别校准。",
+        "预先声明误差目标与拆分种子，并用独立菌株检验覆盖率。",
+        "联合比较抽样次数、抽样比例、分辨率与保留维度；在固定源码仓库目录调用pipeline.R。"
       ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
-      "analysisPrinciples": [],
+      "analysisPrinciples": [
+        "调用配方；尚未在项目数据上执行。"
+      ],
       "interpretationBoundary": "标签按RNA状态、功能角色和蛋白证据分层；记录参考情境与未分配细胞。",
       "reviewedIn": "v13",
       "updatedIn": "v13",
       "paperIds": [
-        "v13_lmd_2025"
+        "v13_lmd_2025",
+        "v25_633bc9eaea5f",
+        "v25_da9bb160f8a9"
+      ],
+      "methodOptions": [
+        {
+          "id": "v25_annotation_conformal",
+          "title": "保形注释集合与参考外状态识别",
+          "toolIds": [
+            "conformalsc"
+          ],
+          "metricIds": [
+            "v25_annotation_set_coverage",
+            "v25_annotation_set_size",
+            "v25_annotation_ood"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata",
+            "yeast_annotation_reference"
+          ],
+          "optionalData": [
+            "culture_replicates"
+          ],
+          "paperIds": [
+            "v25_633bc9eaea5f"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "现有实现按细胞随机划分；菌株分组需适配器。跨菌株分布变化时不继承覆盖保证。CellTypist分支内部归一化，使用独立计数副本；不用人类预训练标签解释酵母。"
+        },
+        {
+          "id": "v25_cluster_stability",
+          "title": "聚类分辨率与培养间稳定性评估",
+          "toolIds": [
+            "chooser"
+          ],
+          "metricIds": [
+            "v25_cluster_coassignment",
+            "v25_cluster_stability"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata",
+            "culture_replicates"
+          ],
+          "optionalData": [
+            "cell_states"
+          ],
+          "paperIds": [
+            "v25_da9bb160f8a9"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "原生chooseR随机抽细胞；培养分块与留出验证需项目适配，不能混作原生输出。稳定群不等于离散细胞类型。先检查旧版Seurat接口与成对矩阵内存。"
+        }
       ]
     },
     {
@@ -863,21 +1230,28 @@
         "culture_replicates",
         "cell_states"
       ],
-      "optionalInputs": [],
+      "optionalInputs": [
+        "timepoints"
+      ],
       "stepIds": [
         "annotation",
         "markers",
-        "sampleqc"
+        "sampleqc",
+        "dynamics",
+        "validation"
       ],
       "toolIds": [
         "sccoda",
         "sccomp",
-        "milo"
+        "milo",
+        "lamian"
       ],
       "metricIds": [
         "composition_effect",
         "composition_variability",
-        "neighborhood_abundance"
+        "neighborhood_abundance",
+        "v25_lamian_curve_effect",
+        "v25_lamian_branch_support"
       ],
       "workflow": [
         {
@@ -899,14 +1273,19 @@
       "hypotheses": [
         "零假设：比较组的状态组成或局部邻域丰度相同；重复间组成变异另作独立性状检验。"
       ],
-      "failureChecks": [],
+      "failureChecks": [
+        "使用log归一化副本。0.99.3默认fix.all.zero会为零方差样本添加随机噪声；本配方关闭它并记录退化基因。分支支持另调用evaluate_uncertainty，不能从趋势p值推算。"
+      ],
       "outputs": [
         "样本间状态组成差异",
         "状态组成的样本间变异",
-        "连续邻域差异丰度"
+        "连续邻域差异丰度",
+        "整体、均值及趋势差异；分支支持与细胞组成不确定性"
       ],
       "sourceUrls": [
-        "https://doi.org/10.1073/pnas.2203828120"
+        "https://doi.org/10.1073/pnas.2203828120",
+        "https://doi.org/10.1038/s41467-023-42841-y",
+        "https://github.com/Winnie09/Lamian/blob/bf7d1285393d8e3277235faa2ea4a7569191e350/R/lamian_test.R"
       ],
       "tags": [
         "composition",
@@ -915,10 +1294,45 @@
       "evidenceStatus": "原始论文与官方方法资料",
       "addedIn": "v3",
       "method": "以培养×状态计数建模组成，保留总细胞数和参考状态选择；连续状态用邻域丰度补充，不把每个细胞当作独立重复。",
-      "parameterDecisions": [],
+      "parameterDecisions": [
+        "以独立培养为设计矩阵行，明确目标变量、细胞归属与交换性约束。",
+        "关闭随机补噪，记录拟合失败；按设计校准置换与并行资源。"
+      ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
-      "analysisPrinciples": [],
-      "interpretationBoundary": "捕获到的细胞比例不等于培养物中的绝对比例；差异可能受到捕获、存活和QC选择影响。"
+      "analysisPrinciples": [
+        "调用配方；尚未在项目数据上执行。"
+      ],
+      "interpretationBoundary": "捕获到的细胞比例不等于培养物中的绝对比例；差异可能受到捕获、存活和QC选择影响。",
+      "paperIds": [
+        "v25_fbb576e7a429"
+      ],
+      "methodOptions": [
+        {
+          "id": "v25_multisample_trajectories",
+          "title": "多培养轨迹趋势与分支不确定性",
+          "toolIds": [
+            "lamian"
+          ],
+          "metricIds": [
+            "v25_lamian_curve_effect",
+            "v25_lamian_branch_support"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata",
+            "cell_states",
+            "culture_replicates"
+          ],
+          "optionalData": [
+            "timepoints"
+          ],
+          "paperIds": [
+            "v25_fbb576e7a429"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "使用log归一化副本。0.99.3默认fix.all.zero会为零方差样本添加随机噪声；本配方关闭它并记录退化基因。分支支持另调用evaluate_uncertainty，不能从趋势p值推算。"
+        }
+      ]
     },
     {
       "id": "program_variability",
@@ -1052,22 +1466,28 @@
         "yeast_regulatory_prior"
       ],
       "optionalInputs": [
-        "culture_replicates"
+        "culture_replicates",
+        "truth_or_simulation"
       ],
       "stepIds": [
         "annotation",
         "networks",
-        "validation"
+        "validation",
+        "integration",
+        "markers"
       ],
       "toolIds": [
         "inferelator",
         "genie3",
-        "decoupler"
+        "decoupler",
+        "bigsur"
       ],
       "metricIds": [
         "network_edge_stability",
         "regulon_activity",
-        "network_covariance"
+        "network_covariance",
+        "v25_bigsur_mcfano",
+        "v25_bigsur_correlation"
       ],
       "workflow": [
         {
@@ -1089,14 +1509,20 @@
       "hypotheses": [
         "零假设：匹配状态后候选网络边或调控活性在菌株间无差异；检验支持是否跨培养重抽样和先验选择稳定。"
       ],
-      "failureChecks": [],
+      "failureChecks": [
+        "高变基因不自动成为状态marker或噪音QTL。校正相关仍非因果；用培养留出检验边。相关模块与特征模块的可用接口分别核验。"
+      ],
       "outputs": [
         "网络边重复稳定性",
         "靶集合支持的调控活性",
-        "条件化表达协方差"
+        "条件化表达协方差",
+        "校正Fano、特征p值与校正相关边"
       ],
       "sourceUrls": [
-        "https://doi.org/10.1093/nar/gkac1041"
+        "https://doi.org/10.1093/nar/gkac1041",
+        "https://doi.org/10.1186/s12859-025-06240-y",
+        "https://doi.org/10.1186/s12859-024-05926-z",
+        "https://github.com/landerlabcode/BigSur/blob/cb6343ac5e45da374ff0d34ffb98766969be3c39/src/BigSur/feature_selection.py"
       ],
       "tags": [
         "programs_grn",
@@ -1105,10 +1531,45 @@
       "evidenceStatus": "原始论文与官方方法资料",
       "addedIn": "v3",
       "method": "以酵母TF—靶先验约束或比较数据驱动网络；分开报告关联边、先验支持和扰动假设；网络边以培养或菌株重抽样及留出预测验证。",
-      "parameterDecisions": [],
+      "parameterDecisions": [
+        "明确原始counts层；共同CV与显著性设置用酵母数据校准，保留全部检验结果。"
+      ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
-      "analysisPrinciples": [],
-      "interpretationBoundary": "输出：共表达关系、调控候选与模块活动分数。"
+      "analysisPrinciples": [
+        "调用配方；尚未在项目数据上执行。"
+      ],
+      "interpretationBoundary": "输出：共表达关系、调控候选与模块活动分数。",
+      "paperIds": [
+        "lit-780ec4215f2f",
+        "v25_530aeafbda0a"
+      ],
+      "methodOptions": [
+        {
+          "id": "v25_bigsur_features",
+          "title": "采样校正的特征选择与相关网络",
+          "toolIds": [
+            "bigsur"
+          ],
+          "metricIds": [
+            "v25_bigsur_mcfano",
+            "v25_bigsur_correlation"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata"
+          ],
+          "optionalData": [
+            "culture_replicates",
+            "truth_or_simulation"
+          ],
+          "paperIds": [
+            "lit-780ec4215f2f",
+            "v25_530aeafbda0a"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "高变基因不自动成为状态marker或噪音QTL。校正相关仍非因果；用培养留出检验边。相关模块与特征模块的可用接口分别核验。"
+        }
+      ]
     },
     {
       "id": "velocity_feasibility",
@@ -1125,7 +1586,9 @@
         "sample_metadata"
       ],
       "optionalInputs": [
-        "culture_replicates"
+        "culture_replicates",
+        "count_matrix",
+        "timepoints"
       ],
       "stepIds": [
         "matrix",
@@ -1135,13 +1598,16 @@
       "toolIds": [
         "scvelo",
         "velovi",
-        "cellrank"
+        "cellrank",
+        "moscot"
       ],
       "metricIds": [
         "velocity_genes",
         "velocity_fit",
         "velocity_uncertainty",
-        "fate_probabilities"
+        "fate_probabilities",
+        "v25_temporal_transport",
+        "v25_temporal_holdout"
       ],
       "workflow": [
         {
@@ -1163,15 +1629,20 @@
       "hypotheses": [
         "检验速度方向在有效基因子集、重抽样和模型选择间是否一致，并与打乱剪接层对应关系的阴性对照比较。"
       ],
-      "failureChecks": [],
+      "failureChecks": [
+        "菌株编号、拟时序和系统发育次序不能替代实验时间。传输边不是谱系追踪或进化祖先；不用人类增殖或凋亡默认基因给酵母加权。"
+      ],
       "outputs": [
         "动力学有效基因数",
         "动力学拟合诊断",
         "RNA velocity参数与方向不确定性",
-        "状态转移与命运概率稳定性"
+        "状态转移与命运概率稳定性",
+        "时间间耦合、收敛诊断、传输不确定性与留出分布误差"
       ],
       "sourceUrls": [
-        "https://scvelo.readthedocs.io/"
+        "https://scvelo.readthedocs.io/",
+        "https://doi.org/10.1038/s41586-024-08453-2",
+        "https://github.com/theislab/moscot/blob/d6e1bb10398cb9ad1e8577552439a6c571a4903a/src/moscot/problems/time/_lineage.py"
       ],
       "tags": [
         "dynamics",
@@ -1180,10 +1651,43 @@
       "evidenceStatus": "原始论文与官方方法资料",
       "addedIn": "v3",
       "method": "先审计每基因剪接层信息和phase portrait，再拟合多个速度模型；记录拟合失败和方向不确定性，检查跨菌株参考偏差与子采样稳定性。",
-      "parameterDecisions": [],
+      "parameterDecisions": [
+        "使用实验时间列与预先验证的共同表示；对成本、正则化和质量变化做敏感性分析。"
+      ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
-      "analysisPrinciples": [],
-      "interpretationBoundary": "输出：细胞状态坐标、分支概率或剪接动力学方向。时间尺度由实际时间信息校准。"
+      "analysisPrinciples": [
+        "调用配方；尚未在项目数据上执行。"
+      ],
+      "interpretationBoundary": "输出：细胞状态坐标、分支概率或剪接动力学方向。时间尺度由实际时间信息校准。",
+      "paperIds": [
+        "v25_e34069812e6f"
+      ],
+      "methodOptions": [
+        {
+          "id": "v25_temporal_ot",
+          "title": "真实采样时间间的最优传输与留出预测",
+          "toolIds": [
+            "moscot"
+          ],
+          "metricIds": [
+            "v25_temporal_transport",
+            "v25_temporal_holdout"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata",
+            "timepoints"
+          ],
+          "optionalData": [
+            "culture_replicates"
+          ],
+          "paperIds": [
+            "v25_e34069812e6f"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "菌株编号、拟时序和系统发育次序不能替代实验时间。传输边不是谱系追踪或进化祖先；不用人类增殖或凋亡默认基因给酵母加权。"
+        }
+      ]
     },
     {
       "id": "trajectory_structure",
@@ -1200,23 +1704,43 @@
         "sample_metadata"
       ],
       "optionalInputs": [
-        "culture_replicates"
+        "culture_replicates",
+        "yeast_cycle_reference",
+        "truth_or_simulation",
+        "timepoints"
       ],
       "stepIds": [
         "annotation",
         "dynamics",
-        "validation"
+        "validation",
+        "integration",
+        "markers"
       ],
       "toolIds": [
         "slingshot",
         "monocle3",
         "condiments",
-        "tradeseq"
+        "tradeseq",
+        "chooser",
+        "pseudotimede",
+        "lamian",
+        "scprisma",
+        "moscot"
       ],
       "metricIds": [
         "trajectory_stability",
         "trajectory_condition_differences",
-        "embedding_reliability"
+        "embedding_reliability",
+        "v25_cluster_coassignment",
+        "v25_cluster_stability",
+        "v25_pseudotime_rank_stability",
+        "v25_pseudotimede_tests",
+        "v25_lamian_curve_effect",
+        "v25_lamian_branch_support",
+        "v25_cycle_spectral_agreement",
+        "v25_cycle_enhancement_sensitivity",
+        "v25_temporal_transport",
+        "v25_temporal_holdout"
       ],
       "workflow": [
         {
@@ -1238,14 +1762,35 @@
       "hypotheses": [
         "检验拓扑与细胞排序在不同特征、邻居图和方法下能否复现；有独立时间或周期证据时比较其一致性。"
       ],
-      "failureChecks": [],
+      "failureChecks": [
+        "原生chooseR随机抽细胞；培养分块与留出验证需项目适配，不能混作原生输出。稳定群不等于离散细胞类型。先检查旧版Seurat接口与成对矩阵内存。",
+        "这是均值趋势检验，不是差异噪音检验。重采样不能解决培养伪重复；无真实轨迹时须用空模型检查循环选基因造成的假信号。",
+        "使用log归一化副本。0.99.3默认fix.all.zero会为零方差样本添加随机噪声；本配方关闭它并记录退化基因。分支支持另调用evaluate_uncertainty，不能从趋势p值推算。",
+        "循环模板会引入闭环结构，不能单凭结果证明周期存在；相位不是物理时间。增强或过滤矩阵只作对照，噪音结论回到原始计数。",
+        "菌株编号、拟时序和系统发育次序不能替代实验时间。传输边不是谱系追踪或进化祖先；不用人类增殖或凋亡默认基因给酵母加权。"
+      ],
       "outputs": [
         "轨迹顺序稳定性",
         "条件间轨迹结构与占据变化",
-        "低维展示可靠性"
+        "低维展示可靠性",
+        "共聚类概率、轮廓稳定性及留出培养复现",
+        "排序稳定性与考虑拟时序不确定性的基因趋势检验",
+        "整体、均值及趋势差异；分支支持与细胞组成不确定性",
+        "循环排序、独立周期一致性与增强前后敏感性",
+        "时间间耦合、收敛诊断、传输不确定性与留出分布误差"
       ],
       "sourceUrls": [
-        "https://bioconductor.org/packages/release/bioc/html/slingshot.html"
+        "https://bioconductor.org/packages/release/bioc/html/slingshot.html",
+        "https://doi.org/10.1186/s12859-021-03957-4",
+        "https://github.com/rbpatt2019/chooseR/blob/410bdbfaebcbc57df45176491545a1165e3c6fc5/R/pipeline.R",
+        "https://doi.org/10.1186/s13059-021-02341-y",
+        "https://github.com/SONGDONGYUAN1994/PseudotimeDE/blob/c278a487e11159b8c7f046f3943699e7ec232067/R/runPseudotimeDE.R",
+        "https://doi.org/10.1038/s41467-023-42841-y",
+        "https://github.com/Winnie09/Lamian/blob/bf7d1285393d8e3277235faa2ea4a7569191e350/R/lamian_test.R",
+        "https://doi.org/10.1038/s41587-023-01663-5",
+        "https://github.com/nitzanlab/scPrisma/blob/b7bc40b7277654b917f0dae45f65935fdd3328d4/scPrisma/algorithms.py",
+        "https://doi.org/10.1038/s41586-024-08453-2",
+        "https://github.com/theislab/moscot/blob/d6e1bb10398cb9ad1e8577552439a6c571a4903a/src/moscot/problems/time/_lineage.py"
       ],
       "tags": [
         "dynamics",
@@ -1255,13 +1800,155 @@
       "addedIn": "v3",
       "method": "先确定数据支持的拓扑与生物学根节点；对多个特征集合、邻居图和轨迹方法比较排序；周期环不强制切成不可逆分化轨迹。",
       "parameterDecisions": [
-        "分别比较拓扑、沿轨迹的状态占据和基因变化；真实时间序列另用时间约束。"
+        "分别比较拓扑、沿轨迹的状态占据和基因变化；真实时间序列另用时间约束。",
+        "联合比较抽样次数、抽样比例、分辨率与保留维度；在固定源码仓库目录调用pipeline.R。",
+        "保持细胞ID一致；每个子样本重建排序，不只截取原排序。",
+        "依据酵母试点数据与预先声明的敏感性分析选择。",
+        "以独立培养为设计矩阵行，明确目标变量、细胞归属与交换性约束。",
+        "关闭随机补噪，记录拟合失败；按设计校准置换与并行资源。",
+        "记录归一化与模板；周期方向和起点由独立marker锚定并检验不同锚点。",
+        "使用实验时间列与预先验证的共同表示；对成本、正则化和质量变化做敏感性分析。"
       ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
-      "analysisPrinciples": [],
+      "analysisPrinciples": [
+        "调用配方；尚未在项目数据上执行。"
+      ],
       "interpretationBoundary": "输出：细胞状态坐标、分支概率或剪接动力学方向。时间尺度由实际时间信息校准。",
       "reviewedIn": "v12",
-      "updatedIn": "v12"
+      "updatedIn": "v12",
+      "paperIds": [
+        "v25_da9bb160f8a9",
+        "v25_949746203f4b",
+        "v25_fbb576e7a429",
+        "v25_6df2c67a844a",
+        "v25_e34069812e6f"
+      ],
+      "methodOptions": [
+        {
+          "id": "v25_cluster_stability",
+          "title": "聚类分辨率与培养间稳定性评估",
+          "toolIds": [
+            "chooser"
+          ],
+          "metricIds": [
+            "v25_cluster_coassignment",
+            "v25_cluster_stability"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata",
+            "culture_replicates"
+          ],
+          "optionalData": [
+            "cell_states"
+          ],
+          "paperIds": [
+            "v25_da9bb160f8a9"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "原生chooseR随机抽细胞；培养分块与留出验证需项目适配，不能混作原生输出。稳定群不等于离散细胞类型。先检查旧版Seurat接口与成对矩阵内存。"
+        },
+        {
+          "id": "v25_pseudotime_uncertainty",
+          "title": "传播拟时序排序不确定性至趋势检验",
+          "toolIds": [
+            "pseudotimede"
+          ],
+          "metricIds": [
+            "v25_pseudotime_rank_stability",
+            "v25_pseudotimede_tests"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "cell_states",
+            "sample_metadata"
+          ],
+          "optionalData": [
+            "culture_replicates",
+            "yeast_cycle_reference",
+            "truth_or_simulation"
+          ],
+          "paperIds": [
+            "v25_949746203f4b"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "这是均值趋势检验，不是差异噪音检验。重采样不能解决培养伪重复；无真实轨迹时须用空模型检查循环选基因造成的假信号。"
+        },
+        {
+          "id": "v25_multisample_trajectories",
+          "title": "多培养轨迹趋势与分支不确定性",
+          "toolIds": [
+            "lamian"
+          ],
+          "metricIds": [
+            "v25_lamian_curve_effect",
+            "v25_lamian_branch_support"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata",
+            "cell_states",
+            "culture_replicates"
+          ],
+          "optionalData": [
+            "timepoints"
+          ],
+          "paperIds": [
+            "v25_fbb576e7a429"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "使用log归一化副本。0.99.3默认fix.all.zero会为零方差样本添加随机噪声；本配方关闭它并记录退化基因。分支支持另调用evaluate_uncertainty，不能从趋势p值推算。"
+        },
+        {
+          "id": "v25_cycle_spectral",
+          "title": "周期结构重建与周期信号敏感性",
+          "toolIds": [
+            "scprisma"
+          ],
+          "metricIds": [
+            "v25_cycle_spectral_agreement",
+            "v25_cycle_enhancement_sensitivity"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata",
+            "yeast_cycle_reference"
+          ],
+          "optionalData": [
+            "culture_replicates",
+            "truth_or_simulation"
+          ],
+          "paperIds": [
+            "v25_6df2c67a844a"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "循环模板会引入闭环结构，不能单凭结果证明周期存在；相位不是物理时间。增强或过滤矩阵只作对照，噪音结论回到原始计数。"
+        },
+        {
+          "id": "v25_temporal_ot",
+          "title": "真实采样时间间的最优传输与留出预测",
+          "toolIds": [
+            "moscot"
+          ],
+          "metricIds": [
+            "v25_temporal_transport",
+            "v25_temporal_holdout"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata",
+            "timepoints"
+          ],
+          "optionalData": [
+            "culture_replicates"
+          ],
+          "paperIds": [
+            "v25_e34069812e6f"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "菌株编号、拟时序和系统发育次序不能替代实验时间。传输边不是谱系追踪或进化祖先；不用人类增殖或凋亡默认基因给酵母加权。"
+        }
+      ]
     },
     {
       "id": "splice_evidence",
@@ -1524,19 +2211,25 @@
       "stepIds": [
         "noise",
         "genetics",
-        "validation"
+        "validation",
+        "design",
+        "sampleqc"
       ],
       "toolIds": [
         "gemma",
         "limix",
-        "qtltools"
+        "qtltools",
+        "limma"
       ],
       "metricIds": [
         "noise_heritability",
         "qtl_calibration",
         "qtl_effect_uncertainty",
         "noise_genetic_partition",
-        "genetic_covariance_qtl"
+        "genetic_covariance_qtl",
+        "v25_design_rank",
+        "v25_nonestimable",
+        "v25_replication_map"
       ],
       "workflow": [
         {
@@ -1558,16 +2251,22 @@
       "hypotheses": [
         "零假设：控制亲缘、均值、批次及性状估计误差后，待检验位点与噪音性状无关联。"
       ],
-      "failureChecks": [],
+      "failureChecks": [
+        "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。"
+      ],
       "outputs": [
         "噪音性状遗传力估计",
         "QTL检验校准",
-        "QTL效应与估计误差"
+        "QTL效应与估计误差",
+        "设计矩阵秩、别名系数与真实重复覆盖表"
       ],
       "sourceUrls": [
         "https://elifesciences.org/reviewed-preprints/95566",
         "https://doi.org/10.7554/eLife.95566.3",
-        "https://doi.org/10.1038/s41588-018-0089-9"
+        "https://doi.org/10.1038/s41588-018-0089-9",
+        "https://doi.org/10.1093/nar/gkv007",
+        "https://doi.org/10.1038/s41467-021-25960-2",
+        "https://bioconductor.org/packages/release/bioc/manuals/limma/man/limma.pdf"
       ],
       "tags": [
         "genetics",
@@ -1577,16 +2276,21 @@
       "addedIn": "v3",
       "method": "建立均值、噪音、尾部和状态比例性状，分离遗传方差、培养重复性与测量误差；分别检验局部、远端和状态组成QTL。",
       "parameterDecisions": [
-        "分别编码SNP、拷贝数和基因存在缺失；多倍体分支保留实际剂量，二倍体分支可区分加性与显性效应。"
+        "分别编码SNP、拷贝数和基因存在缺失；多倍体分支保留实际剂量，二倍体分支可区分加性与显性效应。",
+        "在每个实际拟合的样本与状态子集中重新构建设计矩阵。"
       ],
       "statisticalUnit": "遗传比较以菌株为单位；培养重复估计重现性，细胞估计菌株内分布。",
-      "analysisPrinciples": [],
+      "analysisPrinciples": [
+        "调用配方；尚未在项目数据上执行。"
+      ],
       "interpretationBoundary": "遗传力的分母、性状尺度与目标群体随模型一并记录。",
       "reviewedIn": "v12",
       "isAppendix": true,
       "paperIds": [
         "lit-90ddd2efc890",
-        "v12_coqtl_2018"
+        "v12_coqtl_2018",
+        "v25_4cb493e88582",
+        "v25_7fe5101ca916"
       ],
       "requiredInputContracts": [
         {
@@ -1594,7 +2298,33 @@
           "contract": "分别编码SNP、拷贝数和基因存在缺失；多倍体分支保留实际剂量，二倍体分支可区分加性与显性效应。"
         }
       ],
-      "updatedIn": "v12"
+      "updatedIn": "v12",
+      "methodOptions": [
+        {
+          "id": "v25_design_estimability",
+          "title": "审查比较设计、混杂与真实重复",
+          "toolIds": [
+            "limma"
+          ],
+          "metricIds": [
+            "v25_design_rank",
+            "v25_nonestimable",
+            "v25_replication_map"
+          ],
+          "requiredData": [
+            "sample_metadata"
+          ],
+          "optionalData": [
+            "culture_replicates"
+          ],
+          "paperIds": [
+            "v25_4cb493e88582",
+            "v25_7fe5101ca916"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。"
+        }
+      ]
     },
     {
       "id": "genotype_state",
@@ -1618,16 +2348,23 @@
       ],
       "stepIds": [
         "annotation",
-        "genetics"
+        "genetics",
+        "design",
+        "sampleqc",
+        "validation"
       ],
       "toolIds": [
         "cellregmap",
-        "limix"
+        "limix",
+        "limma"
       ],
       "metricIds": [
         "genotype_context_effect",
         "qtl_calibration",
-        "noise_reaction_norm"
+        "noise_reaction_norm",
+        "v25_design_rank",
+        "v25_nonestimable",
+        "v25_replication_map"
       ],
       "workflow": [
         {
@@ -1644,15 +2381,21 @@
       "hypotheses": [
         "零假设：遗传效应不随细胞状态变化；比较带交互项与无交互项的模型并检查共同状态支持。"
       ],
-      "failureChecks": [],
+      "failureChecks": [
+        "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。"
+      ],
       "outputs": [
         "基因型×连续细胞状态效应",
-        "QTL检验校准"
+        "QTL检验校准",
+        "设计矩阵秩、别名系数与真实重复覆盖表"
       ],
       "sourceUrls": [
         "https://elifesciences.org/reviewed-preprints/95566",
         "https://doi.org/10.15252/msb.202110663",
-        "https://doi.org/10.1038/s41588-025-02344-6"
+        "https://doi.org/10.1038/s41588-025-02344-6",
+        "https://doi.org/10.1093/nar/gkv007",
+        "https://doi.org/10.1038/s41467-021-25960-2",
+        "https://bioconductor.org/packages/release/bioc/manuals/limma/man/limma.pdf"
       ],
       "tags": [
         "genetics",
@@ -1662,18 +2405,49 @@
       "addedIn": "v3",
       "method": "联合估计持续遗传效应、周期位置和连续响应状态的交互；有匹配处理时同时拟合离散条件与连续响应，区分状态占据和状态内效应。",
       "parameterDecisions": [
-        "响应分数采用培养或菌株留出训练；目标基因从其自身状态评分中排除。"
+        "响应分数采用培养或菌株留出训练；目标基因从其自身状态评分中排除。",
+        "在每个实际拟合的样本与状态子集中重新构建设计矩阵。"
       ],
       "statisticalUnit": "遗传比较以菌株为单位；培养重复估计重现性，细胞估计菌株内分布。",
-      "analysisPrinciples": [],
+      "analysisPrinciples": [
+        "调用配方；尚未在项目数据上执行。"
+      ],
       "interpretationBoundary": "持续效应、状态交互和环境交互分别报告估计对象与输入。",
       "reviewedIn": "v12",
       "isAppendix": true,
       "paperIds": [
         "lit-b1e4190af7b0",
-        "v12_response_eqtl_2025"
+        "v12_response_eqtl_2025",
+        "v25_4cb493e88582",
+        "v25_7fe5101ca916"
       ],
-      "updatedIn": "v12"
+      "updatedIn": "v12",
+      "methodOptions": [
+        {
+          "id": "v25_design_estimability",
+          "title": "审查比较设计、混杂与真实重复",
+          "toolIds": [
+            "limma"
+          ],
+          "metricIds": [
+            "v25_design_rank",
+            "v25_nonestimable",
+            "v25_replication_map"
+          ],
+          "requiredData": [
+            "sample_metadata"
+          ],
+          "optionalData": [
+            "culture_replicates"
+          ],
+          "paperIds": [
+            "v25_4cb493e88582",
+            "v25_7fe5101ca916"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。"
+        }
+      ]
     },
     {
       "id": "evolution_context",
@@ -1857,7 +2631,8 @@
         "compatible_model"
       ],
       "optionalInputs": [
-        "culture_replicates"
+        "culture_replicates",
+        "truth_or_simulation"
       ],
       "stepIds": [
         "integration",
@@ -1867,12 +2642,15 @@
       "toolIds": [
         "scyeast",
         "scanpy",
-        "scdeed"
+        "scdeed",
+        "bipca"
       ],
       "metricIds": [
         "foundation_transfer_audit",
         "annotation_holdout_accuracy",
-        "embedding_reliability"
+        "embedding_reliability",
+        "v25_bipca_rank_fit",
+        "v25_representation_noise_separation"
       ],
       "workflow": [
         {
@@ -1894,14 +2672,19 @@
       "hypotheses": [
         "在严格留出菌株上检验预训练表示是否优于同输入PCA和简单marker基线，并排除预训练数据泄漏。"
       ],
-      "failureChecks": [],
+      "failureChecks": [
+        "核对来源仍为2025预印本。矩阵双尺度化用于表示比较；不得用去噪矩阵替代噪音或QTL表型。先评估稀疏性、SVD与内存。"
+      ],
       "outputs": [
         "基础模型词表、数据重叠与迁移审计",
         "留出菌株的注释与marker泛化",
-        "低维展示可靠性"
+        "低维展示可靠性",
+        "估计谱秩、方差拟合诊断与表示敏感性"
       ],
       "sourceUrls": [
-        "https://doi.org/10.1016/j.synbio.2026.05.014"
+        "https://doi.org/10.1016/j.synbio.2026.05.014",
+        "https://doi.org/10.1101/2025.02.03.636129",
+        "https://github.com/KlugerLab/bipca/blob/8842e4ce6d2d7c8a4bbf686591f4dc9c7c30b051/python/bipca/bipca.py"
       ],
       "tags": [
         "foundation",
@@ -1910,10 +2693,43 @@
       "evidenceStatus": "原始论文与官方方法资料",
       "addedIn": "v3",
       "method": "用相同基因集合、训练划分和标注任务比较预训练表示与PCA等基线；审计词表覆盖、预训练数据重叠、批次残留和留出菌株性能。",
-      "parameterDecisions": [],
+      "parameterDecisions": [
+        "依据计数生成模型及资源试运行配置；不默认将全矩阵转为稠密。"
+      ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
-      "analysisPrinciples": [],
-      "interpretationBoundary": "基准结果仅适用于匹配输入和任务；更好的低维图不等于更准确的噪音估计或可解释的调控机制。"
+      "analysisPrinciples": [
+        "调用配方；尚未在项目数据上执行。"
+      ],
+      "interpretationBoundary": "基准结果仅适用于匹配输入和任务；更好的低维图不等于更准确的噪音估计或可解释的调控机制。",
+      "paperIds": [
+        "v25_82e69a8963b5"
+      ],
+      "methodOptions": [
+        {
+          "id": "v25_representation_bipca",
+          "title": "测量方差建模与谱秩诊断",
+          "toolIds": [
+            "bipca"
+          ],
+          "metricIds": [
+            "v25_bipca_rank_fit",
+            "v25_representation_noise_separation"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata"
+          ],
+          "optionalData": [
+            "culture_replicates",
+            "truth_or_simulation"
+          ],
+          "paperIds": [
+            "v25_82e69a8963b5"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "核对来源仍为2025预印本。矩阵双尺度化用于表示比较；不得用去噪矩阵替代噪音或QTL表型。先评估稀疏性、SVD与内存。"
+        }
+      ]
     },
     {
       "id": "marker_panel",
@@ -1930,12 +2746,15 @@
         "sample_metadata"
       ],
       "optionalInputs": [
-        "culture_replicates"
+        "culture_replicates",
+        "truth_or_simulation"
       ],
       "stepIds": [
         "annotation",
         "markers",
-        "validation"
+        "validation",
+        "integration",
+        "networks"
       ],
       "toolIds": [
         "genebasis",
@@ -1944,7 +2763,8 @@
         "clusterde",
         "countsplit",
         "lmd",
-        "hotspot"
+        "hotspot",
+        "bigsur"
       ],
       "metricIds": [
         "panel_reconstruction",
@@ -1957,7 +2777,9 @@
         "marker_score_technical_dependence",
         "marker_display_contract",
         "marker_panel_frontier",
-        "marker_localization_multiscale"
+        "marker_localization_multiscale",
+        "v25_bigsur_mcfano",
+        "v25_bigsur_correlation"
       ],
       "workflow": [
         {
@@ -1981,7 +2803,8 @@
       ],
       "failureChecks": [
         "消融是稳健性分析；移除目标基因仍可能留下相关代理，不能据此宣称消除了全部循环推断。",
-        "需核对零模型对均值、离散与基因相关的拟合；结果不自动决定合并群，也不能把连续周期切成新的细胞类型。"
+        "需核对零模型对均值、离散与基因相关的拟合；结果不自动决定合并群，也不能把连续周期切成新的细胞类型。",
+        "高变基因不自动成为状态marker或噪音QTL。校正相关仍非因果；用培养留出检验边。相关模块与特征模块的可用接口分别核验。"
       ],
       "outputs": [
         "标记面板信息保留与外部验证",
@@ -1994,7 +2817,8 @@
         "Marker集合分数的技术依赖",
         "Marker表达图的字段与尺度",
         "面板规模、覆盖与性能前沿",
-        "局部marker的多尺度定位"
+        "局部marker的多尺度定位",
+        "校正Fano、特征p值与校正相关边"
       ],
       "sourceUrls": [
         "https://github.com/MarioniLab/geneBasisR",
@@ -2007,7 +2831,10 @@
         "https://klugerlab.github.io/LocalizedMarkerDetector/reference/LMD.html",
         "https://doi.org/10.1186/s13059-021-02548-z",
         "https://scanpy.readthedocs.io/en/stable/generated/scanpy.pl.dotplot.html",
-        "https://satijalab.org/seurat/reference/dotplot"
+        "https://satijalab.org/seurat/reference/dotplot",
+        "https://doi.org/10.1186/s12859-025-06240-y",
+        "https://doi.org/10.1186/s12859-024-05926-z",
+        "https://github.com/landerlabcode/BigSur/blob/cb6343ac5e45da374ff0d34ffb98766969be3c39/src/BigSur/feature_selection.py"
       ],
       "tags": [
         "state_annotation",
@@ -2020,16 +2847,48 @@
         "核对稳定基因ID、别名、物种、参考版本、证据来源、RNA周期峰或功能角色、适用条件，以及实测与文献字段。",
         "依次移除单个marker及相关基因模块，比较留出菌株的标签、分数与信息保留；同时保留大小和检出率匹配的对照面板。",
         "冻结面板中的基因ID、正负方向、标签轴、证据ID和用途；移除或加入基因后另存版本，并记录变化原因。",
-        "在连续状态或聚类边界不稳定时，加入LMD局部marker排序，并与Hotspot和分组差异分析比较；在留出菌株检验位置与方向。"
+        "在连续状态或聚类边界不稳定时，加入LMD局部marker排序，并与Hotspot和分组差异分析比较；在留出菌株检验位置与方向。",
+        "明确原始counts层；共同CV与显著性设置用酵母数据校准，保留全部检验结果。"
       ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
-      "analysisPrinciples": [],
+      "analysisPrinciples": [
+        "调用配方；尚未在项目数据上执行。"
+      ],
       "interpretationBoundary": "标签按RNA状态、功能角色和蛋白证据分层；记录参考情境与未分配细胞。",
       "reviewedIn": "v13",
       "paperIds": [
-        "v13_lmd_2025"
+        "v13_lmd_2025",
+        "lit-780ec4215f2f",
+        "v25_530aeafbda0a"
       ],
-      "updatedIn": "v13"
+      "updatedIn": "v13",
+      "methodOptions": [
+        {
+          "id": "v25_bigsur_features",
+          "title": "采样校正的特征选择与相关网络",
+          "toolIds": [
+            "bigsur"
+          ],
+          "metricIds": [
+            "v25_bigsur_mcfano",
+            "v25_bigsur_correlation"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata"
+          ],
+          "optionalData": [
+            "culture_replicates",
+            "truth_or_simulation"
+          ],
+          "paperIds": [
+            "lit-780ec4215f2f",
+            "v25_530aeafbda0a"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "高变基因不自动成为状态marker或噪音QTL。校正相关仍非因果；用培养留出检验边。相关模块与特征模块的可用接口分别核验。"
+        }
+      ]
     },
     {
       "id": "mitochondrial_programs",
@@ -2131,13 +2990,16 @@
       "optionalInputs": [
         "cell_states",
         "culture_replicates",
-        "yeast_annotation_reference"
+        "yeast_annotation_reference",
+        "yeast_cycle_reference",
+        "truth_or_simulation"
       ],
       "stepIds": [
         "annotation",
         "markers",
         "noise",
-        "validation"
+        "validation",
+        "dynamics"
       ],
       "toolIds": [
         "singler",
@@ -2146,7 +3008,9 @@
         "clusterde",
         "countsplit",
         "memento",
-        "scdesign3"
+        "scdesign3",
+        "conformalsc",
+        "pseudotimede"
       ],
       "metricIds": [
         "marker_evidence_contract",
@@ -2155,7 +3019,12 @@
         "annotation_rejection_curve",
         "marker_score_technical_dependence",
         "noise_annotation_uncertainty",
-        "noise_crossfit_sensitivity"
+        "noise_crossfit_sensitivity",
+        "v25_annotation_set_coverage",
+        "v25_annotation_set_size",
+        "v25_annotation_ood",
+        "v25_pseudotime_rank_stability",
+        "v25_pseudotimede_tests"
       ],
       "workflow": [
         {
@@ -2187,7 +3056,9 @@
         "消融是稳健性分析；移除目标基因仍可能留下相关代理，不能据此宣称消除了全部循环推断。",
         "需核对零模型对均值、离散与基因相关的拟合；结果不自动决定合并群，也不能把连续周期切成新的细胞类型。",
         "Poisson拆分的独立性依赖Poisson模型；负二项拆分需正确离散参数。估计参数、跨细胞依赖和批次结构仍需单独校准。",
-        "这是项目敏感性分析；没有校准概率或明确生成模型时，不把多个标签方案包装成后验概率。"
+        "这是项目敏感性分析；没有校准概率或明确生成模型时，不把多个标签方案包装成后验概率。",
+        "现有实现按细胞随机划分；菌株分组需适配器。跨菌株分布变化时不继承覆盖保证。CellTypist分支内部归一化，使用独立计数副本；不用人类预训练标签解释酵母。",
+        "这是均值趋势检验，不是差异噪音检验。重采样不能解决培养伪重复；无真实轨迹时须用空模型检查循环选基因造成的假信号。"
       ],
       "outputs": [
         "Marker证据、标识符与用途一致性",
@@ -2196,7 +3067,9 @@
         "注释接受覆盖率与参考错误曲线",
         "Marker集合分数的技术依赖",
         "注释不确定性向噪音结果的传播",
-        "发现、调参与确认分区图"
+        "发现、调参与确认分区图",
+        "候选标签集合、集合大小、验证覆盖率与参考外分数",
+        "排序稳定性与考虑拟时序不确定性的基因趋势检验"
       ],
       "sourceUrls": [
         "https://github.com/JSB-UCLA/ClusterDE",
@@ -2204,7 +3077,11 @@
         "https://anna-neufeld.github.io/countsplit/reference/countsplit.html",
         "https://doi.org/10.1093/biostatistics/kxac047",
         "https://github.com/MarioniLab/geneBasisR",
-        "https://bioconductor.org/packages/release/bioc/vignettes/SingleR/inst/doc/SingleR.html"
+        "https://bioconductor.org/packages/release/bioc/vignettes/SingleR/inst/doc/SingleR.html",
+        "https://doi.org/10.1093/bioinformatics/btaf521",
+        "https://github.com/digital-medicine-research-group-UNAV/conformalized_single_cell_annotator/blob/526bad858b120137d01267bde7ccb5dda5431308/conformalSC_annotator.py",
+        "https://doi.org/10.1186/s13059-021-02341-y",
+        "https://github.com/SONGDONGYUAN1994/PseudotimeDE/blob/c278a487e11159b8c7f046f3943699e7ec232067/R/runPseudotimeDE.R"
       ],
       "tags": [
         "state_annotation",
@@ -2221,13 +3098,76 @@
         "在有独立参考标签的留出菌株内，随分数规则记录接受细胞比例、接受集标签错误、各状态召回及unknown比例。",
         "冻结面板中的基因ID、正负方向、标签轴、证据ID和用途；移除或加入基因后另存版本，并记录变化原因。",
         "同一标签轴比较参考与预测；周期、应激、代谢等不同标签轴保存共现关系。并列显示unknown、混合标签及样本来源。",
-        "在方案中列出发现、调参和确认分区，以及每个分区用于建图、选marker、训练注释或检验噪音的角色；按菌株或培养保持分区独立。"
+        "在方案中列出发现、调参和确认分区，以及每个分区用于建图、选marker、训练注释或检验噪音的角色；按菌株或培养保持分区独立。",
+        "指定酵母参考和单一注释轴；周期、应激等轴分别校准。",
+        "预先声明误差目标与拆分种子，并用独立菌株检验覆盖率。",
+        "保持细胞ID一致；每个子样本重建排序，不只截取原排序。",
+        "依据酵母试点数据与预先声明的敏感性分析选择。"
       ],
       "statisticalUnit": "按菌株或培养划分训练与评价；细胞为组内观测，独立参考标签的来源单列。",
-      "analysisPrinciples": [],
+      "analysisPrinciples": [
+        "调用配方；尚未在项目数据上执行。"
+      ],
       "interpretationBoundary": "这条验证链评估证据独立性与敏感性，不自动产生真值标签，也不把统计稳定性等同于机制证明。",
       "reviewedIn": "v13",
-      "updatedIn": "v13"
+      "updatedIn": "v13",
+      "paperIds": [
+        "v25_633bc9eaea5f",
+        "v25_949746203f4b"
+      ],
+      "methodOptions": [
+        {
+          "id": "v25_annotation_conformal",
+          "title": "保形注释集合与参考外状态识别",
+          "toolIds": [
+            "conformalsc"
+          ],
+          "metricIds": [
+            "v25_annotation_set_coverage",
+            "v25_annotation_set_size",
+            "v25_annotation_ood"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata",
+            "yeast_annotation_reference"
+          ],
+          "optionalData": [
+            "culture_replicates"
+          ],
+          "paperIds": [
+            "v25_633bc9eaea5f"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "现有实现按细胞随机划分；菌株分组需适配器。跨菌株分布变化时不继承覆盖保证。CellTypist分支内部归一化，使用独立计数副本；不用人类预训练标签解释酵母。"
+        },
+        {
+          "id": "v25_pseudotime_uncertainty",
+          "title": "传播拟时序排序不确定性至趋势检验",
+          "toolIds": [
+            "pseudotimede"
+          ],
+          "metricIds": [
+            "v25_pseudotime_rank_stability",
+            "v25_pseudotimede_tests"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "cell_states",
+            "sample_metadata"
+          ],
+          "optionalData": [
+            "culture_replicates",
+            "yeast_cycle_reference",
+            "truth_or_simulation"
+          ],
+          "paperIds": [
+            "v25_949746203f4b"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "这是均值趋势检验，不是差异噪音检验。重采样不能解决培养伪重复；无真实轨迹时须用空模型检查循环选基因造成的假信号。"
+        }
+      ]
     },
     {
       "id": "noise_likelihood_calibration",
@@ -2551,17 +3491,22 @@
       "stepIds": [
         "networks",
         "noise",
-        "validation"
+        "validation",
+        "integration",
+        "markers"
       ],
       "toolIds": [
         "hotspot",
         "memento",
-        "cnmf"
+        "cnmf",
+        "bigsur"
       ],
       "metricIds": [
         "hotspot_autocorrelation",
         "hotspot_local_pair_association",
-        "hotspot_module_holdout"
+        "hotspot_module_holdout",
+        "v25_bigsur_mcfano",
+        "v25_bigsur_correlation"
       ],
       "workflow": [
         {
@@ -2585,16 +3530,21 @@
       ],
       "failureChecks": [
         "使用转录相似图识别局部共变；图边不是空间邻接、遗传谱系或因果调控边。",
-        "关联图不能替代独立谱系树；没有谱系追踪时不启用lineage解释。"
+        "关联图不能替代独立谱系树；没有谱系追踪时不启用lineage解释。",
+        "高变基因不自动成为状态marker或噪音QTL。校正相关仍非因果；用培养留出检验边。相关模块与特征模块的可用接口分别核验。"
       ],
       "outputs": [
         "图、局部相关和模块成员表",
         "局部模块与计数变异证据",
-        "模块稳定性与冲突清单"
+        "模块稳定性与冲突清单",
+        "校正Fano、特征p值与校正相关边"
       ],
       "sourceUrls": [
         "https://pubmed.ncbi.nlm.nih.gov/33951459/",
-        "https://github.com/YosefLab/Hotspot"
+        "https://github.com/YosefLab/Hotspot",
+        "https://doi.org/10.1186/s12859-025-06240-y",
+        "https://doi.org/10.1186/s12859-024-05926-z",
+        "https://github.com/landerlabcode/BigSur/blob/cb6343ac5e45da374ff0d34ffb98766969be3c39/src/BigSur/feature_selection.py"
       ],
       "tags": [
         "programs_grn",
@@ -2606,10 +3556,13 @@
       "method": "先冻结转录相似空间，再检验自相关与局部基因对关联；用留出培养复核模块。",
       "parameterDecisions": [
         "选择depth-adjusted模型、邻域尺度、图权重和模块规则。",
-        "先限定基因对集合与多重检验族，再比较样本层相关；保留基因数量变化的影响。"
+        "先限定基因对集合与多重检验族，再比较样本层相关；保留基因数量变化的影响。",
+        "明确原始counts层；共同CV与显著性设置用酵母数据校准，保留全部检验结果。"
       ],
       "statisticalUnit": "细胞是培养内观测；跨条件推断以独立培养为单位，并保留菌株层级。",
-      "analysisPrinciples": [],
+      "analysisPrinciples": [
+        "调用配方；尚未在项目数据上执行。"
+      ],
       "interpretationBoundary": "使用转录相似图识别局部共变；图边不是空间邻接、遗传谱系或因果调控边。",
       "parentProjectIds": [
         "program_variability",
@@ -2639,7 +3592,9 @@
         "requiredBamExtras": []
       },
       "paperIds": [
-        "v8_hotspot_2021"
+        "v8_hotspot_2021",
+        "lit-780ec4215f2f",
+        "v25_530aeafbda0a"
       ],
       "claimSourceMappings": [
         {
@@ -2668,7 +3623,34 @@
         ]
       },
       "hypothesisStatus": "Prospective testable proposition; not a result.",
-      "optionalInputContracts": []
+      "optionalInputContracts": [],
+      "methodOptions": [
+        {
+          "id": "v25_bigsur_features",
+          "title": "采样校正的特征选择与相关网络",
+          "toolIds": [
+            "bigsur"
+          ],
+          "metricIds": [
+            "v25_bigsur_mcfano",
+            "v25_bigsur_correlation"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata"
+          ],
+          "optionalData": [
+            "culture_replicates",
+            "truth_or_simulation"
+          ],
+          "paperIds": [
+            "lit-780ec4215f2f",
+            "v25_530aeafbda0a"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "高变基因不自动成为状态marker或噪音QTL。校正相关仍非因果；用培养留出检验边。相关模块与特征模块的可用接口分别核验。"
+        }
+      ]
     },
     {
       "id": "splicing_variability_uncertainty",
@@ -5237,19 +6219,26 @@
         "genotypes",
         "kinship"
       ],
-      "optionalInputs": [],
+      "optionalInputs": [
+        "culture_replicates"
+      ],
       "stepIds": [
         "genetics",
-        "validation"
+        "validation",
+        "design",
+        "sampleqc"
       ],
       "toolIds": [
         "jaxqtl",
         "saigeqtl",
-        "gemma"
+        "gemma",
+        "scpower"
       ],
       "metricIds": [
         "count_eqtl_offset_contract",
-        "count_eqtl_calibration"
+        "count_eqtl_calibration",
+        "v25_power_detection",
+        "v25_power_prior_transfer"
       ],
       "workflow": [
         {
@@ -5266,16 +6255,20 @@
       "hypotheses": [],
       "failureChecks": [
         "核对倍性、样本ID、offset及酵母cis窗口。",
-        "检验群体结构残留与亲缘混合模型一致性。"
+        "检验群体结构残留与亲缘混合模型一致性。",
+        "这是均值DE/eQTL功效，不是噪音QTL功效。替换人类默认参数；原生eQTL模拟的二倍体HWE假设须适配酵母倍性与群体结构。遗传样本量按菌株而非细胞计。"
       ],
       "outputs": [
         "计数eQTL的样本及offset一致性",
-        "计数均值eQTL校准与亲缘敏感性"
+        "计数均值eQTL校准与亲缘敏感性",
+        "表达可检测概率、条件检验功效及酵母先验敏感性"
       ],
       "sourceUrls": [
         "https://doi.org/10.1101/2025.01.18.25320755",
         "https://mancusolab.github.io/jaxqtl/reference/mapping/",
-        "https://www.medrxiv.org/content/10.1101/2025.01.18.25320755v2"
+        "https://www.medrxiv.org/content/10.1101/2025.01.18.25320755v2",
+        "https://doi.org/10.1038/s41467-021-26779-7",
+        "https://github.com/heiniglab/scPower/blob/82039da57fb53839c7c88bdc6745aced4b7017b9/R/power.R"
       ],
       "tags": [
         "genetics",
@@ -5285,14 +6278,18 @@
       "methodEn": "With matched genotypes, estimate mean-eQTL from within-state sum counts and compare kinship models and noise traits.",
       "parameterDecisions": [
         "核对倍性、样本ID、offset及酵母cis窗口。",
-        "检验群体结构残留与亲缘混合模型一致性。"
+        "检验群体结构残留与亲缘混合模型一致性。",
+        "显式提供nSamples、nCells、深度、基因数、双细胞模型、效应先验与检测规则；不继承人类默认值。"
       ],
       "statisticalUnit": "基因型对应的菌株/样本；同一菌株细胞不作为独立基因型重复。",
-      "analysisPrinciples": [],
+      "analysisPrinciples": [
+        "调用配方；尚未在项目数据上执行。"
+      ],
       "interpretationBoundary": "jaxQTL的均值关联与NB离散参数不能替代差异噪音或噪音QTL检验。",
       "planningApplicability": "conditional",
       "paperIds": [
-        "v22_jaxqtl_2025"
+        "v22_jaxqtl_2025",
+        "v25_dd5fab2e6d62"
       ],
       "addedIn": "v22",
       "executionStatus": "not-run",
@@ -5313,7 +6310,34 @@
           "Homo sapiens"
         ],
         "note": "Software-method source verified; proposed yeast analysis requires design-specific evaluation."
-      }
+      },
+      "methodOptions": [
+        {
+          "id": "v25_power_mean_eqtl",
+          "title": "以酵母试点校准均值检验功效与检测概率",
+          "toolIds": [
+            "scpower"
+          ],
+          "metricIds": [
+            "v25_power_detection",
+            "v25_power_prior_transfer"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata",
+            "culture_replicates"
+          ],
+          "optionalData": [
+            "genotypes",
+            "kinship"
+          ],
+          "paperIds": [
+            "v25_dd5fab2e6d62"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "这是均值DE/eQTL功效，不是噪音QTL功效。替换人类默认参数；原生eQTL模拟的二倍体HWE假设须适配酵母倍性与群体结构。遗传样本量按菌株而非细胞计。"
+        }
+      ]
     },
     {
       "id": "mechanistic_noise_benchmark",
@@ -5449,7 +6473,9 @@
         "timepoints",
         "kinetic_rate_prior"
       ],
-      "optionalInputs": [],
+      "optionalInputs": [
+        "culture_replicates"
+      ],
       "stepIds": [
         "dynamics",
         "networks",
@@ -5459,11 +6485,14 @@
       "toolIds": [
         "cardamomot",
         "harissa",
-        "systema"
+        "systema",
+        "moscot"
       ],
       "metricIds": [
         "temporal_mechanistic_regeneration",
-        "kinetic_prior_sensitivity"
+        "kinetic_prior_sensitivity",
+        "v25_temporal_transport",
+        "v25_temporal_holdout"
       ],
       "workflow": [
         {
@@ -5491,11 +6520,13 @@
       "failureChecks": [
         "固定代码标签，替换人鼠资源为酵母资源。",
         "将真实时间和拟时序分开记录。",
-        "以留出分布及真实扰动评价生成预测。"
+        "以留出分布及真实扰动评价生成预测。",
+        "菌株编号、拟时序和系统发育次序不能替代实验时间。传输边不是谱系追踪或进化祖先；不用人类增殖或凋亡默认基因给酵母加权。"
       ],
       "outputs": [
         "时间网络的留出分布再生成",
-        "酵母动力学先验敏感性"
+        "酵母动力学先验敏感性",
+        "时间间耦合、收敛诊断、传输不确定性与留出分布误差"
       ],
       "sourceUrls": [
         "https://doi.org/10.1371/journal.pcbi.1014838",
@@ -5503,7 +6534,9 @@
         "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1014838",
         "https://doi.org/10.1038/s41540-026-00743-x",
         "https://github.com/fourniecl/inference_trajectories_PDMP",
-        "https://www.nature.com/articles/s41540-026-00743-x"
+        "https://www.nature.com/articles/s41540-026-00743-x",
+        "https://doi.org/10.1038/s41586-024-08453-2",
+        "https://github.com/theislab/moscot/blob/d6e1bb10398cb9ad1e8577552439a6c571a4903a/src/moscot/problems/time/_lineage.py"
       ],
       "tags": [
         "dynamics",
@@ -5514,15 +6547,19 @@
       "parameterDecisions": [
         "固定代码标签，替换人鼠资源为酵母资源。",
         "将真实时间和拟时序分开记录。",
-        "以留出分布及真实扰动评价生成预测。"
+        "以留出分布及真实扰动评价生成预测。",
+        "使用实验时间列与预先验证的共同表示；对成本、正则化和质量变化做敏感性分析。"
       ],
       "statisticalUnit": "独立培养和实际采样时间；整培养/时间点留出。",
-      "analysisPrinciples": [],
+      "analysisPrinciples": [
+        "调用配方；尚未在项目数据上执行。"
+      ],
       "interpretationBoundary": "若只有单时间点群体数据则保留为计划；时间点和动力学先验接入后开展，真实扰动用于外推验证。",
       "planningApplicability": "conditional",
       "paperIds": [
         "v22_cardamomot_2026",
-        "v22_bursty_transport_2026"
+        "v22_bursty_transport_2026",
+        "v25_e34069812e6f"
       ],
       "addedIn": "v22",
       "executionStatus": "not-run",
@@ -5555,7 +6592,33 @@
           "in silico"
         ],
         "note": "Software-method source verified; proposed yeast analysis requires design-specific evaluation."
-      }
+      },
+      "methodOptions": [
+        {
+          "id": "v25_temporal_ot",
+          "title": "真实采样时间间的最优传输与留出预测",
+          "toolIds": [
+            "moscot"
+          ],
+          "metricIds": [
+            "v25_temporal_transport",
+            "v25_temporal_holdout"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata",
+            "timepoints"
+          ],
+          "optionalData": [
+            "culture_replicates"
+          ],
+          "paperIds": [
+            "v25_e34069812e6f"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "菌株编号、拟时序和系统发育次序不能替代实验时间。传输边不是谱系追踪或进化祖先；不用人类增殖或凋亡默认基因给酵母加权。"
+        }
+      ]
     },
     {
       "id": "mechanistic_joint_rna_noise",
@@ -5721,16 +6784,20 @@
       "planningApplicability": "conditional",
       "toolIds": [
         "monod",
-        "scanpy"
+        "scanpy",
+        "bipca"
       ],
       "metricIds": [
         "unspliced_length_sensitivity",
-        "sequencing_model_sensitivity"
+        "sequencing_model_sensitivity",
+        "v25_bipca_rank_fit",
+        "v25_representation_noise_separation"
       ],
       "stepIds": [
         "dynamics",
         "noise",
-        "validation"
+        "validation",
+        "integration"
       ],
       "inputs": [
         "count_matrix",
@@ -5745,28 +6812,34 @@
       ],
       "paperIds": [
         "v24_premrna_length_2023",
-        "v24_monod_2025"
+        "v24_monod_2025",
+        "v25_82e69a8963b5"
       ],
       "sourceUrls": [
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC9843228/",
         "https://monod-examples.readthedocs.io/en/latest/usage.html",
-        "https://www.nature.com/articles/s41592-025-02832-x"
+        "https://www.nature.com/articles/s41592-025-02832-x",
+        "https://doi.org/10.1101/2025.02.03.636129",
+        "https://github.com/KlugerLab/bipca/blob/8842e4ce6d2d7c8a4bbf686591f4dc9c7c30b051/python/bipca/bipca.py"
       ],
       "outputs": [
         "分层长度关联与计数模型对照",
-        "参数标准误、采样景观及重抽样诊断"
+        "参数标准误、采样景观及重抽样诊断",
+        "估计谱秩、方差拟合诊断与表示敏感性"
       ],
       "failureChecks": [
         "从相同参考生成长度表；记录长度定义，并比较启用与关闭use_lengths的结果。",
         "未剪接层必须具有可评估的独立分子支持；不以GeneFull−Gene代替。",
         "默认矩阵工具与噪音指标需要明确的计数入口；可使用与S/U层基因和细胞身份、顺序一致的原始整数成熟S层，保留计数定义，不将S与U机械相加。",
-        "比较组使用同一基因集合；报告被剔除基因及内含子基因的功能偏倚，培养重复分别拟合或分层重抽样。"
+        "比较组使用同一基因集合；报告被剔除基因及内含子基因的功能偏倚，培养重复分别拟合或分层重抽样。",
+        "核对来源仍为2025预印本。矩阵双尺度化用于表示比较；不得用去噪矩阵替代噪音或QTL表型。先评估稀疏性、SVD与内存。"
       ],
       "parameterDecisions": [
         "从相同参考生成长度表；记录长度定义，并比较启用与关闭use_lengths的结果。",
         "未剪接层必须具有可评估的独立分子支持；不以GeneFull−Gene代替。",
         "默认矩阵工具与噪音指标需要明确的计数入口；可使用与S/U层基因和细胞身份、顺序一致的原始整数成熟S层，保留计数定义，不将S与U机械相加。",
-        "比较组使用同一基因集合；报告被剔除基因及内含子基因的功能偏倚，培养重复分别拟合或分层重抽样。"
+        "比较组使用同一基因集合；报告被剔除基因及内含子基因的功能偏倚，培养重复分别拟合或分层重抽样。",
+        "依据计数生成模型及资源试运行配置；不默认将全矩阵转为稠密。"
       ],
       "workflow": [
         {
@@ -5787,7 +6860,8 @@
       ],
       "hypotheses": [],
       "analysisPrinciples": [
-        "项目审计定义；所列函数提供原始结果，导出字段由项目汇总，不是工具原生同名指标。"
+        "项目审计定义；所列函数提供原始结果，导出字段由项目汇总，不是工具原生同名指标。",
+        "调用配方；尚未在项目数据上执行。"
       ],
       "tags": [
         "dynamics",
@@ -5836,7 +6910,33 @@
           "Source-study single-cell RNA datasets"
         ],
         "note": "Source method checked; this project adaptation has not been run."
-      }
+      },
+      "methodOptions": [
+        {
+          "id": "v25_representation_bipca",
+          "title": "测量方差建模与谱秩诊断",
+          "toolIds": [
+            "bipca"
+          ],
+          "metricIds": [
+            "v25_bipca_rank_fit",
+            "v25_representation_noise_separation"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata"
+          ],
+          "optionalData": [
+            "culture_replicates",
+            "truth_or_simulation"
+          ],
+          "paperIds": [
+            "v25_82e69a8963b5"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "核对来源仍为2025预印本。矩阵双尺度化用于表示比较；不得用去噪矩阵替代噪音或QTL表型。先评估稀疏性、SVD与内存。"
+        }
+      ]
     },
     {
       "id": "cross_implementation_robustness",
@@ -5861,18 +6961,25 @@
       "toolIds": [
         "seurat",
         "scanpy",
-        "memento"
+        "memento",
+        "bipca",
+        "bigsur"
       ],
       "metricIds": [
         "implementation_representation_concordance",
-        "implementation_inference_stability"
+        "implementation_inference_stability",
+        "v25_bipca_rank_fit",
+        "v25_representation_noise_separation",
+        "v25_bigsur_mcfano",
+        "v25_bigsur_correlation"
       ],
       "stepIds": [
         "integration",
         "annotation",
         "markers",
         "noise",
-        "validation"
+        "validation",
+        "networks"
       ],
       "inputs": [
         "count_matrix",
@@ -5884,26 +6991,40 @@
         "truth_or_simulation"
       ],
       "paperIds": [
-        "v24_package_versioning_2026"
+        "v24_package_versioning_2026",
+        "v25_82e69a8963b5",
+        "lit-780ec4215f2f",
+        "v25_530aeafbda0a"
       ],
       "sourceUrls": [
         "https://pubmed.ncbi.nlm.nih.gov/41903535/",
         "https://scanpy.readthedocs.io/en/stable/",
-        "https://satijalab.org/seurat/articles/pbmc3k_tutorial"
+        "https://satijalab.org/seurat/articles/pbmc3k_tutorial",
+        "https://doi.org/10.1101/2025.02.03.636129",
+        "https://github.com/KlugerLab/bipca/blob/8842e4ce6d2d7c8a4bbf686591f4dc9c7c30b051/python/bipca/bipca.py",
+        "https://doi.org/10.1186/s12859-025-06240-y",
+        "https://doi.org/10.1186/s12859-024-05926-z",
+        "https://github.com/landerlabcode/BigSur/blob/cb6343ac5e45da374ff0d34ffb98766969be3c39/src/BigSur/feature_selection.py"
       ],
       "outputs": [
         "特征、邻域与聚类的一致性报告",
-        "注释、marker与噪音的分支敏感性"
+        "注释、marker与噪音的分支敏感性",
+        "估计谱秩、方差拟合诊断与表示敏感性",
+        "校正Fano、特征p值与校正相关边"
       ],
       "failureChecks": [
         "固定原始矩阵、细胞/feature顺序和比较单位；分别记录算法差异与版本差异。",
         "比较固定标签与重新注释两条分支；噪音推断使用同一原始计数模型，不用整合表达替换计数。",
-        "匹配实际算法、参数含义和随机数设置；不可把不同默认配置当作同一算法的重复。"
+        "匹配实际算法、参数含义和随机数设置；不可把不同默认配置当作同一算法的重复。",
+        "核对来源仍为2025预印本。矩阵双尺度化用于表示比较；不得用去噪矩阵替代噪音或QTL表型。先评估稀疏性、SVD与内存。",
+        "高变基因不自动成为状态marker或噪音QTL。校正相关仍非因果；用培养留出检验边。相关模块与特征模块的可用接口分别核验。"
       ],
       "parameterDecisions": [
         "固定原始矩阵、细胞/feature顺序和比较单位；分别记录算法差异与版本差异。",
         "比较固定标签与重新注释两条分支；噪音推断使用同一原始计数模型，不用整合表达替换计数。",
-        "匹配实际算法、参数含义和随机数设置；不可把不同默认配置当作同一算法的重复。"
+        "匹配实际算法、参数含义和随机数设置；不可把不同默认配置当作同一算法的重复。",
+        "依据计数生成模型及资源试运行配置；不默认将全矩阵转为稠密。",
+        "明确原始counts层；共同CV与显著性设置用酵母数据校准，保留全部检验结果。"
       ],
       "workflow": [
         {
@@ -5934,7 +7055,8 @@
       ],
       "hypotheses": [],
       "analysisPrinciples": [
-        "项目审计定义；所列函数提供原始结果，导出字段由项目汇总，不是工具原生同名指标。"
+        "项目审计定义；所列函数提供原始结果，导出字段由项目汇总，不是工具原生同名指标。",
+        "调用配方；尚未在项目数据上执行。"
       ],
       "tags": [
         "simulation",
@@ -5970,7 +7092,58 @@
           "Source-study single-cell RNA datasets"
         ],
         "note": "Source method checked; this project adaptation has not been run."
-      }
+      },
+      "methodOptions": [
+        {
+          "id": "v25_representation_bipca",
+          "title": "测量方差建模与谱秩诊断",
+          "toolIds": [
+            "bipca"
+          ],
+          "metricIds": [
+            "v25_bipca_rank_fit",
+            "v25_representation_noise_separation"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata"
+          ],
+          "optionalData": [
+            "culture_replicates",
+            "truth_or_simulation"
+          ],
+          "paperIds": [
+            "v25_82e69a8963b5"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "核对来源仍为2025预印本。矩阵双尺度化用于表示比较；不得用去噪矩阵替代噪音或QTL表型。先评估稀疏性、SVD与内存。"
+        },
+        {
+          "id": "v25_bigsur_features",
+          "title": "采样校正的特征选择与相关网络",
+          "toolIds": [
+            "bigsur"
+          ],
+          "metricIds": [
+            "v25_bigsur_mcfano",
+            "v25_bigsur_correlation"
+          ],
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata"
+          ],
+          "optionalData": [
+            "culture_replicates",
+            "truth_or_simulation"
+          ],
+          "paperIds": [
+            "lit-780ec4215f2f",
+            "v25_530aeafbda0a"
+          ],
+          "executionStatus": "recipe_only",
+          "interpretationBoundary": "高变基因不自动成为状态marker或噪音QTL。校正相关仍非因果；用培养留出检验边。相关模块与特征模块的可用接口分别核验。"
+        }
+      ]
     },
     {
       "id": "noise_multiplicity_control",

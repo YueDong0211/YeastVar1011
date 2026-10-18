@@ -88,3 +88,8 @@ a.source-link>svg{width:14px;height:14px;flex:0 0 14px;margin:0;display:block}
   .topbar .icon-btn,.pw-metric>.icon-btn,.row-actions>.icon-btn,
   .paper-card-actions>.icon-btn{transition:none}
 }
+/* Native controls and scroll rails follow the workstation theme. */
+html[data-theme="dark"]{color-scheme:dark;--yv-scroll-thumb:#526877;--yv-scroll-track:#0d1724;scrollbar-color:var(--yv-scroll-thumb) var(--yv-scroll-track)}
+html[data-theme="light"]{color-scheme:light;--yv-scroll-thumb:#8a9e9c;--yv-scroll-track:#ecf1ec;scrollbar-color:var(--yv-scroll-thumb) var(--yv-scroll-track)}
+html[data-theme] :where(.sidebar nav,.mw-filters,.mw-tag-options,.mw-facet-body,.mw-tabs,.detail-drawer #drawer-content,.rich-option-items){scrollbar-color:var(--yv-scroll-thumb) transparent;scrollbar-width:thin}
+@media(forced-colors:active){html[data-theme],html[data-theme] :where(.sidebar nav,.mw-filters,.mw-tag-options,.mw-facet-body,.mw-tabs,.detail-drawer #drawer-content,.rich-option-items){scrollbar-color:auto}}

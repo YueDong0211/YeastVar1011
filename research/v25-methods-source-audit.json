@@ -1,0 +1,3009 @@
+{
+  "checked_on": "2026-10-18",
+  "papers": [
+    {
+      "doi": "10.1093/bioinformatics/btaf521",
+      "crossref": {
+        "title": [
+          "Conformal inference for reliable single cell RNA-seq annotation"
+        ],
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0000-0001-8179-3839",
+            "authenticated-orcid": false,
+            "given": "Marcos",
+            "family": "López-De-Castro",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Institute of Data Science and Artificial Intelligence (DATAI), University of Navarra , Pamplona, Navarra 31009,",
+                "place": [
+                  "Spain"
+                ]
+              },
+              {
+                "name": "TECNUN School of Engineering, University of Navarra , Donostia-San Sebastián, Basque Country, 20018,",
+                "place": [
+                  "Spain"
+                ]
+              },
+              {
+                "name": "Cancer Center CCUN, Clínica Universidad de Navarra , Pamplona, Navarra, 31080,",
+                "place": [
+                  "Spain"
+                ]
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0001-7692-9113",
+            "authenticated-orcid": false,
+            "given": "Alberto",
+            "family": "García-Galindo",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Institute of Data Science and Artificial Intelligence (DATAI), University of Navarra , Pamplona, Navarra 31009,",
+                "place": [
+                  "Spain"
+                ]
+              },
+              {
+                "name": "TECNUN School of Engineering, University of Navarra , Donostia-San Sebastián, Basque Country, 20018,",
+                "place": [
+                  "Spain"
+                ]
+              },
+              {
+                "name": "Cancer Center CCUN, Clínica Universidad de Navarra , Pamplona, Navarra, 31080,",
+                "place": [
+                  "Spain"
+                ]
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-8549-0453",
+            "authenticated-orcid": false,
+            "given": "José",
+            "family": "González-Gomariz",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Institute of Data Science and Artificial Intelligence (DATAI), University of Navarra , Pamplona, Navarra 31009,",
+                "place": [
+                  "Spain"
+                ]
+              },
+              {
+                "name": "TECNUN School of Engineering, University of Navarra , Donostia-San Sebastián, Basque Country, 20018,",
+                "place": [
+                  "Spain"
+                ]
+              },
+              {
+                "name": "Cancer Center CCUN, Clínica Universidad de Navarra , Pamplona, Navarra, 31080,",
+                "place": [
+                  "Spain"
+                ]
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0003-4049-0000",
+            "authenticated-orcid": false,
+            "given": "Rubén",
+            "family": "Armañanzas",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Institute of Data Science and Artificial Intelligence (DATAI), University of Navarra , Pamplona, Navarra 31009,",
+                "place": [
+                  "Spain"
+                ]
+              },
+              {
+                "name": "TECNUN School of Engineering, University of Navarra , Donostia-San Sebastián, Basque Country, 20018,",
+                "place": [
+                  "Spain"
+                ]
+              },
+              {
+                "name": "Cancer Center CCUN, Clínica Universidad de Navarra , Pamplona, Navarra, 31080,",
+                "place": [
+                  "Spain"
+                ]
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Bioinformatics"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2025,
+              9,
+              18
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2025,
+              9,
+              18
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2025,
+              10,
+              2
+            ]
+          ]
+        },
+        "type": "journal-article",
+        "relation": {},
+        "volume": "41",
+        "issue": "10",
+        "article-number": "btaf521",
+        "URL": "https://doi.org/10.1093/bioinformatics/btaf521"
+      },
+      "crossref_url": "https://api.crossref.org/works/10.1093%2Fbioinformatics%2Fbtaf521",
+      "europepmc": [
+        {
+          "id": "40973204",
+          "source": "MED",
+          "doi": "10.1093/bioinformatics/btaf521",
+          "title": "Conformal inference for reliable single cell RNA-seq annotation.",
+          "pubYear": "2025",
+          "firstPublicationDate": "2025-10-01",
+          "pubTypeList": {
+            "pubType": [
+              "Research Support, Non-U.S. Gov't",
+              "research-article",
+              "Journal Article"
+            ]
+          },
+          "pmcid": "PMC12506889",
+          "journalInfo": {
+            "issue": "10",
+            "volume": "41",
+            "journalIssueId": 4026418,
+            "dateOfPublication": "2025 Oct",
+            "monthOfPublication": 10,
+            "yearOfPublication": 2025,
+            "journal": {
+              "medlineAbbreviation": "Bioinformatics",
+              "title": "Bioinformatics (Oxford, England)",
+              "essn": "1367-4811",
+              "issn": "1367-4803",
+              "isoabbreviation": "Bioinformatics",
+              "nlmid": "9808944"
+            },
+            "printPublicationDate": "2025-10-01"
+          }
+        }
+      ],
+      "europepmc_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1093%2Fbioinformatics%2Fbtaf521%22&format=json&resultType=core"
+    },
+    {
+      "doi": "10.1186/s12859-021-03957-4",
+      "crossref": {
+        "title": [
+          "Selecting single cell clustering parameter values using subsampling-based robustness metrics"
+        ],
+        "author": [
+          {
+            "given": "Ryan B.",
+            "family": "Patterson-Cross",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Ariel J.",
+            "family": "Levine",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-4096-8601",
+            "authenticated-orcid": false,
+            "given": "Vilas",
+            "family": "Menon",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "BMC Bioinformatics"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2021,
+              2,
+              1
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2021,
+              2,
+              1
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2021,
+              12
+            ]
+          ]
+        },
+        "type": "journal-article",
+        "relation": {},
+        "volume": "22",
+        "issue": "1",
+        "article-number": "39",
+        "URL": "https://doi.org/10.1186/s12859-021-03957-4"
+      },
+      "crossref_url": "https://api.crossref.org/works/10.1186%2Fs12859-021-03957-4",
+      "europepmc": [
+        {
+          "id": "33522897",
+          "source": "MED",
+          "doi": "10.1186/s12859-021-03957-4",
+          "title": "Selecting single cell clustering parameter values using subsampling-based robustness metrics.",
+          "pubYear": "2021",
+          "firstPublicationDate": "2021-02-01",
+          "pubTypeList": {
+            "pubType": [
+              "research-article",
+              "Journal Article"
+            ]
+          },
+          "pmcid": "PMC7852188",
+          "journalInfo": {
+            "issue": "1",
+            "volume": "22",
+            "journalIssueId": 3103387,
+            "dateOfPublication": "2021 Feb",
+            "monthOfPublication": 2,
+            "yearOfPublication": 2021,
+            "journal": {
+              "medlineAbbreviation": "BMC Bioinformatics",
+              "title": "BMC bioinformatics",
+              "essn": "1471-2105",
+              "issn": "1471-2105",
+              "isoabbreviation": "BMC Bioinformatics",
+              "nlmid": "100965194"
+            },
+            "printPublicationDate": "2021-02-01"
+          }
+        }
+      ],
+      "europepmc_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1186%2Fs12859-021-03957-4%22&format=json&resultType=core"
+    },
+    {
+      "doi": "10.1101/2025.02.03.636129",
+      "crossref_error": "HTTP Error 429: Too Many Requests",
+      "crossref_url": "https://api.crossref.org/works/10.1101%2F2025.02.03.636129",
+      "europepmc": [
+        {
+          "id": "PPR976495",
+          "source": "PPR",
+          "doi": "10.1101/2025.02.03.636129",
+          "title": "Principled PCA separates signal from noise in omics count data",
+          "pubYear": "2025",
+          "firstPublicationDate": "2025-02-07",
+          "pubTypeList": {
+            "pubType": [
+              "Preprint"
+            ]
+          }
+        }
+      ],
+      "europepmc_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1101%2F2025.02.03.636129%22&format=json&resultType=core",
+      "crossref": {
+        "title": [
+          "Principled PCA separates signal from noise in omics count data"
+        ],
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0000-0002-9227-8928",
+            "authenticated-orcid": false,
+            "suffix": "III",
+            "given": "Jay S.",
+            "family": "Stanley",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Program in Applied Mathematics, Yale University, New Haven, CT, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0003-0988-1564",
+            "authenticated-orcid": false,
+            "given": "Junchen",
+            "family": "Yang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Interdepartmental Program in Computational Biology and Bioinformatics, Yale University, New Haven, CT, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Ruiqi",
+            "family": "Li",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Interdepartmental Program in Computational Biology and Bioinformatics, Yale University, New Haven, CT, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Ofir",
+            "family": "Lindenbaum",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Faculty of Engineering, Bar Ilan University, Ramat-Gan, Israel"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-5639-7209",
+            "authenticated-orcid": false,
+            "given": "Dmitry",
+            "family": "Kobak",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Hertie Institute for AI in Brain Health, University of Tübingen, Germany"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Boris",
+            "family": "Landa",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Program in Applied Mathematics, Yale University, New Haven, CT, USA"
+              },
+              {
+                "name": "Department of Electrical and Computer Engineering, Yale University, New Haven, CT, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-3035-071X",
+            "authenticated-orcid": false,
+            "given": "Yuval",
+            "family": "Kluger",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Program in Applied Mathematics, Yale University, New Haven, CT, USA"
+              },
+              {
+                "name": "Interdepartmental Program in Computational Biology and Bioinformatics, Yale University, New Haven, CT, USA"
+              },
+              {
+                "name": "Department of Pathology, Yale University, New Haven, CT, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [],
+        "published": {
+          "date-parts": [
+            [
+              2025,
+              2,
+              7
+            ]
+          ]
+        },
+        "type": "posted-content",
+        "relation": {},
+        "URL": "https://doi.org/10.1101/2025.02.03.636129"
+      },
+      "crossref_retry_result": "success"
+    },
+    {
+      "doi": "10.1186/s12859-025-06240-y",
+      "crossref": {
+        "title": [
+          "Statistically principled feature selection for single cell transcriptomics"
+        ],
+        "author": [
+          {
+            "given": "Emmanuel P.",
+            "family": "Dollinger",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Kai",
+            "family": "Silkwood",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Scott",
+            "family": "Atwood",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Qing",
+            "family": "Nie",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Arthur D.",
+            "family": "Lander",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "BMC Bioinformatics"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2025,
+              10,
+              2
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2025,
+              10,
+              2
+            ]
+          ]
+        },
+        "type": "journal-article",
+        "relation": {
+          "has-preprint": [
+            {
+              "id-type": "doi",
+              "id": "10.1101/2024.10.11.617709",
+              "asserted-by": "object"
+            }
+          ]
+        },
+        "volume": "26",
+        "issue": "1",
+        "article-number": "238",
+        "URL": "https://doi.org/10.1186/s12859-025-06240-y"
+      },
+      "crossref_url": "https://api.crossref.org/works/10.1186%2Fs12859-025-06240-y",
+      "europepmc": [
+        {
+          "id": "41039247",
+          "source": "MED",
+          "doi": "10.1186/s12859-025-06240-y",
+          "title": "Statistically principled feature selection for single cell transcriptomics.",
+          "pubYear": "2025",
+          "firstPublicationDate": "2025-10-02",
+          "pubTypeList": {
+            "pubType": [
+              "research-article",
+              "Journal Article"
+            ]
+          },
+          "pmcid": "PMC12490061",
+          "journalInfo": {
+            "issue": "1",
+            "volume": "26",
+            "journalIssueId": 4025362,
+            "dateOfPublication": "2025 Oct",
+            "monthOfPublication": 10,
+            "yearOfPublication": 2025,
+            "journal": {
+              "medlineAbbreviation": "BMC Bioinformatics",
+              "title": "BMC bioinformatics",
+              "essn": "1471-2105",
+              "issn": "1471-2105",
+              "isoabbreviation": "BMC Bioinformatics",
+              "nlmid": "100965194"
+            },
+            "printPublicationDate": "2025-10-01"
+          }
+        }
+      ],
+      "europepmc_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1186%2Fs12859-025-06240-y%22&format=json&resultType=core"
+    },
+    {
+      "doi": "10.1186/s12859-024-05926-z",
+      "crossref": {
+        "title": [
+          "Leveraging gene correlations in single cell transcriptomic data"
+        ],
+        "author": [
+          {
+            "given": "Kai",
+            "family": "Silkwood",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Emmanuel",
+            "family": "Dollinger",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Joshua",
+            "family": "Gervin",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Scott",
+            "family": "Atwood",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Qing",
+            "family": "Nie",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Arthur D.",
+            "family": "Lander",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "BMC Bioinformatics"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2024,
+              9,
+              18
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2024,
+              9,
+              18
+            ]
+          ]
+        },
+        "type": "journal-article",
+        "relation": {
+          "has-preprint": [
+            {
+              "id-type": "doi",
+              "id": "10.1101/2023.03.14.532643",
+              "asserted-by": "object"
+            }
+          ]
+        },
+        "volume": "25",
+        "issue": "1",
+        "article-number": "305",
+        "URL": "https://doi.org/10.1186/s12859-024-05926-z"
+      },
+      "crossref_url": "https://api.crossref.org/works/10.1186%2Fs12859-024-05926-z",
+      "europepmc": [
+        {
+          "id": "39294560",
+          "source": "MED",
+          "doi": "10.1186/s12859-024-05926-z",
+          "title": "Leveraging gene correlations in single cell transcriptomic data.",
+          "pubYear": "2024",
+          "firstPublicationDate": "2024-09-18",
+          "pubTypeList": {
+            "pubType": [
+              "research-article",
+              "Journal Article"
+            ]
+          },
+          "pmcid": "PMC11411778",
+          "journalInfo": {
+            "issue": "1",
+            "volume": "25",
+            "journalIssueId": 3822074,
+            "dateOfPublication": "2024 Sep",
+            "monthOfPublication": 9,
+            "yearOfPublication": 2024,
+            "journal": {
+              "medlineAbbreviation": "BMC Bioinformatics",
+              "title": "BMC bioinformatics",
+              "essn": "1471-2105",
+              "issn": "1471-2105",
+              "isoabbreviation": "BMC Bioinformatics",
+              "nlmid": "100965194"
+            },
+            "printPublicationDate": "2024-09-01"
+          }
+        }
+      ],
+      "europepmc_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1186%2Fs12859-024-05926-z%22&format=json&resultType=core"
+    },
+    {
+      "doi": "10.1186/s13059-021-02341-y",
+      "crossref": {
+        "title": [
+          "PseudotimeDE: inference of differential gene expression along cell pseudotime with well-calibrated p-values from single-cell RNA sequencing data"
+        ],
+        "author": [
+          {
+            "given": "Dongyuan",
+            "family": "Song",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Jingyi Jessica",
+            "family": "Li",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Genome Biology"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2021,
+              4,
+              29
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2021,
+              4,
+              29
+            ]
+          ]
+        },
+        "type": "journal-article",
+        "relation": {
+          "has-preprint": [
+            {
+              "id-type": "doi",
+              "id": "10.1101/2020.11.17.387779",
+              "asserted-by": "object"
+            }
+          ]
+        },
+        "volume": "22",
+        "issue": "1",
+        "article-number": "124",
+        "URL": "https://doi.org/10.1186/s13059-021-02341-y"
+      },
+      "crossref_url": "https://api.crossref.org/works/10.1186%2Fs13059-021-02341-y",
+      "europepmc": [
+        {
+          "id": "33926517",
+          "source": "MED",
+          "doi": "10.1186/s13059-021-02341-y",
+          "title": "PseudotimeDE: inference of differential gene expression along cell pseudotime with well-calibrated p-values from single-cell RNA sequencing data.",
+          "pubYear": "2021",
+          "firstPublicationDate": "2021-04-29",
+          "pubTypeList": {
+            "pubType": [
+              "Research Support, Non-U.S. Gov't",
+              "research-article",
+              "Research Support, U.S. Gov't, Non-P.H.S.",
+              "Journal Article",
+              "Research Support, N.I.H., Extramural"
+            ]
+          },
+          "pmcid": "PMC8082818",
+          "journalInfo": {
+            "issue": "1",
+            "volume": "22",
+            "journalIssueId": 3147857,
+            "dateOfPublication": "2021 Apr",
+            "monthOfPublication": 4,
+            "yearOfPublication": 2021,
+            "journal": {
+              "medlineAbbreviation": "Genome Biol",
+              "title": "Genome biology",
+              "essn": "1474-760X",
+              "issn": "1474-7596",
+              "nlmid": "100960660",
+              "isoabbreviation": "Genome Biol"
+            },
+            "printPublicationDate": "2021-04-01"
+          }
+        }
+      ],
+      "europepmc_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1186%2Fs13059-021-02341-y%22&format=json&resultType=core"
+    },
+    {
+      "doi": "10.1038/s41467-023-42841-y",
+      "crossref": {
+        "title": [
+          "A statistical framework for differential pseudotime analysis with multiple single-cell RNA-seq samples"
+        ],
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0000-0003-0972-2192",
+            "authenticated-orcid": false,
+            "given": "Wenpin",
+            "family": "Hou",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Zhicheng",
+            "family": "Ji",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Zeyu",
+            "family": "Chen",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "E. John",
+            "family": "Wherry",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-7858-0231",
+            "authenticated-orcid": false,
+            "given": "Stephanie C.",
+            "family": "Hicks",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-6480-0141",
+            "authenticated-orcid": false,
+            "given": "Hongkai",
+            "family": "Ji",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Nature Communications"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2023,
+              11,
+              10
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2023,
+              11,
+              10
+            ]
+          ]
+        },
+        "type": "journal-article",
+        "relation": {
+          "has-preprint": [
+            {
+              "id-type": "doi",
+              "id": "10.1101/2021.07.10.451910",
+              "asserted-by": "object"
+            }
+          ]
+        },
+        "volume": "14",
+        "issue": "1",
+        "article-number": "7286",
+        "URL": "https://doi.org/10.1038/s41467-023-42841-y"
+      },
+      "crossref_url": "https://api.crossref.org/works/10.1038%2Fs41467-023-42841-y",
+      "europepmc": [
+        {
+          "id": "37949861",
+          "source": "MED",
+          "doi": "10.1038/s41467-023-42841-y",
+          "title": "A statistical framework for differential pseudotime analysis with multiple single-cell RNA-seq samples.",
+          "pubYear": "2023",
+          "firstPublicationDate": "2023-11-10",
+          "pubTypeList": {
+            "pubType": [
+              "Research Support, Non-U.S. Gov't",
+              "research-article",
+              "Journal Article",
+              "Research Support, N.I.H., Extramural"
+            ]
+          },
+          "pmcid": "PMC10638410",
+          "journalInfo": {
+            "issue": "1",
+            "volume": "14",
+            "journalIssueId": 3655457,
+            "dateOfPublication": "2023 Nov",
+            "monthOfPublication": 11,
+            "yearOfPublication": 2023,
+            "journal": {
+              "medlineAbbreviation": "Nat Commun",
+              "title": "Nature communications",
+              "essn": "2041-1723",
+              "issn": "2041-1723",
+              "isoabbreviation": "Nat Commun",
+              "nlmid": "101528555"
+            },
+            "printPublicationDate": "2023-11-01"
+          }
+        }
+      ],
+      "europepmc_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1038%2Fs41467-023-42841-y%22&format=json&resultType=core"
+    },
+    {
+      "doi": "10.1038/s41587-023-01663-5",
+      "crossref": {
+        "title": [
+          "scPrisma infers, filters and enhances topological signals in single-cell data using spectral template matching"
+        ],
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0000-0002-8398-6025",
+            "authenticated-orcid": false,
+            "given": "Jonathan",
+            "family": "Karin",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Yonathan",
+            "family": "Bornfeld",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0003-0074-9196",
+            "authenticated-orcid": false,
+            "given": "Mor",
+            "family": "Nitzan",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Nature Biotechnology"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2023,
+              2,
+              27
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2023,
+              2,
+              27
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2023,
+              11
+            ]
+          ]
+        },
+        "type": "journal-article",
+        "relation": {
+          "has-preprint": [
+            {
+              "id-type": "doi",
+              "id": "10.1101/2022.06.07.493867",
+              "asserted-by": "object"
+            }
+          ]
+        },
+        "volume": "41",
+        "issue": "11",
+        "page": "1645-1654",
+        "URL": "https://doi.org/10.1038/s41587-023-01663-5"
+      },
+      "crossref_url": "https://api.crossref.org/works/10.1038%2Fs41587-023-01663-5",
+      "europepmc": [
+        {
+          "id": "36849830",
+          "source": "MED",
+          "doi": "10.1038/s41587-023-01663-5",
+          "title": "scPrisma infers, filters and enhances topological signals in single-cell data using spectral template matching.",
+          "pubYear": "2023",
+          "firstPublicationDate": "2023-02-27",
+          "pubTypeList": {
+            "pubType": [
+              "Research Support, Non-U.S. Gov't",
+              "research-article",
+              "Journal Article"
+            ]
+          },
+          "pmcid": "PMC10635821",
+          "journalInfo": {
+            "issue": "11",
+            "volume": "41",
+            "journalIssueId": 3662376,
+            "dateOfPublication": "2023 Nov",
+            "monthOfPublication": 11,
+            "yearOfPublication": 2023,
+            "journal": {
+              "medlineAbbreviation": "Nat Biotechnol",
+              "title": "Nature biotechnology",
+              "essn": "1546-1696",
+              "issn": "1087-0156",
+              "isoabbreviation": "Nat Biotechnol",
+              "nlmid": "9604648"
+            },
+            "printPublicationDate": "2023-11-01"
+          }
+        }
+      ],
+      "europepmc_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1038%2Fs41587-023-01663-5%22&format=json&resultType=core"
+    },
+    {
+      "doi": "10.1038/s41586-024-08453-2",
+      "crossref": {
+        "title": [
+          "Mapping cells through time and space with moscot"
+        ],
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0000-0002-7334-3501",
+            "authenticated-orcid": false,
+            "given": "Dominik",
+            "family": "Klein",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Giovanni",
+            "family": "Palla",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-4846-1266",
+            "authenticated-orcid": false,
+            "given": "Marius",
+            "family": "Lange",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Michal",
+            "family": "Klein",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0003-0241-8948",
+            "authenticated-orcid": false,
+            "given": "Zoe",
+            "family": "Piran",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Manuel",
+            "family": "Gander",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Laetitia",
+            "family": "Meng-Papaxanthos",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Michael",
+            "family": "Sterr",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0004-0297-050X",
+            "authenticated-orcid": false,
+            "given": "Lama",
+            "family": "Saber",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-0671-4114",
+            "authenticated-orcid": false,
+            "given": "Changying",
+            "family": "Jing",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Aimée",
+            "family": "Bastidas-Ponce",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Perla",
+            "family": "Cota",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Marta",
+            "family": "Tarquis-Medina",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Shrey",
+            "family": "Parikh",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Ilan",
+            "family": "Gold",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-4597-8825",
+            "authenticated-orcid": false,
+            "given": "Heiko",
+            "family": "Lickert",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-2307-1122",
+            "authenticated-orcid": false,
+            "given": "Mostafa",
+            "family": "Bakhti",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0003-0074-9196",
+            "authenticated-orcid": false,
+            "given": "Mor",
+            "family": "Nitzan",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Marco",
+            "family": "Cuturi",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-2419-1943",
+            "authenticated-orcid": false,
+            "given": "Fabian J.",
+            "family": "Theis",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Nature"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2025,
+              1,
+              22
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2025,
+              1,
+              22
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2025,
+              2,
+              27
+            ]
+          ]
+        },
+        "type": "journal-article",
+        "relation": {
+          "has-preprint": [
+            {
+              "id-type": "doi",
+              "id": "10.1101/2023.05.11.540374",
+              "asserted-by": "object"
+            }
+          ]
+        },
+        "volume": "638",
+        "issue": "8052",
+        "page": "1065-1075",
+        "URL": "https://doi.org/10.1038/s41586-024-08453-2"
+      },
+      "crossref_url": "https://api.crossref.org/works/10.1038%2Fs41586-024-08453-2",
+      "europepmc": [
+        {
+          "id": "39843746",
+          "source": "MED",
+          "doi": "10.1038/s41586-024-08453-2",
+          "title": "Mapping cells through time and space with moscot.",
+          "pubYear": "2025",
+          "firstPublicationDate": "2025-01-22",
+          "pubTypeList": {
+            "pubType": [
+              "Research Support, Non-U.S. Gov't",
+              "research-article",
+              "Journal Article"
+            ]
+          },
+          "pmcid": "PMC11864987",
+          "journalInfo": {
+            "issue": "8052",
+            "volume": "638",
+            "journalIssueId": 3905096,
+            "dateOfPublication": "2025 Feb",
+            "monthOfPublication": 2,
+            "yearOfPublication": 2025,
+            "journal": {
+              "medlineAbbreviation": "Nature",
+              "title": "Nature",
+              "essn": "1476-4687",
+              "issn": "0028-0836",
+              "nlmid": "0410462",
+              "isoabbreviation": "Nature"
+            },
+            "printPublicationDate": "2025-02-01"
+          }
+        }
+      ],
+      "europepmc_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1038%2Fs41586-024-08453-2%22&format=json&resultType=core"
+    },
+    {
+      "doi": "10.1038/s41467-021-26779-7",
+      "crossref": {
+        "title": [
+          "scPower accelerates and optimizes the design of multi-sample single cell transcriptomic studies"
+        ],
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0000-0001-7082-1099",
+            "authenticated-orcid": false,
+            "given": "Katharina T.",
+            "family": "Schmid",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0001-9848-7870",
+            "authenticated-orcid": false,
+            "given": "Barbara",
+            "family": "Höllbacher",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Cristiana",
+            "family": "Cruceanu",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0001-5473-3136",
+            "authenticated-orcid": false,
+            "given": "Anika",
+            "family": "Böttcher",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-4597-8825",
+            "authenticated-orcid": false,
+            "given": "Heiko",
+            "family": "Lickert",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0001-7088-6618",
+            "authenticated-orcid": false,
+            "given": "Elisabeth B.",
+            "family": "Binder",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-2419-1943",
+            "authenticated-orcid": false,
+            "given": "Fabian J.",
+            "family": "Theis",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-5612-1720",
+            "authenticated-orcid": false,
+            "given": "Matthias",
+            "family": "Heinig",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Nature Communications"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2021,
+              11,
+              16
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2021,
+              11,
+              16
+            ]
+          ]
+        },
+        "type": "journal-article",
+        "relation": {
+          "has-preprint": [
+            {
+              "id-type": "doi",
+              "id": "10.21203/rs.3.rs-331370/v1",
+              "asserted-by": "object"
+            },
+            {
+              "id-type": "doi",
+              "id": "10.1101/2020.04.01.019851",
+              "asserted-by": "object"
+            }
+          ]
+        },
+        "volume": "12",
+        "issue": "1",
+        "article-number": "6625",
+        "URL": "https://doi.org/10.1038/s41467-021-26779-7"
+      },
+      "crossref_url": "https://api.crossref.org/works/10.1038%2Fs41467-021-26779-7",
+      "europepmc": [
+        {
+          "id": "34785648",
+          "source": "MED",
+          "doi": "10.1038/s41467-021-26779-7",
+          "title": "scPower accelerates and optimizes the design of multi-sample single cell transcriptomic studies.",
+          "pubYear": "2021",
+          "firstPublicationDate": "2021-11-16",
+          "pubTypeList": {
+            "pubType": [
+              "Research Support, Non-U.S. Gov't",
+              "research-article",
+              "Journal Article"
+            ]
+          },
+          "pmcid": "PMC8595682",
+          "journalInfo": {
+            "issue": "1",
+            "volume": "12",
+            "journalIssueId": 3261222,
+            "dateOfPublication": "2021 Nov",
+            "monthOfPublication": 11,
+            "yearOfPublication": 2021,
+            "journal": {
+              "medlineAbbreviation": "Nat Commun",
+              "title": "Nature communications",
+              "essn": "2041-1723",
+              "issn": "2041-1723",
+              "nlmid": "101528555",
+              "isoabbreviation": "Nat Commun"
+            },
+            "printPublicationDate": "2021-11-01"
+          }
+        }
+      ],
+      "europepmc_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1038%2Fs41467-021-26779-7%22&format=json&resultType=core"
+    },
+    {
+      "doi": "10.1038/s41467-021-25960-2",
+      "crossref": {
+        "title": [
+          "Confronting false discoveries in single-cell differential expression"
+        ],
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0000-0003-0551-859X",
+            "authenticated-orcid": false,
+            "given": "Jordan W.",
+            "family": "Squair",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0003-4910-8576",
+            "authenticated-orcid": false,
+            "given": "Matthieu",
+            "family": "Gautier",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0001-6441-1755",
+            "authenticated-orcid": false,
+            "given": "Claudia",
+            "family": "Kathe",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Mark A.",
+            "family": "Anderson",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Nicholas D.",
+            "family": "James",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0001-6795-2688",
+            "authenticated-orcid": false,
+            "given": "Thomas H.",
+            "family": "Hutson",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Rémi",
+            "family": "Hudelle",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-1245-9404",
+            "authenticated-orcid": false,
+            "given": "Taha",
+            "family": "Qaiser",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Kaya J. E.",
+            "family": "Matson",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0003-0894-1959",
+            "authenticated-orcid": false,
+            "given": "Quentin",
+            "family": "Barraud",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-0335-0730",
+            "authenticated-orcid": false,
+            "given": "Ariel J.",
+            "family": "Levine",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Gioele",
+            "family": "La Manno",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-2168-1621",
+            "authenticated-orcid": false,
+            "given": "Michael A.",
+            "family": "Skinnider",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-5744-4142",
+            "authenticated-orcid": false,
+            "given": "Grégoire",
+            "family": "Courtine",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Nature Communications"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2021,
+              9,
+              28
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2021,
+              9,
+              28
+            ]
+          ]
+        },
+        "type": "journal-article",
+        "relation": {
+          "has-preprint": [
+            {
+              "id-type": "doi",
+              "id": "10.1101/2021.03.12.435024",
+              "asserted-by": "object"
+            }
+          ]
+        },
+        "volume": "12",
+        "issue": "1",
+        "article-number": "5692",
+        "URL": "https://doi.org/10.1038/s41467-021-25960-2"
+      },
+      "crossref_url": "https://api.crossref.org/works/10.1038%2Fs41467-021-25960-2",
+      "europepmc": [
+        {
+          "id": "34584091",
+          "source": "MED",
+          "doi": "10.1038/s41467-021-25960-2",
+          "title": "Confronting false discoveries in single-cell differential expression.",
+          "pubYear": "2021",
+          "firstPublicationDate": "2021-09-28",
+          "pubTypeList": {
+            "pubType": [
+              "Research Support, N.I.H., Intramural",
+              "research-article",
+              "Research Support, U.S. Gov't, Non-P.H.S.",
+              "Journal Article"
+            ]
+          },
+          "pmcid": "PMC8479118",
+          "journalInfo": {
+            "issue": "1",
+            "volume": "12",
+            "journalIssueId": 3226554,
+            "dateOfPublication": "2021 Sep",
+            "monthOfPublication": 9,
+            "yearOfPublication": 2021,
+            "journal": {
+              "medlineAbbreviation": "Nat Commun",
+              "title": "Nature communications",
+              "essn": "2041-1723",
+              "issn": "2041-1723",
+              "isoabbreviation": "Nat Commun",
+              "nlmid": "101528555"
+            },
+            "printPublicationDate": "2021-09-01"
+          }
+        }
+      ],
+      "europepmc_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1038%2Fs41467-021-25960-2%22&format=json&resultType=core"
+    },
+    {
+      "doi": "10.1093/nar/gkv007",
+      "crossref": {
+        "title": [
+          "limma powers differential expression analyses for RNA-sequencing and microarray studies"
+        ],
+        "author": [
+          {
+            "given": "Matthew E.",
+            "family": "Ritchie",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Belinda",
+            "family": "Phipson",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Di",
+            "family": "Wu",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Yifang",
+            "family": "Hu",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Charity W.",
+            "family": "Law",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Wei",
+            "family": "Shi",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Gordon K.",
+            "family": "Smyth",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Nucleic Acids Research"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2015,
+              1,
+              20
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2015,
+              1,
+              20
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2015,
+              4,
+              20
+            ]
+          ]
+        },
+        "type": "journal-article",
+        "relation": {},
+        "volume": "43",
+        "issue": "7",
+        "page": "e47-e47",
+        "URL": "https://doi.org/10.1093/nar/gkv007"
+      },
+      "crossref_url": "https://api.crossref.org/works/10.1093%2Fnar%2Fgkv007",
+      "europepmc": [
+        {
+          "id": "25605792",
+          "source": "MED",
+          "doi": "10.1093/nar/gkv007",
+          "title": "limma powers differential expression analyses for RNA-sequencing and microarray studies.",
+          "pubYear": "2015",
+          "firstPublicationDate": "2015-01-20",
+          "pubTypeList": {
+            "pubType": [
+              "Research Support, Non-U.S. Gov't",
+              "research-article",
+              "Journal Article"
+            ]
+          },
+          "pmcid": "PMC4402510",
+          "journalInfo": {
+            "issue": "7",
+            "volume": "43",
+            "journalIssueId": 2276435,
+            "dateOfPublication": "2015 Apr",
+            "monthOfPublication": 4,
+            "yearOfPublication": 2015,
+            "journal": {
+              "medlineAbbreviation": "Nucleic Acids Res",
+              "title": "Nucleic acids research",
+              "essn": "1362-4962",
+              "issn": "0305-1048",
+              "nlmid": "0411011",
+              "isoabbreviation": "Nucleic Acids Res"
+            },
+            "printPublicationDate": "2015-04-01"
+          }
+        }
+      ],
+      "europepmc_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1093%2Fnar%2Fgkv007%22&format=json&resultType=core"
+    }
+  ],
+  "repositories": [
+    {
+      "repository": "digital-medicine-research-group-UNAV/conformalized_single_cell_annotator",
+      "url": "https://github.com/digital-medicine-research-group-UNAV/conformalized_single_cell_annotator",
+      "canonical_name": "digital-medicine-research-group-UNAV/conformalized_single_cell_annotator",
+      "default_branch": "main",
+      "license": null,
+      "commit": "526bad858b120137d01267bde7ccb5dda5431308",
+      "commit_date": "2025-07-15T06:27:21Z",
+      "files": [
+        ".gitignore",
+        "QuickStart.ipynb",
+        "README.md",
+        "annomaly_detector.py",
+        "conformalSC.py",
+        "conformalSC_annotator.py",
+        "environment.yml",
+        "paper/preprocessing_scripts/preprocessing_pipeline.py",
+        "paper/pruebas.py",
+        "utils.py",
+        "utils_calib.py"
+      ]
+    },
+    {
+      "repository": "rbpatt2019/chooseR",
+      "url": "https://github.com/rbpatt2019/chooseR",
+      "canonical_name": "rbpatt2019/chooseR",
+      "default_branch": "master",
+      "license": {
+        "key": "gpl-3.0",
+        "name": "GNU General Public License v3.0",
+        "spdx_id": "GPL-3.0",
+        "url": "https://api.github.com/licenses/gpl-3.0",
+        "node_id": "MDc6TGljZW5zZTk="
+      },
+      "commit": "410bdbfaebcbc57df45176491545a1165e3c6fc5",
+      "commit_date": "2020-06-12T17:08:42Z",
+      "files": [
+        ".Rbuildignore",
+        ".Rprofile",
+        ".gitignore",
+        "LICENSE",
+        "R/helper_functions.R",
+        "R/pipeline.R",
+        "README.md",
+        "data/ding_smartseq_pbmc_preprocessed.rds",
+        "examples/1_seurat_pipeline.R",
+        "examples/2_seurat_further_visuaisations.R",
+        "renv.lock",
+        "renv/activate.R",
+        "renv/settings.dcf"
+      ]
+    },
+    {
+      "repository": "KlugerLab/bipca",
+      "url": "https://github.com/KlugerLab/bipca",
+      "canonical_name": "KlugerLab/bipca",
+      "default_branch": "master",
+      "license": null,
+      "commit": "8842e4ce6d2d7c8a4bbf686591f4dc9c7c30b051",
+      "commit_date": "2026-03-18T15:07:06Z",
+      "files": [
+        ".github/workflows/python-publish.yml",
+        ".gitignore",
+        "README.md",
+        "matlab/README",
+        "matlab/sinkhorn.m",
+        "python/.gitignore",
+        "python/LICENSE",
+        "python/README.rst",
+        "python/bipca/__init__.py",
+        "python/bipca/_vendor/__init__.py",
+        "python/bipca/_vendor/pyalra/LICENSE",
+        "python/bipca/_vendor/pyalra/__init__.py",
+        "python/bipca/_vendor/pyalra/alra.py",
+        "python/bipca/_vendor/pyalra/choose_k.py",
+        "python/bipca/_vendor/pyalra/logging.py",
+        "python/bipca/_vendor/pychebfun/LICENSE",
+        "python/bipca/_vendor/pychebfun/__init__.py",
+        "python/bipca/_vendor/pychebfun/chebfun.py",
+        "python/bipca/_vendor/pychebfun/chebfun_init.py",
+        "python/bipca/_vendor/pychebfun/plotting.py",
+        "python/bipca/_vendor/pychebfun/polyfun.py",
+        "python/bipca/base.py",
+        "python/bipca/bipca.py",
+        "python/bipca/bipca.py.save",
+        "python/bipca/command_line.py",
+        "python/bipca/data_examples.py",
+        "python/bipca/experiments/__init__.py",
+        "python/bipca/experiments/base.py",
+        "python/bipca/experiments/datasets/__init__.py",
+        "python/bipca/experiments/datasets/allcools_preprocess.sh",
+        "python/bipca/experiments/datasets/base.py",
+        "python/bipca/experiments/datasets/datasets.py",
+        "python/bipca/experiments/datasets/modalities.py",
+        "python/bipca/experiments/datasets/plink_preprocess.sh",
+        "python/bipca/experiments/datasets/utils.py",
+        "python/bipca/experiments/exceptions.py",
+        "python/bipca/experiments/experiments.py",
+        "python/bipca/experiments/figures/Figure1_Suppfig1.ipynb",
+        "python/bipca/experiments/figures/__init__.py",
+        "python/bipca/experiments/figures/base.py",
+        "python/bipca/experiments/figures/figures.py",
+        "python/bipca/experiments/figures/plotting_constants.py",
+        "python/bipca/experiments/figures/utils.py",
+        "python/bipca/experiments/normalizations.py",
+        "python/bipca/experiments/types.py",
+        "python/bipca/experiments/utils.py",
+        "python/bipca/math.py",
+        "python/bipca/plotting.py",
+        "python/bipca/safe_basics.py",
+        "python/bipca/utils.py",
+        "python/doc/Makefile",
+        "python/doc/_static/numpy.css",
+        "python/doc/_templates/autosummary/attribute.rst",
+        "python/doc/_templates/autosummary/base.rst",
+        "python/doc/_templates/autosummary/class.rst",
+        "python/doc/_templates/autosummary/member.rst",
+        "python/doc/_templates/autosummary/method.rst",
+        "python/doc/_templates/autosummary/minimal_module.rst",
+        "python/doc/_templates/autosummary/module.rst",
+        "python/doc/_templates/indexcontent.html",
+        "python/doc/_templates/indexsidebar.html",
+        "python/doc/_templates/layout.html",
+        "python/doc/_templates/searchbox.html",
+        "python/doc/conf.py",
+        "python/doc/index.rst",
+        "python/doc/make.bat",
+        "python/doc/reference/bipca.rst",
+        "python/doc/reference/generated/bipca.math.SVD.PCA.rst",
+        "python/doc/reference/generated/bipca.math.SVD.S.rst",
+        "python/doc/reference/generated/bipca.math.SVD.U.rst",
+        "python/doc/reference/generated/bipca.math.SVD.V.rst",
+        "python/doc/reference/generated/bipca.math.SVD.algorithm.rst",
+        "python/doc/reference/generated/bipca.math.SVD.exact.rst",
+        "python/doc/reference/generated/bipca.math.SVD.fit.rst",
+        "python/doc/reference/generated/bipca.math.SVD.fit_transform.rst",
+        "python/doc/reference/generated/bipca.math.SVD.get_params.rst",
+        "python/doc/reference/generated/bipca.math.SVD.k.rst",
+        "python/doc/reference/generated/bipca.math.SVD.kwargs.rst",
+        "python/doc/reference/generated/bipca.math.SVD.n_components.rst",
+        "python/doc/reference/generated/bipca.math.SVD.rst",
+        "python/doc/reference/generated/bipca.math.SVD.set_params.rst",
+        "python/doc/reference/generated/bipca.math.SVD.svd.rst",
+        "python/doc/reference/generated/bipca.math.SVD.transform.rst",
+        "python/doc/reference/generated/bipca.math.Shrinker.fit.rst",
+        "python/doc/reference/generated/bipca.math.Shrinker.fit_transform.rst",
+        "python/doc/reference/generated/bipca.math.Shrinker.frobenius.rst",
+        "python/doc/reference/generated/bipca.math.Shrinker.get_params.rst",
+        "python/doc/reference/generated/bipca.math.Shrinker.hard.rst",
+        "python/doc/reference/generated/bipca.math.Shrinker.nuclear.rst",
+        "python/doc/reference/generated/bipca.math.Shrinker.operator.rst",
+        "python/doc/reference/generated/bipca.math.Shrinker.rst",
+        "python/doc/reference/generated/bipca.math.Shrinker.set_params.rst",
+        "python/doc/reference/generated/bipca.math.Shrinker.soft.rst",
+        "python/doc/reference/generated/bipca.math.Shrinker.transform.rst",
+        "python/doc/reference/generated/bipca.math.Sinkhorn.Z.rst",
+        "python/doc/reference/generated/bipca.math.Sinkhorn.fit.rst",
+        "python/doc/reference/generated/bipca.math.Sinkhorn.fit_transform.rst",
+        "python/doc/reference/generated/bipca.math.Sinkhorn.get_params.rst",
+        "python/doc/reference/generated/bipca.math.Sinkhorn.rst",
+        "python/doc/reference/generated/bipca.math.Sinkhorn.scale.rst",
+        "python/doc/reference/generated/bipca.math.Sinkhorn.set_params.rst",
+        "python/doc/reference/generated/bipca.math.Sinkhorn.transform.rst",
+        "python/doc/reference/generated/bipca.math.Sinkhorn.unscale.rst",
+        "python/doc/reference/index.rst",
+        "python/doc/reference/math.rst",
+        "python/experiments-requirements.txt",
+        "python/pyproject.toml",
+        "python/requirements.txt",
+        "python/tests/speedtest.py",
+        "python/tests/test_bipca.py",
+        "python/tests/test_command_line.py",
+        "python/tests/test_data/__init__.py",
+        "python/tests/test_experiments.py",
+        "python/tests/test_math.py",
+        "python/tests/test_utils.py",
+        "python/tests/testing_utils.py",
+        "python/tutorials/Figure1.png",
+        "python/tutorials/tutorial-0-quick_start.ipynb",
+        "python/tutorials/tutorial-1-pbmc_scrna_scanpy.ipynb"
+      ]
+    },
+    {
+      "repository": "landerlabcode/BigSur",
+      "url": "https://github.com/landerlabcode/BigSur",
+      "canonical_name": "landerlabcode/BigSur",
+      "default_branch": "main",
+      "license": {
+        "key": "mit",
+        "name": "MIT License",
+        "spdx_id": "MIT",
+        "url": "https://api.github.com/licenses/mit",
+        "node_id": "MDc6TGljZW5zZTEz"
+      },
+      "commit": "cb6343ac5e45da374ff0d34ffb98766969be3c39",
+      "commit_date": "2026-04-08T16:51:05Z",
+      "files": [
+        ".DS_Store",
+        ".gitignore",
+        ".ipynb_checkpoints/README-checkpoint.md",
+        ".ipynb_checkpoints/feature_selection_example_usage-checkpoint.ipynb",
+        "10k_PBMC_3p_nextgem_Chromium_X_raw_feature_bc_matrix.h5",
+        "Figure1_panel_A_PBMC_metadata.csv",
+        "LICENSE",
+        "README.md",
+        "Synthetic Datasets/.DS_Store",
+        "Synthetic Datasets/Figure 3BF 100 Variable genes.csv",
+        "Synthetic Datasets/Figure 3BF 1000 Variable genes.csv",
+        "Synthetic Datasets/Figure 3BF 125 Variable genes.csv",
+        "Synthetic Datasets/Figure 3BF 150 Variable genes.csv",
+        "Synthetic Datasets/Figure 3BF 175 Variable genes.csv",
+        "Synthetic Datasets/Figure 3BF 250 Variable genes.csv",
+        "Synthetic Datasets/Figure 3BF 500 Variable genes.csv",
+        "Synthetic Datasets/Figure 3BF 750 Variable genes.csv",
+        "Synthetic Datasets/Figure 3CDE.csv",
+        "environment.yml",
+        "feature_selection_example_usage.ipynb",
+        "pyproject.toml",
+        "setup.cfg",
+        "setup.py",
+        "spec-list.txt",
+        "src/BigSur/.DS_Store",
+        "src/BigSur/__init__.py",
+        "src/BigSur/correlation_coefficient_functions.py",
+        "src/BigSur/correlation_cumulant_functions.py",
+        "src/BigSur/correlation_pvalue_functions.py",
+        "src/BigSur/correlation_root_finding_functions.py",
+        "src/BigSur/correlations.py",
+        "src/BigSur/feature_selection.py",
+        "src/BigSur/inverse_sqrt_moment_interpolation_functions.py",
+        "src/BigSur/preprocessing.py",
+        "src/BigSur/synthetic_data.py",
+        "src/bigsur.egg-info/PKG-INFO",
+        "src/bigsur.egg-info/SOURCES.txt",
+        "src/bigsur.egg-info/dependency_links.txt",
+        "src/bigsur.egg-info/requires.txt",
+        "src/bigsur.egg-info/top_level.txt",
+        "src/bigsur_testing_edolling.egg-info/PKG-INFO",
+        "src/bigsur_testing_edolling.egg-info/SOURCES.txt",
+        "src/bigsur_testing_edolling.egg-info/dependency_links.txt",
+        "src/bigsur_testing_edolling.egg-info/top_level.txt"
+      ]
+    },
+    {
+      "repository": "SONGDONGYUAN1994/PseudotimeDE",
+      "url": "https://github.com/SONGDONGYUAN1994/PseudotimeDE",
+      "canonical_name": "SONGDONGYUAN1994/PseudotimeDE",
+      "default_branch": "master",
+      "license": {
+        "key": "mit",
+        "name": "MIT License",
+        "spdx_id": "MIT",
+        "url": "https://api.github.com/licenses/mit",
+        "node_id": "MDc6TGljZW5zZTEz"
+      },
+      "commit": "c278a487e11159b8c7f046f3943699e7ec232067",
+      "commit_date": "2025-03-02T21:20:56Z",
+      "files": [
+        ".DS_Store",
+        ".gitignore",
+        "DESCRIPTION",
+        "LICENSE",
+        "NAMESPACE",
+        "PseudotimeDE.Rproj",
+        "R/PseudotimeDE-package.R",
+        "R/PseudotimeDE.R",
+        "R/RcppExports.R",
+        "R/data.R",
+        "R/plotCurve.R",
+        "R/plotUncertainty.R",
+        "R/runPseudotimeDE.R",
+        "R/tauStarDE.R",
+        "README.md",
+        "data/LPS_ori_tbl.rda",
+        "data/LPS_sce.rda",
+        "data/LPS_sub_tbl.rda",
+        "inst/NEWS.md",
+        "inst/include/PseudotimeDE.h",
+        "inst/include/PseudotimeDE_RcppExports.h",
+        "man/LPS_ori_tbl.Rd",
+        "man/LPS_sce.Rd",
+        "man/LPS_sub_tbl.Rd",
+        "man/isProbVector.Rd",
+        "man/pMixHoeffInd.Rd",
+        "man/plotCurve.Rd",
+        "man/plotUncertainty.Rd",
+        "man/pseudotimeDE.Rd",
+        "man/runPseudotimeDE.Rd",
+        "man/runTauStarDE.Rd",
+        "man/tStar.Rd",
+        "man/tauStarDE.Rd",
+        "man/tauStarTest.Rd",
+        "src/AsymMixedCdfIntegrandEvaluator.cpp",
+        "src/AsymMixedCdfIntegrandEvaluator.h",
+        "src/AsymMixedCdfIntegrandEvaluator.o",
+        "src/IntegrandEvaluator.h",
+        "src/Makevars",
+        "src/Makevars.win",
+        "src/PseudotimeDE.dll",
+        "src/RcppExports.cpp",
+        "src/RcppExports.o",
+        "src/rcpp_numerical_cdf.cpp",
+        "src/rcpp_numerical_cdf.o",
+        "src/rcpp_t_star.cpp",
+        "src/rcpp_t_star.o",
+        "tests/testthat.R",
+        "tests/testthat/test-PseudotimeDE.R",
+        "vignettes/quickstart.Rmd",
+        "vignettes/quickstart_qgam.Rmd"
+      ]
+    },
+    {
+      "repository": "Winnie09/Lamian",
+      "url": "https://github.com/Winnie09/Lamian",
+      "canonical_name": "Winnie09/Lamian",
+      "default_branch": "master",
+      "license": null,
+      "commit": "bf7d1285393d8e3277235faa2ea4a7569191e350",
+      "commit_date": "2025-08-26T21:38:33Z",
+      "files": [
+        ".DS_Store",
+        "DESCRIPTION",
+        "NAMESPACE",
+        "R/AreaUnderSensFdr.R",
+        "R/GOEnrich.R",
+        "R/SensFdr.R",
+        "R/branchPropTest.R",
+        "R/cellPropTest.R",
+        "R/clusterGene.R",
+        "R/cluster_gene.R",
+        "R/evaluate_uncertainty.R",
+        "R/findbranch.R",
+        "R/fitfunc.R",
+        "R/fitfunc_h5.R",
+        "R/fitpt.R",
+        "R/fitpt.m0.R",
+        "R/fitpt_h5.R",
+        "R/fitpt_m0_h5.R",
+        "R/getCovariateGroupDiff.R",
+        "R/getPopulationFit.R",
+        "R/getXDEType.R",
+        "R/get_binary.R",
+        "R/infer_tree_structure.R",
+        "R/lamian_test.R",
+        "R/lamian_test_h5.R",
+        "R/mykmeans.R",
+        "R/plotClusterDiff.R",
+        "R/plotClusterMean.R",
+        "R/plotClusterMeanAndDiff.R",
+        "R/plotGOEnrich.R",
+        "R/plotGene.R",
+        "R/plotGeneCellAndPopulation.R",
+        "R/plotGenePopulation.R",
+        "R/plotTDEHm.R",
+        "R/plotXDEHm.R",
+        "R/plotmclust.R",
+        "R/predict_fitting.R",
+        "R/saveh5.R",
+        "R/scalematrix.R",
+        "README.md",
+        "build/vignette.rds",
+        "data/datalist",
+        "data/expdata.rda",
+        "data/man_tree_data.rda",
+        "data/man_tree_res.rda",
+        "data/mandata.rda",
+        "data/mantestobj.rda",
+        "data/multi.h5",
+        "data/slingshot_data.rda",
+        "inst/NEWS",
+        "inst/doc/Lamian.R",
+        "inst/doc/Lamian.Rmd",
+        "inst/doc/Lamian.html",
+        "inst/doc/Lamian.pdf",
+        "man/AreaUnderSensFdr.Rd",
+        "man/GOEnrich.Rd",
+        "man/SensFdr.Rd",
+        "man/branchPropTest.Rd",
+        "man/cellPropTest.Rd",
+        "man/clusterGene.Rd",
+        "man/cluster_gene.Rd",
+        "man/evaluate_uncertainty.Rd",
+        "man/expdata.rda.Rd",
+        "man/findbranch.Rd",
+        "man/fitfunc.Rd",
+        "man/fitfunc_h5.Rd",
+        "man/fitpt.Rd",
+        "man/fitpt.m0.Rd",
+        "man/fitpt_h5.Rd",
+        "man/fitpt_m0_h5.Rd",
+        "man/getCovariateGroupDiff.Rd",
+        "man/getPopulationFit.Rd",
+        "man/getXDEType.Rd",
+        "man/get_binary.Rd",
+        "man/infer_tree_structure.Rd",
+        "man/lamian_test.Rd",
+        "man/lamian_test_h5.Rd",
+        "man/man_tree_data.rda.Rd",
+        "man/man_tree_res.rda.Rd",
+        "man/mandata.rda.Rd",
+        "man/mantestobj.rda.Rd",
+        "man/mykmeans.Rd",
+        "man/plotClusterDiff.Rd",
+        "man/plotClusterMean.Rd",
+        "man/plotClusterMeanAndDiff.Rd",
+        "man/plotGOEnrich.Rd",
+        "man/plotGene.Rd",
+        "man/plotGeneCellAndPopulation.Rd",
+        "man/plotGenePopulation.Rd",
+        "man/plotTDEHm.Rd",
+        "man/plotXDEHm.Rd",
+        "man/plotmclust.Rd",
+        "man/predict_fitting.Rd",
+        "man/saveh5.Rd",
+        "man/scalematrix.Rd",
+        "vignettes/Lamian.Rmd",
+        "vignettes/Lamian.html",
+        "vignettes/figure1.jpeg",
+        "vignettes/lamian.jpeg",
+        "vignettes/logo.png",
+        "vignettes/multi.h5"
+      ]
+    },
+    {
+      "repository": "nitzanlab/scPrisma",
+      "url": "https://github.com/nitzanlab/scPrisma",
+      "canonical_name": "nitzanlab/scPrisma",
+      "default_branch": "master",
+      "license": {
+        "key": "mit",
+        "name": "MIT License",
+        "spdx_id": "MIT",
+        "url": "https://api.github.com/licenses/mit",
+        "node_id": "MDc6TGljZW5zZTEz"
+      },
+      "commit": "b7bc40b7277654b917f0dae45f65935fdd3328d4",
+      "commit_date": "2024-03-31T10:57:02Z",
+      "files": [
+        ".github/workflows/build-and-test.yml",
+        ".gitignore",
+        "LICENSE",
+        "README.md",
+        "docs/conf.py",
+        "docs/index.rst",
+        "docs/installation.rst",
+        "docs/readme_back.md",
+        "docs/usage_cyclic_signal.rst",
+        "index.rst",
+        "outputs/GRN_output/Astrocytes_netowrk_enhanced.csv",
+        "outputs/GRN_output/Astrocytes_netowrk_raw.csv",
+        "outputs/GRN_output/Endothelial_netowrk_enhanced.csv",
+        "outputs/GRN_output/Endothelial_netowrk_raw.csv",
+        "outputs/GRN_output/Ependymal_netowrk_enhanced.csv",
+        "outputs/GRN_output/Ependymal_netowrk_raw.csv",
+        "outputs/GRN_output/Microglia_netowrk_enhanced.csv",
+        "outputs/GRN_output/Microglia_netowrk_raw.csv",
+        "outputs/GRN_output/NG2_netowrk_enhanced.csv",
+        "outputs/GRN_output/NG2_netowrk_raw.csv",
+        "outputs/GRN_output/Oligodendrocytes_netowrk_enhanced.csv",
+        "outputs/GRN_output/Oligodendrocytes_netowrk_raw.csv",
+        "outputs/GRN_output/SCN_Neurons_netowrk_enhanced.csv",
+        "outputs/GRN_output/SCN_Neurons_netowrk_raw.csv",
+        "outputs/GRN_output/Tanycytes_netowrk_enhanced.csv",
+        "outputs/GRN_output/Tanycytes_netowrk_raw.csv",
+        "outputs/LR_output/interactions_enhanced_signal.csv",
+        "outputs/LR_output/interactions_raw.csv",
+        "outputs/LR_output/interactions_two_fold.csv",
+        "readthedocs.yaml",
+        "scPrisma/__init__.py",
+        "scPrisma/algorithms.py",
+        "scPrisma/algorithms_torch.py",
+        "scPrisma/analysis.py",
+        "scPrisma/comparisons.py",
+        "scPrisma/data_gen.py",
+        "scPrisma/datasets.py",
+        "scPrisma/evaluation.py",
+        "scPrisma/main.py",
+        "scPrisma/pre_processing.py",
+        "scPrisma/spectrum_gen.py",
+        "scPrisma/visualizations.py",
+        "setup.py",
+        "tests/cpu/test_cpu.py",
+        "tests/gpu/test_gpu.py",
+        "tutorials/cpu/hematopoietic_progenitors_reconstruction_with_partial_prior_knowledge.ipynb",
+        "tutorials/cpu/tutorial_de_novo_reconstruction.ipynb",
+        "tutorials/cpu/tutorial_prior_knowledge_linear_and_cyclic_cpu.ipynb",
+        "tutorials/gpu/general_matrix_enhancement_gpu.ipynb",
+        "tutorials/gpu/general_matrix_filtering_gpu.ipynb",
+        "tutorials/gpu/hematopoietic_progenitors_reconstruction_with_partial_prior_knowledge_gpu.ipynb",
+        "tutorials/gpu/tutorial_de_novo_reconstruction_gpu.ipynb",
+        "tutorials/gpu/tutorial_prior_knowledge_linear_and_cyclic-Copy1.ipynb",
+        "tutorials/gpu/tutorial_prior_knowledge_linear_and_cyclic_gpu.ipynb",
+        "workflow.png"
+      ]
+    },
+    {
+      "repository": "theislab/moscot",
+      "url": "https://github.com/theislab/moscot",
+      "canonical_name": "theislab/moscot",
+      "default_branch": "main",
+      "license": {
+        "key": "bsd-3-clause",
+        "name": "BSD 3-Clause \"New\" or \"Revised\" License",
+        "spdx_id": "BSD-3-Clause",
+        "url": "https://api.github.com/licenses/bsd-3-clause",
+        "node_id": "MDc6TGljZW5zZTU="
+      },
+      "commit": "d6e1bb10398cb9ad1e8577552439a6c571a4903a",
+      "commit_date": "2026-10-14T15:36:19Z",
+      "files": [
+        ".github/workflows/build.yml",
+        ".github/workflows/deployment.yml",
+        ".github/workflows/lint.yml",
+        ".github/workflows/test-examples.yml",
+        ".github/workflows/test.yml",
+        ".gitignore",
+        ".gitmodules",
+        ".pre-commit-config.yaml",
+        ".readthedocs.yml",
+        ".run_notebooks.sh",
+        "LICENSE",
+        "MANIFEST.in",
+        "README.rst",
+        "codecov.yml",
+        "docs/Makefile",
+        "docs/_static/.gitkeep",
+        "docs/_static/img/100_lineage/moslin_concept.jpg",
+        "docs/_static/img/100_lineage/moslin_ice.jpg",
+        "docs/_static/img/100_lineage/moslin_motivation.jpg",
+        "docs/_static/img/100_lineage/moslin_pipeline.jpg",
+        "docs/_static/img/100_lineage/tedsim_state_tree.jpg",
+        "docs/_static/img/dark_mode_concept_revised.png",
+        "docs/_static/img/dark_mode_logo.png",
+        "docs/_static/img/light_mode_concept_revised.png",
+        "docs/_static/img/light_mode_logo.png",
+        "docs/_templates/autosummary/class.rst",
+        "docs/conf.py",
+        "docs/contributing.rst",
+        "docs/developer/backends.rst",
+        "docs/developer/base.rst",
+        "docs/developer/costs.rst",
+        "docs/developer/index.rst",
+        "docs/developer/utils.rst",
+        "docs/extensions/typed_returns.py",
+        "docs/figures/FGWadapted.jpg",
+        "docs/figures/GWapproach.jpeg",
+        "docs/figures/Kantorovich_couplings_sol.jpeg",
+        "docs/index.rst",
+        "docs/installation.rst",
+        "docs/make.bat",
+        "docs/ot_background.md",
+        "docs/references.bib",
+        "docs/references.rst",
+        "docs/spelling_wordlist.txt",
+        "docs/user/datasets.rst",
+        "docs/user/index.rst",
+        "docs/user/plotting.rst",
+        "docs/user/problems.rst",
+        "docs/user_guide.md",
+        "pyproject.toml",
+        "src/moscot/__init__.py",
+        "src/moscot/_constants.py",
+        "src/moscot/_logging.py",
+        "src/moscot/_registry.py",
+        "src/moscot/_types.py",
+        "src/moscot/backends/__init__.py",
+        "src/moscot/backends/ott/__init__.py",
+        "src/moscot/backends/ott/_utils.py",
+        "src/moscot/backends/ott/output.py",
+        "src/moscot/backends/ott/solver.py",
+        "src/moscot/backends/utils.py",
+        "src/moscot/base/__init__.py",
+        "src/moscot/base/cost.py",
+        "src/moscot/base/output.py",
+        "src/moscot/base/problems/__init__.py",
+        "src/moscot/base/problems/_mixins.py",
+        "src/moscot/base/problems/_utils.py",
+        "src/moscot/base/problems/birth_death.py",
+        "src/moscot/base/problems/compound_problem.py",
+        "src/moscot/base/problems/manager.py",
+        "src/moscot/base/problems/problem.py",
+        "src/moscot/base/solver.py",
+        "src/moscot/costs/__init__.py",
+        "src/moscot/costs/_costs.py",
+        "src/moscot/costs/_utils.py",
+        "src/moscot/datasets.py",
+        "src/moscot/plotting/__init__.py",
+        "src/moscot/plotting/_plotting.py",
+        "src/moscot/plotting/_utils.py",
+        "src/moscot/problems/__init__.py",
+        "src/moscot/problems/_utils.py",
+        "src/moscot/problems/cross_modality/__init__.py",
+        "src/moscot/problems/cross_modality/_mixins.py",
+        "src/moscot/problems/cross_modality/_translation.py",
+        "src/moscot/problems/generic/__init__.py",
+        "src/moscot/problems/generic/_generic.py",
+        "src/moscot/problems/generic/_mixins.py",
+        "src/moscot/problems/space/__init__.py",
+        "src/moscot/problems/space/_alignment.py",
+        "src/moscot/problems/space/_mapping.py",
+        "src/moscot/problems/space/_mixins.py",
+        "src/moscot/problems/spatiotemporal/__init__.py",
+        "src/moscot/problems/spatiotemporal/_spatio_temporal.py",
+        "src/moscot/problems/time/__init__.py",
+        "src/moscot/problems/time/_lineage.py",
+        "src/moscot/problems/time/_mixins.py",
+        "src/moscot/py.typed",
+        "src/moscot/utils/__init__.py",
+        "src/moscot/utils/_data/allTFs_dmel.txt",
+        "src/moscot/utils/_data/allTFs_hg38.txt",
+        "src/moscot/utils/_data/allTFs_mm.txt",
+        "src/moscot/utils/_data/human_apoptosis.txt",
+        "src/moscot/utils/_data/human_proliferation.txt",
+        "src/moscot/utils/_data/mouse_apoptosis.txt",
+        "src/moscot/utils/_data/mouse_proliferation.txt",
+        "src/moscot/utils/data.py",
+        "src/moscot/utils/subset_policy.py",
+        "src/moscot/utils/tagged_array.py",
+        "tests/__init__.py",
+        "tests/_utils.py",
+        "tests/backends/ott/conftest.py",
+        "tests/backends/ott/test_backend.py",
+        "tests/backends/ott/test_backend_utils.py",
+        "tests/backends/ott/test_sparsify_memory.py",
+        "tests/conftest.py",
+        "tests/costs/test_cost.py",
+        "tests/costs/test_utils.py",
+        "tests/data/alignment_solutions.pkl",
+        "tests/data/generate_gt_temporal_data.py",
+        "tests/data/mapping_solutions.pkl",
+        "tests/data/moscot_temporal_tests.h5ad",
+        "tests/data/regression_tests_spatial.py",
+        "tests/datasets/__init__.py",
+        "tests/datasets/test_dataset.py",
+        "tests/plotting/__init__.py",
+        "tests/plotting/conftest.py",
+        "tests/plotting/expected_figures/OutputPlotting_costs.png",
+        "tests/plotting/expected_figures/OutputPlotting_costs_last.png",
+        "tests/plotting/expected_figures/OutputPlotting_errors_gw.png",
+        "tests/plotting/expected_figures/OutputPlotting_errors_sink.png",
+        "tests/plotting/expected_figures/Plotting_cell_transition-failed-diff.png",
+        "tests/plotting/expected_figures/Plotting_cell_transition.png",
+        "tests/plotting/expected_figures/Plotting_cell_transition_params-failed-diff.png",
+        "tests/plotting/expected_figures/Plotting_cell_transition_params.png",
+        "tests/plotting/expected_figures/Plotting_pull.png",
+        "tests/plotting/expected_figures/Plotting_push.png",
+        "tests/plotting/expected_figures/Plotting_sankey.png",
+        "tests/plotting/expected_figures/Plotting_sankey_params.png",
+        "tests/plotting/test_plotting.py",
+        "tests/plotting/test_utils.py",
+        "tests/problems/__init__.py",
+        "tests/problems/base/__init__.py",
+        "tests/problems/base/test_compound_problem.py",
+        "tests/problems/base/test_general_problem.py",
+        "tests/problems/conftest.py",
+        "tests/problems/cross_modality/__init__.py",
+        "tests/problems/cross_modality/test_mixins.py",
+        "tests/problems/cross_modality/test_translation_problem.py",
+        "tests/problems/generic/conftest.py",
+        "tests/problems/generic/test_fgw_problem.py",
+        "tests/problems/generic/test_gw_problem.py",
+        "tests/problems/generic/test_mixins.py",
+        "tests/problems/generic/test_sinkhorn_problem.py",
+        "tests/problems/space/__init__.py",
+        "tests/problems/space/test_alignment_problem.py",
+        "tests/problems/space/test_mapping_problem.py",
+        "tests/problems/space/test_mixins.py",
+        "tests/problems/spatio_temporal/__init__.py",
+        "tests/problems/spatio_temporal/conftest.py",
+        "tests/problems/spatio_temporal/test_spatio_temporal_problem.py",
+        "tests/problems/test_subset_policy.py",
+        "tests/problems/time/__init__.py",
+        "tests/problems/time/conftest.py",
+        "tests/problems/time/test_lineage_problem.py",
+        "tests/problems/time/test_mixins.py",
+        "tests/problems/time/test_temporal_base_problem.py",
+        "tests/problems/time/test_temporal_problem.py",
+        "tests/solvers/test_base_solver.py",
+        "tests/utils/test_tagged_array.py",
+        "tests/utils/test_utils_data.py",
+        "uv.lock"
+      ]
+    },
+    {
+      "repository": "heiniglab/scPower",
+      "url": "https://github.com/heiniglab/scPower",
+      "canonical_name": "heiniglab/scPower",
+      "default_branch": "master",
+      "license": null,
+      "commit": "82039da57fb53839c7c88bdc6745aced4b7017b9",
+      "commit_date": "2025-01-08T09:28:13Z",
+      "files": [
+        ".github/ISSUE_TEMPLATE/bug_report.md",
+        ".github/ISSUE_TEMPLATE/feature_request.md",
+        ".github/ISSUE_TEMPLATE/general_question.md",
+        "DESCRIPTION",
+        "NAMESPACE",
+        "NEWS",
+        "R/datasets.R",
+        "R/em.R",
+        "R/expression_fit.R",
+        "R/plotting.R",
+        "R/power.R",
+        "R/priors.R",
+        "R/runShiny.R",
+        "README.md",
+        "data/DERefStudy.RData",
+        "data/annotDfExample.RData",
+        "data/countMatrixExample.RData",
+        "data/dispFunParam.RData",
+        "data/dispFunParamDrop.RData",
+        "data/dispFunParamSmart.RData",
+        "data/eQTLRefStudy.RData",
+        "data/gammaMixedFitsDrop.RData",
+        "data/gammaMixedFitsSmart.RData",
+        "data/gammaUmiFits.RData",
+        "data/precalculatedBudgetOptim.RData",
+        "data/precalculatedObservedGeneCounts.RData",
+        "data/readDepthUmiFit.RData",
+        "data/simEqtlPvals.RData",
+        "data/simulatedDEValues.RData",
+        "data/simulatedEQTLValues.RData",
+        "data/sizeEstimates.RData",
+        "data/smartseqExample.RData",
+        "inst/shinyApp/introduction.html",
+        "inst/shinyApp/server.R",
+        "inst/shinyApp/ui.R",
+        "inst/shinyApp/www/Figure1.png",
+        "inst/shinyApp/www/GitHub_logo.png",
+        "inst/shinyApp/www/NatureComms_logo.png",
+        "inst/shinyApp/www/custom_style.css",
+        "man/annot.df.Rd",
+        "man/annot_smartseq.Rd",
+        "man/budget.optimization.Rd",
+        "man/budgetCalculation.Rd",
+        "man/budgetCalculation.libPrepCell.Rd",
+        "man/budgetCalculation.restrictedDoublets.Rd",
+        "man/calculate.gene.counts.Rd",
+        "man/calculate.probabilities.Rd",
+        "man/cellsBudgetCalculation.Rd",
+        "man/cellsBudgetCalculation.libPrepCell.Rd",
+        "man/cellsBudgetCalculation.restrictedDoublets.Rd",
+        "man/convert.gamma.parameters.Rd",
+        "man/count.matrix.example.Rd",
+        "man/counts_smartseq.Rd",
+        "man/create.pseudobulk.Rd",
+        "man/de.ref.study.Rd",
+        "man/disp.fun.param.Rd",
+        "man/disp.fun.param.drop.Rd",
+        "man/disp.fun.param.smart.Rd",
+        "man/dispersion.function.estimation.Rd",
+        "man/effectSize.DE.simulation.Rd",
+        "man/effectSize.eQTL.simulation.Rd",
+        "man/eqtl.ref.study.Rd",
+        "man/estimate.exp.prob.count.param.Rd",
+        "man/estimate.exp.prob.param.Rd",
+        "man/estimate.exp.prob.values.Rd",
+        "man/estimate.mean.dsp.values.Rd",
+        "man/estimate.size.simulation.Rd",
+        "man/fdr.optimization.Rd",
+        "man/gamma.mixed.fits.Rd",
+        "man/gamma.mixed.fits.drop.Rd",
+        "man/gamma.mixed.fits.smart.Rd",
+        "man/gene.rank.calculation.Rd",
+        "man/gene.rank.calculation.vector.Rd",
+        "man/gene_length.Rd",
+        "man/meanUMI.calculation.Rd",
+        "man/mixed.gamma.estimation.Rd",
+        "man/nbinom.estimation.Rd",
+        "man/number.cells.detect.celltype.Rd",
+        "man/observed.gene.counts.Rd",
+        "man/optimize.constant.budget.Rd",
+        "man/optimize.constant.budget.libPrepCell.Rd",
+        "man/optimize.constant.budget.restrictedDoublets.Rd",
+        "man/optimize.constant.budget.smartseq.Rd",
+        "man/optimizeSizeFactor.Rd",
+        "man/parametricDispersionFit_DEseq.Rd",
+        "man/power.de.Rd",
+        "man/power.detect.celltype.Rd",
+        "man/power.eqtl.Rd",
+        "man/power.eqtl.ftest.Rd",
+        "man/power.eqtl.simulated.Rd",
+        "man/power.eqtl.simulated.help.Rd",
+        "man/power.general.restrictedDoublets.Rd",
+        "man/power.general.withDoublets.Rd",
+        "man/power.sameReadDepth.restrictedDoublets.Rd",
+        "man/power.sameReadDepth.withDoublets.Rd",
+        "man/power.smartseq.Rd",
+        "man/print_optimalDesign_10X.Rd",
+        "man/read.umi.fit.Rd",
+        "man/readDepthBudgetCalculation.Rd",
+        "man/readDepthBudgetCalculation.libPrepCell.Rd",
+        "man/readDepthBudgetCalculation.restrictedDoublets.Rd",
+        "man/runShiny.Rd",
+        "man/sample.disp.values.Rd",
+        "man/sample.mean.values.quantiles.Rd",
+        "man/sample.mean.values.random.Rd",
+        "man/sampleSizeBudgetCalculation.Rd",
+        "man/sampleSizeBudgetCalculation.libPrepCell.Rd",
+        "man/sampleSizeBudgetCalculation.restrictedDoublets.Rd",
+        "man/select.cutoffs.Rd",
+        "man/sim.eqtl.pvals.Rd",
+        "man/simulated.DE.values.Rd",
+        "man/simulated.eQTL.values.Rd",
+        "man/size.estimates.Rd",
+        "man/sizeFactorsPosCounts.Rd",
+        "man/sizeFactorsStandard.Rd",
+        "man/umi.gamma.relation.Rd",
+        "man/umi.read.relation.Rd",
+        "man/uniform.ranks.interval.Rd",
+        "man/visualize.gamma.fits.Rd",
+        "man/visualize.power.grid.Rd",
+        "scPower.Rproj",
+        "vignettes/extension-complex-design.Rmd",
+        "vignettes/extension-complex-design.pdf",
+        "vignettes/introduction-scPower.Rmd",
+        "vignettes/introduction-scPower.pdf",
+        "vignettes/reproduce-paper-plots.Rmd",
+        "vignettes/reproduce-paper-plots.pdf"
+      ]
+    }
+  ]
+}

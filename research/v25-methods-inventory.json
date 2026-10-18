@@ -1,0 +1,1630 @@
+{
+  "checked_on": "2026-10-18",
+  "read_only_sources": {
+    "dist/data/workflow.json": "3fc805b8518a8950983097ae0bf0a51fe6a8d346d7f308ac0e006fb888eee4bd",
+    "dist/data/projects.json": "05ac6ab76f489bc8247b3bcdf76e8f549e9518f0b6b3f05f9000e1759b037e5f",
+    "dist/data/literature.json": "f431a82faa0a4504e18fad2d736276334274fd1afa3b2f0a16473fd86be5d9d0"
+  },
+  "counts": {
+    "steps": 20,
+    "tools": 155,
+    "projects": 55,
+    "papers": 213
+  },
+  "tools": [
+    {
+      "id": "seqkit",
+      "name": "SeqKit",
+      "taskEn": "FASTQ statistics and identity checks"
+    },
+    {
+      "id": "fastqc",
+      "name": "FastQC",
+      "taskEn": "Raw sequence-quality report"
+    },
+    {
+      "id": "fastp",
+      "name": "fastp",
+      "taskEn": "FASTQ QC and configurable preprocessing"
+    },
+    {
+      "id": "cutadapt",
+      "name": "Cutadapt",
+      "taskEn": "Protocol-aware adapter handling"
+    },
+    {
+      "id": "multiqc",
+      "name": "MultiQC",
+      "taskEn": "Aggregate QC reports"
+    },
+    {
+      "id": "fastqscreen",
+      "name": "FastQ Screen",
+      "taskEn": "Multi-reference contamination screening"
+    },
+    {
+      "id": "starsolo",
+      "name": "STARsolo",
+      "taskEn": "Barcode-aware alignment and layered quantification"
+    },
+    {
+      "id": "umitools",
+      "name": "UMI-tools",
+      "taskEn": "UMI extraction and error-aware grouping"
+    },
+    {
+      "id": "cellranger",
+      "name": "Cell Ranger",
+      "taskEn": "Official processing for supported 10x libraries"
+    },
+    {
+      "id": "kb",
+      "name": "kallisto|bustools / kb-python",
+      "taskEn": "Fast count and splicing-layer quantification"
+    },
+    {
+      "id": "alevinfry",
+      "name": "alevin-fry",
+      "taskEn": "UMI resolution and USA quantification"
+    },
+    {
+      "id": "dropest",
+      "name": "dropEst",
+      "taskEn": "Alternative barcode and molecule counting"
+    },
+    {
+      "id": "scpipe",
+      "name": "scPipe",
+      "taskEn": "Raw preprocessing with per-cell read QC"
+    },
+    {
+      "id": "samtools",
+      "name": "SAMtools",
+      "taskEn": "BAM integrity and alignment statistics"
+    },
+    {
+      "id": "picard",
+      "name": "Picard RNA metrics",
+      "taskEn": "RNA coverage metrics and BAM format validation"
+    },
+    {
+      "id": "rseqc",
+      "name": "RSeQC",
+      "taskEn": "RNA region, strand and coverage diagnostics"
+    },
+    {
+      "id": "rnaseqc",
+      "name": "RNA-SeQC 2",
+      "taskEn": "Cohort-level RNA coverage QC"
+    },
+    {
+      "id": "bedtools",
+      "name": "BEDTools",
+      "taskEn": "Reference-region overlap summaries"
+    },
+    {
+      "id": "igv",
+      "name": "IGV",
+      "taskEn": "Visual review of candidate alignments"
+    },
+    {
+      "id": "wasp",
+      "name": "WASP",
+      "taskEn": "Allele-specific mapping-bias control"
+    },
+    {
+      "id": "dropletutils",
+      "name": "DropletUtils / EmptyDrops",
+      "taskEn": "Cell calling, molecule contamination and downsampling"
+    },
+    {
+      "id": "dropkick",
+      "name": "dropkick",
+      "taskEn": "Weakly supervised cell calling"
+    },
+    {
+      "id": "emptynn",
+      "name": "EmptyNN",
+      "taskEn": "Positive-unlabeled empty-droplet detection"
+    },
+    {
+      "id": "diem",
+      "name": "DIEM",
+      "taskEn": "Debris-contaminated barcode detection"
+    },
+    {
+      "id": "sccb2",
+      "name": "scCB2",
+      "taskEn": "Cluster-assisted cell calling"
+    },
+    {
+      "id": "cellbender",
+      "name": "CellBender",
+      "taskEn": "Generative cell calling and ambient removal"
+    },
+    {
+      "id": "soupx",
+      "name": "SoupX",
+      "taskEn": "Marker-informed ambient-RNA correction"
+    },
+    {
+      "id": "decontx",
+      "name": "DecontX",
+      "taskEn": "Mixture-model contamination correction"
+    },
+    {
+      "id": "sccdc",
+      "name": "scCDC",
+      "taskEn": "Gene-specific contamination detection"
+    },
+    {
+      "id": "fastcar",
+      "name": "FastCAR",
+      "taskEn": "Lightweight ambient-RNA correction"
+    },
+    {
+      "id": "scar",
+      "name": "scAR",
+      "taskEn": "Probabilistic ambient-signal removal"
+    },
+    {
+      "id": "cellclear",
+      "name": "CellClear",
+      "taskEn": "Expression-program ambient correction"
+    },
+    {
+      "id": "scdblfinder",
+      "name": "scDblFinder",
+      "taskEn": "Simulated-doublet classification"
+    },
+    {
+      "id": "scrublet",
+      "name": "Scrublet",
+      "taskEn": "Neighborhood-based doublet scoring"
+    },
+    {
+      "id": "doubletfinder",
+      "name": "DoubletFinder",
+      "taskEn": "Seurat-based doublet detection"
+    },
+    {
+      "id": "solo",
+      "name": "SOLO",
+      "taskEn": "Doublet detection on a VAE representation"
+    },
+    {
+      "id": "scds",
+      "name": "scds",
+      "taskEn": "Coexpression and simulated-doublet evidence"
+    },
+    {
+      "id": "doubletdetection",
+      "name": "DoubletDetection",
+      "taskEn": "Synthetic-doublet enrichment detection"
+    },
+    {
+      "id": "doubletdecon",
+      "name": "DoubletDecon",
+      "taskEn": "Deconvolution with transitional-state rescue"
+    },
+    {
+      "id": "demuxlet",
+      "name": "Demuxlet / Freemuxlet",
+      "taskEn": "Genotype-assisted identity and mixed cells"
+    },
+    {
+      "id": "cellsnp",
+      "name": "cellSNP-lite",
+      "taskEn": "Per-cell allele counting"
+    },
+    {
+      "id": "vireo",
+      "name": "Vireo",
+      "taskEn": "Allelic identity and doublet modeling"
+    },
+    {
+      "id": "souporcell",
+      "name": "Souporcell",
+      "taskEn": "Genotype clustering without prior individual genotypes"
+    },
+    {
+      "id": "seurat",
+      "name": "Seurat",
+      "taskEn": "Integrated QC and atlas framework"
+    },
+    {
+      "id": "scanpy",
+      "name": "Scanpy",
+      "taskEn": "AnnData-based analysis and QC"
+    },
+    {
+      "id": "scuttle",
+      "name": "scuttle",
+      "taskEn": "Cell/gene QC and robust outliers"
+    },
+    {
+      "id": "scater",
+      "name": "scater",
+      "taskEn": "QC visualization and exploration"
+    },
+    {
+      "id": "sampleqc",
+      "name": "SampleQC",
+      "taskEn": "Multisample multivariate QC"
+    },
+    {
+      "id": "miqc",
+      "name": "miQC",
+      "taskEn": "Joint mitochondrial and complexity model"
+    },
+    {
+      "id": "dropletqc",
+      "name": "DropletQC",
+      "taskEn": "Nuclear-fraction damage assessment"
+    },
+    {
+      "id": "ddqc",
+      "name": "ddqc",
+      "taskEn": "Cell-state-adaptive QC strategy"
+    },
+    {
+      "id": "harmony",
+      "name": "Harmony",
+      "taskEn": "Low-dimensional batch correction"
+    },
+    {
+      "id": "fastmnn",
+      "name": "fastMNN / batchelor",
+      "taskEn": "Mutual-nearest-neighbor integration"
+    },
+    {
+      "id": "scvi",
+      "name": "scVI / scvi-tools",
+      "taskEn": "Probabilistic representation learning"
+    },
+    {
+      "id": "bbknn",
+      "name": "BBKNN",
+      "taskEn": "Batch-balanced neighborhood graph"
+    },
+    {
+      "id": "scanorama",
+      "name": "Scanorama",
+      "taskEn": "Multi-dataset matching and integration"
+    },
+    {
+      "id": "scib",
+      "name": "scIB / scib-metrics",
+      "taskEn": "Integration and biological-conservation metrics"
+    },
+    {
+      "id": "singler",
+      "name": "SingleR",
+      "taskEn": "Reference-based expression annotation"
+    },
+    {
+      "id": "celltypist",
+      "name": "CellTypist",
+      "taskEn": "State prediction with a yeast-trained classifier"
+    },
+    {
+      "id": "ucell",
+      "name": "UCell",
+      "taskEn": "Rank-based signature scoring"
+    },
+    {
+      "id": "aucell",
+      "name": "AUCell",
+      "taskEn": "Within-cell gene-set ranking enrichment"
+    },
+    {
+      "id": "presto",
+      "name": "Presto",
+      "taskEn": "Fast marker testing and AUC ranking"
+    },
+    {
+      "id": "edger",
+      "name": "edgeR",
+      "taskEn": "Replicate-aware pseudobulk mean comparison"
+    },
+    {
+      "id": "fgsea",
+      "name": "fgsea",
+      "taskEn": "Ranked gene-set enrichment"
+    },
+    {
+      "id": "clusterprofiler",
+      "name": "clusterProfiler",
+      "taskEn": "Yeast GO and pathway enrichment"
+    },
+    {
+      "id": "memento",
+      "name": "memento",
+      "taskEn": "Moment-based mean, variability and correlation inference"
+    },
+    {
+      "id": "basics",
+      "name": "BASiCS",
+      "taskEn": "Bayesian mean and overdispersion analysis"
+    },
+    {
+      "id": "glmmtmb",
+      "name": "glmmTMB",
+      "taskEn": "Mean-dispersion and hierarchical modeling"
+    },
+    {
+      "id": "genie3",
+      "name": "GENIE3",
+      "taskEn": "Tree-based candidate regulatory networks"
+    },
+    {
+      "id": "inferelator",
+      "name": "Inferelator",
+      "taskEn": "Prior-informed regulatory network inference"
+    },
+    {
+      "id": "scvelo",
+      "name": "scVelo",
+      "taskEn": "Splicing-based velocity and kinetic fitting"
+    },
+    {
+      "id": "velocyto",
+      "name": "velocyto",
+      "taskEn": "Splicing-status counting comparison"
+    },
+    {
+      "id": "slingshot",
+      "name": "Slingshot",
+      "taskEn": "Cluster-based trajectory inference"
+    },
+    {
+      "id": "monocle3",
+      "name": "Monocle 3",
+      "taskEn": "Graph learning and pseudotime"
+    },
+    {
+      "id": "scdesign3",
+      "name": "scDesign3",
+      "taskEn": "Controlled count-matrix simulations"
+    },
+    {
+      "id": "screadsim",
+      "name": "scReadSim",
+      "taskEn": "Read-level simulation and calibration"
+    },
+    {
+      "id": "gemma",
+      "name": "GEMMA",
+      "taskEn": "Relatedness-aware association models"
+    },
+    {
+      "id": "limix",
+      "name": "LIMIX",
+      "taskEn": "Genetic variance and multi-trait mixed models"
+    },
+    {
+      "id": "qtltools",
+      "name": "QTLtools",
+      "taskEn": "Molecular-QTL and conditional analyses"
+    },
+    {
+      "id": "susie",
+      "name": "SuSiE / susieR",
+      "taskEn": "Association fine mapping"
+    },
+    {
+      "id": "coloc",
+      "name": "coloc",
+      "taskEn": "Shared-association signal assessment"
+    },
+    {
+      "id": "twosamplemr",
+      "name": "TwoSampleMR",
+      "taskEn": "Instrumental-variable causal hypotheses"
+    },
+    {
+      "id": "distinct",
+      "name": "distinct",
+      "taskEn": "Replicate-aware differential distribution testing"
+    },
+    {
+      "id": "splinedv",
+      "name": "SplineDV",
+      "taskEn": "Spline-based differential variability candidates"
+    },
+    {
+      "id": "scvar",
+      "name": "scVar",
+      "taskEn": "Compare cell-to-cell variability metrics"
+    },
+    {
+      "id": "ktest",
+      "name": "ktest",
+      "taskEn": "Kernel testing of expression distributions"
+    },
+    {
+      "id": "dreamlet",
+      "name": "dreamlet",
+      "taskEn": "Pseudobulk mixed models and variance partitioning"
+    },
+    {
+      "id": "lemur",
+      "name": "LEMUR",
+      "taskEn": "Condition effects across continuous cell states"
+    },
+    {
+      "id": "muscat",
+      "name": "muscat",
+      "taskEn": "Multi-sample differential state analysis"
+    },
+    {
+      "id": "sccoda",
+      "name": "scCODA",
+      "taskEn": "Compositional cell-state abundance analysis"
+    },
+    {
+      "id": "sccomp",
+      "name": "sccomp",
+      "taskEn": "Composition and between-sample variability"
+    },
+    {
+      "id": "milo",
+      "name": "Milo / miloR",
+      "taskEn": "Differential abundance in cell neighborhoods"
+    },
+    {
+      "id": "decoupler",
+      "name": "decoupler",
+      "taskEn": "Target-set inference of regulatory activities"
+    },
+    {
+      "id": "cnmf",
+      "name": "cNMF",
+      "taskEn": "Consensus non-negative gene-expression programs"
+    },
+    {
+      "id": "scenic",
+      "name": "pySCENIC",
+      "taskEn": "Motif-supported regulon inference"
+    },
+    {
+      "id": "condiments",
+      "name": "condiments",
+      "taskEn": "Compare trajectory topology, occupancy and expression"
+    },
+    {
+      "id": "tradeseq",
+      "name": "tradeSeq",
+      "taskEn": "Expression trends along pseudotime and lineages"
+    },
+    {
+      "id": "cellrank",
+      "name": "CellRank 2",
+      "taskEn": "State transitions and fate probabilities"
+    },
+    {
+      "id": "dynamo",
+      "name": "dynamo",
+      "taskEn": "RNA dynamics and transcriptomic vector fields"
+    },
+    {
+      "id": "velovi",
+      "name": "veloVI",
+      "taskEn": "Variational RNA velocity with uncertainty"
+    },
+    {
+      "id": "velocycle",
+      "name": "VeloCycle",
+      "taskEn": "Cell-cycle phase and velocity on a periodic manifold"
+    },
+    {
+      "id": "tricycle",
+      "name": "tricycle",
+      "taskEn": "Reference-projected continuous cycle position"
+    },
+    {
+      "id": "scdeed",
+      "name": "scDEED",
+      "taskEn": "Reliability audit of low-dimensional embeddings"
+    },
+    {
+      "id": "seacells",
+      "name": "SEACells",
+      "taskEn": "Metacells for state summaries"
+    },
+    {
+      "id": "genebasis",
+      "name": "geneBasisR",
+      "taskEn": "Select complementary gene panels"
+    },
+    {
+      "id": "celloracle",
+      "name": "CellOracle",
+      "taskEn": "TF perturbation hypotheses from prior-supported GRNs"
+    },
+    {
+      "id": "sctenifoldknk",
+      "name": "scTenifoldKnk",
+      "taskEn": "Virtual knockout by network perturbation"
+    },
+    {
+      "id": "cpa",
+      "name": "CPA",
+      "taskEn": "Predict responses to combinations using perturbation training data"
+    },
+    {
+      "id": "gears",
+      "name": "GEARS",
+      "taskEn": "Predict combinatorial genetic perturbation responses"
+    },
+    {
+      "id": "cellot",
+      "name": "CellOT",
+      "taskEn": "Optimal-transport prediction of perturbation responses"
+    },
+    {
+      "id": "cinemaot",
+      "name": "CINEMA-OT",
+      "taskEn": "Counterfactual matching of experimental responses"
+    },
+    {
+      "id": "pertpy",
+      "name": "Pertpy",
+      "taskEn": "Perturbation analysis and distribution comparisons"
+    },
+    {
+      "id": "scyeast",
+      "name": "scYeast",
+      "taskEn": "Evaluate a yeast foundation model on held-out strains"
+    },
+    {
+      "id": "scgpt",
+      "name": "scGPT",
+      "taskEn": "Foundation-model reference and transfer audit"
+    },
+    {
+      "id": "geneformer",
+      "name": "Geneformer",
+      "taskEn": "Rank-based foundation-model reference"
+    },
+    {
+      "id": "cell2location",
+      "name": "cell2location",
+      "taskEn": "Reference mapping with additional spatial data"
+    },
+    {
+      "id": "cellregmap",
+      "name": "CellRegMap",
+      "taskEn": "Genotype-by-cell-context regulatory effects"
+    },
+    {
+      "id": "pysam",
+      "name": "pysam",
+      "taskEn": "Audit BAM tags, CIGAR and reference records"
+    },
+    {
+      "id": "schot",
+      "name": "scHOT",
+      "taskEn": "Higher-order testing along continuous states"
+    },
+    {
+      "id": "telegraph",
+      "name": "TelegraphLikelihoodInfer",
+      "taskEn": "Telegraph-model likelihood and identifiability"
+    },
+    {
+      "id": "clusterde",
+      "name": "ClusterDE",
+      "taskEn": "Synthetic-null calibration of post-clustering markers"
+    },
+    {
+      "id": "countsplit",
+      "name": "countsplit",
+      "taskEn": "Separate information for state learning and inference under a declared model; record the power lost through thinning."
+    },
+    {
+      "id": "wgcna",
+      "name": "WGCNA",
+      "taskEn": "Co-expression modules, candidate hubs and module preservation"
+    },
+    {
+      "id": "hdwgcna",
+      "name": "hdWGCNA",
+      "taskEn": "Metacell co-expression and cross-background module preservation"
+    },
+    {
+      "id": "nisce",
+      "name": "NISCE",
+      "taskEn": "Model-based noise estimation and mean-dependence audit"
+    },
+    {
+      "id": "scdist",
+      "name": "scDist",
+      "taskEn": "Multivariate mean-shift comparator within states"
+    },
+    {
+      "id": "augur",
+      "name": "Augur",
+      "taskEn": "Cell-state response prioritization"
+    },
+    {
+      "id": "hotspot",
+      "name": "Hotspot",
+      "taskEn": "Local covariation modules in transcriptomic neighborhoods"
+    },
+    {
+      "id": "brie2",
+      "name": "BRIE2",
+      "taskEn": "Splicing proportion uncertainty and state association"
+    },
+    {
+      "id": "mcrigor",
+      "name": "mcRigor",
+      "taskEn": "Metacell heterogeneity and partition audit"
+    },
+    {
+      "id": "lsmetacell",
+      "name": "LSMetacell",
+      "taskEn": "Library-size-stabilized aggregation and network-bias comparator"
+    },
+    {
+      "id": "mellon",
+      "name": "Mellon",
+      "taskEn": "Continuous state density and rare-state localization"
+    },
+    {
+      "id": "irgsea",
+      "name": "irGSEA",
+      "taskEn": "Pathway-scoring agreement and dispersion audit"
+    },
+    {
+      "id": "descend",
+      "name": "DESCEND",
+      "taskEn": "Expression-distribution statistics after sampling correction"
+    },
+    {
+      "id": "baredsc",
+      "name": "baredSC",
+      "taskEn": "Univariate and bivariate latent densities for candidate genes"
+    },
+    {
+      "id": "propr",
+      "name": "propr",
+      "taskEn": "Proportionality and log-ratio variance of relative abundances"
+    },
+    {
+      "id": "mashr",
+      "name": "mashr",
+      "taskEn": "Joint estimation of genetic effects across states"
+    },
+    {
+      "id": "scdali",
+      "name": "scDALI",
+      "taskEn": "State-dependent allelic expression imbalance"
+    },
+    {
+      "id": "saigeqtl",
+      "name": "SAIGE-QTL",
+      "taskEn": "Cell-count eQTL and rare-variant set tests"
+    },
+    {
+      "id": "gmmat",
+      "name": "GMMAT / SMMAT",
+      "taskEn": "Relatedness-adjusted variant-set association"
+    },
+    {
+      "id": "mrvi",
+      "name": "MrVI",
+      "taskEn": "State-specific strain similarity and sample stratification"
+    },
+    {
+      "id": "sierra",
+      "name": "Sierra",
+      "taskEn": "Versioned 3′ peak/site matrices"
+    },
+    {
+      "id": "scape",
+      "name": "SCAPE",
+      "taskEn": "Mixture modeling of 3′ cleavage sites"
+    },
+    {
+      "id": "yeastgem",
+      "name": "Yeast9 · GIMME · COBRA",
+      "taskEn": "Metabolic reaction states and noise coupling"
+    },
+    {
+      "id": "systema",
+      "name": "Systema",
+      "taskEn": "Perturbation-specific signals versus systematic-shift baselines"
+    },
+    {
+      "id": "lmd",
+      "name": "Localized Marker Detector (LMD)",
+      "taskEn": "Find localized expression markers without hard clusters"
+    },
+    {
+      "id": "irescue",
+      "name": "IRescue",
+      "taskEn": "Ty/repeat UMI quantification and multimapping audit"
+    },
+    {
+      "id": "ctmm",
+      "name": "CTMM",
+      "taskEn": "Shared and state-specific between-strain expression variance"
+    },
+    {
+      "id": "dialogue",
+      "name": "DIALOGUE",
+      "taskEn": "Coordinated expression programs across states within cultures"
+    },
+    {
+      "id": "cell2fate",
+      "name": "cell2fate",
+      "taskEn": "Modular RNA dynamics and posterior velocities"
+    },
+    {
+      "id": "jaxqtl",
+      "name": "jaxQTL",
+      "taskEn": "Count-based mean eQTLs and model calibration"
+    },
+    {
+      "id": "harissa",
+      "name": "Harissa",
+      "taskEn": "Mechanistic simulation with known networks and burst parameters"
+    },
+    {
+      "id": "cardamomot",
+      "name": "CardamomOT",
+      "taskEn": "Joint GRN and trajectory inference from time-stamped snapshots"
+    },
+    {
+      "id": "monod",
+      "name": "Monod",
+      "taskEn": "Jointly fit stochastic transcription and RNA sampling models"
+    },
+    {
+      "id": "stager",
+      "name": "stageR",
+      "taskEn": "Gene-level screening and stage-wise adjustment of valid upstream tests"
+    }
+  ],
+  "projects": [
+    {
+      "id": "audit_raw",
+      "titleEn": "FASTQ-to-molecule evidence audit",
+      "toolIds": [
+        "seqkit",
+        "fastqc",
+        "multiqc",
+        "starsolo",
+        "samtools",
+        "pysam",
+        "picard"
+      ],
+      "metricIds": [
+        "bam_tag_completeness",
+        "cb_base_quality",
+        "umi_base_quality",
+        "matrix_layer_reconciliation",
+        "cb_umi_layout_concordance",
+        "bam_sequence_cigar_consistency",
+        "bam_input_read_reconciliation"
+      ]
+    },
+    {
+      "id": "qc_multiverse",
+      "titleEn": "QC multiverse robustness",
+      "toolIds": [
+        "dropletutils",
+        "soupx",
+        "scdblfinder",
+        "memento"
+      ],
+      "metricIds": [
+        "noise_sensitivity",
+        "sample_qc_selection_bias",
+        "correction_variance_shift",
+        "cell_calling_lowrna_bias",
+        "noise_normalization_estimand",
+        "noise_annotation_uncertainty"
+      ]
+    },
+    {
+      "id": "mean_noise",
+      "titleEn": "Joint mean–noise atlas",
+      "toolIds": [
+        "memento",
+        "basics",
+        "glmmtmb",
+        "scvar"
+      ],
+      "metricIds": [
+        "noise_cv2",
+        "noise_fano",
+        "noise_dispersion",
+        "noise_mean_matching",
+        "noise_interval",
+        "noise_normalization_estimand",
+        "noise_annotation_uncertainty",
+        "noise_mean_equivalence"
+      ]
+    },
+    {
+      "id": "noise_components",
+      "titleEn": "State composition versus within-state noise",
+      "toolIds": [
+        "memento",
+        "sccomp",
+        "glmmtmb"
+      ],
+      "metricIds": [
+        "noise_state_component",
+        "composition_effect",
+        "composition_variability",
+        "noise_annotation_uncertainty"
+      ]
+    },
+    {
+      "id": "distribution_shapes",
+      "titleEn": "Full distributions and rare expression tails",
+      "toolIds": [
+        "distinct",
+        "ktest",
+        "memento",
+        "igv",
+        "descend",
+        "baredsc"
+      ],
+      "metricIds": [
+        "distribution_shift",
+        "noise_tail",
+        "noise_tail_support",
+        "noise_model_residual",
+        "latent_nonzero_fraction",
+        "latent_density_model_support"
+      ]
+    },
+    {
+      "id": "noise_power",
+      "titleEn": "Noise power and cell allocation",
+      "toolIds": [
+        "scdesign3",
+        "screadsim",
+        "memento"
+      ],
+      "metricIds": [
+        "sample_noise_precision",
+        "null_false_positive",
+        "interval_coverage",
+        "noise_depth_thinning"
+      ]
+    },
+    {
+      "id": "burst_identifiability",
+      "titleEn": "Burst candidates and identifiability",
+      "toolIds": [
+        "telegraph",
+        "glmmtmb",
+        "scdesign3"
+      ],
+      "metricIds": [
+        "noise_parameter_identifiability",
+        "noise_model_residual",
+        "noise_depth_thinning"
+      ]
+    },
+    {
+      "id": "noise_cycle",
+      "titleEn": "Noise curves across the cell cycle",
+      "toolIds": [
+        "tricycle",
+        "schot",
+        "tradeseq",
+        "memento"
+      ],
+      "metricIds": [
+        "cycle_phase_transfer",
+        "network_local_covariance",
+        "noise_state_component",
+        "marker_panel_ablation",
+        "noise_annotation_uncertainty"
+      ]
+    },
+    {
+      "id": "annotation_transfer",
+      "titleEn": "Cross-strain markers and unknown states",
+      "toolIds": [
+        "singler",
+        "celltypist",
+        "ucell",
+        "presto",
+        "lmd"
+      ],
+      "metricIds": [
+        "annotation_holdout_accuracy",
+        "annotation_margin",
+        "annotation_conflict",
+        "marker_stability",
+        "marker_evidence_contract",
+        "annotation_rejection_curve",
+        "marker_score_technical_dependence",
+        "marker_display_contract",
+        "marker_localization_multiscale"
+      ]
+    },
+    {
+      "id": "state_composition",
+      "titleEn": "State composition and rare subpopulations",
+      "toolIds": [
+        "sccoda",
+        "sccomp",
+        "milo"
+      ],
+      "metricIds": [
+        "composition_effect",
+        "composition_variability",
+        "neighborhood_abundance"
+      ]
+    },
+    {
+      "id": "program_variability",
+      "titleEn": "Expression programs and coordinated noise",
+      "toolIds": [
+        "cnmf",
+        "decoupler",
+        "memento",
+        "schot",
+        "wgcna",
+        "hdwgcna",
+        "clusterprofiler",
+        "fgsea"
+      ],
+      "metricIds": [
+        "program_usage",
+        "network_covariance",
+        "network_local_covariance",
+        "network_aggregation_contract",
+        "network_topology_sensitivity",
+        "network_module_membership",
+        "network_module_preservation",
+        "enrichment_mapping_audit"
+      ]
+    },
+    {
+      "id": "grn_rewiring",
+      "titleEn": "Regulatory-network rewiring across strains",
+      "toolIds": [
+        "inferelator",
+        "genie3",
+        "decoupler"
+      ],
+      "metricIds": [
+        "network_edge_stability",
+        "regulon_activity",
+        "network_covariance"
+      ]
+    },
+    {
+      "id": "velocity_feasibility",
+      "titleEn": "RNA-velocity feasibility and directional agreement",
+      "toolIds": [
+        "scvelo",
+        "velovi",
+        "cellrank"
+      ],
+      "metricIds": [
+        "velocity_genes",
+        "velocity_fit",
+        "velocity_uncertainty",
+        "fate_probabilities"
+      ]
+    },
+    {
+      "id": "trajectory_structure",
+      "titleEn": "Pseudotime, cycles and branching structure",
+      "toolIds": [
+        "slingshot",
+        "monocle3",
+        "condiments",
+        "tradeseq"
+      ],
+      "metricIds": [
+        "trajectory_stability",
+        "trajectory_condition_differences",
+        "embedding_reliability"
+      ]
+    },
+    {
+      "id": "splice_evidence",
+      "titleEn": "Splicing, intron retention and end-position evidence",
+      "toolIds": [
+        "starsolo",
+        "pysam",
+        "rseqc",
+        "igv"
+      ],
+      "metricIds": [
+        "junction_support",
+        "bam_junction_motif",
+        "bam_junction_overhang",
+        "internal_priming"
+      ]
+    },
+    {
+      "id": "virtual_perturbation",
+      "titleEn": "Virtual perturbation and robust candidate ranking",
+      "toolIds": [
+        "sctenifoldknk",
+        "celloracle"
+      ],
+      "metricIds": [
+        "virtual_ko_stability",
+        "network_edge_stability"
+      ]
+    },
+    {
+      "id": "perturbation_transport",
+      "titleEn": "Condition effects and perturbation-distribution prediction",
+      "toolIds": [
+        "pertpy",
+        "cpa",
+        "gears",
+        "cellot",
+        "cinemaot",
+        "systema"
+      ],
+      "metricIds": [
+        "perturbation_distribution_distance",
+        "perturbation_generalization",
+        "counterfactual_support",
+        "perturbation_centroid_accuracy"
+      ]
+    },
+    {
+      "id": "noise_qtl",
+      "titleEn": "Noise heritability and QTL",
+      "toolIds": [
+        "gemma",
+        "limix",
+        "qtltools"
+      ],
+      "metricIds": [
+        "noise_heritability",
+        "qtl_calibration",
+        "qtl_effect_uncertainty",
+        "noise_genetic_partition",
+        "genetic_covariance_qtl"
+      ]
+    },
+    {
+      "id": "genotype_state",
+      "titleEn": "Genotype-by-cell-state effects",
+      "toolIds": [
+        "cellregmap",
+        "limix"
+      ],
+      "metricIds": [
+        "genotype_context_effect",
+        "qtl_calibration",
+        "noise_reaction_norm"
+      ]
+    },
+    {
+      "id": "evolution_context",
+      "titleEn": "Noise traits and population history",
+      "toolIds": [
+        "limix",
+        "glmmtmb"
+      ],
+      "metricIds": [
+        "noise_heritability",
+        "qtl_effect_uncertainty",
+        "sample_confounded_design",
+        "noise_reaction_norm",
+        "noise_genetic_partition"
+      ]
+    },
+    {
+      "id": "reference_bias",
+      "titleEn": "Strain-reference and count-bias sensitivity",
+      "toolIds": [
+        "starsolo",
+        "alevinfry",
+        "wasp",
+        "igv"
+      ],
+      "metricIds": [
+        "matrix_annotation_sensitivity",
+        "allele_remap_bias",
+        "bam_overlap_ambiguity"
+      ]
+    },
+    {
+      "id": "foundation_benchmark",
+      "titleEn": "Yeast representation models versus simple baselines",
+      "toolIds": [
+        "scyeast",
+        "scanpy",
+        "scdeed"
+      ],
+      "metricIds": [
+        "foundation_transfer_audit",
+        "annotation_holdout_accuracy",
+        "embedding_reliability"
+      ]
+    },
+    {
+      "id": "marker_panel",
+      "titleEn": "Compact marker panels and interpretability",
+      "toolIds": [
+        "genebasis",
+        "presto",
+        "ucell",
+        "clusterde",
+        "countsplit",
+        "lmd",
+        "hotspot"
+      ],
+      "metricIds": [
+        "panel_reconstruction",
+        "marker_stability",
+        "marker_specificity",
+        "marker_auc",
+        "marker_evidence_contract",
+        "marker_panel_ablation",
+        "marker_postcluster_null",
+        "marker_score_technical_dependence",
+        "marker_display_contract",
+        "marker_panel_frontier",
+        "marker_localization_multiscale"
+      ]
+    },
+    {
+      "id": "mitochondrial_programs",
+      "titleEn": "Mitochondrial signal and respiratory states",
+      "toolIds": [
+        "scanpy",
+        "ucell",
+        "decoupler",
+        "memento"
+      ],
+      "metricIds": [
+        "cell_mt_nuclear_covariation",
+        "mt_umi",
+        "mt_reads",
+        "program_usage"
+      ]
+    },
+    {
+      "id": "marker_inference_audit",
+      "titleEn": "Marker evidence to noise-inference validation",
+      "toolIds": [
+        "singler",
+        "ucell",
+        "genebasis",
+        "clusterde",
+        "countsplit",
+        "memento",
+        "scdesign3"
+      ],
+      "metricIds": [
+        "marker_evidence_contract",
+        "marker_panel_ablation",
+        "marker_postcluster_null",
+        "annotation_rejection_curve",
+        "marker_score_technical_dependence",
+        "noise_annotation_uncertainty",
+        "noise_crossfit_sensitivity"
+      ]
+    },
+    {
+      "id": "noise_likelihood_calibration",
+      "titleEn": "Likelihood noise models and identifiability",
+      "toolIds": [
+        "nisce",
+        "memento",
+        "scdesign3"
+      ],
+      "metricIds": [
+        "nisce_fit_identifiability",
+        "nisce_mean_dependency",
+        "nisce_count_predictive_fit"
+      ]
+    },
+    {
+      "id": "state_response_mean_comparator",
+      "titleEn": "Mean shift and state-response comparators",
+      "toolIds": [
+        "scdist",
+        "augur",
+        "memento"
+      ],
+      "metricIds": [
+        "state_multivariate_mean_distance",
+        "state_condition_auc",
+        "state_response_holdout"
+      ]
+    },
+    {
+      "id": "local_covariation_modules",
+      "titleEn": "State neighborhoods and local coordinated variation",
+      "toolIds": [
+        "hotspot",
+        "memento",
+        "cnmf"
+      ],
+      "metricIds": [
+        "hotspot_autocorrelation",
+        "hotspot_local_pair_association",
+        "hotspot_module_holdout"
+      ]
+    },
+    {
+      "id": "splicing_variability_uncertainty",
+      "titleEn": "Splicing heterogeneity with molecular evidence gates",
+      "toolIds": [
+        "brie2",
+        "samtools",
+        "igv"
+      ],
+      "metricIds": [
+        "brie_event_evidence",
+        "brie_psi_uncertainty",
+        "brie_state_association"
+      ]
+    },
+    {
+      "id": "metacell_network_bias_audit",
+      "titleEn": "Aggregation granularity and network artefact audit",
+      "toolIds": [
+        "mcrigor",
+        "lsmetacell",
+        "seacells",
+        "hdwgcna",
+        "scdesign3"
+      ],
+      "metricIds": [
+        "metacell_dubious_fraction",
+        "metacell_library_dispersion",
+        "metacell_null_correlation"
+      ]
+    },
+    {
+      "id": "continuous_density_noise_context",
+      "titleEn": "Continuous state density and tail origins",
+      "toolIds": [
+        "mellon",
+        "scanpy",
+        "memento"
+      ],
+      "metricIds": [
+        "mellon_log_state_density",
+        "mellon_density_sensitivity",
+        "density_conditioned_noise"
+      ]
+    },
+    {
+      "id": "pathway_variability_scoring_audit",
+      "titleEn": "Pathway stability and scoring-method audit",
+      "toolIds": [
+        "irgsea",
+        "ucell",
+        "aucell",
+        "glmmtmb"
+      ],
+      "metricIds": [
+        "pathway_scoring_agreement",
+        "pathway_within_state_dispersion",
+        "pathway_detectable_coverage"
+      ]
+    },
+    {
+      "id": "aging_program_decoupling",
+      "titleEn": "Decoupling and overlap of aging-associated programs",
+      "toolIds": [
+        "ucell",
+        "aucell",
+        "memento",
+        "glmmtmb",
+        "samtools",
+        "igv"
+      ],
+      "metricIds": [
+        "aging_program_partial_coupling",
+        "aging_signature_transfer",
+        "rdna_rna_assignability"
+      ]
+    },
+    {
+      "id": "latent_distribution_reconstruction",
+      "titleEn": "Latent expression-distribution reconstruction",
+      "toolIds": [
+        "descend",
+        "baredsc",
+        "memento",
+        "scdesign3"
+      ],
+      "metricIds": [
+        "latent_nonzero_fraction",
+        "latent_distribution_inequality",
+        "latent_density_model_support",
+        "latent_pair_correlation"
+      ]
+    },
+    {
+      "id": "paralog_transcript_buffering",
+      "titleEn": "Transcript buffering in paralogs and complexes",
+      "toolIds": [
+        "memento",
+        "basics",
+        "fgsea",
+        "igv"
+      ],
+      "metricIds": [
+        "paralog_sum_variance",
+        "paralog_covariance_contribution",
+        "noise_dispersion",
+        "network_module_preservation"
+      ]
+    },
+    {
+      "id": "rna_allocation_proportionality",
+      "titleEn": "Relative RNA allocation and proportionality",
+      "toolIds": [
+        "propr",
+        "memento",
+        "scdesign3"
+      ],
+      "metricIds": [
+        "rna_logratio_variance",
+        "rna_proportionality_sensitivity"
+      ]
+    },
+    {
+      "id": "shared_genetic_architecture",
+      "titleEn": "Shared genetic effects, coordinated noise and colocalization",
+      "toolIds": [
+        "mashr",
+        "susie",
+        "coloc"
+      ],
+      "metricIds": [
+        "genetic_effect_sharing"
+      ]
+    },
+    {
+      "id": "allelic_noise_context",
+      "titleEn": "Allele-specific noise and state regulation",
+      "toolIds": [
+        "cellsnp",
+        "pysam",
+        "wasp",
+        "scdali",
+        "memento",
+        "glmmtmb"
+      ],
+      "metricIds": [
+        "allelic_molecule_support",
+        "allelic_state_effect",
+        "allelic_noise_contrast"
+      ]
+    },
+    {
+      "id": "rare_regulatory_architecture",
+      "titleEn": "Rare regulatory variants and set effects",
+      "toolIds": [
+        "saigeqtl",
+        "gmmat"
+      ],
+      "metricIds": [
+        "variant_set_support"
+      ]
+    },
+    {
+      "id": "epistatic_noise_architecture",
+      "titleEn": "Genetic interactions controlling expression noise",
+      "toolIds": [
+        "limix"
+      ],
+      "metricIds": [
+        "epistatic_noise_effect"
+      ]
+    },
+    {
+      "id": "local_sample_landscapes",
+      "titleEn": "State-specific strain similarity and sample stratification",
+      "toolIds": [
+        "mrvi",
+        "scanpy",
+        "memento"
+      ],
+      "metricIds": [
+        "sample_local_distances",
+        "sample_state_admissibility",
+        "noise_state_component"
+      ]
+    },
+    {
+      "id": "apa_usage_noise",
+      "titleEn": "3′-end usage and expression noise",
+      "toolIds": [
+        "sierra",
+        "scape",
+        "pysam",
+        "glmmtmb"
+      ],
+      "metricIds": [
+        "apa_site_molecular_support",
+        "apa_within_gene_usage",
+        "apa_noise_association"
+      ]
+    },
+    {
+      "id": "metabolic_state_noise",
+      "titleEn": "Metabolic reaction states and noise coupling",
+      "toolIds": [
+        "yeastgem",
+        "ucell",
+        "memento"
+      ],
+      "metricIds": [
+        "metabolic_gene_reaction_coverage",
+        "metabolic_feasible_ranges",
+        "metabolic_noise_sensitivity"
+      ]
+    },
+    {
+      "id": "ty_repeat_variability",
+      "titleEn": "Ty repeat RNA and expression variability",
+      "toolIds": [
+        "irescue",
+        "samtools",
+        "memento"
+      ],
+      "metricIds": [
+        "te_bam_recoverability",
+        "te_family_allocation",
+        "te_noise_assignment_sensitivity"
+      ]
+    },
+    {
+      "id": "between_strain_state_variance",
+      "titleEn": "Shared and state-specific components of between-strain variation",
+      "toolIds": [
+        "ctmm",
+        "scdesign3"
+      ],
+      "metricIds": [
+        "state_between_strain_variance",
+        "state_variance_calibration"
+      ]
+    },
+    {
+      "id": "cross_state_coordination",
+      "titleEn": "Coordinated programs across states within cultures",
+      "toolIds": [
+        "dialogue",
+        "cnmf"
+      ],
+      "metricIds": [
+        "cross_state_program_coupling",
+        "cross_state_program_holdout"
+      ]
+    },
+    {
+      "id": "velocity_modules",
+      "titleEn": "RNA kinetic modules and expression noise",
+      "toolIds": [
+        "cell2fate",
+        "velocycle",
+        "scvelo"
+      ],
+      "metricIds": [
+        "velocity_module_support",
+        "velocity_module_uncertainty"
+      ]
+    },
+    {
+      "id": "regulatory_evidence_layers",
+      "titleEn": "Regulatory evidence from binding, perturbation and coexpression",
+      "toolIds": [
+        "inferelator",
+        "decoupler",
+        "genie3"
+      ],
+      "metricIds": [
+        "grn_edge_evidence_strata",
+        "grn_prior_ablation"
+      ]
+    },
+    {
+      "id": "count_mean_qtl_comparator",
+      "titleEn": "Appendix: count mean-eQTL versus noise-QTL",
+      "toolIds": [
+        "jaxqtl",
+        "saigeqtl",
+        "gemma"
+      ],
+      "metricIds": [
+        "count_eqtl_offset_contract",
+        "count_eqtl_calibration"
+      ]
+    },
+    {
+      "id": "mechanistic_noise_benchmark",
+      "titleEn": "Synthetic ground truth for bursts and network mechanisms",
+      "toolIds": [
+        "harissa",
+        "scdesign3",
+        "inferelator",
+        "memento"
+      ],
+      "metricIds": [
+        "mechanistic_noise_recovery",
+        "mechanistic_grn_recovery"
+      ]
+    },
+    {
+      "id": "temporal_mechanistic_grn",
+      "titleEn": "Appendix: executable networks and virtual interventions from timed snapshots",
+      "toolIds": [
+        "cardamomot",
+        "harissa",
+        "systema"
+      ],
+      "metricIds": [
+        "temporal_mechanistic_regeneration",
+        "kinetic_prior_sensitivity"
+      ]
+    },
+    {
+      "id": "mechanistic_joint_rna_noise",
+      "titleEn": "Mechanistic noise comparison from mature/unspliced RNA",
+      "toolIds": [
+        "monod",
+        "memento"
+      ],
+      "metricIds": [
+        "monod_joint_fit",
+        "monod_parameter_support",
+        "sequencing_model_sensitivity"
+      ]
+    },
+    {
+      "id": "rna_measurement_length_audit",
+      "titleEn": "RNA length-bias and measurement-model audit",
+      "toolIds": [
+        "monod",
+        "scanpy"
+      ],
+      "metricIds": [
+        "unspliced_length_sensitivity",
+        "sequencing_model_sensitivity"
+      ]
+    },
+    {
+      "id": "cross_implementation_robustness",
+      "titleEn": "Cross-implementation robustness of Seurat and Scanpy",
+      "toolIds": [
+        "seurat",
+        "scanpy",
+        "memento"
+      ],
+      "metricIds": [
+        "implementation_representation_concordance",
+        "implementation_inference_stability"
+      ]
+    },
+    {
+      "id": "noise_multiplicity_control",
+      "titleEn": "Noise-hypothesis families and stage-wise testing",
+      "toolIds": [
+        "stager"
+      ],
+      "metricIds": [
+        "noise_testing_family_registry",
+        "noise_stagewise_error_calibration"
+      ]
+    }
+  ]
+}

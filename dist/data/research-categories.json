@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-17",
+  "updated": "2026-10-18",
   "version": "2.0",
   "title": "1011酵母单细胞研究方案构建器",
   "titleEn": "1011 Yeast Single-cell Research Builder",
@@ -83,7 +83,8 @@
         "velocyto",
         "pysam",
         "memento",
-        "irescue"
+        "irescue",
+        "limma"
       ],
       "metricIds": [
         "metadata_complete",
@@ -226,7 +227,10 @@
         "bam_input_read_reconciliation",
         "noise_sensitivity",
         "noise_normalization_estimand",
-        "noise_annotation_uncertainty"
+        "noise_annotation_uncertainty",
+        "v25_design_rank",
+        "v25_nonestimable",
+        "v25_replication_map"
       ],
       "methodTags": [
         "genetics",
@@ -288,7 +292,13 @@
         "harissa",
         "monod",
         "scanpy",
-        "stager"
+        "stager",
+        "limma",
+        "chooser",
+        "bigsur",
+        "pseudotimede",
+        "lamian",
+        "scprisma"
       ],
       "metricIds": [
         "noise_variance",
@@ -335,7 +345,20 @@
         "sequencing_model_sensitivity",
         "unspliced_length_sensitivity",
         "noise_testing_family_registry",
-        "noise_stagewise_error_calibration"
+        "noise_stagewise_error_calibration",
+        "v25_design_rank",
+        "v25_nonestimable",
+        "v25_replication_map",
+        "v25_cluster_coassignment",
+        "v25_cluster_stability",
+        "v25_bigsur_mcfano",
+        "v25_bigsur_correlation",
+        "v25_pseudotime_rank_stability",
+        "v25_pseudotimede_tests",
+        "v25_lamian_curve_effect",
+        "v25_lamian_branch_support",
+        "v25_cycle_spectral_agreement",
+        "v25_cycle_enhancement_sensitivity"
       ],
       "methodTags": [
         "benchmark",
@@ -407,7 +430,13 @@
         "igv",
         "presto",
         "scdesign3",
-        "lmd"
+        "lmd",
+        "conformalsc",
+        "chooser",
+        "bipca",
+        "bigsur",
+        "pseudotimede",
+        "scprisma"
       ],
       "metricIds": [
         "independent_replicates",
@@ -465,7 +494,20 @@
         "aging_signature_transfer",
         "rdna_rna_assignability",
         "noise_annotation_uncertainty",
-        "noise_crossfit_sensitivity"
+        "noise_crossfit_sensitivity",
+        "v25_annotation_set_coverage",
+        "v25_annotation_set_size",
+        "v25_annotation_ood",
+        "v25_cluster_coassignment",
+        "v25_cluster_stability",
+        "v25_bipca_rank_fit",
+        "v25_representation_noise_separation",
+        "v25_bigsur_mcfano",
+        "v25_bigsur_correlation",
+        "v25_pseudotime_rank_stability",
+        "v25_pseudotimede_tests",
+        "v25_cycle_spectral_agreement",
+        "v25_cycle_enhancement_sensitivity"
       ],
       "methodTags": [
         "activity",
@@ -540,7 +582,8 @@
         "igv",
         "descend",
         "baredsc",
-        "ctmm"
+        "ctmm",
+        "scpower"
       ],
       "metricIds": [
         "independent_replicates",
@@ -598,7 +641,9 @@
         "state_response_holdout",
         "noise_tail",
         "latent_nonzero_fraction",
-        "latent_density_model_support"
+        "latent_density_model_support",
+        "v25_power_detection",
+        "v25_power_prior_transfer"
       ],
       "methodTags": [
         "benchmark",
@@ -653,7 +698,8 @@
         "mellon",
         "scanpy",
         "memento",
-        "mrvi"
+        "mrvi",
+        "lamian"
       ],
       "metricIds": [
         "composition_effect",
@@ -668,7 +714,9 @@
         "density_conditioned_noise",
         "sample_local_distances",
         "sample_state_admissibility",
-        "noise_state_component"
+        "noise_state_component",
+        "v25_lamian_curve_effect",
+        "v25_lamian_branch_support"
       ],
       "methodTags": [
         "Bayesian",
@@ -728,7 +776,9 @@
         "scanpy",
         "yeastgem",
         "dialogue",
-        "cardamomot"
+        "cardamomot",
+        "bigsur",
+        "moscot"
       ],
       "metricIds": [
         "noise_variance",
@@ -769,7 +819,11 @@
         "cross_state_program_coupling",
         "cross_state_program_holdout",
         "grn_edge_evidence_strata",
-        "grn_prior_ablation"
+        "grn_prior_ablation",
+        "v25_bigsur_mcfano",
+        "v25_bigsur_correlation",
+        "v25_temporal_transport",
+        "v25_temporal_holdout"
       ],
       "methodTags": [
         "activity",
@@ -833,7 +887,12 @@
         "cardamomot",
         "harissa",
         "systema",
-        "monod"
+        "monod",
+        "chooser",
+        "pseudotimede",
+        "lamian",
+        "scprisma",
+        "moscot"
       ],
       "metricIds": [
         "independent_replicates",
@@ -887,7 +946,17 @@
         "temporal_mechanistic_regeneration",
         "kinetic_prior_sensitivity",
         "unspliced_length_sensitivity",
-        "sequencing_model_sensitivity"
+        "sequencing_model_sensitivity",
+        "v25_cluster_coassignment",
+        "v25_cluster_stability",
+        "v25_pseudotime_rank_stability",
+        "v25_pseudotimede_tests",
+        "v25_lamian_curve_effect",
+        "v25_lamian_branch_support",
+        "v25_cycle_spectral_agreement",
+        "v25_cycle_enhancement_sensitivity",
+        "v25_temporal_transport",
+        "v25_temporal_holdout"
       ],
       "methodTags": [
         "cell-cycle",
@@ -1014,7 +1083,9 @@
         "glmmtmb",
         "saigeqtl",
         "gmmat",
-        "jaxqtl"
+        "jaxqtl",
+        "limma",
+        "scpower"
       ],
       "metricIds": [
         "identity_posterior",
@@ -1036,7 +1107,12 @@
         "variant_set_support",
         "epistatic_noise_effect",
         "count_eqtl_offset_contract",
-        "count_eqtl_calibration"
+        "count_eqtl_calibration",
+        "v25_design_rank",
+        "v25_nonestimable",
+        "v25_replication_map",
+        "v25_power_detection",
+        "v25_power_prior_transfer"
       ],
       "methodTags": [
         "external-data",
@@ -1189,13 +1265,16 @@
         "scgpt",
         "geneformer",
         "scanpy",
-        "scdeed"
+        "scdeed",
+        "bipca"
       ],
       "metricIds": [
         "perturbation_generalization",
         "foundation_transfer_audit",
         "annotation_holdout_accuracy",
-        "embedding_reliability"
+        "embedding_reliability",
+        "v25_bipca_rank_fit",
+        "v25_representation_noise_separation"
       ],
       "methodTags": [
         "benchmark",
@@ -1239,7 +1318,10 @@
         "harissa",
         "inferelator",
         "seurat",
-        "scanpy"
+        "scanpy",
+        "conformalsc",
+        "bipca",
+        "scpower"
       ],
       "metricIds": [
         "cross_library_molecules",
@@ -1259,7 +1341,14 @@
         "mechanistic_noise_recovery",
         "mechanistic_grn_recovery",
         "implementation_representation_concordance",
-        "implementation_inference_stability"
+        "implementation_inference_stability",
+        "v25_annotation_set_coverage",
+        "v25_annotation_set_size",
+        "v25_annotation_ood",
+        "v25_bipca_rank_fit",
+        "v25_representation_noise_separation",
+        "v25_power_detection",
+        "v25_power_prior_transfer"
       ],
       "methodTags": [
         "benchmark",
@@ -2365,6 +2454,143 @@
       ],
       "text": "stageR是检验结果后处理，不估计表达噪音；迁移到噪音对比须先校准上游p值及筛选—确认的逻辑关系。",
       "textEn": "stageR post-processes test results and does not estimate expression noise; applying it to noise contrasts requires calibrated upstream p-values and justified screening/confirmation logic."
+    },
+    {
+      "id": "v25_design_estimability_gate",
+      "type": "interpretation-boundary",
+      "toolIds": [
+        "limma"
+      ],
+      "requiredData": [
+        "sample_metadata"
+      ],
+      "text": "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。",
+      "textEn": "Full rank does not remove confounding. Non-estimable coefficients depend on coding order and do not replace contrast-specific checks. Strain associations and within-strain culture replication are different levels."
+    },
+    {
+      "id": "v25_annotation_conformal_gate",
+      "type": "interpretation-boundary",
+      "toolIds": [
+        "conformalsc"
+      ],
+      "requiredData": [
+        "count_matrix",
+        "sample_metadata",
+        "yeast_annotation_reference"
+      ],
+      "text": "现有实现按细胞随机划分；菌株分组需适配器。跨菌株分布变化时不继承覆盖保证。CellTypist分支内部归一化，使用独立计数副本；不用人类预训练标签解释酵母。",
+      "textEn": "The implementation splits cells randomly; strain-level splitting needs an adapter. Coverage guarantees do not automatically transfer across strain shifts. The CellTypist branch normalizes internally: use a count copy and a yeast reference."
+    },
+    {
+      "id": "v25_cluster_stability_gate",
+      "type": "interpretation-boundary",
+      "toolIds": [
+        "chooser"
+      ],
+      "requiredData": [
+        "count_matrix",
+        "sample_metadata",
+        "culture_replicates"
+      ],
+      "text": "原生chooseR随机抽细胞；培养分块与留出验证需项目适配，不能混作原生输出。稳定群不等于离散细胞类型。先检查旧版Seurat接口与成对矩阵内存。",
+      "textEn": "Native chooseR resamples cells; culture blocks and holdout validation need a project adapter. Stable clusters do not establish discrete cell types. Check legacy Seurat compatibility and pairwise-matrix memory."
+    },
+    {
+      "id": "v25_representation_bipca_gate",
+      "type": "interpretation-boundary",
+      "toolIds": [
+        "bipca"
+      ],
+      "requiredData": [
+        "count_matrix",
+        "sample_metadata"
+      ],
+      "text": "核对来源仍为2025预印本。矩阵双尺度化用于表示比较；不得用去噪矩阵替代噪音或QTL表型。先评估稀疏性、SVD与内存。",
+      "textEn": "The checked source remains a 2025 preprint. Biwhitening supports representation comparisons; denoised matrices must not replace noise or QTL phenotypes. Assess sparsity, SVD and memory first."
+    },
+    {
+      "id": "v25_bigsur_features_gate",
+      "type": "interpretation-boundary",
+      "toolIds": [
+        "bigsur"
+      ],
+      "requiredData": [
+        "count_matrix",
+        "sample_metadata"
+      ],
+      "text": "高变基因不自动成为状态marker或噪音QTL。校正相关仍非因果；用培养留出检验边。相关模块与特征模块的可用接口分别核验。",
+      "textEn": "Variable genes are not automatically state markers or noise QTLs. Corrected correlations remain non-causal; validate edges in held-out cultures. Verify correlation and feature APIs separately."
+    },
+    {
+      "id": "v25_pseudotime_uncertainty_gate",
+      "type": "interpretation-boundary",
+      "toolIds": [
+        "pseudotimede"
+      ],
+      "requiredData": [
+        "count_matrix",
+        "cell_states",
+        "sample_metadata"
+      ],
+      "text": "这是均值趋势检验，不是差异噪音检验。重采样不能解决培养伪重复；无真实轨迹时须用空模型检查循环选基因造成的假信号。",
+      "textEn": "This tests mean trends, not differential noise. Resampling does not solve culture pseudoreplication; use null models to check circular gene selection when a trajectory is uncertain."
+    },
+    {
+      "id": "v25_multisample_trajectories_gate",
+      "type": "interpretation-boundary",
+      "toolIds": [
+        "lamian"
+      ],
+      "requiredData": [
+        "count_matrix",
+        "sample_metadata",
+        "cell_states",
+        "culture_replicates"
+      ],
+      "text": "使用log归一化副本。0.99.3默认fix.all.zero会为零方差样本添加随机噪声；本配方关闭它并记录退化基因。分支支持另调用evaluate_uncertainty，不能从趋势p值推算。",
+      "textEn": "Use a log-normalized copy. In 0.99.3, default fix.all.zero adds random noise to zero-variance samples; disable it and record degenerate genes. Branch support requires evaluate_uncertainty, not trend p-values."
+    },
+    {
+      "id": "v25_cycle_spectral_gate",
+      "type": "interpretation-boundary",
+      "toolIds": [
+        "scprisma"
+      ],
+      "requiredData": [
+        "count_matrix",
+        "sample_metadata",
+        "yeast_cycle_reference"
+      ],
+      "text": "循环模板会引入闭环结构，不能单凭结果证明周期存在；相位不是物理时间。增强或过滤矩阵只作对照，噪音结论回到原始计数。",
+      "textEn": "A cyclic template imposes closed structure and cannot alone establish a biological cycle; phase is not physical time. Enhanced or filtered matrices are comparisons; noise conclusions use raw counts."
+    },
+    {
+      "id": "v25_temporal_ot_gate",
+      "type": "interpretation-boundary",
+      "toolIds": [
+        "moscot"
+      ],
+      "requiredData": [
+        "count_matrix",
+        "sample_metadata",
+        "timepoints"
+      ],
+      "text": "菌株编号、拟时序和系统发育次序不能替代实验时间。传输边不是谱系追踪或进化祖先；不用人类增殖或凋亡默认基因给酵母加权。",
+      "textEn": "Strain IDs, pseudotime and phylogenetic order cannot replace experimental time. Transport edges are not lineage tracing or evolutionary ancestry. Do not weight yeast with default human proliferation or apoptosis genes."
+    },
+    {
+      "id": "v25_power_mean_eqtl_gate",
+      "type": "interpretation-boundary",
+      "toolIds": [
+        "scpower"
+      ],
+      "requiredData": [
+        "count_matrix",
+        "sample_metadata",
+        "culture_replicates"
+      ],
+      "text": "这是均值DE/eQTL功效，不是噪音QTL功效。替换人类默认参数；原生eQTL模拟的二倍体HWE假设须适配酵母倍性与群体结构。遗传样本量按菌株而非细胞计。",
+      "textEn": "This models mean DE/eQTL power, not noise-QTL power. Replace human defaults and adapt native diploid/HWE eQTL simulation to yeast ploidy and structure. Genetic sample size counts strains, not cells."
     }
   ],
   "applicabilityLevels": [

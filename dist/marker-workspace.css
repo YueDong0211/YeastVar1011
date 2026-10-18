@@ -11,6 +11,11 @@
 .mw-statline>div{padding:18px 24px;border-right:1px solid var(--line);display:flex;gap:16px;align-items:baseline}.mw-statline>div:last-child{border:0}
 .mw-statline strong{font-size:28px;font-weight:400;font-variant-numeric:tabular-nums;letter-spacing:-.04em}.mw-statline span{color:var(--muted);font-size:12px}
 .mw-tabs{display:flex;gap:5px;border-bottom:1px solid var(--line);margin:0 0 26px;padding:0 0 8px;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin}.mw-tabs>.mw-tab{flex:0 0 auto;white-space:nowrap}
+/* Horizontal tabs must not create a one-pixel vertical scrollbar when the
+   selected-tab underline is painted below a later theme's zero padding. */
+.mw-workspace nav.mw-tabs{overflow-x:auto;overflow-y:hidden;scroll-padding-inline:6px}
+.mw-workspace .mw-tabs .mw-tab.active:after{bottom:0}
+.mw-workspace .mw-tabs .mw-tab:focus-visible{outline-offset:-4px}
 .mw-tab,.mw-button,.mw-icon-button,.mw-text-button{border:1px solid var(--line);font:inherit;cursor:pointer;color:var(--text);background:var(--surface);display:inline-flex;align-items:center;justify-content:center;gap:9px;line-height:1.35;text-decoration:none;border-radius:9px;transition:background .15s,border-color .15s,transform .15s}
 .mw-tab{font-size:13px;padding:12px 18px;background:none;border-color:transparent;min-height:44px}.mw-tab b{font-size:10px;font-weight:500;border:1px solid var(--line);padding:2px 6px;border-radius:20px}.mw-tab.active{background:color-mix(in srgb,var(--green) 12%,var(--surface));border-color:color-mix(in srgb,var(--green) 30%,var(--line));color:var(--green)}
 .mw-button{padding:10px 14px;min-height:40px;font-size:12px}.mw-button:hover:not(:disabled),.mw-tab:hover,.mw-icon-button:hover{border-color:var(--green);background:color-mix(in srgb,var(--green) 9%,var(--surface))}.mw-button:active:not(:disabled),.mw-icon-button:active{transform:translateY(1px)}
@@ -74,6 +79,24 @@
 
 /* Keep the catalogue visible below the shared navigation. Global search and the
    companion remain available; their injected duplicate row is unnecessary here. */
+.mw-search-scope{display:flex;align-items:center;gap:8px;min-width:0;font-size:10px;color:var(--muted)}
+.mw-browse-navigation{margin:0 0 20px;padding:16px;border:1px solid var(--line);border-radius:12px;background:color-mix(in srgb,var(--surface) 85%,transparent)}
+.mw-browse-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.mw-browse-choice{display:flex;gap:10px;align-items:center;text-align:left;min-width:0;padding:13px;border:1px solid var(--line);border-radius:9px;background:transparent;color:var(--text);font:inherit;cursor:pointer;transition:border-color .18s,background .18s}
+.mw-browse-choice>svg{width:20px;height:20px;flex:none;color:var(--green)}.mw-browse-choice>span{min-width:0;flex:1}.mw-browse-choice strong{display:block;font-size:12px;font-weight:550;line-height:1.5}.mw-browse-choice small{display:block;font-size:10px;line-height:1.6;color:var(--muted);margin-top:4px}.mw-browse-choice>b{font-size:12px;font-weight:500;color:var(--green)}
+.mw-browse-choice:hover,.mw-browse-choice[aria-pressed=true]{border-color:color-mix(in srgb,var(--green) 65%,var(--line));background:color-mix(in srgb,var(--green) 8%,transparent)}
+.mw-browse-description,.mw-purpose-help,.mw-scope-notice{font-size:11px;line-height:1.7;color:var(--muted);margin:12px 0 0}.mw-browse-description>span{display:block;font-size:10px;margin-top:3px}.mw-purpose-select{display:flex;gap:12px;align-items:center;font-size:11px;margin-top:14px}.mw-purpose-select>span{color:var(--muted)}.mw-purpose-select select{min-width:260px;max-width:100%;font:inherit;padding:9px 12px;background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:7px}.mw-scope-notice{color:var(--green)}
+.mw-purpose-badges{display:flex;flex-wrap:wrap;gap:5px;margin:11px 0 0}.mw-purpose-badges>span{border:1px solid var(--line);border-radius:5px;padding:3px 6px;color:var(--muted);font-size:9px;line-height:1.5}.mw-purpose-badges>[data-purpose=authorPanel]{color:var(--green);border-color:color-mix(in srgb,var(--green) 40%,var(--line))}.mw-purpose-badges>[data-purpose=heterogeneity]{color:#d6b587}.mw-library-chip{border-style:dashed!important}.mw-coverage-grid button>b>small{display:block;max-width:100px;font-size:9px;font-weight:400;line-height:1.5;color:var(--muted)}
+@media(max-width:900px){.mw-browse-choice{flex-wrap:wrap;padding:11px}.mw-browse-choice>span{flex-basis:calc(100% - 32px)}.mw-browse-choice>b{margin-left:30px}.mw-browse-choice small{font-size:10px}.mw-browse-choices{gap:7px}}
+@media(max-width:600px){.mw-browse-navigation{padding:12px}.mw-browse-choices{grid-template-columns:1fr}.mw-browse-choice{flex-wrap:nowrap;padding:11px;min-height:65px}.mw-browse-choice>span{flex-basis:auto}.mw-browse-choice>b{margin-left:0}.mw-purpose-select{align-items:stretch;flex-direction:column;gap:6px}.mw-purpose-select select{width:100%;min-width:0;min-height:42px}.mw-purpose-select .rich-select{min-width:0}.mw-purpose-badges>span{font-size:10px}}
+.mw-search-scope>span{max-width:90px;line-height:1.45}.mw-search-scope select{min-width:150px;max-width:210px}
+.mw-search-help{font-size:11px;line-height:1.65;color:var(--muted);margin:-6px 0 18px;max-width:1000px}
+.mw-search-match{display:flex;gap:4px;flex-wrap:wrap;font-size:10px;line-height:1.6;color:var(--muted);margin:10px 0 0;overflow-wrap:anywhere}
+.mw-search-match[data-match=identityExact],.mw-search-match[data-match=aliasExact]{color:var(--green)}
+.mw-search-match b{font-weight:500}.mw-tag-count-help{font-size:10px;line-height:1.65;color:var(--muted);padding:9px 10px;border-left:2px solid color-mix(in srgb,var(--green) 45%,var(--line));background:color-mix(in srgb,var(--green) 4%,transparent);margin:9px 0 14px}
+.mw-empty-help{font-size:12px;line-height:1.75;color:var(--muted);max-width:500px;margin:12px auto 20px}
+@media(max-width:1100px){.mw-catalogue-search{flex-wrap:wrap}.mw-catalogue-search>.mw-search{flex-basis:100%}.mw-search-scope{flex:1}.mw-search-scope>span{max-width:none}.mw-search-scope select{flex:1;max-width:none}}
+@media(max-width:600px){.mw-search-scope{flex-basis:100%;justify-content:space-between}.mw-search-scope>span{max-width:110px}.mw-search-scope select{min-width:0;max-width:100%;min-height:42px}.mw-search-scope .rich-select{min-width:0;flex:1}.mw-catalogue-search>select{min-height:42px;max-width:100%;width:100%}.mw-search-help{font-size:11px;margin-top:0}.mw-search-match{font-size:11px}}
 body .mw-workspace>.c4-assistance-shortcuts{display:none}
 .mw-workspace .mw-heading{margin-bottom:18px}
 .mw-workspace .mw-statline{margin-bottom:18px}

@@ -1,0 +1,2517 @@
+{
+  "schemaVersion": 1,
+  "version": "v25-methods-review",
+  "checkedOn": "2026-10-18",
+  "scope": "2010–2026 methods-coverage audit; focused gap review, not an exhaustive systematic review or proof that all markers/methods are covered.",
+  "baselineCounts": {
+    "steps": 20,
+    "tools": 155,
+    "projects": 55,
+    "papers": 213
+  },
+  "integrationPolicy": "Extend existing routes and reuse verified references. No production files were modified by this review.",
+  "candidates": [
+    {
+      "id": "v25_design_estimability",
+      "priority": "P0",
+      "action": "extend_existing",
+      "title": "比较设计的可估计性与真实重复",
+      "titleEn": "Design estimability and experimental units",
+      "existingProjectIds": [
+        "audit_raw",
+        "mean_noise",
+        "noise_qtl",
+        "genotype_state"
+      ],
+      "existingToolIds": [
+        "glmmtmb",
+        "edger",
+        "dreamlet"
+      ],
+      "proposedToolIds": [
+        "limma"
+      ],
+      "stepIds": [
+        "design",
+        "sampleqc",
+        "validation"
+      ],
+      "inputIds": [
+        "sample_metadata"
+      ],
+      "optionalInputIds": [
+        "culture_replicates"
+      ],
+      "inputs": [
+        "文库、菌株、培养、处理、批次的逐样本映射；待比较的模型公式和contrast；每个状态内实际保留的样本。"
+      ],
+      "extraData": "只需要真实实验记录；细胞数不能补足缺失的独立培养或解开完全混杂。",
+      "method": "每个拟合子集重新生成样本级设计矩阵，报告秩、重复层级和无法识别的系数；在原设计内决定可检验contrast。将菌株总体差异与同一菌株培养间重复分开。",
+      "metrics": [
+        {
+          "id": "v25_design_rank",
+          "name": "设计矩阵秩与列数",
+          "definition": "在实际拟合样本子集中记录rank(X)、ncol(X)和缺失列；满秩是线性系数可识别的必要诊断，不保证因果识别。",
+          "origin": "project_defined",
+          "unit": "rank / columns",
+          "denominator": "not_applicable"
+        },
+        {
+          "id": "v25_nonestimable",
+          "name": "不可估计的设计系数",
+          "definition": "limma::nonEstimable(X)报告依赖于前序列的列名；此列表依赖编码顺序，不等价于检验任意contrast。",
+          "origin": "native",
+          "unit": "coefficient_names",
+          "denominator": "not_applicable"
+        },
+        {
+          "id": "v25_replication_map",
+          "name": "有效培养与菌株覆盖",
+          "definition": "按条件×状态列出独立培养、菌株、文库和细胞数；不将同一培养的分装、lane或细胞算作培养重复。",
+          "origin": "project_defined",
+          "unit": "counts",
+          "denominator": "explicit culture/strain/library/cell units"
+        }
+      ],
+      "invocations": [
+        {
+          "tool": "limma / stats",
+          "language": "r",
+          "code": "X <- stats::model.matrix(model_formula, data = sample_manifest)\nlist(rank = qr(X)$rank, columns = ncol(X), aliased = limma::nonEstimable(X))",
+          "parameters": [
+            "model_formula：从真实比较设计定义，不预置菌株/批次的固定公式。",
+            "sample_manifest：每行实际模型统计单位；逐状态过滤后重算。"
+          ],
+          "verified_version": "limma 3.68.5 official manual dated 2026-10-16",
+          "repository_commit": null,
+          "api_source": "https://bioconductor.org/packages/release/bioc/manuals/limma/man/limma.pdf",
+          "verification": "Function names and signatures checked against official source or manual; not executed on biological data.",
+          "execution_status": "recipe_only",
+          "placeholder_policy": "Named objects and parameter variables must be supplied from the project manifest; example values are not biological thresholds."
+        }
+      ],
+      "dois": [
+        "10.1093/nar/gkv007",
+        "10.1038/s41467-021-25960-2"
+      ],
+      "yeastEligibility": "direct_generic_method",
+      "cannotSupport": [
+        "满秩不代表没有未测混杂。",
+        "单一培养内的细胞不能支撑培养间变异估计。",
+        "菌株关联可以使用不同菌株，但菌株效应与培养误差的分离取决于实际重复结构。"
+      ],
+      "frontend": [
+        "输入样本清单后显示实验单位树与设计交叉表。",
+        "根据每条研究路线展示可估计项、缺失项与无法区分项；不得用总细胞数生成统一绿色通过。",
+        "清楚区分计划字段、已导入记录和已计算诊断。"
+      ],
+      "status": "reviewed_candidate_not_executed",
+      "sourceUrls": [
+        "https://doi.org/10.1093/nar/gkv007",
+        "https://doi.org/10.1038/s41467-021-25960-2",
+        "https://bioconductor.org/packages/release/bioc/manuals/limma/man/limma.pdf"
+      ],
+      "newDataClaim": false
+    },
+    {
+      "id": "v25_annotation_conformal",
+      "priority": "P1",
+      "action": "extend_existing",
+      "title": "注释预测集合与未知状态校准",
+      "titleEn": "Prediction sets and out-of-reference annotation",
+      "existingProjectIds": [
+        "annotation_transfer",
+        "marker_inference_audit"
+      ],
+      "existingToolIds": [
+        "singler",
+        "celltypist"
+      ],
+      "proposedToolIds": [
+        "conformalsc"
+      ],
+      "stepIds": [
+        "annotation",
+        "markers",
+        "validation"
+      ],
+      "inputIds": [
+        "count_matrix",
+        "sample_metadata",
+        "yeast_annotation_reference"
+      ],
+      "optionalInputIds": [
+        "culture_replicates"
+      ],
+      "inputs": [
+        "有同一标签轴真值的酵母参考和query AnnData；对齐基因；训练、校准、评估来源划分；独立菌株/研究的评估标签。"
+      ],
+      "extraData": "参考标签及校准样本不可由当前模型自己生成；周期、应激、代谢分别建标签轴。",
+      "method": "给每个细胞保存一个候选标签集合及未知参考状态证据，联合报告覆盖率与集合大小。在完整菌株/研究留出集评估；跨菌株分布变化时测量覆盖，不自动沿用i.i.d.保证。",
+      "metrics": [
+        {
+          "id": "v25_annotation_set_coverage",
+          "name": "预测集合经验覆盖",
+          "definition": "独立有真值评估细胞中真值落入预测集合的比例；分别按菌株、状态及RNA深度分层。",
+          "origin": "project_defined",
+          "unit": "fraction",
+          "denominator": "evaluated cells with independent reference labels"
+        },
+        {
+          "id": "v25_annotation_set_size",
+          "name": "注释集合大小与空集比例",
+          "definition": "逐细胞预测集合的标签数，以及无标签、单标签和多标签比例；空集并不自动代表新生物学状态。",
+          "origin": "project_defined",
+          "unit": "labels / fraction",
+          "denominator": "evaluated query cells"
+        },
+        {
+          "id": "v25_annotation_ood",
+          "name": "参考外分数及误报",
+          "definition": "保留OOD检验p值，在有ID/OOD真值的留出评估集计算FPR、召回和FDR；FPR控制不是FDR控制。",
+          "origin": "native_and_project_defined",
+          "unit": "p_value / fraction",
+          "denominator": "known ID or OOD test cells as appropriate"
+        }
+      ],
+      "invocations": [
+        {
+          "tool": "ConformalSCAnnotator",
+          "language": "python",
+          "code": "from conformalSC_annotator import ConformalSCAnnotator\nannotator = ConformalSCAnnotator(query_copy, var_query_gene_column_name='systematic_id', underlying_model='celltypist')\nannotator.configure(reference_path=yeast_reference, cell_names_column=label_axis, alpha=error_levels, **validated_configuration)\nannotator.annotate()",
+          "parameters": [
+            "error_levels：由预先定义的容错水平生成，不把论文示例当固定阈值。",
+            "validated_configuration：OOD、训练/校准方式及内部归一化必须与当前代码核对。",
+            "当前源代码默认按细胞划分；严格按菌株/培养校准需要额外适配，不能声称上述调用已实现分组共形保证。",
+            "使用query副本；celltypist分支在内部归一化/对数化，不能将重复变换数据误传成raw。"
+          ],
+          "verified_version": "Git commit pinned; no tagged software release verified",
+          "repository_commit": "526bad858b120137d01267bde7ccb5dda5431308",
+          "api_source": "https://github.com/digital-medicine-research-group-UNAV/conformalized_single_cell_annotator/blob/526bad858b120137d01267bde7ccb5dda5431308/conformalSC_annotator.py",
+          "verification": "Function names and signatures checked against official source or manual; not executed on biological data.",
+          "execution_status": "recipe_only",
+          "placeholder_policy": "Named objects and parameter variables must be supplied from the project manifest; example values are not biological thresholds."
+        }
+      ],
+      "dois": [
+        "10.1093/bioinformatics/btaf521"
+      ],
+      "yeastEligibility": "yeast_reference_and_group_calibration_required",
+      "cannotSupport": [
+        "人类参考模型不能直接注释酵母。",
+        "类别预测集合与跨标签轴共现不是同一件事。",
+        "OOD也可由批次或低覆盖导致；需要分子QC和marker证据解释。"
+      ],
+      "frontend": [
+        "marker或细胞标签同时显示候选标签集合、参考范围和校准来源。",
+        "按未知/冲突/多候选筛选，而不是强行选择最高分。",
+        "不要把模型softmax、SingleR差值和共形p值合并成同一‘置信概率’。"
+      ],
+      "status": "reviewed_candidate_not_executed",
+      "sourceUrls": [
+        "https://doi.org/10.1093/bioinformatics/btaf521",
+        "https://github.com/digital-medicine-research-group-UNAV/conformalized_single_cell_annotator/blob/526bad858b120137d01267bde7ccb5dda5431308/conformalSC_annotator.py"
+      ],
+      "newDataClaim": false
+    },
+    {
+      "id": "v25_cluster_stability",
+      "priority": "P1",
+      "action": "extend_existing",
+      "title": "聚类分辨率与重抽样稳定性",
+      "titleEn": "Cluster resolution and resampling stability",
+      "existingProjectIds": [
+        "annotation_transfer",
+        "trajectory_structure",
+        "noise_components"
+      ],
+      "existingToolIds": [
+        "seurat",
+        "scanpy",
+        "scdeed"
+      ],
+      "proposedToolIds": [
+        "chooser"
+      ],
+      "stepIds": [
+        "integration",
+        "annotation",
+        "validation"
+      ],
+      "inputIds": [
+        "count_matrix",
+        "sample_metadata"
+      ],
+      "optionalInputIds": [
+        "cell_states"
+      ],
+      "inputs": [
+        "同一细胞集合、表示空间、完整聚类标签和预先定义的分辨率范围；按菌株/培养分层的抽样记录。"
+      ],
+      "extraData": "不要求新组学；生物学准确性仍需要独立标签或marker参考。",
+      "method": "重复子抽样并重新建图聚类，比较共聚类频率与簇级稳定性。用于避免把不稳定分割当噪音分析条件，同时保留连续状态路线。",
+      "metrics": [
+        {
+          "id": "v25_cluster_coassignment",
+          "name": "细胞对共聚类频率",
+          "definition": "在两个细胞都被抽中的重复中，同簇次数所占比例；记录实际共同入样次数。",
+          "origin": "native",
+          "unit": "fraction",
+          "denominator": "resamples containing both cells"
+        },
+        {
+          "id": "v25_cluster_stability",
+          "name": "簇级重抽样稳定性",
+          "definition": "在共聚类频率诱导的不相似度上记录轮廓分数分布与簇级汇总；另按完整菌株留出检查标签变化。",
+          "origin": "native_and_project_defined",
+          "unit": "silhouette / fraction",
+          "denominator": "not_applicable"
+        }
+      ],
+      "invocations": [
+        {
+          "tool": "chooseR",
+          "language": "r",
+          "code": "source('R/pipeline.R')\nclusters <- multiple_cluster(obj, n = resampling_runs, size = sampling_fraction, npcs = retained_dimensions, res = resolution, reduction = representation, assay = assay_name)",
+          "parameters": [
+            "应在固定chooseR checkout内运行，source路径属于该工具仓库。",
+            "原脚本针对旧Seurat接口；先运行版本兼容性测试，再接入当前Seurat对象。",
+            "原生随机细胞子抽样与本项目需要的培养/菌株级重抽样分开报告，后者需要额外包装。",
+            "共聚类矩阵具有二次内存开销；先规划分层子集或稀疏实现。"
+          ],
+          "verified_version": "Git commit pinned; repository script interface",
+          "repository_commit": "410bdbfaebcbc57df45176491545a1165e3c6fc5",
+          "api_source": "https://github.com/rbpatt2019/chooseR/blob/410bdbfaebcbc57df45176491545a1165e3c6fc5/R/pipeline.R",
+          "verification": "Function names and signatures checked against official source or manual; not executed on biological data.",
+          "execution_status": "recipe_only",
+          "placeholder_policy": "Named objects and parameter variables must be supplied from the project manifest; example values are not biological thresholds."
+        }
+      ],
+      "dois": [
+        "10.1186/s12859-021-03957-4"
+      ],
+      "yeastEligibility": "generic_method_with_adapter",
+      "cannotSupport": [
+        "稳定簇不自动是离散生物学细胞类型。",
+        "最稳定的低分辨率可能把有意义的稀有状态合并。",
+        "状态标签稳定性不能代替原始分子可信度。"
+      ],
+      "frontend": [
+        "提供分辨率轨迹图和不稳定边界标记，显示每次分割对噪音候选的影响。",
+        "允许保存多个命名聚类版本，禁止覆盖唯一的cell_state列。"
+      ],
+      "status": "reviewed_candidate_not_executed",
+      "sourceUrls": [
+        "https://doi.org/10.1186/s12859-021-03957-4",
+        "https://github.com/rbpatt2019/chooseR/blob/410bdbfaebcbc57df45176491545a1165e3c6fc5/R/pipeline.R"
+      ],
+      "newDataClaim": false
+    },
+    {
+      "id": "v25_representation_bipca",
+      "priority": "P2",
+      "action": "extend_existing",
+      "title": "计数谱、表示维数与噪音层隔离",
+      "titleEn": "Count spectra, representation rank and noise-layer separation",
+      "existingProjectIds": [
+        "cross_implementation_robustness",
+        "rna_measurement_length_audit",
+        "foundation_benchmark"
+      ],
+      "existingToolIds": [
+        "scanpy",
+        "seurat",
+        "scib"
+      ],
+      "proposedToolIds": [
+        "bipca"
+      ],
+      "stepIds": [
+        "integration",
+        "validation"
+      ],
+      "inputIds": [
+        "count_matrix",
+        "sample_metadata"
+      ],
+      "optionalInputIds": [
+        "truth_or_simulation"
+      ],
+      "inputs": [
+        "非负原始计数矩阵、稀疏度过滤记录和样本身份；仅将输出用作表示空间对照。"
+      ],
+      "extraData": "无额外组学；模拟技术噪音和真实状态差异用来校准适用范围。",
+      "method": "将BiPCA作为标准归一化/PCA的比较分支，记录二次方差模型与谱拟合，再评价邻域、低RNA状态与marker保留。保持噪音推断使用独立保留的原始分子计数。",
+      "metrics": [
+        {
+          "id": "v25_bipca_rank_fit",
+          "name": "谱估计秩与拟合",
+          "definition": "保存mp_rank、拟合谱和方差参数；检查模型拟合偏离及细胞/基因过滤敏感性。",
+          "origin": "native",
+          "unit": "rank / fit statistics",
+          "denominator": "not_applicable"
+        },
+        {
+          "id": "v25_representation_noise_separation",
+          "name": "表示变化对噪音候选的影响",
+          "definition": "比较各表示得到的状态标签后，在同一原始计数层重算噪音；不对去噪重建矩阵的方差解释为真实剩余噪音。",
+          "origin": "project_defined",
+          "unit": "effect / rank stability",
+          "denominator": "not_applicable"
+        }
+      ],
+      "invocations": [
+        {
+          "tool": "BiPCA",
+          "language": "python",
+          "code": "import bipca\noperator = bipca.BiPCA(**resource_checked_options)\noperator.fit(count_matrix)\noperator.get_plotting_spectrum()\nestimated_rank = operator.mp_rank",
+          "parameters": [
+            "resource_checked_options：稀疏/稠密SVD、维度、内存、线程和随机种子纳入资源估算。",
+            "不照抄教程中的全矩阵toarray或全SVD用于群体尺度数据。",
+            "模型基于低秩信号及方差函数等假设；拟合失败时保留对照结果。"
+          ],
+          "verified_version": "Git commit pinned; 2025 method remains a preprint in checked metadata",
+          "repository_commit": "8842e4ce6d2d7c8a4bbf686591f4dc9c7c30b051",
+          "api_source": "https://github.com/KlugerLab/bipca/blob/8842e4ce6d2d7c8a4bbf686591f4dc9c7c30b051/python/bipca/bipca.py",
+          "verification": "Function names and signatures checked against official source or manual; not executed on biological data.",
+          "execution_status": "recipe_only",
+          "placeholder_policy": "Named objects and parameter variables must be supplied from the project manifest; example values are not biological thresholds."
+        }
+      ],
+      "dois": [
+        "10.1101/2025.02.03.636129"
+      ],
+      "yeastEligibility": "generic_count_model_requires_benchmark",
+      "cannotSupport": [
+        "统计谱中的noise并不等价于项目的生物学表达噪音。",
+        "去噪重建会主动收缩方差，不能直接作为noise-QTL表型。"
+      ],
+      "frontend": [
+        "表示层、可视化层与推断计数层分开显示。",
+        "预印本标签、源版本和资源需求与运行按钮并列。"
+      ],
+      "status": "reviewed_candidate_not_executed",
+      "sourceUrls": [
+        "https://doi.org/10.1101/2025.02.03.636129",
+        "https://github.com/KlugerLab/bipca/blob/8842e4ce6d2d7c8a4bbf686591f4dc9c7c30b051/python/bipca/bipca.py"
+      ],
+      "newDataClaim": false
+    },
+    {
+      "id": "v25_bigsur_features",
+      "priority": "P1",
+      "action": "extend_existing_reuse_paper",
+      "title": "有统计基线的特征与相关性选择",
+      "titleEn": "Model-based features and correlation candidates",
+      "existingProjectIds": [
+        "marker_panel",
+        "local_covariation_modules",
+        "grn_rewiring",
+        "cross_implementation_robustness"
+      ],
+      "existingToolIds": [
+        "genebasis",
+        "hotspot",
+        "memento"
+      ],
+      "proposedToolIds": [
+        "bigsur"
+      ],
+      "stepIds": [
+        "integration",
+        "markers",
+        "networks",
+        "validation"
+      ],
+      "inputIds": [
+        "count_matrix",
+        "sample_metadata"
+      ],
+      "optionalInputIds": [
+        "culture_replicates",
+        "truth_or_simulation"
+      ],
+      "inputs": [
+        "原始UMI层；菌株/状态分层；拟合共同CV与检验基因集合；原始feature选择结果作为对照。"
+      ],
+      "extraData": "不需要人类训练模型；需要校准计数模型、状态混合和相关结构。",
+      "method": "使用BigSur的修正Fano与相关统计作为特征/网络候选对照，再把候选放回原有留出菌株和培养重复验证框架。复用现有2025论文记录，不重复新增同一DOI。",
+      "metrics": [
+        {
+          "id": "v25_bigsur_mcfano",
+          "name": "修正Fano及特征检验",
+          "definition": "保存var.mc_Fano、var.FDR_adj_pvalue、拟合CV与被选基因；选择显著性针对方法的零模型。",
+          "origin": "native",
+          "unit": "corrected_fano / adjusted_p",
+          "denominator": "not_applicable"
+        },
+        {
+          "id": "v25_bigsur_correlation",
+          "name": "计数模型相关候选",
+          "definition": "保存修正相关与多重检验结果，并记录不同状态组成、UMI深度及培养重抽样下的边稳定性。",
+          "origin": "native_and_project_defined",
+          "unit": "correlation / adjusted_p / stability",
+          "denominator": "not_applicable"
+        }
+      ],
+      "invocations": [
+        {
+          "tool": "BigSur",
+          "language": "python",
+          "code": "from BigSur.feature_selection import mcfano_feature_selection\nmcfano_feature_selection(adata_copy, layer='counts', **calibrated_feature_options)",
+          "parameters": [
+            "calibrated_feature_options：共同CV、基因数、显著性和计算资源都需记录来源；无统一酵母推荐阈值。",
+            "相关模块单独核查源码版本：README说明相关代码曾仅在GitHub源码中提供，不能假设所有PyPI版本一致。",
+            "保留完整原始基因集；不能只对先筛选的高变基因声称全基因组noise发现。"
+          ],
+          "verified_version": "0.0.8 (pyproject.toml), source commit pinned",
+          "repository_commit": "cb6343ac5e45da374ff0d34ffb98766969be3c39",
+          "api_source": "https://github.com/landerlabcode/BigSur/blob/cb6343ac5e45da374ff0d34ffb98766969be3c39/src/BigSur/feature_selection.py",
+          "verification": "Function names and signatures checked against official source or manual; not executed on biological data.",
+          "execution_status": "recipe_only",
+          "placeholder_policy": "Named objects and parameter variables must be supplied from the project manifest; example values are not biological thresholds."
+        }
+      ],
+      "dois": [
+        "10.1186/s12859-025-06240-y",
+        "10.1186/s12859-024-05926-z"
+      ],
+      "yeastEligibility": "generic_umi_model_requires_calibration",
+      "cannotSupport": [
+        "显著高变特征不是细胞状态marker验证，也不是noise-QTL结果。",
+        "相关性不能给GRN边提供方向或因果证明。",
+        "原仓库将2024相关论文写成Silkwood 2023；网站应采用经Crossref/EuropePMC核对的2024正式发表年。"
+      ],
+      "frontend": [
+        "区分‘特征选择’‘注释marker’‘噪音候选’三类用途tag。",
+        "工具卡复用已存在文献lit-780ec4215f2f；链接真实输出字段。"
+      ],
+      "status": "reviewed_candidate_not_executed",
+      "sourceUrls": [
+        "https://doi.org/10.1186/s12859-025-06240-y",
+        "https://doi.org/10.1186/s12859-024-05926-z",
+        "https://github.com/landerlabcode/BigSur/blob/cb6343ac5e45da374ff0d34ffb98766969be3c39/src/BigSur/feature_selection.py"
+      ],
+      "newDataClaim": false
+    },
+    {
+      "id": "v25_pseudotime_uncertainty",
+      "priority": "P1",
+      "action": "extend_existing",
+      "title": "拟时序重估与动态基因检验",
+      "titleEn": "Pseudotime re-estimation in dynamic-gene tests",
+      "existingProjectIds": [
+        "trajectory_structure",
+        "noise_cycle",
+        "marker_inference_audit"
+      ],
+      "existingToolIds": [
+        "tradeseq",
+        "slingshot",
+        "countsplit",
+        "clusterde"
+      ],
+      "proposedToolIds": [
+        "pseudotimede"
+      ],
+      "stepIds": [
+        "dynamics",
+        "markers",
+        "validation"
+      ],
+      "inputIds": [
+        "count_matrix",
+        "cell_states",
+        "sample_metadata"
+      ],
+      "optionalInputIds": [
+        "yeast_cycle_reference",
+        "truth_or_simulation"
+      ],
+      "inputs": [
+        "基因×细胞原始计数；原始排序表；每次子抽样重新推断的排序表；已声明的轨迹结构。"
+      ],
+      "extraData": "独立周期证据或已知状态顺序用于判断轨迹是否存在；没有真实时间也可比较状态，但不能计量生长时间。",
+      "method": "对每次细胞子抽样重新推断拟时序，将排序不确定性传入均值趋势检验；与固定排序tradeSeq结果对照。周期分析需明示闭环和跨原点处理。",
+      "metrics": [
+        {
+          "id": "v25_pseudotime_rank_stability",
+          "name": "排序重抽样一致性",
+          "definition": "在共同细胞上比较排序与方向；环形相位先对齐原点和方向，再评估环形差异。",
+          "origin": "project_defined",
+          "unit": "rank/circular agreement",
+          "denominator": "not_applicable"
+        },
+        {
+          "id": "v25_pseudotimede_tests",
+          "name": "含排序不确定性的动态基因证据",
+          "definition": "同时保存固定排序与重抽样检验的p值、校正值及失败拟合；它们检验均值趋势，不是方差趋势。",
+          "origin": "native_and_project_defined",
+          "unit": "p_value / adjusted_p",
+          "denominator": "not_applicable"
+        }
+      ],
+      "invocations": [
+        {
+          "tool": "PseudotimeDE",
+          "language": "r",
+          "code": "result <- PseudotimeDE::runPseudotimeDE(gene.vec = test_genes, ori.tbl = full_order, sub.tbl = resampled_orders, mat = raw_counts, model = 'nb', k = spline_basis_size, seed = random_seed)",
+          "parameters": [
+            "full_order与resampled_orders按官方要求保存cell及pseudotime列。",
+            "重抽样需要重算排序，不能仅截取原排序。",
+            "spline_basis_size和random_seed存入运行清单；若sub.tbl为空，不能声称已传播拟时序不确定性。"
+          ],
+          "verified_version": "0.99.0; source commit pinned",
+          "repository_commit": "c278a487e11159b8c7f046f3943699e7ec232067",
+          "api_source": "https://github.com/SONGDONGYUAN1994/PseudotimeDE/blob/c278a487e11159b8c7f046f3943699e7ec232067/R/runPseudotimeDE.R",
+          "verification": "Function names and signatures checked against official source or manual; not executed on biological data.",
+          "execution_status": "recipe_only",
+          "placeholder_policy": "Named objects and parameter variables must be supplied from the project manifest; example values are not biological thresholds."
+        }
+      ],
+      "dois": [
+        "10.1186/s13059-021-02341-y"
+      ],
+      "yeastEligibility": "generic_method_conditional_on_valid_trajectory",
+      "cannotSupport": [
+        "原作者明确指出：数据没有潜在轨迹、却用同一数据的PC强造排序时，仍可能发生double dipping和假阳性。",
+        "该方法未自动处理培养重复或菌株间相关；跨组推断需另行建模。"
+      ],
+      "frontend": [
+        "排序来源、重估次数与平均表达/方差目标分开显示。",
+        "原始顺序、候选根、反向顺序和周期原点允许保存成不同方案，结果可并排比较。"
+      ],
+      "status": "reviewed_candidate_not_executed",
+      "sourceUrls": [
+        "https://doi.org/10.1186/s13059-021-02341-y",
+        "https://github.com/SONGDONGYUAN1994/PseudotimeDE/blob/c278a487e11159b8c7f046f3943699e7ec232067/R/runPseudotimeDE.R"
+      ],
+      "newDataClaim": false
+    },
+    {
+      "id": "v25_multisample_trajectories",
+      "priority": "P1",
+      "action": "extend_existing",
+      "title": "跨培养样本的轨迹与表达曲线",
+      "titleEn": "Replicate-aware trajectories and expression curves",
+      "existingProjectIds": [
+        "trajectory_structure",
+        "noise_cycle",
+        "state_composition"
+      ],
+      "existingToolIds": [
+        "condiments",
+        "tradeseq",
+        "milo"
+      ],
+      "proposedToolIds": [
+        "lamian"
+      ],
+      "stepIds": [
+        "dynamics",
+        "validation"
+      ],
+      "inputIds": [
+        "count_matrix",
+        "sample_metadata",
+        "cell_states",
+        "culture_replicates"
+      ],
+      "optionalInputIds": [
+        "timepoints"
+      ],
+      "inputs": [
+        "细胞到培养样本映射；样本级协变量设计；统一可比较的拟时序；库大小归一化并log变换的表达副本。"
+      ],
+      "extraData": "需要独立生物学样本覆盖；只有单个样本不能估计样本间不确定性。",
+      "method": "用Lamian比较样本间表达曲线与轨迹结构；与现有condiments和tradeSeq形成‘结构/均值/噪音’分层。不要把其log表达残差解释为原始RNA分子的随机噪音。",
+      "metrics": [
+        {
+          "id": "v25_lamian_curve_effect",
+          "name": "跨样本轨迹均值与趋势差异",
+          "definition": "保存overall、meanDiff、trendDiff的统计与调整结果及拟合参数；明确测试的是协变量如何改变均值曲线。",
+          "origin": "native",
+          "unit": "p_value / adjusted_p / curve",
+          "denominator": "not_applicable"
+        },
+        {
+          "id": "v25_lamian_branch_support",
+          "name": "分支支持与样本组成变化",
+          "definition": "保存轨迹重抽样支持和分支样本比例检验；核对不确定性来自细胞抽样还是样本差异。",
+          "origin": "native",
+          "unit": "support / composition effect",
+          "denominator": "not_applicable"
+        }
+      ],
+      "invocations": [
+        {
+          "tool": "Lamian",
+          "language": "r",
+          "code": "fit <- Lamian::lamian_test(expr = log_expression_copy, cellanno = cell_sample_map, pseudotime = pseudotime, design = sample_design, testvar = target_column, test.type = 'Variable', test.method = 'permutation', permuiter = permutation_runs, fix.all.zero = FALSE, ncores = allocated_cores)",
+          "parameters": [
+            "官方输入为log归一化矩阵，不是raw UMI。",
+            "源码默认fix.all.zero=TRUE会给样本内零方差基因加随机值；噪音项目显式关闭并预先检查不可拟合基因，失败则报告，不把加值后的矩阵回写。",
+            "小样本置换空间、设计秩、培养层级及同状态覆盖必须先核对。",
+            "包含org.Hs.eg.db依赖不意味着核心轨迹检验只支持人；任何富集功能需另用酵母注释。"
+          ],
+          "verified_version": "0.99.3",
+          "repository_commit": "bf7d1285393d8e3277235faa2ea4a7569191e350",
+          "api_source": "https://github.com/Winnie09/Lamian/blob/bf7d1285393d8e3277235faa2ea4a7569191e350/R/lamian_test.R",
+          "verification": "Function names and signatures checked against official source or manual; not executed on biological data.",
+          "execution_status": "recipe_only",
+          "placeholder_policy": "Named objects and parameter variables must be supplied from the project manifest; example values are not biological thresholds."
+        }
+      ],
+      "dois": [
+        "10.1038/s41467-023-42841-y"
+      ],
+      "yeastEligibility": "generic_method_with_replicates_and_yeast_annotations",
+      "cannotSupport": [
+        "表达均值曲线变化不是条件化噪音变化。",
+        "分支或拟时序不是菌株进化树。",
+        "加随机值修复退化输入可能改变变异结构，需要保留和报告原数据。"
+      ],
+      "frontend": [
+        "轨迹页面并列样本覆盖、拟时序区间与拟合失败信息。",
+        "区分‘表达曲线比较’和‘周期噪音比较’，共享状态坐标但使用不同计数层与模型。"
+      ],
+      "status": "reviewed_candidate_not_executed",
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41467-023-42841-y",
+        "https://github.com/Winnie09/Lamian/blob/bf7d1285393d8e3277235faa2ea4a7569191e350/R/lamian_test.R"
+      ],
+      "newDataClaim": false
+    },
+    {
+      "id": "v25_cycle_spectral",
+      "priority": "P2",
+      "action": "extend_existing",
+      "title": "环形状态重建与周期信号分离",
+      "titleEn": "Cyclic state reconstruction and signal isolation",
+      "existingProjectIds": [
+        "noise_cycle",
+        "trajectory_structure"
+      ],
+      "existingToolIds": [
+        "tricycle",
+        "velocycle",
+        "schot"
+      ],
+      "proposedToolIds": [
+        "scprisma"
+      ],
+      "stepIds": [
+        "annotation",
+        "dynamics",
+        "validation"
+      ],
+      "inputIds": [
+        "count_matrix",
+        "sample_metadata",
+        "yeast_cycle_reference"
+      ],
+      "optionalInputIds": [
+        "truth_or_simulation"
+      ],
+      "inputs": [
+        "明确归一化的表达副本；覆盖完整周期的酵母相位证据或部分顺序；每个菌株的状态覆盖。"
+      ],
+      "extraData": "无需spliced/unspliced，但需要验证闭环假设；最好有独立周期参考。",
+      "method": "用scPrisma建立周期顺序对照，比较独立marker相位与原始空间闭环支持。仅把过滤/增强矩阵用于定位周期信号，再回到原始计数估计噪音。",
+      "metrics": [
+        {
+          "id": "v25_cycle_spectral_agreement",
+          "name": "周期排序与独立相位一致性",
+          "definition": "比较对齐后的环形相位、重复拟合稳定性以及不同菌株的相位覆盖；不把人为增强后的圆环当独立证据。",
+          "origin": "project_defined",
+          "unit": "circular agreement / coverage",
+          "denominator": "not_applicable"
+        },
+        {
+          "id": "v25_cycle_enhancement_sensitivity",
+          "name": "周期增强和过滤敏感性",
+          "definition": "记录哪些基因及局部表达被变换，以及在未变换原始计数上得到的噪音结论是否保持。",
+          "origin": "project_defined",
+          "unit": "matrix change / noise-effect stability",
+          "denominator": "not_applicable"
+        }
+      ],
+      "invocations": [
+        {
+          "tool": "scPrisma",
+          "language": "python",
+          "code": "from scPrisma import algorithms\nE, reconstructed = algorithms.reconstruction_cyclic(normalized_copy)\norder = algorithms.e_to_range(reconstructed)",
+          "parameters": [
+            "前处理、随机种子与优化配置固定；部分prior只能来自独立证据。",
+            "不将文档中G1/S/G2M示例标签直接替换为未经确认的酵母周期阶段。",
+            "构造细胞排列矩阵前估算二次内存开销。"
+          ],
+          "verified_version": "0.0.5",
+          "repository_commit": "b7bc40b7277654b917f0dae45f65935fdd3328d4",
+          "api_source": "https://github.com/nitzanlab/scPrisma/blob/b7bc40b7277654b917f0dae45f65935fdd3328d4/scPrisma/algorithms.py",
+          "verification": "Function names and signatures checked against official source or manual; not executed on biological data.",
+          "execution_status": "recipe_only",
+          "placeholder_policy": "Named objects and parameter variables must be supplied from the project manifest; example values are not biological thresholds."
+        }
+      ],
+      "dois": [
+        "10.1038/s41587-023-01663-5"
+      ],
+      "yeastEligibility": "generic_cycle_model_requires_yeast_phase_validation",
+      "cannotSupport": [
+        "周期模板本身可能强化闭环，不能单独证明细胞循环。",
+        "周期相位无自然分钟尺度或祖先后代含义。",
+        "增强/过滤后表达矩阵不可直接作为表达噪音真值。"
+      ],
+      "frontend": [
+        "周期、线性、分支模型分开选择；展示独立证据和模型假设。",
+        "增强图与原始计数图并列并清楚命名。"
+      ],
+      "status": "reviewed_candidate_not_executed",
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41587-023-01663-5",
+        "https://github.com/nitzanlab/scPrisma/blob/b7bc40b7277654b917f0dae45f65935fdd3328d4/scPrisma/algorithms.py"
+      ],
+      "newDataClaim": false
+    },
+    {
+      "id": "v25_temporal_ot",
+      "priority": "P2",
+      "action": "extend_existing_conditional_branch",
+      "title": "真实采样时间的状态耦合",
+      "titleEn": "State coupling across experimental time",
+      "existingProjectIds": [
+        "trajectory_structure",
+        "velocity_feasibility",
+        "temporal_mechanistic_grn"
+      ],
+      "existingToolIds": [
+        "cellrank",
+        "cellot"
+      ],
+      "proposedToolIds": [
+        "moscot"
+      ],
+      "stepIds": [
+        "dynamics",
+        "validation"
+      ],
+      "inputIds": [
+        "count_matrix",
+        "sample_metadata",
+        "timepoints"
+      ],
+      "optionalInputIds": [
+        "culture_replicates"
+      ],
+      "inputs": [
+        "同一过程可比较的多个真实采样时间；一致表达表示；培养/菌株/批次记录；明确质量守恒或增长边际设定。"
+      ],
+      "extraData": "必须有真实采样时间；可选独立增长信息。空间坐标、ATAC、谱系条码属于其他可选分支，不能由scRNA填造。",
+      "method": "以moscot TemporalProblem生成相邻时间点的状态耦合，必要时进入CellRank RealTimeKernel；用时间留出、无时间对照和边际敏感性检查。无需RNA velocity，但不是对稀少剪接信息的万能替代。",
+      "metrics": [
+        {
+          "id": "v25_temporal_transport",
+          "name": "时间点状态转移质量与不确定性",
+          "definition": "保留耦合、边际残差、收敛状态和群体转移质量；转移熵与耦合稀疏化敏感性分开报告。",
+          "origin": "native_and_project_defined",
+          "unit": "mass / convergence / entropy",
+          "denominator": "not_applicable"
+        },
+        {
+          "id": "v25_temporal_holdout",
+          "name": "时间留出预测误差",
+          "definition": "在真实时间留出后比较预测和观测的状态/表达分布，并与无变化、最近时间及随机耦合基线比较。",
+          "origin": "project_defined",
+          "unit": "distribution discrepancy",
+          "denominator": "held-out experimental samples/time points"
+        }
+      ],
+      "invocations": [
+        {
+          "tool": "moscot",
+          "language": "python",
+          "code": "from moscot.problems.time import TemporalProblem\ntransport = TemporalProblem(adata_copy).prepare(time_key='sampling_time', joint_attr=representation_key)\ntransport.solve(**calibrated_transport_options)",
+          "parameters": [
+            "calibrated_transport_options：epsilon、tau_a/tau_b、成本尺度、rank、收敛/内存参数分别记录。",
+            "不直接调用人/鼠增殖和凋亡默认基因集；酵母增长边际另验证。",
+            "同一个时间点的不同菌株并不是时间序列；不可按系统发育顺序伪造采样时间。"
+          ],
+          "verified_version": "Source commit pinned; Python >=3.11 declared in pyproject.toml",
+          "repository_commit": "d6e1bb10398cb9ad1e8577552439a6c571a4903a",
+          "api_source": "https://github.com/theislab/moscot/blob/d6e1bb10398cb9ad1e8577552439a6c571a4903a/src/moscot/problems/time/_lineage.py",
+          "verification": "Function names and signatures checked against official source or manual; not executed on biological data.",
+          "execution_status": "recipe_only",
+          "placeholder_policy": "Named objects and parameter variables must be supplied from the project manifest; example values are not biological thresholds."
+        }
+      ],
+      "dois": [
+        "10.1038/s41586-024-08453-2"
+      ],
+      "yeastEligibility": "conditional_on_real_time_series",
+      "cannotSupport": [
+        "OT耦合不是单细胞真实谱系追踪。",
+        "状态耦合不能重建酵母种群的历史进化轨迹。",
+        "当前只有raw FQ且尚无时间记录确认时，应显示额外数据待确认。"
+      ],
+      "frontend": [
+        "真实时间字段未导入时保留方案卡，明确依赖，不能生成已有动力学结果。",
+        "分清真实时间、周期相位、拟时序和系统发育位置四种坐标。"
+      ],
+      "status": "reviewed_candidate_not_executed",
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41586-024-08453-2",
+        "https://github.com/theislab/moscot/blob/d6e1bb10398cb9ad1e8577552439a6c571a4903a/src/moscot/problems/time/_lineage.py"
+      ],
+      "newDataClaim": false
+    },
+    {
+      "id": "v25_power_mean_eqtl",
+      "priority": "P2",
+      "action": "extend_existing",
+      "title": "现有数据覆盖与均值/eQTL功效基线",
+      "titleEn": "Pilot-derived coverage and mean/eQTL power baselines",
+      "existingProjectIds": [
+        "noise_power",
+        "count_mean_qtl_comparator"
+      ],
+      "existingToolIds": [
+        "scdesign3",
+        "screadsim",
+        "memento"
+      ],
+      "proposedToolIds": [
+        "scpower"
+      ],
+      "stepIds": [
+        "design",
+        "sampleqc",
+        "validation",
+        "genetics"
+      ],
+      "inputIds": [
+        "count_matrix",
+        "sample_metadata"
+      ],
+      "optionalInputIds": [
+        "culture_replicates",
+        "genotypes",
+        "kinship"
+      ],
+      "inputs": [
+        "来自酵母数据的均值/离散度分布、每菌株状态比例、read-to-UMI关系和效应情景；eQTL额外需要合适遗传设计。"
+      ],
+      "extraData": "均值/覆盖对照可使用现有scRNA；遗传功效需真实等位频率、倍性、相关结构及效应假设。",
+      "method": "把scPower用于解释基因可检测性与均值/eQTL参考功效；表达噪音功效仍用现有噪音测量模型和分层模拟。已测数据以覆盖和精度分析为主，不凭空填实验预算。",
+      "metrics": [
+        {
+          "id": "v25_power_detection",
+          "name": "可检测性与统计功效分解",
+          "definition": "区分目标基因在样本中可检测的概率与满足所定义均值/eQTL检验功效；输出所用效应、样本数和深度情景。",
+          "origin": "native",
+          "unit": "probability",
+          "denominator": "genes and parameter scenarios in the declared prior"
+        },
+        {
+          "id": "v25_power_prior_transfer",
+          "name": "酵母先验与默认先验敏感性",
+          "definition": "记录从本数据估计的参数及替换默认参数后的曲线变化；模拟结果只适用于已声明模型。",
+          "origin": "project_defined",
+          "unit": "scenario contrast",
+          "denominator": "not_applicable"
+        }
+      ],
+      "invocations": [
+        {
+          "tool": "scPower",
+          "language": "r",
+          "code": "power_result <- do.call(scPower::power.general.withDoublets, yeast_pilot_parameters)",
+          "parameters": [
+            "yeast_pilot_parameters按官方函数签名提供nSamples、nCells、readDepth、ct.freq、type、参考效应、read.umi.fit、gamma.mixed.fits、ct及disp.fun.param等。",
+            "显式替换nGenes、双细胞率模型、mappingEfficiency、可检出规则和多重检验假设，不能沿用人类示例。",
+            "函数内部eQTL模拟含二倍体/HWE基因型逻辑；酵母不同倍性、LD和群体亲缘需专用模拟校准。"
+          ],
+          "verified_version": "1.0.4",
+          "repository_commit": "82039da57fb53839c7c88bdc6745aced4b7017b9",
+          "api_source": "https://github.com/heiniglab/scPower/blob/82039da57fb53839c7c88bdc6745aced4b7017b9/R/power.R",
+          "verification": "Function names and signatures checked against official source or manual; not executed on biological data.",
+          "execution_status": "recipe_only",
+          "placeholder_policy": "Named objects and parameter variables must be supplied from the project manifest; example values are not biological thresholds."
+        }
+      ],
+      "dois": [
+        "10.1038/s41467-021-26779-7"
+      ],
+      "yeastEligibility": "adaptation_required_not_noise_power",
+      "cannotSupport": [
+        "scPower均值/eQTL功效不等于表达噪音QTL功效。",
+        "没有真实重复和效应假设时不能给出单一可信的所需细胞数。"
+      ],
+      "frontend": [
+        "先验来源和目标检验必须可查看；人类默认值不预填成酵母推荐值。",
+        "已测数据模式默认展示深度/样本/状态覆盖，实验预算只作为用户有实际成本时的可选页。"
+      ],
+      "status": "reviewed_candidate_not_executed",
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41467-021-26779-7",
+        "https://github.com/heiniglab/scPower/blob/82039da57fb53839c7c88bdc6745aced4b7017b9/R/power.R"
+      ],
+      "newDataClaim": false
+    }
+  ],
+  "references": [
+    {
+      "doi": "10.1093/bioinformatics/btaf521",
+      "url": "https://doi.org/10.1093/bioinformatics/btaf521",
+      "existingPaperId": null,
+      "action": "add_verified_reference",
+      "title": "Conformal inference for reliable single cell RNA-seq annotation",
+      "authors": [
+        {
+          "ORCID": "https://orcid.org/0000-0001-8179-3839",
+          "authenticated-orcid": false,
+          "given": "Marcos",
+          "family": "López-De-Castro",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Institute of Data Science and Artificial Intelligence (DATAI), University of Navarra , Pamplona, Navarra 31009,",
+              "place": [
+                "Spain"
+              ]
+            },
+            {
+              "name": "TECNUN School of Engineering, University of Navarra , Donostia-San Sebastián, Basque Country, 20018,",
+              "place": [
+                "Spain"
+              ]
+            },
+            {
+              "name": "Cancer Center CCUN, Clínica Universidad de Navarra , Pamplona, Navarra, 31080,",
+              "place": [
+                "Spain"
+              ]
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0001-7692-9113",
+          "authenticated-orcid": false,
+          "given": "Alberto",
+          "family": "García-Galindo",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Institute of Data Science and Artificial Intelligence (DATAI), University of Navarra , Pamplona, Navarra 31009,",
+              "place": [
+                "Spain"
+              ]
+            },
+            {
+              "name": "TECNUN School of Engineering, University of Navarra , Donostia-San Sebastián, Basque Country, 20018,",
+              "place": [
+                "Spain"
+              ]
+            },
+            {
+              "name": "Cancer Center CCUN, Clínica Universidad de Navarra , Pamplona, Navarra, 31080,",
+              "place": [
+                "Spain"
+              ]
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-8549-0453",
+          "authenticated-orcid": false,
+          "given": "José",
+          "family": "González-Gomariz",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Institute of Data Science and Artificial Intelligence (DATAI), University of Navarra , Pamplona, Navarra 31009,",
+              "place": [
+                "Spain"
+              ]
+            },
+            {
+              "name": "TECNUN School of Engineering, University of Navarra , Donostia-San Sebastián, Basque Country, 20018,",
+              "place": [
+                "Spain"
+              ]
+            },
+            {
+              "name": "Cancer Center CCUN, Clínica Universidad de Navarra , Pamplona, Navarra, 31080,",
+              "place": [
+                "Spain"
+              ]
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0003-4049-0000",
+          "authenticated-orcid": false,
+          "given": "Rubén",
+          "family": "Armañanzas",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Institute of Data Science and Artificial Intelligence (DATAI), University of Navarra , Pamplona, Navarra 31009,",
+              "place": [
+                "Spain"
+              ]
+            },
+            {
+              "name": "TECNUN School of Engineering, University of Navarra , Donostia-San Sebastián, Basque Country, 20018,",
+              "place": [
+                "Spain"
+              ]
+            },
+            {
+              "name": "Cancer Center CCUN, Clínica Universidad de Navarra , Pamplona, Navarra, 31080,",
+              "place": [
+                "Spain"
+              ]
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "journal": "Bioinformatics",
+      "date": [
+        2025,
+        9,
+        18
+      ],
+      "publicationType": "journal-article",
+      "metadataVerified": {
+        "crossref": true,
+        "europepmc": true
+      },
+      "sourceUrls": [
+        "https://api.crossref.org/works/10.1093%2Fbioinformatics%2Fbtaf521",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1093%2Fbioinformatics%2Fbtaf521%22&format=json&resultType=core",
+        "https://doi.org/10.1093/bioinformatics/btaf521"
+      ]
+    },
+    {
+      "doi": "10.1186/s12859-021-03957-4",
+      "url": "https://doi.org/10.1186/s12859-021-03957-4",
+      "existingPaperId": null,
+      "action": "add_verified_reference",
+      "title": "Selecting single cell clustering parameter values using subsampling-based robustness metrics",
+      "authors": [
+        {
+          "given": "Ryan B.",
+          "family": "Patterson-Cross",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Ariel J.",
+          "family": "Levine",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-4096-8601",
+          "authenticated-orcid": false,
+          "given": "Vilas",
+          "family": "Menon",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "journal": "BMC Bioinformatics",
+      "date": [
+        2021,
+        2,
+        1
+      ],
+      "publicationType": "journal-article",
+      "metadataVerified": {
+        "crossref": true,
+        "europepmc": true
+      },
+      "sourceUrls": [
+        "https://api.crossref.org/works/10.1186%2Fs12859-021-03957-4",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1186%2Fs12859-021-03957-4%22&format=json&resultType=core",
+        "https://doi.org/10.1186/s12859-021-03957-4"
+      ]
+    },
+    {
+      "doi": "10.1101/2025.02.03.636129",
+      "url": "https://doi.org/10.1101/2025.02.03.636129",
+      "existingPaperId": null,
+      "action": "add_verified_reference",
+      "title": "Principled PCA separates signal from noise in omics count data",
+      "authors": [
+        {
+          "ORCID": "https://orcid.org/0000-0002-9227-8928",
+          "authenticated-orcid": false,
+          "suffix": "III",
+          "given": "Jay S.",
+          "family": "Stanley",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Program in Applied Mathematics, Yale University, New Haven, CT, USA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0003-0988-1564",
+          "authenticated-orcid": false,
+          "given": "Junchen",
+          "family": "Yang",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Interdepartmental Program in Computational Biology and Bioinformatics, Yale University, New Haven, CT, USA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Ruiqi",
+          "family": "Li",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Interdepartmental Program in Computational Biology and Bioinformatics, Yale University, New Haven, CT, USA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Ofir",
+          "family": "Lindenbaum",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Faculty of Engineering, Bar Ilan University, Ramat-Gan, Israel"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-5639-7209",
+          "authenticated-orcid": false,
+          "given": "Dmitry",
+          "family": "Kobak",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Hertie Institute for AI in Brain Health, University of Tübingen, Germany"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Boris",
+          "family": "Landa",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Program in Applied Mathematics, Yale University, New Haven, CT, USA"
+            },
+            {
+              "name": "Department of Electrical and Computer Engineering, Yale University, New Haven, CT, USA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-3035-071X",
+          "authenticated-orcid": false,
+          "given": "Yuval",
+          "family": "Kluger",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Program in Applied Mathematics, Yale University, New Haven, CT, USA"
+            },
+            {
+              "name": "Interdepartmental Program in Computational Biology and Bioinformatics, Yale University, New Haven, CT, USA"
+            },
+            {
+              "name": "Department of Pathology, Yale University, New Haven, CT, USA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "journal": "bioRxiv",
+      "date": [
+        2025,
+        2,
+        7
+      ],
+      "publicationType": "preprint",
+      "metadataVerified": {
+        "crossref": true,
+        "europepmc": true
+      },
+      "sourceUrls": [
+        "https://api.crossref.org/works/10.1101%2F2025.02.03.636129",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1101%2F2025.02.03.636129%22&format=json&resultType=core",
+        "https://doi.org/10.1101/2025.02.03.636129"
+      ]
+    },
+    {
+      "doi": "10.1186/s12859-025-06240-y",
+      "url": "https://doi.org/10.1186/s12859-025-06240-y",
+      "existingPaperId": "lit-780ec4215f2f",
+      "action": "reuse_existing",
+      "title": "Statistically principled feature selection for single cell transcriptomics",
+      "authors": [
+        {
+          "given": "Emmanuel P.",
+          "family": "Dollinger",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Kai",
+          "family": "Silkwood",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Scott",
+          "family": "Atwood",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Qing",
+          "family": "Nie",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Arthur D.",
+          "family": "Lander",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "journal": "BMC Bioinformatics",
+      "date": [
+        2025,
+        10,
+        2
+      ],
+      "publicationType": "journal-article",
+      "metadataVerified": {
+        "crossref": true,
+        "europepmc": true
+      },
+      "sourceUrls": [
+        "https://api.crossref.org/works/10.1186%2Fs12859-025-06240-y",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1186%2Fs12859-025-06240-y%22&format=json&resultType=core",
+        "https://doi.org/10.1186/s12859-025-06240-y"
+      ]
+    },
+    {
+      "doi": "10.1186/s12859-024-05926-z",
+      "url": "https://doi.org/10.1186/s12859-024-05926-z",
+      "existingPaperId": null,
+      "action": "add_verified_reference",
+      "title": "Leveraging gene correlations in single cell transcriptomic data",
+      "authors": [
+        {
+          "given": "Kai",
+          "family": "Silkwood",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Emmanuel",
+          "family": "Dollinger",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Joshua",
+          "family": "Gervin",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Scott",
+          "family": "Atwood",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Qing",
+          "family": "Nie",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Arthur D.",
+          "family": "Lander",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "journal": "BMC Bioinformatics",
+      "date": [
+        2024,
+        9,
+        18
+      ],
+      "publicationType": "journal-article",
+      "metadataVerified": {
+        "crossref": true,
+        "europepmc": true
+      },
+      "sourceUrls": [
+        "https://api.crossref.org/works/10.1186%2Fs12859-024-05926-z",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1186%2Fs12859-024-05926-z%22&format=json&resultType=core",
+        "https://doi.org/10.1186/s12859-024-05926-z"
+      ]
+    },
+    {
+      "doi": "10.1186/s13059-021-02341-y",
+      "url": "https://doi.org/10.1186/s13059-021-02341-y",
+      "existingPaperId": null,
+      "action": "add_verified_reference",
+      "title": "PseudotimeDE: inference of differential gene expression along cell pseudotime with well-calibrated p-values from single-cell RNA sequencing data",
+      "authors": [
+        {
+          "given": "Dongyuan",
+          "family": "Song",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Jingyi Jessica",
+          "family": "Li",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "journal": "Genome Biology",
+      "date": [
+        2021,
+        4,
+        29
+      ],
+      "publicationType": "journal-article",
+      "metadataVerified": {
+        "crossref": true,
+        "europepmc": true
+      },
+      "sourceUrls": [
+        "https://api.crossref.org/works/10.1186%2Fs13059-021-02341-y",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1186%2Fs13059-021-02341-y%22&format=json&resultType=core",
+        "https://doi.org/10.1186/s13059-021-02341-y"
+      ]
+    },
+    {
+      "doi": "10.1038/s41467-023-42841-y",
+      "url": "https://doi.org/10.1038/s41467-023-42841-y",
+      "existingPaperId": null,
+      "action": "add_verified_reference",
+      "title": "A statistical framework for differential pseudotime analysis with multiple single-cell RNA-seq samples",
+      "authors": [
+        {
+          "ORCID": "https://orcid.org/0000-0003-0972-2192",
+          "authenticated-orcid": false,
+          "given": "Wenpin",
+          "family": "Hou",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Zhicheng",
+          "family": "Ji",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Zeyu",
+          "family": "Chen",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "E. John",
+          "family": "Wherry",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-7858-0231",
+          "authenticated-orcid": false,
+          "given": "Stephanie C.",
+          "family": "Hicks",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-6480-0141",
+          "authenticated-orcid": false,
+          "given": "Hongkai",
+          "family": "Ji",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "journal": "Nature Communications",
+      "date": [
+        2023,
+        11,
+        10
+      ],
+      "publicationType": "journal-article",
+      "metadataVerified": {
+        "crossref": true,
+        "europepmc": true
+      },
+      "sourceUrls": [
+        "https://api.crossref.org/works/10.1038%2Fs41467-023-42841-y",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1038%2Fs41467-023-42841-y%22&format=json&resultType=core",
+        "https://doi.org/10.1038/s41467-023-42841-y"
+      ]
+    },
+    {
+      "doi": "10.1038/s41587-023-01663-5",
+      "url": "https://doi.org/10.1038/s41587-023-01663-5",
+      "existingPaperId": null,
+      "action": "add_verified_reference",
+      "title": "scPrisma infers, filters and enhances topological signals in single-cell data using spectral template matching",
+      "authors": [
+        {
+          "ORCID": "https://orcid.org/0000-0002-8398-6025",
+          "authenticated-orcid": false,
+          "given": "Jonathan",
+          "family": "Karin",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Yonathan",
+          "family": "Bornfeld",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0003-0074-9196",
+          "authenticated-orcid": false,
+          "given": "Mor",
+          "family": "Nitzan",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "journal": "Nature Biotechnology",
+      "date": [
+        2023,
+        2,
+        27
+      ],
+      "publicationType": "journal-article",
+      "metadataVerified": {
+        "crossref": true,
+        "europepmc": true
+      },
+      "sourceUrls": [
+        "https://api.crossref.org/works/10.1038%2Fs41587-023-01663-5",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1038%2Fs41587-023-01663-5%22&format=json&resultType=core",
+        "https://doi.org/10.1038/s41587-023-01663-5"
+      ]
+    },
+    {
+      "doi": "10.1038/s41586-024-08453-2",
+      "url": "https://doi.org/10.1038/s41586-024-08453-2",
+      "existingPaperId": null,
+      "action": "add_verified_reference",
+      "title": "Mapping cells through time and space with moscot",
+      "authors": [
+        {
+          "ORCID": "https://orcid.org/0000-0002-7334-3501",
+          "authenticated-orcid": false,
+          "given": "Dominik",
+          "family": "Klein",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Giovanni",
+          "family": "Palla",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-4846-1266",
+          "authenticated-orcid": false,
+          "given": "Marius",
+          "family": "Lange",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Michal",
+          "family": "Klein",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0003-0241-8948",
+          "authenticated-orcid": false,
+          "given": "Zoe",
+          "family": "Piran",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Manuel",
+          "family": "Gander",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Laetitia",
+          "family": "Meng-Papaxanthos",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Michael",
+          "family": "Sterr",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0009-0004-0297-050X",
+          "authenticated-orcid": false,
+          "given": "Lama",
+          "family": "Saber",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-0671-4114",
+          "authenticated-orcid": false,
+          "given": "Changying",
+          "family": "Jing",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Aimée",
+          "family": "Bastidas-Ponce",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Perla",
+          "family": "Cota",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Marta",
+          "family": "Tarquis-Medina",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Shrey",
+          "family": "Parikh",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Ilan",
+          "family": "Gold",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-4597-8825",
+          "authenticated-orcid": false,
+          "given": "Heiko",
+          "family": "Lickert",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-2307-1122",
+          "authenticated-orcid": false,
+          "given": "Mostafa",
+          "family": "Bakhti",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0003-0074-9196",
+          "authenticated-orcid": false,
+          "given": "Mor",
+          "family": "Nitzan",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Marco",
+          "family": "Cuturi",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-2419-1943",
+          "authenticated-orcid": false,
+          "given": "Fabian J.",
+          "family": "Theis",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "journal": "Nature",
+      "date": [
+        2025,
+        1,
+        22
+      ],
+      "publicationType": "journal-article",
+      "metadataVerified": {
+        "crossref": true,
+        "europepmc": true
+      },
+      "sourceUrls": [
+        "https://api.crossref.org/works/10.1038%2Fs41586-024-08453-2",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1038%2Fs41586-024-08453-2%22&format=json&resultType=core",
+        "https://doi.org/10.1038/s41586-024-08453-2"
+      ]
+    },
+    {
+      "doi": "10.1038/s41467-021-26779-7",
+      "url": "https://doi.org/10.1038/s41467-021-26779-7",
+      "existingPaperId": null,
+      "action": "add_verified_reference",
+      "title": "scPower accelerates and optimizes the design of multi-sample single cell transcriptomic studies",
+      "authors": [
+        {
+          "ORCID": "https://orcid.org/0000-0001-7082-1099",
+          "authenticated-orcid": false,
+          "given": "Katharina T.",
+          "family": "Schmid",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0001-9848-7870",
+          "authenticated-orcid": false,
+          "given": "Barbara",
+          "family": "Höllbacher",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Cristiana",
+          "family": "Cruceanu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0001-5473-3136",
+          "authenticated-orcid": false,
+          "given": "Anika",
+          "family": "Böttcher",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-4597-8825",
+          "authenticated-orcid": false,
+          "given": "Heiko",
+          "family": "Lickert",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0001-7088-6618",
+          "authenticated-orcid": false,
+          "given": "Elisabeth B.",
+          "family": "Binder",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-2419-1943",
+          "authenticated-orcid": false,
+          "given": "Fabian J.",
+          "family": "Theis",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-5612-1720",
+          "authenticated-orcid": false,
+          "given": "Matthias",
+          "family": "Heinig",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "journal": "Nature Communications",
+      "date": [
+        2021,
+        11,
+        16
+      ],
+      "publicationType": "journal-article",
+      "metadataVerified": {
+        "crossref": true,
+        "europepmc": true
+      },
+      "sourceUrls": [
+        "https://api.crossref.org/works/10.1038%2Fs41467-021-26779-7",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1038%2Fs41467-021-26779-7%22&format=json&resultType=core",
+        "https://doi.org/10.1038/s41467-021-26779-7"
+      ]
+    },
+    {
+      "doi": "10.1038/s41467-021-25960-2",
+      "url": "https://doi.org/10.1038/s41467-021-25960-2",
+      "existingPaperId": null,
+      "action": "add_verified_reference",
+      "title": "Confronting false discoveries in single-cell differential expression",
+      "authors": [
+        {
+          "ORCID": "https://orcid.org/0000-0003-0551-859X",
+          "authenticated-orcid": false,
+          "given": "Jordan W.",
+          "family": "Squair",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0003-4910-8576",
+          "authenticated-orcid": false,
+          "given": "Matthieu",
+          "family": "Gautier",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0001-6441-1755",
+          "authenticated-orcid": false,
+          "given": "Claudia",
+          "family": "Kathe",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Mark A.",
+          "family": "Anderson",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Nicholas D.",
+          "family": "James",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0001-6795-2688",
+          "authenticated-orcid": false,
+          "given": "Thomas H.",
+          "family": "Hutson",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Rémi",
+          "family": "Hudelle",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-1245-9404",
+          "authenticated-orcid": false,
+          "given": "Taha",
+          "family": "Qaiser",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Kaya J. E.",
+          "family": "Matson",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0003-0894-1959",
+          "authenticated-orcid": false,
+          "given": "Quentin",
+          "family": "Barraud",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-0335-0730",
+          "authenticated-orcid": false,
+          "given": "Ariel J.",
+          "family": "Levine",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Gioele",
+          "family": "La Manno",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-2168-1621",
+          "authenticated-orcid": false,
+          "given": "Michael A.",
+          "family": "Skinnider",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-5744-4142",
+          "authenticated-orcid": false,
+          "given": "Grégoire",
+          "family": "Courtine",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "journal": "Nature Communications",
+      "date": [
+        2021,
+        9,
+        28
+      ],
+      "publicationType": "journal-article",
+      "metadataVerified": {
+        "crossref": true,
+        "europepmc": true
+      },
+      "sourceUrls": [
+        "https://api.crossref.org/works/10.1038%2Fs41467-021-25960-2",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1038%2Fs41467-021-25960-2%22&format=json&resultType=core",
+        "https://doi.org/10.1038/s41467-021-25960-2"
+      ]
+    },
+    {
+      "doi": "10.1093/nar/gkv007",
+      "url": "https://doi.org/10.1093/nar/gkv007",
+      "existingPaperId": null,
+      "action": "add_verified_reference",
+      "title": "limma powers differential expression analyses for RNA-sequencing and microarray studies",
+      "authors": [
+        {
+          "given": "Matthew E.",
+          "family": "Ritchie",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Belinda",
+          "family": "Phipson",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Di",
+          "family": "Wu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Yifang",
+          "family": "Hu",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Charity W.",
+          "family": "Law",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Wei",
+          "family": "Shi",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Gordon K.",
+          "family": "Smyth",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "journal": "Nucleic Acids Research",
+      "date": [
+        2015,
+        1,
+        20
+      ],
+      "publicationType": "journal-article",
+      "metadataVerified": {
+        "crossref": true,
+        "europepmc": true
+      },
+      "sourceUrls": [
+        "https://api.crossref.org/works/10.1093%2Fnar%2Fgkv007",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1093%2Fnar%2Fgkv007%22&format=json&resultType=core",
+        "https://doi.org/10.1093/nar/gkv007"
+      ]
+    }
+  ],
+  "metricsCount": 22,
+  "validation": {
+    "candidateCount": 10,
+    "allExistingIdsResolved": true,
+    "pythonRecipesParse": true,
+    "rRecipesSignatureReviewed": true,
+    "biologicalExecution": false,
+    "allCrossrefRecordsVerified": true,
+    "allEuropePMCRecordsVerified": true
+  },
+  "sourceFailuresResolved": [
+    "Crossref first attempt for BiPCA returned HTTP 429; a later sequential request succeeded.",
+    "Academic-search MCP tools were unavailable; web primary sources, Crossref and EuropePMC were used.",
+    "One guessed PseudotimeDE repository URL returned 404; the original paper's SONGDONGYUAN1994/PseudotimeDE repository was located and verified."
+  ],
+  "exclusions": [
+    {
+      "topic": "Human pretrained cell-state models",
+      "reason": "Geneformer/scGPT and mammalian reference signatures are already listed as transfer benchmarks. They cannot substitute for yeast references or be reported as directly usable yeast annotators."
+    },
+    {
+      "topic": "Cell–cell communication",
+      "reason": "Ligand–receptor catalogues and mammalian complexes cannot be transferred wholesale to yeast. Yeast pheromone/signalling programs can be described; signalling flux and physical communication require matching prior evidence/design."
+    },
+    {
+      "topic": "Spatial inference, lineage tracing, metabolic RNA labelling",
+      "reason": "Keep as input-gated extensions. Raw short-read scRNA does not itself supply spatial coordinates, lineage barcodes or labelled/new RNA fractions."
+    },
+    {
+      "topic": "Evolution from pseudotime/velocity",
+      "reason": "Retain separate genotype/phylogeny appendix. Cellular-state order, cycling phase and species/strain evolutionary history are different estimands."
+    },
+    {
+      "topic": "Virtual perturbation as established causality",
+      "reason": "Existing CellOracle/scTenifoldKnk/CPA/GEARS/CellOT/Systema routes already cover this class. Add split/negative-control requirements there rather than duplicate tools or claim effects from unperturbed snapshots."
+    },
+    {
+      "topic": "More embedding names as new discoveries",
+      "reason": "PCA/UMAP/t-SNE/PaCMAP-style visualisations support exploration. Neighbourhood and geometry validation matters more than treating every projection as an independent biological result."
+    }
+  ]
+}

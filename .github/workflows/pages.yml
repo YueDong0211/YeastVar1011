@@ -34,6 +34,14 @@ jobs:
       - run: node research/qa-csl-publication-types-v24.cjs
       - run: node research/qa-marker-metadata.cjs
       - run: node research/qa-database-hub-v24.cjs
+      - run: node research/qa-marker-usability-v25.cjs
+      - run: node research/qa-marker-evidence-v25.cjs
+      - run: node research/v25-methods-test.cjs
+      - run: node research/qa-database-preparation-v25.cjs
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/qa-catalogue-versioning.py
       - name: Assistant interface and catalogue integration
         run: |
           PORT=4173 node scripts/dev-server.cjs &

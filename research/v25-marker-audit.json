@@ -1,0 +1,209 @@
+{
+  "baseline": {
+    "markers": 5124,
+    "sources": 42,
+    "evidence": 27429
+  },
+  "mappedGenes": 377,
+  "newGenes": 12,
+  "relationships": 875,
+  "sourceRelationshipCounts": {
+    "gasch2017_s3": 61,
+    "urbonaite2021_s4": 116,
+    "urbonaite2021_s6": 226,
+    "urbonaite2021_s7": 281,
+    "urbonaite2021_s8": 191
+  },
+  "relationCounts": {
+    "used_as_scRNA_marker_for": 61,
+    "source_cluster_marker": 116,
+    "source_differential_RNA": 698
+  },
+  "authorPanels": 11,
+  "differentialStates": 16,
+  "referenceMeasurements": 373,
+  "referenceMeasurementsBySample": {
+    "D": 108,
+    "G": 111,
+    "M": 42,
+    "MG": 112
+  },
+  "sourceRows": {
+    "gasch2017_s3": 61,
+    "urbonaite2021_s4": 123,
+    "urbonaite2021_s6": 226,
+    "urbonaite2021_s7": 281,
+    "urbonaite2021_s8": 191,
+    "urbonaite2021_s2": 4777
+  },
+  "unresolvedRows": [
+    {
+      "sourceId": "urbonaite2021_s4",
+      "sourceSheet": "S3",
+      "sourceRow": 22,
+      "sourceGene": "YOL058W1",
+      "sourceSymbol": "YOL058W1",
+      "candidateIds": [],
+      "reason": "No unique SGD identity. Original invalid suffix is not removed."
+    },
+    {
+      "sourceId": "urbonaite2021_s4",
+      "sourceSheet": "S3",
+      "sourceRow": 23,
+      "sourceGene": "YHR162W1",
+      "sourceSymbol": "YHR162W1",
+      "candidateIds": [],
+      "reason": "No unique SGD identity. Original invalid suffix is not removed."
+    },
+    {
+      "sourceId": "urbonaite2021_s4",
+      "sourceSheet": "S3",
+      "sourceRow": 24,
+      "sourceGene": "YMR096W1",
+      "sourceSymbol": "YMR096W1",
+      "candidateIds": [],
+      "reason": "No unique SGD identity. Original invalid suffix is not removed."
+    },
+    {
+      "sourceId": "urbonaite2021_s4",
+      "sourceSheet": "S3",
+      "sourceRow": 25,
+      "sourceGene": "YDR158W1",
+      "sourceSymbol": "YDR158W1",
+      "candidateIds": [],
+      "reason": "No unique SGD identity. Original invalid suffix is not removed."
+    },
+    {
+      "sourceId": "urbonaite2021_s4",
+      "sourceSheet": "S3",
+      "sourceRow": 26,
+      "sourceGene": "YMR097C1",
+      "sourceSymbol": "YMR097C1",
+      "candidateIds": [],
+      "reason": "No unique SGD identity. Original invalid suffix is not removed."
+    },
+    {
+      "sourceId": "urbonaite2021_s4",
+      "sourceSheet": "S3",
+      "sourceRow": 27,
+      "sourceGene": "YDL066W1",
+      "sourceSymbol": "YDL066W1",
+      "candidateIds": [],
+      "reason": "No unique SGD identity. Original invalid suffix is not removed."
+    },
+    {
+      "sourceId": "urbonaite2021_s4",
+      "sourceSheet": "S3",
+      "sourceRow": 32,
+      "sourceGene": "YGL009C1",
+      "sourceSymbol": "YGL009C1",
+      "candidateIds": [],
+      "reason": "No unique SGD identity. Original invalid suffix is not removed."
+    }
+  ],
+  "symbolMismatches": [
+    {
+      "sourceId": "urbonaite2021_s2",
+      "sourceRow": 458,
+      "sourceGene": "YFL057C",
+      "sourceSymbol": "AAD16",
+      "mappedSymbol": "AAD6"
+    },
+    {
+      "sourceId": "urbonaite2021_s2",
+      "sourceRow": 1305,
+      "sourceGene": "YER087C-A",
+      "sourceSymbol": "SBH1",
+      "mappedSymbol": "YER087C-A"
+    },
+    {
+      "sourceId": "urbonaite2021_s2",
+      "sourceRow": 1990,
+      "sourceGene": "YKL134C",
+      "sourceSymbol": "37165",
+      "mappedSymbol": "OCT1"
+    },
+    {
+      "sourceId": "urbonaite2021_s2",
+      "sourceRow": 3951,
+      "sourceGene": "YIL154C",
+      "sourceSymbol": "IMP2'",
+      "mappedSymbol": "IMP21"
+    }
+  ],
+  "cvRatioMismatches": [],
+  "denominatorChecks": {
+    "D": {
+      "rows": 1398,
+      "mean_times_844_integer": 1398,
+      "mean_times_condition_n_integer": 0
+    },
+    "G": {
+      "rows": 1548,
+      "mean_times_844_integer": 1548,
+      "mean_times_condition_n_integer": 1
+    },
+    "M": {
+      "rows": 491,
+      "mean_times_844_integer": 491,
+      "mean_times_condition_n_integer": 0
+    },
+    "MG": {
+      "rows": 1340,
+      "mean_times_844_integer": 1340,
+      "mean_times_condition_n_integer": 1
+    }
+  },
+  "differentialChecks": {
+    "urbonaite2021_s6": {
+      "countsByAuthorGroupAndDirection": {
+        "DMSO:positive": 2,
+        "DMSO:negative": 5,
+        "Guanine:positive": 42,
+        "Guanine:negative": 29,
+        "MPA:positive": 45,
+        "MPA:negative": 11,
+        "MG:positive": 42,
+        "MG:negative": 50
+      },
+      "maximumPublishedAdjustedP": 0.0318793772776163,
+      "directionSignMismatches": []
+    },
+    "urbonaite2021_s7": {
+      "countsByAuthorGroupAndDirection": {
+        "DMSO.1:positive": 5,
+        "DMSO.1:negative": 7,
+        "DMSO.2:positive": 1,
+        "DMSO.2:negative": 4,
+        "MG.1:positive": 45,
+        "MG.1:negative": 45,
+        "MG.2:positive": 11,
+        "MG.2:negative": 3,
+        "MG.3:positive": 7,
+        "MG.3:negative": 1,
+        "G.1:positive": 13,
+        "G.1:negative": 13,
+        "G.2:positive": 49,
+        "G.2:negative": 21,
+        "M:positive": 45,
+        "M:negative": 11
+      },
+      "maximumPublishedAdjustedP": 0.0470351969965265,
+      "directionSignMismatches": []
+    },
+    "urbonaite2021_s8": {
+      "countsByAuthorGroupAndDirection": {
+        "1:positive": 17,
+        "1:negative": 16,
+        "2:positive": 43,
+        "2:negative": 21,
+        "3:positive": 11,
+        "3:negative": 9,
+        "4:positive": 24,
+        "4:negative": 50
+      },
+      "maximumPublishedAdjustedP": 0.0471629632556756,
+      "directionSignMismatches": []
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "format": "yeastvar-marker-metadata-proposals-v1",
+  "applyByDefault": false,
+  "policy": "Only missing fields, exact source/sheet rules; no expression direction, gene identity, phase or evidence grade changes.",
+  "rules": [
+    {
+      "id": "gasch_s8_assay_context",
+      "sourceId": "gasch2017_s8",
+      "sourceSheet": "Sheet1",
+      "basis": "Gasch 2017 Methods and S8 gene-set notes; study context only, original modules include earlier sources.",
+      "evidenceUrl": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.2004050",
+      "fillMissing": {
+        "sourceCondition": "unstressed growth and 30 min after 0.7 M NaCl; reference gene-set evaluation context",
+        "sourceConditionRole": "assay_context_for_reference_gene_set",
+        "sourceStrain": "BY4741",
+        "datasetAccession": "GSE102475"
+      }
+    },
+    {
+      "id": "shabestary_glutamine",
+      "sourceId": "shabestary2024_s1",
+      "sourceSheet": "Glutamine_G2_G1",
+      "basis": "Exact original Supplementary Data 1 sheet label and pre-existing audited GSE125162 reanalysis source; G1/G2 are subgroup names, not cycle phases.",
+      "evidenceUrl": "https://www.nature.com/articles/s41467-024-50602-8",
+      "fillMissing": {
+        "sourceCondition": "nitrogen-limited medium with glutamine (NLIM-GLN)",
+        "datasetAccession": "GSE125162",
+        "sourceConditionRole": "nitrogen_source_in_reanalysed_single_cell_experiment"
+      }
+    },
+    {
+      "id": "shabestary_proline",
+      "sourceId": "shabestary2024_s1",
+      "sourceSheet": "Proline_P2_P1",
+      "basis": "Exact original Supplementary Data 1 sheet label and pre-existing audited GSE125162 reanalysis source.",
+      "evidenceUrl": "https://www.nature.com/articles/s41467-024-50602-8",
+      "fillMissing": {
+        "sourceCondition": "nitrogen-limited medium with proline (NLIM-PRO)",
+        "datasetAccession": "GSE125162",
+        "sourceConditionRole": "nitrogen_source_in_reanalysed_single_cell_experiment"
+      }
+    }
+  ],
+  "eligibleRowsAtAudit": {
+    "shabestary_glutamine": 2439,
+    "gasch_s8_assay_context": 859,
+    "shabestary_proline": 1716
+  },
+  "applied": "2026-10-18",
+  "appliedCounts": {
+    "shabestary_glutamine": 2439,
+    "gasch_s8_assay_context": 859,
+    "shabestary_proline": 1716
+  }
+}
