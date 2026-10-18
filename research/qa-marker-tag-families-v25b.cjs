@@ -5,7 +5,7 @@ const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),asse
 const root=path.resolve(__dirname,'..'),read=file=>fs.readFileSync(path.join(root,file),'utf8');
 const proposal=JSON.parse(read('research/v25b-marker-proposals.json'));
 const header=JSON.parse(read('dist/data/markers.json'));
-assert.deepEqual(header.tagFamilies,proposal.tagFamilies,'The production header must ship the exact mappings, not a test-only replacement');
+assert.deepEqual(Object.fromEntries(Object.keys(proposal.tagFamilies).map(tag=>[tag,header.tagFamilies[tag]])),proposal.tagFamilies,'Every v25b mapping must remain exact in production; later releases may append independently tested mappings');
 assert.deepEqual(header.tagFamilyEvidence,proposal.tagFamilyEvidence,'Production retains the mapping provenance');
 const genes=fs.readdirSync(path.join(root,'dist/data/markers')).filter(f=>f.endsWith('.json')).flatMap(f=>{
  const x=JSON.parse(read('dist/data/markers/'+f));return Array.isArray(x)?x:x.markers||[];
@@ -18,6 +18,7 @@ const maps={marker:new Map(genes.map(m=>[m.id,m])),source:new Map(header.sources
 const window={addEventListener(){},YV_RESEARCH_ATLAS:{text:k=>k,markerUpdate:()=>''},YV_BUILDER:{getPlan:()=>plan}};
 window.YV_APP={esc:escape,tx:value=>window.YV_TEXT?.[value]?.[language]||String(value??''),t:k=>k,prefs:()=>({language}),data:()=>({markers:catalogue}),maps:()=>maps};
 const context={window,document:{addEventListener(t,fn){(handlers[t]||=[]).push(fn);},querySelector:()=>null},sessionStorage:{getItem:()=>null,setItem(){}},location:{hash:'#markers'},URLSearchParams,setTimeout,clearTimeout};
+context.URL=URL;vm.runInNewContext(read('dist/marker-selection-v25c.js'),context);
 vm.runInNewContext(read('dist/marker-workspace-locales.js'),context);
 vm.runInNewContext(read('dist/v25-marker-locales.js'),context);
 vm.runInNewContext(read('dist/marker-workspace.js').replace('window.YV_MARKERS={',

@@ -41,6 +41,12 @@ jobs:
       - run: node research/qa-marker-tag-families-v25b.cjs
       - run: node research/qa-marker-source-context-v25b.cjs
       - run: node research/qa-qc-branch-inputs-v25b.cjs
+      - run: node research/qa-evidence-identities-v25c.cjs
+      - run: node research/qa-evidence-selection-v25c.cjs
+      - run: node research/qa-marker-v25c.cjs
+      - run: node research/qa-method-boundaries-v25c.cjs
+      - run: node research/qa-population-v25c.cjs
+      - run: node research/qa-marker-regressions-v25d.cjs
       - run: node research/v25-methods-test.cjs
       - run: node research/qa-database-preparation-v25.cjs
       - uses: actions/setup-python@v5

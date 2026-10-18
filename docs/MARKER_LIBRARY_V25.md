@@ -43,3 +43,16 @@ Source-row checks, identity checks, evidence-purpose checks, phase isolation, sa
 The catalogue adds 22 RNA observations across 21 existing genes, separately from 21 mitochondrial QC feature memberships. Fourteen new identities belong to the QC set. The 200 explicit tag-family mappings retain source conditions: NaCl, starvation and mycophenolic-acid labels are navigable, while DMSO controls remain unassigned to stress. Histone-cluster panels retain coexpression membership without assigning histone protein function to every member. Source figure/paragraph locations, detection lower bounds and their populations are shown in the evidence details.
 
 Structured CSV/TSV import reads only named gene-identity columns, reports conflicts and invalidates stale previews. Plan notes retain the supported 5,000 characters; full backups include disabled DIY formulas. Matrix-only QC no longer inherits a global empty-droplet requirement; selecting DropletUtils or SoupX still requires their original inputs.
+
+
+## v25c: source assertions and continuous state association
+
+The catalogue now retains 5,275 SGD-resolved gene records and 30,056 source-relation occurrences (30,051 unique assertion IDs), across 50 registered source entries. Counts describe reference coverage, not independently validated state classifiers.
+
+- **Continuous RNA associations** have a separate annotation-use filter. Wang 2022 within-age RNA–generation associations retain the original sampling group, R and unadjusted P. Positive/negative association is distinct from differential-expression direction.
+- **Functional evidence** remains a separate layer. The new identities contribute 808 specific GO-slim assertions; 118 ontology-root mappings retain metadata only. The functional selector offers independent GO-slim BP/MF/CC branches, with source-row popups and GO links. Full GAF evidence codes remain restricted to GAF records.
+- **Individual evidence selection** persists stable assertion IDs and unresolved IDs. An explicitly empty selection remains empty; older source-level plans retain their behavior. Exported JSON, HTML and XLSX distinguish selected assertions from the complete reference record. Only selected assertions contribute marker citations.
+- **Evidence filters** require one record to support the selected source, evidence type, grade, condition and GO term. The displayed card grade follows those matching records. Tag unions/intersections remain gene-level combinations and may draw on multiple sources.
+- **Data preservation** was checked against the preceding 28,347 occurrences. All existing evidence was retained, including five exact duplicate occurrences with shared stable assertion IDs. The 29 unresolved rows in the new source extraction were not imported.
+
+Primary sources: [Wang et al., 2022](https://doi.org/10.1111/acel.13712), [Nadal-Ribelles et al., 2019](https://doi.org/10.1038/s41564-018-0346-9), and [SGD GO-slim mapping](https://downloads.yeastgenome.org/curation/literature/go_slim_mapping.tab). Source files and row locators are recorded with the assertions; the public release distributes attributed facts and provenance, not archived papers or supplementary workbooks.

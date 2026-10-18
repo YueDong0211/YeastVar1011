@@ -23,6 +23,7 @@ const window={addEventListener(){},YV_RESEARCH_ATLAS:{text:key=>key,markerUpdate
  esc,tx:value=>String(value??''),t:key=>key,prefs:()=>({language}),data:()=>({markers:catalogue}),maps:lookup,
 }};
 const context={window,document,sessionStorage:{getItem(){return null;}},location:{hash:'#markers'},URLSearchParams,setTimeout,clearTimeout};
+context.URL=URL;vm.runInNewContext(fs.readFileSync(path.join(root,'dist/marker-selection-v25c.js'),'utf8'),context);
 vm.runInNewContext(fs.readFileSync(path.join(root,'dist/marker-workspace-locales.js'),'utf8'),context);
 const production=fs.readFileSync(path.join(root,'dist/marker-workspace.js'),'utf8');
 vm.runInNewContext(production.replace('window.YV_MARKERS={','window.__v25={resetFilters,filterSnapshot,activeFilters,filterTotal,catalogue,card,searchMatchLabel,libraryCounts,refreshWith(fn){refresh=fn;}};window.YV_MARKERS={'),context);

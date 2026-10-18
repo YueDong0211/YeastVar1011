@@ -302,7 +302,8 @@
         "matrix_layer_reconciliation",
         "matrix_annotation_sensitivity",
         "matrix_quantifier_agreement",
-        "te_family_allocation"
+        "te_family_allocation",
+        "v25c_gene_observability"
       ],
       "toolIds": [
         "starsolo",
@@ -6301,7 +6302,7 @@
       "stepId": "genetics",
       "name": "QTL效应与估计误差",
       "nameEn": "QTL effect and uncertainty",
-      "definition": "关联效应量、标准误及噪音性状估计误差的传播",
+      "definition": "保存噪音估计、标准误/抽样协方差或后验样本、细胞与培养支持、性状尺度和亲缘版本；比较纳入与忽略性状误差时的遗传方差。",
       "unit": "模型单位",
       "denominator": "匹配可用菌株",
       "level": "变异×基因",
@@ -6312,11 +6313,25 @@
         "qtltools"
       ],
       "cautions": [
-        "先固定计数对象、排除规则与分层单位；这是待计算指标，不是自动删样阈值。"
+        "关联效应量与其标准误、噪音性状本身的估计误差分别保存，再传播至QTL与遗传力模型。",
+        "先固定计数对象、排除规则与分层单位；这是待计算指标，不是自动删样阈值。",
+        "菌株×培养×状态噪音性状及其误差、基因型亲缘、真实培养结构和协变量；均值、状态组成与噪音是不同性状。",
+        "细胞间噪音、菌株均值差异与噪音性状遗传方差分别报告；增加细胞不能替代独立菌株或培养重复。",
+        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。"
       ],
       "sourceUrls": [
-        "https://doi.org/10.1371/journal.pgen.1008045"
-      ]
+        "https://doi.org/10.1371/journal.pgen.1008045",
+        "https://doi.org/10.1080/10635150701313830",
+        "https://doi.org/10.18637/jss.v080.i01",
+        "https://doi.org/10.1038/s41467-025-66214-9",
+        "https://doi.org/10.1016/j.celrep.2025.116612"
+      ],
+      "definitionEn": "Store noise estimates, standard errors/sampling covariance or posterior draws, cell/culture support, scale and kinship version; compare genetic variance with and without trait uncertainty.",
+      "reviewedIn": "v25c_population",
+      "documentedInputContract": {
+        "description": "菌株×培养×状态噪音性状及其误差、基因型亲缘、真实培养结构和协变量；均值、状态组成与噪音是不同性状。",
+        "enforcement": "documented_not_automated"
+      }
     },
     {
       "id": "causal_assumption_audit",
@@ -11272,8 +11287,8 @@
       "stepId": "noise",
       "name": "协方差对合计波动的贡献",
       "nameEn": "Covariance contribution to summed fluctuations",
-      "definition": "比较含协方差的合计方差与协方差置零的代数基线，并用表达量和检出率匹配的集合校准。",
-      "definitionEn": "Compare summed variance with a zero-covariance algebraic baseline; calibrate with abundance- and detection-matched sets.",
+      "definition": "在已有合计方差分解中补重复来源、归属不确定性、条件内协方差和跨环境均值/噪音响应；协方差置零仅为代数基线。",
+      "definitionEn": "Extend summed-variance decomposition with duplication provenance, assignment uncertainty, within-condition covariance and cross-environment mean/noise responses; zero covariance is only an algebraic baseline.",
       "unit": "声明表达尺度的平方",
       "denominator": "同一分析分组的合格细胞",
       "level": "基因集合×菌株×培养×状态",
@@ -11282,10 +11297,18 @@
         "memento",
         "scdesign3"
       ],
-      "cautions": [],
+      "cautions": [
+        "未经平滑计数与测量模型、菌株/培养/状态和重复基因集合；BAM核验同源归属，匹配环境估计可塑性，DNA解释拷贝。",
+        "负协方差也可能来自同源分子归属或相对RNA分配；协方差置零仅是代数基线，不代表已验证的缓冲干预。",
+        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。"
+      ],
       "sourceUrls": [
         "https://memento.readthedocs.io/",
-        "https://doi.org/10.1016/j.cell.2024.09.044"
+        "https://doi.org/10.1016/j.cell.2024.09.044",
+        "https://doi.org/10.1371/journal.pbio.3000289",
+        "https://doi.org/10.1371/journal.pgen.1001185",
+        "https://doi.org/10.1038/ncomms12959",
+        "https://doi.org/10.1038/s41598-021-01558-y"
       ],
       "inputIds": [
         "count_matrix",
@@ -11300,6 +11323,10 @@
           {
             "name": "covariance_contribution / zero_covariance_baseline / matched_set_effect / culture_interval / set_size",
             "meaning": "比较含协方差的合计方差与协方差置零的代数基线，并用表达量和检出率匹配的集合校准。"
+          },
+          {
+            "name": "duplication_class_and_source / paralog_set_version / ambiguous_molecule_fraction / unique_mapping_sensitivity / within_state_covariance / mean_matched_set_contrast / mean_and_noise_environment_response / assignment_null",
+            "meaning": "在已有合计方差分解中补重复来源、归属不确定性、条件内协方差和跨环境均值/噪音响应；协方差置零仅为代数基线。"
           }
         ],
         "groupBy": [
@@ -11313,12 +11340,22 @@
         "requiresImplementation": true,
         "sourceUrls": [
           "https://memento.readthedocs.io/",
-          "https://doi.org/10.1016/j.cell.2024.09.044"
+          "https://doi.org/10.1016/j.cell.2024.09.044",
+          "https://doi.org/10.1371/journal.pbio.3000289",
+          "https://doi.org/10.1371/journal.pgen.1001185",
+          "https://doi.org/10.1038/ncomms12959",
+          "https://doi.org/10.1038/s41598-021-01558-y"
         ],
         "outputFileRole": "proposed project export; retain original native outputs separately",
         "unit": "声明表达尺度的平方",
         "denominator": "同一分析分组的合格细胞",
-        "fieldNaming": "Project export names; native outputs are retained under nativeOutput where specified."
+        "fieldNaming": "Project export names; native outputs are retained under nativeOutput where specified.",
+        "executionStatus": "not_executed"
+      },
+      "reviewedIn": "v25c_population",
+      "documentedInputContract": {
+        "description": "未经平滑计数与测量模型、菌株/培养/状态和重复基因集合；BAM核验同源归属，匹配环境估计可塑性，DNA解释拷贝。",
+        "enforcement": "documented_not_automated"
       }
     },
     {
@@ -11996,7 +12033,7 @@
       "stepId": "genetics",
       "name": "遗传方差分区与培养重复性",
       "nameEn": "Genetic variance partitioning and culture repeatability",
-      "definition": "区分标记捕获的加性遗传方差、稳定菌株差异、培养方差和性状估计误差。",
+      "definition": "保存噪音估计、标准误/抽样协方差或后验样本、细胞与培养支持、性状尺度和亲缘版本；比较纳入与忽略性状误差时的遗传方差。",
       "purpose": "区分标记捕获的加性遗传方差、稳定菌株差异、培养方差和性状估计误差。",
       "unit": "variance component / fraction",
       "denominator": "total trait variance on the declared scale",
@@ -12012,13 +12049,22 @@
         "sample_metadata",
         "culture_replicates"
       ],
-      "cautions": [],
+      "cautions": [
+        "分别估计标记捕获的加性遗传方差、稳定菌株差异和培养方差；模型须可辨识，并报告噪音性状误差。",
+        "菌株×培养×状态噪音性状及其误差、基因型亲缘、真实培养结构和协变量；均值、状态组成与噪音是不同性状。",
+        "细胞间噪音、菌株均值差异与噪音性状遗传方差分别报告；增加细胞不能替代独立菌株或培养重复。",
+        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。"
+      ],
       "sourceUrls": [
         "https://limix.github.io/about/",
-        "https://doi.org/10.1371/journal.pgen.1008045"
+        "https://doi.org/10.1371/journal.pgen.1008045",
+        "https://doi.org/10.1080/10635150701313830",
+        "https://doi.org/10.18637/jss.v080.i01",
+        "https://doi.org/10.1038/s41467-025-66214-9",
+        "https://doi.org/10.1016/j.celrep.2025.116612"
       ],
       "metricOrigin": "project-derived",
-      "reviewedIn": "v12",
+      "reviewedIn": "v25c_population",
       "collection": {
         "entrypoint": "Project variance-component model: genomic relatedness, repeated strain/culture mapping and trait sampling variance. Fit identifiable components and resample according to the strain–culture hierarchy.",
         "fields": [
@@ -12045,6 +12091,10 @@
           {
             "name": "component_interval",
             "meaning": "区分标记捕获的加性遗传方差、稳定菌株差异、培养方差和性状估计误差。"
+          },
+          {
+            "name": "noise_trait_estimate / trait_standard_error / trait_sampling_covariance_or_draws / trait_scale / n_cells / n_cultures / n_strains / kinship_version_and_scaling / culture_repeatability / uncertainty_model / trait_error_sensitivity",
+            "meaning": "保存噪音估计、标准误/抽样协方差或后验样本、细胞与培养支持、性状尺度和亲缘版本；比较纳入与忽略性状误差时的遗传方差。"
           }
         ],
         "groupBy": [
@@ -12058,8 +12108,18 @@
         "outputFileRole": "proposed project export; retain native tool outputs",
         "sourceUrls": [
           "https://limix.github.io/about/",
-          "https://doi.org/10.1371/journal.pgen.1008045"
-        ]
+          "https://doi.org/10.1371/journal.pgen.1008045",
+          "https://doi.org/10.1080/10635150701313830",
+          "https://doi.org/10.18637/jss.v080.i01",
+          "https://doi.org/10.1038/s41467-025-66214-9",
+          "https://doi.org/10.1016/j.celrep.2025.116612"
+        ],
+        "executionStatus": "not_executed"
+      },
+      "definitionEn": "Store noise estimates, standard errors/sampling covariance or posterior draws, cell/culture support, scale and kinship version; compare genetic variance with and without trait uncertainty.",
+      "documentedInputContract": {
+        "description": "菌株×培养×状态噪音性状及其误差、基因型亲缘、真实培养结构和协变量；均值、状态组成与噪音是不同性状。",
+        "enforcement": "documented_not_automated"
       }
     },
     {
@@ -12067,7 +12127,7 @@
       "stepId": "genetics",
       "name": "噪音反应规范与跨环境稳定性",
       "nameEn": "Noise reaction norms and environmental stability",
-      "definition": "比较重复测量菌株的噪音环境响应、排序保持和基因型×环境效应。",
+      "definition": "估计配对环境均值/噪音对比、菌株反应斜率、排序保持与不确定性；分开跨基因相关和同一基因跨菌株关系。",
       "purpose": "比较重复测量菌株的噪音环境响应、排序保持和基因型×环境效应。",
       "unit": "effect / probability",
       "denominator": "model-defined trait or test set",
@@ -12081,13 +12141,21 @@
         "sample_metadata",
         "culture_replicates"
       ],
-      "cautions": [],
+      "cautions": [
+        "明确重复环境/处理、同菌株可比状态、培养重复及均值/噪音估计；遗传解释需亲缘，启动子解释需外部注释。",
+        "单条件中的应激分数或拟时序不等于环境可塑性；反应规范需要同一菌株在明确环境间的可比测量。",
+        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。"
+      ],
       "sourceUrls": [
         "https://doi.org/10.1038/s41559-024-02582-7",
-        "https://doi.org/10.7554/eLife.37272"
+        "https://doi.org/10.7554/eLife.37272",
+        "https://doi.org/10.1371/journal.pgen.1001185",
+        "https://doi.org/10.1371/journal.pbio.3000289",
+        "https://doi.org/10.7554/elife.05856",
+        "https://doi.org/10.1038/ncomms12959"
       ],
       "metricOrigin": "project-derived",
-      "reviewedIn": "v12",
+      "reviewedIn": "v25c_population",
       "collection": {
         "entrypoint": "Project reaction-norm model: fit strain-specific condition contrasts/slopes with culture effects; use kinship when genotypes are supplied. Compare a shared state and gene measurement space.",
         "fields": [
@@ -12110,6 +12178,10 @@
           {
             "name": "genotype_environment_variance",
             "meaning": "比较重复测量菌株的噪音环境响应、排序保持和基因型×环境效应。"
+          },
+          {
+            "name": "mean_environment_contrast / noise_environment_contrast / paired_strain_coverage / shared_state_support / response_coupling / gene_vs_strain_comparison_level / coupling_interval / environment_definition / condition_assignment_provenance",
+            "meaning": "估计配对环境均值/噪音对比、菌株反应斜率、排序保持与不确定性；分开跨基因相关和同一基因跨菌株关系。"
           }
         ],
         "groupBy": [
@@ -12123,8 +12195,18 @@
         "outputFileRole": "proposed project export; retain native tool outputs",
         "sourceUrls": [
           "https://doi.org/10.1038/s41559-024-02582-7",
-          "https://doi.org/10.7554/eLife.37272"
-        ]
+          "https://doi.org/10.7554/eLife.37272",
+          "https://doi.org/10.1371/journal.pgen.1001185",
+          "https://doi.org/10.1371/journal.pbio.3000289",
+          "https://doi.org/10.7554/elife.05856",
+          "https://doi.org/10.1038/ncomms12959"
+        ],
+        "executionStatus": "not_executed"
+      },
+      "definitionEn": "Estimate paired environmental mean/noise contrasts, strain slopes, rank stability and uncertainty; distinguish across-gene correlations from within-gene relationships across strains.",
+      "documentedInputContract": {
+        "description": "明确重复环境/处理、同菌株可比状态、培养重复及均值/噪音估计；遗传解释需亲缘，启动子解释需外部注释。",
+        "enforcement": "documented_not_automated"
       }
     },
     {
@@ -15940,6 +16022,97 @@
       "metricOrigin": "project-audit",
       "reviewedIn": "v25",
       "addedIn": "v25"
+    },
+    {
+      "id": "v25c_gene_observability",
+      "stepId": "matrix",
+      "name": "基因可观测性与结构缺失证据",
+      "nameEn": "Gene observability and structural-absence evidence",
+      "definition": "按基因×菌株保存独立UMI、唯一归属、参考覆盖、DNA存在/拷贝证据和噪音性状缺失原因；比较只在所需可观测范围内进行。",
+      "definitionEn": "For each gene–strain pair, retain UMI support, unique assignment, reference coverage, DNA presence/copy evidence and reasons for missing noise traits; compare within the required measurable domain.",
+      "unit": "类别、分子支持与证据状态",
+      "denominator": "声明参考中的基因×菌株配对",
+      "level": "基因×菌株×参考版本",
+      "purpose": "基因零计数来自未捕获、无法唯一归属，还是已有DNA证实的结构缺失？",
+      "tools": [
+        "samtools",
+        "pysam"
+      ],
+      "inputIds": [
+        "count_matrix",
+        "sample_metadata",
+        "reference"
+      ],
+      "optionalInputIds": [
+        "tagged_bam",
+        "genotypes"
+      ],
+      "cautions": [
+        "计数、参考和细胞→菌株映射；归属审核需带tag BAM。结构缺失和拷贝判定需匹配DNA或核验泛基因组，无DNA时保留未知。",
+        "未检出不等于结构缺失；没有DNA证据时保留未知，缺失基因的噪音性状不填零或邻近值。",
+        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。"
+      ],
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41586-025-09637-0",
+        "https://doi.org/10.7554/elife.05462",
+        "https://doi.org/10.7554/elife.15743"
+      ],
+      "metricOrigin": "project-audit",
+      "addedIn": "v25c_population",
+      "reviewedIn": "v25c_population",
+      "conditionalInputRequirements": [
+        {
+          "branch": "assignment_audit",
+          "allOf": [
+            "tagged_bam"
+          ],
+          "enforcement": "documented_not_automated"
+        },
+        {
+          "branch": "structural_absence_or_copy_number",
+          "allOf": [
+            "genotypes"
+          ],
+          "contract": "计数、参考和细胞→菌株映射；归属审核需带tag BAM。结构缺失和拷贝判定需匹配DNA或核验泛基因组，无DNA时保留未知。",
+          "enforcement": "documented_not_automated"
+        }
+      ],
+      "collection": {
+        "entrypoint": "Project export specification; no automatic absence or copy-number calls. Join gene/strain reference IDs, UMI assignment evidence and independently verified DNA evidence; retain unknown status when evidence is absent.",
+        "fields": [
+          {
+            "name": "gene_id / strain_id / reference_id / evidence_source",
+            "meaning": "稳定基因、菌株、参考和证据来源标识"
+          },
+          {
+            "name": "dna_presence_status / copy_number / ploidy",
+            "meaning": "DNA存在、拷贝数及倍性；无独立证据则未知"
+          },
+          {
+            "name": "unique_umi_support / assignment_ambiguity / rna_detection_status",
+            "meaning": "RNA检出、独立UMI支持及归属歧义"
+          },
+          {
+            "name": "noise_trait_status / exclusion_reason",
+            "meaning": "噪音性状可估计状态及排除原因"
+          }
+        ],
+        "groupBy": [
+          "gene_id",
+          "strain_id",
+          "reference_id"
+        ],
+        "outputFile": "analysis/gene_observability.tsv",
+        "outputFileRole": "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。",
+        "mode": "derived",
+        "requiresImplementation": true,
+        "executionStatus": "not_executed",
+        "sourceUrls": [
+          "https://doi.org/10.1038/s41586-025-09637-0",
+          "https://doi.org/10.7554/elife.05462",
+          "https://doi.org/10.7554/elife.15743"
+        ]
+      }
     }
   ],
   "tools": [
@@ -20918,33 +21091,87 @@
     {
       "id": "basics",
       "name": "BASiCS",
-      "task": "贝叶斯均值与过度离散分析",
-      "taskEn": "Bayesian mean and overdispersion analysis",
+      "task": "贝叶斯均值、残差变异与采样诊断",
+      "taskEn": "Bayesian means, residual variability and sampler diagnostics",
       "steps": [
         "noise"
       ],
       "url": "https://bioconductor.org/packages/release/bioc/html/BASiCS.html",
       "paperUrl": "https://doi.org/10.1016/j.cels.2018.06.011",
       "input": [
-        "原始计数",
-        "重复/技术控制；按模式要求"
+        "未归一化整数计数；细胞对应菌株、状态、培养和技术批次。",
+        "WithSpikes=TRUE：提供真实spike-in身份和每反应输入分子数，并核对稀释与体积。",
+        "WithSpikes=FALSE：同一建模生物群体需有多个真实技术重复，并在BatchInfo中记录；单一batch不满足要求。"
       ],
       "output": [
-        "均值/离散后验",
-        "差异变异证据"
+        "均值、过度离散与残差变异后验",
+        "差异均值与变异概率、效应区间及EFDR",
+        "链混合、有效样本量与拟合诊断"
       ],
-      "entrypoint": "BASiCS_MCMC(<SUPPORTED_INPUT>); BASiCS_TestDE(<CHAINS_AND_OPTIONS>)",
+      "entrypoint": "chain_A <- BASiCS::BASiCS_MCMC(Data=validated_data_A, N=n_iterations, Thin=save_every, Burn=n_burnin, WithSpikes=with_spikes, Regression=TRUE)\nchain_B <- BASiCS::BASiCS_MCMC(Data=validated_data_B, N=n_iterations, Thin=save_every, Burn=n_burnin, WithSpikes=with_spikes, Regression=TRUE)\nresult <- BASiCS::BASiCS_TestDE(Chain1=chain_A, Chain2=chain_B, EpsilonM=mean_log2_tolerance, EpsilonD=dispersion_log2_tolerance, EpsilonR=residual_tolerance, EFDR_M=target_mean_efdr, EFDR_D=target_dispersion_efdr, EFDR_R=target_residual_efdr, Offset=apply_global_offset, MinESS=minimum_effective_samples)\nresidual_table <- as.data.frame(result, Parameter=\"ResDisp\")",
       "parameters": [
         {
-          "name": "spike-in / no-spike mode",
-          "meaning": "技术信息模式",
-          "selection": "仅采用满足真实数据条件的模型",
+          "name": "WithSpikes",
+          "meaning": "选择技术信息分支",
+          "selection": "按真实建库记录选择spike或no-spike；分别核对下列条件。",
+          "required": true
+        },
+        {
+          "name": "BatchInfo",
+          "meaning": "真实技术重复身份",
+          "selection": "WithSpikes=FALSE：同一建模生物群体需有多个真实技术重复，并在BatchInfo中记录；单一batch不满足要求。",
+          "required": false
+        },
+        {
+          "name": "SpikeInfo",
+          "meaning": "spike-in输入量与来源",
+          "selection": "WithSpikes=TRUE：提供真实spike-in身份和每反应输入分子数，并核对稀释与体积。",
+          "required": false
+        },
+        {
+          "name": "Regression",
+          "meaning": "均值—过度离散趋势",
+          "selection": "Regression=TRUE估计相对均值趋势的残差变异；残差并不等同于内在噪音。",
+          "required": true
+        },
+        {
+          "name": "N / Burn / Thin",
+          "meaning": "采样长度与保留规则",
+          "selection": "依据链诊断设置N、Burn和Thin；记录独立链的种子、初始化与先验，不套用教程迭代数。",
+          "required": true
+        },
+        {
+          "name": "chain diagnostics",
+          "meaning": "多链与预测诊断",
+          "selection": "审查trace、rank-normalized R-hat、bulk/tail ESS、MCSE及先验/后验预测；额外多链汇总需保留真实chain维度并实现提取。",
+          "required": true
+        },
+        {
+          "name": "EpsilonM / EpsilonD / EpsilonR / EFDR_M / EFDR_D / EFDR_R / MinESS",
+          "meaning": "效应尺度与多重检验",
+          "selection": "EpsilonM/EpsilonD使用log2差异；EpsilonR使用残差差异尺度。预先声明效应容忍区间、EFDR和MinESS。",
+          "required": true
+        },
+        {
+          "name": "Offset",
+          "meaning": "全局RNA水平与偏移校正",
+          "selection": "正式参数为Offset；按是否保留全局RNA含量差异选择，记录该选择对估计目标的影响。",
+          "required": true
+        },
+        {
+          "name": "version / commit",
+          "meaning": "固定版本与调用接口",
+          "selection": "BASiCS 2.23.2 · Git 743d2620fd4b2cfe006c103022ad1ccc86c41cc8",
           "required": true
         }
       ],
       "limitations": [
-        "未加入spike-in的数据不能事后声称有绝对技术校准；需检查MCMC与可辨识性。",
-        "调用入口是版本化方法入口或占位模板，不是可直接用于未确认建库结构的数据执行脚本。"
+        "菌株、处理或随机拆分的细胞不能冒充技术重复；独立培养重复另用于生物学推断。",
+        "未测spike-in不能补出绝对技术校准；良好链混合也不能解决模型不可辨识。",
+        "Regression=TRUE估计相对均值趋势的残差变异；残差并不等同于内在噪音。",
+        "审查trace、rank-normalized R-hat、bulk/tail ESS、MCSE及先验/后验预测；额外多链汇总需保留真实chain维度并实现提取。",
+        "此处列明两条技术分支；自动输入检查目前只核对计数与样本信息，技术重复或spike证据需人工确认。",
+        "调用配方；尚未在项目数据上执行。"
       ],
       "yeastStatus": "条件性",
       "role": "对照",
@@ -20953,7 +21180,12 @@
         "https://www.bioconductor.org/packages/devel/bioc/vignettes/BASiCS/inst/doc/BASiCS.html",
         "https://doi.org/10.1186/s13059-016-0930-3",
         "https://doi.org/10.1016/j.cels.2018.06.011",
-        "https://doi.org/10.1016/j.cels.2019.08.003"
+        "https://doi.org/10.1016/j.cels.2019.08.003",
+        "https://bioconductor.org/packages/release/bioc/vignettes/BASiCS/inst/doc/BASiCS.html",
+        "https://raw.githubusercontent.com/catavallejos/BASiCS/743d2620fd4b2cfe006c103022ad1ccc86c41cc8/R/BASiCS_TestDE.R",
+        "https://doi.org/10.12688/f1000research.74416.2",
+        "https://doi.org/10.1214/20-BA1221",
+        "https://mc-stan.org/posterior/reference/draws_summary.html"
       ],
       "categoryIds": [
         "noise"
@@ -20963,8 +21195,8 @@
       ],
       "applicability": {
         "level": "conditional",
-        "reason": "按已列输入、酵母限制和实际样本设计判断；不是数据已齐全或流程已运行的声明。",
-        "reasonEn": "Eligibility depends on the listed inputs, yeast-specific limits and actual design; this does not mean inputs exist or analyses ran.",
+        "reason": "此处列明两条技术分支；自动输入检查目前只核对计数与样本信息，技术重复或spike证据需人工确认。",
+        "reasonEn": "Both technical branches are documented here; automatic input checks currently cover counts and metadata only. Technical-replicate or spike evidence requires manual review.",
         "requiredData": [
           "count_matrix",
           "sample_metadata"
@@ -20978,9 +21210,84 @@
           "url": "https://bioconductor.org/packages/release/bioc/html/BASiCS.html",
           "kind": "documentation",
           "label": "使用文档"
+        },
+        {
+          "url": "https://bioconductor.org/packages/release/bioc/vignettes/BASiCS/inst/doc/BASiCS.html",
+          "kind": "documentation",
+          "label": "官方调用与诊断"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/catavallejos/BASiCS/743d2620fd4b2cfe006c103022ad1ccc86c41cc8/R/BASiCS_TestDE.R",
+          "kind": "software_repository",
+          "label": "官方调用与诊断"
+        },
+        {
+          "url": "https://doi.org/10.1016/j.cels.2018.06.011",
+          "kind": "research_article",
+          "label": "原始方法论文"
+        },
+        {
+          "url": "https://doi.org/10.1016/j.cels.2019.08.003",
+          "kind": "research_article",
+          "label": "方法更正"
+        },
+        {
+          "url": "https://doi.org/10.1214/20-BA1221",
+          "kind": "research_article",
+          "label": "原始方法论文"
         }
       ],
-      "sourceKind": "documentation"
+      "sourceKind": "documentation",
+      "conditionalInputRequirements": [
+        {
+          "branch": "with_spikes",
+          "condition": "WithSpikes=TRUE",
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata"
+          ],
+          "contract": "WithSpikes=TRUE：提供真实spike-in身份和每反应输入分子数，并核对稀释与体积。",
+          "enforcement": "documented_not_automated"
+        },
+        {
+          "branch": "without_spikes",
+          "condition": "WithSpikes=FALSE",
+          "requiredData": [
+            "count_matrix",
+            "sample_metadata"
+          ],
+          "contract": "WithSpikes=FALSE：同一建模生物群体需有多个真实技术重复，并在BatchInfo中记录；单一batch不满足要求。",
+          "enforcement": "documented_not_automated"
+        }
+      ],
+      "inputRequirements": [
+        {
+          "id": "count_matrix",
+          "contract": "未归一化整数计数；细胞对应菌株、状态、培养和技术批次。"
+        },
+        {
+          "id": "sample_metadata",
+          "contract": "菌株、处理或随机拆分的细胞不能冒充技术重复；独立培养重复另用于生物学推断。"
+        }
+      ],
+      "executionStatus": "recipe_only",
+      "reviewedIn": "v25c",
+      "reviewedOn": "2026-10-18",
+      "versionEvidence": {
+        "version": "2.23.2 source snapshot",
+        "repositoryCommit": "743d2620fd4b2cfe006c103022ad1ccc86c41cc8",
+        "checkedOn": "2026-10-18",
+        "source": "https://raw.githubusercontent.com/catavallejos/BASiCS/743d2620fd4b2cfe006c103022ad1ccc86c41cc8/R/BASiCS_TestDE.R",
+        "apiSignatureVerified": true,
+        "biologicalExecution": false,
+        "runtimeInstalled": false
+      },
+      "paperIds": [
+        "v12_basics_2016",
+        "v12_basics_2018",
+        "v12_basics_correction_2019",
+        "lit-53d85320ad4d"
+      ]
     },
     {
       "id": "glmmtmb",
@@ -24616,13 +24923,18 @@
       "limitations": [
         "潜在混杂可分离、共同支持等假设不是由软件自动证明。",
         "自然菌株差异与群体结构不能直接解释成随机处理效应。",
-        "入口为经来源核对的方法入口或参数模板；固定版本后按真实设计填写，未在本项目数据上执行。"
+        "入口为经来源核对的方法入口或参数模板；固定版本后按真实设计填写，未在本项目数据上执行。",
+        "个体效应异质性：同一细胞的处理与对照潜在结果未同时观测；OT匹配依赖模型，不能据此直接识别其联合分布。",
+        "处理后的状态可能是中介或选择变量；条件化分析须说明目标变化，不能默认已去除混杂。",
+        "审查共同支持、匹配质量与运输参数敏感性；生成细胞和随机拆分不增加独立生物学重复。"
       ],
       "yeastStatus": "条件性",
       "role": "探索",
       "sourceUrls": [
         "https://pertpy.readthedocs.io/en/stable/api/tools/pertpy.tools.Cinemaot.html",
-        "https://doi.org/10.1038/s41592-023-02040-5"
+        "https://doi.org/10.1038/s41592-023-02040-5",
+        "https://doi.org/10.1080/01621459.2017.1407322",
+        "https://pertpy.scverse.org/en/stable/api/tools/pertpy.tools.Cinemaot.html"
       ],
       "categoryIds": [
         "perturbation"
@@ -24657,9 +24969,15 @@
           "url": "https://doi.org/10.1038/s41592-023-02040-5",
           "kind": "research_article",
           "label": "研究论文"
+        },
+        {
+          "url": "https://doi.org/10.1080/01621459.2017.1407322",
+          "kind": "research_article",
+          "label": "原始方法论文"
         }
       ],
-      "sourceKind": "documentation"
+      "sourceKind": "documentation",
+      "reviewedIn": "v25c"
     },
     {
       "id": "pertpy",

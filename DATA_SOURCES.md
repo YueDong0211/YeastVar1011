@@ -28,7 +28,8 @@ The following table describes major imported source groups. The manifest and per
 | [Jackson et al. (2020)](https://elifesciences.org/articles/51254) | Yeast single-cell states, genotype/environment context, and cell-cycle annotation | Original source panels and experimental conditions |
 | [Jariani et al. (2020)](https://elifesciences.org/articles/55320) | Stress adaptation, lag-associated expression, and trajectory-associated modules | Specific time points, contrasts, and branches; trajectory labels are source-specific |
 | [Dohn et al. (2022)](https://pmc.ncbi.nlm.nih.gov/articles/PMC8779198/) | mDrop-seq yeast state and stress references | Named *S. cerevisiae* programmes; no conversion of another species' markers into yeast markers |
-| [Wang et al. (2022)](https://doi.org/10.1111/acel.13712) | Aging-associated variable genes and slow/fast growth contrasts | Source age groups, supplementary tables, and contrast direction |
+| [Nadal-Ribelles et al. (2019)](https://doi.org/10.1038/s41564-018-0346-9) | Six explicitly illustrated metabolic-heterogeneity genes | Figure S4a in the supplement; BY4741 in YPD, 127 source cells. These are heterogeneity examples, not a complete state-classification panel. |
+| [Wang et al. (2022)](https://doi.org/10.1111/acel.13712) | Aging-associated variable genes, slow/fast growth contrasts, and within-age RNA–generation associations | Supplementary S5 Sheets 3/4 retain original R, unadjusted P values, row identities and positive/negative association direction; sampling hours and completed division generations are separate variables |
 | [Su et al. (2023)](https://doi.org/10.1186/s12864-023-09184-w) | Complete author-selected S4/S5 amino-acid and glucose-starvation differential-RNA panels | Original rows, source statistics, higher/lower directions, spheroplast context and the source's inconsistent prose selection criteria; CC BY 4.0 |
 | [Brettner et al. (2024)](https://doi.org/10.1002/yea.3927) | Eight explicitly named daughter-cell and late-G1/early-S associations | Source cluster and assay context; this is a named-gene excerpt, not the complete supplementary cluster table |
 | [Greenlaw et al. (2024)](https://doi.org/10.1093/nar/gkad1147) | Quiescence-associated RNA stabilization/degradation | Bulk metabolic-labelling evidence is labelled as supporting evidence rather than validated single-cell marker specificity |
@@ -47,6 +48,16 @@ The catalogue normalizes identifiers, groups source panels under searchable tags
 Published expression statistics describe the original study and contrast. They are not baseline expression estimates for the user's population. Missing mean expression, detection rate, specificity, or validation values remain unavailable rather than being filled with inferred measurements. Reference marker membership supports panel selection; validating that panel in a new matrix is a separate analysis. Bibliographic duplication or reuse of the same underlying experiment does not create additional independent evidence.
 
 The public source release excludes archived full-paper HTML/PDF files, downloaded original supplementary workbooks, unpublished data, local browser stores, private deployment configuration, and development caches. Source links and structured provenance remain available so researchers can obtain original materials from the publisher or data repository.
+
+## Continuous associations and assertion-level selection
+
+The v25c marker snapshot contains 5,275 gene records, 30,056 source-relation occurrences, 30,051 unique assertion IDs, and 50 registered source entries. Source entries may identify separate tables from the same paper; these totals are not counts of validated classifiers or independent studies. All 28,347 preceding evidence occurrences are retained. Five exact duplicate historical assertions share their stable ID while retaining their original occurrences.
+
+The update adds 895 within-age RNA–generation associations from Wang et al. and six metabolic-heterogeneity examples from Nadal-Ribelles et al. It adds 125 SGD-resolved gene identities, with 808 specific GO-slim assertions. A further 118 ontology-root mappings retain aspect metadata but create no specific function or marker assertion. The 29 unresolved source rows are excluded from this import, including one source gene-ID/symbol conflict. Source-R and P fields are preserved at their reported precision; the import adds no FDR or correlation-method claim that the source did not specify.
+
+Continuous association is a separate annotation-purpose filter. Positive/negative correlation is distinct from higher/lower expression in a contrast. The same gene may have opposite associations across sampling groups. Source filtering and condition filtering must match the same assertion; tag unions and intersections are explicitly gene-level combinations.
+
+Plans can select individual stable evidence IDs. An omitted evidence-ID field preserves legacy source-level selection; an explicit empty list selects no assertions. Unresolved IDs remain visible for review. Exports retain source records while marking selection explicitly, and selected-evidence citations exclude unselected assertions. Project expression means, detection rates, ranks and specificity remain unmeasured until project data are supplied.
 
 ## Population context and future integration
 

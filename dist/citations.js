@@ -117,10 +117,12 @@
   }
   let cachedKey = '', cachedResult = null;
   function build(plan = {}, literature) {
-    const urls = uniq(linksFrom(plan));
-    const toolIds = uniq([...(plan.tools || []), ...(plan.toolRecords || []).map(t=>t.id)]);
+    const explicit=Object.hasOwn(plan,'citationSelection'), scope=plan.citationSelection;
+    const valid=!explicit||scope?.version===1&&Array.isArray(scope.sourceUrls)&&scope.sourceUrls.every(x=>typeof x==='string')&&Array.isArray(scope.tools)&&scope.tools.every(x=>typeof x==='string');
+    const urls=explicit?(valid?uniq(scope.sourceUrls.filter(canonicalURL)):[]):uniq(linksFrom(plan));
+    const toolIds=explicit?(valid?uniq(scope.tools):[]):uniq([...(plan.tools||[]),...(plan.toolRecords||[]).map(t=>t.id)]);
     const ids = uniq([...urls.flatMap(resolve), ...toolIds.flatMap(id=>data.toolReferences[id] || [])]);
-    const key = JSON.stringify([urls,toolIds,ids]);
+    const key = JSON.stringify([explicit,valid,urls,toolIds,ids]);
     if (key === cachedKey && cachedResult) return cachedResult;
     const formatted = format(ids.map(id=>records.get(id)).filter(Boolean));
     const referencesFor = values => {
@@ -140,7 +142,7 @@
       metadataDate:data.generated,entries:formatted.entries,bibliographyHTML:formatted.bibliographyHTML,
       bibliographyText:formatted.bibliographyText,csl:formatted.csl,byURL,unresolvedURLs,
       stats:{references:formatted.entries.length,sourceURLs:urls.length,mappedURLs:urls.length-unresolvedURLs.length,unresolvedURLs:unresolvedURLs.length},
-      cite,referencesFor,error:formatted.error,
+      cite,referencesFor,error:valid?formatted.error:'Invalid citation selection.',
       forTool:(id,opts={})=>formatted.citeIDs(data.toolReferences[id] || [],opts),
       forToolReferences:id=>(data.toolReferences[id] || []).map(r=>formatted.byID[r]).filter(Boolean)
     };

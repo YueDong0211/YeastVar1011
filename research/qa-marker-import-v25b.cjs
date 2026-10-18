@@ -21,6 +21,7 @@ const context={URLSearchParams,setTimeout,clearTimeout,location:{hash:'#markers?
  document:{addEventListener(type,fn){(handlers[type]||=[]).push(fn);},querySelector:()=>null,getElementById:()=>({value:pasted})},
  window:{YV_APP:app,YV_BUILD_TEXT:k=>k,YV_RESEARCH_ATLAS:{text:k=>k},addEventListener(){},dispatchEvent(){}}
 };
+context.URL=URL;vm.runInNewContext(read('marker-selection-v25c.js'),context);
 vm.runInNewContext(read('builder.js'),context);
 const builder=context.window.YV_BUILDER;builder.init(app);
 vm.runInNewContext(read('marker-workspace-locales.js'),context);

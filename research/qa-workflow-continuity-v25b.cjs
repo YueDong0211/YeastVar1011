@@ -31,7 +31,7 @@ const context={URL,URLSearchParams,setTimeout,clearTimeout,queueMicrotask,
 };
 const load=(file,transform=value=>value)=>vm.runInNewContext(transform(read(file)),context,{filename:file});
 const plain=value=>JSON.parse(JSON.stringify(value));
-load('lab.js');load('builder.js');
+load('marker-selection-v25c.js');load('lab.js');load('builder.js');
 const builder=context.window.YV_BUILDER,lab=context.window.YV_LAB;builder.init(app);
 
 builder.setMarkers([cln2.id,clb2.id],true,false);

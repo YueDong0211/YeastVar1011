@@ -336,7 +336,13 @@
       ],
       "failureChecks": [
         "用均值等效证据区分稳定均值与低功效下的未检出差异。",
-        "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。"
+        "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。",
+        "WithSpikes=FALSE：同一建模生物群体需有多个真实技术重复，并在BatchInfo中记录；单一batch不满足要求。",
+        "菌株、处理或随机拆分的细胞不能冒充技术重复；独立培养重复另用于生物学推断。",
+        "此处列明两条技术分支；自动输入检查目前只核对计数与样本信息，技术重复或spike证据需人工确认。",
+        "并列保留模型失配、先验敏感性与拟合失败记录；培养层推断不以细胞数替代独立重复。",
+        "单条件中的应激分数或拟时序不等于环境可塑性；反应规范需要同一菌株在明确环境间的可比测量。",
+        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。"
       ],
       "outputs": [
         "平方变异系数",
@@ -360,7 +366,15 @@
         "https://www.bioconductor.org/packages/devel/bioc/vignettes/BASiCS/inst/doc/BASiCS.html",
         "https://doi.org/10.1093/nar/gkv007",
         "https://doi.org/10.1038/s41467-021-25960-2",
-        "https://bioconductor.org/packages/release/bioc/manuals/limma/man/limma.pdf"
+        "https://bioconductor.org/packages/release/bioc/manuals/limma/man/limma.pdf",
+        "https://bioconductor.org/packages/release/bioc/vignettes/BASiCS/inst/doc/BASiCS.html",
+        "https://doi.org/10.1214/20-BA1221",
+        "https://doi.org/10.1016/j.celrep.2025.116612",
+        "https://doi.org/10.1016/j.crmeth.2024.100933",
+        "https://doi.org/10.1371/journal.pgen.1001185",
+        "https://doi.org/10.1371/journal.pbio.3000289",
+        "https://doi.org/10.7554/elife.05856",
+        "https://doi.org/10.1038/ncomms12959"
       ],
       "tags": [
         "noise",
@@ -372,20 +386,36 @@
       "parameterDecisions": [
         "按表达量、检出率与深度界定可比较基因；预先声明最小有意义的均值及变异效应。",
         "固定计数层、培养层重抽样与检验集合；并列保存效应、区间和校正概率。",
-        "在每个实际拟合的样本与状态子集中重新构建设计矩阵。"
+        "在每个实际拟合的样本与状态子集中重新构建设计矩阵。",
+        "按真实建库记录选择spike或no-spike；分别核对下列条件。",
+        "正式参数为Offset；按是否保留全局RNA含量差异选择，记录该选择对估计目标的影响。"
       ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。"
+        "调用配方；尚未在项目数据上执行。",
+        "研究比较阅读；未接入默认工具或可执行配方。",
+        "噪音关联是否在原始计数测量模型与人类enQTL的均值趋势残差定义间保持一致？",
+        "并列保存观察与拟合CV²、比值、对数底数、矩阵来源、有效细胞数和缺失原因，比较归一化与性状定义的敏感性。",
+        "可追溯计数与SCT比较层、菌株/培养/状态标签；关联另需匹配基因型、亲缘和真实样本量，结构缺失不得当作普通缺失值插补。",
+        "Airqtl需核对版本、亲缘随机效应与倍性；人类enQTL脚本需核对对数底数、归一化层及样本量。",
+        "同一菌株的环境均值响应与噪音响应是否耦合，这种耦合是否随遗传背景改变？",
+        "估计配对环境均值/噪音对比、菌株反应斜率、排序保持与不确定性；分开跨基因相关和同一基因跨菌株关系。",
+        "明确重复环境/处理、同菌株可比状态、培养重复及均值/噪音估计；遗传解释需亲缘，启动子解释需外部注释。"
       ],
       "interpretationBoundary": "估计对象：所选细胞状态和测量模型下的表达变异。",
-      "reviewedIn": "v4",
+      "reviewedIn": "v25c",
       "paperIds": [
         "v12_basics_2016",
         "v12_basics_2018",
         "v12_basics_correction_2019",
         "v25_4cb493e88582",
-        "v25_7fe5101ca916"
+        "v25_7fe5101ca916",
+        "v25c_d6dd705b7b49",
+        "lit-1d1ed65a87f2",
+        "v25c_642b4adb2f52",
+        "v12_chapal_2019",
+        "v25c_0d63116780d0",
+        "v25c_ad7237679298"
       ],
       "updatedIn": "v12",
       "methodOptions": [
@@ -412,6 +442,36 @@
           ],
           "executionStatus": "recipe_only",
           "interpretationBoundary": "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。"
+        }
+      ],
+      "populationExtensions": [
+        {
+          "id": "V25CP02",
+          "status": "reading_only",
+          "question": "噪音关联是否在原始计数测量模型与人类enQTL的均值趋势残差定义间保持一致？",
+          "metricDefinition": "并列保存观察与拟合CV²、比值、对数底数、矩阵来源、有效细胞数和缺失原因，比较归一化与性状定义的敏感性。",
+          "requiredInputDescription": "可追溯计数与SCT比较层、菌株/培养/状态标签；关联另需匹配基因型、亲缘和真实样本量，结构缺失不得当作普通缺失值插补。",
+          "paperIds": [
+            "v25c_d6dd705b7b49",
+            "lit-1d1ed65a87f2"
+          ],
+          "executionStatus": "not_executed",
+          "automatedBranchGate": false
+        },
+        {
+          "id": "V25CP06",
+          "status": "analysis_contract",
+          "question": "同一菌株的环境均值响应与噪音响应是否耦合，这种耦合是否随遗传背景改变？",
+          "metricDefinition": "估计配对环境均值/噪音对比、菌株反应斜率、排序保持与不确定性；分开跨基因相关和同一基因跨菌株关系。",
+          "requiredInputDescription": "明确重复环境/处理、同菌株可比状态、培养重复及均值/噪音估计；遗传解释需亲缘，启动子解释需外部注释。",
+          "paperIds": [
+            "v25c_642b4adb2f52",
+            "v12_chapal_2019",
+            "v25c_0d63116780d0",
+            "v25c_ad7237679298"
+          ],
+          "executionStatus": "not_executed",
+          "automatedBranchGate": false
         }
       ]
     },
@@ -605,7 +665,10 @@
       "hypotheses": [
         "零假设：在匹配状态与测量条件下，各组完整表达分布相同，即使均值检验未显示差异。"
       ],
-      "failureChecks": [],
+      "failureChecks": [
+        "RNA快照的双峰或状态比例不能确定切换速率；群体关联不能单独证明历史选择，蛋白、bulk与成像证据另列。",
+        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。"
+      ],
       "outputs": [
         "完整表达分布变化",
         "表达尾部概率",
@@ -616,7 +679,11 @@
         "https://doi.org/10.1016/j.cell.2024.09.044",
         "https://doi.org/10.1093/bib/bbad294",
         "https://doi.org/10.1073/pnas.1721085115",
-        "https://doi.org/10.1186/s12859-021-04507-8"
+        "https://doi.org/10.1186/s12859-021-04507-8",
+        "https://doi.org/10.1038/s41467-019-11116-w",
+        "https://doi.org/10.1038/s42003-025-09414-9",
+        "https://doi.org/10.1371/journal.pbio.3000433",
+        "https://doi.org/10.7554/elife.05856"
       ],
       "tags": [
         "differential",
@@ -627,9 +694,36 @@
       "method": "用培养层分布检验筛选零值、尾部与多峰变化，再以潜在分布模型复核候选；尾部细胞回查分子支持、背景和双细胞。",
       "parameterDecisions": [],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
-      "analysisPrinciples": [],
+      "analysisPrinciples": [
+        "哪些独立证据能将观察到的噪音与状态比例连接到状态切换、遗传变化或适应度？",
+        "记录RNA快照、培养重现、时间/谱系、基因型关联、干预重构和适应度测量证据；展示来源，不生成未经校准的适应性分数。",
+        "计数、状态和培养可支持分布/比例；切换速率需时间/谱系与生长死亡约束，选择/适应度需已有基因组历史、干预或匹配适应度资料。"
+      ],
       "interpretationBoundary": "分布差异不自动指示新细胞类型或调控机制；缺少独立培养时仅作当前样本的描述性比较。",
-      "updatedIn": "v12"
+      "updatedIn": "v12",
+      "paperIds": [
+        "v25c_01684f3d0721",
+        "v25c_3273eb9c55f4",
+        "v25c_937bee9e0c39",
+        "v25c_0d63116780d0"
+      ],
+      "populationExtensions": [
+        {
+          "id": "V25CP07",
+          "status": "analysis_contract",
+          "question": "哪些独立证据能将观察到的噪音与状态比例连接到状态切换、遗传变化或适应度？",
+          "metricDefinition": "记录RNA快照、培养重现、时间/谱系、基因型关联、干预重构和适应度测量证据；展示来源，不生成未经校准的适应性分数。",
+          "requiredInputDescription": "计数、状态和培养可支持分布/比例；切换速率需时间/谱系与生长死亡约束，选择/适应度需已有基因组历史、干预或匹配适应度资料。",
+          "paperIds": [
+            "v25c_01684f3d0721",
+            "v25c_3273eb9c55f4",
+            "v25c_937bee9e0c39",
+            "v25c_0d63116780d0"
+          ],
+          "executionStatus": "not_executed",
+          "automatedBranchGate": false
+        }
+      ]
     },
     {
       "id": "noise_power",
@@ -1274,7 +1368,9 @@
         "零假设：比较组的状态组成或局部邻域丰度相同；重复间组成变异另作独立性状检验。"
       ],
       "failureChecks": [
-        "使用log归一化副本。0.99.3默认fix.all.zero会为零方差样本添加随机噪声；本配方关闭它并记录退化基因。分支支持另调用evaluate_uncertainty，不能从趋势p值推算。"
+        "使用log归一化副本。0.99.3默认fix.all.zero会为零方差样本添加随机噪声；本配方关闭它并记录退化基因。分支支持另调用evaluate_uncertainty，不能从趋势p值推算。",
+        "RNA快照的双峰或状态比例不能确定切换速率；群体关联不能单独证明历史选择，蛋白、bulk与成像证据另列。",
+        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。"
       ],
       "outputs": [
         "样本间状态组成差异",
@@ -1285,7 +1381,11 @@
       "sourceUrls": [
         "https://doi.org/10.1073/pnas.2203828120",
         "https://doi.org/10.1038/s41467-023-42841-y",
-        "https://github.com/Winnie09/Lamian/blob/bf7d1285393d8e3277235faa2ea4a7569191e350/R/lamian_test.R"
+        "https://github.com/Winnie09/Lamian/blob/bf7d1285393d8e3277235faa2ea4a7569191e350/R/lamian_test.R",
+        "https://doi.org/10.1038/s41467-019-11116-w",
+        "https://doi.org/10.1038/s42003-025-09414-9",
+        "https://doi.org/10.1371/journal.pbio.3000433",
+        "https://doi.org/10.7554/elife.05856"
       ],
       "tags": [
         "composition",
@@ -1300,11 +1400,18 @@
       ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。"
+        "调用配方；尚未在项目数据上执行。",
+        "哪些独立证据能将观察到的噪音与状态比例连接到状态切换、遗传变化或适应度？",
+        "记录RNA快照、培养重现、时间/谱系、基因型关联、干预重构和适应度测量证据；展示来源，不生成未经校准的适应性分数。",
+        "计数、状态和培养可支持分布/比例；切换速率需时间/谱系与生长死亡约束，选择/适应度需已有基因组历史、干预或匹配适应度资料。"
       ],
       "interpretationBoundary": "捕获到的细胞比例不等于培养物中的绝对比例；差异可能受到捕获、存活和QC选择影响。",
       "paperIds": [
-        "v25_fbb576e7a429"
+        "v25_fbb576e7a429",
+        "v25c_01684f3d0721",
+        "v25c_3273eb9c55f4",
+        "v25c_937bee9e0c39",
+        "v25c_0d63116780d0"
       ],
       "methodOptions": [
         {
@@ -1331,6 +1438,23 @@
           ],
           "executionStatus": "recipe_only",
           "interpretationBoundary": "使用log归一化副本。0.99.3默认fix.all.zero会为零方差样本添加随机噪声；本配方关闭它并记录退化基因。分支支持另调用evaluate_uncertainty，不能从趋势p值推算。"
+        }
+      ],
+      "populationExtensions": [
+        {
+          "id": "V25CP07",
+          "status": "analysis_contract",
+          "question": "哪些独立证据能将观察到的噪音与状态比例连接到状态切换、遗传变化或适应度？",
+          "metricDefinition": "记录RNA快照、培养重现、时间/谱系、基因型关联、干预重构和适应度测量证据；展示来源，不生成未经校准的适应性分数。",
+          "requiredInputDescription": "计数、状态和培养可支持分布/比例；切换速率需时间/谱系与生长死亡约束，选择/适应度需已有基因组历史、干预或匹配适应度资料。",
+          "paperIds": [
+            "v25c_01684f3d0721",
+            "v25c_3273eb9c55f4",
+            "v25c_937bee9e0c39",
+            "v25c_0d63116780d0"
+          ],
+          "executionStatus": "not_executed",
+          "automatedBranchGate": false
         }
       ]
     },
@@ -1415,7 +1539,9 @@
         "聚合降低细胞间变异；网络发现用聚合层，表达噪音检验保留原始UMI分布。",
         "重叠metacell不是独立培养重复；群体关联需另外控制菌株亲缘，WGCNA不会自动完成。",
         "共表达边与hub排序不证明直接调控或因果；模块标签不是每个基因的特异功能。",
-        "GO富集不等于通路激活；先固定酵母标识符、可测背景与比较方向。"
+        "GO富集不等于通路激活；先固定酵母标识符、可测背景与比较方向。",
+        "负协方差也可能来自同源分子归属或相对RNA分配；协方差置零仅是代数基线，不代表已验证的缓冲干预。",
+        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。"
       ],
       "outputs": [
         "表达程序使用率与稳定性",
@@ -1432,7 +1558,11 @@
         "https://doi.org/10.1186/1471-2105-9-559",
         "https://doi.org/10.1016/j.crmeth.2023.100498",
         "https://doi.org/10.1371/journal.pcbi.1001057",
-        "https://doi.org/10.1016/j.xinn.2021.100141"
+        "https://doi.org/10.1016/j.xinn.2021.100141",
+        "https://doi.org/10.1371/journal.pbio.3000289",
+        "https://doi.org/10.1371/journal.pgen.1001185",
+        "https://doi.org/10.1038/ncomms12959",
+        "https://doi.org/10.1038/s41598-021-01558-y"
       ],
       "tags": [
         "programs_grn",
@@ -1446,9 +1576,36 @@
         "记录值、数据层与软件版本；以分层重采样检查敏感性。"
       ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
-      "analysisPrinciples": [],
+      "analysisPrinciples": [
+        "重复基因合计表达是否在可比均值、状态和分子归属条件下更稳定，并保持环境响应？",
+        "在已有合计方差分解中补重复来源、归属不确定性、条件内协方差和跨环境均值/噪音响应；协方差置零仅为代数基线。",
+        "未经平滑计数与测量模型、菌株/培养/状态和重复基因集合；BAM核验同源归属，匹配环境估计可塑性，DNA解释拷贝。"
+      ],
       "interpretationBoundary": "输出：共表达关系、调控候选与模块活动分数。",
-      "reviewedIn": "v5"
+      "reviewedIn": "v5",
+      "paperIds": [
+        "v12_chapal_2019",
+        "v25c_642b4adb2f52",
+        "v25c_ad7237679298",
+        "lit-fed34aa2df8d"
+      ],
+      "populationExtensions": [
+        {
+          "id": "V25CP05",
+          "status": "analysis_contract",
+          "question": "重复基因合计表达是否在可比均值、状态和分子归属条件下更稳定，并保持环境响应？",
+          "metricDefinition": "在已有合计方差分解中补重复来源、归属不确定性、条件内协方差和跨环境均值/噪音响应；协方差置零仅为代数基线。",
+          "requiredInputDescription": "未经平滑计数与测量模型、菌株/培养/状态和重复基因集合；BAM核验同源归属，匹配环境估计可塑性，DNA解释拷贝。",
+          "paperIds": [
+            "v12_chapal_2019",
+            "v25c_642b4adb2f52",
+            "v25c_ad7237679298",
+            "lit-fed34aa2df8d"
+          ],
+          "executionStatus": "not_executed",
+          "automatedBranchGate": false
+        }
+      ]
     },
     {
       "id": "grn_rewiring",
@@ -1522,7 +1679,8 @@
         "https://doi.org/10.1093/nar/gkac1041",
         "https://doi.org/10.1186/s12859-025-06240-y",
         "https://doi.org/10.1186/s12859-024-05926-z",
-        "https://github.com/landerlabcode/BigSur/blob/cb6343ac5e45da374ff0d34ffb98766969be3c39/src/BigSur/feature_selection.py"
+        "https://github.com/landerlabcode/BigSur/blob/cb6343ac5e45da374ff0d34ffb98766969be3c39/src/BigSur/feature_selection.py",
+        "https://doi.org/10.1038/s41467-025-66214-9"
       ],
       "tags": [
         "programs_grn",
@@ -1536,12 +1694,18 @@
       ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。"
+        "调用配方；尚未在项目数据上执行。",
+        "研究比较阅读；未接入默认工具或可执行配方。",
+        "同一菌株与状态划分下，细胞层面的均值eQTL是否与现有计数模型及状态交互结果一致？",
+        "比较匹配SNP–基因效应、校准、亲缘模型与状态交互；Airqtl残差方差参数不作为噪音QTL检验。",
+        "原始计数、细胞→培养/样本→菌株映射、匹配DNA基因型与倍性、参考坐标、状态和协变量；cGRN另需有效cis遗传工具及独立证据。",
+        "Airqtl需核对版本、亲缘随机效应与倍性；人类enQTL脚本需核对对数底数、归一化层及样本量。"
       ],
       "interpretationBoundary": "输出：共表达关系、调控候选与模块活动分数。",
       "paperIds": [
         "lit-780ec4215f2f",
-        "v25_530aeafbda0a"
+        "v25_530aeafbda0a",
+        "v25c_e0ad2a723e06"
       ],
       "methodOptions": [
         {
@@ -1568,6 +1732,20 @@
           ],
           "executionStatus": "recipe_only",
           "interpretationBoundary": "高变基因不自动成为状态marker或噪音QTL。校正相关仍非因果；用培养留出检验边。相关模块与特征模块的可用接口分别核验。"
+        }
+      ],
+      "populationExtensions": [
+        {
+          "id": "V25CP01",
+          "status": "reading_only",
+          "question": "同一菌株与状态划分下，细胞层面的均值eQTL是否与现有计数模型及状态交互结果一致？",
+          "metricDefinition": "比较匹配SNP–基因效应、校准、亲缘模型与状态交互；Airqtl残差方差参数不作为噪音QTL检验。",
+          "requiredInputDescription": "原始计数、细胞→培养/样本→菌株映射、匹配DNA基因型与倍性、参考坐标、状态和协变量；cGRN另需有效cis遗传工具及独立证据。",
+          "paperIds": [
+            "v25c_e0ad2a723e06"
+          ],
+          "executionStatus": "not_executed",
+          "automatedBranchGate": false
         }
       ]
     },
@@ -1767,7 +1945,9 @@
         "这是均值趋势检验，不是差异噪音检验。重采样不能解决培养伪重复；无真实轨迹时须用空模型检查循环选基因造成的假信号。",
         "使用log归一化副本。0.99.3默认fix.all.zero会为零方差样本添加随机噪声；本配方关闭它并记录退化基因。分支支持另调用evaluate_uncertainty，不能从趋势p值推算。",
         "循环模板会引入闭环结构，不能单凭结果证明周期存在；相位不是物理时间。增强或过滤矩阵只作对照，噪音结论回到原始计数。",
-        "菌株编号、拟时序和系统发育次序不能替代实验时间。传输边不是谱系追踪或进化祖先；不用人类增殖或凋亡默认基因给酵母加权。"
+        "菌株编号、拟时序和系统发育次序不能替代实验时间。传输边不是谱系追踪或进化祖先；不用人类增殖或凋亡默认基因给酵母加权。",
+        "RNA快照的双峰或状态比例不能确定切换速率；群体关联不能单独证明历史选择，蛋白、bulk与成像证据另列。",
+        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。"
       ],
       "outputs": [
         "轨迹顺序稳定性",
@@ -1790,7 +1970,11 @@
         "https://doi.org/10.1038/s41587-023-01663-5",
         "https://github.com/nitzanlab/scPrisma/blob/b7bc40b7277654b917f0dae45f65935fdd3328d4/scPrisma/algorithms.py",
         "https://doi.org/10.1038/s41586-024-08453-2",
-        "https://github.com/theislab/moscot/blob/d6e1bb10398cb9ad1e8577552439a6c571a4903a/src/moscot/problems/time/_lineage.py"
+        "https://github.com/theislab/moscot/blob/d6e1bb10398cb9ad1e8577552439a6c571a4903a/src/moscot/problems/time/_lineage.py",
+        "https://doi.org/10.1038/s41467-019-11116-w",
+        "https://doi.org/10.1038/s42003-025-09414-9",
+        "https://doi.org/10.1371/journal.pbio.3000433",
+        "https://doi.org/10.7554/elife.05856"
       ],
       "tags": [
         "dynamics",
@@ -1811,7 +1995,10 @@
       ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。"
+        "调用配方；尚未在项目数据上执行。",
+        "哪些独立证据能将观察到的噪音与状态比例连接到状态切换、遗传变化或适应度？",
+        "记录RNA快照、培养重现、时间/谱系、基因型关联、干预重构和适应度测量证据；展示来源，不生成未经校准的适应性分数。",
+        "计数、状态和培养可支持分布/比例；切换速率需时间/谱系与生长死亡约束，选择/适应度需已有基因组历史、干预或匹配适应度资料。"
       ],
       "interpretationBoundary": "输出：细胞状态坐标、分支概率或剪接动力学方向。时间尺度由实际时间信息校准。",
       "reviewedIn": "v12",
@@ -1821,7 +2008,11 @@
         "v25_949746203f4b",
         "v25_fbb576e7a429",
         "v25_6df2c67a844a",
-        "v25_e34069812e6f"
+        "v25_e34069812e6f",
+        "v25c_01684f3d0721",
+        "v25c_3273eb9c55f4",
+        "v25c_937bee9e0c39",
+        "v25c_0d63116780d0"
       ],
       "methodOptions": [
         {
@@ -1947,6 +2138,23 @@
           ],
           "executionStatus": "recipe_only",
           "interpretationBoundary": "菌株编号、拟时序和系统发育次序不能替代实验时间。传输边不是谱系追踪或进化祖先；不用人类增殖或凋亡默认基因给酵母加权。"
+        }
+      ],
+      "populationExtensions": [
+        {
+          "id": "V25CP07",
+          "status": "analysis_contract",
+          "question": "哪些独立证据能将观察到的噪音与状态比例连接到状态切换、遗传变化或适应度？",
+          "metricDefinition": "记录RNA快照、培养重现、时间/谱系、基因型关联、干预重构和适应度测量证据；展示来源，不生成未经校准的适应性分数。",
+          "requiredInputDescription": "计数、状态和培养可支持分布/比例；切换速率需时间/谱系与生长死亡约束，选择/适应度需已有基因组历史、干预或匹配适应度资料。",
+          "paperIds": [
+            "v25c_01684f3d0721",
+            "v25c_3273eb9c55f4",
+            "v25c_937bee9e0c39",
+            "v25c_0d63116780d0"
+          ],
+          "executionStatus": "not_executed",
+          "automatedBranchGate": false
         }
       ]
     },
@@ -2143,29 +2351,40 @@
       "workflow": [
         {
           "stepId": "causal",
-          "action": "区分预测、关联、共定位和满足假设的因果证据。",
-          "deliverable": "共定位/精细定位候选 · MR敏感性结果 · 模拟扰动预测 · 可验证机制假说"
+          "action": "固定处理/对照设计与估计目标，分别分析均值、边际方差、状态比例及匹配效应。",
+          "deliverable": "效应目标、对照定义、匹配支持与分层结果"
         },
         {
           "stepId": "validation",
-          "action": "检验只改变均值、深度或状态比例时是否误报噪音差异。",
-          "deliverable": "假阳性/检出率 · 效应偏差/区间覆盖 · 参数敏感性 · 候选证据表"
+          "action": "在独立培养或菌株留出中比较完整分布、匹配均值与简单基线，并检验状态组成和测量变化。",
+          "deliverable": "留出误差、基线差值、效应区间与敏感性报告"
         }
       ],
       "hypotheses": [
-        "在留出菌株或处理组合上，比较模型与均值预测、最近邻和未处理基线的完整分布误差。"
+        "在留出菌株或处理组合上，分别检验均值、边际分布和状态组成预测是否优于简单基线。"
       ],
-      "failureChecks": [],
+      "failureChecks": [
+        "处理后的状态可能是中介或选择变量；条件化分析须说明目标变化，不能默认已去除混杂。",
+        "审查共同支持、匹配质量与运输参数敏感性；生成细胞和随机拆分不增加独立生物学重复。",
+        "天然菌株差异属于观察性比较；预测或模型配对结果不等于已验证的随机干预效应。"
+      ],
       "outputs": [
         "条件或扰动分布距离",
         "扰动预测外推与简单基线差值",
-        "反事实匹配支持与敏感性"
+        "反事实匹配支持与敏感性",
+        "处理均值效应及表达尺度",
+        "边际方差、分位数与尾部变化",
+        "状态比例变化与状态内效应",
+        "假设依赖的匹配效应及敏感性"
       ],
       "sourceUrls": [
         "https://pertpy.readthedocs.io/",
         "https://doi.org/10.1038/s41587-025-02777-8",
         "https://doi.org/10.1038/s41592-025-02772-6",
-        "https://doi.org/10.1038/s41592-025-02980-0"
+        "https://doi.org/10.1038/s41592-025-02980-0",
+        "https://doi.org/10.1038/s41592-023-02040-5",
+        "https://doi.org/10.1080/01621459.2017.1407322",
+        "https://pertpy.scverse.org/en/stable/api/tools/pertpy.tools.Cinemaot.html"
       ],
       "tags": [
         "perturbation",
@@ -2173,20 +2392,27 @@
       ],
       "evidenceStatus": "原始论文与官方方法资料",
       "addedIn": "v3",
-      "method": "在留出菌株与扰动组合上比较模型、匹配均值和线性基线；联合评价扰动特异位移、中心识别与完整分布。",
+      "method": "分别估计处理后的均值、边际方差与状态比例变化；将模型配对的个体效应作为假设依赖结果，在留出菌株或扰动组合上比较完整分布与简单基线。",
       "parameterDecisions": [
-        "按菌株、培养和扰动组合划分数据；训练集确定特征与调参。",
+        "记录处理分配方式、对照、剂量、时间及独立培养；按菌株、培养和扰动组合划分训练与留出集。",
+        "先声明计数或潜在丰度尺度、状态定义及总体或状态条件化目标；训练集确定特征和调参。",
         "同时报告以对照中心和扰动中心为参照的效应，分开评价共同应答与扰动特异信息。"
       ],
       "statisticalUnit": "细胞与基因用于描述当前分布；跨条件或群体的推断需按实际培养／菌株层级处理，缺少独立重复时保留描述性结论。",
-      "analysisPrinciples": [],
-      "interpretationBoundary": "用真实扰动数据评价预测；自然菌株差异保留为观察性对照。",
+      "analysisPrinciples": [
+        "均值效应：比较处理与对照的平均表达，明确计数或丰度尺度。",
+        "边际方差效应：比较两组表达分布宽度，并区分测量贡献与状态混合；它不等于个体处理效应的方差。",
+        "状态比例效应：量化处理后状态组成变化，与状态内表达效应并列报告。",
+        "个体效应异质性：同一细胞的处理与对照潜在结果未同时观测；OT匹配依赖模型，不能据此直接识别其联合分布。"
+      ],
+      "interpretationBoundary": "边际分布变化不识别个体效应方差；天然菌株保留观察性解释，真正干预的因果解释取决于设计与可辨识假设。",
       "paperIds": [
         "v12_systema_2025",
         "lit-53ee8ea39b56",
-        "lit-1be1be7aa371"
+        "lit-1be1be7aa371",
+        "lit-3c2b7158198a"
       ],
-      "reviewedIn": "v12",
+      "reviewedIn": "v25c",
       "updatedIn": "v12"
     },
     {
@@ -2229,7 +2455,8 @@
         "genetic_covariance_qtl",
         "v25_design_rank",
         "v25_nonestimable",
-        "v25_replication_map"
+        "v25_replication_map",
+        "v25c_gene_observability"
       ],
       "workflow": [
         {
@@ -2252,7 +2479,10 @@
         "零假设：控制亲缘、均值、批次及性状估计误差后，待检验位点与噪音性状无关联。"
       ],
       "failureChecks": [
-        "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。"
+        "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。",
+        "未检出不等于结构缺失；没有DNA证据时保留未知，缺失基因的噪音性状不填零或邻近值。",
+        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。",
+        "细胞间噪音、菌株均值差异与噪音性状遗传方差分别报告；增加细胞不能替代独立菌株或培养重复。"
       ],
       "outputs": [
         "噪音性状遗传力估计",
@@ -2266,7 +2496,15 @@
         "https://doi.org/10.1038/s41588-018-0089-9",
         "https://doi.org/10.1093/nar/gkv007",
         "https://doi.org/10.1038/s41467-021-25960-2",
-        "https://bioconductor.org/packages/release/bioc/manuals/limma/man/limma.pdf"
+        "https://bioconductor.org/packages/release/bioc/manuals/limma/man/limma.pdf",
+        "https://doi.org/10.1016/j.celrep.2025.116612",
+        "https://doi.org/10.1016/j.crmeth.2024.100933",
+        "https://doi.org/10.1038/s41586-025-09637-0",
+        "https://doi.org/10.7554/elife.05462",
+        "https://doi.org/10.7554/elife.15743",
+        "https://doi.org/10.1080/10635150701313830",
+        "https://doi.org/10.18637/jss.v080.i01",
+        "https://doi.org/10.1038/s41467-025-66214-9"
       ],
       "tags": [
         "genetics",
@@ -2281,7 +2519,18 @@
       ],
       "statisticalUnit": "遗传比较以菌株为单位；培养重复估计重现性，细胞估计菌株内分布。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。"
+        "调用配方；尚未在项目数据上执行。",
+        "研究比较阅读；未接入默认工具或可执行配方。",
+        "噪音关联是否在原始计数测量模型与人类enQTL的均值趋势残差定义间保持一致？",
+        "并列保存观察与拟合CV²、比值、对数底数、矩阵来源、有效细胞数和缺失原因，比较归一化与性状定义的敏感性。",
+        "可追溯计数与SCT比较层、菌株/培养/状态标签；关联另需匹配基因型、亲缘和真实样本量，结构缺失不得当作普通缺失值插补。",
+        "Airqtl需核对版本、亲缘随机效应与倍性；人类enQTL脚本需核对对数底数、归一化层及样本量。",
+        "基因零计数来自未捕获、无法唯一归属，还是已有DNA证实的结构缺失？",
+        "按基因×菌株保存独立UMI、唯一归属、参考覆盖、DNA存在/拷贝证据和噪音性状缺失原因；比较只在所需可观测范围内进行。",
+        "计数、参考和细胞→菌株映射；归属审核需带tag BAM。结构缺失和拷贝判定需匹配DNA或核验泛基因组，无DNA时保留未知。",
+        "菌株噪音差异中，哪些由亲缘解释，哪些来自培养或性状估计不精确？",
+        "保存噪音估计、标准误/抽样协方差或后验样本、细胞与培养支持、性状尺度和亲缘版本；比较纳入与忽略性状误差时的遗传方差。",
+        "菌株×培养×状态噪音性状及其误差、基因型亲缘、真实培养结构和协变量；均值、状态组成与噪音是不同性状。"
       ],
       "interpretationBoundary": "遗传力的分母、性状尺度与目标群体随模型一并记录。",
       "reviewedIn": "v12",
@@ -2290,12 +2539,25 @@
         "lit-90ddd2efc890",
         "v12_coqtl_2018",
         "v25_4cb493e88582",
-        "v25_7fe5101ca916"
+        "v25_7fe5101ca916",
+        "v25c_d6dd705b7b49",
+        "lit-1d1ed65a87f2",
+        "lit-da620a49174b",
+        "v25c_7cf3de0b54a6",
+        "v25c_adb73242a7f4",
+        "v25c_8438cde4ebbb",
+        "v25c_01e81b5cf8b0",
+        "v25c_e0ad2a723e06"
       ],
       "requiredInputContracts": [
         {
           "id": "genotypes",
           "contract": "分别编码SNP、拷贝数和基因存在缺失；多倍体分支保留实际剂量，二倍体分支可区分加性与显性效应。"
+        },
+        {
+          "id": "qtl_traits",
+          "contract": "菌株×培养×状态噪音性状及其误差、基因型亲缘、真实培养结构和协变量；均值、状态组成与噪音是不同性状。",
+          "enforcement": "documented_not_automated"
         }
       ],
       "updatedIn": "v12",
@@ -2323,6 +2585,50 @@
           ],
           "executionStatus": "recipe_only",
           "interpretationBoundary": "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。"
+        }
+      ],
+      "populationExtensions": [
+        {
+          "id": "V25CP02",
+          "status": "reading_only",
+          "question": "噪音关联是否在原始计数测量模型与人类enQTL的均值趋势残差定义间保持一致？",
+          "metricDefinition": "并列保存观察与拟合CV²、比值、对数底数、矩阵来源、有效细胞数和缺失原因，比较归一化与性状定义的敏感性。",
+          "requiredInputDescription": "可追溯计数与SCT比较层、菌株/培养/状态标签；关联另需匹配基因型、亲缘和真实样本量，结构缺失不得当作普通缺失值插补。",
+          "paperIds": [
+            "v25c_d6dd705b7b49",
+            "lit-1d1ed65a87f2"
+          ],
+          "executionStatus": "not_executed",
+          "automatedBranchGate": false
+        },
+        {
+          "id": "V25CP03",
+          "status": "analysis_contract",
+          "question": "基因零计数来自未捕获、无法唯一归属，还是已有DNA证实的结构缺失？",
+          "metricDefinition": "按基因×菌株保存独立UMI、唯一归属、参考覆盖、DNA存在/拷贝证据和噪音性状缺失原因；比较只在所需可观测范围内进行。",
+          "requiredInputDescription": "计数、参考和细胞→菌株映射；归属审核需带tag BAM。结构缺失和拷贝判定需匹配DNA或核验泛基因组，无DNA时保留未知。",
+          "paperIds": [
+            "lit-da620a49174b",
+            "v25c_7cf3de0b54a6",
+            "v25c_adb73242a7f4"
+          ],
+          "executionStatus": "not_executed",
+          "automatedBranchGate": false
+        },
+        {
+          "id": "V25CP04",
+          "status": "analysis_contract",
+          "question": "菌株噪音差异中，哪些由亲缘解释，哪些来自培养或性状估计不精确？",
+          "metricDefinition": "保存噪音估计、标准误/抽样协方差或后验样本、细胞与培养支持、性状尺度和亲缘版本；比较纳入与忽略性状误差时的遗传方差。",
+          "requiredInputDescription": "菌株×培养×状态噪音性状及其误差、基因型亲缘、真实培养结构和协变量；均值、状态组成与噪音是不同性状。",
+          "paperIds": [
+            "v25c_8438cde4ebbb",
+            "v25c_01e81b5cf8b0",
+            "v25c_e0ad2a723e06",
+            "v25c_d6dd705b7b49"
+          ],
+          "executionStatus": "not_executed",
+          "automatedBranchGate": false
         }
       ]
     },
@@ -2382,7 +2688,10 @@
         "零假设：遗传效应不随细胞状态变化；比较带交互项与无交互项的模型并检查共同状态支持。"
       ],
       "failureChecks": [
-        "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。"
+        "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。",
+        "负协方差也可能来自同源分子归属或相对RNA分配；协方差置零仅是代数基线，不代表已验证的缓冲干预。",
+        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。",
+        "单条件中的应激分数或拟时序不等于环境可塑性；反应规范需要同一菌株在明确环境间的可比测量。"
       ],
       "outputs": [
         "基因型×连续细胞状态效应",
@@ -2395,7 +2704,13 @@
         "https://doi.org/10.1038/s41588-025-02344-6",
         "https://doi.org/10.1093/nar/gkv007",
         "https://doi.org/10.1038/s41467-021-25960-2",
-        "https://bioconductor.org/packages/release/bioc/manuals/limma/man/limma.pdf"
+        "https://bioconductor.org/packages/release/bioc/manuals/limma/man/limma.pdf",
+        "https://doi.org/10.1038/s41467-025-66214-9",
+        "https://doi.org/10.1371/journal.pbio.3000289",
+        "https://doi.org/10.1371/journal.pgen.1001185",
+        "https://doi.org/10.1038/ncomms12959",
+        "https://doi.org/10.1038/s41598-021-01558-y",
+        "https://doi.org/10.7554/elife.05856"
       ],
       "tags": [
         "genetics",
@@ -2410,7 +2725,18 @@
       ],
       "statisticalUnit": "遗传比较以菌株为单位；培养重复估计重现性，细胞估计菌株内分布。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。"
+        "调用配方；尚未在项目数据上执行。",
+        "研究比较阅读；未接入默认工具或可执行配方。",
+        "同一菌株与状态划分下，细胞层面的均值eQTL是否与现有计数模型及状态交互结果一致？",
+        "比较匹配SNP–基因效应、校准、亲缘模型与状态交互；Airqtl残差方差参数不作为噪音QTL检验。",
+        "原始计数、细胞→培养/样本→菌株映射、匹配DNA基因型与倍性、参考坐标、状态和协变量；cGRN另需有效cis遗传工具及独立证据。",
+        "Airqtl需核对版本、亲缘随机效应与倍性；人类enQTL脚本需核对对数底数、归一化层及样本量。",
+        "重复基因合计表达是否在可比均值、状态和分子归属条件下更稳定，并保持环境响应？",
+        "在已有合计方差分解中补重复来源、归属不确定性、条件内协方差和跨环境均值/噪音响应；协方差置零仅为代数基线。",
+        "未经平滑计数与测量模型、菌株/培养/状态和重复基因集合；BAM核验同源归属，匹配环境估计可塑性，DNA解释拷贝。",
+        "同一菌株的环境均值响应与噪音响应是否耦合，这种耦合是否随遗传背景改变？",
+        "估计配对环境均值/噪音对比、菌株反应斜率、排序保持与不确定性；分开跨基因相关和同一基因跨菌株关系。",
+        "明确重复环境/处理、同菌株可比状态、培养重复及均值/噪音估计；遗传解释需亲缘，启动子解释需外部注释。"
       ],
       "interpretationBoundary": "持续效应、状态交互和环境交互分别报告估计对象与输入。",
       "reviewedIn": "v12",
@@ -2419,7 +2745,13 @@
         "lit-b1e4190af7b0",
         "v12_response_eqtl_2025",
         "v25_4cb493e88582",
-        "v25_7fe5101ca916"
+        "v25_7fe5101ca916",
+        "v25c_e0ad2a723e06",
+        "v12_chapal_2019",
+        "v25c_642b4adb2f52",
+        "v25c_ad7237679298",
+        "lit-fed34aa2df8d",
+        "v25c_0d63116780d0"
       ],
       "updatedIn": "v12",
       "methodOptions": [
@@ -2446,6 +2778,58 @@
           ],
           "executionStatus": "recipe_only",
           "interpretationBoundary": "满秩不代表无混杂；不可估计系数依赖编码顺序，不能替代具体contrast审查。菌株关联与菌株内培养重复是不同层级。"
+        }
+      ],
+      "populationExtensions": [
+        {
+          "id": "V25CP01",
+          "status": "reading_only",
+          "question": "同一菌株与状态划分下，细胞层面的均值eQTL是否与现有计数模型及状态交互结果一致？",
+          "metricDefinition": "比较匹配SNP–基因效应、校准、亲缘模型与状态交互；Airqtl残差方差参数不作为噪音QTL检验。",
+          "requiredInputDescription": "原始计数、细胞→培养/样本→菌株映射、匹配DNA基因型与倍性、参考坐标、状态和协变量；cGRN另需有效cis遗传工具及独立证据。",
+          "paperIds": [
+            "v25c_e0ad2a723e06"
+          ],
+          "executionStatus": "not_executed",
+          "automatedBranchGate": false
+        },
+        {
+          "id": "V25CP05",
+          "status": "analysis_contract",
+          "question": "重复基因合计表达是否在可比均值、状态和分子归属条件下更稳定，并保持环境响应？",
+          "metricDefinition": "在已有合计方差分解中补重复来源、归属不确定性、条件内协方差和跨环境均值/噪音响应；协方差置零仅为代数基线。",
+          "requiredInputDescription": "未经平滑计数与测量模型、菌株/培养/状态和重复基因集合；BAM核验同源归属，匹配环境估计可塑性，DNA解释拷贝。",
+          "paperIds": [
+            "v12_chapal_2019",
+            "v25c_642b4adb2f52",
+            "v25c_ad7237679298",
+            "lit-fed34aa2df8d"
+          ],
+          "executionStatus": "not_executed",
+          "automatedBranchGate": false
+        },
+        {
+          "id": "V25CP06",
+          "status": "analysis_contract",
+          "question": "同一菌株的环境均值响应与噪音响应是否耦合，这种耦合是否随遗传背景改变？",
+          "metricDefinition": "估计配对环境均值/噪音对比、菌株反应斜率、排序保持与不确定性；分开跨基因相关和同一基因跨菌株关系。",
+          "requiredInputDescription": "明确重复环境/处理、同菌株可比状态、培养重复及均值/噪音估计；遗传解释需亲缘，启动子解释需外部注释。",
+          "paperIds": [
+            "v25c_642b4adb2f52",
+            "v12_chapal_2019",
+            "v25c_0d63116780d0",
+            "v25c_ad7237679298"
+          ],
+          "executionStatus": "not_executed",
+          "automatedBranchGate": false
+        }
+      ],
+      "requiredInputContracts": [
+        {
+          "id": "sample_metadata",
+          "contract": "明确重复环境/处理、同菌株可比状态、培养重复及均值/噪音估计；遗传解释需亲缘，启动子解释需外部注释。",
+          "appliesTo": "noise_environment_response",
+          "enforcement": "documented_not_automated"
         }
       ]
     },
@@ -2504,7 +2888,12 @@
       "hypotheses": [
         "检验噪音性状与已有谱系或群体标签的关联，在控制均值、测量偏差和样本相关性后是否仍存在。"
       ],
-      "failureChecks": [],
+      "failureChecks": [
+        "细胞间噪音、菌株均值差异与噪音性状遗传方差分别报告；增加细胞不能替代独立菌株或培养重复。",
+        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。",
+        "单条件中的应激分数或拟时序不等于环境可塑性；反应规范需要同一菌株在明确环境间的可比测量。",
+        "RNA快照的双峰或状态比例不能确定切换速率；群体关联不能单独证明历史选择，蛋白、bulk与成像证据另列。"
+      ],
       "outputs": [
         "噪音性状遗传力估计",
         "QTL效应与估计误差",
@@ -2514,7 +2903,18 @@
         "https://doi.org/10.1038/s41586-018-0030-5",
         "https://doi.org/10.1038/s41586-025-09637-0",
         "https://doi.org/10.1038/s41559-024-02582-7",
-        "https://doi.org/10.7554/eLife.37272"
+        "https://doi.org/10.7554/eLife.37272",
+        "https://doi.org/10.1080/10635150701313830",
+        "https://doi.org/10.18637/jss.v080.i01",
+        "https://doi.org/10.1038/s41467-025-66214-9",
+        "https://doi.org/10.1016/j.celrep.2025.116612",
+        "https://doi.org/10.1371/journal.pgen.1001185",
+        "https://doi.org/10.1371/journal.pbio.3000289",
+        "https://doi.org/10.7554/elife.05856",
+        "https://doi.org/10.1038/ncomms12959",
+        "https://doi.org/10.1038/s41467-019-11116-w",
+        "https://doi.org/10.1038/s42003-025-09414-9",
+        "https://doi.org/10.1371/journal.pbio.3000433"
       ],
       "tags": [
         "evolution",
@@ -2525,15 +2925,96 @@
       "method": "将条件化噪音关联到亲缘、谱系和生态来源；比较谱系内分化、跨谱系重现与环境反应规范，再整合已有选择和适应度证据解释遗传缓冲与可塑性。",
       "parameterDecisions": [],
       "statisticalUnit": "遗传比较以菌株为单位；培养重复估计重现性，细胞估计菌株内分布。",
-      "analysisPrinciples": [],
+      "analysisPrinciples": [
+        "菌株噪音差异中，哪些由亲缘解释，哪些来自培养或性状估计不精确？",
+        "保存噪音估计、标准误/抽样协方差或后验样本、细胞与培养支持、性状尺度和亲缘版本；比较纳入与忽略性状误差时的遗传方差。",
+        "菌株×培养×状态噪音性状及其误差、基因型亲缘、真实培养结构和协变量；均值、状态组成与噪音是不同性状。",
+        "同一菌株的环境均值响应与噪音响应是否耦合，这种耦合是否随遗传背景改变？",
+        "估计配对环境均值/噪音对比、菌株反应斜率、排序保持与不确定性；分开跨基因相关和同一基因跨菌株关系。",
+        "明确重复环境/处理、同菌株可比状态、培养重复及均值/噪音估计；遗传解释需亲缘，启动子解释需外部注释。",
+        "哪些独立证据能将观察到的噪音与状态比例连接到状态切换、遗传变化或适应度？",
+        "记录RNA快照、培养重现、时间/谱系、基因型关联、干预重构和适应度测量证据；展示来源，不生成未经校准的适应性分数。",
+        "计数、状态和培养可支持分布/比例；切换速率需时间/谱系与生长死亡约束，选择/适应度需已有基因组历史、干预或匹配适应度资料。"
+      ],
       "interpretationBoundary": "表达轨迹描述状态顺序；群体历史使用已有基因组亲缘或谱系。",
       "reviewedIn": "v12",
       "isAppendix": true,
       "paperIds": [
         "v12_plasticity_2025",
-        "v12_duveau_2018"
+        "v12_duveau_2018",
+        "v25c_8438cde4ebbb",
+        "v25c_01e81b5cf8b0",
+        "v25c_e0ad2a723e06",
+        "v25c_d6dd705b7b49",
+        "v25c_642b4adb2f52",
+        "v12_chapal_2019",
+        "v25c_0d63116780d0",
+        "v25c_ad7237679298",
+        "v25c_01684f3d0721",
+        "v25c_3273eb9c55f4",
+        "v25c_937bee9e0c39"
       ],
-      "updatedIn": "v12"
+      "updatedIn": "v12",
+      "populationExtensions": [
+        {
+          "id": "V25CP04",
+          "status": "analysis_contract",
+          "question": "菌株噪音差异中，哪些由亲缘解释，哪些来自培养或性状估计不精确？",
+          "metricDefinition": "保存噪音估计、标准误/抽样协方差或后验样本、细胞与培养支持、性状尺度和亲缘版本；比较纳入与忽略性状误差时的遗传方差。",
+          "requiredInputDescription": "菌株×培养×状态噪音性状及其误差、基因型亲缘、真实培养结构和协变量；均值、状态组成与噪音是不同性状。",
+          "paperIds": [
+            "v25c_8438cde4ebbb",
+            "v25c_01e81b5cf8b0",
+            "v25c_e0ad2a723e06",
+            "v25c_d6dd705b7b49"
+          ],
+          "executionStatus": "not_executed",
+          "automatedBranchGate": false
+        },
+        {
+          "id": "V25CP06",
+          "status": "analysis_contract",
+          "question": "同一菌株的环境均值响应与噪音响应是否耦合，这种耦合是否随遗传背景改变？",
+          "metricDefinition": "估计配对环境均值/噪音对比、菌株反应斜率、排序保持与不确定性；分开跨基因相关和同一基因跨菌株关系。",
+          "requiredInputDescription": "明确重复环境/处理、同菌株可比状态、培养重复及均值/噪音估计；遗传解释需亲缘，启动子解释需外部注释。",
+          "paperIds": [
+            "v25c_642b4adb2f52",
+            "v12_chapal_2019",
+            "v25c_0d63116780d0",
+            "v25c_ad7237679298"
+          ],
+          "executionStatus": "not_executed",
+          "automatedBranchGate": false
+        },
+        {
+          "id": "V25CP07",
+          "status": "analysis_contract",
+          "question": "哪些独立证据能将观察到的噪音与状态比例连接到状态切换、遗传变化或适应度？",
+          "metricDefinition": "记录RNA快照、培养重现、时间/谱系、基因型关联、干预重构和适应度测量证据；展示来源，不生成未经校准的适应性分数。",
+          "requiredInputDescription": "计数、状态和培养可支持分布/比例；切换速率需时间/谱系与生长死亡约束，选择/适应度需已有基因组历史、干预或匹配适应度资料。",
+          "paperIds": [
+            "v25c_01684f3d0721",
+            "v25c_3273eb9c55f4",
+            "v25c_937bee9e0c39",
+            "v25c_0d63116780d0"
+          ],
+          "executionStatus": "not_executed",
+          "automatedBranchGate": false
+        }
+      ],
+      "requiredInputContracts": [
+        {
+          "id": "qtl_traits",
+          "contract": "菌株×培养×状态噪音性状及其误差、基因型亲缘、真实培养结构和协变量；均值、状态组成与噪音是不同性状。",
+          "enforcement": "documented_not_automated"
+        },
+        {
+          "id": "sample_metadata",
+          "contract": "明确重复环境/处理、同菌株可比状态、培养重复及均值/噪音估计；遗传解释需亲缘，启动子解释需外部注释。",
+          "appliesTo": "noise_environment_response",
+          "enforcement": "documented_not_automated"
+        }
+      ]
     },
     {
       "id": "reference_bias",
@@ -2567,7 +3048,8 @@
       "metricIds": [
         "matrix_annotation_sensitivity",
         "allele_remap_bias",
-        "bam_overlap_ambiguity"
+        "bam_overlap_ambiguity",
+        "v25c_gene_observability"
       ],
       "workflow": [
         {
@@ -2594,7 +3076,10 @@
       "hypotheses": [
         "对同一FASTQ进行配对比较，检验噪音候选是否随参考、注释或多重比对分配策略显著改变。"
       ],
-      "failureChecks": [],
+      "failureChecks": [
+        "未检出不等于结构缺失；没有DNA证据时保留未知，缺失基因的噪音性状不填零或邻近值。",
+        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。"
+      ],
       "outputs": [
         "参考注释版本的计数敏感性",
         "等位替换重比对不一致率",
@@ -2602,7 +3087,10 @@
       ],
       "sourceUrls": [
         "https://github.com/alexdobin/STAR/blob/master/docs/STARsolo.md",
-        "https://doi.org/10.1038/s41588-024-01769-9"
+        "https://doi.org/10.1038/s41588-024-01769-9",
+        "https://doi.org/10.1038/s41586-025-09637-0",
+        "https://doi.org/10.7554/elife.05462",
+        "https://doi.org/10.7554/elife.15743"
       ],
       "tags": [
         "raw_qc",
@@ -2613,8 +3101,33 @@
       "method": "在相同FASTQ和共同基因空间中比较参考、注释及多重比对处理；检查候选基因的可比对性、缺失和拷贝证据，避免将不可比基因直接作噪音差异。",
       "parameterDecisions": [],
       "statisticalUnit": "QC按文库、lane、read、分子和细胞分别计量；后续条件效应推断再使用培养重复。",
-      "analysisPrinciples": [],
-      "interpretationBoundary": "输出：分子计数与处理流程的质量诊断。"
+      "analysisPrinciples": [
+        "基因零计数来自未捕获、无法唯一归属，还是已有DNA证实的结构缺失？",
+        "按基因×菌株保存独立UMI、唯一归属、参考覆盖、DNA存在/拷贝证据和噪音性状缺失原因；比较只在所需可观测范围内进行。",
+        "计数、参考和细胞→菌株映射；归属审核需带tag BAM。结构缺失和拷贝判定需匹配DNA或核验泛基因组，无DNA时保留未知。"
+      ],
+      "interpretationBoundary": "输出：分子计数与处理流程的质量诊断。",
+      "paperIds": [
+        "lit-da620a49174b",
+        "v25c_7cf3de0b54a6",
+        "v25c_adb73242a7f4"
+      ],
+      "populationExtensions": [
+        {
+          "id": "V25CP03",
+          "status": "analysis_contract",
+          "question": "基因零计数来自未捕获、无法唯一归属，还是已有DNA证实的结构缺失？",
+          "metricDefinition": "按基因×菌株保存独立UMI、唯一归属、参考覆盖、DNA存在/拷贝证据和噪音性状缺失原因；比较只在所需可观测范围内进行。",
+          "requiredInputDescription": "计数、参考和细胞→菌株映射；归属审核需带tag BAM。结构缺失和拷贝判定需匹配DNA或核验泛基因组，无DNA时保留未知。",
+          "paperIds": [
+            "lit-da620a49174b",
+            "v25c_7cf3de0b54a6",
+            "v25c_adb73242a7f4"
+          ],
+          "executionStatus": "not_executed",
+          "automatedBranchGate": false
+        }
+      ]
     },
     {
       "id": "foundation_benchmark",
@@ -4586,7 +5099,8 @@
         "paralog_sum_variance",
         "paralog_covariance_contribution",
         "noise_dispersion",
-        "network_module_preservation"
+        "network_module_preservation",
+        "v25c_gene_observability"
       ],
       "workflow": [
         {
@@ -4601,7 +5115,11 @@
         }
       ],
       "hypotheses": [],
-      "failureChecks": [],
+      "failureChecks": [
+        "未检出不等于结构缺失；没有DNA证据时保留未知，缺失基因的噪音性状不填零或邻近值。",
+        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。",
+        "负协方差也可能来自同源分子归属或相对RNA分配；协方差置零仅是代数基线，不代表已验证的缓冲干预。"
+      ],
       "outputs": [
         "合计RNA稳定性图谱",
         "协方差对总方差的贡献",
@@ -4610,7 +5128,12 @@
       "sourceUrls": [
         "https://doi.org/10.1038/s41598-021-01558-y",
         "https://doi.org/10.1371/journal.pbio.3000289",
-        "https://doi.org/10.1016/j.cell.2024.09.044"
+        "https://doi.org/10.1016/j.cell.2024.09.044",
+        "https://doi.org/10.1038/s41586-025-09637-0",
+        "https://doi.org/10.7554/elife.05462",
+        "https://doi.org/10.7554/elife.15743",
+        "https://doi.org/10.1371/journal.pgen.1001185",
+        "https://doi.org/10.1038/ncomms12959"
       ],
       "tags": [
         "noise",
@@ -4624,7 +5147,14 @@
         "先审核同源区域的多重比对和基因归属，再检验协变与合计方差。"
       ],
       "statisticalUnit": "在菌株×培养×状态内估计；跨组区间按独立培养重抽样。",
-      "analysisPrinciples": [],
+      "analysisPrinciples": [
+        "基因零计数来自未捕获、无法唯一归属，还是已有DNA证实的结构缺失？",
+        "按基因×菌株保存独立UMI、唯一归属、参考覆盖、DNA存在/拷贝证据和噪音性状缺失原因；比较只在所需可观测范围内进行。",
+        "计数、参考和细胞→菌株映射；归属审核需带tag BAM。结构缺失和拷贝判定需匹配DNA或核验泛基因组，无DNA时保留未知。",
+        "重复基因合计表达是否在可比均值、状态和分子归属条件下更稳定，并保持环境响应？",
+        "在已有合计方差分解中补重复来源、归属不确定性、条件内协方差和跨环境均值/噪音响应；协方差置零仅为代数基线。",
+        "未经平滑计数与测量模型、菌株/培养/状态和重复基因集合；BAM核验同源归属，匹配环境估计可塑性，DNA解释拷贝。"
+      ],
       "interpretationBoundary": "自然菌株比较定位转录缓冲候选；补偿机制结合已有扰动证据解释。",
       "parentProjectIds": [
         "mean_noise",
@@ -4634,7 +5164,12 @@
       "paperIds": [
         "lit-fed34aa2df8d",
         "v12_chapal_2019",
-        "lit-d7fb6e4d54f5"
+        "lit-d7fb6e4d54f5",
+        "lit-da620a49174b",
+        "v25c_7cf3de0b54a6",
+        "v25c_adb73242a7f4",
+        "v25c_642b4adb2f52",
+        "v25c_ad7237679298"
       ],
       "executionStatus": "not-run",
       "planningApplicability": "adapt",
@@ -4657,7 +5192,38 @@
         "fr": "La covariation des paralogues stabilise-t-elle leur expression totale, et quelles cibles communes changent uniquement de bruit ?",
         "es": "¿La covariación de parálogos estabiliza su expresión conjunta y qué dianas compartidas cambian solo el ruido?",
         "eu": "Paralogoen kobariazioak adierazpen batura egonkortzen al du, eta zein helburu partekatuk aldatzen dute zarata soilik?"
-      }
+      },
+      "populationExtensions": [
+        {
+          "id": "V25CP03",
+          "status": "analysis_contract",
+          "question": "基因零计数来自未捕获、无法唯一归属，还是已有DNA证实的结构缺失？",
+          "metricDefinition": "按基因×菌株保存独立UMI、唯一归属、参考覆盖、DNA存在/拷贝证据和噪音性状缺失原因；比较只在所需可观测范围内进行。",
+          "requiredInputDescription": "计数、参考和细胞→菌株映射；归属审核需带tag BAM。结构缺失和拷贝判定需匹配DNA或核验泛基因组，无DNA时保留未知。",
+          "paperIds": [
+            "lit-da620a49174b",
+            "v25c_7cf3de0b54a6",
+            "v25c_adb73242a7f4"
+          ],
+          "executionStatus": "not_executed",
+          "automatedBranchGate": false
+        },
+        {
+          "id": "V25CP05",
+          "status": "analysis_contract",
+          "question": "重复基因合计表达是否在可比均值、状态和分子归属条件下更稳定，并保持环境响应？",
+          "metricDefinition": "在已有合计方差分解中补重复来源、归属不确定性、条件内协方差和跨环境均值/噪音响应；协方差置零仅为代数基线。",
+          "requiredInputDescription": "未经平滑计数与测量模型、菌株/培养/状态和重复基因集合；BAM核验同源归属，匹配环境估计可塑性，DNA解释拷贝。",
+          "paperIds": [
+            "v12_chapal_2019",
+            "v25c_642b4adb2f52",
+            "v25c_ad7237679298",
+            "lit-fed34aa2df8d"
+          ],
+          "executionStatus": "not_executed",
+          "automatedBranchGate": false
+        }
+      ]
     },
     {
       "id": "rna_allocation_proportionality",
@@ -4834,7 +5400,9 @@
         "https://doi.org/10.1038/s41588-018-0268-8",
         "https://doi.org/10.1038/s41588-018-0089-9",
         "https://stephenslab.github.io/susieR/",
-        "https://chr1swallace.github.io/coloc/"
+        "https://chr1swallace.github.io/coloc/",
+        "https://doi.org/10.1016/j.celrep.2025.116612",
+        "https://doi.org/10.1016/j.crmeth.2024.100933"
       ],
       "tags": [
         "genetics",
@@ -4849,11 +5417,19 @@
         "默认导入已有协方差QTL；重新估计该性状及关联时，需原始计数、样本身份、细胞状态、基因型与亲缘矩阵。"
       ],
       "statisticalUnit": "遗传比较以菌株为单位；培养重复估计重现性，细胞估计菌株内分布。",
-      "analysisPrinciples": [],
+      "analysisPrinciples": [
+        "研究比较阅读；未接入默认工具或可执行配方。",
+        "噪音关联是否在原始计数测量模型与人类enQTL的均值趋势残差定义间保持一致？",
+        "并列保存观察与拟合CV²、比值、对数底数、矩阵来源、有效细胞数和缺失原因，比较归一化与性状定义的敏感性。",
+        "可追溯计数与SCT比较层、菌株/培养/状态标签；关联另需匹配基因型、亲缘和真实样本量，结构缺失不得当作普通缺失值插补。",
+        "Airqtl需核对版本、亲缘随机效应与倍性；人类enQTL脚本需核对对数底数、归一化层及样本量。"
+      ],
       "interpretationBoundary": "",
       "paperIds": [
         "v12_mash_2019",
-        "v12_coqtl_2018"
+        "v12_coqtl_2018",
+        "v25c_d6dd705b7b49",
+        "lit-1d1ed65a87f2"
       ],
       "planningApplicability": "conditional",
       "executionStatus": "not-run",
@@ -4933,6 +5509,21 @@
             "genetics"
           ],
           "action": "默认导入已有协方差QTL；重新估计该性状及关联时，需原始计数、样本身份、细胞状态、基因型与亲缘矩阵。"
+        }
+      ],
+      "populationExtensions": [
+        {
+          "id": "V25CP02",
+          "status": "reading_only",
+          "question": "噪音关联是否在原始计数测量模型与人类enQTL的均值趋势残差定义间保持一致？",
+          "metricDefinition": "并列保存观察与拟合CV²、比值、对数底数、矩阵来源、有效细胞数和缺失原因，比较归一化与性状定义的敏感性。",
+          "requiredInputDescription": "可追溯计数与SCT比较层、菌株/培养/状态标签；关联另需匹配基因型、亲缘和真实样本量，结构缺失不得当作普通缺失值插补。",
+          "paperIds": [
+            "v25c_d6dd705b7b49",
+            "lit-1d1ed65a87f2"
+          ],
+          "executionStatus": "not_executed",
+          "automatedBranchGate": false
         }
       ]
     },
@@ -5833,7 +6424,9 @@
       "hypotheses": [],
       "failureChecks": [
         "冻结状态定义并检查每个样本的共同支持。",
-        "比较缺失状态处理、亲缘分层与方差模型。"
+        "比较缺失状态处理、亲缘分层与方差模型。",
+        "细胞间噪音、菌株均值差异与噪音性状遗传方差分别报告；增加细胞不能替代独立菌株或培养重复。",
+        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。"
       ],
       "outputs": [
         "状态特异的菌株间方差",
@@ -5842,7 +6435,11 @@
       "sourceUrls": [
         "https://doi.org/10.1038/s41467-024-49242-9",
         "https://github.com/Minhui-Chen/CTMM",
-        "https://www.nature.com/articles/s41467-024-49242-9"
+        "https://www.nature.com/articles/s41467-024-49242-9",
+        "https://doi.org/10.1080/10635150701313830",
+        "https://doi.org/10.18637/jss.v080.i01",
+        "https://doi.org/10.1038/s41467-025-66214-9",
+        "https://doi.org/10.1016/j.celrep.2025.116612"
       ],
       "tags": [
         "noise",
@@ -5855,11 +6452,19 @@
         "比较缺失状态处理、亲缘分层与方差模型。"
       ],
       "statisticalUnit": "样本/菌株是独立推断单位，细胞用于估计均值及抽样误差。",
-      "analysisPrinciples": [],
+      "analysisPrinciples": [
+        "菌株噪音差异中，哪些由亲缘解释，哪些来自培养或性状估计不精确？",
+        "保存噪音估计、标准误/抽样协方差或后验样本、细胞与培养支持、性状尺度和亲缘版本；比较纳入与忽略性状误差时的遗传方差。",
+        "菌株×培养×状态噪音性状及其误差、基因型亲缘、真实培养结构和协变量；均值、状态组成与噪音是不同性状。"
+      ],
       "interpretationBoundary": "结果属于菌株间均值方差；与同菌株内噪音和基因型解释的遗传力分别报告。",
       "planningApplicability": "adapt",
       "paperIds": [
-        "v22_ctmm_2024"
+        "v22_ctmm_2024",
+        "v25c_8438cde4ebbb",
+        "v25c_01e81b5cf8b0",
+        "v25c_e0ad2a723e06",
+        "v25c_d6dd705b7b49"
       ],
       "addedIn": "v22",
       "executionStatus": "not-run",
@@ -5880,7 +6485,24 @@
           "Homo sapiens"
         ],
         "note": "Software-method source verified; proposed yeast analysis requires design-specific evaluation."
-      }
+      },
+      "populationExtensions": [
+        {
+          "id": "V25CP04",
+          "status": "analysis_contract",
+          "question": "菌株噪音差异中，哪些由亲缘解释，哪些来自培养或性状估计不精确？",
+          "metricDefinition": "保存噪音估计、标准误/抽样协方差或后验样本、细胞与培养支持、性状尺度和亲缘版本；比较纳入与忽略性状误差时的遗传方差。",
+          "requiredInputDescription": "菌株×培养×状态噪音性状及其误差、基因型亲缘、真实培养结构和协变量；均值、状态组成与噪音是不同性状。",
+          "paperIds": [
+            "v25c_8438cde4ebbb",
+            "v25c_01e81b5cf8b0",
+            "v25c_e0ad2a723e06",
+            "v25c_d6dd705b7b49"
+          ],
+          "executionStatus": "not_executed",
+          "automatedBranchGate": false
+        }
+      ]
     },
     {
       "id": "cross_state_coordination",
@@ -6137,7 +6759,9 @@
       "failureChecks": [
         "映射到当前酵母系统基因ID并记录未测基因。",
         "比较结合、响应、交集及无先验模型。",
-        "验证边与训练先验分开。"
+        "验证边与训练先验分开。",
+        "RNA快照的双峰或状态比例不能确定切换速率；群体关联不能单独证明历史选择，蛋白、bulk与成像证据另列。",
+        "这些字段为分析与导出约定；尚未自动拟合或实施条件分支校验。"
       ],
       "outputs": [
         "调控边的结合与功能证据分层",
@@ -6146,7 +6770,11 @@
       "sourceUrls": [
         "https://doi.org/10.1038/s41586-025-08916-0",
         "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE236948",
-        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12882699/"
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12882699/",
+        "https://doi.org/10.1038/s41467-019-11116-w",
+        "https://doi.org/10.1038/s42003-025-09414-9",
+        "https://doi.org/10.1371/journal.pbio.3000433",
+        "https://doi.org/10.7554/elife.05856"
       ],
       "tags": [
         "programs_grn",
@@ -6160,11 +6788,19 @@
         "验证边与训练先验分开。"
       ],
       "statisticalUnit": "TF—靶基因边保留实验条件；泛化按培养/菌株或独立证据留出。",
-      "analysisPrinciples": [],
+      "analysisPrinciples": [
+        "哪些独立证据能将观察到的噪音与状态比例连接到状态切换、遗传变化或适应度？",
+        "记录RNA快照、培养重现、时间/谱系、基因型关联、干预重构和适应度测量证据；展示来源，不生成未经校准的适应性分数。",
+        "计数、状态和培养可支持分布/比例；切换速率需时间/谱系与生长死亡约束，选择/适应度需已有基因组历史、干预或匹配适应度资料。"
+      ],
       "interpretationBoundary": "TF的激活/抑制方向标注在具体边和情境上；单一结合位点不等于功能调控。",
       "planningApplicability": "adapt",
       "paperIds": [
-        "v22_tf_evidence_2025"
+        "v22_tf_evidence_2025",
+        "v25c_01684f3d0721",
+        "v25c_3273eb9c55f4",
+        "v25c_937bee9e0c39",
+        "v25c_0d63116780d0"
       ],
       "addedIn": "v22",
       "executionStatus": "not-run",
@@ -6193,6 +6829,23 @@
       },
       "datasetIds": [
         "v22_tf_function_2025"
+      ],
+      "populationExtensions": [
+        {
+          "id": "V25CP07",
+          "status": "analysis_contract",
+          "question": "哪些独立证据能将观察到的噪音与状态比例连接到状态切换、遗传变化或适应度？",
+          "metricDefinition": "记录RNA快照、培养重现、时间/谱系、基因型关联、干预重构和适应度测量证据；展示来源，不生成未经校准的适应性分数。",
+          "requiredInputDescription": "计数、状态和培养可支持分布/比例；切换速率需时间/谱系与生长死亡约束，选择/适应度需已有基因组历史、干预或匹配适应度资料。",
+          "paperIds": [
+            "v25c_01684f3d0721",
+            "v25c_3273eb9c55f4",
+            "v25c_937bee9e0c39",
+            "v25c_0d63116780d0"
+          ],
+          "executionStatus": "not_executed",
+          "automatedBranchGate": false
+        }
       ]
     },
     {
@@ -6268,7 +6921,8 @@
         "https://mancusolab.github.io/jaxqtl/reference/mapping/",
         "https://www.medrxiv.org/content/10.1101/2025.01.18.25320755v2",
         "https://doi.org/10.1038/s41467-021-26779-7",
-        "https://github.com/heiniglab/scPower/blob/82039da57fb53839c7c88bdc6745aced4b7017b9/R/power.R"
+        "https://github.com/heiniglab/scPower/blob/82039da57fb53839c7c88bdc6745aced4b7017b9/R/power.R",
+        "https://doi.org/10.1038/s41467-025-66214-9"
       ],
       "tags": [
         "genetics",
@@ -6283,13 +6937,19 @@
       ],
       "statisticalUnit": "基因型对应的菌株/样本；同一菌株细胞不作为独立基因型重复。",
       "analysisPrinciples": [
-        "调用配方；尚未在项目数据上执行。"
+        "调用配方；尚未在项目数据上执行。",
+        "研究比较阅读；未接入默认工具或可执行配方。",
+        "同一菌株与状态划分下，细胞层面的均值eQTL是否与现有计数模型及状态交互结果一致？",
+        "比较匹配SNP–基因效应、校准、亲缘模型与状态交互；Airqtl残差方差参数不作为噪音QTL检验。",
+        "原始计数、细胞→培养/样本→菌株映射、匹配DNA基因型与倍性、参考坐标、状态和协变量；cGRN另需有效cis遗传工具及独立证据。",
+        "Airqtl需核对版本、亲缘随机效应与倍性；人类enQTL脚本需核对对数底数、归一化层及样本量。"
       ],
       "interpretationBoundary": "jaxQTL的均值关联与NB离散参数不能替代差异噪音或噪音QTL检验。",
       "planningApplicability": "conditional",
       "paperIds": [
         "v22_jaxqtl_2025",
-        "v25_dd5fab2e6d62"
+        "v25_dd5fab2e6d62",
+        "v25c_e0ad2a723e06"
       ],
       "addedIn": "v22",
       "executionStatus": "not-run",
@@ -6336,6 +6996,20 @@
           ],
           "executionStatus": "recipe_only",
           "interpretationBoundary": "这是均值DE/eQTL功效，不是噪音QTL功效。替换人类默认参数；原生eQTL模拟的二倍体HWE假设须适配酵母倍性与群体结构。遗传样本量按菌株而非细胞计。"
+        }
+      ],
+      "populationExtensions": [
+        {
+          "id": "V25CP01",
+          "status": "reading_only",
+          "question": "同一菌株与状态划分下，细胞层面的均值eQTL是否与现有计数模型及状态交互结果一致？",
+          "metricDefinition": "比较匹配SNP–基因效应、校准、亲缘模型与状态交互；Airqtl残差方差参数不作为噪音QTL检验。",
+          "requiredInputDescription": "原始计数、细胞→培养/样本→菌株映射、匹配DNA基因型与倍性、参考坐标、状态和协变量；cGRN另需有效cis遗传工具及独立证据。",
+          "paperIds": [
+            "v25c_e0ad2a723e06"
+          ],
+          "executionStatus": "not_executed",
+          "automatedBranchGate": false
         }
       ]
     },

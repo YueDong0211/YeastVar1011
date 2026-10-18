@@ -13,10 +13,10 @@ const check=(ok,note)=>{assert(ok,note);checks++;};
 const tools=new Map(w.tools.map(x=>[x.id,x])),metrics=new Map(w.metrics.map(x=>[x.id,x])),papers=new Map(l.papers.map(x=>[x.id,x])),refs=new Map(citations.records.map(x=>[x.id,x]));
 const steps=new Set(w.steps.map(x=>x.id)),inputs=new Set(c.dataRequirements.map(x=>x.id)),tags=new Set(c.methodTags.map(x=>x.id));
 for(const [rows,label] of [[w.tools,'tools'],[w.metrics,'metrics'],[p.projects,'projects'],[l.papers,'papers']])check(new Set(rows.map(x=>x.id)).size===rows.length,'Duplicate '+label);
-check(w.tools.length===baseline.counts.tools+10,'Ten new methods');
+check(w.tools.filter(x=>x.addedIn==='v25').length===10,'Ten v25 methods retained');
 check(w.metrics.filter(x=>x.addedIn==='v25').length===22,'Twenty-two v25 metrics');
 check(p.projects.length===baseline.counts.projects,'No redundant route added');
-check(l.papers.length===baseline.counts.papers+11,'Eleven new papers');
+check(l.papers.filter(x=>x.addedIn==='v25').length===11,'Eleven v25 papers retained');
 for(const kind of ['tools','projects'])for(const old of baseline[kind])check(({tools,projects:new Map(p.projects.map(x=>[x.id,x]))}[kind]).has(old.id),'Baseline ID retained '+old.id);
 function translated(s,label){if(!/[\u3400-\u9fff]/u.test(s||''))return;check(!!ctx.window.YV_TEXT[s],label+' translation exists');for(const lang of ['en','fr','es','eu'])check(!!ctx.window.YV_TEXT[s][lang]&&!/[\u3400-\u9fff]/u.test(ctx.window.YV_TEXT[s][lang]),label+' '+lang);}
 for(const candidate of proposals.candidates){

@@ -4564,7 +4564,8 @@
         "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1111%2Facel.13712&format=json&resultType=core&pageSize=10",
         "https://api.crossref.org/works/10.1111%2Facel.13712",
         "https://pubmed.ncbi.nlm.nih.gov/36181361/",
-        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9649600/"
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9649600/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/instance/9649600/bin/ACEL-21-e13712-s006.xlsx"
       ],
       "metadataVerified": true,
       "inWindow": true,
@@ -6482,7 +6483,8 @@
         "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMCID%3APMC6433287&format=json&resultType=core&pageSize=10",
         "https://api.crossref.org/works/10.1038%2Fs41564-018-0346-9",
         "https://pubmed.ncbi.nlm.nih.gov/30718850/",
-        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6433287/"
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6433287/",
+        "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41564-018-0346-9/MediaObjects/41564_2018_346_MOESM1_ESM.pdf"
       ],
       "metadataVerified": true,
       "inWindow": true,
@@ -15598,6 +15600,1043 @@
         "limma"
       ],
       "apa7": "Ritchie, M. E., Phipson, B., Wu, D., Hu, Y., Law, C. W., Shi, W., & Smyth, G. K. (2015). limma powers differential expression analyses for RNA-sequencing and microarray studies. Nucleic Acids Research, 43(7), e47. https://doi.org/10.1093/nar/gkv007"
+    },
+    {
+      "id": "v25c_7cf3de0b54a6",
+      "title": "Dosage compensation can buffer copy-number variation in wild yeast",
+      "authors": [
+        "James Hose",
+        "Chris Mun Yong",
+        "Maria Sardi",
+        "Zhishi Wang",
+        "Michael A Newton",
+        "Audrey P Gasch"
+      ],
+      "cslAuthors": [
+        {
+          "given": "James",
+          "family": "Hose"
+        },
+        {
+          "given": "Chris Mun",
+          "family": "Yong"
+        },
+        {
+          "given": "Maria",
+          "family": "Sardi"
+        },
+        {
+          "given": "Zhishi",
+          "family": "Wang"
+        },
+        {
+          "given": "Michael A",
+          "family": "Newton"
+        },
+        {
+          "given": "Audrey P",
+          "family": "Gasch"
+        }
+      ],
+      "year": 2015,
+      "date": "2015-05-08",
+      "onlineYear": 2015,
+      "issueYear": 2015,
+      "journal": "eLife",
+      "volume": "4",
+      "issue": "",
+      "pages": "",
+      "articleNumber": "e05462",
+      "doi": "10.7554/elife.05462",
+      "pmcid": "PMC4448642",
+      "url": "https://doi.org/10.7554/elife.05462",
+      "topics": [
+        "群体与进化噪音"
+      ],
+      "species": [
+        "Saccharomyces cerevisiae"
+      ],
+      "studyType": "方法与机制证据",
+      "evidence": "来源特异的研究证据",
+      "status": "verified",
+      "selection": "curated",
+      "summary": "酵母DNA与bulk RNA剂量比较；补偿比例依菌株和染色体变化，数值采用2016年勘误。",
+      "contribution": "酵母DNA与bulk RNA剂量比较；补偿比例依菌株和染色体变化，数值采用2016年勘误。",
+      "limitations": [
+        "物种、测量层级与研究设计随来源保留；项目数据尚未执行这些分析。"
+      ],
+      "markerUse": "研究方法或机制证据；不自动生成单细胞注释marker。",
+      "sourceUrls": [
+        "https://doi.org/10.7554/elife.05462",
+        "https://api.crossref.org/works/10.7554%2Felife.05462",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4448642/"
+      ],
+      "metadataVerified": true,
+      "verificationDate": "2026-10-18",
+      "inWindow": true,
+      "publicationType": "peer-reviewed",
+      "reviewCoverage": "Relevant full-text XML methods and correction read.",
+      "dateEvidence": {
+        "crossrefOnline": "2015-05-08",
+        "crossrefIssue": "",
+        "citationYear": 2015,
+        "dateNote": ""
+      },
+      "addedIn": "v25c_population",
+      "toolIds": [],
+      "correctionDoi": "10.7554/elife.15743",
+      "apa7": "Hose, J., Yong, C. M., Sardi, M., Wang, Z., Newton, M. A., & Gasch, A. P. (2015). Dosage compensation can buffer copy-number variation in wild yeast. eLife, 4, e05462. https://doi.org/10.7554/elife.05462"
+    },
+    {
+      "id": "v25c_0d63116780d0",
+      "title": "Expression noise facilitates the evolution of gene regulation",
+      "authors": [
+        "Luise Wolf",
+        "Olin K Silander",
+        "Erik van Nimwegen"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Luise",
+          "family": "Wolf"
+        },
+        {
+          "given": "Olin K",
+          "family": "Silander"
+        },
+        {
+          "given": "Erik",
+          "family": "van Nimwegen"
+        }
+      ],
+      "year": 2015,
+      "date": "2015-06-17",
+      "onlineYear": 2015,
+      "issueYear": 2015,
+      "journal": "eLife",
+      "volume": "4",
+      "issue": "",
+      "pages": "",
+      "articleNumber": "e05856",
+      "doi": "10.7554/elife.05856",
+      "pmcid": "PMC4468965",
+      "url": "https://doi.org/10.7554/elife.05856",
+      "topics": [
+        "群体与进化噪音"
+      ],
+      "species": [
+        "Escherichia coli"
+      ],
+      "studyType": "方法与机制证据",
+      "evidence": "来源特异的研究证据",
+      "status": "verified",
+      "selection": "curated",
+      "summary": "大肠杆菌启动子进化与理论研究，提供噪音—可塑性假说；不作为酵母验证。",
+      "contribution": "大肠杆菌启动子进化与理论研究，提供噪音—可塑性假说；不作为酵母验证。",
+      "limitations": [
+        "物种、测量层级与研究设计随来源保留；项目数据尚未执行这些分析。"
+      ],
+      "markerUse": "研究方法或机制证据；不自动生成单细胞注释marker。",
+      "sourceUrls": [
+        "https://doi.org/10.7554/elife.05856",
+        "https://api.crossref.org/works/10.7554%2Felife.05856",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4468965/"
+      ],
+      "metadataVerified": true,
+      "verificationDate": "2026-10-18",
+      "inWindow": true,
+      "publicationType": "peer-reviewed",
+      "reviewCoverage": "Abstract screened; not yeast experimental validation.",
+      "dateEvidence": {
+        "crossrefOnline": "2015-06-17",
+        "crossrefIssue": "",
+        "citationYear": 2015,
+        "dateNote": ""
+      },
+      "addedIn": "v25c_population",
+      "toolIds": [],
+      "apa7": "Wolf, L., Silander, O. K., & van Nimwegen, E. (2015). Expression noise facilitates the evolution of gene regulation. eLife, 4, e05856. https://doi.org/10.7554/elife.05856"
+    },
+    {
+      "id": "v25c_d6dd705b7b49",
+      "title": "Genetic determinants of gene expression noise and its role in complex trait variation",
+      "authors": [
+        "Yuexuan Long",
+        "Xiaolin Ni",
+        "Tingwei Chen",
+        "Xianzhe Huang",
+        "Qiyang Hong",
+        "Jixin Wang",
+        "Cong Wang",
+        "Zigeng Huang",
+        "Haiqing Xu",
+        "Mengyi Sun",
+        "Junling Pang",
+        "Jiyeon Choi",
+        "Tongwu Zhang",
+        "Erping Long"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Yuexuan",
+          "family": "Long"
+        },
+        {
+          "given": "Xiaolin",
+          "family": "Ni"
+        },
+        {
+          "given": "Tingwei",
+          "family": "Chen"
+        },
+        {
+          "given": "Xianzhe",
+          "family": "Huang"
+        },
+        {
+          "given": "Qiyang",
+          "family": "Hong"
+        },
+        {
+          "given": "Jixin",
+          "family": "Wang"
+        },
+        {
+          "given": "Cong",
+          "family": "Wang"
+        },
+        {
+          "given": "Zigeng",
+          "family": "Huang"
+        },
+        {
+          "given": "Haiqing",
+          "family": "Xu"
+        },
+        {
+          "given": "Mengyi",
+          "family": "Sun"
+        },
+        {
+          "given": "Junling",
+          "family": "Pang"
+        },
+        {
+          "given": "Jiyeon",
+          "family": "Choi"
+        },
+        {
+          "given": "Tongwu",
+          "family": "Zhang"
+        },
+        {
+          "given": "Erping",
+          "family": "Long"
+        }
+      ],
+      "year": 2025,
+      "date": "2025-11-21",
+      "onlineYear": 2025,
+      "issueYear": 2025,
+      "journal": "Cell Reports",
+      "volume": "44",
+      "issue": "12",
+      "pages": "116612",
+      "articleNumber": "116612",
+      "doi": "10.1016/j.celrep.2025.116612",
+      "pmcid": null,
+      "url": "https://doi.org/10.1016/j.celrep.2025.116612",
+      "topics": [
+        "群体与进化噪音"
+      ],
+      "species": [
+        "Homo sapiens"
+      ],
+      "studyType": "方法与机制证据",
+      "evidence": "来源特异的研究证据",
+      "status": "verified",
+      "selection": "curated",
+      "summary": "人类PBMC中按供者与细胞类型计算均值趋势校正CV²并做enQTL；保留为定义敏感性比较，未完整核读最终PDF。",
+      "contribution": "人类PBMC中按供者与细胞类型计算均值趋势校正CV²并做enQTL；保留为定义敏感性比较，未完整核读最终PDF。",
+      "limitations": [
+        "物种、测量层级与研究设计随来源保留；项目数据尚未执行这些分析。"
+      ],
+      "markerUse": "研究方法或机制证据；不自动生成单细胞注释marker。",
+      "sourceUrls": [
+        "https://doi.org/10.1016/j.celrep.2025.116612",
+        "https://api.crossref.org/works/10.1016%2Fj.celrep.2025.116612",
+        "https://github.com/yxlong-science/enQTL-of-PBMC",
+        "https://doi.org/10.5281/zenodo.17239294",
+        "https://repository.cshl.edu/id/eprint/42019/1/10.1016.j.celrep.2025.116612.pdf",
+        "https://doi.org/10.1101/2024.11.29.24318180",
+        "https://github.com/yxlong-science/enQTL-of-PBMC/blob/8eb3a00f21d2913ca7ec7509900adc07ec4b0135/02.expression_noise/sc_hvg.R#L63",
+        "https://github.com/yxlong-science/enQTL-of-PBMC/blob/8eb3a00f21d2913ca7ec7509900adc07ec4b0135/02.expression_noise/sc_hvg.R#L9",
+        "https://github.com/yxlong-science/enQTL-of-PBMC/blob/8eb3a00f21d2913ca7ec7509900adc07ec4b0135/02.expression_noise/sc_hvg.R#L92",
+        "https://github.com/yxlong-science/enQTL-of-PBMC/blob/8eb3a00f21d2913ca7ec7509900adc07ec4b0135/02.expression_noise/Calculate_expression_variation.R#L76",
+        "https://github.com/yxlong-science/enQTL-of-PBMC/blob/8eb3a00f21d2913ca7ec7509900adc07ec4b0135/02.expression_noise/sc_hvg.R#L104",
+        "https://github.com/yxlong-science/enQTL-of-PBMC/blob/8eb3a00f21d2913ca7ec7509900adc07ec4b0135/02.expression_noise/sc_hvg.R#L95",
+        "https://github.com/yxlong-science/enQTL-of-PBMC/blob/8eb3a00f21d2913ca7ec7509900adc07ec4b0135/08.coloc.R/coloc_eQTL.R#L55",
+        "https://chr1swallace.github.io/coloc/articles/a02_data.html",
+        "https://github.com/yxlong-science/enQTL-of-PBMC/blob/8eb3a00f21d2913ca7ec7509900adc07ec4b0135/04.enQTL_identification/snakemake/cis_evQTL.py#L91",
+        "https://github.com/yxlong-science/enQTL-of-PBMC/blob/8eb3a00f21d2913ca7ec7509900adc07ec4b0135/01.QC/15.SCTransform.r#L16",
+        "https://github.com/yxlong-science/enQTL-of-PBMC/blob/8eb3a00f21d2913ca7ec7509900adc07ec4b0135/04.enQTL_identification/KNN.r#L7"
+      ],
+      "metadataVerified": true,
+      "verificationDate": "2026-10-18",
+      "inWindow": true,
+      "publicationType": "peer-reviewed",
+      "reviewCoverage": "Abstract and indexed final-paper methods passages read; official Zenodo archive and method scripts read. Direct institutional PDF retrieval failed, so not complete final-PDF review.",
+      "dateEvidence": {
+        "crossrefOnline": "",
+        "crossrefIssue": "2025-12",
+        "citationYear": 2025,
+        "dateNote": ""
+      },
+      "addedIn": "v25c_population",
+      "toolIds": [],
+      "researchComparator": {
+        "status": "reading_only",
+        "executionStatus": "not_executed",
+        "sourceAudit": {
+          "commit": "8eb3a00f21d2913ca7ec7509900adc07ec4b0135",
+          "apiReference": {
+            "signature": "sc_hvg(X, g=NULL, sort=FALSE, plot=FALSE, ignorehigh=FALSE, ignorelow=FALSE)",
+            "url": "https://github.com/yxlong-science/enQTL-of-PBMC/blob/8eb3a00f21d2913ca7ec7509900adc07ec4b0135/02.expression_noise/sc_hvg.R#L9",
+            "status": "source-level definition; caller and tests need repair before execution"
+          },
+          "findings": [
+            {
+              "finding": "README log2 differs from log(fitratio) in source; declare scale and convert before comparing effects.",
+              "url": "https://github.com/yxlong-science/enQTL-of-PBMC/blob/8eb3a00f21d2913ca7ec7509900adc07ec4b0135/02.expression_noise/sc_hvg.R#L92"
+            },
+            {
+              "finding": "Caller uses source() on a GitHub blob HTML URL instead of raw/local R source.",
+              "url": "https://github.com/yxlong-science/enQTL-of-PBMC/blob/8eb3a00f21d2913ca7ec7509900adc07ec4b0135/02.expression_noise/Calculate_expression_variation.R#L76"
+            },
+            {
+              "finding": "Optional sort branch uses T[sort(T$fdr,...)] rather than row ordering. It is not a safe runnable default.",
+              "url": "https://github.com/yxlong-science/enQTL-of-PBMC/blob/8eb3a00f21d2913ca7ec7509900adc07ec4b0135/02.expression_noise/sc_hvg.R#L104"
+            },
+            {
+              "finding": "Adjustment is Bonferroni (family-wise error), despite output variable fdr. Preserve the actual method name.",
+              "url": "https://github.com/yxlong-science/enQTL-of-PBMC/blob/8eb3a00f21d2913ca7ec7509900adc07ec4b0135/02.expression_noise/sc_hvg.R#L95"
+            },
+            {
+              "finding": "Supplied coloc example sets N to variant-table row counts and uses a fixed case fraction; N requires cohort sample size. Do not reuse this example.",
+              "url": "https://github.com/yxlong-science/enQTL-of-PBMC/blob/8eb3a00f21d2913ca7ec7509900adc07ec4b0135/08.coloc.R/coloc_eQTL.R#L55",
+              "officialContract": "https://chr1swallace.github.io/coloc/articles/a02_data.html"
+            },
+            {
+              "finding": "normal_transform true is described as inverse-normal but calls Box-Cox; record actual transformation.",
+              "url": "https://github.com/yxlong-science/enQTL-of-PBMC/blob/8eb3a00f21d2913ca7ec7509900adc07ec4b0135/04.enQTL_identification/snakemake/cis_evQTL.py#L91"
+            },
+            {
+              "finding": "SCT script overwrites RNA counts with RNA data; correctness depends on the source object. Do not apply this line to log-normalized values.",
+              "url": "https://github.com/yxlong-science/enQTL-of-PBMC/blob/8eb3a00f21d2913ca7ec7509900adc07ec4b0135/01.QC/15.SCTransform.r#L16"
+            },
+            {
+              "finding": "KNN cannot distinguish structural absence from a noisy or missing phenotype. Human HWE/ancestry exclusions, imputation panel and cis window are not yeast defaults.",
+              "url": "https://github.com/yxlong-science/enQTL-of-PBMC/blob/8eb3a00f21d2913ca7ec7509900adc07ec4b0135/04.enQTL_identification/KNN.r#L7"
+            }
+          ],
+          "validationBoundary": "Static code inspection, not an R/tensorQTL rerun. These findings do not establish that the published results are invalid.",
+          "yeastBoundary": "Published system is human PBMC; README wording human lung conflicts with the paper and is not used. Preserve raw-count measurement-model analysis as the principal comparator.",
+          "runtimeExecuted": false
+        }
+      },
+      "apa7": "Long, Y., Ni, X., Chen, T., Huang, X., Hong, Q., Wang, J., Wang, C., Huang, Z., Xu, H., Sun, M., Pang, J., Choi, J., Zhang, T., & Long, E. (2025). Genetic determinants of gene expression noise and its role in complex trait variation. Cell Reports, 44(12), 116612. https://doi.org/10.1016/j.celrep.2025.116612"
+    },
+    {
+      "id": "v25c_937bee9e0c39",
+      "title": "Experimental evolution reveals a general role for the methyltransferase Hmt1 in noise buffering",
+      "authors": [
+        "Shu-Ting You",
+        "Yu-Ting Jhou",
+        "Cheng-Fu Kao",
+        "Jun-Yi Leu"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Shu-Ting",
+          "family": "You"
+        },
+        {
+          "given": "Yu-Ting",
+          "family": "Jhou"
+        },
+        {
+          "given": "Cheng-Fu",
+          "family": "Kao"
+        },
+        {
+          "given": "Jun-Yi",
+          "family": "Leu"
+        }
+      ],
+      "year": 2019,
+      "date": "2019-10-15",
+      "onlineYear": 2019,
+      "issueYear": 2019,
+      "journal": "PLOS Biology",
+      "volume": "17",
+      "issue": "10",
+      "pages": "e3000433",
+      "articleNumber": "e3000433",
+      "doi": "10.1371/journal.pbio.3000433",
+      "pmcid": "PMC6814240",
+      "url": "https://doi.org/10.1371/journal.pbio.3000433",
+      "topics": [
+        "群体与进化噪音"
+      ],
+      "species": [
+        "Saccharomyces cerevisiae"
+      ],
+      "studyType": "方法与机制证据",
+      "evidence": "来源特异的研究证据",
+      "status": "verified",
+      "selection": "curated",
+      "summary": "蛋白报告、实验进化和遗传重构支持Hmt1噪音缓冲机制；不将该证据自动转为scRNA注释marker。",
+      "contribution": "蛋白报告、实验进化和遗传重构支持Hmt1噪音缓冲机制；不将该证据自动转为scRNA注释marker。",
+      "limitations": [
+        "物种、测量层级与研究设计随来源保留；项目数据尚未执行这些分析。"
+      ],
+      "markerUse": "研究方法或机制证据；不自动生成单细胞注释marker。",
+      "sourceUrls": [
+        "https://doi.org/10.1371/journal.pbio.3000433",
+        "https://api.crossref.org/works/10.1371%2Fjournal.pbio.3000433",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6814240/"
+      ],
+      "metadataVerified": true,
+      "verificationDate": "2026-10-18",
+      "inWindow": true,
+      "publicationType": "peer-reviewed",
+      "reviewCoverage": "Relevant full-text XML experimental sections read.",
+      "dateEvidence": {
+        "crossrefOnline": "2019-10-15",
+        "crossrefIssue": "",
+        "citationYear": 2019,
+        "dateNote": ""
+      },
+      "addedIn": "v25c_population",
+      "toolIds": [],
+      "apa7": "You, S.-T., Jhou, Y.-T., Kao, C.-F., & Leu, J.-Y. (2019). Experimental evolution reveals a general role for the methyltransferase Hmt1 in noise buffering. PLOS Biology, 17(10), e3000433. https://doi.org/10.1371/journal.pbio.3000433"
+    },
+    {
+      "id": "v25c_642b4adb2f52",
+      "title": "Conflict between Noise and Plasticity in Yeast",
+      "authors": [
+        "Ben Lehner"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Ben",
+          "family": "Lehner"
+        }
+      ],
+      "year": 2010,
+      "date": "2010-11-04",
+      "onlineYear": 2010,
+      "issueYear": 2010,
+      "journal": "PLoS Genetics",
+      "volume": "6",
+      "issue": "11",
+      "pages": "e1001185",
+      "articleNumber": "e1001185",
+      "doi": "10.1371/journal.pgen.1001185",
+      "pmcid": "PMC2973811",
+      "url": "https://doi.org/10.1371/journal.pgen.1001185",
+      "topics": [
+        "群体与进化噪音"
+      ],
+      "species": [
+        "Saccharomyces cerevisiae"
+      ],
+      "studyType": "方法与机制证据",
+      "evidence": "来源特异的研究证据",
+      "status": "verified",
+      "selection": "curated",
+      "summary": "酵母蛋白噪音DM与bulk环境表达变化的比较，支持区分跨基因耦合和同基因跨菌株反应。",
+      "contribution": "酵母蛋白噪音DM与bulk环境表达变化的比较，支持区分跨基因耦合和同基因跨菌株反应。",
+      "limitations": [
+        "物种、测量层级与研究设计随来源保留；项目数据尚未执行这些分析。"
+      ],
+      "markerUse": "研究方法或机制证据；不自动生成单细胞注释marker。",
+      "sourceUrls": [
+        "https://doi.org/10.1371/journal.pgen.1001185",
+        "https://api.crossref.org/works/10.1371%2Fjournal.pgen.1001185",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2973811/"
+      ],
+      "metadataVerified": true,
+      "verificationDate": "2026-10-18",
+      "inWindow": true,
+      "publicationType": "peer-reviewed",
+      "reviewCoverage": "Full-text XML noise and plasticity definitions read.",
+      "dateEvidence": {
+        "crossrefOnline": "2010-11-04",
+        "crossrefIssue": "",
+        "citationYear": 2010,
+        "dateNote": ""
+      },
+      "addedIn": "v25c_population",
+      "toolIds": [],
+      "apa7": "Lehner, B. (2010). Conflict between Noise and Plasticity in Yeast. PLoS Genetics, 6(11), e1001185. https://doi.org/10.1371/journal.pgen.1001185"
+    },
+    {
+      "id": "v25c_ad7237679298",
+      "title": "Noise reduction facilitated by dosage compensation in gene networks",
+      "authors": [
+        "Weilin Peng",
+        "Ruijie Song",
+        "Murat Acar"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Weilin",
+          "family": "Peng"
+        },
+        {
+          "given": "Ruijie",
+          "family": "Song"
+        },
+        {
+          "given": "Murat",
+          "family": "Acar"
+        }
+      ],
+      "year": 2016,
+      "date": "2016-10-03",
+      "onlineYear": 2016,
+      "issueYear": 2016,
+      "journal": "Nature Communications",
+      "volume": "7",
+      "issue": "1",
+      "pages": "",
+      "articleNumber": "12959",
+      "doi": "10.1038/ncomms12959",
+      "pmcid": "PMC5063963",
+      "url": "https://doi.org/10.1038/ncomms12959",
+      "topics": [
+        "群体与进化噪音"
+      ],
+      "species": [
+        "Saccharomyces cerevisiae"
+      ],
+      "studyType": "方法与机制证据",
+      "evidence": "来源特异的研究证据",
+      "status": "verified",
+      "selection": "curated",
+      "summary": "酵母报告系统中剂量补偿与噪音降低的机制证据；需区分蛋白层和scRNA测量层。",
+      "contribution": "酵母报告系统中剂量补偿与噪音降低的机制证据；需区分蛋白层和scRNA测量层。",
+      "limitations": [
+        "物种、测量层级与研究设计随来源保留；项目数据尚未执行这些分析。"
+      ],
+      "markerUse": "研究方法或机制证据；不自动生成单细胞注释marker。",
+      "sourceUrls": [
+        "https://doi.org/10.1038/ncomms12959",
+        "https://api.crossref.org/works/10.1038%2Fncomms12959",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC5063963/"
+      ],
+      "metadataVerified": true,
+      "verificationDate": "2026-10-18",
+      "inWindow": true,
+      "publicationType": "peer-reviewed",
+      "reviewCoverage": "Relevant full-text XML methods read.",
+      "dateEvidence": {
+        "crossrefOnline": "2016-10-03",
+        "crossrefIssue": "",
+        "citationYear": 2016,
+        "dateNote": ""
+      },
+      "addedIn": "v25c_population",
+      "toolIds": [],
+      "apa7": "Peng, W., Song, R., & Acar, M. (2016). Noise reduction facilitated by dosage compensation in gene networks. Nature Communications, 7(1), 12959. https://doi.org/10.1038/ncomms12959"
+    },
+    {
+      "id": "v25c_e0ad2a723e06",
+      "title": "Airqtl dissects cell state-specific causal gene regulatory networks with efficient single-cell eQTL mapping",
+      "authors": [
+        "Matthew W. Funk",
+        "Yuhe Wang",
+        "Lingfei Wang"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Matthew W.",
+          "family": "Funk"
+        },
+        {
+          "given": "Yuhe",
+          "family": "Wang"
+        },
+        {
+          "given": "Lingfei",
+          "family": "Wang"
+        }
+      ],
+      "year": 2025,
+      "date": "2025-12-10",
+      "onlineYear": 2025,
+      "issueYear": 2025,
+      "journal": "Nature Communications",
+      "volume": "16",
+      "issue": "1",
+      "pages": "",
+      "articleNumber": "11403",
+      "doi": "10.1038/s41467-025-66214-9",
+      "pmcid": "PMC12739144",
+      "url": "https://doi.org/10.1038/s41467-025-66214-9",
+      "topics": [
+        "群体与进化噪音"
+      ],
+      "species": [
+        "Homo sapiens"
+      ],
+      "studyType": "方法与机制证据",
+      "evidence": "来源特异的研究证据",
+      "status": "verified",
+      "selection": "curated",
+      "summary": "人类细胞均值eQTL与状态交互方法；当前官方版本的亲缘随机效应组合和倍性分支需先核验。",
+      "contribution": "人类细胞均值eQTL与状态交互方法；当前官方版本的亲缘随机效应组合和倍性分支需先核验。",
+      "limitations": [
+        "物种、测量层级与研究设计随来源保留；项目数据尚未执行这些分析。"
+      ],
+      "markerUse": "研究方法或机制证据；不自动生成单细胞注释marker。",
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41467-025-66214-9",
+        "https://api.crossref.org/works/10.1038%2Fs41467-025-66214-9",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12739144/",
+        "https://doi.org/10.5281/zenodo.16538496",
+        "https://github.com/grnlab/airqtl/blob/5f75fb76f855ba6019f0a67a8a3d308990d8d47e/src/airqtl/pipeline/eqtl.py#L275",
+        "https://github.com/grnlab/airqtl/blob/5f75fb76f855ba6019f0a67a8a3d308990d8d47e/src/airqtl/pipeline/eqtl.py#L461",
+        "https://github.com/grnlab/airqtl/blob/5f75fb76f855ba6019f0a67a8a3d308990d8d47e/src/airqtl/pipeline/eqtl.py#L297",
+        "https://github.com/grnlab/airqtl/blob/5f75fb76f855ba6019f0a67a8a3d308990d8d47e/src/airqtl/pipeline/eqtl.py#L374",
+        "https://github.com/grnlab/airqtl/blob/5f75fb76f855ba6019f0a67a8a3d308990d8d47e/src/airqtl/pipeline/eqtl.py#L301",
+        "https://github.com/grnlab/airqtl/blob/5f75fb76f855ba6019f0a67a8a3d308990d8d47e/src/airqtl/pipeline/eqtl.py#L537",
+        "https://github.com/grnlab/airqtl/blob/5f75fb76f855ba6019f0a67a8a3d308990d8d47e/docs/tutorials/randolph/Snakefile.config#L7",
+        "https://github.com/grnlab/airqtl/blob/5f75fb76f855ba6019f0a67a8a3d308990d8d47e/docs/tutorials/randolph/README.md#L23"
+      ],
+      "metadataVerified": true,
+      "verificationDate": "2026-10-18",
+      "inWindow": true,
+      "publicationType": "peer-reviewed",
+      "reviewCoverage": "Relevant full-text XML methods and current official source read.",
+      "dateEvidence": {
+        "crossrefOnline": "2025-12-10",
+        "crossrefIssue": "",
+        "citationYear": 2025,
+        "dateNote": ""
+      },
+      "addedIn": "v25c_population",
+      "toolIds": [],
+      "researchComparator": {
+        "status": "reading_only",
+        "executionStatus": "not_executed",
+        "sourceAudit": {
+          "commit": "5f75fb76f855ba6019f0a67a8a3d308990d8d47e",
+          "inspectedVersion": "1.0.1",
+          "publishedVersion": "0.2.0",
+          "apiReference": {
+            "signature": "airqtl.pipeline.eqtl.association(diri_data, fo, diri_meta=None, effect=\"linear\", rand=\"d\", cisbound=..., pcut=..., device=\"cpu\", h0=\"chi2\", ndccc=None, ndccd=None, ndcdc=None, ndcdd=None, ngpc=0, fi_subset=None, na=2, bsx=None, bsy=None)",
+            "url": "https://github.com/grnlab/airqtl/blob/5f75fb76f855ba6019f0a67a8a3d308990d8d47e/src/airqtl/pipeline/eqtl.py#L275",
+            "status": "source-verified signature only"
+          },
+          "findings": [
+            {
+              "finding": "Response is Normalisr-normalized log mRNA proportion; mean and variance are normalized. This is not a model testing genotype-dependent within-strain noise.",
+              "url": "https://github.com/grnlab/airqtl/blob/5f75fb76f855ba6019f0a67a8a3d308990d8d47e/src/airqtl/pipeline/eqtl.py#L461"
+            },
+            {
+              "finding": "Default rand=d is sample identity; g0 estimates genetic relatedness. A donor random-effect fraction can include stable culture/batch effects and is not automatically additive genetic heritability of a noise trait.",
+              "url": "https://github.com/grnlab/airqtl/blob/5f75fb76f855ba6019f0a67a8a3d308990d8d47e/src/airqtl/pipeline/eqtl.py#L297"
+            },
+            {
+              "finding": "Docstring offers d,g0, but code splits on \"-\" and rejects multiple random effects. Joint donor-identity and kinship variance components are not implemented in this inspected release.",
+              "url": "https://github.com/grnlab/airqtl/blob/5f75fb76f855ba6019f0a67a8a3d308990d8d47e/src/airqtl/pipeline/eqtl.py#L374",
+              "documentationUrl": "https://github.com/grnlab/airqtl/blob/5f75fb76f855ba6019f0a67a8a3d308990d8d47e/src/airqtl/pipeline/eqtl.py#L301"
+            },
+            {
+              "finding": "linear-gxc rejects na != 2. Mixed ploidy, dosage and repeated cultures need independent adaptation/calibration. na=2 alone does not validate all yeast encodings.",
+              "url": "https://github.com/grnlab/airqtl/blob/5f75fb76f855ba6019f0a67a8a3d308990d8d47e/src/airqtl/pipeline/eqtl.py#L537"
+            },
+            {
+              "finding": "Tutorial uses download=True, covs=none and human celltype/infection subsets; do not inherit these or the human cis-window as project defaults.",
+              "url": "https://github.com/grnlab/airqtl/blob/5f75fb76f855ba6019f0a67a8a3d308990d8d47e/docs/tutorials/randolph/Snakefile.config#L7"
+            },
+            {
+              "finding": "dgmap separates sample/donor from raw donor; preserve culture and strain rather than treating cells as independent genotypes.",
+              "url": "https://github.com/grnlab/airqtl/blob/5f75fb76f855ba6019f0a67a8a3d308990d8d47e/docs/tutorials/randolph/README.md#L23"
+            }
+          ],
+          "validationBoundary": "Static source inspection only; no installed-runtime reproduction. Paper code 0.2.0 differs from inspected 1.0.1. No speed promise.",
+          "yeastBoundary": "Human validation; calibrate yeast LD, ploidy, reference and hierarchy. Genetic-anchor GRN remains conditional on instruments, LD/pleiotropy and independent support.",
+          "runtimeExecuted": false
+        }
+      },
+      "apa7": "Funk, M. W., Wang, Y., & Wang, L. (2025). Airqtl dissects cell state-specific causal gene regulatory networks with efficient single-cell eQTL mapping. Nature Communications, 16(1), 11403. https://doi.org/10.1038/s41467-025-66214-9"
+    },
+    {
+      "id": "v25c_01684f3d0721",
+      "title": "Empirical mean-noise fitness landscapes reveal the fitness impact of gene expression noise",
+      "authors": [
+        "Jörn M. Schmiedel",
+        "Lucas B. Carey",
+        "Ben Lehner"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Jörn M.",
+          "family": "Schmiedel"
+        },
+        {
+          "given": "Lucas B.",
+          "family": "Carey"
+        },
+        {
+          "given": "Ben",
+          "family": "Lehner"
+        }
+      ],
+      "year": 2019,
+      "date": "2019-07-18",
+      "onlineYear": 2019,
+      "issueYear": 2019,
+      "journal": "Nature Communications",
+      "volume": "10",
+      "issue": "1",
+      "pages": "",
+      "articleNumber": "3180",
+      "doi": "10.1038/s41467-019-11116-w",
+      "pmcid": "PMC6639414",
+      "url": "https://doi.org/10.1038/s41467-019-11116-w",
+      "topics": [
+        "群体与进化噪音"
+      ],
+      "species": [
+        "Saccharomyces cerevisiae"
+      ],
+      "studyType": "方法与机制证据",
+      "evidence": "来源特异的研究证据",
+      "status": "verified",
+      "selection": "curated",
+      "summary": "酵母启动子蛋白均值/噪音与竞争生长构成适应度景观；RNA群体关联不能直接重建同样的适应度因果关系。",
+      "contribution": "酵母启动子蛋白均值/噪音与竞争生长构成适应度景观；RNA群体关联不能直接重建同样的适应度因果关系。",
+      "limitations": [
+        "物种、测量层级与研究设计随来源保留；项目数据尚未执行这些分析。"
+      ],
+      "markerUse": "研究方法或机制证据；不自动生成单细胞注释marker。",
+      "sourceUrls": [
+        "https://doi.org/10.1038/s41467-019-11116-w",
+        "https://api.crossref.org/works/10.1038%2Fs41467-019-11116-w",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6639414/"
+      ],
+      "metadataVerified": true,
+      "verificationDate": "2026-10-18",
+      "inWindow": true,
+      "publicationType": "peer-reviewed",
+      "reviewCoverage": "Relevant full-text XML methods/results read; Crossref metadata checked.",
+      "dateEvidence": {
+        "crossrefOnline": "2019-07-18",
+        "crossrefIssue": "",
+        "citationYear": 2019,
+        "dateNote": ""
+      },
+      "addedIn": "v25c_population",
+      "toolIds": [],
+      "apa7": "Schmiedel, J. M., Carey, L. B., & Lehner, B. (2019). Empirical mean-noise fitness landscapes reveal the fitness impact of gene expression noise. Nature Communications, 10(1), 3180. https://doi.org/10.1038/s41467-019-11116-w"
+    },
+    {
+      "id": "v25c_3273eb9c55f4",
+      "title": "Stochastic phenotypic switching arises in response to directional selection in experimentally evolved multicellular yeast",
+      "authors": [
+        "Beatriz Baselga-Cervera",
+        "Nahui Olin Medina-Chávez",
+        "Noah Gettle",
+        "Michael Travisano"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Beatriz",
+          "family": "Baselga-Cervera"
+        },
+        {
+          "given": "Nahui Olin",
+          "family": "Medina-Chávez"
+        },
+        {
+          "given": "Noah",
+          "family": "Gettle"
+        },
+        {
+          "given": "Michael",
+          "family": "Travisano"
+        }
+      ],
+      "year": 2026,
+      "date": "2025-12-27",
+      "onlineYear": 2025,
+      "issueYear": 2026,
+      "journal": "Communications Biology",
+      "volume": "9",
+      "issue": "1",
+      "pages": "",
+      "articleNumber": "134",
+      "doi": "10.1038/s42003-025-09414-9",
+      "pmcid": "PMC12855194",
+      "url": "https://doi.org/10.1038/s42003-025-09414-9",
+      "topics": [
+        "群体与进化噪音"
+      ],
+      "species": [
+        "Saccharomyces cerevisiae"
+      ],
+      "studyType": "方法与机制证据",
+      "evidence": "来源特异的研究证据",
+      "status": "verified",
+      "selection": "curated",
+      "summary": "酵母ACE2实验进化、成像和bulk RNA研究状态切换；在线2025年，卷期2026年，不是scRNA marker来源。",
+      "contribution": "酵母ACE2实验进化、成像和bulk RNA研究状态切换；在线2025年，卷期2026年，不是scRNA marker来源。",
+      "limitations": [
+        "物种、测量层级与研究设计随来源保留；项目数据尚未执行这些分析。"
+      ],
+      "markerUse": "研究方法或机制证据；不自动生成单细胞注释marker。",
+      "sourceUrls": [
+        "https://doi.org/10.1038/s42003-025-09414-9",
+        "https://api.crossref.org/works/10.1038%2Fs42003-025-09414-9",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12855194/",
+        "https://doi.org/10.5281/zenodo.15652984",
+        "https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1214970"
+      ],
+      "metadataVerified": true,
+      "verificationDate": "2026-10-18",
+      "inWindow": true,
+      "publicationType": "peer-reviewed",
+      "reviewCoverage": "Publisher HTML and relevant Europe PMC XML methods read; Crossref checked.",
+      "dateEvidence": {
+        "crossrefOnline": "2025-12-27",
+        "crossrefIssue": "",
+        "citationYear": 2026,
+        "dateNote": "Online 2025-12-27; publisher volume 9:134 (2026). Europe PMC pubYear 2025; retain both dates."
+      },
+      "addedIn": "v25c_population",
+      "toolIds": [],
+      "apa7": "Baselga-Cervera, B., Medina-Chávez, N. O., Gettle, N., & Travisano, M. (2026). Stochastic phenotypic switching arises in response to directional selection in experimentally evolved multicellular yeast. Communications Biology, 9(1), 134. https://doi.org/10.1038/s42003-025-09414-9"
+    },
+    {
+      "id": "v25c_adb73242a7f4",
+      "title": "Correction: Dosage compensation can buffer copy-number variation in wild yeast",
+      "authors": [
+        "James Hose",
+        "Chris Mun Yong",
+        "Maria Sardi",
+        "Zhishi Wang",
+        "Michael A Newton",
+        "Audrey P Gasch"
+      ],
+      "cslAuthors": [
+        {
+          "given": "James",
+          "family": "Hose"
+        },
+        {
+          "given": "Chris Mun",
+          "family": "Yong"
+        },
+        {
+          "given": "Maria",
+          "family": "Sardi"
+        },
+        {
+          "given": "Zhishi",
+          "family": "Wang"
+        },
+        {
+          "given": "Michael A",
+          "family": "Newton"
+        },
+        {
+          "given": "Audrey P",
+          "family": "Gasch"
+        }
+      ],
+      "year": 2016,
+      "date": "2016-03-23",
+      "onlineYear": 2016,
+      "issueYear": 2016,
+      "journal": "eLife",
+      "volume": "5",
+      "issue": "",
+      "pages": "",
+      "articleNumber": "e15743",
+      "doi": "10.7554/elife.15743",
+      "pmcid": "PMC4821797",
+      "url": "https://doi.org/10.7554/elife.15743",
+      "topics": [
+        "群体与进化噪音"
+      ],
+      "species": [
+        "Saccharomyces cerevisiae"
+      ],
+      "studyType": "方法与机制证据",
+      "evidence": "来源特异的研究证据",
+      "status": "verified",
+      "selection": "curated",
+      "summary": "原文勘误：剂量补偿比例修正为10–30%，取决于菌株与染色体。",
+      "contribution": "原文勘误：剂量补偿比例修正为10–30%，取决于菌株与染色体。",
+      "limitations": [
+        "物种、测量层级与研究设计随来源保留；项目数据尚未执行这些分析。"
+      ],
+      "markerUse": "研究方法或机制证据；不自动生成单细胞注释marker。",
+      "sourceUrls": [
+        "https://doi.org/10.7554/elife.15743",
+        "https://api.crossref.org/works/10.7554%2Felife.15743",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4821797/"
+      ],
+      "metadataVerified": true,
+      "verificationDate": "2026-10-18",
+      "inWindow": true,
+      "publicationType": "peer-reviewed",
+      "reviewCoverage": "Full correction XML read.",
+      "dateEvidence": {
+        "crossrefOnline": "2016-03-23",
+        "crossrefIssue": "",
+        "citationYear": 2016,
+        "dateNote": ""
+      },
+      "addedIn": "v25c_population",
+      "toolIds": [],
+      "corrects": "10.7554/elife.05462",
+      "apa7": "Hose, J., Yong, C. M., Sardi, M., Wang, Z., Newton, M. A., & Gasch, A. P. (2016). Correction: Dosage compensation can buffer copy-number variation in wild yeast. eLife, 5, e15743. https://doi.org/10.7554/elife.15743"
+    },
+    {
+      "id": "v25c_8438cde4ebbb",
+      "title": "Within-Species Variation and Measurement Error in Phylogenetic Comparative Methods",
+      "authors": [
+        "Anthony R. Ives",
+        "Peter E. Midford",
+        "Theodore Garland"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Anthony R.",
+          "family": "Ives"
+        },
+        {
+          "given": "Peter E.",
+          "family": "Midford"
+        },
+        {
+          "given": "Theodore",
+          "family": "Garland",
+          "suffix": "Jr."
+        }
+      ],
+      "year": 2007,
+      "date": "2007-04",
+      "onlineYear": 2007,
+      "issueYear": 2007,
+      "journal": "Systematic Biology",
+      "volume": "56",
+      "issue": "2",
+      "pages": "252-270",
+      "articleNumber": "",
+      "doi": "10.1080/10635150701313830",
+      "pmcid": "",
+      "url": "https://doi.org/10.1080/10635150701313830",
+      "topics": [
+        "群体与进化噪音"
+      ],
+      "species": [
+        "跨物种统计方法"
+      ],
+      "studyType": "方法与机制证据",
+      "evidence": "来源特异的研究证据",
+      "status": "verified",
+      "selection": "curated",
+      "summary": "比较方法中显式传播种内变异和测量误差；为噪音性状不确定性提供统计依据。",
+      "contribution": "比较方法中显式传播种内变异和测量误差；为噪音性状不确定性提供统计依据。",
+      "limitations": [
+        "物种、测量层级与研究设计随来源保留；项目数据尚未执行这些分析。"
+      ],
+      "markerUse": "研究方法或机制证据；不自动生成单细胞注释marker。",
+      "sourceUrls": [
+        "https://doi.org/10.1080/10635150701313830",
+        "https://api.crossref.org/works/10.1080%2F10635150701313830"
+      ],
+      "metadataVerified": true,
+      "verificationDate": "2026-10-18",
+      "inWindow": false,
+      "publicationType": "peer-reviewed",
+      "reviewCoverage": "Reuse prior v25c-methods-gap source audit; no repeated API research.",
+      "dateEvidence": {
+        "crossrefOnline": "2007-04",
+        "crossrefIssue": "2007-04-01",
+        "citationYear": 2007,
+        "dateNote": ""
+      },
+      "addedIn": "v25c_population",
+      "toolIds": [],
+      "apa7": "Ives, A. R., Midford, P. E., & Garland, T., Jr. (2007). Within-Species Variation and Measurement Error in Phylogenetic Comparative Methods. Systematic Biology, 56(2), 252–270. https://doi.org/10.1080/10635150701313830"
+    },
+    {
+      "id": "v25c_01e81b5cf8b0",
+      "title": "brms: An R Package for Bayesian Multilevel Models Using Stan",
+      "authors": [
+        "Paul-Christian Bürkner"
+      ],
+      "cslAuthors": [
+        {
+          "given": "Paul-Christian",
+          "family": "Bürkner"
+        }
+      ],
+      "year": 2017,
+      "date": "2017-08-29",
+      "onlineYear": 2017,
+      "issueYear": 2017,
+      "journal": "Journal of Statistical Software",
+      "volume": "80",
+      "issue": "1",
+      "pages": "1–28",
+      "articleNumber": "",
+      "doi": "10.18637/jss.v080.i01",
+      "pmcid": "",
+      "url": "https://doi.org/10.18637/jss.v080.i01",
+      "topics": [
+        "群体与进化噪音"
+      ],
+      "species": [
+        "跨物种统计方法"
+      ],
+      "studyType": "方法与机制证据",
+      "evidence": "来源特异的研究证据",
+      "status": "verified",
+      "selection": "curated",
+      "summary": "贝叶斯多层建模框架，可表达亲缘、培养和性状误差；酵母噪音模型需单独设计并检验可辨识性。",
+      "contribution": "贝叶斯多层建模框架，可表达亲缘、培养和性状误差；酵母噪音模型需单独设计并检验可辨识性。",
+      "limitations": [
+        "物种、测量层级与研究设计随来源保留；项目数据尚未执行这些分析。"
+      ],
+      "markerUse": "研究方法或机制证据；不自动生成单细胞注释marker。",
+      "sourceUrls": [
+        "https://doi.org/10.18637/jss.v080.i01",
+        "https://api.crossref.org/works/10.18637%2Fjss.v080.i01",
+        "https://www.jstatsoft.org/article/view/v080i01"
+      ],
+      "metadataVerified": true,
+      "verificationDate": "2026-10-18",
+      "inWindow": true,
+      "publicationType": "peer-reviewed",
+      "reviewCoverage": "Reuse prior V25C02 hierarchical-model proposal; not a validated yeast-noise algorithm.",
+      "dateEvidence": {
+        "crossrefOnline": "2017",
+        "crossrefIssue": "",
+        "citationYear": 2017,
+        "dateNote": "",
+        "publisherOnline": "2017-08-29"
+      },
+      "addedIn": "v25c_population",
+      "toolIds": [],
+      "apa7": "Bürkner, P.-C. (2017). brms: An R Package for Bayesian Multilevel Models Using Stan. Journal of Statistical Software, 80(1), 1–28. https://doi.org/10.18637/jss.v080.i01"
     }
   ],
   "excludedRecords": [
@@ -15710,11 +16749,11 @@
     "windowUpdate": "2026-10-18：工作库窗口扩展为2010年至当前日期；历史经典保留，候选检索与基因证据审核分开记录。"
   },
   "counts": {
-    "records": 224,
-    "curated": 202,
+    "records": 236,
+    "curated": 214,
     "discovered": 22,
-    "inWindow": 217,
-    "preprints": 18,
+    "inWindow": 228,
+    "preprints": 3,
     "byEvidence": {
       "可迁移方法": 130,
       "外部参考": 45,
@@ -15724,7 +16763,8 @@
       "primary research": 7,
       "方法依据": 5,
       "细胞相似图上的多尺度扩散分数与跨样本模块比较。": 1,
-      "原始方法论文及官方软件入口已核对。": 10
+      "原始方法论文及官方软件入口已核对。": 10,
+      "来源特异的研究证据": 12
     },
     "byStudyType": {
       "方法": 138,
@@ -15741,7 +16781,8 @@
       "method": 16,
       "yeast research": 1,
       "mechanistic-study": 1,
-      "方法与单细胞原始研究": 1
+      "方法与单细胞原始研究": 1,
+      "方法与机制证据": 12
     },
     "linkedVersionRecords": 16,
     "v2AddedOrReviewed": 33,
@@ -15749,6 +16790,8 @@
     "v4AddedOrReviewed": 2,
     "v5AddedOrReviewed": 4,
     "v24AddedOrReviewed": 4,
-    "v25AddedOrReviewed": 12
+    "v25AddedOrReviewed": 12,
+    "total": 236,
+    "v25cPopulationAddedOrReviewed": 12
   }
 }

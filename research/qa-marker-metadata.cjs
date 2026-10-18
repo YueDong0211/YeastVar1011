@@ -11,6 +11,7 @@ let mappedRows=null,mappedSources=null,mappedLength=0,maps;
 function lookup(){if(mappedRows!==dataset.markers||mappedSources!==dataset.sources||mappedLength!==dataset.markers.length){mappedRows=dataset.markers;mappedSources=dataset.sources;mappedLength=dataset.markers.length;maps={marker:new Map(mappedRows.map(m=>[m.id,m])),source:new Map(mappedSources.map(s=>[s.id,s]))};}return maps;}
 const window={addEventListener(){},YV_MARKER_TEXT:key=>key,YV_RESEARCH_ATLAS:{text:key=>key},YV_DATABASE_HUB:{text:()=>({zh:'数据库',en:'Databases',fr:'Bases de données',es:'Bases de datos',eu:'Datu-baseak'}[language]),page:()=>'<div data-database-hub="ready"></div>'},YV_BUILDER:{getPlan:()=>({markers:[]})},YV_APP:{esc,prefs:()=>({language}),tx:value=>String(value??''),data:()=>({markers:dataset}),maps:lookup}};
 const context={window,document:{addEventListener(){}},sessionStorage:{getItem(){return null;}},location:{hash:'#markers'},URLSearchParams};
+context.URL=URL;vm.runInNewContext(fs.readFileSync(path.join(root,'dist/marker-selection-v25c.js'),'utf8'),context);
 const source=fs.readFileSync(file,'utf8').replace('window.YV_MARKERS={','window.__metadataTest={resetFilters,filterSnapshot,activeFilters,filterTotal,metadataPanel,ensureIndex,navigateTab,syncTabFromRoute};window.YV_MARKERS={');vm.runInNewContext(source,context);
 const app=window.YV_MARKERS,test=window.__metadataTest,ids=()=>Array.from(app.filterResults()).sort(),reset=()=>test.resetFilters();
 

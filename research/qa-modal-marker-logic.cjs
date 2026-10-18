@@ -9,7 +9,7 @@ const root = path.resolve(__dirname, '..');
 {
   const handlers = {}, context = {window:{addEventListener(){}},sessionStorage:{getItem(){return null;}},document:{addEventListener(type,fn){(handlers[type] ||= []).push(fn);}},setTimeout,clearTimeout};
   const source = fs.readFileSync(path.join(root,'dist/marker-workspace.js'),'utf8').replace('window.YV_MARKERS={', `window.__testMarker={seed(){ui.importText='CLN2';ui.resolved={rows:[{id:'CLN2'}]};refresh=id=>{window.__refreshed=id;window.__refreshCount=(window.__refreshCount||0)+1;};},read:()=>({text:ui.importText,resolved:ui.resolved})};window.YV_MARKERS={`);
-  vm.runInNewContext(source,context);
+  context.URL=URL;vm.runInNewContext(fs.readFileSync(path.join(root,'dist/marker-selection-v25c.js'),'utf8'),context);vm.runInNewContext(source,context);
   context.window.__testMarker.seed();
   const input = handlers.input.at(-1);
   input({target:{id:'mw-import-text',value:'CLN1'}});
@@ -28,7 +28,7 @@ const root = path.resolve(__dirname, '..');
   const window={addEventListener(type,fn){windowHandlers[type]=fn;},YV_APP:{prefs(){return {reducedMotion:false};}}};
   const context={document,window,matchMedia(){return media;},performance:{now(){return now;}},requestAnimationFrame(){const id=++nextFrame;scheduled.add(id);return id;},cancelAnimationFrame(id){scheduled.delete(id);},clearTimeout(){},MutationObserver:class{constructor(callback){observerCallback=callback;}observe(){}disconnect(){observerDisconnected++;}}};
   const source=fs.readFileSync(path.join(root,'dist/journey-scene-v17.js'),'utf8').replace('const inspectState=()=>', `window.__testScene={configure(){engine={environment:{lastTick:100}};mounted=true;host={isConnected:true};inViewport=true;},observeModals,request,syncModalVisibility,setTransition(start){transition={start};},read:()=>({visible:!!visible(),blocked:modalBlocked,frame,motion,moving:canMove(),transitionStart:transition?.start,observing:!!modalObserver}),setMotionFlag(value){motion=value;},clearEngine(){engine=null;}};const inspectState=()=>`);
-  vm.runInNewContext(source,context);
+  context.URL=URL;vm.runInNewContext(fs.readFileSync(path.join(root,'dist/marker-selection-v25c.js'),'utf8'),context);vm.runInNewContext(source,context);
   const test=window.__testScene;test.configure();test.observeModals();test.setTransition(80);test.request();
   assert.equal(scheduled.size,1);
   windowHandlers['yv:companionchange']({detail:{isOpen:true}});
@@ -66,9 +66,9 @@ const root = path.resolve(__dirname, '..');
 {
   let language='zh';const gene={id:'gene1',symbol:'CLN2',evidence:[{tag:'G1/S',relation:'RNA_peak_in',sourceId:'paper1',sourceUrl:'https://example.org/published-cycle-study',grade:'B'},{tag:'G1',relation:'used_as_scRNA_marker_for',sourceId:'paper2',sourceUrl:'https://example.org/published-single-cell-study',grade:'A'}]},sources=new Map([['paper1',{url:'https://example.org/published-cycle-study'}],['paper2',{url:'https://example.org/published-single-cell-study'}]]);
   const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const context={sessionStorage:{getItem(){return null;}},document:{addEventListener(){}},window:{addEventListener(){},YV_MARKER_TEXT:key=>key,YV_RESEARCH_ATLAS:{text:key=>key},YV_APP:{esc,prefs(){return {language};},tx:value=>value,maps(){return {marker:new Map([['gene1',gene]]),source:sources};}}}};
+  const context={sessionStorage:{getItem(){return null;}},document:{addEventListener(){}},window:{addEventListener(){},YV_BUILDER:{getPlan:()=>({markers:[]})},YV_MARKER_TEXT:key=>key,YV_RESEARCH_ATLAS:{text:key=>key},YV_APP:{esc,prefs(){return {language};},tx:value=>value,maps(){return {marker:new Map([['gene1',gene]]),source:sources};}}}};
   const source=fs.readFileSync(path.join(root,'dist/marker-workspace.js'),'utf8').replace('window.YV_MARKERS={','showDialog=html=>{window.__dialog=html;};window.YV_MARKERS={');
-  vm.runInNewContext(source,context);
+  context.URL=URL;vm.runInNewContext(fs.readFileSync(path.join(root,'dist/marker-selection-v25c.js'),'utf8'),context);vm.runInNewContext(source,context);
   const expected={zh:'整理标签',en:'Curation label',fr:'Étiquette de curation',es:'Etiqueta de curación',eu:'Kurazio-etiketa'};
   for(const lang of Object.keys(expected)){
     language=lang;context.window.YV_MARKERS.showEvidence('gene1','周期候选');let html=context.window.__dialog;assert(html.includes(expected[lang]));assert.equal((html.match(/data-mw="evidence"/g)||[]).length,2);assert(html.includes('https://example.org/published-cycle-study'));assert(html.includes('https://example.org/published-single-cell-study'));assert(!html.includes('noTagEvidence'));
@@ -87,7 +87,7 @@ const root = path.resolve(__dirname, '..');
   const data={markers:{markers:records},categories:{dataRequirements:[{id:'raw_fastq'}]},projects:{projects:[],resultSpecifications:[]},workflow:{steps:[],tools:[],metrics:[]}};
   const api={data:()=>data,maps:()=>maps,prefs:()=>({language:'en'}),syncMarkers(){counts.sync++;},render(){counts.render++;},esc:value=>String(value),tx:value=>value};
   const context={localStorage:{getItem:key=>storage.get(key)||null,setItem(key,value){storage.set(key,value);if(key==='yv.plan.v2')counts.plan++;if(key==='yv.plan.history.v16')counts.history++;},removeItem:key=>storage.delete(key)},sessionStorage:{getItem(){return null;}},document:{addEventListener(){}},CustomEvent:class{constructor(type,options){this.type=type;this.detail=options?.detail;}},window:{YV_APP:api,addEventListener(){},dispatchEvent(event){if(event.type==='yv:planchange')counts.change++;}}};
-  vm.runInNewContext(fs.readFileSync(path.join(root,'dist/builder.js'),'utf8'),context);const builder=context.window.YV_BUILDER;builder.init(api);
+  context.URL=URL;vm.runInNewContext(fs.readFileSync(path.join(root,'dist/marker-selection-v25c.js'),'utf8'),context);vm.runInNewContext(fs.readFileSync(path.join(root,'dist/builder.js'),'utf8'),context);const builder=context.window.YV_BUILDER;builder.init(api);
   vm.runInNewContext(fs.readFileSync(path.join(root,'dist/marker-workspace.js'),'utf8'),context);const markers=context.window.YV_MARKERS;
   const reset=()=>Object.keys(counts).forEach(key=>counts[key]=0),plain=value=>JSON.parse(JSON.stringify(value)),before=plain(builder.getPlan().markers);
   const rows=records.slice(0,500).map((m,i)=>i===0?{id:m.id,role:'exclude'}:{id:m.id,groups:['G1','invalid-group'],purposes:['grnUse','invalid-purpose'],role:'control',evidenceSources:['source1','invalid-source'],userTags:['batch','batch']});
@@ -108,7 +108,7 @@ const root = path.resolve(__dirname, '..');
   let language='fr';const titles={zh:'状态组成与稀有亚群',en:'State composition and rare subpopulations',fr:'Composition en états et sous-populations rares',es:'Composición de estados y subpoblaciones raras',eu:'Egoeren osaera eta azpipopulazio arraroak'};
   const project={id:'state_composition',title:titles.zh,question:'synthetic question'},api={prefs:()=>({language}),data:()=>({projects:{projects:[project]}}),tx:value=>value===titles.zh?titles[language]:value,esc:value=>String(value),icon:()=>''};
   const context={history:{},document:{activeElement:null,addEventListener(){},createElement(){return {setAttribute(){},querySelector(){return {};}};}},window:{YV_APP:api,YV_BUILDER:{getPlan:()=>({projects:[]})},YV_PLAN:{text:key=>key}}};
-  const source=fs.readFileSync(path.join(root,'dist/user-experience-v16.js'),'utf8').replace('const count=()=>{d.querySelector','window.__directionIndex=index;return;const count=()=>{d.querySelector');vm.runInNewContext(source,context);
+  const source=fs.readFileSync(path.join(root,'dist/user-experience-v16.js'),'utf8').replace('const count=()=>{d.querySelector','window.__directionIndex=index;return;const count=()=>{d.querySelector');context.URL=URL;vm.runInNewContext(fs.readFileSync(path.join(root,'dist/marker-selection-v25c.js'),'utf8'),context);vm.runInNewContext(source,context);
   const fold=value=>String(value).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
   for(const lang of Object.keys(titles)){language=lang;context.window.YV_UX.openDirections();assert(context.window.__directionIndex[0].search.includes(fold(titles[lang])),'Visible '+lang+' direction title is indexed');assert(context.window.__directionIndex[0].search.includes('state_composition'));}
   console.log('PASS direction search indexes the displayed title in five languages and retains original identifiers');
