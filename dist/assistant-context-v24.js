@@ -52,7 +52,7 @@
   function retrieve(query){
     const d=A()?.data?.();if(!d)return[];
     const words=(query.match(/[A-Za-z][A-Za-z0-9_-]{1,24}/g)||[]).map(x=>x.toUpperCase());
-    const genes=d.markers.markers.filter(r=>[r.symbol,r.systematic,...(r.aliases||[])].some(a=>words.includes(String(a).toUpperCase()))).slice(0,4);
+    const genes=d.markers.markers.filter(r=>[r.id,r.symbol,r.systematic,...(r.aliases||[])].some(a=>words.includes(String(a).toUpperCase()))).slice(0,4);
     const named=genes.map(record=>({kind:'marker',id:record.id,title:record.symbol,record,sources:[...new Set(record.evidence.map(e=>e.sourceUrl).filter(Boolean))]}));
     const hits=window.YV_GUIDE?.search?.(query)?.hits||[];
     // Keep explicitly named methods beside named genes; a gene must not eclipse the rest of a mixed question.

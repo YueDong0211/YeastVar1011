@@ -36,6 +36,11 @@ jobs:
       - run: node research/qa-database-hub-v24.cjs
       - run: node research/qa-marker-usability-v25.cjs
       - run: node research/qa-marker-evidence-v25.cjs
+      - run: node research/qa-workflow-continuity-v25b.cjs
+      - run: node research/qa-marker-import-v25b.cjs
+      - run: node research/qa-marker-tag-families-v25b.cjs
+      - run: node research/qa-marker-source-context-v25b.cjs
+      - run: node research/qa-qc-branch-inputs-v25b.cjs
       - run: node research/v25-methods-test.cjs
       - run: node research/qa-database-preparation-v25.cjs
       - uses: actions/setup-python@v5

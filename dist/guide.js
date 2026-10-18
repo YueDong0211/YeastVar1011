@@ -28,11 +28,11 @@
     const words=[...new Set((q.match(/[\p{L}\p{N}_-]+/gu)||[]).filter(w=>w.length>1&&!['what','which','how','the','and','for','from','les','des','que','los','las','con','para','une','les','rna','single','cell','analysis','data'].includes(w)).concat(matched.flatMap(c=>c.tokens)))].slice(0,40),steps=new Set(matched.flatMap(c=>c.steps));
     const candidates=[];
     const add=(kind,record,title,body,stageIds,sources)=>{
-      const search=normal([title,body,record.name,record.titleEn,record.taskEn,record.nameEn,record.id].join(' '));
+      const search=normal([title,body,record.name,record.titleEn,record.taskEn,record.nameEn,record.id,...(kind==='marker'?[record.systematic,...(record.aliases||[])]:[])].join(' '));
       let score=words.reduce((s,w)=>s+(search.includes(w)?(normal(title).includes(w)?6:2):0),0);
       score+=(stageIds||[]).filter(s=>steps.has(s)).length*2;
       if(q===normal(record.id)||q===normal(title)||words.includes(normal(record.name||record.symbol)))score+=30;
-      if(kind==='marker'&&!words.some(w=>[record.symbol,record.systematic,...(record.aliases||[])].some(v=>normal(v)===w)))return;
+      if(kind==='marker'&&!words.some(w=>[record.id,record.symbol,record.systematic,...(record.aliases||[])].some(v=>normal(v)===w)))return;
       if(score>0)candidates.push({kind,id:record.id,title,body,score,record,sources:[...new Set((sources||[]).filter(u=>/^https?:\/\//i.test(u)))]});
     };
     for(const r of d.projects.projects)add('project',r,tx(r.title),tx(r.question),(r.workflow||[]).map(w=>w.stepId),r.sourceUrls);

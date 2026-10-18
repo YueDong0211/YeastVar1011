@@ -8,7 +8,7 @@ Updated 18 October 2026. The marker workspace supports selecting and documenting
 - **Yeast functional annotation** contains GO, curated functions, regulatory relationships and protein-localization evidence. These records help interpret a selected gene or programme.
 - **All evidence** also retains mechanistic bulk RNA references, normalization references and other evidence outside the annotation-candidate view.
 
-The current catalogue contains 5,136 gene records and 28,304 evidence relationships. The annotation view contains 4,262 genes with at least one eligible relationship; the functional view contains 4,900 genes. These overlapping sets are not counts of universally validated markers. Author annotation panels involve 142 unique genes; selecting a source or state narrows this further. The 48 registered sources include supplementary tables and sources held for review, rather than 48 independent validated studies.
+The current catalogue contains 5,150 gene records and 28,347 evidence relationships. The annotation view contains 4,262 genes with at least one eligible relationship; the functional view contains 4,914 genes. These overlapping sets are not counts of universally validated markers. Author annotation panels involve 142 unique genes; selecting a source or state narrows this further. The 49 registered sources include supplementary tables and sources held for review, rather than 49 independent validated studies.
 
 ## Select a panel
 
@@ -37,3 +37,9 @@ The 1,000 mapped Jariani Supplementary file 1 relationships are classified as di
 The working window now spans 2010–2026, with earlier classics retained. Literature discovery, full-text review and gene-level table extraction are separate statuses. Search hits do not become marker records automatically. See the [reproducible search register](LITERATURE_SEARCH_V25.md) and [methods coverage review](RESEARCH_COVERAGE_V25.md).
 
 Source-row checks, identity checks, evidence-purpose checks, phase isolation, same-record filters, tag algebra, five-language controls and offline catalogue round trips are covered by the repository checks. Statistical methods are documented recipes; this workstation does not claim to have executed them on the user's biological data.
+
+## v25b source-context update
+
+The catalogue adds 22 RNA observations across 21 existing genes, separately from 21 mitochondrial QC feature memberships. Fourteen new identities belong to the QC set. The 200 explicit tag-family mappings retain source conditions: NaCl, starvation and mycophenolic-acid labels are navigable, while DMSO controls remain unassigned to stress. Histone-cluster panels retain coexpression membership without assigning histone protein function to every member. Source figure/paragraph locations, detection lower bounds and their populations are shown in the evidence details.
+
+Structured CSV/TSV import reads only named gene-identity columns, reports conflicts and invalidates stale previews. Plan notes retain the supported 5,000 characters; full backups include disabled DIY formulas. Matrix-only QC no longer inherits a global empty-droplet requirement; selecting DropletUtils or SoupX still requires their original inputs.

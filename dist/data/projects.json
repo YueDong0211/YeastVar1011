@@ -161,11 +161,11 @@
       "goal": "哪些噪音候选在细胞识别、背景和双细胞处理变化后仍稳定？",
       "inputs": [
         "count_matrix",
-        "raw_droplet_matrix",
         "sample_metadata"
       ],
       "optionalInputs": [
-        "culture_replicates"
+        "culture_replicates",
+        "raw_droplet_matrix"
       ],
       "stepIds": [
         "cellcalling",

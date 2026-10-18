@@ -97,7 +97,7 @@
     if(C())return C().retrieve(query);
     const d=window.YV_APP?.data?.();if(!d)return[];
     const exact=(query.match(/[A-Za-z][A-Za-z0-9_-]{1,24}/g)||[]).map(x=>x.toUpperCase());
-    const genes=d.markers.markers.filter(r=>[r.symbol,r.systematic,...(r.aliases||[])].some(a=>exact.includes(String(a).toUpperCase()))).slice(0,3);
+    const genes=d.markers.markers.filter(r=>[r.id,r.symbol,r.systematic,...(r.aliases||[])].some(a=>exact.includes(String(a).toUpperCase()))).slice(0,3);
     const hits=window.YV_GUIDE?.search?.(query)?.hits||[];
     const namedGenes=genes.map(record=>({kind:'marker',id:record.id,title:record.symbol,record,sources:[...new Set(record.evidence.map(e=>e.sourceUrl).filter(Boolean))]}));
     return (namedGenes.length?namedGenes:hits)

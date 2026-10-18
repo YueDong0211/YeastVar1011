@@ -1597,12 +1597,12 @@
       "species": "S.cerevisiae",
       "studyType": "scRNA",
       "evidence": "直接酵母",
-      "status": "摘要筛选",
+      "status": "全文及来源基因已核验",
       "selection": "curated",
       "summary": "结合静息转录机器分布与再进食后单细胞表达，支持分析静息退出和转录重启的异质性。",
       "contribution": "结合静息转录机器分布与再进食后单细胞表达，支持分析静息退出和转录重启的异质性。",
       "limitations": [],
-      "markerUse": "仅条件化外部证据；具体基因和阶段需回到原文与补充表核对。",
+      "markerUse": "七个原文点名的静息群体RNA观察已录入，分别保存来源检出比例下界；用于匹配条件下的RNA参考。",
       "sourceUrls": [
         "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1101%2Fgr.279874.124&format=json&resultType=core&pageSize=10",
         "https://api.crossref.org/works/10.1101%2Fgr.279874.124",
@@ -1616,6 +1616,16 @@
         "europePmcFirstPublication": "2025-10-01",
         "crossrefOnline": "2025-08-12",
         "crossrefPrint": "2025-10"
+      },
+      "markerSourceIds": [
+        "baquero2025_sc_q"
+      ],
+      "sourceEvidenceAudit": {
+        "version": "v25b",
+        "date": "2026-10-18",
+        "locator": "Results sec s1d paragraph 2; Figure 3C",
+        "RNAObservations": 7,
+        "dataset": "E-MTAB-14980"
       }
     },
     {
