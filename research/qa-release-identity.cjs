@@ -1,0 +1,18 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict'),crypto=require('node:crypto');
+const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8'),pkg=JSON.parse(read('package.json'));
+const context={window:{}};vm.runInNewContext(read('dist/release-info.js'),context);const release=context.window.YV_RELEASE;
+assert.equal(release.version,pkg.version);assert.equal(JSON.parse(read('package-lock.json')).packages[''].version,pkg.version);
+assert.equal(JSON.parse(read('.zenodo.json')).version,pkg.version);assert(JSON.parse(read('biotools.json')).version.includes(pkg.version));
+assert(read('CITATION.cff').includes('version: '+pkg.version));assert(read('CITATION.cff').includes('date-released: '+release.released));
+assert.equal(release.portableName,`YeastVar1011-${pkg.version}-Windows.zip`);
+assert.equal(release.portableUrl,`https://github.com/YueDong0211/YeastVar1011/releases/download/v${pkg.version}/${release.portableName}`);
+assert.equal(release.sourceUrl,`https://github.com/YueDong0211/YeastVar1011/archive/refs/tags/v${pkg.version}.zip`);
+assert.equal(release.analysisBundle,`assets/downloads/YeastVar1011-analysis-v${pkg.version}.zip`);
+const html=read('dist/index.html');assert(html.indexOf('src="release-info.js?')<html.indexOf('src="app.js?'));
+assert(read('dist/app.js').includes("$('.version').textContent=window.YV_RELEASE?.version"));
+assert(read('dist/cluster-workspace-v21.js').includes('bundle:window.YV_RELEASE?.analysisBundle'));
+const bundle=path.join(root,'dist',release.analysisBundle),bytes=fs.readFileSync(bundle),expected=read('dist/'+release.analysisBundle+'.sha256.txt').trim().split(/\s+/);
+assert.equal(bytes.subarray(0,2).toString(),'PK');assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),expected[0]);assert.equal(expected[1],path.basename(bundle));
+for(const file of ['RELEASES.md','WORKSTATION.md','LOCAL_ASSISTANT.md','DATABASE_RESOURCES.md','DEPLOYMENT.md'])assert(read('research/package-portable.ps1').includes("'"+file+"'"),'Portable documentation: '+file);
+console.log(`PASS ${pkg.version}: web, package, citation and registry metadata agree; versioned analysis download and SHA-256 are valid.`);

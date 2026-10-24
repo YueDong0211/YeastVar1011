@@ -1,5 +1,5 @@
 {
-  "version": "22.0.0",
+  "version": "22.1.0",
   "files": [
     {
       "path": "dist/ambience.js",
@@ -13,8 +13,8 @@
     },
     {
       "path": "dist/app.js",
-      "bytes": 59575,
-      "sha256": "e79acf7bc586f5626d3bfe153ef8adeb7ced257869d2fba1ac4f7e5f2cf689b0"
+      "bytes": 59603,
+      "sha256": "d72262ff5a9557e09735791126bbbef842524ccea42f4f9d4536f1d26745dc0e"
     },
     {
       "path": "dist/assets/downloads/YeastVar1011-analysis-v21.zip",
@@ -25,6 +25,16 @@
       "path": "dist/assets/downloads/YeastVar1011-analysis-v21.zip.sha256.txt",
       "bytes": 97,
       "sha256": "9ebff85c4275b4441b5f95f9f09317b4eee3a17c281af46e6b1031572c040f32"
+    },
+    {
+      "path": "dist/assets/downloads/YeastVar1011-analysis-v22.1.0.zip",
+      "bytes": 30499,
+      "sha256": "39d1421b43c309466d46466c63b04d6c4513d8a74e6901af39e1b67b1ddc18d0"
+    },
+    {
+      "path": "dist/assets/downloads/YeastVar1011-analysis-v22.1.0.zip.sha256.txt",
+      "bytes": 101,
+      "sha256": "d1b66f64e530032fc3b09726e5d4966a4b9330b66e5d9706fdfbece8168e1cfe"
     },
     {
       "path": "dist/assets/yeast-cell-v5.png",
@@ -253,8 +263,8 @@
     },
     {
       "path": "dist/cluster-workspace-v21.js",
-      "bytes": 49616,
-      "sha256": "2cbf5f378830274ec7bf7a88691369f8c261eab82c9b7d85cc0a33fed86c03d1"
+      "bytes": 49409,
+      "sha256": "8b05204efa95fac9b4c3c3d488bf7e21bfdc444613c043d17a5a1fba072070e6"
     },
     {
       "path": "dist/companion-hub.css",
@@ -523,8 +533,8 @@
     },
     {
       "path": "dist/index.html",
-      "bytes": 14421,
-      "sha256": "3f7e5ee24b01781f26067186f4b7e26f9b210d2808c2ae6c05a80dd6c401f7ad"
+      "bytes": 14475,
+      "sha256": "dfed923774726016262840066db887d7794cc8473385ffeac329ab03ef67e69b"
     },
     {
       "path": "dist/interface-v15.css",
@@ -835,6 +845,11 @@
       "path": "dist/refinements.css",
       "bytes": 8241,
       "sha256": "5f4e70632acc2532bd62ebf914db7817b0d32f2492a8cf62a7f4df27aeb6ffbd"
+    },
+    {
+      "path": "dist/release-info.js",
+      "bytes": 484,
+      "sha256": "d75fdb3ec1c6d0da64c4e9829867fbdc7efaf55df6ddb8edccf86291f6bdbed6"
     },
     {
       "path": "dist/research-assistant-v22.css",
@@ -1462,14 +1477,19 @@
       "sha256": "ca1fe95072fc310f9d405548d32f3c9409ce538e8d87afb4d1437155fef6cf23"
     },
     {
+      "path": "portable/README.en.txt",
+      "bytes": 1326,
+      "sha256": "9485fc63dfc7cc0660862c76231b813b0b225f316e22f100d408db444537a738"
+    },
+    {
       "path": "portable/README.txt",
       "bytes": 2580,
       "sha256": "61360431a2791d3804eae8220294b28779ef2998d1e3daf303689740634aa3ab"
     },
     {
       "path": "portable/README.zh-CN.txt",
-      "bytes": 5219,
-      "sha256": "e241f4c4ad69df933f85943e77db7329b9b0aeec6ffe5877932539ee4371c55f"
+      "bytes": 5519,
+      "sha256": "01d64590b26da02a7cc432c26e8f10f77878ede5a3183495d94be9cf6e7ae46f"
     },
     {
       "path": "portable/Server.ps1",
@@ -1498,13 +1518,13 @@
     },
     {
       "path": "scripts/package-analysis.py",
-      "bytes": 1591,
-      "sha256": "bf82227bd0cb0dccfd241dee22446168e03d9378a43e7f22489beb67fb714ed7"
+      "bytes": 1563,
+      "sha256": "bb84b68da0bab86652e0b37d76d3906a860ecef84f2349eaff10071100fdffbc"
     },
     {
       "path": "scripts/prepare-public.cjs",
-      "bytes": 6034,
-      "sha256": "0dbd39b48a0600245356bec5f419b0dc17daa628335dfd988bf95d4f11a5c5f6"
+      "bytes": 6138,
+      "sha256": "1cdcb81ee51c13a2b933898ea6fa49e29fab1e2138410d35d26e0e0a5cc19195"
     },
     {
       "path": "scripts/qa-doctor.cjs",
@@ -1553,8 +1573,8 @@
     },
     {
       "path": ".github/workflows/pages.yml",
-      "bytes": 4110,
-      "sha256": "3bae6c4466e75db5f384bc7dedeececb3b86c0caf6aa29522a500ee78ba40218"
+      "bytes": 4401,
+      "sha256": "ac4d66b2dd30277d26485b6d6a5920fa5e58ab97efeb7763066e57367d710181"
     },
     {
       "path": ".gitattributes",
@@ -1588,8 +1608,13 @@
     },
     {
       "path": "docs/PUBLISHING.md",
-      "bytes": 11286,
-      "sha256": "7a0d2c2e693629ad644107ffe60d22421ac40f63c052678115001df1be28f678"
+      "bytes": 11471,
+      "sha256": "c273ce2c72cbc296217d7a3907ee7ca803c3bd17ad5163824af2b04f3eb39625"
+    },
+    {
+      "path": "docs/RELEASES.md",
+      "bytes": 2298,
+      "sha256": "a72b5d3affef8f044015e833d7674fac471188dfe3e54ec139a761d813652f68"
     },
     {
       "path": "docs/RESEARCH_COVERAGE_V25.md",
@@ -1724,17 +1749,17 @@
     {
       "path": ".zenodo.json",
       "bytes": 1843,
-      "sha256": "dbda1c57b67811d1372e50267576f8ed5a2619da4aa8f0e60eda74a61572edfd"
+      "sha256": "d079c9fb3a5cc54ba0708829ddfed0fabb520e2732912a3433d454bf4766ae59"
     },
     {
       "path": "biotools.json",
-      "bytes": 2892,
-      "sha256": "4b067dbebe9055641e67f9375dc470b9e241214fa270f73740ae10eca030cc76"
+      "bytes": 2907,
+      "sha256": "71c3379701074f72e24c373468f093b150111d9f37ff90557d8e04448ff9f3ce"
     },
     {
       "path": "README.md",
-      "bytes": 9761,
-      "sha256": "1b9b2e94fa083fcecf780525704707f6d879acce7fa39feea389176d23f74e2b"
+      "bytes": 10105,
+      "sha256": "0cb963752cb3128b8a2fe23d441d01532693212a92941b49fe1ee735b9adbdcd"
     },
     {
       "path": "LICENSE",
@@ -1759,7 +1784,7 @@
     {
       "path": "CITATION.cff",
       "bytes": 754,
-      "sha256": "d42eb9898b45639cceb9ae4f1d2df1df953af818f1206ca74335721d26477f03"
+      "sha256": "23bb77854a6407aa754b6307caaf899a2b128e45d231584f94bdfce623498bd3"
     },
     {
       "path": "START.cmd",
@@ -1779,12 +1804,27 @@
     {
       "path": "package.json",
       "bytes": 1033,
-      "sha256": "d2244f92122d405176fac4c4d36d8d392ee6a37be404beea122212adb8b0aa17"
+      "sha256": "d66d1d4e57624e3e2a7e377374bad78bf4a4ee6141db36057cdb77aa58a6d6b2"
     },
     {
       "path": "package-lock.json",
       "bytes": 2177,
-      "sha256": "19cacdd6aefaa807cdc8c2506e16b2aa4eff510a847ac664f5df0b20aca43f2f"
+      "sha256": "7b5e6fc50650664fe2eea39dadd3015143557db58b68f44a895614ce38331afa"
+    },
+    {
+      "path": "research/qa-release-identity.cjs",
+      "bytes": 2259,
+      "sha256": "04b056f325668cfc38cac53d9c0f7b8e729b7281b488ab7c6767ff6ca7af4dbe"
+    },
+    {
+      "path": "research/qa-analysis-package.py",
+      "bytes": 1423,
+      "sha256": "a1ce9651b56bb624be2123e2761c0de71735d1792710e164f03ea5ec7d2d0043"
+    },
+    {
+      "path": "research/qa-portable-package.ps1",
+      "bytes": 13900,
+      "sha256": "633aba5973293eca019c427bfe2fbb3a9c0b40019005e2029ff2f72da3c14042"
     },
     {
       "path": "research/check_site.cjs",
@@ -1798,13 +1838,13 @@
     },
     {
       "path": "research/qa-cluster-v21.cjs",
-      "bytes": 12981,
-      "sha256": "e7bb65f880627565ad5fadba58b6ac363cecc4c48589d21df5fc5875363dddda"
+      "bytes": 12993,
+      "sha256": "64040384087daed57e8ce8457e43a8d64c952de6d0446ed0d6de68d7ee68e7ae"
     },
     {
       "path": "research/package-portable.ps1",
-      "bytes": 2947,
-      "sha256": "0df888f8e44fefe1ac67502a4525a49914d59e611cb584893010f921435fbef8"
+      "bytes": 3864,
+      "sha256": "ecdd585742b699c95bd7d2d919216ba3a51d27d72ab4f208d86787f13b020bca"
     },
     {
       "path": "research/qa-assistant-ui-v22.cjs",

@@ -1,6 +1,6 @@
 {
   "name": "yeastvar1011",
-  "version": "22.0.0",
+  "version": "22.1.0",
   "description": "Yeast single-cell research-plan builder and evidence catalogue",
   "scripts": {
     "start": "node scripts/dev-server.cjs",

@@ -6,9 +6,8 @@ import zipfile
 
 root = Path(__file__).resolve().parents[1]
 version = json.loads((root / "package.json").read_text(encoding="utf-8"))["version"]
-major = version.split(".")[0]
 files = ["README.md", "config.example.yaml", "samples.example.tsv", "environment.yaml", "run.sh", ".gitignore", "profiles/slurm/config.yaml", "workflow/Snakefile", "workflow/envs/qc.yaml", "workflow/scripts/qc.py", "tests/test_pipeline.py", "tests/make_fixture.py", "tests/assert_e2e.py"]
-target = root / "dist/assets/downloads" / f"YeastVar1011-analysis-v{major}.zip"
+target = root / "dist/assets/downloads" / f"YeastVar1011-analysis-v{version}.zip"
 target.parent.mkdir(parents=True, exist_ok=True)
 manifest = {"version": version, "files": []}
 with zipfile.ZipFile(target, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as archive:

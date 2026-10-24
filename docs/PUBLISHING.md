@@ -1,8 +1,8 @@
 # Release, registry and preprint publication
 
-Status reviewed on **17 October 2026**. This document distinguishes a public software release, a registry entry, a distributable package, an archival DOI and a research preprint. Each has a separate submission and completion record.
+Maintenance release **22.1.0**, 24 October 2026, aligns the current website and Windows portable package. See [release and sharing instructions](RELEASES.md) and the [latest GitHub release](https://github.com/YueDong0211/YeastVar1011/releases/latest). The registry and archival records below retain their independently verified versions; a new application release does not change an earlier version DOI.
 
-## Current record
+## Registry and archival record
 
 | Destination | Purpose | Verified status | Material and next completion record |
 | --- | --- | --- | --- |

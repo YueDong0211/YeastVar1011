@@ -44,9 +44,13 @@ The v22 catalogue adds Ty/repeat-expression analysis, between-strain variance ac
 
 The [v24 research update](docs/RESEARCH_UPDATE_V24.md) adds joint spliced–unspliced mechanistic models, RNA measurement-length sensitivity, implementation robustness and study-wide multiple-testing design. Marker evidence can also be filtered by original study condition, reported direction, dataset accession and explicit use as a single-cell marker. The marker workspace includes a [data-resource directory](docs/DATABASE_RESOURCES.md) that distinguishes imported SGD/GO records from external regulation, interaction, expression and population resources.
 
+## Current release
+
+Version **22.1.0** (24 October 2026) unifies the website, Windows portable download and source package. It includes the later marker, QTL and noise/genetics/evolution catalogues, with analysis choices linked to their required tools and inputs. See [release and sharing instructions](docs/RELEASES.md).
+
 ## Run locally
 
-**Windows, no development tools:** download the portable ZIP from [Releases](https://github.com/YueDong0211/YeastVar1011/releases), extract the whole folder and open `START.cmd`. `STOP.cmd` stops the local server; `CREATE-SHORTCUT.cmd` creates a shortcut.
+**Windows, no development tools:** download the portable ZIP from [the latest release](https://github.com/YueDong0211/YeastVar1011/releases/latest), extract the whole folder and open `START.cmd`. `STOP.cmd` stops the local server; `CREATE-SHORTCUT.cmd` creates a shortcut.
 
 **Windows, macOS or Linux, with Node.js 22+:**
 

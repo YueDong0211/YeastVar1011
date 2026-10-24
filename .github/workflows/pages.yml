@@ -24,6 +24,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run check
+      - run: node research/qa-release-identity.cjs
       - run: npm run test:server
       - run: npx playwright install --with-deps chromium
       - run: npm run test:public
@@ -67,6 +68,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python research/qa-catalogue-versioning.py
+      - run: python research/qa-analysis-package.py
       - name: Assistant interface and catalogue integration
         run: |
           PORT=4173 node scripts/dev-server.cjs &
@@ -90,6 +92,10 @@ jobs:
         run: sh scripts/setup.sh --port 0
       - if: runner.os == 'Windows'
         run: ./scripts/setup.ps1 -Port 0
+        shell: pwsh
+      - name: Verify extracted Windows portable package
+        if: runner.os == 'Windows' && matrix.node == '24'
+        run: ./research/qa-portable-package.ps1
         shell: pwsh
 
   deploy:

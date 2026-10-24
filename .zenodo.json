@@ -1,6 +1,6 @@
 {
   "title": "YeastVar1011: a yeast single-cell research-plan workstation",
-  "version": "22.0.0",
+  "version": "22.1.0",
   "upload_type": "software",
   "description": "YeastVar1011 is a browser-based workstation for planning yeast single-cell studies. It combines source-attributed marker evidence, quality-control metrics, methods, input requirements, citations, and configurable research-plan exports. The catalogue covers cell states, expression variability, RNA dynamics, regulation, and population genetics. A separate Linux x86_64 Snakemake workflow provides FastQC, STARsolo tagged BAM and Gene/GeneFull/SJ/Velocyto matrices, samtools and per-barcode QC, and MultiQC for a known fixed single-segment CB/UMI layout with separate barcode and cDNA reads. SLURM execution uses a separately configured cluster profile. Starting the web interface does not launch scientific analyses. The source release includes the local static application, cross-platform runtime checks, deployment documentation, and analysis workflow definitions.",
   "creators": [
