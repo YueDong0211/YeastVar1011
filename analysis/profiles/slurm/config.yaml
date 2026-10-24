@@ -1,0 +1,14 @@
+# Replace both placeholders with values permitted by your cluster.
+# If accounts are forbidden: remove slurm_account and add slurm-no-account: true.
+executor: slurm
+jobs: 20
+latency-wait: 60
+rerun-incomplete: true
+printshellcmds: true
+software-deployment-method: conda
+default-resources:
+  slurm_account: REPLACE_ACCOUNT
+  slurm_partition: REPLACE_PARTITION
+  mem_mb: 4000
+  runtime: 120
+# Shared filesystem: workdir, input, output and .snakemake/conda must be visible on compute nodes.

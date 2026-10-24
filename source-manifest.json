@@ -29,12 +29,12 @@
     {
       "path": "dist/assets/downloads/YeastVar1011-analysis-v22.1.0.zip",
       "bytes": 30499,
-      "sha256": "39d1421b43c309466d46466c63b04d6c4513d8a74e6901af39e1b67b1ddc18d0"
+      "sha256": "ab9fe3e4b9ee7c255270c1fa76e98f9a5f2b65845dda5c05e638ae723e2ea8c0"
     },
     {
       "path": "dist/assets/downloads/YeastVar1011-analysis-v22.1.0.zip.sha256.txt",
       "bytes": 101,
-      "sha256": "d1b66f64e530032fc3b09726e5d4966a4b9330b66e5d9706fdfbece8168e1cfe"
+      "sha256": "41d26e924f63e97e575323a9726e56e28ef493af0606c78718e35f8340c57314"
     },
     {
       "path": "dist/assets/yeast-cell-v5.png",
@@ -1653,8 +1653,8 @@
     },
     {
       "path": "analysis/.gitignore",
-      "bytes": 89,
-      "sha256": "d026d53efa2f70fe9e0502f7fa3208bd10943f218320c4c80e1ced6f475dbeda"
+      "bytes": 91,
+      "sha256": "8874984dfaf360a5017378dd6d6054da1b079310e307373cd46d22b64385ff0b"
     },
     {
       "path": "analysis/README.md",
@@ -1813,8 +1813,8 @@
     },
     {
       "path": "research/qa-release-identity.cjs",
-      "bytes": 2259,
-      "sha256": "04b056f325668cfc38cac53d9c0f7b8e729b7281b488ab7c6767ff6ca7af4dbe"
+      "bytes": 2586,
+      "sha256": "bc7e8b2176b7c2c8833f3a4704439607e545642ed2f18e66fdc86b92e29ebf37"
     },
     {
       "path": "research/qa-analysis-package.py",

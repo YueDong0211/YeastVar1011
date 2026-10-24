@@ -12,6 +12,9 @@ assert.equal(release.analysisBundle,`assets/downloads/YeastVar1011-analysis-v${p
 const html=read('dist/index.html');assert(html.indexOf('src="release-info.js?')<html.indexOf('src="app.js?'));
 assert(read('dist/app.js').includes("$('.version').textContent=window.YV_RELEASE?.version"));
 assert(read('dist/cluster-workspace-v21.js').includes('bundle:window.YV_RELEASE?.analysisBundle'));
+const ignored=read('analysis/.gitignore').split(/\r?\n/);
+assert(ignored.includes('/config.yaml')&&!ignored.includes('config.yaml'),'Private root configuration must not hide the distributed SLURM profile');
+assert(fs.existsSync(path.join(root,'analysis/profiles/slurm/config.yaml')),'The SLURM profile is distributed source');
 const bundle=path.join(root,'dist',release.analysisBundle),bytes=fs.readFileSync(bundle),expected=read('dist/'+release.analysisBundle+'.sha256.txt').trim().split(/\s+/);
 assert.equal(bytes.subarray(0,2).toString(),'PK');assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),expected[0]);assert.equal(expected[1],path.basename(bundle));
 for(const file of ['RELEASES.md','WORKSTATION.md','LOCAL_ASSISTANT.md','DATABASE_RESOURCES.md','DEPLOYMENT.md'])assert(read('research/package-portable.ps1').includes("'"+file+"'"),'Portable documentation: '+file);

@@ -1,5 +1,5 @@
-config.yaml
-samples.tsv
+/config.yaml
+/samples.tsv
 results/
 .snakemake/
 __pycache__/
