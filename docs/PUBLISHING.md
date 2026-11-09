@@ -6,16 +6,19 @@ Maintained for **22.1.1**, 9 November 2026. The [release guide](RELEASES.md) des
 
 | Destination | Record | Status |
 | --- | --- | --- |
-| GitHub | [Source repository](https://github.com/YueDong0211/YeastVar1011), [release series](https://github.com/YueDong0211/YeastVar1011/releases) | Public source, issue tracker and versioned source/Windows distributions |
+| GitHub | [Source repository](https://github.com/YueDong0211/YeastVar1011), [v22.1.1](https://github.com/YueDong0211/YeastVar1011/releases/tag/v22.1.1) | Published source/Windows ZIPs and SHA-256 sidecars |
 | GitHub Pages | [Workstation](https://yuedong0211.github.io/YeastVar1011/) | Deployment follows the validated `main` branch |
 | Zenodo | [Concept DOI 10.5281/zenodo.23429611](https://doi.org/10.5281/zenodo.23429611) | Existing software series; GitHub release integration enabled |
+| Zenodo 22.1.1 | [Version DOI 10.5281/zenodo.24079647](https://doi.org/10.5281/zenodo.24079647) | Published 9 November 2026; software record, author Yue Dong, MIT |
 | Zenodo 22.1.0 | [Version DOI 10.5281/zenodo.23620291](https://doi.org/10.5281/zenodo.23620291) | Published 24 October 2026 |
-| bio.tools | [Metadata PR #4720](https://github.com/research-software-ecosystem/content/pull/4720) | Open; registry acceptance and synchronization pending, checked 9 November 2026 |
-| Bioconda | [Recipe PR #70384](https://github.com/bioconda/bioconda-recipes/pull/70384) | Open; lint, Linux and macOS package checks passed for the submitted 21.0.0 recipe; channel review pending |
+| bio.tools | [Metadata PR #4720](https://github.com/research-software-ecosystem/content/pull/4720) | Updated to 22.1.1; schema instance validation passed; registry review and synchronization pending |
+| Bioconda | [Recipe PR #70384](https://github.com/bioconda/bioconda-recipes/pull/70384) | Updated to 22.1.1 using the downloaded tag archive and its SHA-256; upstream review pending |
 
 ## Verification records
 
-The last published 22.1.0 source is `bb006e1e2b43fd1d770d2b706157603a326b740b`. Its [website/platform checks](https://github.com/YueDong0211/YeastVar1011/actions/runs/40103008463), [Linux FASTQ integration](https://github.com/YueDong0211/YeastVar1011/actions/runs/40103008563) and [Conda installation checks](https://github.com/YueDong0211/YeastVar1011/actions/runs/40103008595) passed. The analysis implementation is retained in 22.1.1; version-specific packaging is verified before release. Current workflow histories are available under [GitHub Actions](https://github.com/YueDong0211/YeastVar1011/actions).
+Release 22.1.1 identifies source commit `e6e8e87794ce97ee5986bc57a2918809153a73dc`. Its [website/platform checks](https://github.com/YueDong0211/YeastVar1011/actions/runs/42596856388), [Linux FASTQ integration](https://github.com/YueDong0211/YeastVar1011/actions/runs/42596876845) and [Conda installation checks](https://github.com/YueDong0211/YeastVar1011/actions/runs/42596856350) passed. Local package verification checked all 319 Windows files, nine launcher/package behaviors and all 431 inventoried source files. Current workflow histories are available under [GitHub Actions](https://github.com/YueDong0211/YeastVar1011/actions).
+
+The submitted Bioconda source archive has SHA-256 `036ec00aad9570e71dc63c440c6cf8358eb8a6214db46362ad4f10c1d6a74a7c`. This is the GitHub tag `.tar.gz` used by Conda, distinct from the release's separately checksummed ZIPs.
 
 ## Release and archive procedure
 

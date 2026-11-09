@@ -6,6 +6,7 @@ authors:
   - family-names: Dong
     given-names: Yue
 version: 22.1.1
+doi: 10.5281/zenodo.24079647
 date-released: 2026-11-09
 identifiers:
   - type: doi

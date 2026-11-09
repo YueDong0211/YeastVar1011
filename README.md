@@ -102,6 +102,8 @@ Plans and preferences are stored in the browser for the current website address.
 
 Use [CITATION.cff](CITATION.cff) for the software citation and cite the original methods and datasets used in the study. The [concept DOI](https://doi.org/10.5281/zenodo.23429611) identifies the version series; use a version DOI to identify the exact archived release. [CodeMeta](codemeta.json) and [bio.tools metadata](biotools.json) provide machine-readable descriptions.
 
+Dong, Y. (2026). *YeastVar1011: evidence-linked study design and quality control for yeast single-cell research* (Version 22.1.1) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.24079647
+
 Copyright © 2026 Yue Dong. Original code and documentation are distributed under the [MIT License](LICENSE). Bundled libraries, fonts, citation styles and scientific sources retain the terms recorded in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and [DATA_SOURCES.md](DATA_SOURCES.md).
 
 ## Contribute and contact

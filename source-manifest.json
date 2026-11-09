@@ -50,8 +50,8 @@
     },
     {
       "path": "CITATION.cff",
-      "bytes": 1201,
-      "sha256": "d1835cb93165ae8064ae0e7c8f9fd1e7e25a5a1f6c491da2c24a4acf4a5047ed"
+      "bytes": 1230,
+      "sha256": "58c44e2991bcfb68a611833218ededba5f2c4d30a1ad8c4acf2a53ebde047c9e"
     },
     {
       "path": "CONTRIBUTING.md",
@@ -75,8 +75,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 8609,
-      "sha256": "9ee5b61a3b3789f67d95b6d8ac1c822d308b49fe6440508e3682d5318e8ac137"
+      "bytes": 8809,
+      "sha256": "83b7ceabf97ee204f7df92d36a718ed4cd5102d44f2ba292930547ab02cbe712"
     },
     {
       "path": "START.cmd",
@@ -166,7 +166,7 @@
     {
       "path": "codemeta.json",
       "bytes": 1756,
-      "sha256": "16792bc26ee71fd3771b22a8e4720c23406cbcea46e9638588f3e388fede5fb0"
+      "sha256": "75b77d0798051d9c0f3941b3ab45172237ff484f4baf65431dfa4e42ba860e51"
     },
     {
       "path": "dist/ambience.js",
@@ -1650,13 +1650,13 @@
     },
     {
       "path": "docs/PUBLISHING.md",
-      "bytes": 4078,
-      "sha256": "0d12d074d9d80743fb2ef0b264b9b07fa4c3c02ae3f1af19856b8a8df7737c5c"
+      "bytes": 4483,
+      "sha256": "5fe6a2ca4e8993d1f08a141047983568674f920e86fc70db5e3674b062d8e8df"
     },
     {
       "path": "docs/RELEASES.md",
-      "bytes": 2350,
-      "sha256": "49a703f81113a0be762d334ec01cc52fb5ddaa3144da5fc76a5825e55021f8d4"
+      "bytes": 2438,
+      "sha256": "47b4b14acbc4f945ba8332fd9406c4ff823c722d53661dc48dcd0f1fa9993484"
     },
     {
       "path": "docs/RESEARCH_COVERAGE_V25.md",
@@ -1690,8 +1690,8 @@
     },
     {
       "path": "docs/software-methods.md",
-      "bytes": 15457,
-      "sha256": "fd7bfcf8a4dbd7233c76e7a4474081de4a79204d23bac3a9d381ffbcf706d904"
+      "bytes": 15537,
+      "sha256": "3c73a9cfbc658403f04015e93d30ba48d2050c50ccae4742fc4b40d692cb0b1c"
     },
     {
       "path": "package-lock.json",

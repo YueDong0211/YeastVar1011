@@ -21,7 +21,7 @@
     }
   ],
   "maintainer": "https://github.com/YueDong0211",
-  "identifier": "https://doi.org/10.5281/zenodo.23429611",
+  "identifier": "https://doi.org/10.5281/zenodo.24079647",
   "programmingLanguage": ["JavaScript", "Python", "Shell", "PowerShell"],
   "operatingSystem": ["Windows", "Linux", "macOS"],
   "runtimePlatform": "Browser; Node.js >=22 for the source server; Linux x86_64 for FASTQ processing",

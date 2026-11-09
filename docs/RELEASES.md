@@ -21,4 +21,4 @@ Plans and settings belong to the browser origin where they were created. Export 
 
 ## Citation
 
-[CITATION.cff](../CITATION.cff) identifies the release. The [Zenodo concept DOI](https://doi.org/10.5281/zenodo.23429611) resolves the release series; [publishing records](PUBLISHING.md) list verified version archives and service status. Earlier distributions remain available from GitHub and Zenodo.
+[Version DOI 10.5281/zenodo.24079647](https://doi.org/10.5281/zenodo.24079647) identifies this release. [CITATION.cff](../CITATION.cff) supplies the software citation. The [concept DOI](https://doi.org/10.5281/zenodo.23429611) resolves the release series; [publishing records](PUBLISHING.md) list archive and registry status. Earlier distributions remain available from GitHub and Zenodo.
