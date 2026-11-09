@@ -16,10 +16,10 @@ try {
     Copy-Item -LiteralPath (Join-Path $packageRoot 'dist') -Destination $folder -Recurse
     Copy-Item -LiteralPath (Join-Path $packageRoot 'portable') -Destination $folder -Recurse
     [IO.Directory]::CreateDirectory((Join-Path $folder 'docs')) | Out-Null
-    foreach ($manual in @('LOCAL_ASSISTANT.md','RESEARCH_UPDATE_v22.md','RELEASES.md','WORKSTATION.md','DATABASE_RESOURCES.md','DEPLOYMENT.md')) {
+    foreach ($manual in @('LOCAL_ASSISTANT.md','RESEARCH_UPDATE_v22.md','RESEARCH_UPDATE_V24.md','RELEASES.md','WORKSTATION.md','DATABASE_RESOURCES.md','DEPLOYMENT.md','software-methods.md')) {
         Copy-Item -LiteralPath (Join-Path $packageRoot ('docs/' + $manual)) -Destination (Join-Path $folder 'docs')
     }
-    foreach ($name in @('START.cmd','STOP.cmd','CREATE-SHORTCUT.cmd','LICENSE','THIRD_PARTY_NOTICES.md','DATA_SOURCES.md')) {
+    foreach ($name in @('START.cmd','STOP.cmd','CREATE-SHORTCUT.cmd','LICENSE','THIRD_PARTY_NOTICES.md','DATA_SOURCES.md','CITATION.cff','codemeta.json','CHANGELOG.md')) {
         Copy-Item -LiteralPath (Join-Path $packageRoot $name) -Destination $folder
     }
     $utf8 = New-Object Text.UTF8Encoding($false)

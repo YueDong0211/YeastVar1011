@@ -1,0 +1,32 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "name": "YeastVar1011",
+  "version": "22.1.1",
+  "description": "Evidence-linked study design and raw-read quality control for yeast single-cell research. The browser workstation links questions, marker evidence, methods and input requirements to documented plans; a separate Linux Snakemake workflow retains tagged alignments, count layers and per-barcode QC.",
+  "codeRepository": "https://github.com/YueDong0211/YeastVar1011",
+  "url": "https://yuedong0211.github.io/YeastVar1011/",
+  "issueTracker": "https://github.com/YueDong0211/YeastVar1011/issues",
+  "license": "https://spdx.org/licenses/MIT",
+  "copyrightHolder": "Yue Dong",
+  "dateCreated": "2026-10-17",
+  "dateModified": "2026-11-09",
+  "datePublished": "2026-11-09",
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Yue",
+      "familyName": "Dong",
+      "email": "yuedong02@outlook.com"
+    }
+  ],
+  "maintainer": "https://github.com/YueDong0211",
+  "identifier": "https://doi.org/10.5281/zenodo.23429611",
+  "programmingLanguage": ["JavaScript", "Python", "Shell", "PowerShell"],
+  "operatingSystem": ["Windows", "Linux", "macOS"],
+  "runtimePlatform": "Browser; Node.js >=22 for the source server; Linux x86_64 for FASTQ processing",
+  "keywords": ["Saccharomyces cerevisiae", "single-cell RNA sequencing", "study design", "marker evidence", "quality control", "expression variation", "population genetics"],
+  "readme": "https://github.com/YueDong0211/YeastVar1011/blob/main/README.md",
+  "softwareHelp": "https://github.com/YueDong0211/YeastVar1011/blob/main/docs/WORKSTATION.md",
+  "releaseNotes": "https://github.com/YueDong0211/YeastVar1011/blob/main/CHANGELOG.md"
+}

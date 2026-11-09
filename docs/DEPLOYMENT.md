@@ -1,101 +1,74 @@
 # Install and run
 
-YeastVar1011 runs as a static browser application. The included local server uses Node.js built-in modules; running the released workbench does not require `npm install`, a database, Python, R, or an analysis environment.
+The workstation is a static browser application with two local serving options: a Node.js source server and a Windows PowerShell/.NET portable server. Scientific execution uses the separately configured Linux workflow in `analysis/`.
 
-## Linux and macOS
+## Windows portable
 
-Install [Node.js 24 LTS](https://nodejs.org/en/download), then download and extract a release or clone the repository:
+Download the Windows ZIP from the [release page](https://github.com/YueDong0211/YeastVar1011/releases/latest) and extract the complete folder. Open `START.cmd`; the launcher checks file integrity and opens the local workstation. Use `STOP.cmd` to stop that copy and `CREATE-SHORTCUT.cmd` to create a shortcut.
+
+This distribution uses Windows PowerShell 5.1 and .NET rather than Python or Node.js. Keep the whole folder together. Copying only the launcher or opening it inside the ZIP leaves required application files unavailable.
+
+## From source
+
+Install [Node.js 24 LTS](https://nodejs.org/en/download), then clone the repository or extract the source release:
 
 ```sh
 git clone https://github.com/YueDong0211/YeastVar1011.git
 cd YeastVar1011
-sh scripts/setup.sh --start
+npm start
 ```
 
-Open the local address printed by the server. Press Ctrl+C in that terminal to stop it. The default address is `http://127.0.0.1:4173/`.
+Open the loopback URL printed by the server. The default is `http://127.0.0.1:4173/`; Ctrl+C stops it. Starting the workstation requires no dependency installation or compilation. Node.js 22 is also supported.
 
-The same command works from an extracted release. Paths containing spaces are supported. The setup script checks readiness first and does not change shell profiles, install system packages, or request administrator privileges.
-
-## Windows
-
-The portable release includes `START.cmd`, `STOP.cmd`, and `CREATE-SHORTCUT.cmd`. Extract the entire release before opening `START.cmd`.
-
-The Node.js route provides the same checks and server as Linux and macOS:
-
-```powershell
-powershell -NoProfile -File scripts/setup.ps1 -Start
-```
-
-If a local PowerShell policy prevents that script from running, the application can be started without changing the policy:
-
-```powershell
-node scripts/doctor.cjs
-node scripts/dev-server.cjs
-```
-
-## Setup options
+The setup scripts run an environment check before startup:
 
 | Task | Linux/macOS | Windows PowerShell |
 | --- | --- | --- |
-| Check readiness only | `sh scripts/setup.sh` | `powershell -NoProfile -File scripts/setup.ps1` |
+| Check readiness | `sh scripts/setup.sh` | `powershell -NoProfile -File scripts/setup.ps1` |
 | Check and start | `sh scripts/setup.sh --start` | `powershell -NoProfile -File scripts/setup.ps1 -Start` |
-| Select another port | `sh scripts/setup.sh --start --port 4180` | `powershell -NoProfile -File scripts/setup.ps1 -Start -Port 4180` |
-| Select a free port automatically | `sh scripts/setup.sh --start --port 0` | `powershell -NoProfile -File scripts/setup.ps1 -Start -Port 0` |
+| Choose port 4180 | `sh scripts/setup.sh --start --port 4180` | `powershell -NoProfile -File scripts/setup.ps1 -Start -Port 4180` |
+| Choose a free port | `sh scripts/setup.sh --start --port 0` | `powershell -NoProfile -File scripts/setup.ps1 -Start -Port 0` |
 | Install development dependencies | `sh scripts/setup.sh --dev` | `powershell -NoProfile -File scripts/setup.ps1 -Dev` |
 
-`--dev` / `-Dev` runs `npm ci` using the committed lockfile. It replaces the local `node_modules` dependency installation, requires network access or an adequate npm cache, and leaves the lockfile unchanged. The default setup command installs nothing. `--dev` can be combined with `--start`.
+`--dev` / `-Dev` runs `npm ci` from the lockfile. The ordinary setup command installs nothing. If script execution is restricted, `node scripts/doctor.cjs` and `node scripts/dev-server.cjs` provide direct entry points.
 
-The checker reports Node.js and npm versions, optional Git availability, required application files, referenced marker shards, and whether the selected local port can be bound. Port availability is a point-in-time check; the server reports if another program claims that port before startup. Machine-readable output is available with:
-
-```sh
-node scripts/doctor.cjs --port 0 --json
-```
-
-Exit code `0` means the required checks passed; `1` identifies a failed check or invalid option. Git is optional for an extracted release. npm is required for development installation, but the ordinary application can start directly with Node.js.
-
-## Runtime compatibility
+## Runtime and network
 
 | Layer | Requirement |
 | --- | --- |
-| Local server | Node.js 22 or later; Node.js 24 LTS is the recommended runtime for this release |
-| Operating systems | Linux, macOS, Windows with a compatible Node.js installation |
-| Standard interface | A current browser with JavaScript, local storage, and file-download support |
-| Optional immersive view | Browser WebGL support and available graphics acceleration; the standard workbench remains the default |
-| Development checks | npm plus dependencies from `package-lock.json`; browser checks additionally require the matching Playwright browser installation |
-| Scientific analysis | Separate tool environments and reference inputs documented in `analysis/` |
+| Browser interface | Current browser with JavaScript, local storage and file downloads |
+| Source server | Node.js 22 or later; Node.js 24 LTS recommended |
+| Source-server platforms | Windows, Linux and macOS |
+| Windows portable server | Windows PowerShell 5.1 and .NET |
+| Immersive view | WebGL and available graphics acceleration |
+| Development browser checks | npm dependencies and a matching Playwright browser, or `CHROME_PATH` |
+| FASTQ processing | Linux x86_64 and the Conda environments in `analysis/` |
 
-The minimum Node.js version is a compatibility floor. Use a maintained release according to the [official Node.js release schedule](https://nodejs.org/en/about/previous-releases). Catalogue software versions describe the methods being planned; they are not packages automatically installed into the workbench runtime.
+Both local servers use the loopback interface. Plans and preferences belong to the current browser origin; a different hostname or port has separate storage. Export a JSON backup before changing the address used for a saved study.
 
-## Data and network behavior
+The local application, catalogues, citation renderer and bundled artwork work offline. External papers and companion media require their hosts. The optional on-device Qwen model has a separate first-use download; existing files can be imported and loaded from cache as described in [LOCAL_ASSISTANT.md](LOCAL_ASSISTANT.md).
 
-The server binds only to `127.0.0.1` and serves `dist/`. It does not upload local scientific inputs. Plans and preferences are held in the browser's storage for the current address; changing hostname or port creates a different browser origin, so export a JSON backup before changing the address used for an established plan.
-
-The bundled interface, catalogues, citation renderer, and visual assets can be used locally without network access once the release and Node.js are available. Original-paper links, external companion media, and a user-configured remote AI service require their respective network connections. Installing development dependencies also requires a suitable npm cache or network access.
-
-## Hosting and scientific execution
-
-Deploy the contents of `dist/` to a static web host. GitHub Pages uses the repository's configured Pages workflow. The bundled local server is intended for desktop use and remains bound to the local computer; it does not become a public server by setting a host variable.
-
-The workbench organizes methods, evidence, parameters, and exports. Scientific commands and their environment definitions are described separately in [analysis/README.md](../analysis/README.md). Reference genomes, barcode/UMI layouts, and input samples are configured there for the selected analysis. Starting the website does not launch sequencing analyses.
-
-## Verification
+## Check an installation
 
 ```sh
+node scripts/doctor.cjs --port 0 --json
 node scripts/qa-doctor.cjs
 node research/qa-dev-server.cjs
 npm run check
+npm run test:release
+npm run test:source
 ```
 
-The setup check uses no package dependencies. `qa-doctor.cjs` exercises accepted/rejected runtimes, missing files and shards, absent optional tools, missing development prerequisites, a real occupied port, automatic free-port selection, and command-line output. Shell syntax and PowerShell parsing should also be checked in the release environment.
+The doctor checks the runtime, required application files, marker shards and actual port binding. Exit code `0` means the required checks passed; `1` indicates a failed check or invalid option. Git and npm are optional for source-server runtime; npm is needed for development installation.
 
-## Registry and archive metadata
+For a Windows release, `research/qa-portable-package.ps1 -ArchivePath PATH` checks the actual extracted package and its launcher. It verifies file hashes, rejects corruption, tests repeated launch and inspects served assets and video byte ranges. Packaging commands and source-manifest conventions are documented in [ARCHITECTURE.md](ARCHITECTURE.md).
 
-The repository includes [biotools.json](../biotools.json) and [.zenodo.json](../.zenodo.json) for maintainer review and submission. These files describe the software; creating them does not register the project or issue a DOI.
+## Static hosting
 
-| Service | Role and submission route |
-| --- | --- |
-| [bio.tools](https://biotools.readthedocs.io/en/latest/community_specific_guidelines.html) | Discoverability catalogue for bioinformatics resources. A logged-in maintainer can add the prepared JSON through the registration interface. The minimum record contains a name, description, and homepage; the supplied record also includes software types, version, code/documentation links, license, and contact. |
-| [Zenodo](https://help.zenodo.org/docs/github/enable-repository/) | Versioned software archive and DOI. Link the maintainer's GitHub account, enable the repository, then [create and archive a release](https://help.zenodo.org/docs/github/archive-software/github-upload/). Review the resulting record and DOI after processing. |
-| [Bioconda](https://bioconda.github.io/contributor/guidelines.html) | Installation channel for bioinformatics packages. A submission requires a stable source release, checksum, redistributable licensing, a build recipe, dependency declarations, and package tests. A repository or website alone is not a Bioconda package. |
+Serve `dist/` from an HTTPS static host. Relative paths support a repository subdirectory. The included Pages workflow validates the source and compatibility matrix before deploying `dist/`. When using a fork, select **GitHub Actions** as the Pages source.
 
-Keep the version and authors in `package.json`, `CITATION.cff`, `.zenodo.json`, and `biotools.json` synchronized when preparing a release. Zenodo's [documented metadata precedence](https://help.zenodo.org/docs/github/describe-software/) gives `.zenodo.json` priority over `CITATION.cff` when both are present. Add publication identifiers, affiliations, and ORCID identifiers only when confirmed. Credentials belong to the service account, never to these metadata files.
+## Linux and SLURM analysis
+
+Follow [analysis/README.md](../analysis/README.md) to create the controller environment and configure read roles, CB/UMI coordinates, references, samples and resources. The **Install & cluster** workspace links those templates and the analysis ZIP. Set the SLURM account/partition and shared paths for the target cluster before submitting jobs.
+
+The [software methods](software-methods.md) define retained molecular layers and QC denominators. [Publishing records](PUBLISHING.md) link the source, DOI archives and package-review status.

@@ -25,6 +25,7 @@ jobs:
       - run: npm ci
       - run: npm run check
       - run: node research/qa-release-identity.cjs
+      - run: npm run test:source
       - run: npm run test:server
       - run: npx playwright install --with-deps chromium
       - run: npm run test:public
@@ -73,6 +74,7 @@ jobs:
         run: |
           PORT=4173 node scripts/dev-server.cjs &
           YV_TEST_URL=http://127.0.0.1:4173/ node research/qa-assistant-ui-v22.cjs
+          YV_TEST_URL=http://127.0.0.1:4173/ node research/qa-cluster-v21.cjs
 
   compatibility:
     strategy:

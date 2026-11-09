@@ -1,26 +1,19 @@
-/* Export an allowlisted source snapshot, without workstation history or caches. */
+/* Export the same reviewed source inventory used by the repository. */
 'use strict';
-const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
-const root=path.resolve(__dirname,'..');
-const releaseRoot=path.join(root,'releases');
-const target=path.join(releaseRoot,'public-source-'+new Date().toISOString().replace(/[:.]/g,'-'));
-const top=['dist','portable','scripts','.github','.gitattributes','docs','analysis','packaging','.zenodo.json','biotools.json','README.md','LICENSE','CONTRIBUTING.md','THIRD_PARTY_NOTICES.md','DATA_SOURCES.md','CITATION.cff','START.cmd','STOP.cmd','CREATE-SHORTCUT.cmd','package.json','package-lock.json'];
-const checks=['research/qa-release-identity.cjs','research/qa-analysis-package.py','research/qa-portable-package.ps1','research/check_site.cjs','research/qa-dev-server.cjs','research/qa-cluster-v21.cjs','research/package-portable.ps1','research/qa-assistant-ui-v22.cjs','research/qa-local-model-lifecycle-v22.cjs','research/qa-local-model-v22.cjs','research/qa-input-contracts-v22.cjs','research/qa-assistant-context-v24.cjs','research/qa-modal-marker-logic.cjs','research/qa-csl-publication-types-v24.cjs','research/qa-marker-metadata.cjs','research/qa-database-hub-v24.cjs','research/qa-marker-usability-v25.cjs','research/qa-marker-evidence-v25.cjs','research/qa-workflow-continuity-v25b.cjs','research/qa-marker-import-v25b.cjs','research/qa-marker-tag-families-v25b.cjs','research/qa-marker-source-context-v25b.cjs','research/qa-qc-branch-inputs-v25b.cjs','research/qa-evidence-identities-v25c.cjs','research/qa-evidence-selection-v25c.cjs','research/qa-marker-v25c.cjs','research/qa-method-boundaries-v25c.cjs','research/qa-population-v25c.cjs','research/qa-marker-regressions-v25d.cjs','research/qa-marker-v25d.cjs','research/qa-plan-contracts-v25d.cjs','research/qa-method-scroll-v25d.cjs','research/qa-contract-catalogue-v25d.cjs','research/qa-h02-adversarial-v25d.cjs','research/qa-qtl-ui-v25e.cjs','research/qa-qtl-catalogue-v25e.cjs','research/qa-reference-library-v26.cjs','research/qa-marker-ux-v26.cjs','research/qa-marker-filters-v27.cjs','research/qa-evolution-catalogue-v30.cjs','research/qa-analysis-linking-v30.cjs','research/add-evolution-catalogue-v30.py','research/write-evolution-recipes-v30.py','research/add-evolution-references-v30.py','research/evolution-references-v30.json','research/qa-evolution-core-v29.cjs','research/qa-evolution-ui-v29.cjs','research/add-evolution-core-v29.cjs','research/add-evolution-references-v29.py','research/evolution-references-v29.json','research/v25b-marker-proposals.json','research/v25-methods-test.cjs','research/v25-methods-proposals.json','research/v25-methods-inventory.json','research/v25-methods-source-audit.json','research/v25-methods-api-signatures.json','research/v25-marker-audit.json','research/v25-marker-manifest.json','research/v25-literature-corpus.json','research/v25-literature-discovery.py','research/v25-marker-legacy-metadata-proposals.json','research/qa-database-preparation-v25.cjs','research/qa-catalogue-versioning.py','research/v24_research_additions.cjs','research/write_catalogue_assets.py'];
-if(!target.startsWith(releaseRoot+path.sep)||fs.existsSync(target))throw Error('Release directory must be a new child of releases/');
-const files=[];
-function collect(rel){const source=path.join(root,rel),stat=fs.lstatSync(source);if(stat.isSymbolicLink())throw Error('Refusing symlink: '+rel);if(stat.isDirectory()){for(const n of fs.readdirSync(source).sort()){if(['__pycache__','.snakemake','.venv','work','logs','.pytest_cache'].includes(n)||/^results(?:-|$)/.test(n)||n.endsWith('.pyc'))continue;const next=path.join(rel,n).split(path.sep).join('/');if(['analysis/config.yaml','analysis/samples.tsv','analysis/profiles/slurm/site.yaml'].includes(next))continue;collect(path.join(rel,n));}}else if(stat.isFile())files.push(rel);}
-for(const rel of [...top,...checks])collect(rel);
-const sensitive=[/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/,/\b(?:ghp|gho|ghu|ghs|github_pat)_[A-Za-z0-9_]{20,}/,/\bsk-(?:proj-)?[A-Za-z0-9_-]{30,}/,/[A-Z]:[\\/]+Users[\\/]+[^\s"'<>]+/i,/[A-Z]:[\\/]+1 study[\\/]+/i];
-const textExtensions=new Set(['.js','.cjs','.mjs','.json','.md','.txt','.html','.css','.ps1','.cmd','.cs','.py','.yml','.yaml','.cff']);
-for(const rel of files){if(/(?:^|[\\/])(?:\.git|\.openai|node_modules|cache|maintenance|\.env)(?:[\\/]|$)/i.test(rel))throw Error('Private path in release: '+rel);if(textExtensions.has(path.extname(rel))){const txt=fs.readFileSync(path.join(root,rel),'utf8');if(sensitive.some(re=>re.test(txt)))throw Error('Review a local path or credential pattern in '+rel);}}
-fs.mkdirSync(target,{recursive:true});
-const manifest=[];
-for(const rel of files){const dest=path.join(target,rel);fs.mkdirSync(path.dirname(dest),{recursive:true});fs.copyFileSync(path.join(root,rel),dest);}
-// The public package advertises only checks included in this snapshot.
-const packageFile=path.join(target,'package.json'),pkg=JSON.parse(fs.readFileSync(packageFile,'utf8'));
-pkg.scripts={start:'node scripts/dev-server.cjs',check:'node research/check_site.cjs',doctor:'node scripts/doctor.cjs',setup:'node scripts/doctor.cjs','test:doctor':'node scripts/qa-doctor.cjs','test:server':'node research/qa-dev-server.cjs','test:public':'node scripts/smoke-public.cjs','release:source':'node scripts/prepare-public.cjs'};
-fs.writeFileSync(packageFile,JSON.stringify(pkg,null,2)+'\n');
-fs.writeFileSync(path.join(target,'.gitignore'),'node_modules/\nreleases/\nresearch/cache/\nplaywright-report/\ntest-results/\n.env\n.env.*\n!.env.example\n*.local.json\n.DS_Store\n');
-for(const rel of [...files,'.gitignore']){const data=fs.readFileSync(path.join(target,rel));manifest.push({path:rel.split(path.sep).join('/'),bytes:data.length,sha256:crypto.createHash('sha256').update(data).digest('hex')});}
-fs.writeFileSync(path.join(target,'source-manifest.json'),JSON.stringify({version:pkg.version,files:manifest},null,2)+'\n');
-console.log(JSON.stringify({path:target,files:manifest.length,bytes:manifest.reduce((n,f)=>n+f.bytes,0)},null,2));
+const fs = require('node:fs');
+const path = require('node:path');
+const {ROOT, canonicalBytes, createManifest} = require('./source-manifest.cjs');
+
+const releaseRoot = path.join(ROOT, 'releases');
+const target = path.join(releaseRoot, 'public-source-' + new Date().toISOString().replace(/[:.]/g, '-'));
+if (!target.startsWith(releaseRoot + path.sep) || fs.existsSync(target)) throw Error('Expected a new child of releases/.');
+const manifest = createManifest();
+fs.mkdirSync(target, {recursive: true});
+for (const item of manifest.files) {
+  const destination = path.join(target, item.path);
+  fs.mkdirSync(path.dirname(destination), {recursive: true});
+  fs.writeFileSync(destination, canonicalBytes(ROOT, item.path));
+}
+fs.writeFileSync(path.join(target, 'source-manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
+console.log(JSON.stringify({path: target, version: manifest.version, files: manifest.files.length,
+  bytes: manifest.files.reduce((sum, item) => sum + item.bytes, 0)}, null, 2));

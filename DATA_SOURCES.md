@@ -2,6 +2,8 @@
 
 YeastVar1011 is a research-plan workbench. Its shipped scientific catalogues contain reference annotations, literature metadata, source-attributed marker memberships and published statistics, and original explanations of analysis options. They do not contain the user's unpublished 1011-isolate single-cell FASTQ files, BAM files, count matrices, genotypes, or sample-level results.
 
+The 22.1.1 snapshot contains 5,286 gene records, 30,240 evidence occurrences and 52 registered source entries. An entry can identify a source panel or table; these are not counts of independent studies. The method catalogues contain 180 tools, 321 metrics, 55 research directions and 19 noise/genetics/evolution recipes. The literature library contains 288 records. The version-labelled sections below document the imports that produced this snapshot.
+
 ## Where provenance is recorded
 
 The marker manifest is [dist/data/markers.json](dist/data/markers.json). It records the sharded catalogue, source references, source panels and states, release history, interpretation rules, and import provenance. Individual records in the referenced marker shards retain source IDs, biological context, evidence type, and source-table information where available. The offline JavaScript bundles are alternate delivery formats for the same catalogue, not independent datasets.

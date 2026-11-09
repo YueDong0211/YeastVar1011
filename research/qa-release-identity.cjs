@@ -4,6 +4,7 @@ const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p
 const context={window:{}};vm.runInNewContext(read('dist/release-info.js'),context);const release=context.window.YV_RELEASE;
 assert.equal(release.version,pkg.version);assert.equal(JSON.parse(read('package-lock.json')).packages[''].version,pkg.version);
 assert.equal(JSON.parse(read('.zenodo.json')).version,pkg.version);assert(JSON.parse(read('biotools.json')).version.includes(pkg.version));
+assert.equal(JSON.parse(read('codemeta.json')).version,pkg.version);
 assert(read('CITATION.cff').includes('version: '+pkg.version));assert(read('CITATION.cff').includes('date-released: '+release.released));
 assert.equal(release.portableName,`YeastVar1011-${pkg.version}-Windows.zip`);
 assert.equal(release.portableUrl,`https://github.com/YueDong0211/YeastVar1011/releases/download/v${pkg.version}/${release.portableName}`);
@@ -18,4 +19,4 @@ assert(fs.existsSync(path.join(root,'analysis/profiles/slurm/config.yaml')),'The
 const bundle=path.join(root,'dist',release.analysisBundle),bytes=fs.readFileSync(bundle),expected=read('dist/'+release.analysisBundle+'.sha256.txt').trim().split(/\s+/);
 assert.equal(bytes.subarray(0,2).toString(),'PK');assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),expected[0]);assert.equal(expected[1],path.basename(bundle));
 for(const file of ['RELEASES.md','WORKSTATION.md','LOCAL_ASSISTANT.md','DATABASE_RESOURCES.md','DEPLOYMENT.md'])assert(read('research/package-portable.ps1').includes("'"+file+"'"),'Portable documentation: '+file);
-console.log(`PASS ${pkg.version}: web, package, citation and registry metadata agree; versioned analysis download and SHA-256 are valid.`);
+console.log(`PASS ${pkg.version}: web, package, citation, CodeMeta and registry metadata agree; versioned analysis download and SHA-256 are valid.`);

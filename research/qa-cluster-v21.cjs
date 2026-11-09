@@ -1,5 +1,6 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),{chromium}=require('@playwright/test');
+const version=require('../package.json').version,analysisName=`YeastVar1011-analysis-v${version}.zip`;
 const base=process.env.YV_TEST_URL||'http://127.0.0.1:4173/',output=path.join(__dirname,'cache','v21-cluster-qa');
 fs.mkdirSync(output,{recursive:true});const checks=[],errors=[],requests=[],screens=[];
 async function test(name,fn){try{const details=await fn();checks.push({name,pass:true,details});console.log('PASS',name)}catch(e){checks.push({name,pass:false,error:e.stack});console.error('FAIL',name,e.message)}}
@@ -57,8 +58,8 @@ async function downloadBytes(download){const stream=await download.createReadStr
    for(const key of ['environment','check','local','slurm','envs'])for(const line of commands[key].split('\n'))assert(manual.includes(line),'Documented command: '+line);
    assert((await page.locator('#c21-panel-pipeline').innerText()).includes('quality_encoding=phred33'));
    assert.equal(await page.locator('.c21-validation a').getAttribute('href'),'https://github.com/YueDong0211/YeastVar1011/actions/runs/38997955784');assert((await page.locator('.c21-validation').innerText()).includes('synthetic'));
-   for(const selector of ['.c21-template-links a','.c21-download-card a'])for(const href of await page.locator(selector).evaluateAll(es=>es.map(e=>e.getAttribute('href'))))assert(href&&!href.endsWith('#')&&(href.startsWith('https://github.com/YueDong0211/YeastVar1011/')||href==='assets/downloads/YeastVar1011-analysis-v22.1.0.zip'));
-   const bundle=page.locator('a[download][href$="YeastVar1011-analysis-v22.1.0.zip"]');const [download]=await Promise.all([page.waitForEvent('download'),bundle.click()]);const bytes=await downloadBytes(download);assert.equal(bytes.subarray(0,2).toString(),'PK');assert.equal(download.suggestedFilename(),'YeastVar1011-analysis-v22.1.0.zip');return {archiveBytes:bytes.length};
+    for(const selector of ['.c21-template-links a','.c21-download-card a'])for(const href of await page.locator(selector).evaluateAll(es=>es.map(e=>e.getAttribute('href'))))assert(href&&!href.endsWith('#')&&(href.startsWith('https://github.com/YueDong0211/YeastVar1011/')||href==='assets/downloads/'+analysisName));
+    const bundle=page.locator('a[download][href$="'+analysisName+'"]');const [download]=await Promise.all([page.waitForEvent('download'),bundle.click()]);const bytes=await downloadBytes(download);assert.equal(bytes.subarray(0,2).toString(),'PK');assert.equal(download.suggestedFilename(),analysisName);return {archiveBytes:bytes.length};
   });
   await test('Real plan import, undo and JSON backup round-trip through the existing builder',async()=>{
    await tab('data');const fixture=await page.evaluate(()=>YV_BUILDER.exported());fixture.title='Cluster integration QA plan';
@@ -67,7 +68,7 @@ async function downloadBytes(download){const stream=await download.createReadStr
    await page.waitForFunction(()=>YV_BUILDER.getPlan().title==='Cluster integration QA plan');assert(await page.locator('.c21-status [data-c21=undo]').isVisible());
    const [download]=await Promise.all([page.waitForEvent('download'),page.locator('[data-c21=backup]').click()]);const json=JSON.parse((await downloadBytes(download)).toString());assert.equal(json.title,fixture.title);assert.equal(json.kind,'research-plan-not-execution');assert.deepEqual(json.metrics,fixture.metrics);assert.deepEqual(json.tools,fixture.tools);assert(json.references.length>0);
    await page.locator('[data-c21=undo]').click();assert.deepEqual(await content(),original);assert(!(await page.locator('[data-c21=undo]').isVisible()));
-   const unchanged=await page.evaluate(()=>YV_BUILDER.exported());await page.locator('#c21-plan-import').setInputFiles({name:'same-plan.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(unchanged))});await page.waitForFunction(()=>YV_CLUSTER.state().status==='imported');assert(!(await page.locator('[data-c21=undo]').isVisible()),'No misleading undo action for an unchanged import');assert.deepEqual(await content(),original);
+    const unchanged=await page.evaluate(()=>YV_BUILDER.exported()),undoBefore=await page.evaluate(()=>YV_BUILDER.recoveryState().undoCount);await page.locator('#c21-plan-import').setInputFiles({name:'same-plan.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(unchanged))});await page.waitForFunction(()=>YV_CLUSTER.state().status==='imported');assert(!(await page.locator('[data-c21=undo]').isVisible()),'No misleading undo action for an unchanged import');assert.equal(await page.evaluate(()=>YV_BUILDER.recoveryState().undoCount),undoBefore,'Unchanged import adds no undo history');assert.deepEqual(await content(),original);
   });
   await test('Invalid files do not alter the plan or send input data to a server',async()=>{
    await page.locator('#c21-plan-import').setInputFiles({name:'not-a-plan.json',mimeType:'application/json',buffer:Buffer.from('{bad-json')});await page.waitForFunction(()=>YV_CLUSTER.state().status==='importError');assert.deepEqual(await content(),original);

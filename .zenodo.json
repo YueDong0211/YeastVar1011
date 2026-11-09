@@ -1,8 +1,8 @@
 {
-  "title": "YeastVar1011: a yeast single-cell research-plan workstation",
-  "version": "22.1.0",
+  "title": "YeastVar1011: evidence-linked study design and quality control for yeast single-cell research",
+  "version": "22.1.1",
   "upload_type": "software",
-  "description": "YeastVar1011 is a browser-based workstation for planning yeast single-cell studies. It combines source-attributed marker evidence, quality-control metrics, methods, input requirements, citations, and configurable research-plan exports. The catalogue covers cell states, expression variability, RNA dynamics, regulation, and population genetics. A separate Linux x86_64 Snakemake workflow provides FastQC, STARsolo tagged BAM and Gene/GeneFull/SJ/Velocyto matrices, samtools and per-barcode QC, and MultiQC for a known fixed single-segment CB/UMI layout with separate barcode and cDNA reads. SLURM execution uses a separately configured cluster profile. Starting the web interface does not launch scientific analyses. The source release includes the local static application, cross-platform runtime checks, deployment documentation, and analysis workflow definitions.",
+  "description": "YeastVar1011 connects yeast single-cell study questions to source-attributed marker evidence, analysis methods, input requirements and documented research plans. Its browser workstation covers quality control, cell-state annotation, expression variation, RNA dynamics, regulation, population genetics and evolution. Plans retain method choices, dependency links, parameters and references, with document, spreadsheet, diagram and JSON exports. A separate Linux x86_64 Snakemake workflow processes libraries with an explicitly configured fixed contiguous cell barcode and UMI in a dedicated barcode read. It runs FastQC, STARsolo, samtools and MultiQC, retaining tagged BAM, Gene/GeneFull/SJ/Velocyto matrices and per-barcode QC. SLURM execution uses a site-configured profile. Version 22.1.1 standardizes the scientific description, citation metadata, licensing and reproducible source packaging while retaining the current catalogue and planning interface.",
   "creators": [
     {
       "name": "Dong, Yue"
@@ -17,7 +17,8 @@
     "quality control",
     "marker annotation",
     "research planning",
-    "population genetics"
+    "population genetics",
+    "evolution"
   ],
   "related_identifiers": [
     {
@@ -26,5 +27,5 @@
       "scheme": "url"
     }
   ],
-  "notes": "The MIT license applies to original application and workflow code. Bundled third-party software, fonts, and source-derived scientific material retain their respective terms in THIRD_PARTY_NOTICES.md and DATA_SOURCES.md. No unpublished biological datasets or user browser storage are included."
+  "notes": "Original code and documentation are MIT-licensed, copyright 2026 Yue Dong. Component-specific licenses and scientific-source attribution are preserved in THIRD_PARTY_NOTICES.md and DATA_SOURCES.md."
 }

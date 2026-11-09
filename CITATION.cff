@@ -1,14 +1,24 @@
 cff-version: 1.2.0
 message: "Please cite this software when using the workstation, and cite the original methods and datasets selected in your research plan."
 type: software
-title: "YeastVar1011: a yeast single-cell research-plan workstation"
+title: "YeastVar1011: evidence-linked study design and quality control for yeast single-cell research"
 authors:
   - family-names: Dong
     given-names: Yue
-version: 22.1.0
-doi: 10.5281/zenodo.23429611
-date-released: 2026-10-24
+version: 22.1.1
+date-released: 2026-11-09
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23429611
+    description: "Concept DOI for all versions"
 license: MIT
 repository-code: "https://github.com/YueDong0211/YeastVar1011"
 url: "https://yuedong0211.github.io/YeastVar1011/"
-abstract: "A browser-based workstation for designing yeast single-cell studies, connecting quality control, marker evidence, expression variability, RNA dynamics, regulation and population genetics to methods, input requirements and references."
+abstract: "A browser-based workstation that connects yeast single-cell study questions to source-attributed marker evidence, analysis methods, input requirements and reproducible research plans. A separate Linux Snakemake workflow performs raw-read quality control and STARsolo counting for explicitly configured fixed CB/UMI layouts. The catalogue covers expression variation, RNA dynamics, regulation, population genetics and evolution."
+keywords:
+  - Saccharomyces cerevisiae
+  - single-cell RNA sequencing
+  - study design
+  - marker evidence
+  - quality control
+  - expression variation

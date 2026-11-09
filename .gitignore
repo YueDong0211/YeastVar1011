@@ -3,6 +3,11 @@ releases/
 research/cache/
 playwright-report/
 test-results/
+__pycache__/
+*.py[cod]
+.openai/
+maintenance/
+publication/
 .env
 .env.*
 !.env.example

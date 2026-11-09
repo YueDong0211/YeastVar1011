@@ -4,55 +4,32 @@
 
 # YeastVar1011
 
-### Design a yeast single-cell study, from raw reads to biological questions.
+**Evidence-linked study design and quality control for yeast single-cell research**
 
-[Open the workstation](https://yuedong0211.github.io/YeastVar1011/) · [Alternative website](https://yeastvar1011-research-atlas.robust-bread-5701.chatgpt.site) · [Contribute](CONTRIBUTING.md) · [Report an issue](https://github.com/YueDong0211/YeastVar1011/issues/new/choose)
+[Open the workstation](https://yuedong0211.github.io/YeastVar1011/) · [Download](https://github.com/YueDong0211/YeastVar1011/releases/latest) · [Methods](docs/software-methods.md) · [User guide](docs/WORKSTATION.md)
 
 [![Website and platform checks](https://github.com/YueDong0211/YeastVar1011/actions/workflows/pages.yml/badge.svg)](https://github.com/YueDong0211/YeastVar1011/actions/workflows/pages.yml)
-[![Raw FASTQ QC integration](https://github.com/YueDong0211/YeastVar1011/actions/workflows/analysis-integration.yml/badge.svg)](https://github.com/YueDong0211/YeastVar1011/actions/workflows/analysis-integration.yml)
-[![Conda package candidate](https://github.com/YueDong0211/YeastVar1011/actions/workflows/bioconda-package.yml/badge.svg)](https://github.com/YueDong0211/YeastVar1011/actions/workflows/bioconda-package.yml)
+[![Raw FASTQ QC](https://github.com/YueDong0211/YeastVar1011/actions/workflows/analysis-integration.yml/badge.svg)](https://github.com/YueDong0211/YeastVar1011/actions/workflows/analysis-integration.yml)
+[![Conda package checks](https://github.com/YueDong0211/YeastVar1011/actions/workflows/bioconda-package.yml/badge.svg)](https://github.com/YueDong0211/YeastVar1011/actions/workflows/bioconda-package.yml)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23429611.svg)](https://doi.org/10.5281/zenodo.23429611)
 
 </div>
 
-YeastVar1011 is an open-source research-plan workstation for yeast single-cell analysis. It connects QC metrics, analysis tools, multi-tag marker evidence, expression-noise estimands and research extensions to their required inputs and sources. The 1011 *Saccharomyces cerevisiae* collection provides its population-research context.
+YeastVar1011 helps researchers turn a yeast single-cell question into a documented analysis plan. The browser workstation connects quality-control measures, source-attributed marker evidence, expression-variation models and population-genetic analyses to their inputs, assumptions and references. Its population context is the 1011 *Saccharomyces cerevisiae* isolate collection.
 
-**Choose methods and markers → check inputs → review and export a documented research plan.** The workstation builds plans; tools such as STAR, Scanpy and Seurat run in your analysis environment.
+A study plan records selected methods, parameters, dependencies, marker assertions and intended outputs. It can be exported as a document, workbook, diagram, bibliography or editable JSON backup. For raw-read processing, the repository also provides a configured Linux Snakemake workflow using FastQC, STARsolo, samtools and MultiQC.
 
-中文：这是一个用于构建酵母单细胞研究方案的工作站。选择 QC 指标、工具、marker 和研究方向，核查所需数据，再导出含参数、公式与参考文献的方案。支持中文、英语、法语、西班牙语和巴斯克语；导出语言可以单独设置。
+中文：用于构建酵母单细胞研究方案的开源工作站。选择研究问题、QC 指标、分析方法和 marker 证据，核查输入条件，再导出含参数、公式、依赖关系和参考文献的方案。界面支持中、英、法、西、巴斯克语；导出语言可独立设置。
 
 ![Workstation overview](docs/images/workstation.png)
 
-## Explore
+## Get started
 
-| Area | What you can prepare |
-| --- | --- |
-| Raw reads and QC | Barcode/UMI recognition, alignment and BAM retention, cell calling, contamination, doublets, sample and cell QC, and compatible matrix layers |
-| Marker evidence | Search genes and sources, combine tags, inspect cycle and functional evidence, compare reference panels and build a selected marker panel |
-| Expression noise | Define biological units and estimands, distinguish mean effects and state composition, specify measurement models, replication and robustness checks |
-| Research extensions | Enrichment, regulatory and co-expression networks, RNA dynamics, trajectories, perturbation modelling and population-genetic analyses with explicit input requirements |
-| QTL catalogue | Compare expression, within-strain noise, distribution, co-expression, state, RNA-processing and additional-omics QTL traits; inspect their statistical units, input alternatives, methods and source papers |
-| Plan review | Inspect dependencies, parameters, formulas, outputs and primary references; export documents, tables, a workflow and an editable plan backup |
-| Interface | Classic planning or an optional immersive yeast scene; a live yeast customization studio, draggable companion, accessible controls, reduced motion and local data management |
-| Local research assistant | A small on-device language model explains retrieved catalogue entries and the current plan, with clickable source records and no API key |
+**In a browser:** open the [public workstation](https://yuedong0211.github.io/YeastVar1011/).
 
-Both planning modes edit the same plan. The 3D cell is an authored biological illustration. Scene responses are interface cues, not experimental observations. Source-specific reference statistics remain distinct from measurements imported from your own project.
+**Windows portable:** download `YeastVar1011-22.1.1-Windows.zip` from the [release page](https://github.com/YueDong0211/YeastVar1011/releases/tag/v22.1.1), extract the complete folder and open `START.cmd`. This route uses Windows PowerShell and .NET. `STOP.cmd` stops the local service; `CREATE-SHORTCUT.cmd` creates a shortcut.
 
-Open the draggable companion to search evidence, review missing plan inputs or get help with the current workspace. These functions work before loading the model. Choose **Load small model** for local Qwen explanations of matched records; unmatched questions return a search prompt instead of unsupported generated text. The first load downloads about 519 MB of fixed model files. Model controls also support importing the five pinned files and loading only from the browser cache. Questions and selected plan context stay on the device. Stop, unload, conversation clearing and model-cache deletion have separate controls. See [local model setup and verification](docs/LOCAL_ASSISTANT.md).
-
-The v22 catalogue adds Ty/repeat-expression analysis, between-strain variance across cell states, cross-state programmes, modular RNA dynamics, evidence-stratified regulatory networks and mechanistic simulation. New marker evidence includes the complete author-selected Su 2023 amino-acid/glucose-starvation tables and named Brettner 2024 state associations. The [v22 evidence update](docs/RESEARCH_UPDATE_v22.md) describes inputs, sources and remaining coverage needs.
-
-The [v24 research update](docs/RESEARCH_UPDATE_V24.md) adds joint spliced–unspliced mechanistic models, RNA measurement-length sensitivity, implementation robustness and study-wide multiple-testing design. Marker evidence can also be filtered by original study condition, reported direction, dataset accession and explicit use as a single-cell marker. The marker workspace includes a [data-resource directory](docs/DATABASE_RESOURCES.md) that distinguishes imported SGD/GO records from external regulation, interaction, expression and population resources.
-
-## Current release
-
-Version **22.1.0** (24 October 2026) unifies the website, Windows portable download and source package. It includes the later marker, QTL and noise/genetics/evolution catalogues, with analysis choices linked to their required tools and inputs. See [release and sharing instructions](docs/RELEASES.md).
-
-## Run locally
-
-**Windows, no development tools:** download the portable ZIP from [the latest release](https://github.com/YueDong0211/YeastVar1011/releases/latest), extract the whole folder and open `START.cmd`. `STOP.cmd` stops the local server; `CREATE-SHORTCUT.cmd` creates a shortcut.
-
-**Windows, macOS or Linux, with Node.js 22+:**
+**From source, with Node.js 22 or later:**
 
 ```sh
 git clone https://github.com/YueDong0211/YeastVar1011.git
@@ -60,47 +37,73 @@ cd YeastVar1011
 npm start
 ```
 
-Node.js 24 LTS is recommended; Node.js 22 is supported. On Linux and macOS, `sh scripts/setup.sh --start` checks the environment and starts the workstation. On Windows, `scripts/setup.ps1 -Start` provides the same sequence.
+Open the loopback address printed in the terminal. The source server uses Node.js built-in modules; no installation or compilation is needed to start it. Node.js 24 LTS is recommended. See [installation and deployment](docs/DEPLOYMENT.md) for platform-specific commands.
 
-Open the address printed in the terminal. Starting the app needs no dependency installation or build. The server listens on your own computer. Set the `PORT` environment variable to choose another port.
+## Research workflow
 
-For development and validation:
+1. **Define the study.** Record the question, biological units, available data and entry point: raw reads, alignments or count matrices.
+2. **Choose the analysis.** Select methods, QC measures, expression-variation estimands or research extensions. Linked analysis recipes add their declared tools and inputs to the plan.
+3. **Assemble annotation evidence.** Search genes, combine source and biological filters, inspect the supporting assertions and select a marker panel.
+4. **Review requirements.** Resolve method branches, inspect missing inputs and record reference or model specifications.
+5. **Export the plan.** Save the research document and an editable backup; use the cited tools in the analysis environment.
+
+| Workspace | Main use |
+| --- | --- |
+| Raw reads and QC | Specify barcode/UMI layout, alignment, cell selection and molecular-count layers |
+| Marker evidence | Inspect gene–tag–source assertions, study conditions, reported statistics and selected panels |
+| Expression variation | Define estimands, replication, mean effects, state composition and measurement models |
+| Research directions | Connect enrichment, regulatory networks, RNA dynamics, perturbations and population genetics to their inputs |
+| QTL catalogue | Compare RNA, distributional, state-dependent and additional-omics traits and their statistical units |
+| Noise, genetics and evolution | Select Bayesian noise models, phylogenetic analyses and trait/evolution designs with linked dependencies |
+| Plan review and export | Review parameters, formulas, outputs and references; export documents, tables, diagrams and backups |
+
+The classic and optional 3D interfaces edit the same saved plan. The 3D cell is an illustration used for navigation. The [local research companion](docs/LOCAL_ASSISTANT.md) retrieves catalogue records and reviews plan requirements; an optional on-device Qwen model can explain the retrieved context. Its approximately 519 MB model download starts on request.
+
+## Raw-read analysis
+
+The executable [QC workflow](analysis/README.md) supports a dedicated barcode read containing one fixed contiguous cell barcode (CB) and one unique molecular identifier (UMI), paired with one cDNA read. Configure the actual read roles, coordinates, whitelist, reference, strand and resources before execution.
+
+```text
+Reference and paired-FASTQ validation
+  → FastQC
+  → STARsolo alignment and counting
+  → samtools, contig summaries and per-barcode QC
+  → MultiQC and run manifest
+```
+
+Outputs include tagged genomic BAM/BAI, `Gene`, `GeneFull`, `SJ` and `Velocyto` count layers, native tool logs and descriptive QC tables. Linux x86_64 is the execution target; the supplied SLURM profile is configured for the target cluster. The browser prepares plans and exports; the workflow performs this initial sequencing-analysis stage.
+
+## Evidence and reproducibility
+
+Marker records retain overlapping biological tags and source-specific assertions. Published expression statistics remain attached to their original study and contrast. The catalogue's [data-source inventory](DATA_SOURCES.md), [database guide](docs/DATABASE_RESOURCES.md) and [software methods](docs/software-methods.md) describe provenance and interpretation.
+
+Automated checks cover catalogue identities, input contracts, analysis dependencies, plan persistence, reference exports, local serving and the Windows launcher. The Linux integration workflow executes the complete FASTQ route on a deterministic artificial fixture and checks its BAM, count layers and reports. Current records are linked in [publishing and archival records](docs/PUBLISHING.md).
+
+For development:
 
 ```sh
 npm ci
 npm run check
+npm run test:doctor
 npm run test:server
+npm run test:release
+npm run test:source
 npx playwright install chromium
 npm run test:public
 ```
 
-`CHROME_PATH` optionally selects an installed Chromium/Chrome executable for the browser check. To package a Windows portable release, run `research/package-portable.ps1` in PowerShell.
+`CHROME_PATH` selects an installed Chrome/Chromium executable for browser checks. The [repository map](docs/ARCHITECTURE.md) identifies maintained source, tests and packaging entry points. Version **22.1.1**, released **9 November 2026**, standardizes the scientific documentation, licensing and source inventory; see the [changelog](CHANGELOG.md).
 
-## Local data and privacy
+## Local data
 
-Plans, selections and preferences are stored in your browser. The application does not upload raw sequencing data or run a remote sequencing pipeline. Imported observations remain in the page unless you export them. The catalogue guide searches bundled records; it is not a hosted language-model service. Opening an external reference or GitHub link leaves the workstation. The optional companion uses remotely referenced media unless you select a local image.
+Plans and preferences are stored in the browser for the current website address. Export a JSON backup to transfer them between computers, browsers or hosted/local copies. Settings includes scoped cleanup and a full local reset. Optional model downloads, external sources and companion media have their own network connections.
 
-Settings provides scoped cleanup and a full local reset. Export a plan backup before clearing it. Local and hosted copies, different browsers and different website addresses have separate browser storage; use an exported backup to transfer a plan.
+## Citation and license
 
-## Linux and cluster QC workflow
+Use [CITATION.cff](CITATION.cff) for the software citation and cite the original methods and datasets used in the study. The [concept DOI](https://doi.org/10.5281/zenodo.23429611) identifies the version series; use a version DOI to identify the exact archived release. [CodeMeta](codemeta.json) and [bio.tools metadata](biotools.json) provide machine-readable descriptions.
 
-The separate [analysis workflow](analysis/README.md) uses pinned Snakemake, STARsolo, samtools, FastQC and MultiQC environments. Configure the barcode/UMI layout, read roles, reference annotation, sample sheet and resource limits before running it. It retains tagged BAM files, Gene/GeneFull/SJ/Velocyto outputs, chromosome summaries and per-barcode QC. The SLURM profile specifies the cluster account, partition and resources. The **Install & cluster** page connects installation, configuration, downloads and plan import/export.
+Copyright © 2026 Yue Dong. Original code and documentation are distributed under the [MIT License](LICENSE). Bundled libraries, fonts, citation styles and scientific sources retain the terms recorded in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and [DATA_SOURCES.md](DATA_SOURCES.md).
 
-See [deployment and environment setup](docs/DEPLOYMENT.md), [analysis documentation](analysis/README.md) and [open-science publication](docs/PUBLISHING.md).
+## Contribute and contact
 
-## Evidence, citations and licensing
-
-- [Data sources and evidence conventions](DATA_SOURCES.md)
-- [Third-party licenses and attribution](THIRD_PARTY_NOTICES.md)
-- [Detailed workstation guide](docs/WORKSTATION.md)
-- [Contribution guidelines](CONTRIBUTING.md)
-
-Original project code and documentation are available under [MIT](LICENSE). Bundled libraries, fonts, citation styles, source datasets and externally referenced media retain their own licenses. Cite the original selected methods and datasets in addition to this software; `CITATION.cff` provides software citation metadata. The project is an independent workstation and does not imply endorsement by the original data providers or software authors.
-
-## Hosting
-
-Serve the contents of `dist/` from any HTTPS static host. Relative asset paths support a repository subdirectory. The included GitHub Actions workflow validates the catalogue and local server, runs a browser check, then deploys `dist/` to GitHub Pages on updates to `main`. Enable GitHub Pages with **GitHub Actions** as its source when using a fork. See [GitHub’s workflow documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
-
-## Contact
-
-[Yue Dong — research collaboration](mailto:yuedong02@outlook.com). Use [GitHub issues](https://github.com/YueDong0211/YeastVar1011/issues/new/choose) for interface problems, method additions and evidence corrections.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for evidence, interface and translation conventions. Report reproducible problems or source corrections through [GitHub issues](https://github.com/YueDong0211/YeastVar1011/issues). Research collaboration: [Yue Dong](mailto:yuedong02@outlook.com).

@@ -1,7 +1,7 @@
 {
   "name": "yeastvar1011",
-  "version": "22.1.0",
-  "description": "Yeast single-cell research-plan builder and evidence catalogue",
+  "version": "22.1.1",
+  "description": "Evidence-linked study design and raw-read quality control for yeast single-cell research",
   "scripts": {
     "start": "node scripts/dev-server.cjs",
     "check": "node research/check_site.cjs",
@@ -10,9 +10,20 @@
     "test:doctor": "node scripts/qa-doctor.cjs",
     "test:server": "node research/qa-dev-server.cjs",
     "test:public": "node scripts/smoke-public.cjs",
+    "test:release": "node research/qa-release-identity.cjs",
+    "test:source": "node scripts/source-manifest.cjs --check",
+    "release:manifest": "node scripts/source-manifest.cjs --write",
     "release:source": "node scripts/prepare-public.cjs"
   },
-  "keywords": [],
+  "keywords": [
+    "Saccharomyces cerevisiae",
+    "single-cell RNA sequencing",
+    "research planning",
+    "marker evidence",
+    "expression variation",
+    "quality control",
+    "population genetics"
+  ],
   "author": "Yue Dong",
   "license": "MIT",
   "type": "commonjs",

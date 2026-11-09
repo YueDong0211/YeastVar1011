@@ -1,12 +1,13 @@
 {
   "name": "YeastVar1011",
   "biotoolsID": "yeastvar1011",
-  "description": "A browser-based research-plan workbench for yeast single-cell studies, with searchable marker evidence, quality-control metrics, methods, input requirements, citations, and plan exports. Research modules cover cell states, expression variability, RNA dynamics, regulation, and population genetics. A separate Linux x86_64 Snakemake workflow performs FastQC, STARsolo tagged BAM and Gene/GeneFull/SJ/Velocyto matrix generation, samtools and per-barcode QC, and MultiQC for a known fixed single-segment CB/UMI layout with separate barcode and cDNA reads. SLURM execution requires a configured cluster profile. The browser does not execute sequencing analyses. Original code is MIT-licensed; third-party components and scientific sources retain their documented terms.",
+  "description": "YeastVar1011 connects yeast single-cell study questions to marker evidence, analysis methods, input requirements and documented research plans. The browser workstation covers quality control, cell states, expression variation, RNA dynamics, regulation, population genetics and evolution, with source-linked document, spreadsheet, diagram and JSON exports. A separate Linux x86_64 Snakemake workflow runs FastQC, STARsolo, samtools and MultiQC for an explicitly configured fixed contiguous CB/UMI layout with dedicated barcode and cDNA reads. It retains tagged BAM, Gene/GeneFull/SJ/Velocyto matrices and per-barcode QC; SLURM execution uses a site-configured profile. Original code and documentation use MIT; bundled components retain their own licenses.",
   "homepage": "https://yuedong0211.github.io/YeastVar1011/",
   "version": [
     "21.0.0",
     "22.0.0",
-    "22.1.0"
+    "22.1.0",
+    "22.1.1"
   ],
   "toolType": [
     "Web application",

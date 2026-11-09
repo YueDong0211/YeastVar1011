@@ -18,8 +18,8 @@ with zipfile.ZipFile(archive) as package:
     assert set(entries) == expected, 'Unexpected or missing source entries'
     for item in manifest['files']:
         data = package.read(prefix + item['path'])
-        assert data == (root / 'analysis' / item['path']).read_bytes(), item['path']
+        assert data == (root / 'analysis' / item['path']).read_bytes().replace(b'\r\n', b'\n'), item['path']
         assert len(data) == item['bytes']
         assert hashlib.sha256(data).hexdigest() == item['sha256']
-    assert package.read(prefix + 'LICENSE') == (root / 'LICENSE').read_bytes()
+    assert package.read(prefix + 'LICENSE') == (root / 'LICENSE').read_bytes().replace(b'\r\n', b'\n')
 print(f'PASS {version}: all {len(manifest["files"])} analysis source files and license match the downloadable ZIP.')

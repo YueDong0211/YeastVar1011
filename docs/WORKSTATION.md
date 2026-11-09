@@ -1,77 +1,64 @@
-# YeastVar1011 — research plan workstation
+# Using the research workstation
 
-A local and hosted research-plan builder for single-cell expression variation in the 1011 *Saccharomyces cerevisiae* strain collection. It connects raw reads, molecule counting, quality control, cell states, expression distributions, regulation, RNA dynamics and population genetics.
+YeastVar1011 connects a yeast single-cell research question to methods, molecular evidence, data requirements and an exportable study plan.
 
-## Use the workstation
+## Open a workspace
 
-On Windows, open `START.cmd`. For a shared copy, extract the complete portable ZIP before starting. The launcher verifies the retained files and serves the local application. `STOP.cmd` stops that local session; `CREATE-SHORTCUT.cmd` creates a shortcut.
+Use the [public workstation](https://yuedong0211.github.io/YeastVar1011/), the Windows portable `START.cmd`, or `npm start` from the source distribution. The [deployment guide](DEPLOYMENT.md) gives installation details. Windows sharing requires the complete extracted portable folder.
 
-The hosted edition is https://yeastvar1011-research-atlas.robust-bread-5701.chatgpt.site. Access follows the existing Site audience.
+Plans and preferences are stored in the browser for the current address. A JSON backup transfers a plan between hosted and local copies, browsers or computers. Export it before clearing storage or changing the local server address.
 
-To preview the static application during development:
+## Build a study plan
 
-```text
-python -m http.server 4173 --directory dist --bind 127.0.0.1
-```
+The six stages share one navigation rail: scope, preparation, annotation, expression variation, extensions and review. Step addresses, browser history and reload restore the current stage. Classic and immersive modes edit the same plan.
 
-No compilation is required. The catalogue also has a bundled local-file fallback, including sharded marker records and offline citation metadata.
+1. **Scope:** name the study, state its question, choose research directions and record available inputs.
+2. **Preparation:** select the raw-read, alignment or matrix entry point; add processing methods, QC measures and required molecular layers.
+3. **Annotation:** inspect marker assertions and select a panel together with the annotation methods.
+4. **Expression variation:** define the biological unit, estimand, replication, mean effects and state/measurement model.
+5. **Extensions:** choose additional analyses and resolve their method branches, data dependencies and source declarations.
+6. **Review:** inspect missing inputs and conflicts, edit output specifications and export the plan.
 
-## Research planning
+The noise/genetics/evolution catalogue links each selected analysis to its declared tools and metrics. Selecting an alternative model changes its dependencies. Shared tools remain while another selected analysis needs them. Manual selections and explicit exclusions are retained; the review shows unresolved branches and missing requirements.
 
-Start with the research scope and available inputs. Select QC metrics, state annotations, marker panels, noise estimands and research extensions, then review the input requirements and export the plan. Tool documentation provides entry points, parameters, native outputs and proposed derived summaries. The workstation prepares plans; sequencing tools run in the user's analysis environment.
+Undo and redo cover selections, text, parameters and complete plan import. A save indicator reports browser storage outcomes. If saving fails, use Retry or download a backup. Research-direction editing has explicit Save and Cancel actions.
 
-The research atlas offers route browsing and a question-based coverage map. Each route connects a question to its required inputs, statistical unit, methods, metrics, outputs and primary sources. Core expression-noise analyses retain raw molecular counts and distinguish state composition, state-conditioned variation, sampling and RNA composition. Population-genetic routes add matched genotypes, relatedness, phased alleles or population history according to the question.
+## Read marker evidence
 
-The v12 evidence audit covers relevant primary studies and official methods from 2016–2026, retaining older foundational methods where used. New routes include latent expression distributions, paralog transcript buffering, RNA proportionality, local sample landscapes, poly(A)-site usage, yeast metabolic models, shared genetic effects, allelic regulation, rare-variant sets and genetic interactions. Common design rules appear once; route-specific checks remain with the methods.
+Search by gene or source and choose filters for cycle phase, biological tags, studies, evidence classes and functional annotations. Active filters can be removed individually. Choice-list search and paging narrow the filter choices without changing selected study evidence.
 
-## Marker evidence and citations
+Each gene can have several tags. Inspect the gene–tag–source assertion for its experimental condition, measurement type, reported direction, source statistics and table location. RNA association, protein localization and functional membership retain their own evidence types. Published statistics describe their original study; project-specific expression and detection values require the target data.
 
-Marker records support multiple tags, evidence types, cycle phases, functional uses and source-specific statistics. Search, nested filters, union/intersection/exclusion and manually selected panels share the same plan. Reference statistics retain their original source context. Project-specific expression, detection and specificity values are populated from analysis results when supplied.
+Selected genes remain visible across filters, and the workspace indicates selections outside the current results. Tag unions/intersections combine genes; assertion-level selection determines which source statements travel with the plan. Opening a reference panel does not merge it automatically. Explicitly review and save a panel before using it for annotation.
 
-The v13 panel preview compares RNA cycle evidence, functional tags and manual assignments. Author-used panels from the 2025 genetic and environmental perturbation atlas can be inspected before explicitly merging them into the current selection. Original source states, differential-expression statistics, supplementary table positions and enrichment tables are retained separately. Opening a panel does not mark its evidence as reviewed.
+The [database directory](DATABASE_RESOURCES.md) identifies imported SGD/GO records and external regulation, interaction, expression and population resources. The [source inventory](../DATA_SOURCES.md) documents the imported evidence.
 
-Marker planning also includes Localized Marker Detector (LMD), a cluster-independent multiscale method, alongside existing grouped comparisons, Hotspot and geneBasis. Discovery, tuning and confirmation partitions are specified by strain and culture.
+## Inspect methods and research directions
 
-Literature records link primary articles and method documentation. APA 7 exports use locally bundled citeproc-js, the official CSL style and structured author metadata. Bibliographic years distinguish online publication from issue year where relevant.
+Method cards provide their entry point, inputs, assumptions, parameters, formulas, native outputs and proposed summaries. Branch choices update the plan's requirements. Population-genetic routes request the matched identities, genotypes, relatedness or supplied mapping results appropriate to the selected question.
 
-## Interface and export
+The QTL catalogue describes trait definitions, statistical units and RNA/additional-omics inputs. The noise/genetics/evolution catalogue provides model variants and source references. Record external alignment, tree or reference provenance where a recipe requests it. Selecting these records prepares an analysis specification; the exported commands and cited tools are used in the research environment.
 
-Classic mode remains the default. The optional immersive design entry opens a static mode chooser; 3D is initialized only after **Start immersive design** is selected. Returning to classic mode releases the scene, and opening the entry again requires a fresh explicit start. Both modes use the same saved plan and preserve the current planning stage when switching. Entering unfolds the scene and decision panels; returning retracts them into the classic workspace. Native view transitions have a lightweight fallback, respect reduced motion and cancel cleanly during rapid navigation.
+The reference library searches structured author, date, DOI and tool metadata. APA references and CSL downloads use those source records. The global search also finds pages, stages, genes, methods, metrics and formulas.
 
-The v19 immersive view has six stages: research focus, data and QC, annotation, expression noise, research extensions and plan preparation. A locally rendered budding-yeast morphology illustration sits in a stylized liquid environment with refracted light and depth particles. Six distinct shots combine dolly distance, field of view, focus, elevation and lateral framing; transitions use a brief pullback followed by a smooth move. It supports pointer and keyboard rotation, structure-linked catalogue entry points, wall-opacity control, wheel zoom, quality selection and reduced motion. A translucent layered wall, vacuole, nuclear envelope, nucleolus, folded membranes and instanced granules form the authored biological illustration. It is an illustrative 3D model, not a reconstruction from a sample. Scene motion can be paused independently; reduced motion also pauses the liquid environment. The scene pauses in hidden tabs and outside the viewport and releases GPU resources when closed; plan editing also works without WebGL.
+## Review and export
 
-Each selection now carries its record identity and action into the scene. Tools, measurements and markers use different visual emphasis; selecting, removing, filtering and inspecting receive distinct feedback. Where record metadata identifies a relevant structure, that structure is emphasized. These are interaction cues, not measured biological responses. Chapter navigation retracts the outgoing decision panel before revealing the next panel while the same WebGL canvas continues the camera movement. Reduced motion uses static feedback.
+The review page includes the live document, plan checks and workflow/result specifications. Resolve input and branch conflicts, then choose document, workbook, vector diagram, bibliography or an editable backup. Export language, font and palette are shared across the corresponding outputs. Additional interchange formats are available under More formats.
 
-Local data management is available in Settings, classic More actions, companion settings and the immersive toolbar. Reset interface/model retains research content and the current language; clear temporary views retains appearance and research content. Full local deletion uses a review and explicit acknowledgement, includes this app’s storage and companion-image database, and offers a plan backup first. The backup does not include separate notes, feedback, companion media or connection settings. No action clears other applications’ storage or claims to erase the browser HTTP cache.
+Result specifications define axes, grouping, required fields and source links. An empty CSV template contains field names. A supported specification can configure a figure without replacing imported observations; actual plots require valid data. SVG/PNG and source-data exports preserve the chosen figure configuration.
 
-Selections change the actual plan. Preparation compiles selected methods, measures, inputs and references into the real export document, then displays it with document and editable-backup downloads. Editing invalidates the previous preview. No analysis results are simulated by the preparation sequence.
+Plan editing invalidates an earlier preparation preview. The displayed document and final downloads are compiled from the current selections and metadata. Cite the selected source studies and methods alongside the software.
 
-Chinese, English, French, Spanish and Basque are available. Export language and font can be selected independently of the interface. The workstation exports the research plan, workflow diagram, tables, formulas, marker selections and references. Custom formulas and figure specifications are stored with the plan.
+## Optional interfaces
 
-Plan preview displays the actual export document, the research structure and saved step dependencies. Planned-result templates define axes, grouping, required fields and source links for marker summaries, annotation evaluation, mean–noise effects, expression distributions, cycle profiles, QC retention, networks and QTLs. Selected specifications persist with the plan and are included in document, Markdown, JSON and spreadsheet exports. Empty CSV templates contain field names only; result plots require imported observations.
+**Immersive mode** starts after an explicit action and follows the same six planning stages. The illustrative yeast cell supports rotation, zoom, structure-linked navigation, quality selection and motion controls. It pauses when hidden and releases rendering resources on exit. Reduced motion and the classic interface remain available.
 
-The v18 classic workspace has a compact header, visible preview and immersive entries, a More actions disclosure for import and helper links, section shortcuts, and clear-search/filter actions that preserve plan selections. The actual previous/next controls remain reachable at the bottom of the viewport, with reserved content space and mobile-keyboard handling.
+**The research companion** searches catalogue records, reviews plan requirements and opens workspace guidance without a model. An optional local Qwen model explains retrieved records after loading its fixed files. See [local companion setup](LOCAL_ASSISTANT.md) for import, cache-only loading, release and cache deletion. Companion appearance, dragging and movement are controlled in its settings.
 
-The six planning stages share one horizontal navigation rail. Individual steps have stable addresses; refresh and browser history restore the selected step. Previous/next controls, keyboard navigation and touch swipes on the stage heading use the same navigation state. Content slides only when the route changes. Forms, tables and reading retain native scrolling, and reduced-motion settings are respected.
+**Specimen studio and figure tools** provide authored visual customization and data-based plotting. The [studio guide](SPECIMEN_STUDIO.md) describes its controls. The scene and artwork are illustrations; plots use supplied observations.
 
-Supported result specifications open a figure configuration for review. Applying it transfers the chart type and field mapping without replacing imported observations; cancelling preserves the existing configuration. SVG, PNG and source-data exports require valid plotted observations. Other result specifications retain their field templates and method sources.
+## Data management
 
-The observatory scene, floating or docked detail panels, pinned or automatic sidebar, dragon companion and catalogue search remain available. The companion opens display settings, local catalogue search and contribution tools. Docked panels hide controls that apply only to floating windows.
+Settings offers appearance reset, temporary-view cleanup and full local deletion. The full reset presents a review and plan-backup option. A plan backup contains study selections and attached figure specifications; separate notes, feedback, companion media and connection settings have their own storage. Export needed material before clearing it.
 
-The review page groups export, plan checks and workflow/result specifications into three tabs. The export view displays a live document preview beside document, workbook, vector-figure and bibliography choices. Language, font and palette share one set of controls; JSON backups and other interchange formats are under More formats. The primary download action follows the selected output.
-
-Click the page title in the top bar to find a page or analysis stage. Global search groups pages, markers, measures, methods, papers and formulas, supports multiple words, and opens actual records with keyboard navigation.
-
-The dragon companion is freely draggable. Dragging saves its position and pauses roaming; its settings offer roaming, staying in place, size and position reset. It pauses during form entry, focus, open panels and hidden tabs. Reduced-motion settings stop automatic movement.
-
-Appearance settings include Slide (default), Yeast 3D and Off. The appearance popover links directly to these controls. The optional 3D transition uses a local, procedurally generated budding-yeast visual model and the bundled Three.js runtime. A separate preview supports pointer and keyboard rotation. The renderer loads on demand, stops when idle or hidden, and is released when disabled. Reduced motion bypasses animated transitions; unavailable WebGL falls back to ordinary navigation.
-
-Plan editing includes undo and redo for selections, text and parameters, with bounded history retained across reloads. Save indicators reflect browser storage outcomes and offer Retry and a downloadable JSON backup when saving fails. Imports are validated before replacement; undoing a complete backup import restores its attached DIY configuration as well.
-
-Research directions support search and a selected-only view within one draft. Cancel preserves the existing plan; Save returns to its editing entry point. First-time plans identify the expression-noise starting template. Returning to a page restores its reading position, keyboard metric selection retains focus, and the skip link goes to content without changing the current page.
-
-The marker library keeps selected genes visible across filters, indicates selections outside the current result set and provides removable filter chips. Clearing filters preserves the plan. Unapplied marker-editing drafts remain available during the browser session, with explicit Save and Discard controls.
-
-## Development
-
-See the repository README for the supported start, check and packaging commands. See CONTRIBUTING.md for evidence and interface contribution conventions.
+For corrections, include the affected page, language and record/source ID in a [GitHub issue](https://github.com/YueDong0211/YeastVar1011/issues). Use the [contribution guide](../CONTRIBUTING.md) for source and translation changes.

@@ -1,20 +1,24 @@
-# YeastVar1011 22.1.0
+# YeastVar1011 22.1.1
 
-Released 24 October 2026.
+Released 9 November 2026. This maintenance release standardizes the scientific description, citation metadata, original-code license and reproducible source inventory. The release assets, website identity and embedded analysis source use the same version. See the [changelog](../CHANGELOG.md).
 
-The browser application, Windows portable package and source release use the same version. The Windows package contains the current catalogue and plan-linking interface, including the marker evidence, QTL directory and 19 noise, genetics and evolution analyses added after 22.0.0.
+## Choose a distribution
 
 | Use | Entry point |
 | --- | --- |
-| Windows portable workstation | Download `YeastVar1011-22.1.0-Windows.zip` from the [release](https://github.com/YueDong0211/YeastVar1011/releases/tag/v22.1.0), extract the complete folder, then open `YeastVar1011/START.cmd`. Python and Node.js are not required. |
-| Browser workstation | [GitHub Pages](https://yuedong0211.github.io/YeastVar1011/) or the [alternative website](https://yeastvar1011-research-atlas.robust-bread-5701.chatgpt.site). |
-| Source and development | Extract the tagged source archive, then run `npm start` with Node.js 22 or later. Development dependencies are installed separately with `npm ci`. |
-| Linux / SLURM QC | Use the source archive's `analysis/` directory, or download the analysis package from **Install & cluster → Cluster QC pipeline**. Follow `analysis/README.md` before configuring data and cluster resources. |
+| Windows portable | Download `YeastVar1011-22.1.1-Windows.zip` from [v22.1.1](https://github.com/YueDong0211/YeastVar1011/releases/tag/v22.1.1), extract the whole folder, then open `YeastVar1011/START.cmd` |
+| Browser | [GitHub Pages workstation](https://yuedong0211.github.io/YeastVar1011/) |
+| Source | Extract `YeastVar1011-22.1.1-Source.zip`, then run `npm start` with Node.js 22 or later |
+| Linux / SLURM QC | Use the source archive's `analysis/` directory or **Install & cluster → Cluster QC pipeline** in the workstation; configure it using [analysis/README.md](../analysis/README.md) |
 
-The Windows portable package verifies its files against a SHA-256 manifest before starting. The release provides a separate SHA-256 file for the ZIP itself. Package checks cover complete extraction, file integrity, corruption reporting, server readiness, repeated launch and video byte ranges.
+## Verify and share
 
-The optional Qwen model is a separate first-use download of approximately 519 MB. It is not bundled in the ZIP. Imported model files and the browser model cache can be used for subsequent offline loading. The catalogue guide, research plans and normal exports work without loading the model.
+The release provides a SHA-256 sidecar for each ZIP. The Windows launcher also checks every packaged file against `package-manifest.json` before startup. Package tests cover complete extraction, file integrity, corruption reporting, service readiness, repeat launch and video byte ranges. The source ZIP carries `source-manifest.json`, whose hashes use canonical LF text.
 
-Plans and settings remain in the browser storage of the address where they were created. Export a plan JSON before moving to another computer, browser or website address; then import it in the destination workstation. Sending the program ZIP does not include personal browser storage.
+Send the complete Windows ZIP to share the portable program. The recipient extracts it and opens `START.cmd`; Python and Node.js are not required for this distribution. The optional Qwen model is an approximately 519 MB first-use download with separate local-file import and cache-only loading controls. Normal planning and exports work without loading it.
 
-Use the whole portable ZIP for sharing. Keep source packages and analysis tools separate from scientific input data. Historical releases remain available from GitHub and Zenodo for reproducibility.
+Plans and settings belong to the browser origin where they were created. Export a plan JSON backup before moving to another computer, browser or website address, then import it in the destination workstation. A program ZIP contains the application and reference catalogues, not personal browser storage.
+
+## Citation
+
+[CITATION.cff](../CITATION.cff) identifies the release. The [Zenodo concept DOI](https://doi.org/10.5281/zenodo.23429611) resolves the release series; [publishing records](PUBLISHING.md) list verified version archives and service status. Earlier distributions remain available from GitHub and Zenodo.
