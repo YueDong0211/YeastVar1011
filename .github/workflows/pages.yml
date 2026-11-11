@@ -15,7 +15,13 @@ concurrency:
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.64.1-noble@sha256:2f05f8a734509a7b3f26a912639488ee08f58a7b292d14d62271bcff9038768f
+      options: --init --ipc=host
+    defaults:
+      run:
+        shell: bash
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -27,7 +33,6 @@ jobs:
       - run: node research/qa-release-identity.cjs
       - run: npm run test:source
       - run: npm run test:server
-      - run: npx playwright install --with-deps chromium
       - run: npm run test:public
       - run: node research/qa-local-model-lifecycle-v22.cjs
       - run: node research/qa-input-contracts-v22.cjs
