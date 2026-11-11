@@ -26,12 +26,15 @@ function Quote-PS([string]$Value) { return "'" + $Value.Replace("'", "''") + "'"
 function Invoke-QAChild([string]$Command) {
     $info = New-Object Diagnostics.ProcessStartInfo
     $info.FileName = $powershell
-    $info.Arguments = '-NoLogo -NoProfile -ExecutionPolicy Bypass -EncodedCommand ' + [Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes($Command))
+    $encodedCommand = '$ProgressPreference = "SilentlyContinue"; [Console]::OutputEncoding = New-Object Text.UTF8Encoding($false); $OutputEncoding = [Console]::OutputEncoding; ' + $Command
+    $info.Arguments = '-NoLogo -NoProfile -ExecutionPolicy Bypass -EncodedCommand ' + [Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes($encodedCommand))
     $info.WorkingDirectory = $tempParent
     $info.UseShellExecute = $false
     $info.CreateNoWindow = $true
     $info.RedirectStandardOutput = $true
     $info.RedirectStandardError = $true
+    $info.StandardOutputEncoding = New-Object Text.UTF8Encoding($false)
+    $info.StandardErrorEncoding = New-Object Text.UTF8Encoding($false)
     $process = New-Object Diagnostics.Process
     $process.StartInfo = $info
     try {
@@ -168,7 +171,9 @@ try {
     $first = $started.output | ConvertFrom-Json
     Assert-QA ($first.url -match '^http://127\.0\.0\.1:[0-9]+/$' -and -not $first.reused) 'The new extracted copy must start its own loopback service.'
     $state = [IO.File]::ReadAllText($first.stateFile) | ConvertFrom-Json
-    $owned = [pscustomobject]@{ url = [string]$first.url; stateFile = [string]$first.stateFile; instanceId = [string]$state.instanceId; rootId = [string]$first.rootId; token = [string]$state.token }
+    $owned = [pscustomobject]@{ url = [string]$first.url; stateFile = [string]$first.stateFile; instanceId = [string]$state.instanceId; rootId = [string]$first.rootId; token = [string]$state.token; serverProcess = $null }
+    $owned.serverProcess = [Diagnostics.Process]::GetProcessById([int]$state.processId)
+    [void]$owned.serverProcess.Handle
     Pass-QA 'The actual Windows launcher starts without opening a browser'
     Assert-QAChildPath $first.stateFile $packageRoot
     $probe = Invoke-QAChild ('. ' + (Quote-PS (Join-Path $packageRoot 'portable/Common.ps1')) + '; $c=Get-YVContext; @{runtime=$c.Runtime; temporary=[IO.Path]::GetTempPath()} | ConvertTo-Json -Compress')
@@ -206,6 +211,9 @@ try {
     Assert-QA ($shortcutResult.code -eq 0) ('Shortcut creation failed: ' + $shortcutResult.error)
     Assert-QA ([IO.File]::Exists((Join-Path $packageRoot 'YeastVar1011.lnk'))) 'The shortcut must be created beside START.cmd.'
     Pass-QA 'Shortcut creation also stays inside the extracted program folder'
+} catch {
+    Write-Host ('PORTABLE_QA_ERROR ' + $_.Exception.ToString())
+    throw
 } finally {
     if ($null -ne $owned) {
         try {
@@ -217,6 +225,8 @@ try {
                 while ([IO.File]::Exists($owned.stateFile) -and [DateTime]::UtcNow -lt $deadline) { Start-Sleep -Milliseconds 100 }
                 Assert-QA (-not [IO.File]::Exists($owned.stateFile)) 'The QA service did not finish its authenticated shutdown.'
             }
+            Assert-QA ($owned.serverProcess.WaitForExit(10000)) 'The owned service process did not exit after authenticated shutdown.'
+            Pass-QA 'The owned service process exits before its package files are removed'
             $runtime = [IO.Path]::GetDirectoryName($owned.stateFile)
             $runtimeParent = Join-Path $packageRoot '.yeastvar-local/portable'
             Assert-QAChildPath $runtime $runtimeParent
@@ -224,6 +234,7 @@ try {
             if ([IO.Directory]::Exists($runtime)) { Remove-Item -LiteralPath $runtime -Recurse -Force }
             Pass-QA 'Only this test copy is stopped and its runtime metadata is removed'
         } catch { $cleanupError = $_ }
+        finally { if ($null -ne $owned.serverProcess) { $owned.serverProcess.Dispose() } }
     }
     if ($null -eq $cleanupError) {
         Assert-QAChildPath $runRoot $tempParent
