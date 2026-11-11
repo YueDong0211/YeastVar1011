@@ -1715,8 +1715,8 @@
     },
     {
       "path": "packaging/bioconda/meta.yaml.in",
-      "bytes": 2401,
-      "sha256": "1167b55293eca5469be13ce65268ae85f385f67863d60f4243e5745b1ee75cab"
+      "bytes": 2631,
+      "sha256": "f83429838adf68baa2d9b5a0142e35f2a3cd7a499f19af20c2f3aa1a861eb591"
     },
     {
       "path": "packaging/bioconda/run_test.sh",
