@@ -1786,8 +1786,8 @@
     },
     {
       "path": "portable/Server.ps1",
-      "bytes": 1992,
-      "sha256": "da148fd7bbfde7decbb989cae5c2601e58790b005e4619a1e9bcece577060452"
+      "bytes": 2564,
+      "sha256": "59eca9d077984513962dda2867b2da930e1dcd86d8649a0409b0ffe1b65edd81"
     },
     {
       "path": "portable/Shortcut.ps1",
