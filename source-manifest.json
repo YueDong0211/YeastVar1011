@@ -2101,8 +2101,8 @@
     },
     {
       "path": "tests/qa-portable-package.ps1",
-      "bytes": 14912,
-      "sha256": "d265933f5668453ff6ceee49315e18e5006f21ae02c3a897a85af60338d36280"
+      "bytes": 15496,
+      "sha256": "1466da7a8f3a3027b9ea0ffee9c79f1d624a2e64ca16a2a7febeed4c2a4507e2"
     },
     {
       "path": "tests/qa-qc-branch-inputs-v25b.cjs",

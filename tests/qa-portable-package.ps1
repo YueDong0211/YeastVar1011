@@ -153,6 +153,17 @@ try {
     Pass-QA 'A same-length corrupted file is rejected before service startup'
 
     $started = Invoke-QAChild $launchCommand
+    if ($started.code -ne 0) {
+        $diagnosticRoot = Join-Path $packageRoot '.yeastvar-local'
+        if ([IO.Directory]::Exists($diagnosticRoot)) {
+            foreach ($log in Get-ChildItem -LiteralPath $diagnosticRoot -File -Recurse -Filter 'server.log') {
+                Assert-QAChildPath $log.FullName $packageRoot
+                $details = [IO.File]::ReadAllText($log.FullName)
+                $details = $details -replace '(?i)(token[=: ]+)[a-f0-9]{64}', '$1[redacted]'
+                Write-Host ('PORTABLE_SERVER_DIAGNOSTIC ' + $details)
+            }
+        }
+    }
     Assert-QA ($started.code -eq 0) ('Launch failed: ' + $started.error + $started.output)
     $first = $started.output | ConvertFrom-Json
     Assert-QA ($first.url -match '^http://127\.0\.0\.1:[0-9]+/$' -and -not $first.reused) 'The new extracted copy must start its own loopback service.'
