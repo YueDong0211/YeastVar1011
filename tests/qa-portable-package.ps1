@@ -210,6 +210,18 @@ try {
     $shortcutResult = Invoke-QAChild ('& ' + (Quote-PS (Join-Path $packageRoot 'portable/Shortcut.ps1')))
     Assert-QA ($shortcutResult.code -eq 0) ('Shortcut creation failed: ' + $shortcutResult.error)
     Assert-QA ([IO.File]::Exists((Join-Path $packageRoot 'YeastVar1011.lnk'))) 'The shortcut must be created beside START.cmd.'
+    $shortcutProbe = Invoke-QAChild ('$s=(New-Object -ComObject WScript.Shell).CreateShortcut(' + (Quote-PS (Join-Path $packageRoot 'YeastVar1011.lnk')) + '); @{target=$s.TargetPath; arguments=$s.Arguments; workingDirectory=$s.WorkingDirectory} | ConvertTo-Json -Compress')
+    Assert-QA ($shortcutProbe.code -eq 0) ('Shortcut inspection failed: ' + $shortcutProbe.error)
+    $shortcutSettings = $shortcutProbe.output | ConvertFrom-Json
+    Assert-QA ($shortcutSettings.target -eq $powershell) 'The shortcut target must be the system PowerShell executable.'
+    $encodedLaunch = [string]$shortcutSettings.arguments
+    Assert-QA ($encodedLaunch -match ' -EncodedCommand ([A-Za-z0-9+/=]+)$') 'The shortcut does not contain a Unicode command.'
+    $decodedLaunch = [Text.Encoding]::Unicode.GetString([Convert]::FromBase64String($Matches[1]))
+    Assert-QA ($decodedLaunch.Contains((Join-Path $packageRoot 'portable/Launch.ps1').Replace("'", "''"))) 'The shortcut lost the Unicode launch path.'
+    $shortcutLaunch = Invoke-QAChild ($decodedLaunch + ' -NoBrowser -Json')
+    Assert-QA ($shortcutLaunch.code -eq 0) ('The saved shortcut command failed: ' + $shortcutLaunch.error)
+    $shortcutInstance = $shortcutLaunch.output | ConvertFrom-Json
+    Assert-QA ($shortcutInstance.reused -and $shortcutInstance.rootId -eq $owned.rootId) 'The shortcut must reopen the same owned instance.'
     Pass-QA 'Shortcut creation also stays inside the extracted program folder'
 } catch {
     Write-Host ('PORTABLE_QA_ERROR ' + $_.Exception.ToString())

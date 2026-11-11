@@ -1791,8 +1791,8 @@
     },
     {
       "path": "portable/Shortcut.ps1",
-      "bytes": 881,
-      "sha256": "727495320e208b2afabe82d1d19fa7b41f70eddbc5df1f0e53521c53999946bf"
+      "bytes": 1601,
+      "sha256": "29187d69aa6eb9719554b7c481cb0b038bc279c59d29e31801a09df48c4c255a"
     },
     {
       "path": "portable/Stop.ps1",
@@ -2101,8 +2101,8 @@
     },
     {
       "path": "tests/qa-portable-package.ps1",
-      "bytes": 16412,
-      "sha256": "73d044a9fc845e434b72af75919cfed6eb5f1939bb407c5b1e263d466f59b04f"
+      "bytes": 17794,
+      "sha256": "1a93d3da171dc46a8ac1a61934a957f91dcde47e3a0d2bbc7d37c6b51d830832"
     },
     {
       "path": "tests/qa-qc-branch-inputs-v25b.cjs",
