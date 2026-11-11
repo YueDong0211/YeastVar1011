@@ -46,8 +46,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 2758,
-      "sha256": "0da65ad325208a251f8ee72f497b0eef901e0fea7f590b78d9858eea05ea87f0"
+      "bytes": 2913,
+      "sha256": "7700e2fc2b92f09fed360e77f661f7186f5492e3e632d81a4caee5e00009ca0d"
     },
     {
       "path": "CITATION.cff",
@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 9961,
-      "sha256": "f8f5bde37fc59b3bbeeb87f9f63f418c7ea96de51f4b1b8823bdbe79fb84640a"
+      "bytes": 10298,
+      "sha256": "48162ed4fede4c9527b749834e51247ce9ba5ae31547ad7c7bb3fa750738d1ee"
     },
     {
       "path": "START.cmd",
@@ -1631,8 +1631,8 @@
     },
     {
       "path": "docs/DEPLOYMENT.md",
-      "bytes": 5243,
-      "sha256": "312226c9ddfb53e1e27a54e0baa315022dd719f40aff4f65514163bb60514fcd"
+      "bytes": 5233,
+      "sha256": "ed0251f689203ad71a7bc288933bb903e7181a31e8e08d74435f0ea8fe97d22a"
     },
     {
       "path": "docs/LITERATURE_SEARCH_V25.md",
@@ -1656,8 +1656,8 @@
     },
     {
       "path": "docs/RELEASES.md",
-      "bytes": 2961,
-      "sha256": "424b3b3468a4fa38424839ad276a2886b9ad88f39d29052e7cbb6eaa070d4179"
+      "bytes": 3225,
+      "sha256": "bd7e2399af65f25d81c034bd9f1b1eaeade6a785508c757788f48129ae94c05a"
     },
     {
       "path": "docs/RESEARCH_COVERAGE_V25.md",

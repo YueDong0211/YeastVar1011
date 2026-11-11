@@ -25,11 +25,11 @@ A study plan records selected methods, parameters, dependencies, marker assertio
 
 ## Get started
 
-**Local ProjectLocal build:** the ZIPs in `releases/` include the project-local Windows launcher. Its ports, service state, logs and compiler temporary files are stored in `.yeastvar-local/` inside the extracted program folder. The optional shortcut is created beside `START.cmd`. The scientific catalogue and published base release remain version 22.1.1.
+**ProjectLocal maintenance build:** the ZIPs in `releases/` include the project-local Windows launcher. Its ports, service state, logs and compiler temporary files are stored in `.yeastvar-local/` inside the extracted program folder. The optional shortcut is created beside `START.cmd`. The scientific catalogue and published base release remain version 22.1.1.
 
 **In a browser:** open the [public workstation](https://yuedong0211.github.io/YeastVar1011/).
 
-**Windows ProjectLocal:** use `releases/YeastVar1011-22.1.1-Windows-ProjectLocal.zip`, extract the complete folder on drive D and open `START.cmd`. This route uses Windows PowerShell and .NET. `STOP.cmd` stops the local service; `CREATE-SHORTCUT.cmd` creates a shortcut in the same folder. The [published base release](https://github.com/YueDong0211/YeastVar1011/releases/tag/v22.1.1) is recorded separately.
+**Windows ProjectLocal:** download the [Windows ZIP](https://github.com/YueDong0211/YeastVar1011/releases/download/v22.1.1/YeastVar1011-22.1.1-Windows-ProjectLocal.zip), extract the complete folder into a writable directory and open `START.cmd`. This route uses Windows PowerShell and .NET. `STOP.cmd` stops the local service; `CREATE-SHORTCUT.cmd` creates a shortcut in the same folder. The [published base release](https://github.com/YueDong0211/YeastVar1011/releases/tag/v22.1.1) is recorded separately.
 
 **From source, with Node.js 22 or later:**
 
@@ -122,3 +122,5 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for evidence, interface and translation c
 - `packaging/`: source, Windows and analysis ZIP builders and the Bioconda recipe.
 
 Use `npm test` for core checks, `npm run test:catalogue` for evidence and methods, and `npm run test:ci` for the full website suite. See [verification suites](tests/README.md) and [repository architecture](docs/ARCHITECTURE.md).
+
+The current project-local [source ZIP](https://github.com/YueDong0211/YeastVar1011/releases/download/v22.1.1/YeastVar1011-22.1.1-Source-ProjectLocal.zip) includes this repository layout. Each ZIP has a matching `.sha256.txt` asset.

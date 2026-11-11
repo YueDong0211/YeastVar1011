@@ -1,8 +1,8 @@
 # YeastVar1011 22.1.1
 
-## Local ProjectLocal distribution
+## ProjectLocal maintenance distribution
 
-The current local packages are `YeastVar1011-22.1.1-Windows-ProjectLocal.zip` and `YeastVar1011-22.1.1-Source-ProjectLocal.zip`, with SHA-256 sidecars. This launcher-location build stores ports, service state, logs and compiler temporary files in `.yeastvar-local/` inside the program folder. `CREATE-SHORTCUT.cmd` also writes beside `START.cmd`. The ZIP metadata identify the `project-local` distribution; the links below identify its published 22.1.1 base.
+The project-local maintenance packages are `YeastVar1011-22.1.1-Windows-ProjectLocal.zip` and `YeastVar1011-22.1.1-Source-ProjectLocal.zip`, with SHA-256 sidecars. This launcher-location build stores ports, service state, logs and compiler temporary files in `.yeastvar-local/` inside the program folder. `CREATE-SHORTCUT.cmd` also writes beside `START.cmd`. The ZIP metadata identify the `project-local` distribution. The original 22.1.1 release assets and archive remain available alongside these separately labelled maintenance packages.
 
 ## Published base release
 
@@ -12,9 +12,9 @@ Released 9 November 2026. This maintenance release standardizes the scientific d
 
 | Use | Entry point |
 | --- | --- |
-| Windows portable | Download `YeastVar1011-22.1.1-Windows.zip` from [v22.1.1](https://github.com/YueDong0211/YeastVar1011/releases/tag/v22.1.1), extract the whole folder, then open `YeastVar1011/START.cmd` |
+| Windows portable | Download [YeastVar1011-22.1.1-Windows-ProjectLocal.zip](https://github.com/YueDong0211/YeastVar1011/releases/download/v22.1.1/YeastVar1011-22.1.1-Windows-ProjectLocal.zip), extract the whole folder, then open `YeastVar1011/START.cmd` |
 | Browser | [GitHub Pages workstation](https://yuedong0211.github.io/YeastVar1011/) |
-| Source | Extract `YeastVar1011-22.1.1-Source.zip`, then run `npm start` with Node.js 22 or later |
+| Source | Extract [YeastVar1011-22.1.1-Source-ProjectLocal.zip](https://github.com/YueDong0211/YeastVar1011/releases/download/v22.1.1/YeastVar1011-22.1.1-Source-ProjectLocal.zip), then run `npm start` with Node.js 22 or later |
 | Linux / SLURM QC | Use the source archive's `analysis/` directory or **Install & cluster → Cluster QC pipeline** in the workstation; configure it using [analysis/README.md](../analysis/README.md) |
 
 ## Verify and share

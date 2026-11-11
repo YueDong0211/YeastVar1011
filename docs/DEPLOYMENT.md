@@ -1,6 +1,6 @@
 # Install and run
 
-The local ProjectLocal build stores Windows launcher state, logs and compiler temporary files under `.yeastvar-local/` in the program folder. Keep the program on drive D to keep its runtime files there. Its generated shortcut is also placed in that folder.
+The local ProjectLocal build stores Windows launcher state, logs and compiler temporary files under `.yeastvar-local/` in the program folder. Runtime files remain beside the extracted program. Its generated shortcut is also placed in that folder.
 
 The workstation is a static browser application with two local serving options: a Node.js source server and a Windows PowerShell/.NET portable server. Scientific execution uses the separately configured Linux workflow in `analysis/`.
 
