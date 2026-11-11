@@ -90,7 +90,7 @@ function Assert-QAChildPath([string]$Child, [string]$Parent) {
 try {
     if ([string]::IsNullOrWhiteSpace($ArchivePath)) {
         $output = Join-Path $runRoot 'generated'
-        $result = Invoke-QAChild ('& ' + (Quote-PS (Join-Path $sourceRoot 'research/package-portable.ps1')) + ' -OutputDirectory ' + (Quote-PS $output))
+        $result = Invoke-QAChild ('& ' + (Quote-PS (Join-Path $sourceRoot 'packaging/package-portable.ps1')) + ' -OutputDirectory ' + (Quote-PS $output))
         Assert-QA ($result.code -eq 0) ('Portable packaging failed: ' + $result.error + $result.output)
         $metadata = $result.output | ConvertFrom-Json
         $ArchivePath = [string]$metadata.archive

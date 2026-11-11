@@ -3,7 +3,7 @@ import json
 import hashlib
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 DIST = ROOT / 'dist'
 
 def compact(value):

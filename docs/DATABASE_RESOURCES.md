@@ -98,9 +98,9 @@ Official sources checked on 2026-10-18:
 
 ## Verification
 
-`node research/qa-database-hub-v24.cjs` checks the twelve entries, all five interface languages, dynamic source/coverage handling, search and combined filters, imported-versus-linked distinction, motif prerequisite discovery and preparation fields, exact unambiguous gene links, escaped search input, delegated controls, current marker shards and absence of network calls. Short ASCII acronyms use word boundaries, so matches such as `TF` inside `platform` are excluded. Browser layout review remains separate from these data and logic checks.
+`node tests/qa-database-hub-v24.cjs` checks the twelve entries, all five interface languages, dynamic source/coverage handling, search and combined filters, imported-versus-linked distinction, motif prerequisite discovery and preparation fields, exact unambiguous gene links, escaped search input, delegated controls, current marker shards and absence of network calls. Short ASCII acronyms use word boundaries, so matches such as `TF` inside `platform` are excluded. Browser layout review remains separate from these data and logic checks.
 
-`node research/qa-database-preparation-v25.cjs` loads the complete nineteen-resource
+`node tests/qa-database-preparation-v25.cjs` loads the complete nineteen-resource
 directory and exercises species filtering, selections across filters, removal,
 session retention, empty and populated exports, immutable metadata and five-language
 labels. It confirms that preparation does not claim downloaded data or trigger

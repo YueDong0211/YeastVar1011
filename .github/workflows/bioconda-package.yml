@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
-      - 'packaging/bioconda/**'
+      - 'packaging/**'
       - 'scripts/**'
       - 'dist/**'
       - 'analysis/**'
@@ -16,7 +16,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'packaging/bioconda/**'
+      - 'packaging/**'
       - 'scripts/**'
       - 'dist/**'
       - 'analysis/**'
@@ -48,7 +48,7 @@ jobs:
       - name: Render and check recipe against this checkout
         run: |
           version=$(node -p 'require("./package.json").version')
-          node scripts/render-bioconda.cjs --version "$version" --local-source . --output releases/recipe/ci
+          node packaging/render-bioconda.cjs --version "$version" --local-source . --output releases/recipe/ci
           bash -n releases/recipe/ci/build.sh releases/recipe/ci/run_test.sh
           conda-render --override-channels -c conda-forge -c bioconda releases/recipe/ci
       - name: Build and test installed package

@@ -4,6 +4,9 @@ import json
 from pathlib import Path
 import tempfile
 
+import sys
+sys.dont_write_bytecode = True
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "research" / "tools"))
 import write_catalogue_assets as writer
 
 with tempfile.TemporaryDirectory(prefix='yeastvar-catalogue-qa-') as tmp:

@@ -19,7 +19,7 @@ Create a versioned GitHub source release first. Download that exact tag archive 
 version=21.0.0
 url="https://github.com/YueDong0211/YeastVar1011/archive/refs/tags/v${version}.tar.gz"
 curl --fail --location "$url" --output yeastvar1011-source.tar.gz
-node scripts/render-bioconda.cjs --version "$version" --source-url "$url" --archive yeastvar1011-source.tar.gz
+node packaging/render-bioconda.cjs --version "$version" --source-url "$url" --archive yeastvar1011-source.tar.gz
 ```
 
 The renderer produces `releases/recipe/yeastvar1011-VERSION/` with `meta.yaml`, the build and test scripts, wrappers, and a provenance record. It accepts only a matching versioned tag URL for this repository. It rejects invalid digests, non-gzip downloads, checksum mismatches, output paths outside `releases/recipe/`, and an existing output directory. It never edits the source template. A separately calculated `--sha256` may replace `--archive`; Conda still verifies the downloaded archive against the digest during build.

@@ -2,7 +2,7 @@
 // UI integration tests use a controlled engine. Real model computation is tested separately.
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {chromium}=require('@playwright/test');
-const out=path.join(__dirname,'cache/v22-assistant-ui');fs.mkdirSync(out,{recursive:true});
+const out=path.join(process.env.YV_QA_OUTPUT||path.resolve(__dirname,'../.yeastvar-local/qa'),'assistant-ui');fs.mkdirSync(out,{recursive:true});
 const checks=[],errors=[],external=[];
 const base=process.env.YV_TEST_URL||'http://127.0.0.1:4173/';
 async function check(name,fn){try{const detail=await fn();checks.push({name,pass:true,detail});console.log('PASS',name);}catch(e){checks.push({name,pass:false,error:e.stack});console.error('FAIL',name,e.message);}}

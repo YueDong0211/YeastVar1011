@@ -4,7 +4,7 @@ const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),asse
 const root=path.resolve(__dirname,'..');
 const load=f=>JSON.parse(fs.readFileSync(path.join(root,f),'utf8'));
 const w=load('dist/data/workflow.json'),p=load('dist/data/projects.json'),c=load('dist/data/research-categories.json'),l=load('dist/data/literature.json');
-const proposals=load('research/v25-methods-proposals.json'),baseline=load('research/v25-methods-inventory.json');
+const proposals=load('research/evidence/v25-methods-proposals.json'),baseline=load('research/evidence/v25-methods-inventory.json');
 const ctx={window:{},console}; vm.createContext(ctx);
 for(const file of ['dist/vendor/citations/citeproc.js','dist/citation-data.js','dist/v25-research-locales.js'])vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),ctx,{filename:file});
 const citations=ctx.window.YV_CITATION_DATA;

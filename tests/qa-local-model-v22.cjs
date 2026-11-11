@@ -2,7 +2,7 @@
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),crypto=require('node:crypto');
 const {chromium}=require('@playwright/test');
 const base=process.env.YV_TEST_URL||'http://127.0.0.1:4173/';
-const dir=path.resolve(__dirname,'cache/v22-local-model');fs.mkdirSync(dir,{recursive:true});
+const dir=path.resolve(__dirname,'../.yeastvar-local/cache/local-model');fs.mkdirSync(dir,{recursive:true});
 (async()=>{
  let fixtureServer=null,fixtureVerified=false;
  const fixture=path.join(dir,'model_quantized.onnx');

@@ -7,8 +7,8 @@
 ## 可复现入口
 
 ```powershell
-python research/v25-literature-discovery.py
-python research/v25-literature-discovery.py --refresh
+python research/tools/v25-literature-discovery.py
+python research/tools/v25-literature-discovery.py --refresh
 ```
 
 默认复用本文件对应语料中的检索结果并重新计算当前本地索引。`--refresh` 重新请求公开元数据。脚本只写本语料 JSON 与本说明；不下载付费全文、不改生产文件。

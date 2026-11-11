@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Traceable public-metadata literature discovery; does not alter the live catalogue.
 
-Only outputs research/v25-literature-corpus.json and docs/LITERATURE_SEARCH_V25.md.
+Only outputs research/evidence/v25-literature-corpus.json and docs/LITERATURE_SEARCH_V25.md.
 Default: reuse a successful saved retrieval, then recompute local catalogue matches.
 --refresh performs the documented public API searches again. No API keys required.
 """
@@ -21,8 +21,8 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-ROOT = pathlib.Path(__file__).resolve().parents[1]
-CORPUS = ROOT / "research/v25-literature-corpus.json"
+ROOT = pathlib.Path(__file__).resolve().parents[2]
+CORPUS = ROOT / "research/evidence/v25-literature-corpus.json"
 REPORT = ROOT / "docs/LITERATURE_SEARCH_V25.md"
 START = "2010-01-01"
 END = "2026-10-18"
@@ -474,7 +474,7 @@ def fill_priority_metadata(records, logs):
 
 def report(data):
     records, logs = data["records"], data["searchLog"]
-    lines = ["# Yeast single-cell RNA literature coverage audit · v25", "", f"检索窗口：{START}–{END}；2010 年以前的经典研究单独分层。最近生成：{data['generatedAt']}。", "", "本清单用于下一轮文献精读和基因级导入排程，不改变网站的 marker 库。检索命中、论文已收录、补充表已提取、状态 marker 已验证是不同状态；GO 功能、bulk RNA、蛋白定位和单分子 RNA 证据分别保留。", "", "## 可复现入口", "", "```powershell", "python research/v25-literature-discovery.py", "python research/v25-literature-discovery.py --refresh", "```", "", "默认复用本文件对应语料中的检索结果并重新计算当前本地索引。`--refresh` 重新请求公开元数据。脚本只写本语料 JSON 与本说明；不下载付费全文、不改生产文件。", "", "## 检索覆盖", "", "| 查询 | 来源 | 返回 / 服务报告总数 | 状态 |", "|---|---|---:|---|"]
+    lines = ["# Yeast single-cell RNA literature coverage audit · v25", "", f"检索窗口：{START}–{END}；2010 年以前的经典研究单独分层。最近生成：{data['generatedAt']}。", "", "本清单用于下一轮文献精读和基因级导入排程，不改变网站的 marker 库。检索命中、论文已收录、补充表已提取、状态 marker 已验证是不同状态；GO 功能、bulk RNA、蛋白定位和单分子 RNA 证据分别保留。", "", "## 可复现入口", "", "```powershell", "python research/tools/v25-literature-discovery.py", "python research/tools/v25-literature-discovery.py --refresh", "```", "", "默认复用本文件对应语料中的检索结果并重新计算当前本地索引。`--refresh` 重新请求公开元数据。脚本只写本语料 JSON 与本说明；不下载付费全文、不改生产文件。", "", "## 检索覆盖", "", "| 查询 | 来源 | 返回 / 服务报告总数 | 状态 |", "|---|---|---:|---|"]
     for log in logs:
         if log["id"].startswith(("epmc-", "crossref-title", "crossref-bibliographic", "official-")):
             lines.append(f"| `{log['id']}` | {log['source']} | {log.get('returnedCount', 0)} / {log.get('reportedHitCount', '不适用')} | {log['status']} |")

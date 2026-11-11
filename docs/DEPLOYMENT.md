@@ -54,8 +54,8 @@ The local application, catalogues, citation renderer and bundled artwork work of
 
 ```sh
 node scripts/doctor.cjs --port 0 --json
-node scripts/qa-doctor.cjs
-node research/qa-dev-server.cjs
+node tests/qa-doctor.cjs
+node tests/qa-dev-server.cjs
 npm run check
 npm run test:release
 npm run test:source
@@ -63,7 +63,7 @@ npm run test:source
 
 The doctor checks the runtime, required application files, marker shards and actual port binding. Exit code `0` means the required checks passed; `1` indicates a failed check or invalid option. Git and npm are optional for source-server runtime; npm is needed for development installation.
 
-For a Windows release, `research/qa-portable-package.ps1 -ArchivePath PATH` checks the actual extracted package and its launcher. It verifies file hashes, rejects corruption, tests repeated launch and inspects served assets and video byte ranges. Packaging commands and source-manifest conventions are documented in [ARCHITECTURE.md](ARCHITECTURE.md).
+For a Windows release, `tests/qa-portable-package.ps1 -ArchivePath PATH` checks the actual extracted package and its launcher. It verifies file hashes, rejects corruption, tests repeated launch and inspects served assets and video byte ranges. Packaging commands and source-manifest conventions are documented in [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## Static hosting
 

@@ -33,7 +33,7 @@ Zenodo reads `.zenodo.json` before `CITATION.cff` when both are present, as desc
 
 `biotools.json` is the maintained registry description. Update the existing metadata PR when the public software changes; the registry's accepted public entry is the completion record. bio.tools uses its own review and synchronization process.
 
-The [Bioconda template](../packaging/bioconda/README.md) installs the static workstation and relocatable Node.js launchers. Its scientific workflow definitions are included as source; analysis dependencies are configured through `analysis/`. A release recipe is rendered from the real tagged `.tar.gz` and its SHA-256 using `scripts/render-bioconda.cjs`. The local-source CI recipe is a build check rather than the submitted recipe. Channel availability is recorded after upstream acceptance.
+The [Bioconda template](../packaging/bioconda/README.md) installs the static workstation and relocatable Node.js launchers. Its scientific workflow definitions are included as source; analysis dependencies are configured through `analysis/`. A release recipe is rendered from the real tagged `.tar.gz` and its SHA-256 using `packaging/render-bioconda.cjs`. The local-source CI recipe is a build check rather than the submitted recipe. Channel availability is recorded after upstream acceptance.
 
 ## Authorship and terms
 

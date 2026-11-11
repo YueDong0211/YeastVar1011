@@ -30,58 +30,12 @@ jobs:
         with:
           node-version: '24'
           cache: npm
-      - run: npm ci
-      - run: npm run check
-      - run: node research/qa-release-identity.cjs
-      - run: npm run test:source
-      - run: npm run test:server
-      - run: npm run test:public
-      - run: node research/qa-local-model-lifecycle-v22.cjs
-      - run: node research/qa-input-contracts-v22.cjs
-      - run: node research/qa-assistant-context-v24.cjs
-      - run: node research/qa-modal-marker-logic.cjs
-      - run: node research/qa-csl-publication-types-v24.cjs
-      - run: node research/qa-marker-metadata.cjs
-      - run: node research/qa-database-hub-v24.cjs
-      - run: node research/qa-marker-usability-v25.cjs
-      - run: node research/qa-marker-evidence-v25.cjs
-      - run: node research/qa-workflow-continuity-v25b.cjs
-      - run: node research/qa-marker-import-v25b.cjs
-      - run: node research/qa-marker-tag-families-v25b.cjs
-      - run: node research/qa-marker-source-context-v25b.cjs
-      - run: node research/qa-qc-branch-inputs-v25b.cjs
-      - run: node research/qa-evidence-identities-v25c.cjs
-      - run: node research/qa-evidence-selection-v25c.cjs
-      - run: node research/qa-marker-v25c.cjs
-      - run: node research/qa-method-boundaries-v25c.cjs
-      - run: node research/qa-population-v25c.cjs
-      - run: node research/qa-marker-regressions-v25d.cjs
-      - run: node research/qa-marker-v25d.cjs
-      - run: node research/qa-plan-contracts-v25d.cjs
-      - run: node research/qa-method-scroll-v25d.cjs
-      - run: node research/qa-contract-catalogue-v25d.cjs
-      - run: node research/qa-h02-adversarial-v25d.cjs
-      - run: node research/qa-qtl-ui-v25e.cjs
-      - run: node research/qa-qtl-catalogue-v25e.cjs
-      - run: node research/qa-reference-library-v26.cjs
-      - run: node research/qa-marker-ux-v26.cjs
-      - run: node research/qa-marker-filters-v27.cjs
-      - run: node research/qa-evolution-core-v29.cjs
-      - run: node research/qa-analysis-linking-v30.cjs
-      - run: node research/qa-evolution-catalogue-v30.cjs
-      - run: node research/qa-evolution-ui-v29.cjs
-      - run: node research/v25-methods-test.cjs
-      - run: node research/qa-database-preparation-v25.cjs
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python research/qa-catalogue-versioning.py
-      - run: python research/qa-analysis-package.py
-      - name: Assistant interface and catalogue integration
-        run: |
-          PORT=4173 node scripts/dev-server.cjs &
-          YV_TEST_URL=http://127.0.0.1:4173/ node research/qa-assistant-ui-v22.cjs
-          YV_TEST_URL=http://127.0.0.1:4173/ node research/qa-cluster-v21.cjs
+      - run: npm ci
+      - name: Run all maintained validation suites
+        run: npm run test:ci
 
   compatibility:
     strategy:
@@ -95,8 +49,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-      - run: node scripts/qa-doctor.cjs
-      - run: node research/qa-dev-server.cjs
+      - run: npm run test:runtime
       - if: runner.os != 'Windows'
         run: sh scripts/setup.sh --port 0
       - if: runner.os == 'Windows'
@@ -104,7 +57,7 @@ jobs:
         shell: pwsh
       - name: Verify extracted Windows portable package
         if: runner.os == 'Windows' && matrix.node == '24'
-        run: ./research/qa-portable-package.ps1
+        run: npm run test:portable
         shell: pwsh
 
   deploy:

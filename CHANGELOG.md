@@ -1,5 +1,13 @@
 # Changelog
 
+## Repository maintenance (unreleased)
+
+- Separate runtime scripts, regression tests, packaging tools and research evidence.
+- Replace repeated CI invocations and background-server setup with a shared suite runner.
+- Confine test output and portable runtime state to the workstation directory.
+- Remove six completed catalogue migration scripts from the working tree; retain their history and source evidence.
+- Complete the Bioconda runtime-license inventory and use a fixed browser-test image.
+
 ## Local ProjectLocal distribution — 2026-11-09
 
 - Keep Windows port preferences, instance state, logs and compiler temporary files in `.yeastvar-local/` beside the program.

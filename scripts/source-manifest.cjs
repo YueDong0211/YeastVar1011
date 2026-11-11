@@ -11,7 +11,7 @@ const TOP = [
   'biotools.json', 'CHANGELOG.md', 'CITATION.cff', 'codemeta.json',
   'CONTRIBUTING.md', 'CREATE-SHORTCUT.cmd', 'DATA_SOURCES.md', 'dist', 'docs',
   'LICENSE', 'package.json', 'package-lock.json', 'packaging', 'portable',
-  'README.md', 'research', 'scripts', 'START.cmd', 'STOP.cmd',
+  'README.md', 'research', 'scripts', 'tests', 'START.cmd', 'STOP.cmd',
   'THIRD_PARTY_NOTICES.md'
 ];
 const SKIP_DIRS = new Set(['__pycache__', '.snakemake', '.venv', 'work', 'logs', '.pytest_cache', 'cache']);

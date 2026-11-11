@@ -26,13 +26,13 @@
     },
     {
       "path": ".github/workflows/bioconda-package.yml",
-      "bytes": 2059,
-      "sha256": "ca6ae2272139c9af085fcb8a44ce15733ccc2b646681a65d3733dd0a7d185cc8"
+      "bytes": 2043,
+      "sha256": "3b1899c1d0263fe75c4d6378a7dc4c4f6c0b4dfe398b9cee0cef8f16cf005c91"
     },
     {
       "path": ".github/workflows/pages.yml",
-      "bytes": 4685,
-      "sha256": "d9a848334657434577fc8d71710892abb27b7ad9d07e4d84f75a703d9661ed37"
+      "bytes": 2175,
+      "sha256": "2afbe30329fa9844012d18d7a78fbf791be8506d360afd057fef093256aee214"
     },
     {
       "path": ".gitignore",
@@ -46,8 +46,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 2261,
-      "sha256": "b63160f097fc986d65b9e4474806dd9d4a390fb801e5e21fd20db43280c0e6f2"
+      "bytes": 2758,
+      "sha256": "0da65ad325208a251f8ee72f497b0eef901e0fea7f590b78d9858eea05ea87f0"
     },
     {
       "path": "CITATION.cff",
@@ -56,8 +56,8 @@
     },
     {
       "path": "CONTRIBUTING.md",
-      "bytes": 2417,
-      "sha256": "085c533e84bf3ee6a6b6bde0443b1e8845e3df7cef34af83579c4c715a21eb92"
+      "bytes": 2508,
+      "sha256": "0dc90597ba2b13507990748ab40d5f65dabf4703e611029e46da2b046d8ae4a0"
     },
     {
       "path": "CREATE-SHORTCUT.cmd",
@@ -76,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 9246,
-      "sha256": "dbbe5190a6be94f60141eeb091f84c302db3fbe44160af7f09b06b454405665a"
+      "bytes": 9961,
+      "sha256": "f8f5bde37fc59b3bbeeb87f9f63f418c7ea96de51f4b1b8823bdbe79fb84640a"
     },
     {
       "path": "START.cmd",
@@ -1621,38 +1621,38 @@
     },
     {
       "path": "docs/ARCHITECTURE.md",
-      "bytes": 3855,
-      "sha256": "2f5b478d633c86c9ae4b5fa9a08389949b12d638197d0e6a76b68fb4ccee067a"
+      "bytes": 5015,
+      "sha256": "aa1216fb8b0f936942f8a37b395e56bc771566753c24d47adacf81d11db65aaa"
     },
     {
       "path": "docs/DATABASE_RESOURCES.md",
-      "bytes": 15281,
-      "sha256": "54e3638985e06ccaeb3e03a7a5c4873ee7f784f95f01112489a7593780b5b5d0"
+      "bytes": 15275,
+      "sha256": "ecbb3fe827361165b5e40b148f5edd74881d153bde4a0a0c0a3a23970d2a23a9"
     },
     {
       "path": "docs/DEPLOYMENT.md",
-      "bytes": 5251,
-      "sha256": "4f3e0d964f5d47b9cc56ef0b95f3f3ada367b5dd81f9a532a4775c97da5291a4"
+      "bytes": 5243,
+      "sha256": "312226c9ddfb53e1e27a54e0baa315022dd719f40aff4f65514163bb60514fcd"
     },
     {
       "path": "docs/LITERATURE_SEARCH_V25.md",
-      "bytes": 8601,
-      "sha256": "7f6612bb3a30a5c8a9a6e36a36aafe44df9f4dd4e6c643b28e559d9a343c74ac"
+      "bytes": 8613,
+      "sha256": "bb6e565f49f4baeda88400d14a2b69883fcd0b71351494a3eb8c87bf6884f139"
     },
     {
       "path": "docs/LOCAL_ASSISTANT.md",
       "bytes": 15206,
-      "sha256": "57758cc924030909d0596679bea54417d3655b5a6fb92a1a3bf29ee59ca84f1d"
+      "sha256": "9f938c93d4ab0ccd8da222cb01c69d1be6f37de55374d2776044a2f3f9c9d398"
     },
     {
       "path": "docs/MARKER_LIBRARY_V25.md",
-      "bytes": 10128,
-      "sha256": "7cafa5afdb4a2e720f4edf7251053ad602f010e96244ba751592ff5e426ba94c"
+      "bytes": 10137,
+      "sha256": "8ff381e325b589ae402ed468e101254d701861060d75951cc6f62a20ab670aae"
     },
     {
       "path": "docs/PUBLISHING.md",
-      "bytes": 4483,
-      "sha256": "5fe6a2ca4e8993d1f08a141047983568674f920e86fc70db5e3674b062d8e8df"
+      "bytes": 4485,
+      "sha256": "4db14c0b88043834a03e06afb78cc2b90c0358ac33145929f7e44d9ab0723c35"
     },
     {
       "path": "docs/RELEASES.md",
@@ -1661,13 +1661,13 @@
     },
     {
       "path": "docs/RESEARCH_COVERAGE_V25.md",
-      "bytes": 29869,
-      "sha256": "b1e4d2522f3b3cb7659c103c85210d3b6ba0752130901f4f612c784e3915c623"
+      "bytes": 29912,
+      "sha256": "cf502f3420f1984cfe787aa0b0618e88adc0c50e114a2ff5b2b6e4f3a4b6bc5f"
     },
     {
       "path": "docs/RESEARCH_UPDATE_V24.md",
-      "bytes": 9640,
-      "sha256": "763b4ac050800c6a372fd4164a30499848978b425c47c547b98bd571cc51c016"
+      "bytes": 9653,
+      "sha256": "9bd7dd12df18c986a8e50a9775507684a8ba6309b0f1b24ad0ea6aee269c2536"
     },
     {
       "path": "docs/RESEARCH_UPDATE_v22.md",
@@ -1701,13 +1701,13 @@
     },
     {
       "path": "package.json",
-      "bytes": 1482,
-      "sha256": "9ef9572c4b0a89435413e914a8da46e2ac3955a5daea136b1e54de1e66de0f07"
+      "bytes": 2184,
+      "sha256": "2e75a68e38fe446ddbeade0cb9f672c75855c4f894250e607052dfffa55797e3"
     },
     {
       "path": "packaging/bioconda/README.md",
-      "bytes": 5957,
-      "sha256": "3320953fecb154ba0dba45ab1b2fb04ce39e69d5d43ef446979ed57f48ff3e5d"
+      "bytes": 5959,
+      "sha256": "121d536e16aecc1ad03e22064e98c1c7c5d06fc79d019e98fb5946c0d2209ac3"
     },
     {
       "path": "packaging/bioconda/build.sh",
@@ -1733,6 +1733,26 @@
       "path": "packaging/bioconda/yeastvar1011.cjs",
       "bytes": 1230,
       "sha256": "7faefedf87fd0536caa468d697ac5a7356e402b6a4fb1b44eff8636f1adf5e4d"
+    },
+    {
+      "path": "packaging/package-analysis.py",
+      "bytes": 1840,
+      "sha256": "dc302ee4c94c54d35170da17a16f453e53930fb7bea0bd2ad884242c721d6274"
+    },
+    {
+      "path": "packaging/package-portable.ps1",
+      "bytes": 4229,
+      "sha256": "08c246d8d40aaa2c3c1c7ab78659d699fbd64e00f425cb2503721aadb95c53e0"
+    },
+    {
+      "path": "packaging/package-source.py",
+      "bytes": 2831,
+      "sha256": "16c8a7d928664ab89dc4a61dcf98c1c3d56be9069989beed84fae50a153a7b94"
+    },
+    {
+      "path": "packaging/render-bioconda.cjs",
+      "bytes": 6470,
+      "sha256": "2c4bb8366724a830b3c1ea13800f34295a1ba99f1a7e2696d4256c44f55b9f52"
     },
     {
       "path": "portable/Common.ps1",
@@ -1780,329 +1800,79 @@
       "sha256": "05588d9c507308fd40d3fa8d0e32497957ddc561f87d14c2ef99d49e9ca1a700"
     },
     {
-      "path": "research/add-evolution-catalogue-v30.py",
-      "bytes": 30606,
-      "sha256": "0843acaed2c79821b3cee9d4419138e957492a96f348ef0d536c7f83b6f1b169"
+      "path": "research/README.md",
+      "bytes": 1093,
+      "sha256": "e208d9852f6d8c7c47ce4429cf017514f424cd6e42d6ae9f259941a366a93c23"
     },
     {
-      "path": "research/add-evolution-core-v29.cjs",
-      "bytes": 38971,
-      "sha256": "d0e40c92331a2e95b8390bfd72c0afb48192b2ac419b25b042850b78d8ee6209"
-    },
-    {
-      "path": "research/add-evolution-references-v29.py",
-      "bytes": 7909,
-      "sha256": "29a014c05494927dbdf574e19ecb242ca9e9a66401515760e6dc46b6fb4b863e"
-    },
-    {
-      "path": "research/add-evolution-references-v30.py",
-      "bytes": 8633,
-      "sha256": "084f118221e3274457328f99ed6325c6b8e31b2c83a56dfcadf0140ed67e30c9"
-    },
-    {
-      "path": "research/check_site.cjs",
-      "bytes": 2154,
-      "sha256": "0a2a12a61e86f52ca8fa9fd2b2eab11dbf04993c6e3b059904e1caac3e3b1402"
-    },
-    {
-      "path": "research/evolution-references-v29.json",
+      "path": "research/evidence/evolution-references-v29.json",
       "bytes": 29720,
       "sha256": "b3793e8e127f705c3099dea65f55891189afebb141327639b5e7e3e27e5e36b2"
     },
     {
-      "path": "research/evolution-references-v30.json",
+      "path": "research/evidence/evolution-references-v30.json",
       "bytes": 12144,
       "sha256": "a8a4533003475f68660f6422ea2fce68c4dd95ad618a5eee94e7203db71101f9"
     },
     {
-      "path": "research/package-portable.ps1",
-      "bytes": 4229,
-      "sha256": "08c246d8d40aaa2c3c1c7ab78659d699fbd64e00f425cb2503721aadb95c53e0"
-    },
-    {
-      "path": "research/qa-analysis-linking-v30.cjs",
-      "bytes": 17667,
-      "sha256": "53fb1158f1e8c7d9b2e641f1242c33d1435263e722dee818e34daef7e1899fd0"
-    },
-    {
-      "path": "research/qa-analysis-package.py",
-      "bytes": 1471,
-      "sha256": "069bb8e29e36fdc8966434cd7461d0eacf10db43ef807f0e9665fca5a3f4fd12"
-    },
-    {
-      "path": "research/qa-assistant-context-v24.cjs",
-      "bytes": 16730,
-      "sha256": "c724e974b7caecc464c6afbd783c6e19f566b1bc234dd9cba86cd07a4eb5f994"
-    },
-    {
-      "path": "research/qa-assistant-ui-v22.cjs",
-      "bytes": 16093,
-      "sha256": "679f7b0cb9be57d2f6e26b184889e1dc2e85ab2af98fab95d037d2aa2f90bfd8"
-    },
-    {
-      "path": "research/qa-catalogue-versioning.py",
-      "bytes": 1692,
-      "sha256": "85bc6a33af0275d80c47668ee5506412f3a49ab78a4115765d8d673b0b6cfa9f"
-    },
-    {
-      "path": "research/qa-cluster-v21.cjs",
-      "bytes": 13239,
-      "sha256": "1519797e3346ade1200cdf9b23e76f2c73e7205734fa8ea6cb48f383a6877fb2"
-    },
-    {
-      "path": "research/qa-contract-catalogue-v25d.cjs",
-      "bytes": 36707,
-      "sha256": "4def1f534abe98b3b6cd06bc3bc75c24d213c770575af815ad26eae3261fe291"
-    },
-    {
-      "path": "research/qa-csl-publication-types-v24.cjs",
-      "bytes": 4773,
-      "sha256": "253abaf0ba94d6e414f2a99c8682a623ad8621b8e9f99808d4b667e29e9ee8d3"
-    },
-    {
-      "path": "research/qa-database-hub-v24.cjs",
-      "bytes": 6293,
-      "sha256": "8bd8689c404f19dfed46890b750deb45e0b1d09984e892ec8c9a992af1e51a9d"
-    },
-    {
-      "path": "research/qa-database-preparation-v25.cjs",
-      "bytes": 4621,
-      "sha256": "bac71c013d0c46269e02deb36115ccae9d64b6056cf49d5c19dbb12d7b0abdbf"
-    },
-    {
-      "path": "research/qa-dev-server.cjs",
-      "bytes": 15681,
-      "sha256": "0aed4097d3ae06e27d3f0b84802d4f1fc131f91e47f96db1d5fc0815ecac79fc"
-    },
-    {
-      "path": "research/qa-evidence-identities-v25c.cjs",
-      "bytes": 1866,
-      "sha256": "96443187a5e201a4c5191c708c956f9a1a30451645455ba9f88526f4deb336ed"
-    },
-    {
-      "path": "research/qa-evidence-selection-v25c.cjs",
-      "bytes": 21943,
-      "sha256": "27c0c13cf0cbbfbc39addd6e6249b491535414b4db4c91f6968928e15dbfd3bd"
-    },
-    {
-      "path": "research/qa-evolution-catalogue-v30.cjs",
-      "bytes": 3830,
-      "sha256": "1568380496f5fcef9c788af875be92c1b8969b590b875b153d8e16bc5693175f"
-    },
-    {
-      "path": "research/qa-evolution-core-v29.cjs",
-      "bytes": 9728,
-      "sha256": "5ab0f36788decb10dd18ecb0f83a672f14876cf01963e594b8fb9bd7255e9238"
-    },
-    {
-      "path": "research/qa-evolution-ui-v29.cjs",
-      "bytes": 23019,
-      "sha256": "7bfcf1b8f4d41756ccbc58deb6dfecdad71e06dc7289d01247b7d4bdcb2211b8"
-    },
-    {
-      "path": "research/qa-h02-adversarial-v25d.cjs",
-      "bytes": 15526,
-      "sha256": "db02f6e3b416d6b23c4293a4ca9976006f10118b0f83bf93b104adb6b96202bd"
-    },
-    {
-      "path": "research/qa-input-contracts-v22.cjs",
-      "bytes": 11393,
-      "sha256": "8a265d3c6363fa494ef7bb925305a07cd5e4172dab6cc66d4fd88634b7bb101a"
-    },
-    {
-      "path": "research/qa-local-model-lifecycle-v22.cjs",
-      "bytes": 20541,
-      "sha256": "a4de3bbae2afaf790249564e8d72abb348dd5eaaac417c42ebc8a73b5d045894"
-    },
-    {
-      "path": "research/qa-local-model-v22.cjs",
-      "bytes": 6134,
-      "sha256": "7c3d5f4ec1423d9ffbe4bf61f88480d2437ad715a8d922be57f7857df96f019b"
-    },
-    {
-      "path": "research/qa-marker-evidence-v25.cjs",
-      "bytes": 3623,
-      "sha256": "23c443967cca3b97dce3f53740bdaf8ece66c0f11a9a9f5cfa12ce5a7827545d"
-    },
-    {
-      "path": "research/qa-marker-filters-v27.cjs",
-      "bytes": 8173,
-      "sha256": "bff03ea96055d9db61f1e3006c98895677a647bc276e0929c8030dd94812dff1"
-    },
-    {
-      "path": "research/qa-marker-import-v25b.cjs",
-      "bytes": 10453,
-      "sha256": "a317df7b10d62fbec875b57cd7003d363ab4dfc6d9be553ef00e3be44429a9c2"
-    },
-    {
-      "path": "research/qa-marker-metadata.cjs",
-      "bytes": 9799,
-      "sha256": "f1f4083f541f9c11eb0d83b97c4a323acdd3cc5659098ef4ed45da64363c3df1"
-    },
-    {
-      "path": "research/qa-marker-regressions-v25d.cjs",
-      "bytes": 11233,
-      "sha256": "22071172a5daf64971c1a4d492c98c37aed55abdf1fdb10a7e419d1af46156ee"
-    },
-    {
-      "path": "research/qa-marker-source-context-v25b.cjs",
-      "bytes": 2341,
-      "sha256": "c2694f5c71508b595d68217dc8f5943bf716a9afe036061ab49d4e56581964a0"
-    },
-    {
-      "path": "research/qa-marker-tag-families-v25b.cjs",
-      "bytes": 9006,
-      "sha256": "87bbc55384d392ba047c30a259be42dd7236a12a0346badde4ba39b258d4e7ea"
-    },
-    {
-      "path": "research/qa-marker-usability-v25.cjs",
-      "bytes": 16712,
-      "sha256": "cfd4a14629d293f454eee25b67784fd4c5331f3bc20a22fc9ea3fa0834aba411"
-    },
-    {
-      "path": "research/qa-marker-ux-v26.cjs",
-      "bytes": 5211,
-      "sha256": "6a3d2591c70a9f4884cce8c27acfafdf0b464c763f9dca3192f90c8d398f56a3"
-    },
-    {
-      "path": "research/qa-marker-v25c.cjs",
-      "bytes": 13790,
-      "sha256": "b287f1d926279bd18bd0333ddeff7a4da697518ad524f83bda97ff7c79fb8c82"
-    },
-    {
-      "path": "research/qa-marker-v25d.cjs",
-      "bytes": 7639,
-      "sha256": "307f1295188ec6d692aaa2502b01a0f2977e66e41202b2ed18bc83db646ae3b5"
-    },
-    {
-      "path": "research/qa-method-boundaries-v25c.cjs",
-      "bytes": 11347,
-      "sha256": "2e892d82121eecf5f2bb502a720fe27bdca8f3c3e107fe8bd1df87e157efc5d1"
-    },
-    {
-      "path": "research/qa-method-scroll-v25d.cjs",
-      "bytes": 4184,
-      "sha256": "d44061e259149871314e47df69f8f733387e5884d0601ad8b3e1017a1d9ec0d2"
-    },
-    {
-      "path": "research/qa-modal-marker-logic.cjs",
-      "bytes": 22788,
-      "sha256": "7d76cd7b24f4ec91fe15085acdb99b4c986aa5968fbd14201170369dff58bbab"
-    },
-    {
-      "path": "research/qa-plan-contracts-v25d.cjs",
-      "bytes": 22662,
-      "sha256": "09828d29acc7dfc2a23d0f6bed9b41e640817f653e33c36b92b141fdddbba9ba"
-    },
-    {
-      "path": "research/qa-population-v25c.cjs",
-      "bytes": 40347,
-      "sha256": "c9ddb8ccadd796d63c78d63b034b1228dbfd8b0144c5e14fe23d22b4cdcf45e5"
-    },
-    {
-      "path": "research/qa-portable-package.ps1",
-      "bytes": 14911,
-      "sha256": "6bc5b3756343b2eb9b801be5cf0a3ad1ac07e177b7dddc6e9fbd83f24d8a1a44"
-    },
-    {
-      "path": "research/qa-qc-branch-inputs-v25b.cjs",
-      "bytes": 4042,
-      "sha256": "64053dae48e2769513562833158574a8a0c45e2d0e7338b5f181992e6321211b"
-    },
-    {
-      "path": "research/qa-qtl-catalogue-v25e.cjs",
-      "bytes": 4072,
-      "sha256": "dcb9e717566ed81bd6327a4e60d053b9a7e0b51eb2131ee98fd82fe78acb1735"
-    },
-    {
-      "path": "research/qa-qtl-ui-v25e.cjs",
-      "bytes": 11169,
-      "sha256": "aee8c8e6d18a32e3877ba952ccfed36635633ca41f8e1e132a1703f14f11bab1"
-    },
-    {
-      "path": "research/qa-reference-library-v26.cjs",
-      "bytes": 8703,
-      "sha256": "35979815443784e122e620879028d8c023d42d27674d2dc94a7e9f0a3b6b93da"
-    },
-    {
-      "path": "research/qa-release-identity.cjs",
-      "bytes": 2665,
-      "sha256": "71871103bac6bac4cfec128bd0f2927ecf15c36197cc10f8e6ef4bd30745bc9b"
-    },
-    {
-      "path": "research/qa-workflow-continuity-v25b.cjs",
-      "bytes": 7622,
-      "sha256": "6ae1a1446915ee26492f036d4d98fe29ffb8f9bb9b3f32d2a2ea089bd01bfc73"
-    },
-    {
-      "path": "research/v24_research_additions.cjs",
-      "bytes": 86732,
-      "sha256": "cb7e504fbd06608740ca13c6c05a607867b5932a08e2673199e44948aaa9460b"
-    },
-    {
-      "path": "research/v25-literature-corpus.json",
+      "path": "research/evidence/v25-literature-corpus.json",
       "bytes": 3950785,
       "sha256": "3e9f85b7bcd04f47e1a5bbbb6614166f86f5dc06a62061d03213b3fda9aeed0c"
     },
     {
-      "path": "research/v25-literature-discovery.py",
-      "bytes": 48286,
-      "sha256": "02c9bc4300c5a3ef338f80e0ad1fe405515a6178d9740676aa50a6a58700c7bd"
-    },
-    {
-      "path": "research/v25-marker-audit.json",
+      "path": "research/evidence/v25-marker-audit.json",
       "bytes": 5456,
       "sha256": "4222d28dc6b9ed4e45d513dddaa9999b81a271b1194119e774155879873cf401"
     },
     {
-      "path": "research/v25-marker-legacy-metadata-proposals.json",
+      "path": "research/evidence/v25-marker-legacy-metadata-proposals.json",
       "bytes": 2311,
       "sha256": "afc36220779e9fe93fbd1dff46bf757c8309b0776ba4453f243a632f488aac57"
     },
     {
-      "path": "research/v25-marker-manifest.json",
+      "path": "research/evidence/v25-marker-manifest.json",
       "bytes": 25110,
       "sha256": "0ddbacadf217d3c30290fb31ebcbeb30f1978d3f7827e4e919318953f60cc4da"
     },
     {
-      "path": "research/v25-methods-api-signatures.json",
+      "path": "research/evidence/v25-methods-api-signatures.json",
       "bytes": 12502,
       "sha256": "ec0d4f465a1780e9812646f6f6e090343e667f239d83a373727b572c459ddd1f"
     },
     {
-      "path": "research/v25-methods-inventory.json",
+      "path": "research/evidence/v25-methods-inventory.json",
       "bytes": 39869,
       "sha256": "3750f23d9011fa27b07d7de6303810d84a94d2e7c4aac68f95e6c8ccd258a897"
     },
     {
-      "path": "research/v25-methods-proposals.json",
+      "path": "research/evidence/v25-methods-proposals.json",
       "bytes": 89014,
       "sha256": "228b9fc46c1308131ef388fa71e72bca2cb3b126eb4a56ac2e8adfc9848416d1"
     },
     {
-      "path": "research/v25-methods-source-audit.json",
+      "path": "research/evidence/v25-methods-source-audit.json",
       "bytes": 95834,
       "sha256": "bb642acf3a2620b1f28feb9f5bff99ff5813cead70583a6e5ccc62c24919caab"
     },
     {
-      "path": "research/v25-methods-test.cjs",
-      "bytes": 8134,
-      "sha256": "a60501f33eb7a461883a2310ffba522ca92d643cd0583e7162b41e1db8cf4f83"
-    },
-    {
-      "path": "research/v25b-marker-proposals.json",
+      "path": "research/evidence/v25b-marker-proposals.json",
       "bytes": 296099,
       "sha256": "d35d198e0bfcc12a0869afba6bb5a20bbbb812c1ed51ba0d8abc31a3b1d0d899"
     },
     {
-      "path": "research/write-evolution-recipes-v30.py",
-      "bytes": 18655,
-      "sha256": "f9f4aac620381276d18d5d9fe568eb5ea3d3e2a329fb1f962cb1a29f25598cfa"
+      "path": "research/tools/v25-literature-discovery.py",
+      "bytes": 48316,
+      "sha256": "ba8b1f7d9c3e3bdbed7c92cdffc8353d2b0b3e17de96cd4ddc53aeb0fccdda62"
     },
     {
-      "path": "research/write_catalogue_assets.py",
+      "path": "research/tools/write_catalogue_assets.py",
       "bytes": 4163,
-      "sha256": "99da13cb4fe7b9ef3aa9dec85065549fc08a11b075b63c6ff6fba49102422da3"
+      "sha256": "5db671b54edd49da7f07828ee6e120512fde111e3b67c510a96e52211f13b9aa"
+    },
+    {
+      "path": "scripts/check-site.cjs",
+      "bytes": 2154,
+      "sha256": "0a2a12a61e86f52ca8fa9fd2b2eab11dbf04993c6e3b059904e1caac3e3b1402"
     },
     {
       "path": "scripts/dev-server.cjs",
@@ -2115,29 +1885,9 @@
       "sha256": "1ea6532a8c7c195ea852d11599bfd85cb4d9aad51a0d2cfa3ef098a9da474ca1"
     },
     {
-      "path": "scripts/package-analysis.py",
-      "bytes": 1840,
-      "sha256": "dc302ee4c94c54d35170da17a16f453e53930fb7bea0bd2ad884242c721d6274"
-    },
-    {
-      "path": "scripts/package-source.py",
-      "bytes": 2529,
-      "sha256": "a88ceefa1cf783790fa77efcaf2bb9fa4091a43055bcb239e3507f308f992e06"
-    },
-    {
       "path": "scripts/prepare-public.cjs",
       "bytes": 1090,
       "sha256": "58a70889a39fd4f954bb20b62c869ea767392b7c04ad5624c1c66df85d8a954a"
-    },
-    {
-      "path": "scripts/qa-doctor.cjs",
-      "bytes": 4046,
-      "sha256": "29ba0e5ca7ef2417c62d3de5f8a556f478e80d4b59b234833ae744ad941db6c3"
-    },
-    {
-      "path": "scripts/render-bioconda.cjs",
-      "bytes": 6466,
-      "sha256": "22ebe565c2bbcd84b54625a5c160451ca97ea612aa901244a82e38b26d7a4d21"
     },
     {
       "path": "scripts/setup.ps1",
@@ -2150,14 +1900,254 @@
       "sha256": "b4d555753234a423d8429f25b06133e5943733b63725fdeba677e5fc6ba43812"
     },
     {
-      "path": "scripts/smoke-public.cjs",
-      "bytes": 24581,
-      "sha256": "4c4b7b277cece68b2794e4fdaa2f7e3e7d41bd332fcfaff331ed41a1e915cad6"
+      "path": "scripts/source-manifest.cjs",
+      "bytes": 4278,
+      "sha256": "37a1724d3d4f4cbb92057149c6d9b58678f3db0195b252c418b50b5c2281b5e4"
     },
     {
-      "path": "scripts/source-manifest.cjs",
-      "bytes": 4269,
-      "sha256": "d3d96270c484f516d90d320097a6a519802fe0c3d053a5ababc30051257d0711"
+      "path": "scripts/test.cjs",
+      "bytes": 5785,
+      "sha256": "acc8797a321a1fe692eefa89e8b24e027a9a40b34596bdad4020115406a1b4e0"
+    },
+    {
+      "path": "tests/README.md",
+      "bytes": 1513,
+      "sha256": "d3b3647f71f8653c5d3353edc1257510a593e8f7a41b51c850be5fb9aa9bd08e"
+    },
+    {
+      "path": "tests/qa-analysis-linking-v30.cjs",
+      "bytes": 17667,
+      "sha256": "53fb1158f1e8c7d9b2e641f1242c33d1435263e722dee818e34daef7e1899fd0"
+    },
+    {
+      "path": "tests/qa-analysis-package.py",
+      "bytes": 1471,
+      "sha256": "069bb8e29e36fdc8966434cd7461d0eacf10db43ef807f0e9665fca5a3f4fd12"
+    },
+    {
+      "path": "tests/qa-assistant-context-v24.cjs",
+      "bytes": 16730,
+      "sha256": "c724e974b7caecc464c6afbd783c6e19f566b1bc234dd9cba86cd07a4eb5f994"
+    },
+    {
+      "path": "tests/qa-assistant-ui-v22.cjs",
+      "bytes": 16147,
+      "sha256": "f4ff7b74e67888eac183430ed8f1f22ba6c0310b8bc0e9042591958f47d37882"
+    },
+    {
+      "path": "tests/qa-catalogue-versioning.py",
+      "bytes": 1818,
+      "sha256": "5194e13b30af775717ec6122b977261279d18b94121c6977bd27d331e8ac2df1"
+    },
+    {
+      "path": "tests/qa-cluster-v21.cjs",
+      "bytes": 13288,
+      "sha256": "7067b8ef80764d1a9d3d00e08316ade2006ad741929f2739c129b721f6a8fe1f"
+    },
+    {
+      "path": "tests/qa-contract-catalogue-v25d.cjs",
+      "bytes": 36707,
+      "sha256": "4def1f534abe98b3b6cd06bc3bc75c24d213c770575af815ad26eae3261fe291"
+    },
+    {
+      "path": "tests/qa-csl-publication-types-v24.cjs",
+      "bytes": 4773,
+      "sha256": "253abaf0ba94d6e414f2a99c8682a623ad8621b8e9f99808d4b667e29e9ee8d3"
+    },
+    {
+      "path": "tests/qa-database-hub-v24.cjs",
+      "bytes": 6293,
+      "sha256": "8bd8689c404f19dfed46890b750deb45e0b1d09984e892ec8c9a992af1e51a9d"
+    },
+    {
+      "path": "tests/qa-database-preparation-v25.cjs",
+      "bytes": 4621,
+      "sha256": "bac71c013d0c46269e02deb36115ccae9d64b6056cf49d5c19dbb12d7b0abdbf"
+    },
+    {
+      "path": "tests/qa-dev-server.cjs",
+      "bytes": 15681,
+      "sha256": "0aed4097d3ae06e27d3f0b84802d4f1fc131f91e47f96db1d5fc0815ecac79fc"
+    },
+    {
+      "path": "tests/qa-doctor.cjs",
+      "bytes": 4055,
+      "sha256": "c7855036dbf560c500d266d90af56f37cb2f68c3b616b2018980db46e5f69f68"
+    },
+    {
+      "path": "tests/qa-evidence-identities-v25c.cjs",
+      "bytes": 1866,
+      "sha256": "96443187a5e201a4c5191c708c956f9a1a30451645455ba9f88526f4deb336ed"
+    },
+    {
+      "path": "tests/qa-evidence-selection-v25c.cjs",
+      "bytes": 21943,
+      "sha256": "27c0c13cf0cbbfbc39addd6e6249b491535414b4db4c91f6968928e15dbfd3bd"
+    },
+    {
+      "path": "tests/qa-evolution-catalogue-v30.cjs",
+      "bytes": 3830,
+      "sha256": "1568380496f5fcef9c788af875be92c1b8969b590b875b153d8e16bc5693175f"
+    },
+    {
+      "path": "tests/qa-evolution-core-v29.cjs",
+      "bytes": 9728,
+      "sha256": "5ab0f36788decb10dd18ecb0f83a672f14876cf01963e594b8fb9bd7255e9238"
+    },
+    {
+      "path": "tests/qa-evolution-ui-v29.cjs",
+      "bytes": 23019,
+      "sha256": "7bfcf1b8f4d41756ccbc58deb6dfecdad71e06dc7289d01247b7d4bdcb2211b8"
+    },
+    {
+      "path": "tests/qa-h02-adversarial-v25d.cjs",
+      "bytes": 15526,
+      "sha256": "db02f6e3b416d6b23c4293a4ca9976006f10118b0f83bf93b104adb6b96202bd"
+    },
+    {
+      "path": "tests/qa-input-contracts-v22.cjs",
+      "bytes": 11393,
+      "sha256": "8a265d3c6363fa494ef7bb925305a07cd5e4172dab6cc66d4fd88634b7bb101a"
+    },
+    {
+      "path": "tests/qa-local-model-lifecycle-v22.cjs",
+      "bytes": 20541,
+      "sha256": "a4de3bbae2afaf790249564e8d72abb348dd5eaaac417c42ebc8a73b5d045894"
+    },
+    {
+      "path": "tests/qa-local-model-v22.cjs",
+      "bytes": 6149,
+      "sha256": "576ca161766a2f9a88da99a267e9d303a9009483392a84578110d0e90747ad48"
+    },
+    {
+      "path": "tests/qa-marker-evidence-v25.cjs",
+      "bytes": 3623,
+      "sha256": "23c443967cca3b97dce3f53740bdaf8ece66c0f11a9a9f5cfa12ce5a7827545d"
+    },
+    {
+      "path": "tests/qa-marker-filters-v27.cjs",
+      "bytes": 8173,
+      "sha256": "bff03ea96055d9db61f1e3006c98895677a647bc276e0929c8030dd94812dff1"
+    },
+    {
+      "path": "tests/qa-marker-import-v25b.cjs",
+      "bytes": 10453,
+      "sha256": "a317df7b10d62fbec875b57cd7003d363ab4dfc6d9be553ef00e3be44429a9c2"
+    },
+    {
+      "path": "tests/qa-marker-metadata.cjs",
+      "bytes": 9799,
+      "sha256": "f1f4083f541f9c11eb0d83b97c4a323acdd3cc5659098ef4ed45da64363c3df1"
+    },
+    {
+      "path": "tests/qa-marker-regressions-v25d.cjs",
+      "bytes": 11233,
+      "sha256": "22071172a5daf64971c1a4d492c98c37aed55abdf1fdb10a7e419d1af46156ee"
+    },
+    {
+      "path": "tests/qa-marker-source-context-v25b.cjs",
+      "bytes": 2341,
+      "sha256": "c2694f5c71508b595d68217dc8f5943bf716a9afe036061ab49d4e56581964a0"
+    },
+    {
+      "path": "tests/qa-marker-tag-families-v25b.cjs",
+      "bytes": 9015,
+      "sha256": "12cdfc4d1498b7e612792870d7bf118d4df079c08aa3a7351409d641047ef5f0"
+    },
+    {
+      "path": "tests/qa-marker-usability-v25.cjs",
+      "bytes": 16712,
+      "sha256": "cfd4a14629d293f454eee25b67784fd4c5331f3bc20a22fc9ea3fa0834aba411"
+    },
+    {
+      "path": "tests/qa-marker-ux-v26.cjs",
+      "bytes": 5211,
+      "sha256": "6a3d2591c70a9f4884cce8c27acfafdf0b464c763f9dca3192f90c8d398f56a3"
+    },
+    {
+      "path": "tests/qa-marker-v25c.cjs",
+      "bytes": 13790,
+      "sha256": "b287f1d926279bd18bd0333ddeff7a4da697518ad524f83bda97ff7c79fb8c82"
+    },
+    {
+      "path": "tests/qa-marker-v25d.cjs",
+      "bytes": 7639,
+      "sha256": "307f1295188ec6d692aaa2502b01a0f2977e66e41202b2ed18bc83db646ae3b5"
+    },
+    {
+      "path": "tests/qa-method-boundaries-v25c.cjs",
+      "bytes": 11347,
+      "sha256": "2e892d82121eecf5f2bb502a720fe27bdca8f3c3e107fe8bd1df87e157efc5d1"
+    },
+    {
+      "path": "tests/qa-method-scroll-v25d.cjs",
+      "bytes": 4184,
+      "sha256": "d44061e259149871314e47df69f8f733387e5884d0601ad8b3e1017a1d9ec0d2"
+    },
+    {
+      "path": "tests/qa-modal-marker-logic.cjs",
+      "bytes": 22788,
+      "sha256": "7d76cd7b24f4ec91fe15085acdb99b4c986aa5968fbd14201170369dff58bbab"
+    },
+    {
+      "path": "tests/qa-plan-contracts-v25d.cjs",
+      "bytes": 22662,
+      "sha256": "09828d29acc7dfc2a23d0f6bed9b41e640817f653e33c36b92b141fdddbba9ba"
+    },
+    {
+      "path": "tests/qa-population-v25c.cjs",
+      "bytes": 40347,
+      "sha256": "c9ddb8ccadd796d63c78d63b034b1228dbfd8b0144c5e14fe23d22b4cdcf45e5"
+    },
+    {
+      "path": "tests/qa-portable-package.ps1",
+      "bytes": 14912,
+      "sha256": "d265933f5668453ff6ceee49315e18e5006f21ae02c3a897a85af60338d36280"
+    },
+    {
+      "path": "tests/qa-qc-branch-inputs-v25b.cjs",
+      "bytes": 4042,
+      "sha256": "64053dae48e2769513562833158574a8a0c45e2d0e7338b5f181992e6321211b"
+    },
+    {
+      "path": "tests/qa-qtl-catalogue-v25e.cjs",
+      "bytes": 4072,
+      "sha256": "dcb9e717566ed81bd6327a4e60d053b9a7e0b51eb2131ee98fd82fe78acb1735"
+    },
+    {
+      "path": "tests/qa-qtl-ui-v25e.cjs",
+      "bytes": 11169,
+      "sha256": "aee8c8e6d18a32e3877ba952ccfed36635633ca41f8e1e132a1703f14f11bab1"
+    },
+    {
+      "path": "tests/qa-reference-library-v26.cjs",
+      "bytes": 8703,
+      "sha256": "35979815443784e122e620879028d8c023d42d27674d2dc94a7e9f0a3b6b93da"
+    },
+    {
+      "path": "tests/qa-release-identity.cjs",
+      "bytes": 2666,
+      "sha256": "1eb1184b0c435b14d61e2290f30d5311b02ba304d8178c282f7a3788506ed8d4"
+    },
+    {
+      "path": "tests/qa-workflow-continuity-v25b.cjs",
+      "bytes": 7622,
+      "sha256": "6ae1a1446915ee26492f036d4d98fe29ffb8f9bb9b3f32d2a2ea089bd01bfc73"
+    },
+    {
+      "path": "tests/smoke-public.cjs",
+      "bytes": 24584,
+      "sha256": "d27bed1eca83e791bebc844d12e7764d6b121a1d11cb86fdd4541d2e7a11af6f"
+    },
+    {
+      "path": "tests/suites.json",
+      "bytes": 3818,
+      "sha256": "6f2adce5726d12cfd97e84e51ef231358032b1ef8de20de525da7bdc58f074ad"
+    },
+    {
+      "path": "tests/v25-methods-test.cjs",
+      "bytes": 8152,
+      "sha256": "40776660078c7320a1480822783c58c7ce974ed281402f09f4ef68b9aa6a6d2f"
     }
   ]
 }

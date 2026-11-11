@@ -4,7 +4,7 @@ Contributions to the interface, research methods, marker evidence and translatio
 
 ## Start locally
 
-Use Node.js 22 or later. Run `npm ci` and `npm start`, then visit the local address printed by the server. The application in `dist/` runs without compilation. Run `npm run check` and `npm run test:server` before submitting changes.
+Use Node.js 22 or later. Run `npm ci` and `npm start`, then visit the local address printed by the server. The application in `dist/` runs without compilation. Run `npm test` before submitting changes. `npm run test:ci` runs the complete catalogue, browser, Python and interface suite; `npm run test:list` lists its groups.
 
 Open a GitHub issue for a reproducible problem or propose a pull request. Include the page, selected language, browser, steps and expected behaviour. Remove personal information and connection credentials from screenshots and exported plans.
 

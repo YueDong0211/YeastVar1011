@@ -4,7 +4,7 @@
 
 整合后目录为165个工具、309个指标、55条研究路线和224条文献，APA引用表含262个记录。新增129个文本单元提供中文、英文、法文、西班牙文和巴斯克文。现有路线保留，新增方法作为可选分支挂接；实际输入门槛以生产目录中的工具和指标为准。chooseR的培养间稳定性及scPower的试点校准分支已明确要求独立培养。已有数据不足时保留计划，不声称得到分析结果。
 
-验收：`research/v25-methods-test.cjs`检查引用格式、输入门槛、ID关系与五语覆盖；`research/qa-csl-publication-types-v24.cjs`确认既有期刊/预印本类型修正保留。`research/v25-methods-integrate.cjs`仅写指定目录与语言资产，不生成bundle或执行生物学流程。源函数签名存于`research/v25-methods-api-signatures.json`；临时完整源码缓存已移除。
+验收：`tests/v25-methods-test.cjs`检查引用格式、输入门槛、ID关系与五语覆盖；`tests/qa-csl-publication-types-v24.cjs`确认既有期刊/预印本类型修正保留。目录更新在 `dist/data/` 中维护，并由 `research/tools/write_catalogue_assets.py` 同步网络分片与离线目录。源函数签名存于`research/evidence/v25-methods-api-signatures.json`；临时完整源码缓存已移除。
 
 读取时目录含 20 个环节、155 个工具、55 条路线和 213 条文献。差异分布、组成、调控网络、metacell、虚拟扰动、遗传力及进化背景已有主类。本次重点补齐注释/模型校准、重复设计和方法调用，建议并入原有栏目。
 
@@ -389,4 +389,4 @@ power_result <- do.call(scPower::power.general.withDoublets, yeast_pilot_paramet
 
 9个GitHub仓库的当前源码提交已固定在v25-methods-source-audit.json；limma手册确认3.68.5。源API与文献核对不等同于本机安装成功、集群兼容性通过或已完成酵母数据验证。
 
-结构化整合入口：research/v25-methods-proposals.json。原目录清单：research/v25-methods-inventory.json。网络核验收据：research/v25-methods-source-audit.json。
+结构化整合入口：research/evidence/v25-methods-proposals.json。原目录清单：research/evidence/v25-methods-inventory.json。网络核验收据：research/evidence/v25-methods-source-audit.json。

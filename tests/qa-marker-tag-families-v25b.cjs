@@ -3,7 +3,7 @@
 // No browser, network, user storage or production data writes.
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict'),crypto=require('node:crypto');
 const root=path.resolve(__dirname,'..'),read=file=>fs.readFileSync(path.join(root,file),'utf8');
-const proposal=JSON.parse(read('research/v25b-marker-proposals.json'));
+const proposal=JSON.parse(read('research/evidence/v25b-marker-proposals.json'));
 const header=JSON.parse(read('dist/data/markers.json'));
 assert.deepEqual(Object.fromEntries(Object.keys(proposal.tagFamilies).map(tag=>[tag,header.tagFamilies[tag]])),proposal.tagFamilies,'Every v25b mapping must remain exact in production; later releases may append independently tested mappings');
 assert.deepEqual(header.tagFamilyEvidence,proposal.tagFamilyEvidence,'Production retains the mapping provenance');

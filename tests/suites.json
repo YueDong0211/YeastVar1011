@@ -1,0 +1,130 @@
+{
+  "format": "yeastvar1011.test-suites.v1",
+  "groups": {
+    "core": [
+      "check",
+      "release",
+      "source",
+      "runtime"
+    ],
+    "ci": [
+      "check",
+      "release",
+      "source",
+      "runtime",
+      "catalogue",
+      "browser",
+      "python",
+      "integration"
+    ]
+  },
+  "suites": {
+    "check": {
+      "description": "Application syntax and catalogue integrity",
+      "files": [
+        "scripts/check-site.cjs"
+      ]
+    },
+    "source": {
+      "description": "Canonical source inventory",
+      "files": [
+        {
+          "file": "scripts/source-manifest.cjs",
+          "args": [
+            "--check"
+          ]
+        }
+      ]
+    },
+    "release": {
+      "description": "Release identity, downloads and documentation",
+      "files": [
+        "tests/qa-release-identity.cjs"
+      ]
+    },
+    "runtime": {
+      "description": "Environment checker and isolated loopback server",
+      "files": [
+        "tests/qa-doctor.cjs",
+        "tests/qa-dev-server.cjs"
+      ]
+    },
+    "catalogue": {
+      "description": "Marker evidence, methods, references, QTL and evolution regressions",
+      "files": [
+        "tests/qa-analysis-linking-v30.cjs",
+        "tests/qa-assistant-context-v24.cjs",
+        "tests/qa-contract-catalogue-v25d.cjs",
+        "tests/qa-csl-publication-types-v24.cjs",
+        "tests/qa-database-hub-v24.cjs",
+        "tests/qa-database-preparation-v25.cjs",
+        "tests/qa-evidence-identities-v25c.cjs",
+        "tests/qa-evidence-selection-v25c.cjs",
+        "tests/qa-evolution-catalogue-v30.cjs",
+        "tests/qa-evolution-core-v29.cjs",
+        "tests/qa-evolution-ui-v29.cjs",
+        "tests/qa-h02-adversarial-v25d.cjs",
+        "tests/qa-input-contracts-v22.cjs",
+        "tests/qa-local-model-lifecycle-v22.cjs",
+        "tests/qa-marker-evidence-v25.cjs",
+        "tests/qa-marker-filters-v27.cjs",
+        "tests/qa-marker-import-v25b.cjs",
+        "tests/qa-marker-metadata.cjs",
+        "tests/qa-marker-regressions-v25d.cjs",
+        "tests/qa-marker-source-context-v25b.cjs",
+        "tests/qa-marker-tag-families-v25b.cjs",
+        "tests/qa-marker-usability-v25.cjs",
+        "tests/qa-marker-ux-v26.cjs",
+        "tests/qa-marker-v25c.cjs",
+        "tests/qa-marker-v25d.cjs",
+        "tests/qa-method-boundaries-v25c.cjs",
+        "tests/qa-method-scroll-v25d.cjs",
+        "tests/qa-modal-marker-logic.cjs",
+        "tests/qa-plan-contracts-v25d.cjs",
+        "tests/qa-population-v25c.cjs",
+        "tests/qa-qc-branch-inputs-v25b.cjs",
+        "tests/qa-qtl-catalogue-v25e.cjs",
+        "tests/qa-qtl-ui-v25e.cjs",
+        "tests/qa-reference-library-v26.cjs",
+        "tests/qa-workflow-continuity-v25b.cjs",
+        "tests/v25-methods-test.cjs"
+      ]
+    },
+    "browser": {
+      "description": "Real browser routes, responsive layout and controls",
+      "files": [
+        "tests/smoke-public.cjs"
+      ]
+    },
+    "python": {
+      "description": "Catalogue asset versioning and downloadable analysis integrity",
+      "files": [
+        "tests/qa-catalogue-versioning.py",
+        "tests/qa-analysis-package.py"
+      ]
+    },
+    "integration": {
+      "description": "Assistant and cluster interfaces against an isolated server",
+      "server": true,
+      "files": [
+        "tests/qa-assistant-ui-v22.cjs",
+        "tests/qa-cluster-v21.cjs"
+      ]
+    },
+    "windows": {
+      "description": "Extracted Windows package and actual PowerShell launcher",
+      "platform": "win32",
+      "files": [
+        "tests/qa-portable-package.ps1"
+      ]
+    },
+    "model": {
+      "description": "Optional real Qwen inference; downloads weights or uses a verified local cache",
+      "optional": true,
+      "server": true,
+      "files": [
+        "tests/qa-local-model-v22.cjs"
+      ]
+    }
+  }
+}

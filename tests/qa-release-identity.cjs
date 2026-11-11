@@ -18,5 +18,5 @@ assert(ignored.includes('/config.yaml')&&!ignored.includes('config.yaml'),'Priva
 assert(fs.existsSync(path.join(root,'analysis/profiles/slurm/config.yaml')),'The SLURM profile is distributed source');
 const bundle=path.join(root,'dist',release.analysisBundle),bytes=fs.readFileSync(bundle),expected=read('dist/'+release.analysisBundle+'.sha256.txt').trim().split(/\s+/);
 assert.equal(bytes.subarray(0,2).toString(),'PK');assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),expected[0]);assert.equal(expected[1],path.basename(bundle));
-for(const file of ['RELEASES.md','WORKSTATION.md','LOCAL_ASSISTANT.md','DATABASE_RESOURCES.md','DEPLOYMENT.md'])assert(read('research/package-portable.ps1').includes("'"+file+"'"),'Portable documentation: '+file);
+for(const file of ['RELEASES.md','WORKSTATION.md','LOCAL_ASSISTANT.md','DATABASE_RESOURCES.md','DEPLOYMENT.md'])assert(read('packaging/package-portable.ps1').includes("'"+file+"'"),'Portable documentation: '+file);
 console.log(`PASS ${pkg.version}: web, package, citation, CodeMeta and registry metadata agree; versioned analysis download and SHA-256 are valid.`);

@@ -26,7 +26,7 @@ Gasch et al. (2017), Supplementary Table S3, contributes 61 author-panel relatio
 
 Urbonaite et al. (2021) contributes 116 mapped SC3 subgroup-marker relationships and 698 differential RNA relationships. Seven source rows with invalid suffixed identifiers remain unresolved. The source mean/SD/CV table is retained for investigation; its unresolved denominator prevents import into expression-ranking displays. [Article and supplementary data](https://www.nature.com/articles/s42003-021-02320-w).
 
-Together, these imports add 875 relationships across 377 genes, including 12 previously absent SGD-mapped identities. The source manifest preserves original table identifiers, row numbers and hashes. [Source manifest](../research/v25-marker-manifest.json).
+Together, these imports add 875 relationships across 377 genes, including 12 previously absent SGD-mapped identities. The source manifest preserves original table identifiers, row numbers and hashes. [Source manifest](../research/evidence/v25-marker-manifest.json).
 
 Existing metadata was completed for 859 Gasch S8 relationships and 4,155 Shabestary relationships. Gasch's condition, strain and dataset describe the 2017 evaluation context of previously defined gene sets. Shabestary's glutamine and proline comparisons use the reanalysed single-cell dataset GSE125162; G1/G2 and P1/P2 are subgroup names, not cycle phases. [Shabestary et al. (2024)](https://www.nature.com/articles/s41467-024-50602-8).
 

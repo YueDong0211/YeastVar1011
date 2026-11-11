@@ -92,7 +92,7 @@ async function render(options) {
 async function main() {
   const options = parseArgs(process.argv.slice(2));
   if (options.help) {
-    console.log('Render a Bioconda recipe without overwriting existing output.\nRelease: node scripts/render-bioconda.cjs --version VERSION --source-url TAG_URL --archive DOWNLOADED.tar.gz [--sha256 EXPECTED] [--output releases/recipe/NAME]\nCI only: node scripts/render-bioconda.cjs --version VERSION --local-source . [--output releases/recipe/NAME]\nAn explicit --sha256 may replace --archive. Use the source archive hash, never a recipe or manifest hash.');
+    console.log('Render a Bioconda recipe without overwriting existing output.\nRelease: node packaging/render-bioconda.cjs --version VERSION --source-url TAG_URL --archive DOWNLOADED.tar.gz [--sha256 EXPECTED] [--output releases/recipe/NAME]\nCI only: node packaging/render-bioconda.cjs --version VERSION --local-source . [--output releases/recipe/NAME]\nAn explicit --sha256 may replace --archive. Use the source archive hash, never a recipe or manifest hash.');
     return;
   }
   console.log(JSON.stringify(await render(options), null, 2));

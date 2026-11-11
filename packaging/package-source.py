@@ -1,5 +1,6 @@
 """Build and verify a source ZIP from the canonical allowlisted snapshot."""
 from pathlib import Path
+import argparse
 import hashlib
 import json
 import shutil
@@ -10,14 +11,19 @@ root = Path(__file__).resolve().parents[1]
 package = json.loads((root / "package.json").read_text(encoding="utf-8"))
 version = package["version"]
 suffix = "-ProjectLocal" if package.get("yvDistribution") == "project-local" else ""
-release_root = root / "releases"
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--output-directory", type=Path, default=root / "releases")
+args = parser.parse_args()
+release_root = args.output_directory.resolve()
+release_root.relative_to((root / "releases").resolve())
+release_root.mkdir(parents=True, exist_ok=True)
 target = release_root / f"YeastVar1011-{version}-Source{suffix}.zip"
 if target.exists():
     raise SystemExit("This source ZIP already exists; choose a new release version or remove an unissued build.")
 result = subprocess.run(["node", str(root / "scripts/prepare-public.cjs")], cwd=root,
                         check=True, text=True, capture_output=True)
 snapshot = Path(json.loads(result.stdout)["path"])
-assert snapshot.parent.resolve() == release_root.resolve() and snapshot.name.startswith("public-source-")
+assert snapshot.parent.resolve() == (root / "releases").resolve() and snapshot.name.startswith("public-source-")
 try:
     subprocess.run(["node", str(snapshot / "scripts/source-manifest.cjs"), "--check"], cwd=snapshot, check=True)
     manifest = json.loads((snapshot / "source-manifest.json").read_text(encoding="utf-8"))

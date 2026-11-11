@@ -111,3 +111,14 @@ Copyright © 2026 Yue Dong. Original code and documentation are distributed unde
 ## Contribute and contact
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for evidence, interface and translation conventions. Report reproducible problems or source corrections through [GitHub issues](https://github.com/YueDong0211/YeastVar1011/issues). Research collaboration: [Yue Dong](mailto:yuedong02@outlook.com).
+
+## Repository map
+
+- `dist/`: workstation interface, catalogues, local runtimes and visual assets.
+- `analysis/`: Linux raw-read QC workflow and SLURM profile.
+- `scripts/`: application launch, setup, source inventory and shared test entry point.
+- `tests/`: regression checks, grouped in `tests/suites.json`.
+- `research/evidence/` and `research/tools/`: source audits and maintained curation tools.
+- `packaging/`: source, Windows and analysis ZIP builders and the Bioconda recipe.
+
+Use `npm test` for core checks, `npm run test:catalogue` for evidence and methods, and `npm run test:ci` for the full website suite. See [verification suites](tests/README.md) and [repository architecture](docs/ARCHITECTURE.md).

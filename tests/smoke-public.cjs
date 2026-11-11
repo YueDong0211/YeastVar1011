@@ -2,7 +2,7 @@
 'use strict';
 const {chromium}=require('@playwright/test'),{spawn}=require('node:child_process'),path=require('node:path'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..');
-const server=spawn(process.execPath,[path.join(__dirname,'dev-server.cjs')],{cwd:root,env:{...process.env,PORT:'0',BASE_PATH:'/YeastVar1011/'},stdio:['ignore','pipe','pipe']});
+const server=spawn(process.execPath,[path.join(root,'scripts/dev-server.cjs')],{cwd:root,env:{...process.env,PORT:'0',BASE_PATH:'/YeastVar1011/'},stdio:['ignore','pipe','pipe']});
 let browser;
 (async()=>{
  const base=await new Promise((resolve,reject)=>{let output='';const timeout=setTimeout(()=>reject(Error('Local server startup timed out')),15000);server.once('exit',code=>{clearTimeout(timeout);reject(Error('Server exited: '+code));});server.stdout.on('data',data=>{output+=data;const m=output.match(/http:\/\/127\.0\.0\.1:\d+\/YeastVar1011\//);if(m){clearTimeout(timeout);resolve(m[0]);}});server.stderr.on('data',data=>process.stderr.write(data));});

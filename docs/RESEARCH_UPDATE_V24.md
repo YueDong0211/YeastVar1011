@@ -60,16 +60,16 @@ The four new references are also included in the offline CSL catalogue. The leng
 From the repository root:
 
 ```bash
-node research/v24_research_additions.cjs
-node research/qa-input-contracts-v22.cjs
-node research/qa-csl-publication-types-v24.cjs
-node research/check_site.cjs
+node v24 catalogue migration (retained in Git history)
+node tests/qa-input-contracts-v22.cjs
+node tests/qa-csl-publication-types-v24.cjs
+node scripts/check-site.cjs
 ```
 
 The additions script is idempotent and uses the metadata already verified in its source. It updates the four catalogue JSON files, the v24 translation file and the four new offline CSL records, preserving retained citation corrections. It does not rebuild the offline catalogue bundle or marker shards. Once all catalogue and marker edits are complete, maintainers synchronize the offline bundle with:
 
 ```bash
-python research/write_catalogue_assets.py
+python research/tools/write_catalogue_assets.py
 ```
 
 The v24 translation file supplies 126 text entries for Chinese, English, French, Spanish and Basque through the existing locale system. The website entry point must load that file before rendering the catalogue.

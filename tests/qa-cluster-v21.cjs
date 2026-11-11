@@ -1,7 +1,7 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),{chromium}=require('@playwright/test');
 const version=require('../package.json').version,analysisName=`YeastVar1011-analysis-v${version}.zip`;
-const base=process.env.YV_TEST_URL||'http://127.0.0.1:4173/',output=path.join(__dirname,'cache','v21-cluster-qa');
+const base=process.env.YV_TEST_URL||'http://127.0.0.1:4173/',output=path.join(process.env.YV_QA_OUTPUT||path.resolve(__dirname,'../.yeastvar-local/qa'),'cluster');
 fs.mkdirSync(output,{recursive:true});const checks=[],errors=[],requests=[],screens=[];
 async function test(name,fn){try{const details=await fn();checks.push({name,pass:true,details});console.log('PASS',name)}catch(e){checks.push({name,pass:false,error:e.stack});console.error('FAIL',name,e.message)}}
 async function downloadBytes(download){const stream=await download.createReadStream(),parts=[];for await(const part of stream)parts.push(part);return Buffer.concat(parts)}
