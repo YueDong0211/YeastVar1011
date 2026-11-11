@@ -2,12 +2,14 @@ param([string]$OutputDirectory)
 $ErrorActionPreference = 'Stop'
 $packageRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 . (Join-Path $packageRoot 'portable/Common.ps1')
-$version = (Get-Content -LiteralPath (Join-Path $packageRoot 'package.json') -Raw | ConvertFrom-Json).version
+$package = Get-Content -LiteralPath (Join-Path $packageRoot 'package.json') -Raw | ConvertFrom-Json
+$version = $package.version
+$suffix = if ($package.yvDistribution -eq 'project-local') { '-ProjectLocal' } else { '' }
 if ($version -notmatch '^\d+\.\d+\.\d+$') { throw 'Invalid release version.' }
 if ([string]::IsNullOrWhiteSpace($OutputDirectory)) { $OutputDirectory = Join-Path $packageRoot 'releases' }
 $OutputDirectory = [IO.Path]::GetFullPath($OutputDirectory)
 [IO.Directory]::CreateDirectory($OutputDirectory) | Out-Null
-$archive = Join-Path $OutputDirectory ('YeastVar1011-' + $version + '-Windows.zip')
+$archive = Join-Path $OutputDirectory ('YeastVar1011-' + $version + '-Windows' + $suffix + '.zip')
 if ([IO.File]::Exists($archive)) { throw 'A package for this version already exists in the output directory. Choose a new output directory.' }
 $stage = Join-Path $OutputDirectory ('staging-' + [Guid]::NewGuid().ToString('N'))
 $folder = Join-Path $stage 'YeastVar1011'
@@ -26,7 +28,8 @@ try {
     $quickStart = [IO.File]::ReadAllText((Join-Path $packageRoot 'portable/README.zh-CN.txt'))
     [IO.File]::WriteAllText((Join-Path $folder 'README-START.txt'), ('YeastVar1011 ' + $version + [Environment]::NewLine + $quickStart), $utf8)
     Copy-Item -LiteralPath (Join-Path $packageRoot 'portable/README.en.txt') -Destination (Join-Path $folder 'README-START.en.txt')
-    $release = [ordered]@{ version=$version; platform='Windows portable'; source=('https://github.com/YueDong0211/YeastVar1011/releases/tag/v' + $version); modelWeightsBundled=$false }
+    $release = [ordered]@{ version=$version; platform='Windows portable'; baseRelease=('https://github.com/YueDong0211/YeastVar1011/releases/tag/v' + $version); modelWeightsBundled=$false }
+    if ($package.yvDistribution) { $release.distribution = $package.yvDistribution; $release.runtimeStorage = 'package-root/.yeastvar-local' }
     [IO.File]::WriteAllText((Join-Path $folder 'RELEASE.json'), ($release | ConvertTo-Json), $utf8)
     $all = Get-ChildItem -LiteralPath $folder -File -Recurse
     $manifest = $all | ForEach-Object { [ordered]@{ path = $_.FullName.Substring($folder.Length + 1).Replace('\','/'); bytes = $_.Length; sha256 = (Get-YVFileHash $_.FullName) } }

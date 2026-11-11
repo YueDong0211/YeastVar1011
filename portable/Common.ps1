@@ -7,12 +7,20 @@ function Get-YVContext {
     try { $digest = $sha.ComputeHash([Text.Encoding]::UTF8.GetBytes($packageRoot.ToLowerInvariant())) }
     finally { $sha.Dispose() }
     $rootId = ([BitConverter]::ToString($digest)).Replace('-', '').Substring(0, 24).ToLowerInvariant()
+    $dataRoot = Join-Path $packageRoot '.yeastvar-local'
     $localRoot = [Environment]::GetFolderPath('LocalApplicationData')
-    if ([string]::IsNullOrWhiteSpace($localRoot)) { $localRoot = [IO.Path]::GetTempPath() }
-    $runtime = Join-Path (Join-Path (Join-Path $localRoot 'YeastVar1011') 'portable') $rootId
+    $profile = 'windows'
+    if ($localRoot -match '[\\/]Packages[\\/]OpenAI\.Codex_') { $profile = 'codex-sandbox' }
+    $runtime = Join-Path (Join-Path (Join-Path $dataRoot 'portable') $profile) $rootId
+    $temporary = Join-Path $dataRoot 'tmp'
     [IO.Directory]::CreateDirectory($runtime) | Out-Null
+    [IO.Directory]::CreateDirectory($temporary) | Out-Null
+    # CodeDOM compilation and child processes use this copy's local temporary files.
+    $env:TEMP = $temporary
+    $env:TMP = $temporary
     return [pscustomobject]@{
         PackageRoot = $packageRoot; WebRoot = $webRoot; RootId = $rootId
+        DataRoot = $dataRoot; Profile = $profile; Temporary = $temporary
         Runtime = $runtime; State = (Join-Path $runtime 'instance.json')
         Log = (Join-Path $runtime 'server.log'); Preference = (Join-Path $runtime 'port.json')
     }

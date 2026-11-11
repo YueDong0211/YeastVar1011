@@ -2,9 +2,13 @@ YeastVar1011 - Windows portable workstation
 
 Extract the complete ZIP, then open YeastVar1011\START.cmd.
 Use STOP.cmd to stop this folder's local server.
-CREATE-SHORTCUT.cmd creates a shortcut for the extracted folder.
+CREATE-SHORTCUT.cmd creates a shortcut beside START.cmd.
 Python, Node.js and administrator rights are not required.
 Do not run START from a ZIP preview or copy index.html alone.
+
+The ProjectLocal distribution keeps ports, service state, logs and compiler
+temporary files in .yeastvar-local beside the program. Extracting the program
+on drive D also keeps these files on drive D.
 
 Share the complete ZIP. It contains the application, catalogue, citations,
 visual assets, export libraries and documentation. RELEASE.json identifies

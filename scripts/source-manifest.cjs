@@ -51,7 +51,7 @@ function sourceFiles(root) {
         if (!PRIVATE_FILES.has(child)) visit(child);
       }
     } else if (stat.isFile()) {
-      if (/(?:^|\/)(?:\.git|\.openai|node_modules|maintenance|publication|\.env)(?:\/|$)/i.test(relative)) {
+      if (/(?:^|\/)(?:\.git|\.openai|\.yeastvar-local|node_modules|maintenance|publication|\.env)(?:\/|$)/i.test(relative)) {
         throw Error('Private path in source: ' + relative);
       }
       if (isText(relative) && SENSITIVE.some(pattern => pattern.test(fs.readFileSync(full, 'utf8')))) {
@@ -69,6 +69,7 @@ function createManifest(root = ROOT) {
   return {
     format: 'yeastvar1011.source-manifest.v1',
     version: pkg.version,
+    ...(pkg.yvDistribution ? {distribution: pkg.yvDistribution} : {}),
     textLineEndings: 'LF',
     files: sourceFiles(root).map(relative => {
       const data = canonicalBytes(root, relative);

@@ -7,6 +7,8 @@ __pycache__/
 *.py[cod]
 .openai/
 maintenance/
+.yeastvar-local/
+/YeastVar1011.lnk
 publication/
 .env
 .env.*

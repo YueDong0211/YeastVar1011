@@ -1,5 +1,11 @@
 # YeastVar1011 22.1.1
 
+## Local ProjectLocal distribution
+
+The current local packages are `YeastVar1011-22.1.1-Windows-ProjectLocal.zip` and `YeastVar1011-22.1.1-Source-ProjectLocal.zip`, with SHA-256 sidecars. This launcher-location build stores ports, service state, logs and compiler temporary files in `.yeastvar-local/` inside the program folder. `CREATE-SHORTCUT.cmd` also writes beside `START.cmd`. The ZIP metadata identify the `project-local` distribution; the links below identify its published 22.1.1 base.
+
+## Published base release
+
 Released 9 November 2026. This maintenance release standardizes the scientific description, citation metadata, original-code license and reproducible source inventory. The release assets, website identity and embedded analysis source use the same version. See the [changelog](../CHANGELOG.md).
 
 ## Choose a distribution

@@ -1,6 +1,7 @@
 {
   "format": "yeastvar1011.source-manifest.v1",
   "version": "22.1.1",
+  "distribution": "project-local",
   "textLineEndings": "LF",
   "files": [
     {
@@ -30,13 +31,13 @@
     },
     {
       "path": ".github/workflows/pages.yml",
-      "bytes": 4393,
-      "sha256": "7e0c307713b629a841c1ce674f6ee79fe4992182deab83c14de8e46660095258"
+      "bytes": 4685,
+      "sha256": "d9a848334657434577fc8d71710892abb27b7ad9d07e4d84f75a703d9661ed37"
     },
     {
       "path": ".gitignore",
-      "bytes": 180,
-      "sha256": "81168b97ae2a1fbb7d9b888a67851f33721eeeb5cd346d78dc09f30ad8f7d282"
+      "bytes": 215,
+      "sha256": "f058e2ff34392d7857d3533e025862299a5e537fa06057b35502a75a201ac509"
     },
     {
       "path": ".zenodo.json",
@@ -45,8 +46,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 1927,
-      "sha256": "40256b6e9ebf58aa89886959dab8ff37938d5817d2e6029d0461bc81707ba61f"
+      "bytes": 2261,
+      "sha256": "b63160f097fc986d65b9e4474806dd9d4a390fb801e5e21fd20db43280c0e6f2"
     },
     {
       "path": "CITATION.cff",
@@ -75,8 +76,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 8809,
-      "sha256": "83b7ceabf97ee204f7df92d36a718ed4cd5102d44f2ba292930547ab02cbe712"
+      "bytes": 9246,
+      "sha256": "dbbe5190a6be94f60141eeb091f84c302db3fbe44160af7f09b06b454405665a"
     },
     {
       "path": "START.cmd",
@@ -1630,8 +1631,8 @@
     },
     {
       "path": "docs/DEPLOYMENT.md",
-      "bytes": 4993,
-      "sha256": "bda18677f258be34e0230282fb155229d146568e0b8acd225dcbee04882827f5"
+      "bytes": 5251,
+      "sha256": "4f3e0d964f5d47b9cc56ef0b95f3f3ada367b5dd81f9a532a4775c97da5291a4"
     },
     {
       "path": "docs/LITERATURE_SEARCH_V25.md",
@@ -1655,8 +1656,8 @@
     },
     {
       "path": "docs/RELEASES.md",
-      "bytes": 2438,
-      "sha256": "47b4b14acbc4f945ba8332fd9406c4ff823c722d53661dc48dcd0f1fa9993484"
+      "bytes": 2961,
+      "sha256": "424b3b3468a4fa38424839ad276a2886b9ad88f39d29052e7cbb6eaa070d4179"
     },
     {
       "path": "docs/RESEARCH_COVERAGE_V25.md",
@@ -1700,8 +1701,8 @@
     },
     {
       "path": "package.json",
-      "bytes": 1445,
-      "sha256": "d37a9372d228c6d8c28e72897f8c80d5eb0213f2bb38e31695161ae393b79e6f"
+      "bytes": 1482,
+      "sha256": "9ef9572c4b0a89435413e914a8da46e2ac3955a5daea136b1e54de1e66de0f07"
     },
     {
       "path": "packaging/bioconda/README.md",
@@ -1715,8 +1716,8 @@
     },
     {
       "path": "packaging/bioconda/meta.yaml.in",
-      "bytes": 2401,
-      "sha256": "1167b55293eca5469be13ce65268ae85f385f67863d60f4243e5745b1ee75cab"
+      "bytes": 2631,
+      "sha256": "f83429838adf68baa2d9b5a0142e35f2a3cd7a499f19af20c2f3aa1a861eb591"
     },
     {
       "path": "packaging/bioconda/run_test.sh",
@@ -1735,8 +1736,8 @@
     },
     {
       "path": "portable/Common.ps1",
-      "bytes": 4479,
-      "sha256": "973c4bc5e916f44edb3f25fef58d69607dcf8d4e1c094bd8bc2cf4e8dc402e1e"
+      "bytes": 4868,
+      "sha256": "7cf6cae496209183761aefce0d1e96c5a8c77d3096bd976326bb1fe86e4d4c97"
     },
     {
       "path": "portable/Launch.ps1",
@@ -1750,8 +1751,8 @@
     },
     {
       "path": "portable/README.en.txt",
-      "bytes": 1326,
-      "sha256": "9485fc63dfc7cc0660862c76231b813b0b225f316e22f100d408db444537a738"
+      "bytes": 1519,
+      "sha256": "b97c441542398c617a7970375fdee175c70da6d3f5c59fcfcbb6b01d8489a3b2"
     },
     {
       "path": "portable/README.txt",
@@ -1760,8 +1761,8 @@
     },
     {
       "path": "portable/README.zh-CN.txt",
-      "bytes": 5454,
-      "sha256": "972b25b3624aebc54a76778def1cd9b58aa1459f7279fed888a26777a14a3f35"
+      "bytes": 5671,
+      "sha256": "8d559a5d84a05e748abf62b812e03580b658e7fac967b379a7078c2e825ec7aa"
     },
     {
       "path": "portable/Server.ps1",
@@ -1770,8 +1771,8 @@
     },
     {
       "path": "portable/Shortcut.ps1",
-      "bytes": 964,
-      "sha256": "a6744c41399044dcb5172a84b510754cbe46ccfc288836464d2ec290d70969d2"
+      "bytes": 881,
+      "sha256": "727495320e208b2afabe82d1d19fa7b41f70eddbc5df1f0e53521c53999946bf"
     },
     {
       "path": "portable/Stop.ps1",
@@ -1815,8 +1816,8 @@
     },
     {
       "path": "research/package-portable.ps1",
-      "bytes": 3957,
-      "sha256": "832304b44afe8c4b75d93f2ed2cf79cf26676337ae48bc90d8edb027a8adbc60"
+      "bytes": 4229,
+      "sha256": "08c246d8d40aaa2c3c1c7ab78659d699fbd64e00f425cb2503721aadb95c53e0"
     },
     {
       "path": "research/qa-analysis-linking-v30.cjs",
@@ -2000,8 +2001,8 @@
     },
     {
       "path": "research/qa-portable-package.ps1",
-      "bytes": 13900,
-      "sha256": "633aba5973293eca019c427bfe2fbb3a9c0b40019005e2029ff2f72da3c14042"
+      "bytes": 14911,
+      "sha256": "6bc5b3756343b2eb9b801be5cf0a3ad1ac07e177b7dddc6e9fbd83f24d8a1a44"
     },
     {
       "path": "research/qa-qc-branch-inputs-v25b.cjs",
@@ -2120,8 +2121,8 @@
     },
     {
       "path": "scripts/package-source.py",
-      "bytes": 2418,
-      "sha256": "3b6b711d3a0fc2758338fd651b2d331f79a112fb868074e28ea589b00b3a5879"
+      "bytes": 2529,
+      "sha256": "a88ceefa1cf783790fa77efcaf2bb9fa4091a43055bcb239e3507f308f992e06"
     },
     {
       "path": "scripts/prepare-public.cjs",
@@ -2155,8 +2156,8 @@
     },
     {
       "path": "scripts/source-manifest.cjs",
-      "bytes": 4181,
-      "sha256": "9751b1c23a4f710ebe09a1fefe4fa3131ed5bdbe7f774b2068a8d838aaa0f6ad"
+      "bytes": 4269,
+      "sha256": "d3d96270c484f516d90d320097a6a519802fe0c3d053a5ababc30051257d0711"
     }
   ]
 }

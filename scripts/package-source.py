@@ -7,9 +7,11 @@ import subprocess
 import zipfile
 
 root = Path(__file__).resolve().parents[1]
-version = json.loads((root / "package.json").read_text(encoding="utf-8"))["version"]
+package = json.loads((root / "package.json").read_text(encoding="utf-8"))
+version = package["version"]
+suffix = "-ProjectLocal" if package.get("yvDistribution") == "project-local" else ""
 release_root = root / "releases"
-target = release_root / f"YeastVar1011-{version}-Source.zip"
+target = release_root / f"YeastVar1011-{version}-Source{suffix}.zip"
 if target.exists():
     raise SystemExit("This source ZIP already exists; choose a new release version or remove an unissued build.")
 result = subprocess.run(["node", str(root / "scripts/prepare-public.cjs")], cwd=root,

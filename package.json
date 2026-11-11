@@ -1,6 +1,7 @@
 {
   "name": "yeastvar1011",
   "version": "22.1.1",
+  "yvDistribution": "project-local",
   "description": "Evidence-linked study design and raw-read quality control for yeast single-cell research",
   "scripts": {
     "start": "node scripts/dev-server.cjs",

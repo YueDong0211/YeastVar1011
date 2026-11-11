@@ -3,7 +3,8 @@ $ErrorActionPreference = 'Stop'
 
 # Exercise the distributed Windows launcher without opening or automating a browser.
 $sourceRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
-$tempParent = [IO.Path]::GetFullPath([IO.Path]::GetTempPath()).TrimEnd('\')
+$tempParent = Join-Path $sourceRoot '.yeastvar-local/qa'
+[IO.Directory]::CreateDirectory($tempParent) | Out-Null
 $runName = 'YeastVar1011-package-qa-' + [Guid]::NewGuid().ToString('N')
 $runRoot = Join-Path $tempParent $runName
 $extractRoot = Join-Path $runRoot ('extracted ' + [char]0x9175 + [char]0x6bcd + ' space')
@@ -158,6 +159,13 @@ try {
     $state = [IO.File]::ReadAllText($first.stateFile) | ConvertFrom-Json
     $owned = [pscustomobject]@{ url = [string]$first.url; stateFile = [string]$first.stateFile; instanceId = [string]$state.instanceId; rootId = [string]$first.rootId; token = [string]$state.token }
     Pass-QA 'The actual Windows launcher starts without opening a browser'
+    Assert-QAChildPath $first.stateFile $packageRoot
+    $probe = Invoke-QAChild ('. ' + (Quote-PS (Join-Path $packageRoot 'portable/Common.ps1')) + '; $c=Get-YVContext; @{runtime=$c.Runtime; temporary=[IO.Path]::GetTempPath()} | ConvertTo-Json -Compress')
+    Assert-QA ($probe.code -eq 0) ('Runtime-location check failed: ' + $probe.error)
+    $locations = $probe.output | ConvertFrom-Json
+    Assert-QAChildPath $locations.runtime $packageRoot
+    Assert-QAChildPath $locations.temporary $packageRoot
+    Pass-QA 'Runtime state and compiler temporary files stay inside the extracted program folder'
     $again = Invoke-QAChild $launchCommand
     Assert-QA ($again.code -eq 0) ('Repeated launch failed: ' + $again.error)
     $second = $again.output | ConvertFrom-Json
@@ -183,6 +191,10 @@ try {
     finally { $stream.Dispose() }
     Assert-QA ([Convert]::ToBase64String($video.bytes) -eq [Convert]::ToBase64String($expected)) 'The served video range differs from the packaged bytes.'
     Pass-QA 'MP4 byte ranges return exactly the packaged bytes'
+    $shortcutResult = Invoke-QAChild ('& ' + (Quote-PS (Join-Path $packageRoot 'portable/Shortcut.ps1')))
+    Assert-QA ($shortcutResult.code -eq 0) ('Shortcut creation failed: ' + $shortcutResult.error)
+    Assert-QA ([IO.File]::Exists((Join-Path $packageRoot 'YeastVar1011.lnk'))) 'The shortcut must be created beside START.cmd.'
+    Pass-QA 'Shortcut creation also stays inside the extracted program folder'
 } finally {
     if ($null -ne $owned) {
         try {
@@ -195,7 +207,7 @@ try {
                 Assert-QA (-not [IO.File]::Exists($owned.stateFile)) 'The QA service did not finish its authenticated shutdown.'
             }
             $runtime = [IO.Path]::GetDirectoryName($owned.stateFile)
-            $runtimeParent = Join-Path ([Environment]::GetFolderPath('LocalApplicationData')) 'YeastVar1011/portable'
+            $runtimeParent = Join-Path $packageRoot '.yeastvar-local/portable'
             Assert-QAChildPath $runtime $runtimeParent
             Assert-QA ([IO.Path]::GetFileName($runtime) -eq $owned.rootId) 'The QA runtime folder identity differs.'
             if ([IO.Directory]::Exists($runtime)) { Remove-Item -LiteralPath $runtime -Recurse -Force }

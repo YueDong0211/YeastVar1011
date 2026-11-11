@@ -1,5 +1,11 @@
 # Changelog
 
+## Local ProjectLocal distribution — 2026-11-09
+
+- Keep Windows port preferences, instance state, logs and compiler temporary files in `.yeastvar-local/` beside the program.
+- Create the optional shortcut inside the program folder.
+- Label local source and Windows ZIPs as ProjectLocal, with new integrity manifests and checksums.
+
 ## 22.1.1 — 2026-11-09
 
 - Rewrote the project overview, software methods, user guide and publishing records around the implemented study representation, evidence model and executable QC route.
