@@ -117,7 +117,7 @@ try {
         }
     } finally { $zip.Dispose() }
     [IO.Compression.ZipFile]::ExtractToDirectory($ArchivePath, $extractRoot)
-    foreach ($required in @('START.cmd','STOP.cmd','CREATE-SHORTCUT.cmd','portable/Launch.ps1','portable/Stop.ps1','package-manifest.json','dist/index.html','dist/local-model-v22.js','dist/local-model-worker-v22.js','dist/vendor/transformers-3.8.1/manifest.json','dist/evolution-catalogue-v29.js','dist/analysis-plan-overview-v30.js')) {
+    foreach ($required in @('START.cmd','STOP.cmd','CREATE-SHORTCUT.cmd','portable/Launch.ps1','portable/Stop.ps1','portable/LocalServer.dll','package-manifest.json','dist/index.html','dist/local-model-v22.js','dist/local-model-worker-v22.js','dist/vendor/transformers-3.8.1/manifest.json','dist/evolution-catalogue-v29.js','dist/analysis-plan-overview-v30.js')) {
         Assert-QA ([IO.File]::Exists((Join-Path $packageRoot $required))) ('Portable release is missing ' + $required)
     }
     Pass-QA 'ZIP extracts completely into a new folder with spaces'

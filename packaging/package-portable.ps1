@@ -17,6 +17,29 @@ $folder = Join-Path $stage 'YeastVar1011'
 try {
     Copy-Item -LiteralPath (Join-Path $packageRoot 'dist') -Destination $folder -Recurse
     Copy-Item -LiteralPath (Join-Path $packageRoot 'portable') -Destination $folder -Recurse
+    # Compile once while building, before a recipient extracts into a localized path.
+    # CompileAssemblyFromFile does not load/lock the output assembly in this process.
+    $compilerTemp = Join-Path $stage 'compiler'
+    [IO.Directory]::CreateDirectory($compilerTemp) | Out-Null
+    $compiler = New-Object CodeDom.Compiler.CompilerParameters
+    $compiler.GenerateExecutable = $false
+    $compiler.GenerateInMemory = $false
+    $compiler.OutputAssembly = Join-Path $folder 'portable/LocalServer.dll'
+    $compiler.TempFiles = New-Object CodeDom.Compiler.TempFileCollection($compilerTemp, $false)
+    [void]$compiler.ReferencedAssemblies.Add('System.dll')
+    [void]$compiler.ReferencedAssemblies.Add('System.Core.dll')
+    $provider = New-Object Microsoft.CSharp.CSharpCodeProvider
+    try {
+        $compiled = $provider.CompileAssemblyFromFile($compiler, [string[]]@((Join-Path $packageRoot 'portable/LocalServer.cs')))
+        if ($compiled.Errors.HasErrors) { throw (($compiled.Errors | ForEach-Object { $_.ToString() }) -join [Environment]::NewLine) }
+        if (-not [IO.File]::Exists($compiler.OutputAssembly)) { throw 'The portable server assembly was not built.' }
+    } finally {
+        $compiler.TempFiles.Delete()
+        $provider.Dispose()
+        if ([IO.Directory]::Exists($compilerTemp) -and [IO.Directory]::GetFileSystemEntries($compilerTemp).Length -eq 0) {
+            [IO.Directory]::Delete($compilerTemp)
+        }
+    }
     [IO.Directory]::CreateDirectory((Join-Path $folder 'docs')) | Out-Null
     foreach ($manual in @('LOCAL_ASSISTANT.md','RESEARCH_UPDATE_v22.md','RESEARCH_UPDATE_V24.md','RELEASES.md','WORKSTATION.md','DATABASE_RESOURCES.md','DEPLOYMENT.md','software-methods.md')) {
         Copy-Item -LiteralPath (Join-Path $packageRoot ('docs/' + $manual)) -Destination (Join-Path $folder 'docs')

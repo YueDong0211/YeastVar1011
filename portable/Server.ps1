@@ -3,15 +3,20 @@ $context = Get-YVContext
 $server = $null
 $instanceId = [Guid]::NewGuid().ToString('N')
 try {
-    # An explicit collection avoids the legacy administrator-only ANSI directory
-    # creation path in CodeDOM when the extracted workstation has a Unicode path.
-    $compiler = New-Object CodeDom.Compiler.CompilerParameters
-    $compiler.GenerateInMemory = $true
-    $compiler.TempFiles = New-Object CodeDom.Compiler.TempFileCollection($context.Temporary, $false)
-    [void]$compiler.ReferencedAssemblies.Add('System.dll')
-    [void]$compiler.ReferencedAssemblies.Add('System.Core.dll')
-    try { Add-Type -Path (Join-Path $PSScriptRoot 'LocalServer.cs') -CompilerParameters $compiler }
-    finally { $compiler.TempFiles.Delete() }
+    $assembly = Join-Path $PSScriptRoot 'LocalServer.dll'
+    if ([IO.File]::Exists($assembly)) {
+        Add-Type -Path $assembly
+    } else {
+        # Source checkouts can compile locally; distributed Windows packages carry
+        # this assembly so startup never invokes legacy CodeDOM on a Unicode path.
+        $compiler = New-Object CodeDom.Compiler.CompilerParameters
+        $compiler.GenerateInMemory = $true
+        $compiler.TempFiles = New-Object CodeDom.Compiler.TempFileCollection($context.Temporary, $false)
+        [void]$compiler.ReferencedAssemblies.Add('System.dll')
+        [void]$compiler.ReferencedAssemblies.Add('System.Core.dll')
+        try { Add-Type -Path (Join-Path $PSScriptRoot 'LocalServer.cs') -CompilerParameters $compiler }
+        finally { $compiler.TempFiles.Delete() }
+    }
     $random = [Security.Cryptography.RandomNumberGenerator]::Create()
     $bytes = New-Object byte[] 32
     try { $random.GetBytes($bytes) } finally { $random.Dispose() }

@@ -7,7 +7,7 @@
 - Confine test output and portable runtime state to the workstation directory.
 - Remove six completed catalogue migration scripts from the working tree; retain their history and source evidence.
 - Complete the Bioconda runtime-license inventory and use a fixed browser-test image.
-- Fix Windows PowerShell compilation under Unicode paths in administrator accounts by explicitly selecting the project-local compiler temporary directory.
+- Precompile the Windows server during packaging so Unicode-path startup does not invoke the legacy PowerShell compiler. Source-checkout compilation uses an explicit project-local temporary directory.
 
 ## Local ProjectLocal distribution — 2026-11-09
 

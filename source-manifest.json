@@ -46,8 +46,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 2913,
-      "sha256": "7700e2fc2b92f09fed360e77f661f7186f5492e3e632d81a4caee5e00009ca0d"
+      "bytes": 2959,
+      "sha256": "19acdfc1e7787c461378cee09386f519e0b63755cb70a7af0c54a74b5edf78f9"
     },
     {
       "path": "CITATION.cff",
@@ -1741,8 +1741,8 @@
     },
     {
       "path": "packaging/package-portable.ps1",
-      "bytes": 4229,
-      "sha256": "08c246d8d40aaa2c3c1c7ab78659d699fbd64e00f425cb2503721aadb95c53e0"
+      "bytes": 5677,
+      "sha256": "119b9327d532706d05479e348abdbc26a1978ecb2de1c0cfa383fbc2e6958716"
     },
     {
       "path": "packaging/package-source.py",
@@ -1786,8 +1786,8 @@
     },
     {
       "path": "portable/Server.ps1",
-      "bytes": 2564,
-      "sha256": "59eca9d077984513962dda2867b2da930e1dcd86d8649a0409b0ffe1b65edd81"
+      "bytes": 2745,
+      "sha256": "41fbd2dcb6fc5e52a0a5cddb9b0b6f6be6ae42dc6ca143664b1142c9c2393878"
     },
     {
       "path": "portable/Shortcut.ps1",
@@ -2101,8 +2101,8 @@
     },
     {
       "path": "tests/qa-portable-package.ps1",
-      "bytes": 15496,
-      "sha256": "1466da7a8f3a3027b9ea0ffee9c79f1d624a2e64ca16a2a7febeed4c2a4507e2"
+      "bytes": 15523,
+      "sha256": "71009b48e2b6875590960fe8d625d0201838da4730454e650a691a0365da2b23"
     },
     {
       "path": "tests/qa-qc-branch-inputs-v25b.cjs",
