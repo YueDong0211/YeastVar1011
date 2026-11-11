@@ -26,6 +26,22 @@ function Get-YVContext {
     }
 }
 
+function Import-YVRuntime($Context) {
+    if ('YeastVarPortable.LocalServer' -as [type]) { return }
+    $assembly = Join-Path $PSScriptRoot 'LocalServer.dll'
+    if ([IO.File]::Exists($assembly)) {
+        Add-Type -Path $assembly
+        return
+    }
+    $compiler = New-Object CodeDom.Compiler.CompilerParameters
+    $compiler.GenerateInMemory = $true
+    $compiler.TempFiles = New-Object CodeDom.Compiler.TempFileCollection($Context.Temporary, $false)
+    [void]$compiler.ReferencedAssemblies.Add('System.dll')
+    [void]$compiler.ReferencedAssemblies.Add('System.Core.dll')
+    try { Add-Type -Path (Join-Path $PSScriptRoot 'LocalServer.cs') -CompilerParameters $compiler }
+    finally { $compiler.TempFiles.Delete() }
+}
+
 function Read-YVState($Context) {
     if (-not [IO.File]::Exists($Context.State)) { return $null }
     try { return [IO.File]::ReadAllText($Context.State) | ConvertFrom-Json }

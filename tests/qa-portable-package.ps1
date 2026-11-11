@@ -210,7 +210,7 @@ try {
     $shortcutResult = Invoke-QAChild ('& ' + (Quote-PS (Join-Path $packageRoot 'portable/Shortcut.ps1')))
     Assert-QA ($shortcutResult.code -eq 0) ('Shortcut creation failed: ' + $shortcutResult.error)
     Assert-QA ([IO.File]::Exists((Join-Path $packageRoot 'YeastVar1011.lnk'))) 'The shortcut must be created beside START.cmd.'
-    $shortcutProbe = Invoke-QAChild ('$s=(New-Object -ComObject WScript.Shell).CreateShortcut(' + (Quote-PS (Join-Path $packageRoot 'YeastVar1011.lnk')) + '); @{target=$s.TargetPath; arguments=$s.Arguments; workingDirectory=$s.WorkingDirectory} | ConvertTo-Json -Compress')
+    $shortcutProbe = Invoke-QAChild ('. ' + (Quote-PS (Join-Path $packageRoot 'portable/Common.ps1')) + '; $c=Get-YVContext; Import-YVRuntime $c; $s=[YeastVarPortable.ShellLinks]::Read(' + (Quote-PS (Join-Path $packageRoot 'YeastVar1011.lnk')) + '); @{target=$s[0]; arguments=$s[1]; workingDirectory=$s[2]} | ConvertTo-Json -Compress')
     Assert-QA ($shortcutProbe.code -eq 0) ('Shortcut inspection failed: ' + $shortcutProbe.error)
     $shortcutSettings = $shortcutProbe.output | ConvertFrom-Json
     Assert-QA ($shortcutSettings.target -eq $powershell) 'The shortcut target must be the system PowerShell executable.'

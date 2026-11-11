@@ -1756,8 +1756,8 @@
     },
     {
       "path": "portable/Common.ps1",
-      "bytes": 4868,
-      "sha256": "7cf6cae496209183761aefce0d1e96c5a8c77d3096bd976326bb1fe86e4d4c97"
+      "bytes": 5594,
+      "sha256": "b0be3bbc7dbad920328b076787e708f59ecce1976caa139495aacabc7fa5ed04"
     },
     {
       "path": "portable/Launch.ps1",
@@ -1766,8 +1766,8 @@
     },
     {
       "path": "portable/LocalServer.cs",
-      "bytes": 16855,
-      "sha256": "ca1fe95072fc310f9d405548d32f3c9409ce538e8d87afb4d1437155fef6cf23"
+      "bytes": 20421,
+      "sha256": "f27799c0247e652274fce7a6b6b7f1000eea553a15dc89aa9bfa14a6c990e1d8"
     },
     {
       "path": "portable/README.en.txt",
@@ -1786,13 +1786,13 @@
     },
     {
       "path": "portable/Server.ps1",
-      "bytes": 2745,
-      "sha256": "41fbd2dcb6fc5e52a0a5cddb9b0b6f6be6ae42dc6ca143664b1142c9c2393878"
+      "bytes": 1960,
+      "sha256": "f13a9ec612e505df7043989e41c5a712b75058ee886c9a745f141de4d6ae60b4"
     },
     {
       "path": "portable/Shortcut.ps1",
-      "bytes": 1601,
-      "sha256": "29187d69aa6eb9719554b7c481cb0b038bc279c59d29e31801a09df48c4c255a"
+      "bytes": 1597,
+      "sha256": "1da8a62836301b6d7c31f055acc4210db65dcc564fff66209c67d1815599fe53"
     },
     {
       "path": "portable/Stop.ps1",
@@ -2101,8 +2101,8 @@
     },
     {
       "path": "tests/qa-portable-package.ps1",
-      "bytes": 17794,
-      "sha256": "1a93d3da171dc46a8ac1a61934a957f91dcde47e3a0d2bbc7d37c6b51d830832"
+      "bytes": 17856,
+      "sha256": "27e87847a322994ace50d5a790f527b37da22c9cc7e157be3cfc0f5acbd61a34"
     },
     {
       "path": "tests/qa-qc-branch-inputs-v25b.cjs",

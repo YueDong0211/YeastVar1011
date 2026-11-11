@@ -9,8 +9,65 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace YeastVarPortable {
+    // IShellLinkW and IPersistFile use UTF-16, independent of the Windows ANSI code page.
+    // https://learn.microsoft.com/windows/win32/api/shobjidl_core/nn-shobjidl_core-ishelllinkw
+    public static class ShellLinks {
+        [ComImport, Guid("000214F9-0000-0000-C000-000000000046"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+        private interface IShellLinkW {
+            void GetPath([Out, MarshalAs(UnmanagedType.LPWStr)] StringBuilder path, int size, IntPtr data, uint flags);
+            void GetIDList(out IntPtr id);
+            void SetIDList(IntPtr id);
+            void GetDescription([Out, MarshalAs(UnmanagedType.LPWStr)] StringBuilder value, int size);
+            void SetDescription([MarshalAs(UnmanagedType.LPWStr)] string value);
+            void GetWorkingDirectory([Out, MarshalAs(UnmanagedType.LPWStr)] StringBuilder value, int size);
+            void SetWorkingDirectory([MarshalAs(UnmanagedType.LPWStr)] string value);
+            void GetArguments([Out, MarshalAs(UnmanagedType.LPWStr)] StringBuilder value, int size);
+            void SetArguments([MarshalAs(UnmanagedType.LPWStr)] string value);
+            void GetHotkey(out short key);
+            void SetHotkey(short key);
+            void GetShowCmd(out int command);
+            void SetShowCmd(int command);
+            void GetIconLocation([Out, MarshalAs(UnmanagedType.LPWStr)] StringBuilder path, int size, out int index);
+            void SetIconLocation([MarshalAs(UnmanagedType.LPWStr)] string path, int index);
+            void SetRelativePath([MarshalAs(UnmanagedType.LPWStr)] string path, uint reserved);
+            void Resolve(IntPtr window, uint flags);
+            void SetPath([MarshalAs(UnmanagedType.LPWStr)] string path);
+        }
+        private static object Create() {
+            return Activator.CreateInstance(Type.GetTypeFromCLSID(new Guid("00021401-0000-0000-C000-000000000046")));
+        }
+        public static void Write(string file, string target, string arguments, string directory, string description) {
+            object instance = Create();
+            try {
+                IShellLinkW link = (IShellLinkW)instance;
+                link.SetPath(target);
+                link.SetArguments(arguments);
+                link.SetWorkingDirectory(directory);
+                link.SetDescription(description);
+                link.SetShowCmd(7);
+                ((IPersistFile)instance).Save(Path.GetFullPath(file), true);
+            } finally { Marshal.FinalReleaseComObject(instance); }
+        }
+        public static string[] Read(string file) {
+            object instance = Create();
+            try {
+                ((IPersistFile)instance).Load(Path.GetFullPath(file), 0);
+                IShellLinkW link = (IShellLinkW)instance;
+                StringBuilder target = new StringBuilder(32768), arguments = new StringBuilder(32768);
+                StringBuilder directory = new StringBuilder(32768), description = new StringBuilder(32768);
+                link.GetPath(target, target.Capacity, IntPtr.Zero, 0);
+                link.GetArguments(arguments, arguments.Capacity);
+                link.GetWorkingDirectory(directory, directory.Capacity);
+                link.GetDescription(description, description.Capacity);
+                return new string[] { target.ToString(), arguments.ToString(), directory.ToString(), description.ToString() };
+            } finally { Marshal.FinalReleaseComObject(instance); }
+        }
+    }
+
     public sealed class LocalServer : IDisposable {
         private readonly string root, rootPrefix, rootId, instanceId, token, log;
         private readonly int preferredPort;
